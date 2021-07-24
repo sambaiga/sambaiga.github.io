@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 description: 
 nav: true
-display_categories: [CeADAR, IMR, PhD]
+display_categories: [CeADAR, IMR, UDOM, PhD]
 horizontal: false
 ---
 <div class="projects">
