@@ -2,10 +2,10 @@
 layout: page
 title: DDMS
 description: Data-driven Maintenance Service (DDMS)
-img: /assets/img/4.jpg
+img: /assets/img/ddms.jpg
 redirect: 
 importance: 3
-category: Work
+category: IMR
 ---
 
 The quick advance in the last years of fields like Industrial Internet of Things (IIoT), Cloud Computing and Big Data allows manufacturing companies to capture more and better data from their machines, in a way that was simply impossible to do just a few years ago. These technologies are the fulcrum to allow companies to move from a paper-based, mostly manual maintenance approach to a new, more automated, data-based strategy.

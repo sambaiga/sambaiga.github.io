@@ -2,9 +2,9 @@
 layout: page
 title: ARIEO
 description: AI-ready EO training datasets (AIREO) Dataset specifications and Best-practices
-img: /assets/img/4.jpg
+img: /assets/img/ai4eo.jpg
 importance: 3
-category: Work
+category: CeADAR
 ---
 Artificial Intelligence (AI) and Machine Learning (ML) algorithms have great potential to advance processing and analysis of Earth Observation (EO) data. Training datasets (TDS) are crucial for ML and AI applications but they are becoming a major bottleneck in more widespread and systematic application of AI/ML in EO maily due to; 
 1. Lack and inaccessibility of high-quality TDS

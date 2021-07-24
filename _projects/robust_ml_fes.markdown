@@ -2,7 +2,7 @@
 layout: page
 title: RML4FES
 description: Robust Machine Learning for Future Energy Systems (RML4FES)
-img: /assets/img/4.jpg
+img: /assets/img/energy.jpg
 importance: 2
 category: PhD
 ---

@@ -2,9 +2,9 @@
 layout: page
 title: Projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: 
 nav: true
-display_categories: [Work, PhD]
+display_categories: [CeADAR, IMR, PhD]
 horizontal: false
 ---
 <div class="projects">

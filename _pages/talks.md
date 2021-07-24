@@ -1,11 +1,11 @@
 ---
-title: "Talks"
-layout: gridlay
-sitemap: false
+layout: page
+title: Talks
 permalink: /talks/
+description: 
+nav: true
 ---
 
-## Talks
 
 {% if site.data.conference_talks %}
 

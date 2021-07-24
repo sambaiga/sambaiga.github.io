@@ -1,0 +1,32 @@
+- authors: A. Faustine, L. Pereira, D. Ngondya, L. Benabbou
+  title: Leveraging Machine learning for Sustainable and Self-sufficient Energy Communities
+  conf: NeurIPS 2020 Workshop Tackling Climate Change with Machine Learning
+  year: 2021
+  url: climateai2020
+  youtube: qvgIjTKmhfc
+  link: https://www.climatechange.ai/papers/neurips2020/79
+
+- authors: A. Faustine, L. Pereira H, Bousbiat and S. Kulkarni
+  title: UNet-NILM A Deep Neural Network for Multi-tasks Appliances State Detection and Power Estimation in NILM
+  conf: 5th International Workshop on Non-Intrusive Load Monitoring (co-located with ACM BuildSys 2020 and jointly organized with the EU NILM Workshop)
+  year: 2020
+  url: UNET-NILM2020
+  youtube: UpZDX2hU3-A
+  link: http://nilmworkshop.org/2020/
+
+- authors: A. Faustine, D .Deschrijver and T. Dhaene
+  title: Improved Appliance Classification in NILM using Recurrence Plots and Convolutional Neural Networks
+  conf: EU NILM Workshop, Thessaloniki, Greece
+  year: 2019
+  url: PosterEURONILM2019
+  youtube: xDEHwC2QmuU?start=353
+  link: http://www.nilm.eu/  
+
+
+- authors: A. Faustine
+  title: Convolutional Neural Network for Appliance Classification in NILM
+  conf: Data Science Africa, Arusha, Tanzania
+  year: 2017
+  url: ConvNILM
+  youtube: 8TCCpEJI2cg
+  link: http://www.datascienceafrica.org/dsa2017/  

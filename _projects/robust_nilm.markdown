@@ -2,7 +2,7 @@
 layout: page
 title: Robust NILM
 description: Robust Machine learning methods for Non-Intrusive Load Monitoring (NILM)
-img: /assets/img/4.jpg
+img: /assets/img/nilm.jpg
 importance: 1
 category: PhD
 ---
