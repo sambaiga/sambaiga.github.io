@@ -3,70 +3,133 @@
 
 @string{aps = {American Physical Society,}}
 
-@book{einstein1956investigations,
-  bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation,}
+@Article{en14030719,
+abbr={Watt’supHome},
+AUTHOR = {Völker, Benjamin and Reinhardt, Andreas and Faustine, Anthony and Pereira, Lucas},
+TITLE = {Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective},
+JOURNAL = {Energies},
+VOLUME = {14},
+YEAR = {2021},
+NUMBER = {3},
+ARTICLE-NUMBER = {719},
+URL = {https://www.mdpi.com/1996-1073/14/3/719},
+ISSN = {1996-1073},
+ABSTRACT = {The key advantage of smart meters over traditional metering devices is their ability to transfer consumption information to remote data processing systems. Besides enabling the automated collection of a customer’s electricity consumption for billing purposes, the data collected by these devices makes the realization of many novel use cases possible. However, the large majority of such services are tailored to improve the power grid’s operation as a whole. For example, forecasts of household energy consumption or photovoltaic production allow for improved power plant generation scheduling. Similarly, the detection of anomalous consumption patterns can indicate electricity theft and serve as a trigger for corresponding investigations. Even though customers can directly influence their electrical energy consumption, the range of use cases to the users’ benefit remains much smaller than those that benefit the grid in general. In this work, we thus review the range of services tailored to the needs of end-customers. By briefly discussing their technological foundations and their potential impact on future developments, we highlight the great potentials of utilizing smart meter data from a user-centric perspective. Several open research challenges in this domain, arising from the shortcomings of state-of-the-art data communication and processing methods, are furthermore given. We expect their investigation to lead to significant advancements in data processing services and ultimately raise the customer experience of operating smart meters.},
+DOI = {10.3390/en14030719},
+pdf={wattshome.pdf},
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics,},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers,}
-}
-
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.,},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
+@ARTICLE{9144492,
+  abbr={AWRGNILM},
+  author={Faustine, Anthony and Pereira, Lucas and Klemenjak, Christoph},
+  journal={IEEE Transactions on Smart Grid}, 
+  title={Adaptive Weighted Recurrence Graphs for Appliance Recognition in Non-Intrusive Load Monitoring}, 
+  year={2021},
+  volume={12},
+  number={1},
+  pages={398-406},
+  abstract={To this day, hyperparameter tuning remains a cumbersome task in Non-Intrusive Load Monitoring (NILM) research, as researchers and practitioners are forced to invest a considerable amount of time in this task. This paper proposes adaptive weighted recurrence graph blocks (AWRG) for appliance feature representation in event-based NILM. An AWRG block can be combined with traditional deep neural network architectures such as Convolutional Neural Networks for appliance recognition. Our approach transforms one cycle per activation current into an weighted recurrence graph and treats the associated hyper-parameters as learn-able parameters. We evaluate our technique on two energy datasets, the industrial dataset LILACD and the residential PLAID dataset. The outcome of our experiments shows that transforming current waveforms into weighted recurrence graphs provides a better feature representation and thus, improved classification results. It is concluded that our approach can guarantee uniqueness of appliance features, leading to enhanced generalisation abilities when compared to the widely researched V-I image features. Furthermore, we show that the initialisation parameters of the AWRG's have a significant impact on the performance and training convergence.},
+  keywords={},
+  doi={10.1109/TSG.2020.3010621},
+  ISSN={1949-3061},
+  month={Jan},
+  pdf={AWRG.pdf},
+  code=https://github.com/sambaiga/AWRGNILM,
   selected={true}
+  }
+
+@Article{Faustine2020a,
+abbr={WRGNILM},
+AUTHOR = {Faustine, Anthony and Pereira, Lucas},
+TITLE = {Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks},
+JOURNAL = {Energies},
+VOLUME = {13},
+YEAR = {2020},
+NUMBER = {13},
+ARTICLE-NUMBER = {3374},
+URL = {https://www.mdpi.com/1996-1073/13/13/3374},
+ISSN = {1996-1073},
+ABSTRACT = {Appliance recognition is one of the vital sub-tasks of NILM in which a machine learning classier is used to detect and recognize active appliances from power measurements. The performance of the appliance classifier highly depends on the signal features used to characterize the loads. Recently, different appliance features derived from the voltage&ndash;current (V&ndash;I) waveforms have been extensively used to describe appliances. However, the performance of V&ndash;I-based approaches is still unsatisfactory as it is still not distinctive enough to recognize devices that fall into the same category. Instead, we propose an appliance recognition method utilizing the recurrence graph (RG) technique and convolutional neural networks (CNNs). We introduce the weighted recurrent graph (WRG) generation that, given one-cycle current and voltage, produces an image-like representation with more values than the binary output created by RG. Experimental results on three different sub-metered datasets show that the proposed WRG-based image representation provides superior feature representation and, therefore, improves classification performance compared to V&ndash;I-based features.},
+DOI = {10.3390/en13133374},
+code=https://github.com/sambaiga/WRG-NILM,
+pdf={WRG.pdf},
 }
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik,},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
+
+@Article{Faustine2020b,
+abbr={MLABELILM},
+AUTHOR = {Faustine, Anthony and Pereira, Lucas},
+TITLE = {Multi-Label Learning for Appliance Recognition in NILM Using Fryze-Current Decomposition and Convolutional Neural Network},
+JOURNAL = {Energies},
+VOLUME = {13},
+YEAR = {2020},
+NUMBER = {16},
+ARTICLE-NUMBER = {4154},
+URL = {https://www.mdpi.com/1996-1073/13/16/4154},
+ISSN = {1996-1073},
+ABSTRACT = {The advance in energy-sensing and smart-meter technologies have motivated the use of a Non-Intrusive Load Monitoring (NILM), a data-driven technique that recognizes active end-use appliances by analyzing the data streams coming from these devices. NILM offers an electricity consumption pattern of individual loads at consumer premises, which is crucial in the design of energy efficiency and energy demand management strategies in buildings. Appliance classification, also known as load identification is an essential sub-task for identifying the type and status of an unknown load from appliance features extracted from the aggregate power signal. Most of the existing work for appliance recognition in NILM uses a single-label learning strategy which, assumes only one appliance is active at a time. This assumption ignores the fact that multiple devices can be active simultaneously and requires a perfect event detector to recognize the appliance. In this paper proposes the Convolutional Neural Network (CNN)-based multi-label learning approach, which links multiple loads to an observed aggregate current signal. Our approach applies the Fryze power theory to decompose the current features into active and non-active components and use the Euclidean distance similarity function to transform the decomposed current into an image-like representation which, is used as input to the CNN. Experimental results suggest that the proposed approach is sufficient for recognizing multiple appliances from aggregated measurements.},
+DOI = {10.3390/en13164154},
+code=https://github.com/sambaiga/MLCFCD,
+pdf={mlabelvi.pdf},
 }
 
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.,},
-  volume={17},
-  pages={549--560},
-  year={1905}
+
+@inproceedings{10.1145/3427771.3427859,
+abbr={UNETNILM},
+author = {Faustine, Anthony and Pereira, Lucas and Bousbiat, Hafsa and Kulkarni, Shridhar},
+title = {UNet-NILM: A Deep Neural Network for Multi-Tasks Appliances State Detection and Power Estimation in NILM},
+year = {2020},
+isbn = {9781450381918},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3427771.3427859},
+doi = {10.1145/3427771.3427859},
+abstract = {Over the years, an enormous amount of research has been exploring Deep Neural Networks
+(DNN), particularly Convolutional Neural Networks (CNNs) and Recurrent Neural Networks
+(RNNs) for estimating the energy consumption of appliances from a single point source
+such as smart meters - Non-Intrusive Load Monitoring (NILM). However, most of the
+existing DNNs models for NILM use a single-task learning approach in which a neural
+network is trained exclusively for each appliance. This strategy is computationally
+expensive and ignores the fact that multiple appliances can be active simultaneously
+and dependencies between them. In this work, we propose UNet-NILM for multi-task appliances'
+state detection and power estimation, applying a multi-label learning strategy and
+multi-target quantile regression. The UNet-NILM is a one-dimensional CNN based on
+the U-Net architecture initially proposed for image segmentation. Empirical evaluation
+on the UK-DALE dataset suggests promising performance against traditional single-task
+learning.},
+booktitle = {Proceedings of the 5th International Workshop on Non-Intrusive Load Monitoring},
+pages = {84–88},
+numpages = {5},
+keywords = {Convolutional Neural Networks, Energy Disaggregation, Multi-task Learning, Quantile Regression, Deep Neural Networks, Multi-label Classification, Non-Intrusive Load Monitoring},
+location = {Virtual Event, Japan},
+series = {NILM'20},
+code=https://github.com/sambaiga/UNETNiLM,
+youtube=UpZDX2hU3-A,
+pdf={inilm-multitask.pdf},
 }
 
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
+@inproceedings{Faustine2020d,
+abbr={ML4EC},
+author = {Anthony Faustine, Lucas Pereira, and Daniel Ngondya and Loubna Benabbou},
+title = {Leveraging Machine learning for Sustainable and Self-sufficient Energy Communities},
+booktitle = {NeurIPS 2020 Workshop
+Tackling Climate Change with Machine Learning},
+year = {2020}
+}
+
+
+
+@ARTICLE{DBLP:FaustineMKM17,
+abbr={NILMSurvey},
+  author    = {Anthony Faustine and
+               Nerey Henry Mvungi and
+               Shubi Kaijage and
+               Kisangiri Michael},
+  title     = {A Survey on Non-Intrusive Load Monitoring Methodies and Techniques
+               for Energy Disaggregation Problem},
+  journal   = {CoRR},
+  volume    = {abs/1703.00785},
+  year      = {2017},
+  url     = {abs/1703.00785},
+  doi       = {1223334555}
 }
