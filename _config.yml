@@ -142,6 +142,7 @@ plugins:
   - jekyll-twitter-plugin
   - jekyll-sitemap
   - jemoji
+  
 
 # Extras
 github: [metadata]
