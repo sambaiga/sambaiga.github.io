@@ -18,4 +18,13 @@ I am also a PhD research at Further Energy and Environment research Laboratory (
 
 Although I am a person who takes the initiative, I enjoy working as part of a team. I possess a strong team-work spirit with experience of working in a highly international environment. I have good critical and creative thinking, problem-solving, leadership, and project management skills with excellent scientific writing and presentation skills.  
 
+**Research area**
+1. Machine learning and signal processing for smart-energy systems with a focus on  load monitoring and management, Community Energy and Smart Grid. 
+2. Robust deep learning for industrial applications with a focus on a learning algorithms that allows uncertainty quantification, is robust to low data setting and allows self-supervised or semi-supervised learning.
+3. Artificial Intelligence for Industrial 4.0 with focus on preventive maintenance, machine vision and streaming analytics
+4. Artificial Intelligence for Earth Observations(EO) data with a focus on sustainable energy, agriculture and natural resources management.
+5. Data management with a focus on specification, strategies, best practises and guideline for machine learning training dataset development.
+
+ 
+
 
