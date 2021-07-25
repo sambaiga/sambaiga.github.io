@@ -25,6 +25,5 @@ Although I am a person who takes the initiative, I enjoy working as part of a te
 4. Artificial Intelligence for Earth Observations(EO) data with a focus on sustainable energy, agriculture and natural resources management.
 5. Data management with a focus on specification, strategies, best practises and guideline for machine learning training dataset development.
 
- 
 
 

@@ -6,11 +6,11 @@
 $max-content-width: {{site.max_width}};
 
 @import
+  "bootstrap/bootstrap",
+  "bootstrap-4-jekyll/bootstrap-4-jekyll",
   "variables",
   "themes",
   "layout",
   "base",
-  "distill",
-  "bootstrap/bootstrap",
-  "bootstrap-4-jekyll/bootstrap-4-jekyll"
+  "distill"
 ;
