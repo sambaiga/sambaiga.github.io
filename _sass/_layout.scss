@@ -47,22 +47,13 @@
 
 
 
-.embed-container {
+// Handle youtube videos, so they dont break on mobile devices
+.youtube-iframe-wrapper {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.10%;
   height: 0;
   overflow: hidden;
-  max-width: 100%;
 }
-
-.embed-container iframe, .embed-container object, .embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 
 
 
