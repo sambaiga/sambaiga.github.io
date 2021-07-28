@@ -27,7 +27,9 @@ nav: true
    {% endif %}
 {% if publi.youtube %} 
 <div class="collapse" id="{{publi.youtube}}"><div class="well-collapse">
- <iframe width="560" height="315" src="https://www.youtube.com/embed/{{publi.youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="row justify-content-sm-center"> 
+{% include youtube.html content="https://youtu.be/{{publi.youtube}}" %}
+</div>
  </div></div>
    {% endif %}
  </li>
