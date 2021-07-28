@@ -5,8 +5,9 @@
     {% assign url = include.content | remove: "</a>" | split: ">" | last %}
     {% assign base_url = url |  split: "/" | last %}
 {% endif %}
-
+<div class="embed-responsive embed-responsive-16by9">
 <center>
     <iframe  src="https://www.youtube.com/embed/{{base_url}}"  allowfullscreen></iframe>
 </center>
 
+</div>
