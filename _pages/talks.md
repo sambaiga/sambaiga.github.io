@@ -28,7 +28,12 @@ nav: true
 {% if publi.youtube %} 
 <div class="collapse" id="{{publi.youtube}}"><div class="well-collapse">
 <div class="row justify-content-sm-center"> 
-{% include youtube.html content="https://youtu.be/{{publi.youtube}}" %}
+<div class="embed-responsive embed-responsive-16by9">
+<center>
+    <iframe  src="https://www.youtube.com/embed/{{publi.youtube}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+</div>
 </div>
  </div></div>
    {% endif %}
@@ -62,7 +67,12 @@ nav: true
 {% if publi.youtube %} 
 <div class="collapse" id="{{publi.youtube}}"><div class="well-collapse">
 <div class="row justify-content-sm-center"> 
-{% include youtube.html content="https://youtu.be/{{publi.youtube}}" %}
+<div class="embed-responsive embed-responsive-16by9">
+<center>
+    <iframe  src="https://www.youtube.com/embed/{{publi.youtube}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+</div>
 </div>
  </div></div>
    {% endif %}
