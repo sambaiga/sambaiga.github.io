@@ -37,12 +37,29 @@
   link: https://www.ceadar.ie/ceadar-online-seminar-series-4-june-23-july-details-coming-soon/
 
 
+- authors: A. Faustine
+  title:  Strategies for Structuring Machine Learning Project
+  conf: Parrotai Bootcamp CIVE
+  year: 2018
+  url: MLstrategy
+  abstract: ""
+  youtube: 
+  link: 
+
+- authors: A. Faustine
+  title:  Deep Neural Networks for Sequence Models
+  conf: Parrotai Bootcamp CIVE
+  year: 2018
+  url: DeepSeq
+  abstract: ""
+  youtube: 
+  link: 
 
 - authors: A. Faustine
   title: Machine Learning Fundamentals
   conf: IndabaX Summer School Tanzania
   year: 2017
-  url: 
+  url: MLfundamentals
   abstract: ""
   youtube: 
   link: 
@@ -52,17 +69,17 @@
   title: Foundations of Deep Neural Networks
   conf: IndabaX Summer School Tanzania
   year: 2017
-  url: 
+  url: DeepLearningFoundation
   abstract: ""
   youtube: 
   link: 
 
 
 - authors: A. Faustine
-  title: Computer vision
+  title: Deep Learning For Computer Vision
   conf: IndabaX Summer School Tanzania
   year: 2017
-  url: 
+  url: DeepVision
   abstract: ""
   youtube: 
   link: 
