@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 description: 
 nav: true
-display_categories: [CeADAR, IMR, UDOM, IDLab, FEELab]
+display_categories: [IMR, CeADAR, UDOM, IDLab, FEELab]
 horizontal: false
 ---
 <div class="projects">
