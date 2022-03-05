@@ -27,3 +27,5 @@ Although I am a person who takes the initiative, I enjoy working as part of a te
 
 
 
+
+

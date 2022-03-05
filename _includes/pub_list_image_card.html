@@ -1,0 +1,18 @@
+<div class="pubcard">
+  <div class="meta">
+    <div class="img-avatar" style="background-image: url({{ pub.image | prepend: '/assets/img/posts/' | relative_url }})"></div>
+    <ul class="details">
+      <p><a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>{{ post.author}}</a></p>
+      <p>{{ post.date | date: '%B %-d, %Y' }}</p>
+      
+    </ul>
+  </div>
+  <div class="pubcard-text">
+    <h1> {{ post.subtitle | escape }}</h1>
+    <h2>{{ post.subsubtitle }}</h2>
+    <p> {{post.description }}</p>
+    <p class="read-more">
+      <a class="post-link" href="{{ post.url | relative_url }}">Read More</a>
+    </p>
+  </div>
+</div>
