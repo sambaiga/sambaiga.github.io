@@ -16,7 +16,7 @@ Most of the existing machine learning methods for anomaly detection have focused
 
 Vision anomaly detection approaches based on deep learning can be categorized into three methods: reconstruction-based, deep hybrid, and confidence-based. 
 
-**Reconstruction-based**: Learn AD from scratch,  assuming that the difference between normal and anomaly instances is embedded in a lower-dimensional subspace. REC-AD uses the representation-learning ability of deep generative models such as autoencoders and GANS, which detect anomalies by analyzing reconstruction errors. It should be noted that most of the reconstruction based anomaly detection uses a network that is trained specially for anomaly detection. As a result, produced representation is not necessarily valuable for distinguishing “anomaly” from “normal” instances[15].
+**Reconstruction-based**: Learn AD from scratch,  utilising the representation-learning ability of deep generative models such as autoencoders and GANS, with an assumpition that  the difference between normal and anomaly instances is embedded in a lower-dimensional subspace. 
 
 
 
