@@ -39,10 +39,21 @@ st.set_page_config(layout='wide',initial_sidebar_state='collapsed',)
 The define navigation bar for the app.  There is no standard streamlit widget for this, yet there exists a third party widget that could be used for this purpose.  [Hydralit Components](https://github.com/TangleSpace/hydralit_components)  is a popular package of streamlit components that provide the navbar widget.  Install this package ``pip install -U hydralit_components `` then define the navigation bar of the app as follows:
 
 
+```python
+menu_data = [
+    {'icon':"far fa-line-chart", 'label':"Data Analysis"},
+    {'icon':"far fa-info-circle", 'label':"Forecasting"}, 
+]
 
-
-
-
+over_theme = {'txc_inactive': '#FFFFFF'}
+menu_id = hc.nav_bar(
+    menu_definition=menu_data,
+    override_theme=over_theme,
+    home_name='Home',
+    sticky_nav=True, #at the top or not
+    sticky_mode='pinned', #jumpy or not-jumpy, but sticky or pinned
+)
+```
 
 
 After creating the app, launching it is as easy as running ``streamlit run app.py``.
