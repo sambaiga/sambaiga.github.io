@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Beyond Train/test with Streamlit
-subtitle: Beyond Train/test with Streamlit
+title: Beyond Train/test spilit with Streamlit
+subtitle: Beyond Train/test spilit with Streamlit
 subsubtitle: Creating data app with streamlight.
-date: 2022-04-01
+date: 2022-04-26
 description: This post introduce energy-based model 
 author: Anthony Faustine 
 image: dashboard.jpg
