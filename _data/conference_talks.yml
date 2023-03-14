@@ -6,6 +6,14 @@
   youtube: qvgIjTKmhfc
   link: https://www.climatechange.ai/papers/neurips2020/79
 
+- authors: A. Faustine, L. Pereira, D. Ngondya, L. Benabbou
+  title: Leveraging Machine learning for Sustainable and Self-sufficient Energy Communities
+  conf: NeurIPS 2020 Workshop Tackling Climate Change with Machine Learning
+  year: 2021
+  url: climateai2020
+  youtube: qvgIjTKmhfc
+  link: https://www.climatechange.ai/papers/neurips2020/79
+
 - authors: A. Faustine, L. Pereira H, Bousbiat and S. Kulkarni
   title: UNet-NILM A Deep Neural Network for Multi-tasks Appliances State Detection and Power Estimation in NILM
   conf: 5th International Workshop on Non-Intrusive Load Monitoring (co-located with ACM BuildSys 2020 and jointly organized with the EU NILM Workshop)
