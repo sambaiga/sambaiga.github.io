@@ -6,7 +6,7 @@ subsubtitle: Creating data app with streamlight.
 date: 2022-04-26
 description: This post introduce energy-based model 
 author: Anthony Faustine 
-image: dashboard.jpg
+image: train_test.jpg
 ---
 
 ## Introduction
