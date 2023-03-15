@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Exploring Pyomo for Optimization Problem
-subtitle: Getting started
-subsubtitle: 
+subtitle: Exploring Pyomo for Optimization Problem
+subsubtitle: Getting started
 date: 2022-04-26
 description: This post present the basic of pyomo for optimisation problem 
 author: Anthony Faustine 
