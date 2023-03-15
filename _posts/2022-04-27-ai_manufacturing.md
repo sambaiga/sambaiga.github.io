@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Artificial Intelligence for Manufacturing 
-subtitle: Artificial Intelligence for Manufacturing
-subsubtitle: There is more to accuracy
+title: Exploring Pyomo for Optimization Problem
+subtitle: Getting started
+subsubtitle: 
 date: 2022-04-26
-description: This post introduce energy-based model 
+description: This post present the basic of pyomo for optimisation problem 
 author: Anthony Faustine 
-image: dashboard.jpg
+image: optimisation.jpg
 ---
 
 ## Introduction
