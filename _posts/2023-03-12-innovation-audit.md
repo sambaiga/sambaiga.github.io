@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Innovation management
-subtitle: Innovation audit why you need one
-subsubtitle: Enhance Your Road Mapping Process with the 6Ws
+subtitle: Innovation and creativity
+subsubtitle: Innovation audit why you need one
 date: 2023-03-10
 description:  
 author: Anthony Faustine 
