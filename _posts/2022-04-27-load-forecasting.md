@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Building Baseline Model for Net-Load Forecasting with Nixtla 
-subtitle: Building Baseline Model for Net-Load Forecasts with Nixtla 
+title:  Net-Load Forecasting for LV distribution network
+subtitle: Building Baseline Model for Net-Load Forecasting with Nixtla 
 subsubtitle: 
 date: 2023-02-10
 description: 
@@ -29,4 +29,75 @@ In other words, the net-load is the imbalance between the amount of power demand
 
 ## Nixtla
 
-[Nixtla](https://www.nixtla.io/) is a Python-based open-source time series forecasting ecosystem that includes StatsForecast, MLForecast, and NeuralForecast packages for implementing statistical, machine learning, and neural network-based forecasting models. [StatsForecast](https://github.com/Nixtla/statsforecast) provides a suite of popular univariate statistical and econometric time series forecasting models that are optimized for high performance and scalability, while [MLForecast](https://github.com/Nixtla/mlforecast) and [NeuralForecast](https://github.com/Nixtla/neuralforecast) are user-friendly and scalable machine learning and neural network-based forecasting algorithms designed specifically for time series data.
+[Nixtla](https://www.nixtla.io/) is a Python-based open-source time series forecasting ecosystem that includes StatsForecast, MLForecast, and NeuralForecast packages for implementing statistical, machine learning, and neural network-based forecasting models. [StatsForecast](https://github.com/Nixtla/statsforecast) provides a suite of popular univariate statistical and econometric time series forecasting models that are optimized for high performance and scalability. On the hand the [MLForecast](https://github.com/Nixtla/mlforecast) and [NeuralForecast](https://github.com/Nixtla/neuralforecast) are user-friendly and scalable machine learning and neural network-based forecasting algorithms designed specifically for time series data.
+
+To install these packages:
+```python
+pip install statsforecast
+pip install mlforecast
+pip install neuralforecast
+```
+
+## Loading and preparing  data according to the Nixtla format
+Prior to making any predictions using Nixtla, it is highly recommended to load and prepare your data according to the Nixtla format. The Nixtla input requires a data frame in long format consisting of three columns: unique_id, ds, and y. The unique_id column functions as an identifier for the series, and can take the form of a string, integer, or category, depending on the type of data being analyzed.
+
+The ds column is intended to contain datestamps or integers indexing time. For optimal results, a datestamp format such as YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp should be utilized. This column provides Nixtla with information pertaining to when each measurement was taken.
+
+Lastly, the y column represents the measurement to be forecasted, and should be a numeric value. Specifically, in the context of forecasting net-load, the y column should represent the actual net-load measurement that is being analyzed.
+
+Presented below is a function that facilitates the conversion of a time series data frame to the Nixtla data format. 
+```python
+def transform_data_nixtla_format(data, target_columns):
+    """
+    Converts a given time series data frame to the Nixtla data format.
+
+    Parameters:
+        data (pd.DataFrame): the time series data frame to be converted.
+        target_columns (str): the target column name that will be included in the Nixtla data frame.
+
+    Returns:
+        pd.DataFrame: the input data frame converted to Nixtla data format.
+    """
+    df = data[[target_columns]]
+    df.columns = ['y']
+    df.insert(0, 'unique_id', 'NetLoad')
+    df['ds'] = pd.to_datetime(df.index)
+    df = df.sort_values(['unique_id', 'ds']).reset_index(drop=True)
+    return df
+```
+
+After obtaining the data frame, the first step is to split it into training and test sets. Once this is done, the data must be converted to the Nixtla format using the ``transform_data_nixtla_format`` function.
+
+```python
+train=slice('2020-06', '2021-06')
+test=slice('2021-7', '2021-12')
+train_df=transform_data_nixtla_format(data[train], 'NetLoad')
+test_df=transform_data_nixtla_format(data[test], 'NetLoad')
+```
+
+The package includes plot functionality, which enables visualization of data and facilitates exploratory data analysis (EDA).
+```python
+from statsforecast import StatsForecast as sf
+sf.plot(train_df)
+```
+{% include figure.html path="assets/img/netload/train_figure.png" class="img-fluid rounded z-depth-1" %}
+
+```python
+sf.plot(test_df)
+```
+{% include figure.html path="assets/img/netload/test_figure.png" class="img-fluid rounded z-depth-1" %}
+
+## Baseline model
+The Nixtla StatsForecast tool utilizes [various classical models](https://github.com/Nixtla/statsforecast) to establish a baseline, ranging from Naive to SeasonalWindowAverage. For the specific problem at hand, a Seasonal naive model has been selected as it is particularly effective for highly seasonal data such as netload. Under this model, each forecast is set to be the same as the last observed value from the corresponding season (e.g., the same month of the previous year).
+
+```python
+from statsforecast.models import SeasonalNaive
+model = sf(models=[SeasonalNaive(season_length=48)], # model used to fit each time series 
+                    freq='30T')
+model.fit(train_df)
+
+y_hat_df = model.predict(h=len(test_df))
+sf.plot(y_hat_df,train_df)
+```
+
+The detail nodebook with code implentation  for this post is avialble in this [github repository](https://github.com/sambaiga/AI4DLearning/blob/main/Net-Load-forecast/Net-Load-Forecasting.ipynb).

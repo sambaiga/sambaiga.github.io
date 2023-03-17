@@ -60,4 +60,4 @@ After creating the app, launching it is as easy as running ``streamlit run app.p
 
 {% include figure.html path="assets/img/streamlit/streamlit_navbar.png" class="img-fluid rounded z-depth-1" %}
 
-Now we have a streamlit app running. The following post will demonstrate how to visualise a significantly larger dataset and serve up machine learning model on streamlit. The code implentatio  for this post is avialble in this [github repository](https://github.com/sambaiga/streamlit_demo/).
+Now we have a streamlit app running. The following post will demonstrate how to visualise a significantly larger dataset and serve up machine learning model on streamlit. The code implentation  for this post is avialble in this [github repository](https://github.com/sambaiga/streamlit_demo/).
