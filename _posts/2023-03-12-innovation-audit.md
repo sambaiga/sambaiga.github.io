@@ -19,7 +19,7 @@ Through this class, I have acquired three significant insights. Firstly, I have 
 
 This realization leads to the second key takeaway, which is that an [innovation strategy](https://hbr.org/2015/06/you-need-an-innovation-strategy) is paramount to successfully managing the innovation process and building robust innovation capability. Consequently, organizations must establish coherent, well-defined processes and structures that delineate how they generate innovative ideas, synthesize them into a business concept that generates value for both customers and the organization, and prioritize which ideas to implement. The innovation strategy must align with the core business strategies and be embedded into the organizational culture, including talent and behaviors. This is crucial for shaping how an organization seeks out innovation opportunities and allocates resources for success.
 
-{% include figure.html path="assets/img/innovation_framework.jpeg" class="img-fluid rounded z-depth-1" %}
+{% include figure.html path="assets/img/innovation_framework.png" class="img-fluid rounded z-depth-1" %}
 
 Additionally, I gained insight into various frameworks, such as the [Pentathlon Framework](https://penderitadiabettes.blogspot.com/2021/08/pentathlon-framework-innovation-tragt.html), which can guide the innovation process by providing a well-defined path to capture, prioritize, and successfully implement innovative ideas. Finally, I discovered the importance of performing an innovation audit to investigate and enhance an organization's innovation capabilities. 
 
