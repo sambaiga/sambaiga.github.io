@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>
+
+  Sambaiga
+
+
+  | Net-Load Forecasting for LV distribution network
+
+</title>
+<meta name="description" content="A Lead Data Scientist at the Centre of Intelligence Power (CIP) Eaton, Dublin where he develop AI/ML-powered products and services for intelligent power system.
+">
+
+<!-- Open Graph -->
+
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://gitcdn.link//repo/jwarby/jekyll-pygments-themes/master/github.css" />
+
+<!-- Styles -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="canonical" href="/blog/2023/load-forecasting/">
+
+<!-- JQuery -->
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+
+<!-- Theming-->
+
+
+
+
+
+
+    
+<!-- MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+  </head>
+
+  <body class=" ">
+
+    <!-- Header -->
+
+    <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm sticky-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="/">
+       Sambaiga
+      </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              About
+              
+            </a>
+          </li>
+          
+          <!-- Blog -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/blog/">
+              Blog
+              
+            </a>
+          </li>
+          
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/projects/">
+                Projects
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/publications/">
+                Publications
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/talks/">
+                Talks
+                
+              </a>
+          </li>
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+
+    <div class="container mt-5">
+      
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Net-Load Forecasting for LV distribution network</h1>
+    <p class="post-meta">February 10, 2023 • Anthony Faustine</p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="introduction">Introduction</h2>
+
+<p>Over the past few years, renewable energy sources, such as solar photovoltaic (PV), have become increasingly popular due to their low carbon emissions and reduced costs. However, these energy sources also come with a unique challenge: their intermittent nature can make it difficult to maintain grid stability and reliability.</p>
+
+<p>To address this challenge, battery storage systems have emerged as a promising solution. By storing excess renewable energy during periods of low demand and releasing it during periods of high demand, these systems can help maintain grid stability and improve reliability.</p>
+
+<p>But effective battery storage optimization requires accurate forecasting of both demand and generation. Without this information, the battery may not be charged or discharged at the optimal times, leading to increased costs or reduced performance.</p>
+
+<h3 id="net-load-forecasting">Net load forecasting</h3>
+
+<p>To design an optimal schedule for a battery storage system in a, half-hourly net load forecasting over several years is required. This schedule should simultaneously reduce peak demands and maximize the use of solar photovoltaic generation.</p>
+
+<p>In power systems, net-load forecasting has emerged as a solution to the challenges of load demand and renewable energy sources (RES) generation forecasting. Net-load refers to the difference between the system load and the RES generation that needs to be met by traditional forms of generation. For instance, in a distribution system with distributed Photovoltaics (PV), the net-load at any given time can be calculated as:</p>
+
+\[P_{NL} = P_{D}-P_{PV}\]
+
+<p>In other words, the net-load is the imbalance between the amount of power demanded by the system and the power generated by the distributed PV sources.</p>
+
+<h2 id="nixtla">Nixtla</h2>
+
+<p><a href="https://www.nixtla.io/">Nixtla</a> is a Python-based open-source time series forecasting ecosystem that includes StatsForecast, MLForecast, and NeuralForecast packages for implementing statistical, machine learning, and neural network-based forecasting models. <a href="https://github.com/Nixtla/statsforecast">StatsForecast</a> provides a suite of popular univariate statistical and econometric time series forecasting models that are optimized for high performance and scalability. On the hand the <a href="https://github.com/Nixtla/mlforecast">MLForecast</a> and <a href="https://github.com/Nixtla/neuralforecast">NeuralForecast</a> are user-friendly and scalable machine learning and neural network-based forecasting algorithms designed specifically for time series data.</p>
+
+<p>To install these packages:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">statsforecast</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">mlforecast</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">neuralforecast</span>
+</code></pre></div></div>
+
+<h2 id="loading-and-preparing--data-according-to-the-nixtla-format">Loading and preparing  data according to the Nixtla format</h2>
+<p>Prior to making any predictions using Nixtla, it is highly recommended to load and prepare your data according to the Nixtla format. The Nixtla input requires a data frame in long format consisting of three columns: unique_id, ds, and y. The unique_id column functions as an identifier for the series, and can take the form of a string, integer, or category, depending on the type of data being analyzed.</p>
+
+<p>The ds column is intended to contain datestamps or integers indexing time. For optimal results, a datestamp format such as YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp should be utilized. This column provides Nixtla with information pertaining to when each measurement was taken.</p>
+
+<p>Lastly, the y column represents the measurement to be forecasted, and should be a numeric value. Specifically, in the context of forecasting net-load, the y column should represent the actual net-load measurement that is being analyzed.</p>
+
+<p>Presented below is a function that facilitates the conversion of a time series data frame to the Nixtla data format.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">transform_data_nixtla_format</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_columns</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Converts a given time series data frame to the Nixtla data format.
+
+    Parameters:
+        data (pd.DataFrame): the time series data frame to be converted.
+        target_columns (str): the target column name that will be included in the Nixtla data frame.
+
+    Returns:
+        pd.DataFrame: the input data frame converted to Nixtla data format.
+    </span><span class="sh">"""</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="n">target_columns</span><span class="p">]]</span>
+    <span class="n">df</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sh">'</span><span class="s">unique_id</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">NetLoad</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="sh">'</span><span class="s">ds</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nf">sort_values</span><span class="p">([</span><span class="sh">'</span><span class="s">unique_id</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">ds</span><span class="sh">'</span><span class="p">]).</span><span class="nf">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></div>
+
+<p>After obtaining the data frame, the first step is to split it into training and test sets. Once this is done, the data must be converted to the Nixtla format using the <code class="language-plaintext highlighter-rouge">transform_data_nixtla_format</code> function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="o">=</span><span class="nf">slice</span><span class="p">(</span><span class="sh">'</span><span class="s">2020-06</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">2021-06</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">test</span><span class="o">=</span><span class="nf">slice</span><span class="p">(</span><span class="sh">'</span><span class="s">2021-7</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">2021-12</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">=</span><span class="nf">transform_data_nixtla_format</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="sh">'</span><span class="s">NetLoad</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">test_df</span><span class="o">=</span><span class="nf">transform_data_nixtla_format</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="sh">'</span><span class="s">NetLoad</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The package includes plot functionality, which enables visualization of data and facilitates exploratory data analysis (EDA).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">statsforecast</span> <span class="kn">import</span> <span class="n">StatsForecast</span> <span class="k">as</span> <span class="n">sf</span>
+<span class="n">sf</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+</code></pre></div></div>
+<figure>
+
+  <picture>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/netload/train_figure.png" />
+
+  </picture>
+
+</figure>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sf</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+</code></pre></div></div>
+<figure>
+
+  <picture>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/netload/test_figure.png" />
+
+  </picture>
+
+</figure>
+
+<h2 id="baseline-model">Baseline model</h2>
+<p>The Nixtla StatsForecast tool utilizes <a href="https://github.com/Nixtla/statsforecast">various classical models</a> to establish a baseline, ranging from Naive to SeasonalWindowAverage. For the specific problem at hand, a Seasonal naive model has been selected as it is particularly effective for highly seasonal data such as netload. Under this model, each forecast is set to be the same as the last observed value from the corresponding season (e.g., the same month of the previous year).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">statsforecast.models</span> <span class="kn">import</span> <span class="n">SeasonalNaive</span>
+<span class="n">model</span> <span class="o">=</span> <span class="nf">sf</span><span class="p">(</span><span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="nc">SeasonalNaive</span><span class="p">(</span><span class="n">season_length</span><span class="o">=</span><span class="mi">48</span><span class="p">)],</span> <span class="c1"># model used to fit each time series 
+</span>                    <span class="n">freq</span><span class="o">=</span><span class="sh">'</span><span class="s">30T</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="n">y_hat_df</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="nf">len</span><span class="p">(</span><span class="n">test_df</span><span class="p">))</span>
+<span class="n">sf</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">y_hat_df</span><span class="p">,</span><span class="n">train_df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The detail nodebook with code implentation  for this post is avialble in this <a href="https://github.com/sambaiga/AI4DLearning/blob/main/Net-Load-forecast/Net-Load-Forecasting.ipynb">github repository</a>.</p>
+
+  </article>
+
+  
+
+</div>
+
+    </div>
+
+    <!-- Footer -->
+
+    
+<footer class="fixed-bottom">
+  <div class="container mt-0">
+    &copy; Copyright 2024 Anthony  Faustine.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+
+    
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <!-- Bootsrap & MDB scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js" integrity="sha512-Mug9KHKmroQFMLm93zGrjhibM2z2Obg9l6qFG2qKjXEXkMp/VDkI4uju9m4QKPjWSwQ6O2qzZEnJDEeCw0Blcw==" crossorigin="anonymous"></script>
+
+  
+<!-- Mansory & imagesLoaded -->
+<script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script defer src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script defer src="/assets/js/mansory.js" type="text/javascript"></script>
+
+
+  
+
+
+<!-- Medium Zoom JS -->
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+<script src="/assets/js/zoom.js"></script>
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+</html>
