@@ -70,9 +70,7 @@ The Key Lesson:  True influence comes from understanding others, not overpowerin
 ### Think Again by Adam Grant 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1602574232i/55539565.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />   
 
-One of the most thought-provoking books I’ve read this year is Think Again by Adam Grant. This book challenges the way we approach knowledge, opinions, and beliefs, encouraging us to adopt a mindset of intellectual humility and curiosity. Grant’s central message is that rethinking—being willing to question what we know and embrace the discomfort of uncertainty—is a critical skill for growth, innovation, and meaningful relationships.
-
-This book resonated with me deeply because it’s not just about changing your mind it’s about creating a life where learning and evolving are prioritized over being “right.” 
+Think Again" by Adam Grant profoundly challenged my assumptions about knowledge and belief. Grant encourages us to cultivate a mindset of intellectual humility and curiosity, emphasizing the importance of rethinking our perspectives and embracing the discomfort of uncertainty. This resonates deeply with me, as it's not merely about changing your mind, but about creating a life where learning and evolving are prioritized over the need to always be "right." This shift in perspective is crucial for personal growth, fostering innovation, and cultivating meaningful relationships. 
 
 **Key Lesson:**  Growth comes from being willing to admit what you don’t know and learning from others. 
 
