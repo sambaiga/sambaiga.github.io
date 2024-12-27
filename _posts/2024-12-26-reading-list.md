@@ -48,7 +48,7 @@ By systematically eliminating non-essential tasks and distractions, McKeown guid
 
 ### The Magic of Thinking Big by David Schwartz
 
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404632064i/759945.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" />  
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404632064i/759945.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />  
 The Magic of Thinking Big" by David J. Schwartz is a timeless reminder that success isn't solely reserved for the most gifted. It's a testament to the power of mindset. Those who dare to dream big, believe in themselves, and take intentional action are most likely to achieve their goals. This book profoundly impacted my thinking, teaching me to expand my mindset, overcome limiting beliefs, and cultivate habits that align with my aspirations for greatness. Furthermore, the book emphasizes the importance of treating others with respect, learning from setbacks, and embracing continuous learning as essential for a successful and fulfilling life.
 
 **Key lessons**: Success is primarily a product of mindset – believing in yourself, cultivating a positive attitude, and taking consistent action towards your goals, regardless of inherent talent or luck.
@@ -84,7 +84,7 @@ Think Again" by Adam Grant profoundly challenges my assumptions about knowledge 
 
 ## Man’s Search for Meaning by Viktor E. Frankl
 
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1535419394i/4069.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" />  
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1535419394i/4069.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />  
 This profound memoir and philosophical exploration by Viktor Frankl delves into the human capacity to find meaning and purpose even in the face of unimaginable suffering. Drawing upon his own harrowing experiences as a prisoner in Nazi concentration camps, Frankl presents a compelling argument for the human will to survive and the enduring power of the human spirit. His reflections on resilience and purpose encouraged me to view suffering as an opportunity for growth.  
 
 **Key Lesson**:  When you have a “why” to live, you can bear almost any “how.” This powerful insight underscores the importance of having a strong sense of purpose, which can provide the strength needed to endure the most challenging circumstances. 
@@ -92,7 +92,7 @@ This profound memoir and philosophical exploration by Viktor Frankl delves into 
 
 ### The Anxious Generation by Jonathan Haidt
 
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711573377i/171681821.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" />
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711573377i/171681821.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />
 
 In this deeply researched and thought-provoking book, Jonathan Haidt examines the alarming rise in anxiety and depression among young people, particularly **Generation Z**. He presents compelling evidence indicating a significant increase in mood disorders among adolescents since the early 2010s, linking this surge to the widespread adoption of smartphones and social media.
 
@@ -109,7 +109,7 @@ Through these insights, Haidt encourages readers to reconsider the implications 
 
 ### The Psychology of Money by Morgan Housel
 
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1581527774i/41881472.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" /> 
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1581527774i/41881472.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
 This book reshaped the way I think about wealth, patience, and financial freedom. Unlike traditional personal finance books that focus on numbers, budgets, or technical strategies, Housel takes a deeply human approach, exploring how our emotions, habits, and perspectives shape our financial decisions.
 
 This book helped me understand that money isn’t just about math—it’s about behavior. The way we think about money is influenced by our upbringing, life experiences, and psychological biases, which often leads to decisions that don’t align with logic or long-term goals.
@@ -138,7 +138,7 @@ Through its exploration of 24 key challenges, Morley provides a practical, faith
 The Man in the Mirror emphasizes that *true success is not about what you achieve, but who you become and how you serve others.* It urges men to confront their values, goals, and character, while acknowledging the distractions of modern life, such as technology and shifting cultural values.  The Man in the Mirror encourages men to consider their legacy, focusing on leaving a positive impact through service, love, and faith
 
 ### The 21 Irrefutable Laws of Leadership by John Maxwell
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1659656057i/61860935.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" /> 
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1659656057i/61860935.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
 The 21 Irrefutable Laws of Leadership by John C is one of the most practical and insightful books I’ve read this year. This book is a timeless guide for anyone looking to improve their leadership skills, whether in the workplace, community, or personal life. Maxwell distills decades of leadership experience into 21 “laws” that highlight the core principles of effective leadership, ranging from influence and trust to personal growth and legacy.
 
 **Key lesson:** Leadership is not about titles—it’s about service and influence.
@@ -158,7 +158,7 @@ Key takeaways from Digital Minimalism emphasize that technology should serve us,
 ## Final Thoughts
 This year's reading journey has been a transformative experience, filled with diverse perspectives that weave together a powerful narrative about living a meaningful life. Each book offered unique insights, prompting me to re-evaluate my priorities, cultivate resilience, and embrace the power of love in all its forms.
 
-Key themes emerged throughout my reading, particularly the importance of **purpose and intentionality**. Books like *Build by Tony Fadell* and *Essentialism by Greg McKeown* emphasized the significance of **starting with "why"** and focusing on **what truly matters**. Fadell's exploration of product development highlighted the necessity of identifying and solving the right problems, while McKeown's mantra of **less but better** encouraged me to prioritize ruthlessly and protect my most valuable resources. Digital Minimalism further reinforced the need for intentional living in our digital age.
+Key themes emerged throughout my reading, particularly the importance of **purpose and intentionality**. Books like *Build by Tony Fadell* and *Essentialism by Greg McKeown* emphasized the significance of **starting with "why"** and focusing on **what truly matters**. Fadell's exploration of product development highlighted the necessity of identifying and solving the right problems, while McKeown's mantra of **less but better** encouraged me to prioritize ruthlessly and protect my most valuable resources. *Digital Minimalism* further reinforced the need for intentional living in our digital age.
 
 Several books this year profoundly influenced my thinking, particularly those that emphasized the transformative power of mindset. *The Magic of Thinking Big by David J. Schwartz* inspired me to believe in myself and embrace a growth mindset, while *Think Again by Adam Grant* challenged my assumptions and encouraged me to embrace the discomfort of uncertainty. Grant convincingly argues that being wrong isn't a failure, but rather an opportunity for learning. When we discover our initial beliefs are incorrect, we're simply becoming less wrong, a crucial step in personal growth. He emphasizes the importance of **intellectual humility**, acknowledging the limitations of our own knowledge and being open to learning from diverse perspectives. This approach fosters open inquiry and leads to better decisionmaking. Both books highlighted the importance of continuous learning and adaptation as essential for personal and professional growth
 
