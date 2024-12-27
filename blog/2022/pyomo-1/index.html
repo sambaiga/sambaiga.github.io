@@ -11,7 +11,7 @@
   Sambaiga
 
 
-  | Blog
+  | Exploring Pyomo for Optimization Problem
 
 </title>
 <meta name="description" content="A Lead Data Scientist at the Centre of Intelligence Power (CIP) Eaton, Dublin where he develop AI/ML-powered products and services for intelligent power system.
@@ -37,7 +37,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/blog/2022/pyomo-1/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -102,16 +102,10 @@
             <a class="nav-link" href="/blog/">
               Blog
               
-              <span class="sr-only">(current)</span>
-              
             </a>
           </li>
           
           <!-- Other pages -->
-          
-          
-          
-          
           
           
           
@@ -175,95 +169,91 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post-lists">
+      
 
-  <ul class="post-list">
-    
-      <li><div class="blog-card">
-  <div class="meta">
-    <div class="photo" style="background-image: url(/assets/img/posts/2024_reading_list.jpg)"></div>
-    <ul class="details">
-      <p><a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Anthony Faustine</a></p>
-      <p>December 26, 2024</p>
-      
-    </ul>
-  </div>
-  <div class="description">
-    <h1> 13 Books That Shaped My Year</h1>
-    <h2>My 2024 Reading Journey</h2>
-    <p> </p>
-    <p class="read-more">
-      <a class="post-link" href="/blog/2024/reading-list/">Read More</a>
-    </p>
-  </div>
-</div></li>
-    
-      <li><div class="blog-card">
-  <div class="meta">
-    <div class="photo" style="background-image: url(/assets/img/posts/innovation.jpg)"></div>
-    <ul class="details">
-      <p><a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Anthony Faustine</a></p>
-      <p>March 10, 2023</p>
-      
-    </ul>
-  </div>
-  <div class="description">
-    <h1> Innovation and creativity</h1>
-    <h2>Innovation audit why you need one</h2>
-    <p> </p>
-    <p class="read-more">
-      <a class="post-link" href="/blog/2023/innovation-audit/">Read More</a>
-    </p>
-  </div>
-</div></li>
-    
-      <li><div class="blog-card">
-  <div class="meta">
-    <div class="photo" style="background-image: url(/assets/img/posts/roadmap.jpg)"></div>
-    <ul class="details">
-      <p><a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i>Anthony Faustine</a></p>
-      <p>March 10, 2023</p>
-      
-    </ul>
-  </div>
-  <div class="description">
-    <h1> Technology Roadmap</h1>
-    <h2>Enhance Your Road Mapping Process with the 6Ws</h2>
-    <p> </p>
-    <p class="read-more">
-      <a class="post-link" href="/blog/2023/roadmap/">Read More</a>
-    </p>
-  </div>
-</div></li>
-    
-  </ul>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Exploring Pyomo for Optimization Problem</h1>
+    <p class="post-meta">April 26, 2022 • Anthony Faustine</p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="introduction">Introduction</h2>
+<p>First install pyomo:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span><span class="p">.</span><span class="n">extras</span>
+</code></pre></div></div>
+<p>Then install solver which  needed to compute solutions to the optimization models developed using Pyomo. Different open-source solvers do exist:</p>
+<ul>
+  <li><a href="https://en.wikibooks.org/wiki/GLPK">glpk</a>: “GNU Linear Programming Kit” is a software package written in highly portable C for the solution of mixed integer linear programming and related problems.</li>
+  <li><a href="https://en.wikipedia.org/wiki/IPOPT">ipopt</a>:”Interior Point Optimizer” for large scale nonlinear optimization of continuous systems.</li>
+  <li><a href="https://github.com/coin-or/Cbc">cbc</a>: “COIN-OR Branch and Cut” is a mixed integer linear programming solver written in C++. It generally solves the same problems as glpk, but can run multiple threads, and is often faster and more robust.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">glpk</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ipopt</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">coincbc</span>
+</code></pre></div></div>
+
+<p>It is also possible to use <a href="">CPLEX</a> linear solver, as described in this <a href="https://www.ibm.com/support/pages/downloading-ibm-ilog-cplex-optimization-studio-v1290">tutorial</a></p>
+
+<h2 id="modelling-basics">Modelling basics</h2>
+<p>Key concepts for modeliing problems</p>
+<ul>
+  <li><strong>Variables</strong>: Represent unknown or changing parts of a model</li>
+  <li><strong>Parameters</strong>: Symbolic representations for real-world data, which
+might vary for different problem instances or scenarios.</li>
+  <li><strong>Relations</strong>: Are equations, inequalities, or other mathematical relationships that define how different parts of a model are related to each other.</li>
+</ul>
+
+<p>Pyomo s python libraries  for	describing	optimization	problems.  This can be achieved through  simple modeling process are:</p>
+
+<ul>
+  <li>Create model and declare components</li>
+  <li>Instantiate the model</li>
+  <li>Apply solver</li>
+  <li>Interrogate solver results</li>
+</ul>
+
+<p>A typical Pyomo application involves the creation of at least two Pyomo objects from the following classes:</p>
+
+<ul>
+  <li><strong>ConcreteModel()</strong>  A python object representing the optimization problem to be solved.</li>
+  <li><strong>SolverFactory()</strong> A python object representing the mathematical progamming software to be used for calculating a solution.</li>
+</ul>
+
+<p>Pyomo  model, is composed of additional set of classes used to specify a problem. These classes are</p>
+<ul>
+  <li>Set: set data that is used to define a model instance</li>
+  <li>Param: parameter data that is used to define a model instance</li>
+  <li>Var:decision variables in a model</li>
+  <li>Objective: expressions that are minimized or maximized in a model</li>
+  <li>Constraint: constraint expressions that impose restrictions on variable values in a model</li>
+</ul>
+
+<p>Consider the following problem:</p>
+
+<p>\(\begin{align}
+\max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\\
+\mbox{subject to:}\qquad \\
+x &amp; \leq 40  &amp; \mbox{demand constraint} \\
+x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
+2x + y &amp; \leq 100 &amp; \mbox{labor B constraint}
+\end{align}\)
+where $x$ and $y$ are the rates of production (in units per week) for two products.</p>
+
+<h2 id="references">References</h2>
+<ol>
+  <li>https://jckantor.github.io/ND-Pyomo-Cookbook/toc.html</li>
+  <li>http://edge.rit.edu/content/P18751/public/Google%20drive%20backup/Pyomo%20-%20Optimization%20Modeling%20in%20Python%2C%20Second%20Edition.pdf</li>
+  <li>https://www.ima.umn.edu/materials/2017-2018.2/W8.21-25.17/26326/3_PyomoFundamentals.pdf</li>
+  <li>https://ndcbe.github.io/CBE60499/toc.html</li>
+</ol>
+
+  </article>
 
   
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="Blog">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="Blog - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="Blog - page 3">3</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/4/index.html" title="Blog - page 4">4</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/5/index.html" title="Blog - page 5">5</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
-
-
 
 </div>
 
