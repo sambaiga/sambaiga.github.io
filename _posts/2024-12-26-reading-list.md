@@ -140,7 +140,13 @@ The Man in the Mirror emphasizes that *true success is not about what you achiev
 
 ### The 21 Irrefutable Laws of Leadership by John Maxwell
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1659656057i/61860935.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
-The 21 Irrefutable Laws of Leadership by John C is one of the most practical and insightful books I’ve read this year. This book is a timeless guide for anyone looking to improve their leadership skills, whether in the workplace, community, or personal life. Maxwell distills decades of leadership experience into 21 “laws” that highlight the core principles of effective leadership, ranging from influence and trust to personal growth and legacy.
+John C. Maxwell's The 21 Irrefutable Laws of Leadership is one of the most practical and insightful books I've read this year. This timeless guide is applicable to individuals seeking to enhance their leadership skills in any context—whether in the workplace, community, or personal life—as it distills decades of experience into 21 core principles.
+
+Maxwell emphasizes that true leadership is about influence, not authority; he focuses on creating genuine connections and inspiring others to follow. A critical aspect of his approach is servant leadership, which prioritizes the needs of the team by acknowledging their importance, supporting individual growth, and fostering an empowering environment.
+
+Moreover, Maxwell argues that trust is the cornerstone of effective leadership, built upon personal character, consistent values, honesty, and a willingness to apologize and make amends when necessary. He underscores that leadership is a continuous journey of personal development, requiring a commitment to lifelong learning and adaptation.
+
+Finally, Maxwell encourages leaders to concentrate on their long-term impact. This includes developing other leaders, creating lasting positive change, and leading with authenticity and ethical principles. Overall, the book serves as an invaluable resource for anyone looking to cultivate their leadership abilities and make a meaningful difference in their sphere of influence.
 
 **Key lesson:** Leadership is not about titles—it’s about service and influence.
 
