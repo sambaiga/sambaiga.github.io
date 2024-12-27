@@ -141,11 +141,11 @@ The Man in the Mirror emphasizes that *true success is not about what you achiev
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1659656057i/61860935.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" /> 
 The 21 Irrefutable Laws of Leadership by John C is one of the most practical and insightful books I’ve read this year. This book is a timeless guide for anyone looking to improve their leadership skills, whether in the workplace, community, or personal life. Maxwell distills decades of leadership experience into 21 “laws” that highlight the core principles of effective leadership, ranging from influence and trust to personal growth and legacy.
 
-**Takeaway:** Leadership is not about titles—it’s about service and influence.
+**Key lesson:** Leadership is not about titles—it’s about service and influence.
 
 
 
-### 13. Digital Minimalism: Choosing a Focused Life in a Noisy World by Cal Newport
+### Digital Minimalism: Choosing a Focused Life in a Noisy World by Cal Newport
 <img src="https://m.media-amazon.com/images/I/71PB7ieLx7L._SY522_.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
 In our hyper-connected world, overflowing with notifications and constant digital distractions, Cal Newport's Digital Minimalism offers a refreshing perspective. Rather than demonizing technology, Newport encourages us to cultivate a more intentional relationship with it. He challenges us to critically examine how we use technology, prioritizing tools that align with our values and eliminating those that detract from our well-being. This resonated deeply with me, prompting a critical self-reflection on my own digital habits.
 
