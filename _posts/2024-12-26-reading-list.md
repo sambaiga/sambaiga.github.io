@@ -22,55 +22,61 @@ By the end of the year, I had completed 13 books; a testament to the power of pe
 
 ### Build by Tony Fadell 
 
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652120231i/59696349.jpg" alt="Build Book Cover" style="width: 15%; height: auto; float: left; margin-right: 10px;" />
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652120231i/59696349.jpg" alt="Build Book Cover" style="width: 25%; height: auto; float: left; margin-right: 10px;" />
 
-In Build, Tony Fadell provides a candid and insightful look into product development, leadership, and innovation. One idea that stood out to me was the importance of starting with "why"—a reminder to stay purpose-driven in everything we do. Whether it’s building a career, leading a team, or tackling a personal challenge, having a clear sense of direction ensures our efforts are focused and meaningful. 
+In Build, Tony Fadell offers an unconventional guide to product development, entrepreneurship and leadership, drawing on his extensive experience in Silicon Valley as the creator of the iPod and founder of Nest. The book serves as a practical and insightful roadmap for innovators, designers, and product managers.
 
-A key lesson from the book is that success isn’t just about solving problems; it’s about identifying the right problems. It requires a deep understanding of user needs and a relentless curiosity about the world to create solutions that truly matter.
+Fadell emphasizes the importance of purpose-driven product development, advocating for solutions that genuinely improve users' lives. He highlights the value of continuous learning, encouraging readers to embrace curiosity and glean insights from both successes and failures. Simplicity in design is another key theme, with Fadell urging creators to eliminate unnecessary features and focus on delivering core value.
 
+Additionally, he champions a leadership style rooted in empathy, fostering a safe environment for experimentation and supporting team growth. Through candid anecdotes, mistakes, and hard-won lessons from his journeys at Apple and Nest, Build provides an authentic and relatable guide for aspiring entrepreneurs, product creators and leaders, inspiring them to navigate the complexities of innovation with confidence and purpose.
+
+**Key lesson**: successful product development requires a deep understanding of user needs, a relentless pursuit of simplicity, a culture of continuous learning, and a leadership style that fosters creativity and empowers team.
 
 ### Essentialism by Greg McKeown
 
-<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1403165375i/18077875.jpg" align="left" style="width: 15%; height: auto; float: left; margin-right: 10px;"/>  
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1403165375i/18077875.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;"/>
 
-McKeown’s *Essentialism* taught me the transformative power of pursuing less but better. By focusing on what truly matters and eliminating distractions, I learned how to protect my time, energy, attention and my body as my most valuable resources.  
+In Essentialism, Greg McKeown presents a disciplined approach to identifying and prioritizing what truly matters in our lives. The book serves as both a wake-up call and a roadmap for individuals like me overwhelmed by competing demands and distractions. McKeown emphasizes the transformative power of **less but better** encouraging readers to focus on their highest point of contribution.
 
-Key Lesson: Clarity about priorities opens the door to greater freedom and fulfillment. This book beautifully complements Fadell’s emphasis on purpose. Both authors highlight that life is filled with trade-offs, and the path to true success lies in making intentional, wise choices that align with what truly matters.
+**Key Lesson:** Clarity about priorities opens the door to greater freedom and fulfillment. Life is filled with trade-offs, and the path to true success lies in making intentional, wise choices that align with what truly matters.
+
+By systematically eliminating non-essential tasks and distractions, McKeown guides readers in protecting their most valuable resources—time, energy, attention, and well-being. This essentialist mindset empowers individuals to make intentional choices and concentrate on activities that genuinely enhance their lives, leading to greater fulfillment and success.
+
+
 
 
 
 ### The Magic of Thinking Big by David Schwartz
 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404632064i/759945.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" />  
-The Magic of Thinking Big" by David J. Schwartz is a timeless reminder that success isn't solely reserved for the most gifted or fortunate. It's a testament to the power of mindset, emphasizing that those who dare to dream big, believe in themselves, and take intentional action are most likely to achieve their goals. This book profoundly impacted my thinking, teaching me to expand my mindset, overcome limiting beliefs, and cultivate habits that align with my aspirations for greatness.
+The Magic of Thinking Big" by David J. Schwartz is a timeless reminder that success isn't solely reserved for the most gifted. It's a testament to the power of mindset. Those who dare to dream big, believe in themselves, and take intentional action are most likely to achieve their goals. This book profoundly impacted my thinking, teaching me to expand my mindset, overcome limiting beliefs, and cultivate habits that align with my aspirations for greatness. Furthermore, the book emphasizes the importance of treating others with respect, learning from setbacks, and embracing continuous learning as essential for a successful and fulfilling life.
 
-Key takeaways from **The Magic of Thinking Big** revolve around the transformative power of a positive mindset, the importance of strong relationships, and the cultivation of resilience. Schwartz encourages readers to believe in their own potential, challenging excuses and limitations. He emphasizes the crucial role of a positive attitude in attracting opportunities, fostering meaningful connections, and inspiring others. 
+**Key lessons**: Success is primarily a product of mindset – believing in yourself, cultivating a positive attitude, and taking consistent action towards your goals, regardless of inherent talent or luck.
 
-Furthermore, the book highlights the importance of treating others with respect, learning from setbacks, and embracing continuous learning as essential components of a successful and fulfilling life
 
 ### Same As Ever by Morgan Housel
 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680687321i/125116554.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />   
-Same As Ever by Morgan Housel offers a profound perspective on the enduring nature of human behavior. While the world may be constantly evolving, our core emotions, desires, and behaviors remain remarkably consistent. Housel emphasizes the importance of recognizing these timeless patterns. He encourages us to cultivate a balanced outlook, embracing "rational optimism" – acknowledging both the potential for growth and the inevitability of challenges. This involves adhering to core principles like integrity and patience, while also recognizing the double-edged nature of our instincts. 
+Morgan Housel's "Same As Ever" provides a compelling framework for understanding the enduring nature of human behavior. Despite the rapid pace of change in our world, our core emotions, desires, and behaviors remain remarkably consistent. Housel emphasizes the importance of acknowledging these timeless patterns, encouraging us to cultivate a balanced perspective. He advocates for "rational optimism"; recognizing both the potential for growth and the inevitability of challenges. This requires adhering to core principles like integrity and patience while acknowledging the inherent strengths and weaknesses of human nature.
 
-By avoiding the "Reformer's Trap" – the tendency to try to drastically change others – we can foster more genuine and fulfilling relationships. Ultimately, Same As Ever reminds us that understanding these enduring human truths is crucial for navigating the complexities of life with greater wisdom and resilience.
+**Key lesson** understanding the enduring nature of human behavior, while embracing rational optimism and core principles is essential for navigating life's complexities and fostering meaningful relationships.
 
 
 
 ### Never Split the Difference by Chris Voss  
 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680014152i/123857637.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />  
-Never Split the Difference by Chris Voss, a former FBI hostage negotiator who shares his unique insights into the art of negotiation. This book completely shifted my perspective on what negotiation is—and how powerful it can be in both high-stakes situations and everyday life.
+Never Split the Difference by Chris Voss is authored by a former FBI hostage negotiator who shares his unique insights into the art of negotiation. This book completely shifted my perspective on what negotiation is and how powerful it can be in both high-stakes situations and everyday life.
 
-Unlike traditional negotiation strategies that focus on compromise, Voss advocates for empathy, understanding, and subtle psychological tactics to achieve optimal outcomes. This book not only provided practical tools but also taught me how to approach conversations with a mindset of collaboration and curiosity, rather than confrontation. 
+Unlike traditional negotiation strategies that focus on compromise, Voss advocates for empathy, understanding, and subtle psychological tactics to achieve optimal outcomes. This book not only provides practical tools but also teaches me how to approach conversations with a mindset of collaboration and curiosity, rather than confrontation.
 
-The Key Lesson:  True influence comes from understanding others, not overpowering them.  
+**Key Lesson**:  True influence comes from understanding others, not overpowering them.  
 
 
 ### Think Again by Adam Grant 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1602574232i/55539565.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />   
 
-Think Again" by Adam Grant profoundly challenged my assumptions about knowledge and belief. Grant encourages us to cultivate a mindset of intellectual humility and curiosity, emphasizing the importance of rethinking our perspectives and embracing the discomfort of uncertainty. This resonates deeply with me, as it's not merely about changing your mind, but about creating a life where learning and evolving are prioritized over the need to always be "right." This shift in perspective is crucial for personal growth, fostering innovation, and cultivating meaningful relationships. 
+Think Again" by Adam Grant profoundly challenges my assumptions about knowledge and belief. Grant encourages us to cultivate a mindset of intellectual humility and curiosity. He emphasizes the importance of rethinking our perspectives and embracing the discomfort of uncertainty. This resonates deeply with me, as it's not merely about changing your mind; it's about creating a life where learning and evolving are prioritized over the need to always be "right." This shift in perspective is crucial for personal growth, fostering innovation, and cultivating meaningful relationships.
 
 **Key Lesson:**  Growth comes from being willing to admit what you don’t know and learning from others. 
 
@@ -81,16 +87,23 @@ Think Again" by Adam Grant profoundly challenged my assumptions about knowledge 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1535419394i/4069.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" />  
 This profound memoir and philosophical exploration by Viktor Frankl delves into the human capacity to find meaning and purpose even in the face of unimaginable suffering. Drawing upon his own harrowing experiences as a prisoner in Nazi concentration camps, Frankl presents a compelling argument for the human will to survive and the enduring power of the human spirit. His reflections on resilience and purpose encouraged me to view suffering as an opportunity for growth.  
 
-**Key Lesson**:  When you have a “why” to live, you can bear almost any “how.” It emphasizes that having a strong sense of purpose can provide the strength needed to endure even the most challenging circumstances
+**Key Lesson**:  When you have a “why” to live, you can bear almost any “how.” This powerful insight underscores the importance of having a strong sense of purpose, which can provide the strength needed to endure the most challenging circumstances. 
 
 
 ### The Anxious Generation by Jonathan Haidt
 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711573377i/171681821.jpg" align="left" style="width: 20%; height: auto; float: left; margin-right: 10px;" />
 
-In this deeply researched and thought-provoking book, Haidt explores the rise of anxiety, depression, and fragility among young people, particularly Gen Z.  Haidt’s analysis of the mental health crisis among young people illuminated the dangers of overprotection, social media, and emotional reasoning. His call to foster resilience, independence, and critical thinking challenged me to rethink how we approach parenting, education, and technology.  This book doesn’t just diagnose the problem—it offers practical insights and solutions for fostering resilience, critical thinking, and well-being in the face of modern challenges.
+In this deeply researched and thought-provoking book, Jonathan Haidt examines the alarming rise in anxiety and depression among young people, particularly **Generation Z**. He presents compelling evidence indicating a significant increase in mood disorders among adolescents since the early 2010s, linking this surge to the widespread adoption of smartphones and social media.
 
-**Key Lesson:**  Resilience grows through discomfort, not avoidance.  
+Haidt identifies several key factors contributing to this mental health crisis:   
+
+* **Excessive social media use:** Studies cited in the book reveal a correlation between heavy social media usage (3-4 hours daily) and increased levels of depression and anxiety, particularly among girls. 
+* **Overprotective parenting**: Haidt critiques the cultural shift towards "safetyism," arguing that it deprives children of essential experiences needed to develop resilience and problem-solving skills.   
+* **The phone-based childhood"**: He contrasts the current *phone-based childhood* with the previous *play-based childhood*, arguing that this transition has disrupted children's social interactions and neurological development.   
+Through these insights, Haidt encourages readers to reconsider the implications of our current parenting practices and cultural norms on the mental well-being of the younger generation.
+
+**Key Lesson:**  Overemphasis on safety and protection can hinder young people's resilience and ability to cope with adversity, ultimately making them less prepared to face life's challenges.
 
 
 
@@ -105,7 +118,7 @@ This book helped me understand that money isn’t just about math—it’s about
 **Key lesson**: Money is not about what you earn or spend—it’s about the freedom to live life on your terms.  true wealth isn’t about flashy cars, expensive vacations, or big houses—it’s about what you don’t see: financial freedom, security, and the ability to make choices without stress.This insight challenged me to rethink my relationship with spending and saving. It reminded me that accumulating wealth is less about impressing others and more about building a life of freedom and stability.
 
 
-### The Forty Rules of Love* by Elif Shafak 
+### The Forty Rules of Love by Elif Shafak 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442161289i/6642715.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
 
 Elif Shafak's The Forty Rules of Love beautifully intertwines themes of love, spirituality, and self-discovery. Through the parallel stories of Ella Rubenstein and the profound spiritual connection between Rumi and Shams of Tabriz, the novel explores the transformative power of love in its various forms – divine, romantic, and platonic. Shafak emphasizes that true love requires vulnerability, embracing imperfection, and a willingness to let go of control. This journey of love is deeply intertwined with spirituality, suggesting that it is a path of surrender, trust, and faith. Furthermore, the novel acknowledges the duality of pain and joy inherent in love, recognizing that pain can be a catalyst for growth and transformation. Ultimately, The Forty Rules of Love celebrates the power of stories to heal, connect, and inspire us to live authentically, embracing our own unique paths and finding meaning in the human experience.
