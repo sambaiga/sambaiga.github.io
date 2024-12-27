@@ -21,9 +21,7 @@ By the end of the year, I had completed 13 books; a testament to the power of pe
 
 
 ### Build by Tony Fadell 
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652120231i/59696349.jpg" alt="Build Book Cover" style="width: 25%; height: auto; float: left; margin-right: 10px;" />
-
 In Build, Tony Fadell offers an unconventional guide to product development, entrepreneurship, and leadership, drawing on his extensive experience in Silicon Valley as the creator of the iPod and founder of Nest. The book serves as a practical and insightful roadmap for innovators, designers, and product managers, making it a valuable resource for anyone looking to navigate the complexities of bringing ideas to life.
 
 Fadell emphasizes the importance of **purpose-driven product development**, advocating for solutions that genuinely improve users' lives. This focus on purpose resonates with me, as it highlights the need to create products that not only meet market demands but also enhance the quality of life for users. He encourages readers to embrace continuous learning, urging us to remain curious and glean insights from both successes and failures. This mindset is crucial in a rapidly changing environment where adaptability is key.
@@ -37,7 +35,6 @@ Through candid anecdotes, mistakes, and hard-won lessons from his journeys at Ap
 **Key lesson**: successful product development requires a deep understanding of user needs, a relentless pursuit of simplicity, a culture of continuous learning, and a leadership style that fosters creativity and empowers team.
 
 ### Essentialism by Greg McKeown
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1403165375i/18077875.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;"/>
 
 In Essentialism, Greg McKeown presents a disciplined approach to identifying and prioritizing what truly matters in our lives. The book serves as both a wake-up call and a roadmap for individuals like me overwhelmed by competing demands and distractions. McKeown emphasizes the transformative power of **less but better** encouraging readers to focus on their highest point of contribution.
@@ -53,7 +50,6 @@ The book also highlights the importance of **saying no** to non essential commit
 
 
 ### The Magic of Thinking Big by David Schwartz
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404632064i/759945.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />  
 The Magic of Thinking Big" by David J. Schwartz is a timeless reminder that success isn't solely reserved for the most gifted. It's a testament to the power of mindset. Those who dare to dream big, believe in themselves, and take intentional action are most likely to achieve their goals. This book profoundly impacted my thinking, teaching me to expand my mindset, overcome limiting beliefs, and cultivate habits that align with my aspirations for greatness. 
 
@@ -63,7 +59,6 @@ Furthermore, the book emphasizes the importance of treating others with respect,
 
 
 ### Same As Ever by Morgan Housel
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680687321i/125116554.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />   
 Morgan Housel's *Same As Ever*  provides a compelling framework for understanding the enduring nature of human behavior. Despite the rapid pace of change in our world, Housel argues that our core emotions, desires, and behaviors remain remarkably consistent. 
 
@@ -78,7 +73,6 @@ By embracing the enduring truths of human nature, we can navigate the complexiti
 
 
 ### Never Split the Difference by Chris Voss  
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1680014152i/123857637.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />  
 Never Split the Difference by Chris Voss, a former FBI hostage negotiator, offers unique insights into the art of negotiation that have completely shifted my perspective on the subject. This book illustrates how powerful negotiation can be, not just in high-stakes situations but also in everyday life.
 
@@ -93,7 +87,6 @@ Through engaging anecdotes and real-life examples, Voss illustrates how these te
 
 ### Think Again by Adam Grant 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1602574232i/55539565.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />   
-
 In Think Again, Adam Grant profoundly challenges our assumptions about knowledge and belief, urging readers to cultivate a mindset of **intellectual humility** and curiosity. He defines intellectual humility as recognizing the limitations of our own knowledge and being willing to learn from everyone. This approach fosters open inquiry and leads to better decision-making, which I find incredibly valuable in both personal and professional contexts.
 
 Grant encourages us to approach life with curiosity and openness, advocating for the importance of questioning our beliefs, considering new evidence, testing our assumptions, and holding our ideas loosely. This flexibility allows us to adapt when presented with new information. I particularly resonate with his assertion that being wrong is not a failure; rather, it is an opportunity for learning. When we discover we're mistaken, we are simply becoming less wrong—a positive step in personal growth.
@@ -109,7 +102,6 @@ Overall, *Think Again* serves as a powerful reminder of the importance of intell
 
 
 ### Man’s Search for Meaning by Viktor E. Frankl
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1535419394i/4069.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />  
 This profound memoir and philosophical exploration by Viktor Frankl delves into the human capacity to find meaning and purpose even in the face of unimaginable suffering. Drawing upon his own harrowing experiences as a prisoner in Nazi concentration camps, Frankl presents a compelling argument for the human will to survive and the enduring power of the human spirit. His reflections on resilience and purpose have encouraged me to view suffering as an opportunity for growth.
 
@@ -125,9 +117,7 @@ Overall, Man's Search for Meaning is a transformative read that offers profound 
 
 
 ### The Anxious Generation by Jonathan Haidt
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711573377i/171681821.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />
-
 In The Anxious Generation, Jonathan Haidt presents a deeply researched and thought-provoking examination of the alarming rise in anxiety and depression among young people, particularly Generation Z. His compelling evidence indicates a significant increase in mood disorders among adolescents since the early 2010s, which he links to the widespread adoption of smartphones and social media.
 
 Haidt identifies several key factors contributing to this mental health crisis. First, he discusses **excessive social media use**, citing studies that reveal a correlation between heavy usage, around 3 to 4 hours daily and increased levels of depression and anxiety, especially among girls. This insight has made me reflect on how pervasive social media is in the lives of young people today and the potential consequences it carries.
@@ -143,7 +133,6 @@ Overall, *The Anxious Generation* serves as a crucial resource for understanding
 
 
 ### The Psychology of Money by Morgan Housel
-
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1581527774i/41881472.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
 This book reshaped the way I think about **money**, **wealth**, and **financial freedom**. Unlike traditional personal finance books that focus on numbers, budgets, or technical strategies, Housel takes a deeply human approach, exploring how our emotions, habits, and perspectives shape our financial decisions.
 
@@ -159,7 +148,6 @@ Housel also shares engaging stories that illustrate the strange ways people thin
 
 ### The Forty Rules of Love by Elif Shafak 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442161289i/6642715.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
-
 Elif Shafak's The Forty Rules of Love beautifully intertwines themes of love, spirituality, and self-discovery. Through the parallel stories of Ella Rubenstein, a contemporary housewife, and the profound spiritual connection between Rumi and Shams of Tabriz, the novel explores the transformative power of love in its various forms; **divine, romantic, and platonic**.
 
 Shafak emphasizes that true love requires *vulnerability*, *embracing imperfection*, and *a willingness to let go of control*. This perspective has profoundly impacted my understanding of relationships, highlighting that love is not just about connection but also about personal growth and acceptance. 
@@ -176,7 +164,6 @@ Ultimately, The Forty Rules of Love celebrates the power of stories to heal, con
 
 ### The Man in the Mirror by Patrick Morley
 <img src="https://books.google.es/books/publisher/content?id=0Qh0AwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U0Hjhw1ETmIQQx9B5CosQUSFIUYDg&w=1280" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> 
-
 The 25th Anniversary Edition of The Man in the Mirror by Patrick Morley is a timeless guide that continues to resonate with men seeking purpose and integrity. Even decades later, Morley's wisdom remains remarkably relevant, as he has updated the content with fresh insights to address the unique challenges of today's world.
 
 Through its exploration of 24 key challenges, Morley provides a practical, faith-based framework for navigating issues such as career pressures, spiritual emptiness, broken relationships, and misplaced priorities. This approach has prompted me to reflect on my own life and the various obstacles I face.
