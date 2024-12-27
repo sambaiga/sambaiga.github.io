@@ -76,7 +76,11 @@ Unlike traditional negotiation strategies that focus on compromise, Voss advocat
 ### Think Again by Adam Grant 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1602574232i/55539565.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />   
 
-Think Again" by Adam Grant profoundly challenges my assumptions about knowledge and belief. Grant encourages us to cultivate a mindset of intellectual humility and curiosity. He emphasizes the importance of rethinking our perspectives and embracing the discomfort of uncertainty. This resonates deeply with me, as it's not merely about changing your mind; it's about creating a life where learning and evolving are prioritized over the need to always be "right." This shift in perspective is crucial for personal growth, fostering innovation, and cultivating meaningful relationships.
+In Think Again, Adam Grant profoundly challenges our assumptions about knowledge and belief, urging readers to cultivate a mindset of **intellectual humility** and curiosity. Grant defines intellectual humility as the recognition of the limitations of our own knowledge and the willingness to learn from everyone. This approach fosters open inquiry and leads to better decision-making. He encourages us to approach life with curiosity and openness, willing to question our beliefs, consider new evidence, test our assumptions, and hold our ideas loosely, ready to adapt when presented with new information. Grant emphasizes that being wrong is not a failure, but rather an opportunity for learning. When we discover we're mistaken, we are simply becoming less wrong – a positive step in personal growth.
+
+Furthermore, Grant highlights the importance of separating our identity from our ideas. This allows for more objective evaluation and reduces defensive reactions when our beliefs are challenged. He encourages us to cultivate a "challenge network" – a group of trusted individuals who provide honest feedback and help us reconsider our perspectives.
+
+This approach to learning and growth resonates deeply with me, as it emphasizes not merely changing one's mind but creating a life where learning and evolving take precedence over the need to always be *right*. This shift in perspective is crucial for personal growth, fostering innovation, and cultivating meaningful relationships.
 
 **Key Lesson:**  Growth comes from being willing to admit what you don’t know and learning from others. 
 
@@ -94,10 +98,7 @@ This profound memoir and philosophical exploration by Viktor Frankl delves into 
 
 <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1711573377i/171681821.jpg" align="left" style="width: 25%; height: auto; float: left; margin-right: 10px;" />
 
-In this deeply researched and thought-provoking book, Jonathan Haidt examines the alarming rise in anxiety and depression among young people, particularly **Generation Z**. He presents compelling evidence indicating a significant increase in mood disorders among adolescents since the early 2010s, linking this surge to the widespread adoption of smartphones and social media.
-
-Haidt identifies several key factors contributing to this mental health crisis:   
-
+In this deeply researched and thought-provoking book, Jonathan Haidt examines the alarming rise in anxiety and depression among young people, particularly **Generation Z**. He presents compelling evidence indicating a significant increase in mood disorders among adolescents since the early 2010s, linking this surge to the widespread adoption of smartphones and social media. Haidt identifies several key factors contributing to this mental health crisis:   
 * **Excessive social media use:** Studies cited in the book reveal a correlation between heavy social media usage (3-4 hours daily) and increased levels of depression and anxiety, particularly among girls. 
 * **Overprotective parenting**: Haidt critiques the cultural shift towards "safetyism," arguing that it deprives children of essential experiences needed to develop resilience and problem-solving skills.   
 * **The phone-based childhood"**: He contrasts the current *phone-based childhood* with the previous *play-based childhood*, arguing that this transition has disrupted children's social interactions and neurological development.   
