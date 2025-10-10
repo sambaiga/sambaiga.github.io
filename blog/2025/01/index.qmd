@@ -2,6 +2,7 @@
 title: "A Year of Growth: 13 Books That Transformed My Perspective in 2024"
 date: 2025-01-01
 description: "In 2024, I embarked on a journey to read one book per month, resulting in 13 transformative reads. This post reflects on how these books shaped my perspective, covering themes like purpose-driven innovation (Build by Tony Fadell), intentional living (Essentialism by Greg McKeown), mindset shifts (The Magic of Thinking Big by David Schwartz), and resilience (Man’s Search for Meaning by Viktor Frankl). From leadership and negotiation to love and digital minimalism, each book offered unique insights, encouraging personal growth, empathy, and a focus on what truly matters. Join me as I share the lessons learned and their impact on my year."
+image: 2024_reading_list.jpg
 
 categories:
  - book
@@ -11,53 +12,6 @@ format:
     shift-heading-level-by: 1
     toc-depth: 4
     highlight-style: arrow
-
-    include-in-header:
-      - text: |
-          <style type="text/css">
-          /* Justify body text */
-          body {
-            text-align: justify;
-          }
-
-          /* Code block labels */
-          div.sourceCode > pre.sourceCode.js::before {
-            content: 'Observable JS';
-            display: block;
-            text-align: left;
-            font-size: 1em;
-            margin-bottom: 7px;
-            border-bottom: #dddddd 1px solid;
-            padding-left: 4.25px;
-            padding-bottom: 5px;
-            color: #aaaaaa;
-          }
-
-          div.sourceCode > pre.sourceCode.r::before {
-            content: 'R';
-            display: block;
-            text-align: left;
-            font-size: 1em;
-            margin-bottom: 7px;
-            border-bottom: #dddddd 1px solid;
-            padding-left: 4.25px;
-            padding-bottom: 5px;
-            color: #aaaaaa;
-          }
-
-          div.sourceCode > pre.sourceCode.sql::before {
-            content: 'SQL';
-            display: block;
-            text-align: left;
-            font-size: 1em;
-            margin-bottom: 7px;
-            border-bottom: #dddddd 1px solid;
-            padding-left: 4.25px;
-            padding-bottom: 5px;
-            color: #aaaaaa;
-          }
-          </style>
-
 ---
 
 # Introduction

@@ -363,39 +363,67 @@ pre.text, pre.sourceCode, .cell-output pre {
 }
 
 .blog-post {
-    .quarto-title .quarto-categories {
-        margin-top: 0.5em;
+  .quarto-title-block {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    padding: 4rem 2rem;
+  }
 
-        .quarto-category {
-            background-color: #FFE6E7; // Light pink tint
-            color: $red; // Soft Pink #FF9398
-            font-size: 0.6em;
-            padding: 0.3em 0.5em;
-            opacity: 1;
-            border: 1px solid $black; // Protanopia
+  /* Optional overlay for text contrast */
+  .quarto-title-block::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+  }
 
-            a {
-                color: $black; // Black links
-                &:hover {
-                    color: $link-hover-color;
-                }
-            }
+  /* Ensure title and metadata appear above overlay */
+  .quarto-title-block .quarto-title,
+  .quarto-title-block .quarto-categories,
+  .quarto-title-block .quarto-title-author,
+  .quarto-title-block .quarto-title-meta {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Existing styling for categories, ORCID, etc. */
+  .quarto-title .quarto-categories {
+    margin-top: 0.5em;
+
+    .quarto-category {
+      background-color: #D8DEE9;
+      color: #000;
+      font-size: 0.6em;
+      padding: 0.3em 0.5em;
+      border: 1px solid #000;
+
+      a {
+        color: #000;
+        &:hover {
+          color: #d43f3a;
         }
+      }
     }
+  }
 
-    .quarto-title-author-orcid img {
-        margin-bottom: -3px;
-    }
+  .quarto-title-author-orcid img {
+    margin-bottom: -3px;
+  }
 
-    .quarto-title-meta-contents .doi::before {
-        content: "";
-        background-image: url(/files/doi.svg);
-        background-size: 1.1em;
-        display: inline-block;
-        width: 1.1em;
-        height: 1.1em;
-        margin-bottom: -3px;
-    }
+  .quarto-title-meta-contents .doi::before {
+    content: "";
+    background-image: url(/files/doi.svg);
+    background-size: 1.1em;
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    margin-bottom: -3px;
+  }
 }
 
 // Research
@@ -717,5 +745,118 @@ pre.text, pre.sourceCode, .cell-output pre {
 }
 
 
+// ------------------------------------------------------------------
+// NEW MOBILE RESPONSIVENESS STYLES (Added below your existing code)
+// ------------------------------------------------------------------
+
+/* mobile query up for screens up to ~992px wide */
+@media screen and (max-width: 991.98px) {
+  /* wrap lately section */
+  #lately .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* listings */
+  #blog, #talks, #publications, #projects {
+    flex-basis: 40% !important;
+    flex-grow: 1;
+  }
+}
+
+/* mobile query up for screens up to ~576px wide */
+@media screen and (max-width: 576px) {
+
+  /* wrap about me section */
+  #about-me .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* wrap lately section */
+  #lately .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* listings */
+  #blog, #talks, #publications, #projects {
+    flex-basis: 100% !important;
+  }
+}
+
+
+/* mobile query up for screens up to ~992px wide */
+@media screen and (max-width: 991.98px) {
+  /* wrap lately section */
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #form {
+    margin-top: 0em;
+    flex-basis: 100% !important;
+    flex-grow: 1;
+  }
+}
+
+
+
+/* ------------------------------------------------------------------- */
+/* BLOG-SPECIFIC AND READABILITY STYLES */
+/* ------------------------------------------------------------------- */
+
+/* Justify body text (Applies to all pages, be aware if you only wanted it on the blog) */
+body {
+    text-align: justify;
+}
+
+
+/* -------------------------------------------------------------------
+   BLOG POST BANNER FIX
+   Overrides pink background for blog post title blocks only
+------------------------------------------------------------------- */
+
+.blog-post #title-block-header,
+.blog-post .quarto-title-block,
+.blog-post .quarto-title-banner {
+  background-color: transparent !important;
+}
+
+/* Use image from metadata (title-block-banner) */
+.blog-post .quarto-title-block {
+  background-image: var(--quarto-banner-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  padding: 4rem 2rem;
+}
+
+/* Add dark overlay for contrast */
+.blog-post .quarto-title-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* Ensure title/meta are above overlay */
+.blog-post .quarto-title,
+.blog-post .quarto-categories,
+.blog-post .quarto-title-author,
+.blog-post .quarto-title-meta {
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional fallback banner */
+.blog-post .quarto-title-block:not([style*="background-image"]) {
+  background-image: url("/files/featured.jpg");
+}
 
 
