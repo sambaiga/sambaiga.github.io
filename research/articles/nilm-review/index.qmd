@@ -1,0 +1,80 @@
+---
+title: "Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective"
+date: 2021-01-30
+author:
+  - name:  Benjamin Völker
+    orcid: 0000-0001-6945-5546
+    affiliation: University of Freiburg, 79110 Freiburg, Germany
+  - name:  Andreas Reinhardt
+    orcid: 0000-0002-8637-8420
+    affiliation: Department of Informatics, TU Clausthal, 38678 Clausthal-Zellerfeld, Germany
+  - name: Anthony Faustine
+    url: https://arelbundock.com/
+    orcid: 0000-0003-2042-7063
+    affiliation: Université de Montréal
+  - name: Nunes, Nuno Jardim 
+    url: https://ngreifer.github.io/
+    orcid: 0000-0003-3067-7154
+    affiliation: Institute for Quantitative Social Science, Harvard University
+  - name: Pereira, Lucas
+    url: https://www.andrewheiss.com/
+    orcid: 0000-0002-3948-3914
+    affiliation: Andrew Young School of Policy Studies, Georgia State University
+categories:
+  - nilm
+  - machine learning
+  - disagregation
+pub-info:
+  reference: >-
+    Benjamin Völker, Andreas Reinhardt, <strong>Anthony Faustine</strong> and Pereira, Lucas, “Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective,” <em>Energies</em> 2021, 14(3), 719, doi: <a href="https://doi.org/10.3390/en14030719"><code>10.1109/10.3390/en14030719</code></a>
+  links:
+    - name: Published
+      url: https://doi.org/10.3390/en14030719,
+      icon: fa-solid fa-scroll
+    - name: PDF
+      url: chaudhry-heiss-ngos-aid.pdf
+      local: true
+      icon: fa-solid fa-file-pdf
+doi: 10.1109/10.3390/en14030719
+haiku:
+  - sustainable energy
+  - buildings
+  - nilm state prediction
+---
+
+## Important links
+
+- [Paper (preprint)](mfxplainer.pdf)
+- [GitHub repository](https://github.com/sambaiga/iMLFPQ-forecast)
+
+
+## Abstract
+
+The key advantage of smart meters over traditional metering devices is their ability to transfer consumption information to remote data processing systems. Besides enabling the automated collection of a customer’s electricity consumption for billing purposes, the data collected by these devices makes the realization of many novel use cases possible. However, the large majority of such services are tailored to improve the power grid’s operation as a whole. For example, forecasts of household energy consumption or photovoltaic production allow for improved power plant generation scheduling. Similarly, the detection of anomalous consumption patterns can indicate electricity theft and serve as a trigger for corresponding investigations. Even though customers can directly influence their electrical energy consumption, the range of use cases to the users’ benefit remains much smaller than those that benefit the grid in general. In this work, we thus review the range of services tailored to the needs of end-customers. By briefly discussing their technological foundations and their potential impact on future developments, we highlight the great potentials of utilizing smart meter data from a user-centric perspective. Several open research challenges in this domain, arising from the shortcomings of state-of-the-art data communication and processing methods, are furthermore given. We expect their investigation to lead to significant advancements in data processing services and ultimately raise the customer experience of operating smart meters. 
+
+
+## Important figures
+
+![Figure 2: Predicted probability of impartiality by levels of equality and democracy](mfxplainer-fig2.png)
+
+![Figure 4: Tangents to the prediction function at 25 and 50](mfxplainer-fig4.png)
+
+
+## Citation
+
+<p class="buttons" style="text-align:center;">
+<a class="btn btn-danger" target="_blank" href="https://www.zotero.org/save?type=doi&q=10.18637/jss.v111.i09">{{< ai zotero >}}&emsp;Add to Zotero {{< fa square-arrow-up-right >}}</a>
+</p>
+
+```bibtex
+@ARTICLE{10529636,
+  author={Faustine, Anthony and Nunes, Nuno Jardim and Pereira, Lucas},
+  journal={IEEE Transactions on Power Systems}, 
+  title={Efficiency Through Simplicity: MLP-Based Approach for Net-Load Forecasting With Uncertainty Estimates in Low-Voltage Distribution Networks}, 
+  year={2025},
+  volume={40},
+  number={1},
+  pages={46-56},
+  keywords={Forecasting;Uncertainty;Probabilistic logic;Predictive models;Substations;Load modeling;Distribution networks;Deep Neural Networks (DNN) Feed-forward Neural Network (FFN) Low Voltage (LV) distribution substation;Multilayer Perceptron (MLP);net-load;probabilistic forecasting;Photovoltaics (PV) generation;quantile regression (QR)},
+  doi={10.1109/TPWRS.2024.3400123}}
+```

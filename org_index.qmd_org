@@ -1,0 +1,51 @@
+---
+title: ""
+pagetitle: "Sambaiga"
+description-meta: "Anthony Faustine is a Lead Data Scientist at Eaton's Centre for Intelligent Power in Dublin, specializing in applied machine learning and strategic innovation."
+main-photo: /files/profiles/sambaiga_profile.jpg
+main-photo-square: /files/profiles/sambaiga_profile.jpg
+format:
+  html:
+    quarto-template-params:
+      banner-header-class: "home"
+---
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-sm-4}
+
+```{=html}
+<div class="grid" style="--bs-columns: 5; row-gap: 0;">
+  <div class="g-col-1 g-col-sm-0"></div>
+  <div class="g-col-3 g-col-sm-5">
+    <picture>
+      <source media="(max-width: 576px)" srcset="{{< meta main-photo-square >}}">
+      <source media="(min-width: 576px)" srcset="{{< meta main-photo >}}">
+      <img class="img-fluid" src="{{< meta main-photo >}}" alt="{{< meta author-meta >}}">
+    </picture>
+  </div>
+  <div class="g-col-1 g-col-sm-0"></div>
+</div>
+```
+
+:::
+
+::: {.g-col-12 .g-col-sm-8}
+
+I am a Lead Data Scientist at the Centre for Intelligent Power (CIP) at [Eaton](https://www.eaton.com/ie/en-gb/company/careers/life-at-eaton/dublin.html) in Dublin, Ireland. In my role, I lead the development of data analytics and machine learning  powered products and services that contribute to intelligent power systems. 
+
+Before joining CIP Eaton, I served as a Senior Industrial Analytics Researcher in [Irish Manufacturing (IMR), Dublin, Ireland](https://imr.ie/). There, I developed and executed data analytics and AI-based solutions to empower manufacturers located in Ireland to embrace and lead the Industrial 4.0 revolution as early adopters and frontrunners.  Prior to that, I worked as a Data Scientist and ML Researcher at [CeADAR](https://www.ceadar.ie/), a research center affiliated with University College Dublin, Ireland. I also served as a Machine Learning Researcher at [IDLab, Imec](https://www.ugent.be/ea/idlab/en) at the University of Ghent, Belgium.
+
+
+### Interest
+I specialize in applied machine learning and strategic innovation management, focusing on leveraging these fields to address real-world business challenges and drive competitive advantage. In the realm of applied machine learning, my research interests include forecasting, non-intrusive load monitoring, and time-series analysis for applications such as predictive maintenance and power grid management. From a strategic management perspective, I am interested in business model innovation, strategic roadmaps, and innovation management.
+
+
+### Sharing and Learning:
+I am also passionate about sharing knowledge and fostering collaboration. I maintain a [repository on GitHub](https://github.com/sambaiga/AI4DLearning)  with resources on learning and applying AI for practical problems.
+
+I'm always interested in connecting with others who share my passion for data science & A, innovation.
+
+:::
+
+:::

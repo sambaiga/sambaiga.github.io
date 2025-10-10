@@ -1,0 +1,62 @@
+---
+title: "Conformal Multilayer Perceptron-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with Photovoltaic Generation"
+date: 2021-03-26
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Pereira, Lucas
+    url: https://www.alspereira.info/
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+categories:
+  - forecasting
+  - probabilistic
+  - machine learning
+pub-info:
+  reference: >-
+     <strong>Anthony Faustine</strong> and Pereira, Lucas, “Conformal Multilayer Perceptron-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with Photovoltaic Generation,” <em>2024 IEEE International Conference on Communications, Control, and Computing Technologies for Smart Grids (SmartGridComm), Oslo, Norway</em>  2024, pp. 59-64, doi: <a href="https://ieeexplore.ieee.org/document/10738106"><code>10.1109/SmartGridComm60555.2024.10738106</code></a>
+  extra: >-
+    Presented at the 2024 IEEE International Conference on Communications, Control, and Computing Technologies for Smart Grids (SmartGridComm), Oslo, Norway
+  links:
+    - name: PDF
+      url: chaudhry-heiss-derogations.pdf
+      local: true
+      icon: fa-solid fa-file-pdf
+    - name: Code
+      url: https://github.com/andrewheiss/covid-derogations
+      icon: fa-brands fa-github
+pub-status: 
+  status: Published
+  class: info
+  icon: fa-solid fa-rotate
+---
+
+## Important links
+
+- [Paper (preprint)](chaudhry-heiss-derogations.pdf)
+- [Statistical analysis notebook](https://stats.andrewheiss.com/covid-derogations/)
+- [GitHub repository](https://github.com/andrewheiss/covid-derogations)
+
+
+## Abstract
+
+Probabilistic net-load forecasting in Low-Voltage (LV) distribution networks is essential in light of the increased variability introduced by the widespread integration of renewable energy sources (RES). Various probabilistic approaches based on neural networks have been proposed to solve this challenge. This study introduces lightweight neural network-based conformal prediction (Conformal-MLPF) for net-load forecasting within an LV power distribution network. It uses Split Conformal prediction to transform a lightweight MLP-based point forecast into a probabilistic forecast. Our validation on two real-life LV substations datasets suggests that the proposed Conformal-MLPF achieves a better tradeoff between forecasting performance and model complexity without requiring restrictive assumptions about data distribution.
+
+
+## Important figure
+
+Figure 5: Derogation decisions across pandemic violations and pandemic backsliding
+
+![Figure 5: Derogation decisions across pandemic violations and pandemic backsliding](cssi-derogation.png)
+
+
+## BibTeX citation
+
+```bibtex
+@unpublished{ChaudhryHeiss:2021,
+    Author = {Suparna Chaudhry and Anthony Faustine},
+    Note = {Working paper},
+    Title = {Derogations and Democratic Backsliding: Exploring the Pandemic's Effects on Civic Spaces},
+    Year = {2021}}
+```

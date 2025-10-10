@@ -1,0 +1,68 @@
+---
+title: "Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power"
+date: 2024-07-11
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Pereira, Lucas
+    url: https://www.alspereira.info/
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+categories:
+  - forecasting
+  - probabilistic
+  - machine learning
+  
+pub-info:
+  links:
+    - name: PDF
+      url: chaudhry-heiss-ngos-aid.pdf
+      local: true
+      icon: fa-solid fa-file-pdf
+    - name: Code
+      url: https://github.com/andrewheiss/testy-turtle
+      icon: fa-brands fa-github
+  reference: >-
+     <strong>Anthony Faustine</strong> and Pereira, Lucas, “Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power,” <em> CIRED Chicago Workshop 2024: Resilience of Electric Distribution Systems, Chicago, USA,</em>  2025, pp. 27-31, doi: <a href="https://digital-library.theiet.org/doi/10.1049/icp.2024.2555"><code>10.1049/icp.2024.2555</code></a>
+  extra: >-
+    Presented at the CIRED Chicago Workshop 2024: Resilience of Electric Distribution Systems
+pub-status: 
+  status: Published
+  class: info
+  icon: fa-solid fa-rotate
+---
+
+## Important links
+
+- [Paper (preprint)](chaudhry-heiss-ngos-aid.pdf)
+- [Supplement (preprint)](chaudhry-heiss-ngos-aid-supplement.pdf)
+- [Statistical analysis notebook](https://stats.andrewheiss.com/testy-turtle/)
+- [GitHub repository](https://github.com/andrewheiss/testy-turtle)
+
+
+## Abstract
+
+This paper presents a probabilistic forecasting approach tailored for low voltage (LV) substations, offering short-term predictions for three crucial variables: voltage, reactive power, and active power. These parameters play a vital role in the resilience of distribution systems, especially in the presence of Distributed Energy Resources (DERs). Evaluation with simulated data shows that active and reactive power forecasts degrade notably with higher EV penetration, whereas voltage forecasting experiences less degradation across all scenarios.
+
+
+## Figure
+
+Figure 5: Predicted ODA (foreign aid) across a range of differences from average number of anti-NGO laws in an average country; dark line shows average of 500 draws from posterior distribution.
+
+![Figure 5: Predicted ODA (foreign aid) across a range of differences from average number of anti-NGO laws in an average country; dark line shows average of 500 draws from posterior distribution.](ngos-aid_fig5.png)
+
+## BibTeX citation
+
+```bibtex
+@INPROCEEDINGS{10916091,
+  author={Faustine, Anthony and Pereira, Lucas},
+  booktitle={CIRED Chicago Workshop 2024: Resilience of Electric Distribution Systems}, 
+  title={Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power}, 
+  year={2025},
+  volume={2024},
+  number={},
+  pages={27-31},
+  keywords={},
+  doi={10.1049/icp.2024.2555}}
+```

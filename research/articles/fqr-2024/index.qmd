@@ -1,0 +1,82 @@
+---
+title: "FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates"
+date: 2024-10-22
+author:
+  - name: Anthony Faustine
+    url: http://www.suparnachaudhry.com/
+    orcid: 0000-0003-3506-7590
+    affiliation: Lewis & Clark College
+  - name: Pereira, Lucas
+    url: https://audreylcomstock.weebly.com/
+    orcid: 0000-0003-1772-5350
+    affiliation: Arizona State University
+
+categories:
+  - forecasting
+  - machine learning
+  - probabilistic
+pub-info:
+  reference: >-
+    <strong>Anthony Faustine</strong>, and Pereira, Lucas, “FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates,” <em>IEEE Transactions on Smart Grid</em> 2024, doi: <a href="https://ieeexplore.ieee.org/document/9701598"><code>10.1109/TSG.2022.3148699</code></a>
+  links:
+    - name: Final version
+      url: https://doi.org/10.1080/03050629.2024.2413965
+      icon: fa-solid fa-scroll
+    - name: Code
+      url: https://github.com/andrewheiss/mountainous-mackerel
+      icon: fa-brands fa-github
+    - name: Analysis notebook
+      url: https://stats.andrewheiss.com/mountainous-mackerel/
+      icon: fa-solid fa-chart-simple
+    - name: Data
+      url: https://stats.andrewheiss.com/mountainous-mackerel/analysis/data-final.html
+      icon: fa-solid fa-table
+    - name: Add to Zotero
+      url: https://www.zotero.org/save?type=doi&q=10.1080/03050629.2024.2413965
+      icon: ai ai-zotero
+  extra: >-
+    Presented at the annual meeting of the Peace Science Society in Denver, Colorado, November 2022; and the annual meeting of the International Studies Association (ISA), Montréal, Canada, March 2023
+doi: 10.1080/03050629.2024.2413965
+haiku: 
+  - Quantile regression
+  - Low voltage substation
+---
+
+## Important links
+
+- [Paper (preprint)](https://stats.andrewheiss.com/mountainous-mackerel/analysis/paper.html)
+- [Appendix (preprint)](https://stats.andrewheiss.com/mountainous-mackerel/analysis/appendix.html)
+- [Statistical analysis notebook](https://stats.andrewheiss.com/mountainous-mackerel/)
+- [GitHub repository](https://github.com/andrewheiss/mountainous-mackerel)
+
+
+## Abstract
+
+The increased penetration of Renewable Energy Sources (RES) as part of a decentralized and distributed power system makes net-load forecasting a critical component in the planning and operation of power systems. However, compared to the transmission level, producing accurate short-term net-load forecasts at the distribution level is complex due to the small number of consumers. Moreover, owing to the stochastic nature of RES, it is necessary to quantify the uncertainty of the forecasted net-load at any given time, which is critical for the real-world decision process. This work presents parameterized deep quantile regression for short-term probabilistic net-load forecasting at the distribution level. To be precise, we use a Deep Neural Network (DNN) to learn both the quantile fractions and quantile values of the quantile function. Furthermore, we propose a scoring metric that reflects the trade-off between predictive uncertainty performance and forecast accuracy. We evaluate the proposed techniques on historical real-world data from a low-voltage distribution substation and further assess its robustness when applied in real-time. The experiment’s outcomes show that the resulting forecasts from our approach are well-calibrated and provide a desirable trade-off between forecasting accuracies and predictive uncertainty performance that are very robust even when applied in real-time.
+
+
+## Important figures
+
+![Figure 2a: Predicted effects of imposing specific emergency public health measures over first 15 months of the COVID pandemic, split by whether states formally derogated from the ICCPR](fig-preds-mfx-policies-1.png)
+
+![Figure 3a: Predicted effects of imposing specific emergency public health measures over first 15 months of the COVID pandemic, split by whether states formally derogated from the ICCPR](fig-preds-mfx-human-rights-1.png)
+
+
+## Citation
+
+<p class="buttons" style="text-align:center;">
+<a class="btn btn-danger" target="_blank" href="https://www.zotero.org/save?type=doi&q=10.1080/03050629.2024.2413965">{{< ai zotero >}}&emsp;Add to Zotero {{< fa square-arrow-up-right >}}</a>
+</p>
+
+```bibtex
+@ARTICLE{9701598,
+  author={Faustine, Anthony and Pereira, Lucas},
+  journal={IEEE Transactions on Smart Grid}, 
+  title={FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates}, 
+  year={2022},
+  volume={13},
+  number={3},
+  pages={2440-2451},
+  keywords={Forecasting;Uncertainty;Predictive models;Probabilistic logic;Renewable energy sources;Load modeling;Additives;Net-load;forecasting;uncertainity;deep neural network;quantile regression},
+  doi={10.1109/TSG.2022.3148699}}
+```
