@@ -1,0 +1,174 @@
+---
+title: "My 2023 Reading Journey: 11 Books That Shaped My Growth"
+date: 2024-01-01
+description: "."
+
+categories:
+ - book
+
+format:
+  html:
+    shift-heading-level-by: 1
+    toc-depth: 4
+    highlight-style: arrow
+
+    include-in-header:
+      - text: |
+          <style type="text/css">
+          /* Justify body text */
+          body {
+            text-align: justify;
+          }
+
+          /* Code block labels */
+          div.sourceCode > pre.sourceCode.js::before {
+            content: 'Observable JS';
+            display: block;
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 7px;
+            border-bottom: #dddddd 1px solid;
+            padding-left: 4.25px;
+            padding-bottom: 5px;
+            color: #aaaaaa;
+          }
+
+          div.sourceCode > pre.sourceCode.r::before {
+            content: 'R';
+            display: block;
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 7px;
+            border-bottom: #dddddd 1px solid;
+            padding-left: 4.25px;
+            padding-bottom: 5px;
+            color: #aaaaaa;
+          }
+
+          div.sourceCode > pre.sourceCode.sql::before {
+            content: 'SQL';
+            display: block;
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 7px;
+            border-bottom: #dddddd 1px solid;
+            padding-left: 4.25px;
+            padding-bottom: 5px;
+            color: #aaaaaa;
+          }
+          </style>
+
+---
+
+# Introduction
+At the beginning of 2024, I set a personal goal: to read one book each month. This was fueled by my desire to keep learning, expand my thinking, and deepen my self-awareness.
+
+The journey had its highs and lows. Some months, I breezed through stories that gripped me from the start. Other times, staying on track demanded discipline and focus, as distractions tested my resolve. Yet, I remained committed, motivated by the belief that each book brought me closer to growth and self-discovery.
+
+By the end of the year, I had completed 13 books; a testament to the power of persistence and the commitment I made at the start of this journey. Each book left its mark, shaping my thinking and broadening my perspective in unexpected ways. In this post, I’ll share my reading list and reflect on how these stories and ideas enriched my year. I invite you to join me in exploring the lessons learned and the insights gained from this rewarding experience.  
+
+
+# Book covered
+
+## What Got You Here Won't Get You There by Marshall Goldsmith and Mark Reiter
+
+
+In **What Got You Here Won't Get You There**
+<img src="https://m.media-amazon.com/images/I/81izlzd-igL._SL1500_.jpg" alt="Build Book Cover" style="width: 25%; height: auto; float: left; margin-right: 10px;" />, Marshall Goldsmith helps successful professionals identify the subtle behaviors that may limit their potential for further growth. The central idea is that the habits and skills that made you successful in the past may not serve you at the next level. Career advancement requires evolving your behavior, not just doubling down on what already worked. Goldsmith outlines 20 common interpersonal flaws that often hold high achievers back—things like winning too much, adding too much value (always improving others' ideas), passing judgment, not listening, failing to give recognition, making excuses, refusing to express regret, and showing negativity. These are usually ego-driven and habitual, and while they may seem small, they slowly erode trust and relationships. One of the book’s most powerful messages is that behavioral change starts with feedback—and learning to receive that feedback without defensiveness. What struck me most was the insight that the need to “win” every interaction often causes more harm than good. Instead, Goldsmith encourages leaders to listen more, let others shine, and focus on long-term influence rather than short-term ego wins. Even highly accomplished leaders must stay humble, coachable, and open to change. Sustained success, the book argues, depends on continuous self-awareness and behavioral adaptation.
+
+
+**Key lesson**: To keep growing as a leader, you must let go of the habits that once made you successful but now limit your ability to build stronger relationships and influence others.
+
+
+## The Next Level by Scott Eblin
+
+As a powerful follow-up to What Got You Here Won’t Get You There, Scott Eblin’s The Next Level: What Insiders Know About Executive Success <img src="https://m.media-amazon.com/images/I/718kckZw9TL._SL1500_.jpg" alt="the next level" style="width: 25%; height: auto; float: left; margin-right: 10px;" />, dives deeper into the behavioral shifts required to thrive in senior leadership roles. While Goldsmith emphasizes letting go of ego-driven habits that sabotage influence, Eblin focuses on the deliberate transitions leaders must make when moving into executive positions. His core framework—**“let go of” old behaviors and “pick up” new ones—is a practical guide for evolving from a doer to a true enterprise leader. The book highlights the importance of thinking beyond your function, building strategic relationships, managing your energy and presence, and empowering others instead of trying to control every outcome. What makes The Next Level especially valuable is its balance of mindset and actionable tools: from reflection templates and decision filters to relationship maps and energy routines. Eblin reminds us that executive success isn’t just about what you know—it’s about how intentionally you lead, adapt, and grow. If Goldsmith helps you recognize the behaviors you need to stop, Eblin shows you what to start doing next.
+
+**Key lesson**: To succeed as an executive, you must intentionally shift from being a hands-on achiever to a strategic leader who empowers others, broadens perspective, manages presence, and continuously adapts to lead at scale.
+
+## The 6 Habits of Growth by Brendon Burchard
+
+In The 6 Habits of Growth <img src="https://m.media-amazon.com/images/I/71HZJfJt6bL._SL1500_.jpg" alt="The 6 Habits of Growth" style="width: 25%; height: auto; float: left; margin-right: 10px;" />, Brendon Burchard distills years of high-performance coaching into a simple but powerful framework for personal and professional growth. The book outlines six essential habits—clarity, energy, necessity, productivity, influence, and courage—that, when practiced consistently, help individuals operate at their highest potential. What resonated with me is how growth is framed not as a moment of inspiration, but as a daily discipline rooted in intentional behavior. Burchard challenges readers to ask better questions about who they want to be and how they want to show up in the world. The focus on energy and necessity stood out most: without vitality and purpose, even the best strategies falter. The book also emphasizes that real productivity is about focusing on what truly matters, not just staying busy. Influence and courage round out the model by reminding us that growth is tied to relationships and the willingness to act despite fear. It’s a holistic guide for anyone who wants to grow with intention and lead a more meaningful, purpose-driven life.
+
+Key lesson: Personal and professional growth comes from consistently practicing six habits—clarity, energy, necessity, productivity, influence, and courage—that elevate how you think, feel, and lead every day.
+
+
+## Speak So Your Audience Will Listen by Robin Kermode
+
+In Speak So Your Audience Will Listen <img src="https://m.media-amazon.com/images/I/61gWJ1L5VJL._SL1000_.jpg" alt="Speak So Your Audience Will Listen" style="width: 25%; height: auto; float: left; margin-right: 10px;" />, Robin Kermode offers a practical and encouraging guide to mastering the art of public speaking and everyday communication. What sets this book apart is its emphasis on authenticity over performance—the idea that the most impactful speakers aren't necessarily the loudest or most charismatic, but those who connect through clarity, empathy, and calm confidence. Kermode draws on his experience as an actor and coach to share tools that help readers speak with presence, handle nerves, structure messages clearly, and genuinely engage their audience. One of the key takeaways for me was the value of being conversational, not theatrical, and focusing on what the audience needs rather than what the speaker wants to say. Whether you're giving a big presentation or just trying to speak up more effectively in meetings, this book delivers simple techniques that make a real difference. It's not about becoming someone else—it’s about becoming more you, but on purpose.
+
+**Key lesson**: The most effective communication happens when you speak with clarity, presence, and empathy—making your message easy to follow and impossible to ignore.
+
+## How Successful People Think by John C. Maxwell
+
+In How Successful People Think
+<img src="https://m.media-amazon.com/images/I/71G1mS5VnCL._SL1500_.jpg" alt="How Successful People Think" style="width: 25%; height: auto; float: left; margin-right: 10px;" />,
+John C. Maxwell breaks down the core thinking patterns that distinguish high achievers from the rest. This compact, highly readable book outlines 11 types of thinking—including strategic thinking, big-picture thinking, creative thinking, reflective thinking, and shared thinking—and shows how each contributes to smarter decision-making and long-term success. What I appreciated most was how actionable the insights are. Maxwell doesn’t just tell you what successful people do; he helps you understand how they think and invites you to practice these habits in your daily life. One of the most practical insights was learning to shift between different modes of thinking depending on the situation—being visionary when needed, detailed when necessary, and collaborative when appropriate. It’s a reminder that success isn’t just about working harder—it’s about thinking better, more intentionally, and with greater self-awareness.
+
+**Key lesson**: Successful people cultivate a variety of thinking styles—strategic, creative, reflective, and more—to adapt, lead, and solve problems with greater clarity and effectiveness
+
+## Scaling Up by Verne Harnish
+
+<img src="https://m.media-amazon.com/images/I/71Dk9QB5sCL._SL1500_.jpg" alt="Scaling Up by Verne Harnish" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> In *Scaling Up: How a Few Companies Make It… and Why the Rest Don’t*, Verne Harnish provides a comprehensive roadmap for business leaders who want to grow their companies without losing control or clarity. What sets this book apart is its practical, step-by-step approach to scaling—focusing not just on growth for growth’s sake, but on building a strong, sustainable organization that can thrive through every stage of expansion.
+Drawing from decades of experience working with successful entrepreneurs, Harnish outlines actionable strategies across four key areas: People, Strategy, Execution, and Cash. He offers clear tools and frameworks—such as the Rockefeller Habits—to help leaders streamline decision-making, foster a high-performance culture, and maintain alignment as their business grows. The book is packed with real-world examples and proven techniques, making it an invaluable resource for executives, founders, and managers at any stage.
+
+One of the most valuable takeaways is the emphasis on disciplined execution and consistent rhythms within the organization, ensuring that everyone remains focused and accountable. Whether you’re leading a startup or scaling an established company, Scaling Up delivers practical insights and systems that can help you grow with intention.
+
+Key lesson: Successful scaling requires a clear strategy, disciplined execution, and a strong team—empowering your company to grow efficiently and adapt to new opportunities.
+
+## Your Strategy Needs a Strategy by Martin Reeves
+
+<img src="https://m.media-amazon.com/images/I/71yH6dBfQWL._SL1500_.jpg" alt="Your Strategy Needs a Strategy by Martin Reeves" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> In *Your Strategy Needs a Strategy*, Martin Reeves and his co-authors from the Boston Consulting Group challenge the one-size-fits-all approach to business strategy. The core insight is that **different environments require different strategic approaches**—and the real skill of leadership lies in choosing the right approach based on context. Rather than prescribing a single framework, the book introduces five strategic archetypes: **Classical, Adaptive, Visionary, Shaping, and Renewal**—each suited to different levels of predictability and malleability in a market.
+What I found especially powerful is the “Strategy Palette,” a visual tool that helps leaders diagnose their environment and match it to the right strategic mindset. For example, a classical strategy may work well in a stable industry, while an adaptive or visionary approach is more effective in fast-changing or disruptive environments. The authors reinforce their ideas with real-world business examples and practical guidance for shifting between strategies as conditions evolve.
+
+This book helped me think more critically about strategic fit, reminding me that success isn’t just about having a strategy—it’s about having the right strategy for the time, market, and organization. It’s a must-read for anyone involved in strategic planning, transformation, or leadership in dynamic industries.
+
+**Key lesson**: There is no universal strategy—successful leaders must assess their business environment and choose the strategic approach that best fits its level of change, competition, and opportunity.
+
+## The Product Roadmapping Relaunched by C. Todd Lombardo
+
+<img src="https://m.media-amazon.com/images/I/71ZgEm3r38L._SL1200_.jpg" alt="Product Roadmapping Relaunched by C. Todd Lombardo" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> In *Product Roadmapping Relaunched*, C. Todd Lombardo and his co-authors offer a fresh, modern take on one of the most misunderstood tools in product management: the roadmap. Rather than treating a roadmap as a static list of features or deadlines, the book reframes it as a **strategic communication tool**—one that aligns stakeholders, reflects customer value, and adapts to change. What resonated with me most is the emphasis on **flexibility, transparency, and outcome-driven planning**, which is often missing in traditional roadmapping approaches.
+The authors walk through the full lifecycle of a roadmap—from vision alignment and stakeholder interviews to prioritization frameworks and visualization techniques. They provide practical advice on navigating the politics of product planning, managing uncertainty, and tailoring your roadmap for different audiences (executives, engineers, customers). Tools like now-next-later formats, opportunity solution trees, and lean roadmaps give teams a way to stay strategic while remaining adaptable.
+
+This book shifted the way I think about product planning—not as a rigid commitment, but as an evolving narrative that connects customer needs, business goals, and team priorities in a coherent, collaborative format.
+
+**Key lesson**: A great roadmap is not a feature list—it's a strategic narrative that aligns vision with action, adapts to change, and keeps teams focused on delivering real customer value.
+
+## The God-Shaped Brain by Timothy R. Jennings
+
+<img src="https://m.media-amazon.com/images/I/71B+USBDM2L._SL1200_.jpg" alt="The God-Shaped Brain by Timothy R. Jennings" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> *The God-Shaped Brain* by Dr. Timothy R. Jennings was a deeply thought-provoking addition to my reading journey—one that bridges **neuroscience, spirituality, and emotional healing**. The central premise is both simple and profound: **our view of God shapes our brain, character, and overall mental health**. Jennings explores how fear-based religious thinking can physically damage the brain, while love-based, grace-centered views of God promote healing, growth, and emotional resilience.
+Drawing from both clinical research and real-life examples, Jennings explains how the brain is wired to change—what neuroscience calls neuroplasticity—and how our beliefs can either reinforce fear or open us to transformation. One of the most powerful ideas in the book is that viewing God as punitive or authoritarian activates stress circuits in the brain, while seeing God as loving, just, and trustworthy leads to greater peace, empathy, and personal growth.
+
+This book stood out not only for its scientific grounding but also for its compassionate tone. It encouraged me to reflect on my inner narratives and consider how spiritual beliefs influence emotional well-being and relationships. A truly unexpected but impactful read.
+
+**Key lesson**: What you believe about God not only shapes your theology—it physically shapes your brain, influencing your capacity for peace, compassion, and personal transformation.
+
+## The Lean Product Playbook by Dan Olsen
+
+<img src="https://m.media-amazon.com/images/I/81XiH0C5eUL._SL1500_.jpg" alt="The Lean Product Playbook by Dan Olsen" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> As a perfect follow-up to *Product Roadmapping Relaunched*, *The Lean Product Playbook* by Dan Olsen dives deeper into the **how** of building products customers actually want. Grounded in lean startup principles, Olsen lays out a clear, step-by-step framework for achieving **product-market fit**—the holy grail of modern product development. What makes this book stand out is its structured yet flexible approach, helping product managers move from fuzzy ideas to validated solutions through rapid iteration and real customer feedback.
+The book breaks the process into manageable phases: determining your target customer, identifying underserved needs, defining your value proposition, prioritizing features, and testing hypotheses through MVPs (Minimum Viable Products). Tools like the Lean Product Process, Problem Space vs. Solution Space mapping, and Olsen’s Product-Market Fit Pyramid offer practical guidance for navigating each stage with confidence.
+
+What struck me most is how Olsen balances product intuition with data-driven rigor, encouraging teams to test early, learn fast, and build only what matters. It’s a highly actionable guide for anyone involved in product discovery, validation, or growth.
+
+**Key lesson**: Achieving product-market fit requires a repeatable process of customer discovery, value alignment, and rapid iteration—building smarter, not just faster.
+
+
+## Inspired by Marty Cagan
+
+<img src="https://m.media-amazon.com/images/I/61Nn6mDZ8YL._SL1200_.jpg" alt="Inspired by Marty Cagan" style="width: 25%; height: auto; float: left; margin-right: 10px;" /> In *Inspired: How to Create Tech Products Customers Love*, **Marty Cagan** delivers what many consider the **definitive guide to modern product management**. Drawing on decades of experience at companies like eBay, AOL, and Netscape, Cagan breaks down what sets great tech products—and great product teams—apart from the rest. More than just theory, *Inspired* offers an inside look into how leading product companies like Amazon, Apple, and Google approach discovery, delivery, and team culture.
+Cagan emphasizes that successful products emerge from strong product teams empowered to solve real customer problems—not just deliver features on a roadmap. He outlines the roles of product managers, designers, engineers, and leaders, and how they should work together to validate ideas quickly, minimize risk, and ship with confidence. What I found most compelling is the book’s focus on empowered teams—those given clear problems to solve, rather than feature lists to implement.
+
+If The Lean Product Playbook gives you the process, Inspired gives you the mindset. It’s an essential read for anyone involved in building, scaling, or leading product teams.
+
+**Key lesson**: Great products come from empowered teams solving real customer problems through continuous discovery, rapid validation, and a strong product culture.
+
+.
+
+# Final Thoughts
+
+My 2023 reading journey was a transformative experience, blending insights on leadership, communication, personal growth, and product development. Books like What Got You Here Won't Get You There and The Next Level taught me to evolve as a leader, while Speak So Your Audience Will Listen and How Successful People Think sharpened my communication and thinking skills. Scaling Up and Your Strategy Needs a Strategy provided frameworks for strategic growth, and product-focused books like The Lean Product Playbook and Inspired deepened my understanding of customer-centric innovation. Finally, The God-Shaped Brain offered a unique perspective on the mind-body-spirit connection.
+
+These books collectively emphasized the importance of intentionality, adaptability, and continuous learning. They’ve inspired me to refine my habits, align my actions with my goals, and approach challenges with a growth-oriented mindset. I invite you to explore these titles and reflect on how they might shape your own journey.
+
+
+

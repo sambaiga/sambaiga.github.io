@@ -1,0 +1,19 @@
+- title: "Scalable and Efficient MLP-based  Fully Parameterised Quantile for Probabilistic Power Forecasting"
+  date: 2024-07-02
+  description: "44th International Symposium on Forecasting"
+  location: Dijon, France
+  links:
+    - name: Slides
+      url: Dijon_conference_2024.pdf
+      icon: fa-solid fa-chalkboard-user
+
+- title: "Conformal Multilayer Perceptron-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with  PV
+"
+  date: 2024-09-17
+  description: 'IEEE International Conference on Communications, Control, and Computing Technologies for Smart Grids'
+  location: Oslo, Norway
+  links:
+  - name: Slides
+    url: Oslo_cinference_2024.pdf
+    icon: fa-solid fa-chalkboard-user
+ 

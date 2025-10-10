@@ -1,0 +1,130 @@
+project:
+  type: website
+  output-dir: _site
+
+  preview: 
+    port: 5555
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "*.ipynb"
+    - "!etc/"
+
+  resources:
+    - "files/**"
+    - "etc/**"
+
+    # Things that need to be at the site root
+    - ".htaccess"
+    - "LiveSearchSiteAuth.xml"
+    - "keybase.txt"
+    - "y_key_31e0c4105fc75710.html"
+    - "pgp_ath.asc.txt"
+
+
+freeze: auto
+
+bibliography: files/bib/references.bib
+csl: files/bib/chicago-author-date.csl
+
+# Metadata stuff
+pagetitle: "{{< meta title >}} | sambaiga"
+author-meta: "Anthony Faustine"
+
+website:
+  title: "Anthony Faustine"
+  description: "Anthony Faustine is Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland where  he lead the development of data analytics and machine learning powered products and services that contribute to intelligent power systems."
+  favicon: "/files/favicon-512.png"
+  site-url: "https://sambaiga.github.io"
+  repo-url: "https://github.com/sambaiga/sambaiga.github.io"
+
+  google-analytics: "UA-527449-5"
+
+  twitter-card: 
+    image: "/files/profiles/twitter-card-large.png"
+    card-style: summary_large_image
+    creator: "@asambaiga"
+    site: "@sambaiga"
+
+  open-graph: 
+    image: "/files/profiles/twitter-card-large.png"
+    locale: en_US
+  
+  navbar:
+    pinned: true
+
+    left:
+      #- text: "About"
+      #  href: "index.qmd"
+      - text: "Project"
+        href: "project/index.qmd"
+      #- text: "Projects"
+      #  href: now/index.qmd
+      - text: "Research"
+        file:  research/index.qmd
+      - text: "Talks"
+        href: "talks/index.qmd"
+      - text: "Blog"
+        file: blog/index.qmd
+      - text: "Resources"
+        file: uses/index.qmd
+      - text: "CV"
+        href: "cv/index.qmd"
+
+    right:
+      - text: "{{< iconify bi rss size=1.1em title='RSS' >}}"
+        href: atom.xml
+      - text: "{{< iconify bi envelope size=1.1em title='E-mail' >}}"
+        href: "mailto:sambaiga@gmail.com"
+      - text: "{{< iconify fa6-brands bluesky size=1.1em title='Bluesky' >}}"
+        href: https://bsky.app/profile/andrew.heiss.phd
+        rel: me
+      - text: "{{< iconify bi mastodon size=1.1em title='Mastodon' >}}"
+        href: https://fediscience.org/users/andrew/
+        rel: me
+      - text: "{{< iconify bi github size=1.1em title='GitHub' >}}"
+        href: https://github.com/sambaiga
+        rel: me
+      - text: "{{< iconify bi youtube size=1.1em title='YouTube' >}}"
+        href: https://www.youtube.com/sambaiga
+        rel: me
+      - text: "{{< iconify bi linkedin size=1.1em title='LinkedIn' >}}"
+        href: https://www.linkedin.com/in/sambaiga
+        rel: me
+  
+  page-footer:
+    left: |
+      <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Anthony Faustine</span>
+      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>      
+    center: |
+      <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
+      <span class="faux-block">{{< fa key >}} [PGP public key]({{< var pgp.key >}}) &emsp; {{< fa fingerprint >}} Fingerprint:</strong><br><span class="fingerprint">{{< var pgp.fingerprint >}}</span></span>
+    right: |
+      <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
+      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
+
+format:
+  html:
+    theme: 
+      - html/ath.scss
+    grid: 
+      body-width: 900px
+    toc: false
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
+    highlight-style: monokai
+
+
+notebook-links: true
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false

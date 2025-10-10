@@ -1,0 +1,68 @@
+---
+title: "Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks"
+date: 2021-07-01
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Ireland’s National Centre for Applied Data Analytics (CeADER), University College Dublin, Dublin 4, Ireland
+  - name: Pereira, Lucas
+    url: https://www.alspereira.info/
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+categories:
+  - nilm
+  - disaggregation
+  - machine learning
+pub-info:
+  reference: >-
+    <strong>Anthony Faustine</strong> and Pereira, Lucas, “Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks,” <em>Energies</em> 2020, 13, 3374, doi: <a href="https://doi.org/10.3390/en13133374"><code>10.3390/en13133374</code></a>
+  links:
+    - name: Published
+      url: https://www.mdpi.com/1996-1073/13/13/3374,
+      icon: fa-solid fa-scroll
+    - name: Code
+      url: https://github.com/sambaiga/WRG-NILM
+      icon: fa-brands fa-github
+doi: 10.3390/en1313337
+haiku:
+  - sustainable energy
+  - buildings
+  - nilm state prediction
+---
+
+## Important links
+
+- [Paper (preprint)](mfxplainer.pdf)
+- [GitHub repository](https://github.com/sambaiga/iMLFPQ-forecast)
+
+
+## Abstract
+
+Power demand forecasting is becoming a crucial tool for the planning and operation of Low Voltage (LV) distribution systems. Most importantly, the high penetration of Photovoltaics (PV) power generation as part of Distributed Energy Resource (DER)s has transformed the power demand forecasting problem at the distribution level into net-load forecasting. This paper introduces a novel and scalable approach to probabilistic forecasting at LV substation with PV generation. It presents a multi-variates probabilistic forecasting approach, leveraging Quantile Regression (QR). The proposed architecture uses a computationally efficient feed-forward neural net to capture the complex interaction between the historical load demands and covariate variables such as solar irradiance. It is empirically demonstrated that the proposed method can efficiently produce well-calibrated forecasts, both auto-regressively or in a single forward pass. Furthermore, a benchmark against four state-of-the-art forecasting approaches shows that the proposed approach offers a desirable trade-off between forecasting accuracies, calibrated uncertainty, and computation complexity. 
+
+
+## Important figures
+
+![Figure 2: Predicted probability of impartiality by levels of equality and democracy](mfxplainer-fig2.png)
+
+![Figure 4: Tangents to the prediction function at 25 and 50](mfxplainer-fig4.png)
+
+
+## Citation
+
+<p class="buttons" style="text-align:center;">
+<a class="btn btn-danger" target="_blank" href="https://www.zotero.org/save?type=doi&q=10.18637/jss.v111.i09">{{< ai zotero >}}&emsp;Add to Zotero {{< fa square-arrow-up-right >}}</a>
+</p>
+
+```bibtex
+@ARTICLE{10529636,
+  author={Faustine, Anthony and Nunes, Nuno Jardim and Pereira, Lucas},
+  journal={IEEE Transactions on Power Systems}, 
+  title={Efficiency Through Simplicity: MLP-Based Approach for Net-Load Forecasting With Uncertainty Estimates in Low-Voltage Distribution Networks}, 
+  year={2025},
+  volume={40},
+  number={1},
+  pages={46-56},
+  keywords={Forecasting;Uncertainty;Probabilistic logic;Predictive models;Substations;Load modeling;Distribution networks;Deep Neural Networks (DNN) Feed-forward Neural Network (FFN) Low Voltage (LV) distribution substation;Multilayer Perceptron (MLP);net-load;probabilistic forecasting;Photovoltaics (PV) generation;quantile regression (QR)},
+  doi={10.1109/TPWRS.2024.3400123}}
+```
