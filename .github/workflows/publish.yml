@@ -56,7 +56,7 @@ jobs:
       - name: Render site
         run: quarto render
 
-      # 🚀 8. Publish to GitHub Pages
+      # 🚀 8. Publish to GitHub Pages puplish
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
