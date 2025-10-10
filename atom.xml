@@ -21,6 +21,7 @@
 
 
 
+
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>At the beginning of 2024, I set a personal goal: to read one book each month. This was fueled by my desire to keep learning, expand my thinking, and deepen my self-awareness.</p>
@@ -148,20 +149,23 @@
 <p>These books have left a lasting impression, shaping how I think, act, and relate to others. They have reminded me to focus on building a life of purpose, cultivating resilience, and embracing the power of human connection.</p>
 
 
-<!-- -->
-
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine2025" class="csl-entry quarto-appendix-citeas">
+Faustine, Anthony. 2025. <span>“A Year of Growth: 13 Books That
+Transformed My Perspective in 2024.”</span> January 1, 2025. <a href="https://sambaiga.github.io/blog/2025/01/">https://sambaiga.github.io/blog/2025/01/</a>.
+</div></div></section></div> ]]></description>
   <category>book</category>
   <guid>https://sambaiga.github.io/blog/2025/01/</guid>
   <pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://sambaiga.github.io/blog/2025/01/2024_reading_list.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>My 2023 Reading Journey: 11 Books That Shaped My Growth</title>
   <dc:creator>Anthony Faustine</dc:creator>
   <link>https://sambaiga.github.io/blog/2024/01/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -243,14 +247,16 @@
 <p>These books collectively emphasized the importance of intentionality, adaptability, and continuous learning. They’ve inspired me to refine my habits, align my actions with my goals, and approach challenges with a growth-oriented mindset. I invite you to explore these titles and reflect on how they might shape your own journey.</p>
 
 
-<!-- -->
-
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine2024" class="csl-entry quarto-appendix-citeas">
+Faustine, Anthony. 2024. <span>“My 2023 Reading Journey: 11 Books That
+Shaped My Growth.”</span> January 1, 2024. <a href="https://sambaiga.github.io/blog/2024/01/">https://sambaiga.github.io/blog/2024/01/</a>.
+</div></div></section></div> ]]></description>
   <category>book</category>
   <guid>https://sambaiga.github.io/blog/2024/01/</guid>
   <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://sambaiga.github.io/blog/2024/01/2024_reading_list.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

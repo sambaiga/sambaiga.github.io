@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Faustine">
+<meta name="description" content="Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.">
+
+<title>Understanding Bayesian Thinking for Industrial Applications | sambaiga – Anthony Faustine</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../..//files/favicon-512.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-4c7b890cc350be7067044af900615741.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-53d53f6e938bd2c0eef4e8de25257195.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-527449-5', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(bayesion-01.jpg);
+background-size: cover;
+      }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Understanding Bayesian Thinking for Industrial Applications | sambaiga">
+<meta property="og:description" content="Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.">
+<meta property="og:image" content="https://sambaiga.github.io/blog/2025/10/bayesion-01.jpg">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="Understanding Bayesian Thinking for Industrial Applications | sambaiga">
+<meta name="twitter:description" content="Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.">
+<meta name="twitter:image" content="https://sambaiga.github.io/blog/2025/10/bayesion-01.jpg">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../talks/index.html"> 
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../cv/index.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../atom.xml"> 
+<span class="menu-text"><iconify-icon inline="" icon="bi:rss" style="font-size: 1.1em;" aria-label="Icon rss from bi Iconify.design set." title="RSS"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><iconify-icon inline="" icon="bi:envelope" style="font-size: 1.1em;" aria-label="Icon envelope from bi Iconify.design set." title="E-mail"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/andrew.heiss.phd" rel="me"> 
+<span class="menu-text"><iconify-icon inline="" icon="fa6-brands:bluesky" style="font-size: 1.1em;" aria-label="Icon bluesky from fa6-brands Iconify.design set." title="Bluesky"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://fediscience.org/users/andrew/" rel="me"> 
+<span class="menu-text"><iconify-icon inline="" icon="bi:mastodon" style="font-size: 1.1em;" aria-label="Icon mastodon from bi Iconify.design set." title="Mastodon"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><iconify-icon inline="" icon="bi:github" style="font-size: 1.1em;" aria-label="Icon github from bi Iconify.design set." title="GitHub"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.youtube.com/sambaiga" rel="me"> 
+<span class="menu-text"><iconify-icon inline="" icon="bi:youtube" style="font-size: 1.1em;" aria-label="Icon youtube from bi Iconify.design set." title="YouTube"></iconify-icon></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><iconify-icon inline="" icon="bi:linkedin" style="font-size: 1.1em;" aria-label="Icon linkedin from bi Iconify.design set." title="LinkedIn"></iconify-icon></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Understanding Bayesian Thinking for Industrial Applications</h1>
+                  <div>
+        <div class="description">
+          Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">bayesian</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p><a href="https://www.andrewheiss.com/">Anthony Faustine</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Friday, October 10, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-building-blocks-of-bayesian-modeling" id="toc-the-building-blocks-of-bayesian-modeling" class="nav-link" data-scroll-target="#the-building-blocks-of-bayesian-modeling">The Building Blocks of Bayesian modeling</a></li>
+  <li><a href="#case-study-1-ab-testing-with-small-samples" id="toc-case-study-1-ab-testing-with-small-samples" class="nav-link" data-scroll-target="#case-study-1-ab-testing-with-small-samples">Case study 1: AB Testing with Small Samples</a></li>
+  <li><a href="#model-diagnostics" id="toc-model-diagnostics" class="nav-link" data-scroll-target="#model-diagnostics">Model Diagnostics</a></li>
+  <li><a href="#posterior-predictive-checks" id="toc-posterior-predictive-checks" class="nav-link" data-scroll-target="#posterior-predictive-checks">Posterior Predictive Checks</a></li>
+  <li><a href="#prior-predictive-checks-validating-model-assumptions" id="toc-prior-predictive-checks-validating-model-assumptions" class="nav-link" data-scroll-target="#prior-predictive-checks-validating-model-assumptions">Prior Predictive Checks: Validating Model Assumptions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Suppose your company just installed a new, expensive machine. A critical question arises: <em>How long will it last before failure?</em>. The lead engineer, based on experience with previous models, estimates a lifespan of 10 years. However, you only have 3 months of real-world test data for this specific unit. A major warranty and service contract decision needs to be made now.</p>
+<p>Traditional (<strong>Frequentist</strong>) Statistics often requires large datasets (the “long run”) to make confident statements. In industry, this approach often falls short because we frequently face:</p>
+<ol type="1">
+<li><p>Small Samples: Data sparsity with new products, machines, or processes.</p></li>
+<li><p>Wasted Knowledge: Vast prior expertise (like the engineer’s 10-year estimate) that is ignored by the statistical model.</p></li>
+</ol>
+<p><strong>The Power of the Bayesian Approach</strong>: Bayesian modeling is a framework that allows us to formally incorporate this prior expertise and update it precisely and mathematically as new evidence (data) arrives. It helps us make the best possible decision even under high uncertainty. This shift from ignoring prior knowledge to integrating it is the core of Bayesian thinking.</p>
+<p><strong>What Bayesian Thinking is About</strong> Traditional (Frequentist) statistics asks: If the true parameter were <span class="math inline">\(\theta\)</span> how likely is the data we observed?</p>
+<p>Bayesian inference asks: Given the data I observed, how likely is each possible value of <span class="math inline">\(\theta\)</span>?</p>
+<p>This shift—from reasoning about data given a parameter to parameter given data is what makes Bayesian methods so intuitive for decision-making.</p>
+<p>The Bayesian approach is learning from data: it is updating our beliefs as new evidence comes in. As such bayesion thinking view probability as a measure of uncertainty about the world, not just a long-run frequency of events (Frequentist View). This perspective is especially useful in industrial contexts where decisions often need to be made with limited data and high uncertainty.</p>
+</section>
+<section id="the-building-blocks-of-bayesian-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="the-building-blocks-of-bayesian-modeling">The Building Blocks of Bayesian modeling</h3>
+<p>The process of updating our beliefs is formalized by Bayes’ Theorem. <span class="math display">\[
+P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
+\]</span></p>
+<p>While the formula looks mathematical, its components represent a beautifully intuitive learning cycle.</p>
+<p><span class="math display">\[
+\mathrm{Posterior} \propto \mathrm{Likelihood} \times \mathrm{Prior}
+\]</span></p>
+<p>Let us break down how this relates to our machine failure problem; (<span class="math inline">\(\theta\)</span> is the machine’s expected failure rate, and <span class="math inline">\(D\)</span> is the 3 months of test data)</p>
+<p>Thus <strong>Prior</strong> $ P() $ represents the initial belief <strong>before</strong> seeing data. This is where we inject domain expertise and historical knowledge. For insatnce the engineer’s historical estimate that the lifespan is ≈10 years (a low failure rate). This is our starting belief about <span class="math inline">\(\theta\)</span>.</p>
+<p>There are different types of priors: 1. <strong>Informative Priors</strong>: Based on strong domain expertise or historical data (e.g., We know with high confidence similar machines have lasted 8-12 years).</p>
+<ol start="2" type="1">
+<li><p><strong>Weakly Informative Priors</strong>: Gently guide the model without overwhelming the data (often a good default).</p></li>
+<li><p><strong>Flat (Uninformative) Priors</strong>: Essentially says, “I have no idea,” letting the data completely “speak for itself.” This often defeats the purpose of Bayesian modeling in low-data industrial settings.</p></li>
+</ol>
+<p>The <strong>Likelihood</strong> <span class="math inline">\(P(D \mid \theta)\)</span> is the mathematical tool that connects the observed data to your parameter. It asks: How probable are the observed data, given a specific value of failure rate <span class="math inline">\(\theta\)</span>?. Considering our machine example, the likelihood tell us how likely is it that we saw zero failures in the first 3 months if the true average lifespan was, say, 5 years? Or 15 years? The likelihood measures the evidence provided by your data.</p>
+<p>Finally the <strong>Posterior</strong> $ P(D) $ is the updated belief after seeing the data. It is the complete answer that incorporates the weight of both your prior knowledge and the new evidence. Considering our machine example, the posterior tells us The new, combined estimate of the expected machine lifespan after factoring in both the engineer’s 10-year estimate and the 3 months of failure-free test data.</p>
+<section id="pymc-the-probabilistic-programming-engine" class="level4">
+<h4 class="anchored" data-anchor-id="pymc-the-probabilistic-programming-engine">PyMC: The Probabilistic Programming Engine</h4>
+<p>Understanding the relationship <span class="math inline">\(\mathrm{Posterior} \propto \mathrm{Likelihood} \times \mathrm{Prior}\)</span> is the conceptual heart of Bayesian analysis. However, calculating the actual posterior distribution, $ P(D) $, often involves complex, multi-dimensional integration that is impossible to solve analytically for real-world industrial problems. This is where Probabilistic Programming Languages (PPLs) like PyMC become indispensable.</p>
+<p><a href="">PyMC</a> is an open-source Python library designed to construct and fit Bayesian statistical models using state-of-the-art computational methods. PyMC is not the only powerful PPL in Python. Two other notable options are <a href="">pyro</a> and <a href="">TensorFlow Probability (TFP)</a>. For this lesson we will stick with pymc</p>
+</section>
+</section>
+<section id="case-study-1-ab-testing-with-small-samples" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-1-ab-testing-with-small-samples">Case study 1: AB Testing with Small Samples</h3>
+<p>To shift from theory to practical implementation, we will apply the Bayesian building blocks Prior, Likelihood, and Posterior to a concrete industrial problem common in tech and e-commerce: A/B Testing</p>
+<blockquote class="blockquote">
+<p>Suppose you are a data scientist at an e-commerce company. The marketing team just launched a new website feature and wants to know:</p>
+</blockquote>
+<ol type="1">
+<li><p>What’s the true conversion rate?</p></li>
+<li><p>Is it better than the old version (which historically has an 8% conversion rate)?</p></li>
+<li><p>How much should we trust this estimate with limited data?</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>During the first few days of the feature launch, the company has observed 200 visitors with only 15 conversion.</p>
+</blockquote>
+<div id="c9cdc1b7" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">UserWarning</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> clear_output</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT, html, md, px</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="4998468c" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure Altair for optimal performance</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>alt.data_transformers.enable(<span class="st">'default'</span>, max_rows<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>alt.renderers.enable(<span class="st">'default'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A/B Test Parameters</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>visitors <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>conversions <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>observed_conversion_rate <span class="op">=</span> conversions <span class="op">/</span> visitors</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>historical_baseline <span class="op">=</span> <span class="fl">0.08</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="define-prior-likelihood-and-posterior-in-pymc" class="level6">
+<h6 class="anchored" data-anchor-id="define-prior-likelihood-and-posterior-in-pymc">Define Prior, likelihood, and Posterior in PyMC</h6>
+<p>To model this problem in PyMC, we need to define the Prior and Likelihood distributions.</p>
+<p><strong>Prior</strong>: For this problem, we are estimating a proportion (the conversion rate <span class="math inline">\(\theta\)</span>), which can only range between 0 and 1. The Beta distribution is ideal for modeling parameters that are bounded between 0 and 1, such as probabilities or rates.</p>
+<p>The Beta distribution is controlled by two parameters, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. We set these parameters to formally encode our prior knowledge: the historical 8% conversion rate. The mean of a <span class="math inline">\(\mathrm{Beta}(\alpha,\beta)\)</span> distribution is <span class="math inline">\(\frac{\alpha}{ \alpha + \beta}\)</span>. Since our historical rate is 8% (or 0.08), we need to choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> such that: <span class="math display">\[
+\frac{\alpha}{ \alpha + \beta} = 0.08
+\]</span></p>
+<p>To determine the strength of this belief, we choose a number that represents the effective sample size (ESS) of our historical knowledge. If we choose a hypothetical ESS of 100 trials:</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span> (hypothetical successes) <span class="math inline">\(=100×0.08=8\)</span></li>
+<li><span class="math inline">\(\beta\)</span> (hypothetical failures) <span class="math inline">\(=100−8=92\)</span></li>
+</ul>
+<p><strong>Likelihood</strong> the Likelihood is determined by the process that generated the data. Since we have a fixed number of trials (N=200 visitors) and count the number of successes (k=15 conversions), this is a Binomial distribution.</p>
+<p>This small block of code defines and runs our entire Bayesian analysis. For those seeing PyMC for the first time, here is what each section is doing:</p>
+<ol type="1">
+<li><code>with pm.Model() as model:</code> This block acts as a container for all the random variables and data in our model. Everything inside this context belongs to the conversion_model</li>
+<li><code>conversion_rate = pm.Beta(...)</code>: We are telling PyMC that the true conversion_rate is a random variable, and our initial belief is described by the Beta(8,92) distribution.</li>
+<li><code>likelihood = pm.Binomial(...)</code>: This defines the process that generated our observed data. We link the conversion_rate parameter to the actual observed data (n=visitors, observed=conversions) using the appropriate Binomial distribution.</li>
+<li><code>pm.sample(...)</code>: This is where the magic happens! The pm.sample function runs the MCMC sampler (the computational engine) to combine the Prior and the Likelihood, effectively calculating the Posterior distribution. We ask the sampler to draw 2000 samples after a 1000-sample tuning period, running 4 independent chains to ensure reliable results.</li>
+</ol>
+<div id="7a474694" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> conversion_model:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prior distribution based on historical performance</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    conversion_rate <span class="op">=</span> pm.Beta(<span class="st">"conversion_rate"</span>, alpha<span class="op">=</span><span class="dv">8</span>, beta<span class="op">=</span><span class="dv">92</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Likelihood function</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    likelihood <span class="op">=</span> pm.Binomial(<span class="st">"observations"</span>, n<span class="op">=</span>visitors, p<span class="op">=</span>conversion_rate, observed<span class="op">=</span>conversions)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample from posterior distribution</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    trace <span class="op">=</span> pm.sample(<span class="dv">2000</span>, tune<span class="op">=</span><span class="dv">1000</span>, chains<span class="op">=</span><span class="dv">4</span>, random_seed<span class="op">=</span><span class="dv">42</span>, return_inferencedata<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="model-diagnostics" class="level3">
+<h3 class="anchored" data-anchor-id="model-diagnostics">Model Diagnostics</h3>
+<p>Running <code>pm.sample()</code> generates the raw output, but the job isn’t done yet. Before we trust the results, we must perform Model Diagnostics to ensure our computational engine (the MCMC sampler) has worked correctly. The single most important diagnostic check is confirming Convergence.</p>
+<section id="model-convergencevergence" class="level5">
+<h5 class="anchored" data-anchor-id="model-convergencevergence">Model Convergencevergence</h5>
+<p>In Bayesian inference, we use Markov Chain Monte Carlo (MCMC) methods to sample from the complex posterior distribution. We rely on these samples to accurately estimate quantities like the mean conversion rate or its credible interval.</p>
+<p>Convergence is the guarantee that the MCMC chains have explored the entire distribution and are now producing samples that truly represent the target Posterior distribution, and are not just stuck in a starting location.</p>
+<blockquote class="blockquote">
+<p><strong>Analogy</strong>: Imagine trying to understand the shape of a deep, misty valley (the posterior). If your chains haven’t converged, they might be stuck high up on a ridge, missing the true, deep center. Diagnostics are the tools we use to confirm the chains have found and are walking across the bottom of the true valley.</p>
+</blockquote>
+<p>PyMC uses the supporting library <a href="https://www.arviz.org/en/latest/">ArviZ</a> for standardizing and analyzing the results, which gives us the following industry-standard diagnostics and plots</p>
+<ol type="1">
+<li><p>Trace Plots: Visual inspection of parameter samples across iterations.</p>
+<ul>
+<li>Good trace plots look like “fuzzy caterpillars” with no trends or jumps.</li>
+</ul></li>
+<li><p>R-hat (Gelman-Rubin Statistic): Measures how well multiple chains agree.</p>
+<ul>
+<li>R-hat ≈ 1 means convergence.</li>
+<li>R-hat &gt; 1.01 suggests problems.</li>
+</ul></li>
+<li><p>Effective Sample Size (ESS): Indicates how many independent samples you effectively have.</p>
+<ul>
+<li>Low ESS means poor mixing or autocorrelation. Good ESS is typically &gt; 200 per parameter.</li>
+</ul></li>
+</ol>
+<p>The most efficient way to check convergence numerically is using the ArviZ summary function, specifically asking for the diagnostics:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>az.summary(trace, kind<span class="op">=</span><span class="st">"diagnostics"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Alternatively, you can visualize the diagnostics using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>az.plot_trace(trace)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>After running the MCMC sampling, <span class="cf">for</span> our `conversion_model` we use the az.summary(trace, kind<span class="op">=</span><span class="st">"diagnostics"</span>) function to check our chains</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>::: {<span class="co">#d0ce6f04 .cell execution_count=19}</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>``` {.python .cell<span class="op">-</span>code}</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>diag_table<span class="op">=</span>az.summary(trace, kind<span class="op">=</span><span class="st">"diagnostics"</span>)[[<span class="st">'ess_bulk'</span>, <span class="st">'ess_tail'</span>, <span class="st">'r_hat'</span>]]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>GT(diag_table).tab_header(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"MCMC Diagnostics"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    subtitle<span class="op">=</span><span class="st">"Conversion Rate Model"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>).cols_label({</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ess_bulk'</span>: <span class="st">'ESS Bulk'</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">'ess_tail'</span>: <span class="st">'ESS Tail.'</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'r_hat'</span>: <span class="st">'R-hat'</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div id="qutueokwyu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#qutueokwyu table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#qutueokwyu thead, tbody, tfoot, tr, td, th { border-style: none !important; }
+ tr { background-color: transparent !important; }
+#qutueokwyu p { margin: 0 !important; padding: 0 !important; }
+ #qutueokwyu .gt_table { display: table !important; border-collapse: collapse !important; line-height: normal !important; margin-left: auto !important; margin-right: auto !important; color: #333333 !important; font-size: 16px !important; font-weight: normal !important; font-style: normal !important; background-color: #FFFFFF !important; width: auto !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #A8A8A8 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #A8A8A8 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; }
+ #qutueokwyu .gt_caption { padding-top: 4px !important; padding-bottom: 4px !important; }
+ #qutueokwyu .gt_title { color: #333333 !important; font-size: 125% !important; font-weight: initial !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; border-bottom-color: #FFFFFF !important; border-bottom-width: 0 !important; }
+ #qutueokwyu .gt_subtitle { color: #333333 !important; font-size: 85% !important; font-weight: initial !important; padding-top: 3px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; border-top-color: #FFFFFF !important; border-top-width: 0 !important; }
+ #qutueokwyu .gt_heading { background-color: #FFFFFF !important; text-align: center !important; border-bottom-color: #FFFFFF !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #qutueokwyu .gt_bottom_border { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #qutueokwyu .gt_col_headings { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #qutueokwyu .gt_col_heading { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; overflow-x: hidden !important; }
+ #qutueokwyu .gt_column_spanner_outer { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; padding-top: 0 !important; padding-bottom: 0 !important; padding-left: 4px !important; padding-right: 4px !important; }
+ #qutueokwyu .gt_column_spanner_outer:first-child { padding-left: 0 !important; }
+ #qutueokwyu .gt_column_spanner_outer:last-child { padding-right: 0 !important; }
+ #qutueokwyu .gt_column_spanner { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; overflow-x: hidden !important; display: inline-block !important; width: 100% !important; }
+ #qutueokwyu .gt_spanner_row { border-bottom-style: hidden !important; }
+ #qutueokwyu .gt_group_heading { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; text-align: left !important; }
+ #qutueokwyu .gt_empty_group_heading { padding: 0.5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: middle !important; }
+ #qutueokwyu .gt_from_md> :first-child { margin-top: 0 !important; }
+ #qutueokwyu .gt_from_md> :last-child { margin-bottom: 0 !important; }
+ #qutueokwyu .gt_row { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; margin: 10px !important; border-top-style: solid !important; border-top-width: 1px !important; border-top-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; overflow-x: hidden !important; }
+ #qutueokwyu .gt_stub { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; }
+ #qutueokwyu .gt_stub_row_group { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; vertical-align: top !important; }
+ #qutueokwyu .gt_row_group_first td { border-top-width: 2px !important; }
+ #qutueokwyu .gt_row_group_first th { border-top-width: 2px !important; }
+ #qutueokwyu .gt_striped { color: #333333 !important; background-color: #F4F4F4 !important; }
+ #qutueokwyu .gt_table_body { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #qutueokwyu .gt_sourcenotes { color: #333333 !important; background-color: #FFFFFF !important; border-bottom-style: none !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; }
+ #qutueokwyu .gt_sourcenote { font-size: 90% !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; text-align: left !important; }
+ #qutueokwyu .gt_left { text-align: left !important; }
+ #qutueokwyu .gt_center { text-align: center !important; }
+ #qutueokwyu .gt_right { text-align: right !important; font-variant-numeric: tabular-nums !important; }
+ #qutueokwyu .gt_font_normal { font-weight: normal !important; }
+ #qutueokwyu .gt_font_bold { font-weight: bold !important; }
+ #qutueokwyu .gt_font_italic { font-style: italic !important; }
+ #qutueokwyu .gt_super { font-size: 65% !important; }
+ #qutueokwyu .gt_footnote_marks { font-size: 75% !important; vertical-align: 0.4em !important; position: initial !important; }
+ #qutueokwyu .gt_asterisk { font-size: 100% !important; vertical-align: 0 !important; }
+ 
+</style>
+
+<table class="gt_table caption-top table" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal">MCMC Diagnostics</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Conversion Rate Model</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="ess_bulk" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ESS Bulk</th>
+<th id="ess_tail" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ESS Tail.</th>
+<th id="r_hat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">R-hat</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right">3966.0</td>
+<td class="gt_row gt_right">5559.0</td>
+<td class="gt_row gt_right">1.0</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<p>:::</p>
+<p>This table immediately tells us the model is reliable and ready for analysis:</p>
+<ul>
+<li><p>(R_hat = 1.0,Goal Achieved): Since R_hat is exactly 1.0, this confirms that the four independent MCMC chains have fully converged and agree on the shape of the posterior distribution. The model is reliable.</p></li>
+<li><p>ESS bulk ​and ESS tail (3966.0 and 5559.0, Goal Achieved): Both effective sample sizes are significantly greater than our &gt;=400 minimum threshold. This means we have plenty of high-quality, effectively independent samples to accurately estimate the mean, mode, and credible intervals of the true conversion rate</p></li>
+</ul>
+<section id="visual-check-trace-plots" class="level6">
+<h6 class="anchored" data-anchor-id="visual-check-trace-plots">Visual Check: Trace Plots</h6>
+<p>While the numbers in the summary table are essential, visually inspecting the MCMC chains confirms the story. We use <code>az.plot_trace(trace)</code></p>
+<div id="abc07b8a" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_matplolib_theme():</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> cycler <span class="im">import</span> cycler</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    nice_fonts <span class="op">=</span> {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"font.family"</span>: <span class="st">"serif"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"savefig.bbox"</span> : <span class="st">"tight"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"savefig.pad_inches"</span> : <span class="fl">0.05</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ytick.right"</span> : <span class="va">True</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"font.serif"</span> : <span class="st">"Times New Roman"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"mathtext.fontset"</span> : <span class="st">"dejavuserif"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.labelsize"</span>: <span class="dv">15</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"font.size"</span>: <span class="dv">15</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"legend.fontsize"</span>: <span class="dv">12</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"xtick.labelsize"</span>: <span class="dv">12</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ytick.labelsize"</span>: <span class="dv">12</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"axes.linewidth"</span> : <span class="fl">0.5</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"grid.linewidth"</span> : <span class="fl">0.5</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"lines.linewidth"</span> : <span class="fl">1.</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"legend.frameon"</span> :<span class="va">False</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">'axes.prop_cycle'</span>: cycler(color<span class="op">=</span>[<span class="st">'#107591'</span>,<span class="st">'#f69a48'</span>,<span class="st">'#00c0bf'</span>, <span class="st">'#fdcd49'</span>,<span class="st">'#8da798'</span>,<span class="st">'#a19368'</span>,<span class="st">'#525252'</span>,<span class="st">'#a6761d'</span>,<span class="st">'#7035b7'</span>,<span class="st">'#cf166e'</span>])</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>         }</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    matplotlib.rcParams.update(nice_fonts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="9aef9885" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>set_matplolib_theme()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>az.plot_trace(trace)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bayesian-modelling-01_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The trace plot above shows excellent convergence for our conversion rate (<span class="math inline">\(\theta\)</span>) model, supporting the conclusions from our quantitative diagnostics. The plot is split into two panels 1. Right Panel: MCMC Sampling Behavior</p>
+<ul>
+<li>This panel shows the raw sampled values across iterations for each of our four chains. The sampled values oscillate stably around ∼0.075 (7.5%) without any noticeable trends, sudden jumps, or long-term drifts.</li>
+<li>The different lines (chains) are thoroughly intertwined and overlap completely. This “fuzzy caterpillar” appearance is the visual proof that the sampler is efficiently exploring the parameter space and that all chains have converged to the same distribution.</li>
+<li>The stable behavior confirms the chain has reached <strong>stationarity</strong>, meaning it is now sampling from the true, converged Posterior distribution.</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Left Panel: Posterior Distribution</p>
+<ul>
+<li>This panel shows the estimated Posterior probability density function (PDF) based on the samples taken. The shape is smooth and has a single peak, indicating a well-behaved posterior without multiple ambiguous peaks.</li>
+<li>The peak is clearly centered at a value close to our observed rate (7.5%), which is what we expect when combining a prior (8%) and data (7.5%).</li>
+<li>The spread of the distribution clearly visualizes our remaining uncertainty about the true conversion rate.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="posterior-predictive-checks" class="level3">
+<h3 class="anchored" data-anchor-id="posterior-predictive-checks">Posterior Predictive Checks</h3>
+<p>We just established that our MCMC sampler for the convernsation_rate model worked perfectly: the R-hat is 1.0, the ESS is high, and the trace plots look like textbook “fuzzy caterpillars.” This means our computation is reliable we have accurately found the true, converged posterior distribution.</p>
+<p>However, a converged model is not necessarily a good model. We now move to the impotant test: Does our model actually make sense given the data we observed?</p>
+<p>This moves us from confirming the sampler to validating the model itself, using Posterior Predictive Checks (PPCs).</p>
+<blockquote class="blockquote">
+<p>PPCs evaluate model fit by comparing the observed data to simulated data from the posterior distribution. If your model accurately represents the data-generating process, the simulated data should resemble the actual observations.</p>
+</blockquote>
+<p>To achive this it is important to generate new, simulated data from the posterior distribution and compare it to the actual observed data. This is done using the <code>pm.sample_posterior_predictive</code> function in PyMC.</p>
+<div id="bb92d732" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> conversion_model:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ppc <span class="op">=</span> pm.sample_posterior_predictive(trace, random_seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="78d03be4" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ppc_summary <span class="op">=</span> az.summary(ppc, kind<span class="op">=</span><span class="st">'stats'</span>, hdi_prob<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ppc_table <span class="op">=</span> (</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    GT(ppc_summary)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    .cols_label({</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'mean'</span>: <span class="st">'Mean'</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'sd'</span>: <span class="st">'Std-Dev.'</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'hdi_2.5%'</span>: <span class="st">'HDI 3%'</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'hdi_97.5%'</span>: <span class="st">'HDI 97%'</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    }).tab_header(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Posterior Predictive Summary Statistics"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        subtitle<span class="op">=</span><span class="st">""</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>ppc_table </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="wqiqheoclg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#wqiqheoclg table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#wqiqheoclg thead, tbody, tfoot, tr, td, th { border-style: none !important; }
+ tr { background-color: transparent !important; }
+#wqiqheoclg p { margin: 0 !important; padding: 0 !important; }
+ #wqiqheoclg .gt_table { display: table !important; border-collapse: collapse !important; line-height: normal !important; margin-left: auto !important; margin-right: auto !important; color: #333333 !important; font-size: 16px !important; font-weight: normal !important; font-style: normal !important; background-color: #FFFFFF !important; width: auto !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #A8A8A8 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #A8A8A8 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; }
+ #wqiqheoclg .gt_caption { padding-top: 4px !important; padding-bottom: 4px !important; }
+ #wqiqheoclg .gt_title { color: #333333 !important; font-size: 125% !important; font-weight: initial !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; border-bottom-color: #FFFFFF !important; border-bottom-width: 0 !important; }
+ #wqiqheoclg .gt_subtitle { color: #333333 !important; font-size: 85% !important; font-weight: initial !important; padding-top: 3px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; border-top-color: #FFFFFF !important; border-top-width: 0 !important; }
+ #wqiqheoclg .gt_heading { background-color: #FFFFFF !important; text-align: center !important; border-bottom-color: #FFFFFF !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #wqiqheoclg .gt_bottom_border { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #wqiqheoclg .gt_col_headings { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #wqiqheoclg .gt_col_heading { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; overflow-x: hidden !important; }
+ #wqiqheoclg .gt_column_spanner_outer { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; padding-top: 0 !important; padding-bottom: 0 !important; padding-left: 4px !important; padding-right: 4px !important; }
+ #wqiqheoclg .gt_column_spanner_outer:first-child { padding-left: 0 !important; }
+ #wqiqheoclg .gt_column_spanner_outer:last-child { padding-right: 0 !important; }
+ #wqiqheoclg .gt_column_spanner { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; overflow-x: hidden !important; display: inline-block !important; width: 100% !important; }
+ #wqiqheoclg .gt_spanner_row { border-bottom-style: hidden !important; }
+ #wqiqheoclg .gt_group_heading { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; text-align: left !important; }
+ #wqiqheoclg .gt_empty_group_heading { padding: 0.5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: middle !important; }
+ #wqiqheoclg .gt_from_md> :first-child { margin-top: 0 !important; }
+ #wqiqheoclg .gt_from_md> :last-child { margin-bottom: 0 !important; }
+ #wqiqheoclg .gt_row { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; margin: 10px !important; border-top-style: solid !important; border-top-width: 1px !important; border-top-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; overflow-x: hidden !important; }
+ #wqiqheoclg .gt_stub { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; }
+ #wqiqheoclg .gt_stub_row_group { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; vertical-align: top !important; }
+ #wqiqheoclg .gt_row_group_first td { border-top-width: 2px !important; }
+ #wqiqheoclg .gt_row_group_first th { border-top-width: 2px !important; }
+ #wqiqheoclg .gt_striped { color: #333333 !important; background-color: #F4F4F4 !important; }
+ #wqiqheoclg .gt_table_body { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #wqiqheoclg .gt_sourcenotes { color: #333333 !important; background-color: #FFFFFF !important; border-bottom-style: none !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; }
+ #wqiqheoclg .gt_sourcenote { font-size: 90% !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; text-align: left !important; }
+ #wqiqheoclg .gt_left { text-align: left !important; }
+ #wqiqheoclg .gt_center { text-align: center !important; }
+ #wqiqheoclg .gt_right { text-align: right !important; font-variant-numeric: tabular-nums !important; }
+ #wqiqheoclg .gt_font_normal { font-weight: normal !important; }
+ #wqiqheoclg .gt_font_bold { font-weight: bold !important; }
+ #wqiqheoclg .gt_font_italic { font-style: italic !important; }
+ #wqiqheoclg .gt_super { font-size: 65% !important; }
+ #wqiqheoclg .gt_footnote_marks { font-size: 75% !important; vertical-align: 0.4em !important; position: initial !important; }
+ #wqiqheoclg .gt_asterisk { font-size: 100% !important; vertical-align: 0 !important; }
+ 
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal">Posterior Predictive Summary Statistics</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border"></td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Std-Dev.</th>
+<th id="hdi_2.5%" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">HDI 3%</th>
+<th id="hdi_97.5%" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">HDI 97%</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right">15.314</td>
+<td class="gt_row gt_right">4.806</td>
+<td class="gt_row gt_right">6.0</td>
+<td class="gt_row gt_right">24.0</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+<p>It clear that the predicted mean (15.314) is extremely close to the actual observed count (15). This is a strong indication that the <code>conversion_rate model</code> fits the data very well. And thus the choice of the Beta Prior and Binomial Likelihood is appropriate for this data. The model predicts that 95% of the time, the number of conversions will fall between 6 and 24. Since the company observed value of 15 falls well within this 95% HDI, the actual observation is considered highly plausible according to your model.</p>
+<div id="07c99b89" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ppc_samples <span class="op">=</span> ppc.posterior_predictive[<span class="st">'observations'</span>].values.flatten()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>percentile <span class="op">=</span> (ppc_samples <span class="op">&lt;=</span> conversions).mean() <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Observed convervation (</span><span class="sc">{</span>conversions<span class="sc">}</span><span class="ss">) is at the </span><span class="sc">{</span>percentile<span class="sc">:.1f}</span><span class="ss">th percentile of predictions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Observed convervation (15) is at the 53.7th percentile of predictions</code></pre>
+</div>
+</div>
+<p>Since your value of 53.7 is very close to the ideal 50 , this provides further strong evidence (in addition to the mean of 15.314 you already saw) that:</p>
+<p>Your model is not biased (it’s not systematically over- or under-estimating the data).</p>
+<p>Your choice of the Beta-Binomial model is highly appropriate for this data set.</p>
+<section id="model-utility-and-business-decision" class="level4">
+<h4 class="anchored" data-anchor-id="model-utility-and-business-decision">Model Utility and Business Decision</h4>
+<p>Having confirmed the reliability of our Bayesian model through the Posterior Predictive Check (PPC), our focus now shifts from “Does the model fit the data?” to the commercially critical question: “Is the model useful for making business decisions?”</p>
+<p>Specifically, we utilize the derived posterior distribution to quantify the evidence that the new feature’s conversion rate (Feature B) is superior to the existing, established conversion rate (Feature A, which has a known baseline rate of 0.08).</p>
+<p>To achieve this, we need to extract the posterior distribution for the conversion_rate parameter that your model estimated.</p>
+<div id="e5d5d690" class="cell" data-execution_count="51">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>posterior_samples <span class="op">=</span> trace.posterior.stack(sample<span class="op">=</span>(<span class="st">"chain"</span>, <span class="st">"draw"</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>conversion_samples<span class="op">=</span>posterior_samples[<span class="st">'conversion_rate'</span>].values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Then calculate the probability of superiority” - the probability that the new feature (B) is better than the old (A).</p>
+<p>Finally, we can compute the expected uplift in conversion rate and translate that into business value. This involves calculating the difference between the posterior mean conversion rate and the historical rate, then multiplying by the number of visitors and average revenue per conversion.</p>
+<ul>
+<li>0.95: Strong Evidence. The new feature is very likely superior. You should consider launching it.</li>
+<li>0.80 Moderate Evidence. The new feature is likely better, but there is still a 20 chance it’s worse. Your decision depends on company risk tolerance.</li>
+<li>0.50 No Evidence. The new feature is a toss-up; there is no statistical reason to prefer it over the old feature.</li>
+</ul>
+<div id="3ab685f1" class="cell" data-execution_count="49">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>prob_superiority <span class="op">=</span> (conversion_samples <span class="op">&gt;</span> historical_baseline).mean()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the result</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The probability that the new feature is better than the old rate (0.08) is: </span><span class="sc">{</span>prob_superiority<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The probability that the new feature is better than the old rate (0.08) is: 0.397</code></pre>
+</div>
+</div>
+<p>The calculated Probability of Superiority is approximately 0.40, indicating that there is a 40% chance that the new feature’s conversion rate is better than the old feature’s 8% rate. There is a 60.3% chance the new feature is worse than the baseline. Since the probability that the new feature is superior is well below the neutral benchmark of 50%, we conclude that the data does not support replacing the existing feature A with the new feature B based on conversion rate alone. The new feature is highly likely to perform worse.</p>
+<section id="probability-of-meaningful-improvement." class="level5">
+<h5 class="anchored" data-anchor-id="probability-of-meaningful-improvement.">Probability of Meaningful Improvement.</h5>
+<p>Depending on your business context, you might also want to calculate the probability that the new feature is better by a meaningful margin (e.g., &gt;1% improvement). This calculates the chance that the new feature is better than the old feature by a practically significant margin of at least 1 percentage point. This is a crucial business metric. Sometimes a tiny statistical “win” isn’t worth the cost of development and deployment. If this probability is low, it confirms the feature is not a major improvement.</p>
+<div id="fa5bdaec" class="cell" data-execution_count="56">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>prob_1pct_improvement <span class="op">=</span> (conversion_samples <span class="op">&gt;</span> historical_baseline<span class="op">+</span><span class="fl">0.01</span>).mean()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Probability of &gt;1% improvement: </span><span class="sc">{</span>prob_1pct_improvement<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> Probability of &gt;1% improvement: 18.4%</code></pre>
+</div>
+</div>
+</section>
+<section id="probability-of-hitting-a-target-rate" class="level5">
+<h5 class="anchored" data-anchor-id="probability-of-hitting-a-target-rate">Probability of Hitting a Target Rate</h5>
+<p>This calculates the chance that the true conversion rate of the new feature is 10% or higher. This is useful if 10% is a specific, ambitious KPI (Key Performance Indicator) or goal set by the marketing or product team. It tells them how likely they are to meet their goal.</p>
+<div id="8621e38b" class="cell" data-execution_count="57">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>prob_10pct <span class="op">=</span> (conversion_samples <span class="op">&gt;</span> <span class="fl">0.10</span>).mean()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Probability of &gt;10% improvement: </span><span class="sc">{</span>prob_10pct<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> Probability of &gt;10% improvement: 6.3%</code></pre>
+</div>
+</div>
+</section>
+<section id="expected-value-of-the-change." class="level5">
+<h5 class="anchored" data-anchor-id="expected-value-of-the-change.">Expected Value of the Change.</h5>
+<p>This is the single-number best estimate of the average change (positive or negative) you can expect to see if you deploy the new feature. This is the foundation for the “Expected Business Impact” section. If this value is negative, it represents an Expected Loss. If you calculate: expected_uplift * Total Visitors * ARPC, you get the estimated dollar value of the change.</p>
+<div id="c001958c" class="cell" data-execution_count="59">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate key business probabilities</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>expected_uplift <span class="op">=</span> conversion_samples.mean() <span class="op">-</span> historical_baseline</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate expected business impact</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>monthly_visitors <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>expected_additional_conversions <span class="op">=</span> monthly_visitors <span class="op">*</span> expected_uplift</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>conversion_value <span class="op">=</span> <span class="dv">50</span>  <span class="co"># Average value per conversion</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>expected_monthly_value <span class="op">=</span> expected_additional_conversions <span class="op">*</span> conversion_value</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Expected uplift: </span><span class="sc">{</span>expected_uplift<span class="sc">:.4f}</span><span class="ss"> (</span><span class="sc">{</span>expected_uplift<span class="sc">:.2%}</span><span class="ss"> points)"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Expected monthly value: $</span><span class="sc">{</span>expected_monthly_value<span class="sc">:,.0f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Expected uplift: -0.0034 (-0.34% points)
+Expected monthly value: $-1,717</code></pre>
+</div>
+</div>
+<p>The implication is that if you deploy the new feature, you expect to lose 30 conversions per month, resulting in an Expected Monthly Loss of $1,500 for your business. This financial quantification is the most compelling reason to reject the new feature (unless, of course, the feature offers unquantified benefits that are worth more than $1,500)</p>
+</section>
+</section>
+</section>
+<section id="prior-predictive-checks-validating-model-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="prior-predictive-checks-validating-model-assumptions">Prior Predictive Checks: Validating Model Assumptions</h3>
+<p>While the previous section’s Posterior Predictive Check (PPC) demonstrated that our fitted model is reliable by successfully reproducing the observed data, a complete Bayesian analysis requires us to first validate the assumptions we made before seeing any data.</p>
+<p>This validation is accomplished through the Prior Predictive Check.</p>
+<blockquote class="blockquote">
+<p>Prior Predictive Checks are a crucial step in the Bayesian workflow that helps validate your prior assumptions before you fit the model to data. Unlike posterior predictive checks that evaluate model fit after seeing the data, prior PPCs show what kind of data your model expects to generate based solely on your prior beliefs.</p>
+</blockquote>
+<div id="85a03141" class="cell" data-execution_count="65">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test different prior beliefs</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>priors_to_test <span class="op">=</span> [</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Very Optimistic"</span>, <span class="dv">15</span>, <span class="dv">85</span>),    <span class="co"># Believes 15% conversion rate</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Optimistic"</span>, <span class="dv">12</span>, <span class="dv">88</span>),         <span class="co"># Believes 12% conversion rate  </span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Historical Based"</span>, <span class="dv">8</span>, <span class="dv">92</span>),    <span class="co"># Our original prior (8%)</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Skeptical"</span>, <span class="dv">4</span>, <span class="dv">96</span>),           <span class="co"># Believes 4% conversion rate</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Very Skeptical"</span>, <span class="dv">2</span>, <span class="dv">98</span>),      <span class="co"># Believes 2% conversion rate</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Uninformative"</span>, <span class="dv">1</span>, <span class="dv">1</span>),        <span class="co"># Let data dominate completely</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>sensitivity_results <span class="op">=</span> []</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> prior_name, alpha, beta <span class="kw">in</span> priors_to_test:</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> pm.Model() <span class="im">as</span> model:</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        conversion_rate <span class="op">=</span> pm.Beta(<span class="st">"conversion_rate"</span>, alpha<span class="op">=</span>alpha, beta<span class="op">=</span>beta)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>        obs <span class="op">=</span> pm.Binomial(<span class="st">"observations"</span>, n<span class="op">=</span>visitors, p<span class="op">=</span>conversion_rate, observed<span class="op">=</span>conversions)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        trace_temp <span class="op">=</span> pm.sample(<span class="dv">1000</span>, tune<span class="op">=</span><span class="dv">500</span>, random_seed<span class="op">=</span><span class="dv">42</span>, progressbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    posterior_mean <span class="op">=</span> trace_temp.posterior[<span class="st">"conversion_rate"</span>].mean().values</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    posterior_std <span class="op">=</span> trace_temp.posterior[<span class="st">"conversion_rate"</span>].std().values</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    prob_better <span class="op">=</span> (trace_temp.posterior[<span class="st">"conversion_rate"</span>].values <span class="op">&gt;</span> historical_baseline).mean()</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    sensitivity_results.append({</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Prior_Belief'</span>: prior_name,</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Prior_Parameters'</span>: <span class="ss">f"Beta(</span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>beta<span class="sc">}</span><span class="ss">)"</span>,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Prior_Mean'</span>: <span class="ss">f"</span><span class="sc">{</span>alpha<span class="op">/</span>(alpha<span class="op">+</span>beta)<span class="sc">:.3f}</span><span class="ss">"</span>,</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Posterior_Mean'</span>: <span class="ss">f"</span><span class="sc">{</span>posterior_mean<span class="sc">:.3f}</span><span class="ss">"</span>,</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Posterior_Std'</span>: <span class="ss">f"</span><span class="sc">{</span>posterior_std<span class="sc">:.3f}</span><span class="ss">"</span>,</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Prob_Better'</span>: <span class="ss">f"</span><span class="sc">{</span>prob_better<span class="sc">:.1%}</span><span class="ss">"</span>,</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Data_Influence'</span>: <span class="st">'Strong'</span> <span class="cf">if</span> <span class="bu">abs</span>(posterior_mean <span class="op">-</span> (alpha<span class="op">/</span>(alpha<span class="op">+</span>beta))) <span class="op">&gt;</span> <span class="fl">0.02</span> <span class="cf">else</span> <span class="st">'Moderate'</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>sensitivity_df <span class="op">=</span> pd.DataFrame(sensitivity_results)</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sensitivity analysis table</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>sensitivity_table <span class="op">=</span> (</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>    GT(sensitivity_df)</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    .tab_header(</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"Sensitivity Analysis: Impact of Prior Beliefs"</span>,</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>        subtitle<span class="op">=</span><span class="st">"How Different Starting Assumptions Affect Final Conclusions"</span></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    .cols_label(</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>        Prior_Belief<span class="op">=</span><span class="st">"Prior Belief"</span>,</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>        Prior_Parameters<span class="op">=</span><span class="st">"Prior Distribution"</span>, </span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>        Prior_Mean<span class="op">=</span><span class="st">"Prior Mean"</span>,</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>        Posterior_Mean<span class="op">=</span><span class="st">"Posterior Mean"</span>,</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>        Posterior_Std<span class="op">=</span><span class="st">"Posterior Std"</span>,</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>        Prob_Better<span class="op">=</span><span class="st">"Prob. Better"</span>,</span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>        Data_Influence<span class="op">=</span><span class="st">"Data Influence"</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>    .data_color(</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>        columns<span class="op">=</span>[<span class="st">"Prob_Better"</span>],</span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>        palette<span class="op">=</span>[<span class="st">"#C73E1D"</span>, <span class="st">"#F18F01"</span>, <span class="st">"#2E8B57"</span>],</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>        domain<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.5</span>, <span class="fl">1.0</span>]</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>    .data_color(</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>        columns<span class="op">=</span>[<span class="st">"Data_Influence"</span>],</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>        palette<span class="op">=</span>[<span class="st">"#2E8B57"</span>, <span class="st">"#F18F01"</span>, <span class="st">"#C73E1D"</span>],</span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>        domain<span class="op">=</span>[<span class="st">"Strong"</span>, <span class="st">"Moderate"</span>, <span class="st">"Weak"</span>]</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a>    .tab_source_note(</span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Analysis shows robustness of conclusions to different prior assumptions • "</span></span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Even skeptical priors converge toward data-driven truth"</span></span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a>    .tab_options(</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>        table_width<span class="op">=</span><span class="st">"100%"</span>,</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>clear_output()</span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>sensitivity_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div id="nvgcnsnwri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#nvgcnsnwri table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#nvgcnsnwri thead, tbody, tfoot, tr, td, th { border-style: none !important; }
+ tr { background-color: transparent !important; }
+#nvgcnsnwri p { margin: 0 !important; padding: 0 !important; }
+ #nvgcnsnwri .gt_table { display: table !important; border-collapse: collapse !important; line-height: normal !important; margin-left: auto !important; margin-right: auto !important; color: #333333 !important; font-size: 16px !important; font-weight: normal !important; font-style: normal !important; background-color: #FFFFFF !important; width: 100% !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #A8A8A8 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #A8A8A8 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; }
+ #nvgcnsnwri .gt_caption { padding-top: 4px !important; padding-bottom: 4px !important; }
+ #nvgcnsnwri .gt_title { color: #333333 !important; font-size: 125% !important; font-weight: initial !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; border-bottom-color: #FFFFFF !important; border-bottom-width: 0 !important; }
+ #nvgcnsnwri .gt_subtitle { color: #333333 !important; font-size: 85% !important; font-weight: initial !important; padding-top: 3px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; border-top-color: #FFFFFF !important; border-top-width: 0 !important; }
+ #nvgcnsnwri .gt_heading { background-color: #FFFFFF !important; text-align: center !important; border-bottom-color: #FFFFFF !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #nvgcnsnwri .gt_bottom_border { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #nvgcnsnwri .gt_col_headings { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #nvgcnsnwri .gt_col_heading { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; overflow-x: hidden !important; }
+ #nvgcnsnwri .gt_column_spanner_outer { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; padding-top: 0 !important; padding-bottom: 0 !important; padding-left: 4px !important; padding-right: 4px !important; }
+ #nvgcnsnwri .gt_column_spanner_outer:first-child { padding-left: 0 !important; }
+ #nvgcnsnwri .gt_column_spanner_outer:last-child { padding-right: 0 !important; }
+ #nvgcnsnwri .gt_column_spanner { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; overflow-x: hidden !important; display: inline-block !important; width: 100% !important; }
+ #nvgcnsnwri .gt_spanner_row { border-bottom-style: hidden !important; }
+ #nvgcnsnwri .gt_group_heading { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; text-align: left !important; }
+ #nvgcnsnwri .gt_empty_group_heading { padding: 0.5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: middle !important; }
+ #nvgcnsnwri .gt_from_md> :first-child { margin-top: 0 !important; }
+ #nvgcnsnwri .gt_from_md> :last-child { margin-bottom: 0 !important; }
+ #nvgcnsnwri .gt_row { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; margin: 10px !important; border-top-style: solid !important; border-top-width: 1px !important; border-top-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; overflow-x: hidden !important; }
+ #nvgcnsnwri .gt_stub { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; }
+ #nvgcnsnwri .gt_stub_row_group { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; vertical-align: top !important; }
+ #nvgcnsnwri .gt_row_group_first td { border-top-width: 2px !important; }
+ #nvgcnsnwri .gt_row_group_first th { border-top-width: 2px !important; }
+ #nvgcnsnwri .gt_striped { color: #333333 !important; background-color: #F4F4F4 !important; }
+ #nvgcnsnwri .gt_table_body { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #nvgcnsnwri .gt_sourcenotes { color: #333333 !important; background-color: #FFFFFF !important; border-bottom-style: none !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; }
+ #nvgcnsnwri .gt_sourcenote { font-size: 90% !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; text-align: left !important; }
+ #nvgcnsnwri .gt_left { text-align: left !important; }
+ #nvgcnsnwri .gt_center { text-align: center !important; }
+ #nvgcnsnwri .gt_right { text-align: right !important; font-variant-numeric: tabular-nums !important; }
+ #nvgcnsnwri .gt_font_normal { font-weight: normal !important; }
+ #nvgcnsnwri .gt_font_bold { font-weight: bold !important; }
+ #nvgcnsnwri .gt_font_italic { font-style: italic !important; }
+ #nvgcnsnwri .gt_super { font-size: 65% !important; }
+ #nvgcnsnwri .gt_footnote_marks { font-size: 75% !important; vertical-align: 0.4em !important; position: initial !important; }
+ #nvgcnsnwri .gt_asterisk { font-size: 100% !important; vertical-align: 0 !important; }
+ 
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="7" class="gt_heading gt_title gt_font_normal">Sensitivity Analysis: Impact of Prior Beliefs</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">How Different Starting Assumptions Affect Final Conclusions</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Prior_Belief" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Prior Belief</th>
+<th id="Prior_Parameters" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Prior Distribution</th>
+<th id="Prior_Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Prior Mean</th>
+<th id="Posterior_Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Posterior Mean</th>
+<th id="Posterior_Std" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Posterior Std</th>
+<th id="Prob_Better" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Prob. Better</th>
+<th id="Data_Influence" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Data Influence</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left">Very Optimistic</td>
+<td class="gt_row gt_left">Beta(15, 85)</td>
+<td class="gt_row gt_right">0.150</td>
+<td class="gt_row gt_right">0.100</td>
+<td class="gt_row gt_right">0.017</td>
+<td class="gt_row gt_right" style="color: #000000; background-color: #808080">88.3%</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2e8b57">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left">Optimistic</td>
+<td class="gt_row gt_left">Beta(12, 88)</td>
+<td class="gt_row gt_right">0.120</td>
+<td class="gt_row gt_right">0.090</td>
+<td class="gt_row gt_right">0.016</td>
+<td class="gt_row gt_right" style="color: #000000; background-color: #808080">71.7%</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2e8b57">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left">Historical Based</td>
+<td class="gt_row gt_left">Beta(8, 92)</td>
+<td class="gt_row gt_right">0.080</td>
+<td class="gt_row gt_right">0.077</td>
+<td class="gt_row gt_right">0.015</td>
+<td class="gt_row gt_right" style="color: #000000; background-color: #808080">39.7%</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f18f01">Moderate</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left">Skeptical</td>
+<td class="gt_row gt_left">Beta(4, 96)</td>
+<td class="gt_row gt_right">0.040</td>
+<td class="gt_row gt_right">0.063</td>
+<td class="gt_row gt_right">0.014</td>
+<td class="gt_row gt_right" style="color: #000000; background-color: #808080">12.7%</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2e8b57">Strong</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left">Very Skeptical</td>
+<td class="gt_row gt_left">Beta(2, 98)</td>
+<td class="gt_row gt_right">0.020</td>
+<td class="gt_row gt_right">0.056</td>
+<td class="gt_row gt_right">0.013</td>
+<td class="gt_row gt_right" style="color: #000000; background-color: #808080">4.8%</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2e8b57">Strong</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left">Uninformative</td>
+<td class="gt_row gt_left">Beta(1, 1)</td>
+<td class="gt_row gt_right">0.500</td>
+<td class="gt_row gt_right">0.078</td>
+<td class="gt_row gt_right">0.019</td>
+<td class="gt_row gt_right" style="color: #000000; background-color: #808080">43.3%</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2e8b57">Strong</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="7" class="gt_sourcenote">Analysis shows robustness of conclusions to different prior assumptions • Even skeptical priors converge toward data-driven truth</td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Faustine, Anthony. 2025. <span>“Understanding Bayesian Thinking for
+Industrial Applications.”</span> October 10, 2025. <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2007–2025 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-3948-3914">0000-0002-3948-3914</a></span> <span class="faux-block"><i class="fa-solid fa-key" aria-label="key"></i> <a href="../../../pgp_ath.asc.txt">PGP public key</a>   <i class="fa-solid fa-fingerprint" aria-label="fingerprint"></i> Fingerprint:<br><span class="fingerprint">4AA2 FA83 A8B2 05A4 E30F<br> 610D 1382 6216 9178 36AB</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/andrewheiss/ath-quarto">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
