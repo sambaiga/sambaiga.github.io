@@ -12,4 +12,8 @@ listing:
   contents:
     - "blog/**/index.qmd"
     - "!blog/index.qmd"
+
+format:
+  html:
+    html-body-footer: ""
 ---

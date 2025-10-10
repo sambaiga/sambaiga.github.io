@@ -37,7 +37,7 @@ author-meta: "Anthony Faustine"
 
 website:
   title: "Anthony Faustine"
-  description: "Anthony Faustine is Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland where  he lead the development of data analytics and machine learning powered products and services that contribute to intelligent power systems."
+  description: "Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland"
   favicon: "/files/favicon-512.png"
   site-url: "https://sambaiga.github.io"
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
@@ -56,22 +56,21 @@ website:
   
   navbar:
     pinned: true
+    collapse: true
 
     left:
-      #- text: "About"
-      #  href: "index.qmd"
-      - text: "Project"
-        href: "project/index.qmd"
-      #- text: "Projects"
-      #  href: now/index.qmd
+      - text: "About"
+        file: "about/index.qmd"
+      #- text: "Project"
+      #  href: "project/index.qmd"
       - text: "Research"
         file:  research/index.qmd
       - text: "Talks"
         href: "talks/index.qmd"
       - text: "Blog"
         file: blog/index.qmd
-      - text: "Resources"
-        file: uses/index.qmd
+      #- text: "Resources"
+      #  file: uses/index.qmd
       - text: "CV"
         href: "cv/index.qmd"
 
@@ -109,10 +108,13 @@ website:
 
 format:
   html:
-    theme: 
-      - html/ath.scss
+    theme:
+      light: 
+        - html/ath.scss
+    responsive-images: true
     grid: 
       body-width: 900px
+    page-layout: full
     toc: false
     code-link: true
     anchor-sections: true

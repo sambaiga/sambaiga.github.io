@@ -4,7 +4,9 @@ author: ""
 description: "Anthony Faustine's blog"
 listing:
   - id: posts_2025
-    contents: "2025/**/index.qmd"
+    contents: 
+      - "2025/**/index.qmd"
+      - "2025/**/*.ipynb"
     sort: "date desc"
     template: ../html/blog/listing.ejs
     categories: true

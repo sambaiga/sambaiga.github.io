@@ -68,33 +68,4 @@ Unless otherwise noted, all content is © Anthony Faustine and licensed under th
 :::{#talks_2022}
 :::
 
-## 2021
-
-:::{#talks_2021}
-:::
-
-## 2020
-
-:::{#talks_2020}
-:::
-
-## 2019
-
-:::{#talks_2019}
-:::
-
-## 2018
-
-:::{#talks_2018}
-:::
-
-## 2016
-
-:::{#talks_2016}
-:::
-
-## 2015
-
-:::{#talks_2015}
-:::
 
