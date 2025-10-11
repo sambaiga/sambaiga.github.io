@@ -78,9 +78,16 @@ Thanks for stopping by!
 
 I am a Lead Data Scientist at the Centre for Intelligent Power (CIP) at [Eaton](https://www.eaton.com/ie/en-gb/company/careers/life-at-eaton/dublin.html) in Dublin, Ireland. My expertise is centered at the intersection of **applied machine learning** and **strategic innovation management**. 
 
-Beyond my technical specialization, I function as a **strategic AI leader and builder**. With a proven background in both industry and academia, I specialize in developing **reliable, production-ready AI solution**, while fostering team growth by **mentoring engineers** and leading high-impact, cross-functional projects. I ensure that AI investment directly aligns with long-term **business objectives** and drives sustained competitive advantage. 
+Beyond my technical specialization, I function as a **strategic AI leader and builder**. With a proven background in both industry and academia, I specialize in developing **reliable, production-ready AI solution**, while fostering team growth by **mentoring engineers** and leading high-impact, cross-functional projects.  
+
+My research is dedicated to the strategic intersection of applied machine learning and innovation management. I develop and investigate machine learning solutions aimed at addressing crucial business and sustainability challenges. Complementary to this, I also study the strategic frameworks and management practices necessary for organizations to effectively manage technology and drive sustained success in dynamic market environments.
 ::: 
 
+::: {.callout-note}
+### Copyright
+
+Unless otherwise noted, all content is © Anthony Faustine and licensed under the [Creative Commons](https://creativecommons.org/licenses/by-sa/4.0/).
+:::
 
 ::: {.grid}
 

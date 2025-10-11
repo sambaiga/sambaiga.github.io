@@ -1,35 +1,51 @@
 ```{=html}
 <div class="list blog">
-    <% for (const post of items) { %>
-    <div class="blog-entry" <%= metadataAttrs(post) %>>
-        <div class="metadata">          
-            <p class="date listing-date"><%= post.date %></p>
-        </div>
-        <div class="body">
-            <p class="title listing-title"><a href="<%- post.path %>"><%= post.title %></a></p>
-
-            <% if (post.categories) { %>
-            <div class="post-categories listing-categories">
-                <% for (const category of post.categories) { %>
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('<%=category%>'); return false;">
-                    <%= category %>
-                </div>
-                <% } %>
-            </div>
-            <% } %>
-
-            <p class="description listing-description"><%= post.description %></p>
-            
-            <% if (post.doi) { %>
-            <p class="post-doi"><img src="/files/doi.svg" class="doi-icon img-fluid" alt="DOI"/> <a href="https://doi.org/<%= post.doi %>" target="_blank" rel="noopener noreferrer"><%= post.doi %></a></p>
-            <% } %>
-        </div>
-        <% if (post.image) { %>
-        <div class="thumbnail">
-            <img src="<%= post.image %>" alt="<%= post.title %>" title="<%= post.title %>" />
-        </div>
-        <% } %>
+  <% for (const post of items) { %>
+  <div class="blog-entry" <%= metadataAttrs(post) %>>
+    
+    <!-- Thumbnail Image -->
+    <% if (post.image) { %>
+    <div class="thumbnail">
+      <img src="<%= post.image %>" alt="<%= post.title %>" title="<%= post.title %>" />
     </div>
     <% } %>
+
+    <!-- Main Content -->
+    <div class="body">
+      <p class="title listing-title">
+        <a href="<%- post.path %>"><%= post.title %></a>
+      </p>
+      <p class="description listing-description"><%= post.description %></p>
+      
+      <!-- Read More Link always visible -->
+      <p class="read-more">
+        <a href="<%- post.path %>">Read More →</a>
+      </p>
+    </div>
+
+    <!-- Hover Overlay with Author, Categories, Date -->
+    <div class="details-overlay">
+      <div class="top">
+        <% if (post.author) { %>
+        <div class="author"><%= post.author %></div>
+        <% } %>
+
+        <% if (post.categories) { %>
+        <div class="tags">
+          <% for (const category of post.categories) { %>
+          <span><%= category %></span>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+
+      <div class="bottom">
+        <% if (post.date) { %>
+        <div class="date"><%= post.date %></div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <% } %>
 </div>
 ```

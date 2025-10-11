@@ -3,7 +3,7 @@
 $theme: "ath" !default;
 
 //
-// Color system
+// Color system - UPDATED FOR BETTER CONTRAST
 //
 
 $white:    #FFFFFF !default;
@@ -12,7 +12,7 @@ $gray-200: #E9ECEF !default;
 $gray-300: #DEE2E6 !default;
 $gray-400: #CED4DA !default;
 $gray-500: #ADB5BD !default;
-$gray-600: #808080 !default; // Fallback gray, minimally used
+$gray-600: #6B7280 !default; // Darker for better contrast
 $gray-700: #495057 !default;
 $gray-800: #373A3C !default;
 $gray-900: #212529 !default;
@@ -21,37 +21,37 @@ $black:    #000000 !default;
 $blue:    #2563EB !default; // Sky Blue for info
 $indigo:  #3C4F76 !default; // Muted blue-indigo
 $purple:  #6B7280 !default; // Neutral blue-gray
-$pink:    #FF9398 !default; // Soft Pink for danger, banners
-$red:     #FF9398 !default; // Soft Pink for danger, banners
-$orange:  #F4C430 !default; // Soft Yellow for warning
+$pink:    #FF9398 !default; // Soft Pink for decorative use
+$red:     #DC2626 !default; // DARKER RED for accessibility
+$orange:  #EA580C !default; // DARKER ORANGE for accessibility
 $light-orange: #A0D6E8 !default; // Light Blue for navbar highlights
-$yellow:  #F4C430 !default; // Matches warning
-$green:   #2A6F6F !default; // Forest Teal for success
-$teal:    #2D3748 !default; // Charcoal for primary (neutral)
-$cyan:    #4A90E2 !default; // Matches blue for info
+$yellow:  #CA8A04 !default; // DARKER YELLOW for accessibility
+$green:   #059669 !default; // DARKER GREEN for accessibility
+$teal:    #1E293B !default; // DARKER CHARCOAL for accessibility
+$cyan:    #0369A1 !default; // DARKER CYAN for accessibility
 
 $primary:   $teal !default; // Charcoal for buttons, accents
 $secondary: $gray-700 !default; // Dark gray for text
 $success:   $green !default; // Forest Teal
 $info:      $cyan !default; // Sky Blue
 $warning:   $orange !default; // Soft Yellow
-$danger:    $red !default; // Soft Pink for banners
+$danger:    $red !default; // DARKER RED for accessibility
 $light:     $gray-400 !default;
 $dark:      $black !default;
 
 // Body
 $body-bg:   #FFFFFF !default; // White background
-$body-color: #000000 !default; // Black text for contrast
+$body-color: #171717 !default; // DARKER BLACK for better contrast
 
 // Links
 $link-color: $teal !default; // Charcoal
 $link-decoration: none !default;
-$link-hover-color: #1A202C !default; // Darker charcoal for hover
+$link-hover-color: #0F172A !default; // DARKER charcoal for hover
 $link-hover-decoration: underline !default;
 
 // Inline code
-$code-bg: #F8E8E9 !default; // Light pink-tinted background
-$code-color: #000000 !default; // Black for contrast
+$code-bg: #F1F5F9 !default; // Lighter blue-gray for better contrast
+$code-color: #171717 !default; // DARKER for contrast
 
 // Code copy
 $btn-code-copy-color-active: $teal !default; // Charcoal
@@ -67,7 +67,7 @@ $navbar-hl: #A0D6E8 !default; // Light Blue
 
 // Footer
 $footer-bg: #000000 !default; // Black
-$footer-fg: #D8DEE9 !default; // Light Gray
+$footer-fg: #E5E7EB !default; // LIGHTER Gray for better contrast
 
 // Fonts
 $font-family-sans-serif: "Libre Franklin" !default;
@@ -96,8 +96,8 @@ body {
 .home {
     .quarto-title-banner {
         margin-bottom: 0.5em;
-        background-color: $red; // Soft Pink #FF9398
-        color: $black; // Black for contrast (~3.8:1)
+        background-color: $pink; // Soft Pink #FF9398 - now decorative only
+        color: $black; // Black for contrast
         padding: 0.5em; // Compact
         border-bottom: 1px solid $black; // Protanopia visibility
         box-shadow: 0 1px 2px rgba($black, 0.1);
@@ -135,7 +135,7 @@ body {
 
     .quarto-title-banner {
         font-family: $headings-font-family;
-        background-color: $red; // Soft Pink #FF9398
+        background-color: $pink; // Soft Pink #FF9398
         color: $black;
         padding: 0.5em;
         font-size: 0.8rem;
@@ -362,69 +362,243 @@ pre.text, pre.sourceCode, .cell-output pre {
     }
 }
 
-.blog-post {
-  .quarto-title-block {
+/* -------------------------------------------------------------------
+   BLOG POST HEADER (Enhanced layout, original font sizes preserved)
+------------------------------------------------------------------- */
+
+.blog-post .quarto-title-block {
+  position: relative;
+  background-image: var(--quarto-banner-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 4rem 2rem;             
+  border-bottom: 4px solid $pink;  
+}
+
+.blog-post .quarto-title-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.35)
+  );
+  z-index: 0;
+}
+
+/* Keep text layers above overlay */
+.blog-post .quarto-title,
+.blog-post .quarto-title-author,
+.blog-post .quarto-title-meta,
+.blog-post .description {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title – same size as before (~2rem via Quarto defaults) */
+.blog-post .quarto-title {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+  animation: fadeInDown 0.8s ease-in-out;
+}
+
+/* Description – same as your original 0.8rem */
+.blog-post .description {
+  font-family: $font-family-sans-serif;
+  font-size: 1.2rem;     
+  font-weight: 300;
+  max-width: 700px;
+  z-index: 2;
+  margin: 0 auto 1.5em;
+  color: #f8fafc;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-in-out;
+  text-align: justify;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive: only adjust padding, not font size */
+@media (max-width: 768px) {
+  .blog-post .quarto-title-block {
+    padding: 3rem 1.5rem;
+    min-height: 40vh;
+  }
+}
+
+/* Fallback when no image is defined */
+.blog-post .quarto-title-block:not([style*="background-image"]) {
+  background-color: $teal;
+  color: $white;
+}
+
+
+/* -------------------------------------------------------------------
+   Quarto Blog Listing: Card Style with Hover Overlay
+------------------------------------------------------------------- */
+
+.blog {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .blog-entry {
     position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-    padding: 4rem 2rem;
-  }
+    display: flex;
+    flex-direction: column;
+    background: $body-bg;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 7px -1px rgba(#000, 0.1);
+    font-family: $headings-font-family;
+    line-height: 1.4;
+    transition: transform 0.3s;
 
-  /* Optional overlay for text contrast */
-  .quarto-title-block::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 0;
-  }
+    a {
+      color: $primary;
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
 
-  /* Ensure title and metadata appear above overlay */
-  .quarto-title-block .quarto-title,
-  .quarto-title-block .quarto-categories,
-  .quarto-title-block .quarto-title-author,
-  .quarto-title-block .quarto-title-meta {
-    position: relative;
-    z-index: 1;
-  }
+    /* ----------------- Thumbnail Image ----------------- */
+    .thumbnail {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+    }
 
-  /* Existing styling for categories, ORCID, etc. */
-  .quarto-title .quarto-categories {
-    margin-top: 0.5em;
+    /* ----------------- Body / Content ----------------- */
+    .body {
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+      color: $body-color;
 
-    .quarto-category {
-      background-color: #D8DEE9;
-      color: #000;
-      font-size: 0.6em;
-      padding: 0.3em 0.5em;
-      border: 1px solid #000;
+      .title {
+        font-size: 1.3em;
+        font-weight: 600;
+        margin-bottom: 0.3em;
+      }
 
-      a {
-        color: #000;
-        &:hover {
-          color: #d43f3a;
+      .description {
+        font-size: 1em;
+        font-weight: 300;
+        line-height: 1.4;
+        text-align: justify;
+        margin-bottom: 0.5em;
+      }
+    }
+
+    /* ----------------- Hover Overlay ----------------- */
+    .details-overlay {
+      position: absolute;
+      top: 0;
+      left: -100%; // hidden initially
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: $white;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: left 0.3s;
+
+      .top {
+        .author {
+          font-size: 0.85em;
+          margin-bottom: 0.5rem;
+        }
+        .tags {
+          margin-top: 0.5rem;
+          span {
+            display: inline-block;
+            margin-right: 0.3rem;
+            padding: 0.1em 0.3em;
+            border: 1px solid $white;
+            border-radius: 0.25rem;
+            font-size: 0.75em;
+          }
+        }
+      }
+
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .date {
+          font-size: 0.85em;
+        }
+
+        .read-more a {
+          color: $primary;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
-  }
 
-  .quarto-title-author-orcid img {
-    margin-bottom: -3px;
-  }
+    /* ----------------- Hover Effects ----------------- */
+    &:hover {
+      .details-overlay {
+        left: 0;
+      }
 
-  .quarto-title-meta-contents .doi::before {
-    content: "";
-    background-image: url(/files/doi.svg);
-    background-size: 1.1em;
-    display: inline-block;
-    width: 1.1em;
-    height: 1.1em;
-    margin-bottom: -3px;
+      .thumbnail img {
+        transform: scale(1.1) rotate(2deg);
+      }
+
+      transform: translateY(-2px);
+    }
+
+    /* ----------------- Responsive Layout ----------------- */
+    @media (min-width: 640px) {
+      flex-direction: row;
+
+      .thumbnail {
+        flex-basis: 40%;
+        height: auto;
+      }
+
+      .body {
+        flex-basis: 60%;
+      }
+    }
   }
 }
+
+
+
 
 // Research
 .quarto-title-block {
@@ -444,7 +618,7 @@ pre.text, pre.sourceCode, .cell-output pre {
     }
 
     .project-details {
-        background-color: rgba($red, 0.1); // Light pink tint
+        background-color: rgba($pink, 0.1); // Light pink tint
         padding: 0.5em;
         margin: 0.5em 0;
     }
@@ -484,7 +658,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
     .quarto-title .quarto-categories .quarto-category {
         //background-color: #FFE6E7; // Light pink tint
-        color: $red; // Soft Pink #FF9398
+        color: $pink; // Soft Pink #FF9398
         font-size: 0.6em;
         padding: 0.3em 0.5em;
         opacity: 1;
@@ -525,7 +699,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
         li.project {
             margin-bottom: 1.5em;
-            border-left: 4px solid $red; // Soft Pink #FF9398
+            border-left: 4px solid $pink; // Soft Pink #FF9398
 
             p {
                 margin: 0;
@@ -560,7 +734,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
     .project-details-listing {
         margin-top: 0.5em;
-        background-color: #F8E8E9; // Light pink-tinted background
+        background-color: #F1F5F9; // Lighter blue-gray background
         font-size: 0.8rem;
 
         @media (max-width: map-get($grid-breakpoints, md)) {
@@ -574,7 +748,7 @@ pre.text, pre.sourceCode, .cell-output pre {
         }
 
         .details {
-            background-color: $red; // Soft Pink #FF9398
+            background-color: $pink; // Soft Pink #FF9398
             padding-right: 1em;
 
             a {
@@ -639,7 +813,7 @@ pre.text, pre.sourceCode, .cell-output pre {
             li {
                 display: inline-block;
                 white-space: nowrap;
-                background-color: $red; // Soft Pink #FF9398
+                background-color: $pink; // Soft Pink #FF9398
                 margin: 0 0.1em 0.3em 0;
                 padding: 0.2em 0.3em;
                 font-size: 0.8em;
@@ -701,7 +875,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
         ul.talk-links {
             padding: 0 0.3em;
-            background-color: #F8E8E9; // Light pink-tinted background
+            background-color: $pink;//#F1F5F9; // Lighter blue-gray background
             margin-bottom: 0;
 
             .talk-link {
@@ -810,53 +984,6 @@ pre.text, pre.sourceCode, .cell-output pre {
 /* Justify body text (Applies to all pages, be aware if you only wanted it on the blog) */
 body {
     text-align: justify;
-}
-
-
-/* -------------------------------------------------------------------
-   BLOG POST BANNER FIX
-   Overrides pink background for blog post title blocks only
-------------------------------------------------------------------- */
-
-.blog-post #title-block-header,
-.blog-post .quarto-title-block,
-.blog-post .quarto-title-banner {
-  background-color: transparent !important;
-}
-
-/* Use image from metadata (title-block-banner) */
-.blog-post .quarto-title-block {
-  background-image: var(--quarto-banner-image, none);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  color: white;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  padding: 4rem 2rem;
-}
-
-/* Add dark overlay for contrast */
-.blog-post .quarto-title-block::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
-}
-
-/* Ensure title/meta are above overlay */
-.blog-post .quarto-title,
-.blog-post .quarto-categories,
-.blog-post .quarto-title-author,
-.blog-post .quarto-title-meta {
-  position: relative;
-  z-index: 1;
-}
-
-/* Optional fallback banner */
-.blog-post .quarto-title-block:not([style*="background-image"]) {
-  background-image: url("/files/featured.jpg");
 }
 
 
