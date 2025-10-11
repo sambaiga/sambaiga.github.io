@@ -49,23 +49,13 @@ toc-title: Year
 date-format: "MMMM D, YYYY"
 ---
 
-
 This page includes a list of talks, lectures, workshops, and presentations I've given, along with links to their slides.
 
-::: {.callout-note}
-### Copyright
-
-Unless otherwise noted, all content is © Anthony Faustine and licensed under the [Creative Commons](https://creativecommons.org/licenses/by-sa/4.0/).
-:::
 
 ## 2024
 
 :::{#talks_2024}
 :::
 
-## 2022
-
-:::{#talks_2022}
-:::
 
 

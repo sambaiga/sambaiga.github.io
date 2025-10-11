@@ -18,10 +18,10 @@ format:
 ---
 :::{#hero-heading}
 
-I’m **Anthony Faustine**, a Lead Data Scientist at [Eaton’s Centre for Intelligent Power (CIP)](https://www.eaton.com/ie/en-gb/company/careers/life-at-eaton/dublin.html) in Dublin, Ireland.  At Eaton, my focus is on applying **machine learning** and **data-driven innovation** initiatives that contribute to building **intelligent power systems** for a sustainable energy future. This involves everything from predictive maintenance to optimizing energy grids.
+I’m **Anthony Faustine**, a Lead Data Scientist at [Eaton’s Centre for Intelligent Power (CIP)](https://www.eaton.com/ie/en-gb/company/careers/life-at-eaton/dublin.html) in Dublin, Ireland.  At Eaton, my focus is on applying **machine learning** and **data-driven innovation** initiatives that contribute to building **intelligent power systems** for a sustainable energy future. 
 
 
-Please feel free to explore my website to learn more about my work, research interests, and academic background. I'm always interested in connecting with others who share my passion for data science, AI, and innovation.
+Please feel free to explore my website to learn more about my work, and research interests. I'm always interested in connecting with others who share my passion for data science, AI, and innovation.
 
 [Read more →](/about){.about-links .subtitle}
 
