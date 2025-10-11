@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-4c7b890cc350be7067044af900615741.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-53d53f6e938bd2c0eef4e8de25257195.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-9c4d7d13ee1b41aa100594d035f4326d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
@@ -165,12 +165,12 @@ window.Quarto = {
 
 <meta property="og:title" content="Understanding Bayesian Thinking for Industrial Applications | sambaiga">
 <meta property="og:description" content="Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.">
-<meta property="og:image" content="https://sambaiga.github.io/blog/2025/10/bayesion-01.jpg">
+<meta property="og:image" content="https://sambaiga.github.io/blog/2025/10/posterior_sensitivity.svg">
 <meta property="og:site_name" content="Anthony Faustine">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:title" content="Understanding Bayesian Thinking for Industrial Applications | sambaiga">
 <meta name="twitter:description" content="Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.">
-<meta name="twitter:image" content="https://sambaiga.github.io/blog/2025/10/bayesion-01.jpg">
+<meta name="twitter:image" content="https://sambaiga.github.io/blog/2025/10/posterior_sensitivity.svg">
 <meta name="twitter:creator" content="@asambaiga">
 <meta name="twitter:site" content="@sambaiga">
 <meta name="twitter:card" content="summary_large_image">
@@ -297,7 +297,7 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul>
+  <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#the-building-blocks-of-bayesian-modeling" id="toc-the-building-blocks-of-bayesian-modeling" class="nav-link" data-scroll-target="#the-building-blocks-of-bayesian-modeling">The Building Blocks of Bayesian modeling</a></li>
   <li><a href="#case-study-1-ab-testing-with-small-samples" id="toc-case-study-1-ab-testing-with-small-samples" class="nav-link" data-scroll-target="#case-study-1-ab-testing-with-small-samples">Case study 1: AB Testing with Small Samples</a></li>
@@ -314,8 +314,8 @@ window.Quarto = {
 
 
 
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Suppose your company just installed a new, expensive machine. A critical question arises: <em>How long will it last before failure?</em>. The lead engineer, based on experience with previous models, estimates a lifespan of 10 years. However, you only have 3 months of real-world test data for this specific unit. A major warranty and service contract decision needs to be made now.</p>
 <p>Traditional (<strong>Frequentist</strong>) Statistics often requires large datasets (the “long run”) to make confident statements. In industry, this approach often falls short because we frequently face:</p>
 <ol type="1">
@@ -328,8 +328,8 @@ window.Quarto = {
 <p>This shift—from reasoning about data given a parameter to parameter given data is what makes Bayesian methods so intuitive for decision-making.</p>
 <p>The Bayesian approach is learning from data: it is updating our beliefs as new evidence comes in. As such bayesion thinking view probability as a measure of uncertainty about the world, not just a long-run frequency of events (Frequentist View). This perspective is especially useful in industrial contexts where decisions often need to be made with limited data and high uncertainty.</p>
 </section>
-<section id="the-building-blocks-of-bayesian-modeling" class="level3">
-<h3 class="anchored" data-anchor-id="the-building-blocks-of-bayesian-modeling">The Building Blocks of Bayesian modeling</h3>
+<section id="the-building-blocks-of-bayesian-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="the-building-blocks-of-bayesian-modeling">The Building Blocks of Bayesian modeling</h2>
 <p>The process of updating our beliefs is formalized by Bayes’ Theorem. <span class="math display">\[
 P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 \]</span></p>
@@ -346,14 +346,14 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </ol>
 <p>The <strong>Likelihood</strong> <span class="math inline">\(P(D \mid \theta)\)</span> is the mathematical tool that connects the observed data to your parameter. It asks: How probable are the observed data, given a specific value of failure rate <span class="math inline">\(\theta\)</span>?. Considering our machine example, the likelihood tell us how likely is it that we saw zero failures in the first 3 months if the true average lifespan was, say, 5 years? Or 15 years? The likelihood measures the evidence provided by your data.</p>
 <p>Finally the <strong>Posterior</strong> $ P(D) $ is the updated belief after seeing the data. It is the complete answer that incorporates the weight of both your prior knowledge and the new evidence. Considering our machine example, the posterior tells us The new, combined estimate of the expected machine lifespan after factoring in both the engineer’s 10-year estimate and the 3 months of failure-free test data.</p>
-<section id="pymc-the-probabilistic-programming-engine" class="level4">
-<h4 class="anchored" data-anchor-id="pymc-the-probabilistic-programming-engine">PyMC: The Probabilistic Programming Engine</h4>
+<section id="pymc-the-probabilistic-programming-engine" class="level3">
+<h3 class="anchored" data-anchor-id="pymc-the-probabilistic-programming-engine">PyMC: The Probabilistic Programming Engine</h3>
 <p>Understanding the relationship <span class="math inline">\(\mathrm{Posterior} \propto \mathrm{Likelihood} \times \mathrm{Prior}\)</span> is the conceptual heart of Bayesian analysis. However, calculating the actual posterior distribution, $ P(D) $, often involves complex, multi-dimensional integration that is impossible to solve analytically for real-world industrial problems. This is where Probabilistic Programming Languages (PPLs) like PyMC become indispensable.</p>
 <p><a href="">PyMC</a> is an open-source Python library designed to construct and fit Bayesian statistical models using state-of-the-art computational methods. PyMC is not the only powerful PPL in Python. Two other notable options are <a href="">pyro</a> and <a href="">TensorFlow Probability (TFP)</a>. For this lesson we will stick with pymc</p>
 </section>
 </section>
-<section id="case-study-1-ab-testing-with-small-samples" class="level3">
-<h3 class="anchored" data-anchor-id="case-study-1-ab-testing-with-small-samples">Case study 1: AB Testing with Small Samples</h3>
+<section id="case-study-1-ab-testing-with-small-samples" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-1-ab-testing-with-small-samples">Case study 1: AB Testing with Small Samples</h2>
 <p>To shift from theory to practical implementation, we will apply the Bayesian building blocks Prior, Likelihood, and Posterior to a concrete industrial problem common in tech and e-commerce: A/B Testing</p>
 <blockquote class="blockquote">
 <p>Suppose you are a data scientist at an e-commerce company. The marketing team just launched a new website feature and wants to know:</p>
@@ -400,8 +400,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>historical_baseline <span class="op">=</span> <span class="fl">0.08</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="define-prior-likelihood-and-posterior-in-pymc" class="level6">
-<h6 class="anchored" data-anchor-id="define-prior-likelihood-and-posterior-in-pymc">Define Prior, likelihood, and Posterior in PyMC</h6>
+<section id="define-prior-likelihood-and-posterior-in-pymc" class="level5">
+<h5 class="anchored" data-anchor-id="define-prior-likelihood-and-posterior-in-pymc">Define Prior, likelihood, and Posterior in PyMC</h5>
 <p>To model this problem in PyMC, we need to define the Prior and Likelihood distributions.</p>
 <p><strong>Prior</strong>: For this problem, we are estimating a proportion (the conversion rate <span class="math inline">\(\theta\)</span>), which can only range between 0 and 1. The Beta distribution is ideal for modeling parameters that are bounded between 0 and 1, such as probabilities or rates.</p>
 <p>The Beta distribution is controlled by two parameters, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. We set these parameters to formally encode our prior knowledge: the historical 8% conversion rate. The mean of a <span class="math inline">\(\mathrm{Beta}(\alpha,\beta)\)</span> distribution is <span class="math inline">\(\frac{\alpha}{ \alpha + \beta}\)</span>. Since our historical rate is 8% (or 0.08), we need to choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> such that: <span class="math display">\[
@@ -438,11 +438,11 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 </section>
 </section>
-<section id="model-diagnostics" class="level3">
-<h3 class="anchored" data-anchor-id="model-diagnostics">Model Diagnostics</h3>
+<section id="model-diagnostics" class="level2">
+<h2 class="anchored" data-anchor-id="model-diagnostics">Model Diagnostics</h2>
 <p>Running <code>pm.sample()</code> generates the raw output, but the job isn’t done yet. Before we trust the results, we must perform Model Diagnostics to ensure our computational engine (the MCMC sampler) has worked correctly. The single most important diagnostic check is confirming Convergence.</p>
-<section id="model-convergencevergence" class="level5">
-<h5 class="anchored" data-anchor-id="model-convergencevergence">Model Convergencevergence</h5>
+<section id="model-convergencevergence" class="level4">
+<h4 class="anchored" data-anchor-id="model-convergencevergence">Model Convergencevergence</h4>
 <p>In Bayesian inference, we use Markov Chain Monte Carlo (MCMC) methods to sample from the complex posterior distribution. We rely on these samples to accurately estimate quantities like the mean conversion rate or its credible interval.</p>
 <p>Convergence is the guarantee that the MCMC chains have explored the entire distribution and are now producing samples that truly represent the target Posterior distribution, and are not just stuck in a starting location.</p>
 <blockquote class="blockquote">
@@ -564,8 +564,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <li><p>(R_hat = 1.0,Goal Achieved): Since R_hat is exactly 1.0, this confirms that the four independent MCMC chains have fully converged and agree on the shape of the posterior distribution. The model is reliable.</p></li>
 <li><p>ESS bulk ​and ESS tail (3966.0 and 5559.0, Goal Achieved): Both effective sample sizes are significantly greater than our &gt;=400 minimum threshold. This means we have plenty of high-quality, effectively independent samples to accurately estimate the mean, mode, and credible intervals of the true conversion rate</p></li>
 </ul>
-<section id="visual-check-trace-plots" class="level6">
-<h6 class="anchored" data-anchor-id="visual-check-trace-plots">Visual Check: Trace Plots</h6>
+<section id="visual-check-trace-plots" class="level5">
+<h5 class="anchored" data-anchor-id="visual-check-trace-plots">Visual Check: Trace Plots</h5>
 <p>While the numbers in the summary table are essential, visually inspecting the MCMC chains confirms the story. We use <code>az.plot_trace(trace)</code></p>
 <div id="abc07b8a" class="cell" data-execution_count="5">
 <details class="code-fold">
@@ -626,8 +626,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </section>
 </section>
 </section>
-<section id="posterior-predictive-checks" class="level3">
-<h3 class="anchored" data-anchor-id="posterior-predictive-checks">Posterior Predictive Checks</h3>
+<section id="posterior-predictive-checks" class="level2">
+<h2 class="anchored" data-anchor-id="posterior-predictive-checks">Posterior Predictive Checks</h2>
 <p>We just established that our MCMC sampler for the convernsation_rate model worked perfectly: the R-hat is 1.0, the ESS is high, and the trace plots look like textbook “fuzzy caterpillars.” This means our computation is reliable we have accurately found the true, converged posterior distribution.</p>
 <p>However, a converged model is not necessarily a good model. We now move to the impotant test: Does our model actually make sense given the data we observed?</p>
 <p>This moves us from confirming the sampler to validating the model itself, using Posterior Predictive Checks (PPCs).</p>
@@ -756,8 +756,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>Since your value of 53.7 is very close to the ideal 50 , this provides further strong evidence (in addition to the mean of 15.314 you already saw) that:</p>
 <p>Your model is not biased (it’s not systematically over- or under-estimating the data).</p>
 <p>Your choice of the Beta-Binomial model is highly appropriate for this data set.</p>
-<section id="model-utility-and-business-decision" class="level4">
-<h4 class="anchored" data-anchor-id="model-utility-and-business-decision">Model Utility and Business Decision</h4>
+<section id="model-utility-and-business-decision" class="level3">
+<h3 class="anchored" data-anchor-id="model-utility-and-business-decision">Model Utility and Business Decision</h3>
 <p>Having confirmed the reliability of our Bayesian model through the Posterior Predictive Check (PPC), our focus now shifts from “Does the model fit the data?” to the commercially critical question: “Is the model useful for making business decisions?”</p>
 <p>Specifically, we utilize the derived posterior distribution to quantify the evidence that the new feature’s conversion rate (Feature B) is superior to the existing, established conversion rate (Feature A, which has a known baseline rate of 0.08).</p>
 <p>To achieve this, we need to extract the posterior distribution for the conversion_rate parameter that your model estimated.</p>
@@ -787,8 +787,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 </div>
 <p>The calculated Probability of Superiority is approximately 0.40, indicating that there is a 40% chance that the new feature’s conversion rate is better than the old feature’s 8% rate. There is a 60.3% chance the new feature is worse than the baseline. Since the probability that the new feature is superior is well below the neutral benchmark of 50%, we conclude that the data does not support replacing the existing feature A with the new feature B based on conversion rate alone. The new feature is highly likely to perform worse.</p>
-<section id="probability-of-meaningful-improvement." class="level5">
-<h5 class="anchored" data-anchor-id="probability-of-meaningful-improvement.">Probability of Meaningful Improvement.</h5>
+<section id="probability-of-meaningful-improvement." class="level4">
+<h4 class="anchored" data-anchor-id="probability-of-meaningful-improvement.">Probability of Meaningful Improvement.</h4>
 <p>Depending on your business context, you might also want to calculate the probability that the new feature is better by a meaningful margin (e.g., &gt;1% improvement). This calculates the chance that the new feature is better than the old feature by a practically significant margin of at least 1 percentage point. This is a crucial business metric. Sometimes a tiny statistical “win” isn’t worth the cost of development and deployment. If this probability is low, it confirms the feature is not a major improvement.</p>
 <div id="fa5bdaec" class="cell" data-execution_count="56">
 <details class="code-fold">
@@ -801,8 +801,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 </div>
 </section>
-<section id="probability-of-hitting-a-target-rate" class="level5">
-<h5 class="anchored" data-anchor-id="probability-of-hitting-a-target-rate">Probability of Hitting a Target Rate</h5>
+<section id="probability-of-hitting-a-target-rate" class="level4">
+<h4 class="anchored" data-anchor-id="probability-of-hitting-a-target-rate">Probability of Hitting a Target Rate</h4>
 <p>This calculates the chance that the true conversion rate of the new feature is 10% or higher. This is useful if 10% is a specific, ambitious KPI (Key Performance Indicator) or goal set by the marketing or product team. It tells them how likely they are to meet their goal.</p>
 <div id="8621e38b" class="cell" data-execution_count="57">
 <details class="code-fold">
@@ -815,8 +815,8 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 </div>
 </section>
-<section id="expected-value-of-the-change." class="level5">
-<h5 class="anchored" data-anchor-id="expected-value-of-the-change.">Expected Value of the Change.</h5>
+<section id="expected-value-of-the-change." class="level4">
+<h4 class="anchored" data-anchor-id="expected-value-of-the-change.">Expected Value of the Change.</h4>
 <p>This is the single-number best estimate of the average change (positive or negative) you can expect to see if you deploy the new feature. This is the foundation for the “Expected Business Impact” section. If this value is negative, it represents an Expected Loss. If you calculate: expected_uplift * Total Visitors * ARPC, you get the estimated dollar value of the change.</p>
 <div id="c001958c" class="cell" data-execution_count="59">
 <details class="code-fold">
@@ -842,8 +842,8 @@ Expected monthly value: $-1,717</code></pre>
 </section>
 </section>
 </section>
-<section id="prior-predictive-checks-validating-model-assumptions" class="level3">
-<h3 class="anchored" data-anchor-id="prior-predictive-checks-validating-model-assumptions">Prior Predictive Checks: Validating Model Assumptions</h3>
+<section id="prior-predictive-checks-validating-model-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="prior-predictive-checks-validating-model-assumptions">Prior Predictive Checks: Validating Model Assumptions</h2>
 <p>While the previous section’s Posterior Predictive Check (PPC) demonstrated that our fitted model is reliable by successfully reproducing the observed data, a complete Bayesian analysis requires us to first validate the assumptions we made before seeing any data.</p>
 <p>This validation is accomplished through the Prior Predictive Check.</p>
 <blockquote class="blockquote">
