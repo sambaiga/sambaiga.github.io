@@ -83,11 +83,7 @@ Beyond my technical specialization, I function as a **strategic AI leader and bu
 My research is dedicated to the strategic intersection of applied machine learning and innovation management. I develop and investigate machine learning solutions aimed at addressing crucial business and sustainability challenges. Complementary to this, I also study the strategic frameworks and management practices necessary for organizations to effectively manage technology and drive sustained success in dynamic market environments.
 ::: 
 
-::: {.callout-note}
-### Copyright
 
-Unless otherwise noted, all content is © Anthony Faustine and licensed under the [Creative Commons](https://creativecommons.org/licenses/by-sa/4.0/).
-:::
 
 ::: {.grid}
 
@@ -126,4 +122,10 @@ Unless otherwise noted, all content is © Anthony Faustine and licensed under th
 [See all publications &rarr;](../research){.about-links .subtitle}
 :::
 
+:::
+
+::: {.callout-note}
+### Copyright
+
+Unless otherwise noted, all content is © Anthony Faustine and licensed under the [Creative Commons](https://creativecommons.org/licenses/by-sa/4.0/).
 :::
