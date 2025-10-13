@@ -3,7 +3,7 @@ title: "The Lone Wolf vs. The Pack: Why Your Change Strategy Is Failing"
 date: 2024-06-12
 description: "This post explores how Kurt Lewin’s theory of group dynamics reveals that lasting organizational change depends less on individual effort and more on engaging and transforming the collective forces within groups."
 
-image: change.jpg
+image: "change.jpg"
 twitter-card: 
     image: "change.jpg"
 open-graph: 
