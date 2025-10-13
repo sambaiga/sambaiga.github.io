@@ -113,13 +113,41 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-author-meta','listing-website','listing-format','listing-notebook-links','listing-execute','listing-_quarto-vars','listing-language','listing-date-format','listing-title-block-banner','listing-toc','listing-toc-title','listing-toc-location','listing-citation','listing-appendix-cite-as','listing-author','listing-title','listing-date','listing-description','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-author-meta','listing-website','listing-format','listing-notebook-links','listing-execute','listing-_quarto-vars','listing-language','listing-date-format','listing-title-block-banner','listing-toc','listing-toc-title','listing-toc-location','listing-citation','listing-appendix-cite-as','listing-author','listing-title','listing-date','listing-description','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-twitter-card','listing-open-graph',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-author-meta","listing-website","listing-format","listing-notebook-links","listing-execute","listing-_quarto-vars","listing-language","listing-date-format","listing-title-block-banner","listing-toc","listing-toc-title","listing-toc-location","listing-citation","listing-appendix-cite-as","listing-author","listing-title","listing-date","listing-description","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-author-meta","listing-website","listing-format","listing-notebook-links","listing-execute","listing-_quarto-vars","listing-language","listing-date-format","listing-title-block-banner","listing-toc","listing-toc-title","listing-toc-location","listing-citation","listing-appendix-cite-as","listing-author","listing-title","listing-date","listing-description","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-twitter-card","listing-open-graph"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-posts_2024'] = new List('listing-posts_2024', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts_2023 .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-year","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts_2023'] = new List('listing-posts_2023', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -281,9 +309,10 @@ window.Quarto = {
   <ul>
   <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2025</a></li>
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2024</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2022</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="YmF5ZXNpYW4=">bayesian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ym9vaw==">book <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YmF5ZXNpYW4=">bayesian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ym9vaw==">book <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2hhbmdlJTIwTWFuYWdlbWVudA==">Change Management <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGVhZGVyc2hpcA==">Leadership <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -295,12 +324,12 @@ window.Quarto = {
 <div id="listing-posts_2025" class="quarto-listing quarto-listing-container-custom">
 <div class="list blog">
   
-  <div class="blog-entry" data-index="0" data-categories="cHl0aG9uJTJDYmF5ZXNpYW4=" data-listing-date-sort="1760054400000" data-listing-file-modified-sort="1760287657949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3534">
+  <div class="blog-entry" data-index="0" data-categories="cHl0aG9uJTJDYmF5ZXNpYW4=" data-listing-date-sort="1760054400000" data-listing-file-modified-sort="1760366774263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3534">
     
     <!-- Thumbnail Image -->
     
     <div class="thumbnail">
-      <img src="../blog/2025/10/bayesion-01.jpg" alt="Understanding Bayesian Thinking for Industrial Applications" title="Understanding Bayesian Thinking for Industrial Applications">
+      <img src="../blog/2025/10/posterior_sensitivity.svg" alt="Understanding Bayesian Thinking for Industrial Applications" title="Understanding Bayesian Thinking for Industrial Applications">
     </div>
     
 
@@ -343,7 +372,7 @@ window.Quarto = {
     </div>
   </div>
   
-  <div class="blog-entry" data-index="1" data-categories="Ym9vaw==" data-listing-date-sort="1735689600000" data-listing-file-modified-sort="1760287657939" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4353">
+  <div class="blog-entry" data-index="1" data-categories="Ym9vaw==" data-listing-date-sort="1735689600000" data-listing-file-modified-sort="1760366774253" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4353">
     
     <!-- Thumbnail Image -->
     
@@ -398,7 +427,55 @@ window.Quarto = {
 <div id="listing-posts_2024" class="quarto-listing quarto-listing-container-custom">
 <div class="list blog">
   
-  <div class="blog-entry" data-index="0" data-categories="Ym9vaw==" data-listing-date-sort="1704067200000" data-listing-file-modified-sort="1760287657938" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2769">
+  <div class="blog-entry" data-index="0" data-categories="Q2hhbmdlJTIwTWFuYWdlbWVudCUyQ0xlYWRlcnNoaXA=" data-listing-date-sort="1718150400000" data-listing-file-modified-sort="1760366774252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="980">
+    
+    <!-- Thumbnail Image -->
+    
+    <div class="thumbnail">
+      <img src="../blog/2024/06/change.jpg" alt="The Lone Wolf vs. The Pack: Why Your Change Strategy Is Failing" title="The Lone Wolf vs. The Pack: Why Your Change Strategy Is Failing">
+    </div>
+    
+
+    <!-- Main Content -->
+    <div class="body">
+      <p class="title listing-title">
+        <a href="../blog/2024/06/index.html">The Lone Wolf vs. The Pack: Why Your Change Strategy Is Failing</a>
+      </p>
+      <p class="description listing-description">This post explores how Kurt Lewin’s theory of group dynamics reveals that lasting organizational change depends less on individual effort and more on engaging and transforming the collective forces within groups.</p>
+      
+      <!-- Read More Link always visible -->
+      <p class="read-more">
+        <a href="../blog/2024/06/index.html">Read More →</a>
+      </p>
+    </div>
+
+    <!-- Hover Overlay with Author, Categories, Date -->
+    <div class="details-overlay">
+      <div class="top">
+        
+        <div class="author">Anthony Faustine</div>
+        
+
+        
+        <div class="tags">
+          
+          <span>Change Management</span>
+          
+          <span>Leadership</span>
+          
+        </div>
+        
+      </div>
+
+      <div class="bottom">
+        
+        <div class="date">June 12, 2024</div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="blog-entry" data-index="1" data-categories="Ym9vaw==" data-listing-date-sort="1704067200000" data-listing-file-modified-sort="1760366774252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2769">
     
     <!-- Thumbnail Image -->
     
@@ -447,12 +524,29 @@ window.Quarto = {
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">2022</h2>
+<div id="posts_2022">
+
+</div>
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine" class="csl-entry quarto-appendix-citeas" role="listitem">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-posts_2023">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list blog">
+  
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine" class="csl-entry quarto-appendix-citeas" role="listitem">
 Faustine, Anthony. n.d. <a href="https://sambaiga.github.io/blog/">https://sambaiga.github.io/blog/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
