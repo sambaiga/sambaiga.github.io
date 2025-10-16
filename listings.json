@@ -27,12 +27,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/2025/10/bayesian-modelling-01.html",
-      "/blog/2024/06/index.html"
-    ]
-  },
-  {
-    "listing": "/atom.html",
-    "items": [
+      "/blog/2024/07/index.html",
       "/blog/2024/06/index.html"
     ]
   },
@@ -45,8 +40,16 @@
     ]
   },
   {
+    "listing": "/atom.html",
+    "items": [
+      "/blog/2024/07/index.html",
+      "/blog/2024/06/index.html"
+    ]
+  },
+  {
     "listing": "/rss.html",
     "items": [
+      "/blog/2024/07/index.html",
       "/blog/2024/06/index.html"
     ]
   }
