@@ -44,10 +44,16 @@ $body-bg:   #FFFFFF !default; // White background
 $body-color: #171717 !default; // DARKER BLACK for better contrast
 
 // Links
-$link-color: $teal !default; // Charcoal
+$link-color: $cyan !default;
+$link-hover-color: $teal;
 $link-decoration: none !default;
-$link-hover-color: #0F172A !default; // DARKER charcoal for hover
-$link-hover-decoration: underline !default;
+$link-hover-decoration: none !default;
+
+
+// Additional link variants for different contexts
+$link-visited-color: lighten($link-color, 10%) !default;
+$link-focus-color: $link-hover-color !default;
+$link-focus-outline: 2px solid $link-color !default;
 
 // Inline code
 $code-bg: #F1F5F9 !default; // Lighter blue-gray for better contrast
@@ -985,5 +991,4 @@ pre.text, pre.sourceCode, .cell-output pre {
 body {
     text-align: justify;
 }
-
 
