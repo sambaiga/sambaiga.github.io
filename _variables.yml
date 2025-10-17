@@ -1,9 +1,10 @@
-orcid: 0000-0002-3948-3914
+orcid: 0000-0002-7838-533X
 
-github-url: "https://github.com/andrewheiss/ath-quarto"
+
+github-url: "https://github.com/sambaiga/sambaiga.github.io"
 
 pgp:
   key: pgp_ath.asc.txt
-  fingerprint: 4AA2 FA83 A8B2 05A4 E30F<br /> 610D 1382 6216 9178 36AB
+  fingerprint: 49ACD41443AEBE4C4877B<br /> 573E6EBC869F77E2675
 
-years: "2007–2025"
+years: "2025–2026"
