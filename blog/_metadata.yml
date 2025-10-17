@@ -10,6 +10,8 @@ format:
     code-overflow: wrap
     quarto-template-params:
       banner-header-class: "blog-post"
+    code-line-numbers: true
+    highlight-style: breezedark
 
 # Default for table of contents
 toc: true
