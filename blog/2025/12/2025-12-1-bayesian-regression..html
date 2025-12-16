@@ -9,7 +9,7 @@
 <meta name="author" content="Anthony Faustine">
 <meta name="description" content="Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.">
 
-<title>Bayesian Regression Explained: A Real-World Battery Degradation Case Study | sambaiga – Anthony Faustine</title>
+<title>Bayesian Regression: A Real-World Battery Degradation Case Study | sambaiga – Anthony Faustine</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,14 +160,14 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Bayesian Regression Explained: A Real-World Battery Degradation Case Study | sambaiga">
+<meta property="og:title" content="Bayesian Regression: A Real-World Battery Degradation Case Study | sambaiga">
 <meta property="og:description" content="Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.">
 <meta property="og:image" content="https://sambaiga.github.io/blog/2025/12/posterior-comparison-1.png">
 <meta property="og:site_name" content="Anthony Faustine">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="625">
 <meta property="og:image:width" content="1458">
-<meta name="twitter:title" content="Bayesian Regression Explained: A Real-World Battery Degradation Case Study | sambaiga">
+<meta name="twitter:title" content="Bayesian Regression: A Real-World Battery Degradation Case Study | sambaiga">
 <meta name="twitter:description" content="Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.">
 <meta name="twitter:image" content="https://sambaiga.github.io/blog/2025/12/posterior-comparison-1.png">
 <meta name="twitter:creator" content="@asambaiga">
@@ -255,7 +255,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Bayesian Regression Explained: A Real-World Battery Degradation Case Study</h1>
+      <h1 class="title">Bayesian Regression: A Real-World Battery Degradation Case Study</h1>
                   <div>
         <div class="description">
           Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.
@@ -298,9 +298,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#case-study-predicting-battery-degradation-with-calce-data" id="toc-case-study-predicting-battery-degradation-with-calce-data" class="nav-link" data-scroll-target="#case-study-predicting-battery-degradation-with-calce-data">Case Study: Predicting Battery Degradation with CALCE Data</a></li>
-  <li><a href="#feature-engineering-translating-raw-data-to-diagnostics" id="toc-feature-engineering-translating-raw-data-to-diagnostics" class="nav-link" data-scroll-target="#feature-engineering-translating-raw-data-to-diagnostics">Feature Engineering: Translating Raw Data to Diagnostics</a></li>
-  <li><a href="#running-inference-mcmc-sampling" id="toc-running-inference-mcmc-sampling" class="nav-link" data-scroll-target="#running-inference-mcmc-sampling">Running Inference (MCMC Sampling)</a></li>
+  <li><a href="#case-study-predicting-battery-degradation" id="toc-case-study-predicting-battery-degradation" class="nav-link" data-scroll-target="#case-study-predicting-battery-degradation">Case Study: Predicting battery degradation</a></li>
+  <li><a href="#translating-raw-battery-data-to-diagnostics-features" id="toc-translating-raw-battery-data-to-diagnostics-features" class="nav-link" data-scroll-target="#translating-raw-battery-data-to-diagnostics-features">Translating raw battery data to diagnostics features</a></li>
+  <li><a href="#bayesian-model-building" id="toc-bayesian-model-building" class="nav-link" data-scroll-target="#bayesian-model-building">Bayesian model building</a></li>
+  <li><a href="#running-inference" id="toc-running-inference" class="nav-link" data-scroll-target="#running-inference">Running inference</a></li>
   <li><a href="#predict-capacity-for-a-new-battery" id="toc-predict-capacity-for-a-new-battery" class="nav-link" data-scroll-target="#predict-capacity-for-a-new-battery">Predict capacity for a new battery</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -328,10 +329,12 @@ window.Quarto = {
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
 <p>Welcome back to our series on <strong>Bayesian Modelling for Industrial Applications</strong>. In <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, we explored how Bayesian thinking provides a principled framework for decision-making under uncertainty when evidence is limited.</p>
-<p>In this post, we extend that foundation to <strong>continuous prediction problems</strong>, showing how <strong>Bayesian regression</strong> transforms noisy industrial data into actionable insights—<em>with uncertainty explicitly quantified rather than ignored</em>.</p>
-<p>Before diving into the mathematics, let’s frame the real-world challenge.</p>
-<p>Industrial systems rarely produce clean or perfectly repeatable measurements. Sensor noise, unit-to-unit variability, and stochastic physical processes are the norm rather than the exception. However, traditional regression methods typically summarize all this complexity with a single “best-fit” curve.</p>
-<p>Such point estimates overlook critical aspects of real industrial data, including:</p>
+<p>In this post, we extend that foundation to <strong>continuous prediction problems</strong>, showing how <strong>Bayesian regression</strong> transforms noisy industrial data into actionable insights <em>with uncertainty explicitly quantified rather than ignored</em>.</p>
+<section id="why-bayesian-regression" class="level4">
+<h4 class="anchored" data-anchor-id="why-bayesian-regression">Why Bayesian regression?</h4>
+<p>Imagine managing a fleet of electric vehicles. One of your biggest challenges is predicting <strong>battery State of Health (SoH)</strong> over time. Early predictions inform warranty decisions, maintenance planning, and safety margins.</p>
+<p>Industrial systems, like vehicle battery packs, are inherently complex: they are characterized by noisy, non-repeatable measurements due to sensor noise, unit variability, and stochastic physical processes.</p>
+<p>Traditional, purely deterministic regression methods (which produce a single “best-fit” curve) fail to capture this complexity. A deterministic model might predict one degradation curve, but in practice, real batteries age differently even under similar conditions. This reliance on a single point estimate overlooks critical, high-risk aspects of the industrial data:</p>
 <ul>
 <li>Measurement uncertainty inherent in sensors and data acquisition systems<br>
 </li>
@@ -341,15 +344,10 @@ window.Quarto = {
 </li>
 <li>Limited early-life observations, a common constraint in industrial testing</li>
 </ul>
-<p>Bayesian regression addresses these challenges by treating model parameters as <strong>probability distributions</strong> rather than fixed values. This allows us to quantify uncertainty, incorporate prior engineering knowledge, and make <strong>risk-aware predictions</strong>—capabilities that are essential in domains such as battery manufacturing, aerospace systems, and reliability engineering.</p>
-<section id="why-bayesian-regression" class="level4">
-<h4 class="anchored" data-anchor-id="why-bayesian-regression">Why Bayesian Regression?</h4>
-<p>Imagine managing a fleet of electric vehicles. One of your biggest challenges is predicting <strong>battery State of Health (SoH)</strong> over time. Early predictions inform warranty decisions, maintenance planning, and safety margins.</p>
-<p>A purely deterministic model might produce a single degradation curve. In practice, however, real batteries age differently—even under similar conditions.</p>
 <p>Bayesian regression addresses this reality by treating uncertainty as a first-class citizen. Instead of delivering a single prediction, it provides <strong>ranges of plausible outcomes</strong>, allowing decisions to be made with risk explicitly accounted for.</p>
 </section>
-<section id="the-foundation-modeling-distributions-with-bayes-theorem" class="level4">
-<h4 class="anchored" data-anchor-id="the-foundation-modeling-distributions-with-bayes-theorem">The Foundation: Modeling Distributions with Bayes’ Theorem</h4>
+<section id="modeling-distributions-with-bayes-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="modeling-distributions-with-bayes-theorem">Modeling distributions with bayes’ theorem</h4>
 <p>Bayesian regression models uncertainty by treating parameters as probability distributions rather than fixed values. Each coefficient represents a range of plausible effects, informed by both prior knowledge and observed data.</p>
 <p>This framework is built on three core components:</p>
 <ol type="1">
@@ -362,12 +360,12 @@ window.Quarto = {
 <p>The posterior distribution enables <strong>credible intervals</strong>, allowing us to quantify how confident we are in both parameter estimates and future predictions—an essential capability in industrial decision-making.</p>
 </section>
 </section>
-<section id="case-study-predicting-battery-degradation-with-calce-data" class="level3">
-<h3 class="anchored" data-anchor-id="case-study-predicting-battery-degradation-with-calce-data">Case Study: Predicting Battery Degradation with CALCE Data</h3>
+<section id="case-study-predicting-battery-degradation" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-predicting-battery-degradation">Case Study: Predicting battery degradation</h3>
 <p>Lithium-ion batteries are critical components in electric vehicles and stationary energy storage systems. Unexpected capacity loss can lead to service interruptions, safety risks, and costly premature replacements.</p>
 <p>The challenge is predicting future battery health when: - Direct capacity measurements are infrequent and expensive - Early-life data is sparse - Degradation accelerates nonlinearly near end of life</p>
-<p>The gaol is not only to predict degradation, but to quantify uncertainty well enough to support maintenance and replacement decisions.</p>
-<p>We use battery degradation data from the <a href="https://calce.umd.edu/battery-data">CALCE Battery</a> Research Group at the University of Maryland. Battery State of Health (<span class="math inline">\(\text{SoH}\)</span>) is defined as current capacity relative to initial capacity (<span class="math inline">\(\text{SoH} = C/C_0\)</span>). This continuous value degrades non-linearly over the battery’s life, driven primarily by cycle count and operational conditions, with significant measurement noise. The <a href="https://calce.umd.edu/battery-data">CALCE dataset</a> provides over 1,200 capacity measurements taken at discrete cycle intervals, alongside features like charging and discharge current and voltage. This comprehensive dataset has become a benchmark in battery research, allowing rigorous comparison of degradation models</p>
+<p>The goal is not only to predict degradation, but to quantify uncertainty well enough to support maintenance and replacement decisions.</p>
+<p>We use battery degradation data from the <a href="https://calce.umd.edu/battery-data">CALCE Battery</a> Research Group at the University of Maryland. Battery State of Health (<span class="math inline">\(\text{SoH}\)</span>) is defined as current capacity relative to initial capacity (<span class="math inline">\(\text{SoH} = C/C_{max}\)</span>). This continuous value degrades non-linearly over the battery’s life, driven primarily by cycle count and operational conditions, with significant measurement noise. The <a href="https://calce.umd.edu/battery-data">CALCE dataset</a> provides over 1,200 capacity measurements taken at discrete cycle intervals, alongside features like charging and discharge current and voltage. This comprehensive dataset has become a benchmark in battery research, allowing rigorous comparison of degradation models</p>
 <div id="7" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -419,14 +417,13 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="choosing-the-beta-likelihood">Choosing the Beta Likelihood</h4>
 <p>The capacity data being modeled, <span class="math inline">\(C\)</span>, represents the battery’s health and is strictly bounded between zero and its initial (maximum) capacity, <span class="math inline">\(C_{\text{max}}\)</span>. The goal of this analysis is to model the evolution of <span class="math inline">\(C\)</span>. In many standard regression approaches, the model’s likelihood function (which defines the distribution of the noise) is assumed to be Gaussian (Normal). This assumption is fundamentally incompatible with the physical reality of capacity degradation for two key reasons.</p>
 <ol type="1">
-<li>Gaussian models assume the target variable can take any real value (<span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>), ignoring the fact that the underlying capacity <span class="math inline">\(C\)</span> and the derived <span class="math inline">\(\text{SoH}\)</span> cannot fall outside their physical limits (i.e., <span class="math inline">\([0, C_{0}]\)</span> or <span class="math inline">\([0, 1]\)</span>)</li>
+<li>Gaussian models assume the target variable can take any real value (<span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>), ignoring the fact that the underlying capacity <span class="math inline">\(C\)</span> cannot fall outside their physical limits (i.e., <span class="math inline">\([C_{\text{min}}, C_{\text{max}}]\)</span> )</li>
 <li>With enough extrapolation, Gaussian models produce impossible values (e.g.,negative capacity). In safety-critical systems, such predictions are dangerous.</li>
 </ol>
-<p>Since battery capacity degradation is continuous and bounded between 0 and 1, a Beta likelihood provides a natural modeling choice avoiding ad-hoc truncation required by Gaussian assumptions. The Beta distribution is defined by two shape parameters (<span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>) such that:<span class="math display">\[\text{SoH}_i \sim \text{Beta}(\alpha_i, \beta_i)\]</span></p>
+<p>The Beta distribution is consequently chosen as the likelihood function for this regression problem. The Beta distribution is flexible, capable of modeling various shapes (uniform, U-shaped, skewed) depending on its shape parameters (<span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>).Furthermore, since battery capacity degradation is continuous and strictly bounded by <span class="math inline">\([C_{\text{min}}, C_{\text{max}}]\)</span>, a Beta likelihood provides a natural modeling choice that avoids the ad-hoc truncation required by Gaussian assumptions.</p>
+<p>To fit the Beta’s intrinsic <span class="math inline">\([0, 1]\)</span> domain, capacity (<span class="math inline">\(C_i\)</span>) is first scaled into a normalized State of Health (<span class="math inline">\(\tilde{C}_i\)</span>) using the following transformation:<span class="math display">\[\tilde{C}_i = \frac{C_i - C_{\text{min}}}{C_{\text{max}} - C_{\text{min}}}\]</span>The model then utilizes the Beta distribution for the scaled capacity:<span class="math display">\[\tilde{C}_i \sim \text{Beta}(\alpha_i, \beta_i)\]</span>where <span class="math inline">\(\alpha_i, \beta_i &gt; 0\)</span> and <span class="math inline">\(\tilde{C}_i \in [0, 1]\)</span>. This modeling choice ensures all predicted <span class="math inline">\(\tilde{C}_i\)</span> values remain physically plausible while allowing for flexible modeling of degradation patterns through the shape parameters.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    pm.Beta(<span class="st">"y_obs"</span>, alpha<span class="op">=</span>alpha, beta<span class="op">=</span>beta_shape, observed<span class="op">=</span>y_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>where <span class="math inline">\(\alpha_i, \beta_i &gt; 0\)</span> and <span class="math display">\[\text{SoH}_i=\frac{C_i}{C_0} \in [0, 1]\]</span></p>
-<p>The Beta distribution is flexible, capable of modeling various shapes (uniform, U-shaped, skewed) depending on the values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. This modeling choice ensures all predicted <span class="math inline">\(\text{SoH}\)</span> values remain physically plausible, while also allowing flexible modeling of various degradation patterns through the shape parameters.</p>
 <section id="parameterization-mean-mu-and-precision-phi" class="level5">
 <h5 class="anchored" data-anchor-id="parameterization-mean-mu-and-precision-phi">Parameterization: Mean (<span class="math inline">\(\mu\)</span>) and Precision (<span class="math inline">\(\phi\)</span>)</h5>
 <p>To make the parameters intuitive, the Beta distribution is typically reparameterized using the mean (<span class="math inline">\(\mu\)</span>) and the precision (<span class="math inline">\(\phi\)</span>).The shape parameters, <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(\beta_i\)</span>, which define the exact shape of the distribution for a given observation, are calculated directly from the mean <span class="math inline">\(\mu_{i} \in (0, 1)\)</span> and the global precision <span class="math inline">\(\phi &gt; 0\)</span> such that:<span class="math display">\[\alpha_i = \mu_{i} \cdot \phi \quad \text{and} \quad \beta_i = (1 - \mu_{i}) \cdot \phi\]</span> The precision parameter, <span class="math inline">\(\phi\)</span>, controls the variance: a large <span class="math inline">\(\phi\)</span> means the predictions are tightly clustered around the mean <span class="math inline">\(\mu_{i}\)</span>, indicating low uncertainty (low variance).</p>
@@ -680,13 +677,13 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="feature-engineering-translating-raw-data-to-diagnostics" class="level3">
-<h3 class="anchored" data-anchor-id="feature-engineering-translating-raw-data-to-diagnostics">Feature Engineering: Translating Raw Data to Diagnostics</h3>
+<section id="translating-raw-battery-data-to-diagnostics-features" class="level3">
+<h3 class="anchored" data-anchor-id="translating-raw-battery-data-to-diagnostics-features">Translating raw battery data to diagnostics features</h3>
 <p>In the preceding sections, the output side of the Bayesian model was rigorously defined, including the Beta likelihood, the Logit link function, and physics-informed priors for the parameters (<span class="math inline">\(\beta_0, \boldsymbol{\beta}, \lambda, \phi\)</span>). However, the quality of the resulting predictions depends critically on the quality of the input features (<span class="math inline">\(\mathbf{x}\)</span>) that drive the degradation term (<span class="math inline">\(\eta_i = \dots + \mathbf{x}_i^{\top} \boldsymbol{\beta}\)</span>).</p>
 <p>Raw capacity measurement curves are noisy and variable. Therefore, before proceeding to Bayesian sampling, it is necessary to dedicate a structured process to translating real-world operational data into robust, physically meaningful diagnostic features.</p>
 <p>This motivates the crucial step of feature engineering.</p>
 <section id="data-alignment-and-cleaning" class="level4">
-<h4 class="anchored" data-anchor-id="data-alignment-and-cleaning">Data Alignment and Cleaning</h4>
+<h4 class="anchored" data-anchor-id="data-alignment-and-cleaning">Data alignment and cleaning</h4>
 <p>Before extracting diagnostic features, a uniform time base must be established, as the formulas used for feature extraction require comparable voltage and current values across cycles.</p>
 <ol type="1">
 <li>Cycle Alignment (Standardization): Linear interpolation is used to resample all voltage and current time-series arrays to a uniform length (e.g., 500 points). This standardization enables direct cycle-to-cycle comparison, as illustrated by the transition from the raw data (Figures 1 and 2) to the interpolated curves (Figures 3 and 4).</li>
@@ -768,7 +765,7 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </blockquote>
 </section>
 <section id="statistical-feature-aggregation" class="level4">
-<h4 class="anchored" data-anchor-id="statistical-feature-aggregation">Statistical Feature Aggregation</h4>
+<h4 class="anchored" data-anchor-id="statistical-feature-aggregation">Statistical feature aggregation</h4>
 <p>The diagnostic signals derived above (e.g., incremental capacity curves) remain high-resolution time- or cycle-series data. To produce robust, concise, and comparable inputs for the Bayesian regression model, a final aggregation step is performed by extracting statistical moments from each diagnostic signal <span class="math inline">\(s(x)\)</span>. This aggregation reduces hundreds of data points per cycle into a small number of highly informative scalar features.</p>
 <table class="caption-top table">
 <colgroup>
@@ -831,7 +828,7 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <section id="load-pre-processed-calce-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="load-pre-processed-calce-dataset">Load pre-processed CALCE dataset</h4>
 <p>The raw CALCE dataset is a widely used public resource in battery prognostics and can be downloaded via the <a href="https://ieee-dataport.org/documents/calce-battery-group">CALCE dataset link</a>.</p>
-<p>For this notebook, however, we use pre-processed data that has been cleaned and formatted. This pre-processing reuses the techniques and codes originally published in this paper <a href="https://www.nature.com/articles/s42256-024-00972-x#citeas">Ref1</a>. Using the cleaned data allows us to focus immediately on the Bayesian modeling aspects without the overhead of complex data preparation</p>
+<p>For this notebook, however, we use pre-processed data that has been cleaned and formatted. This pre-processing reuses the techniques and codes originally published in this paper <a href="https://www.nature.com/articles/s42256-024-00972-x#citeas">Ref</a>. Using the cleaned data allows us to focus immediately on the Bayesian modeling aspects without the overhead of complex data preparation</p>
 <div id="33" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -858,16 +855,14 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </div>
 <p>The figure below plots the four selected features against cycle number for a representative battery. These plots empirically validate the selection process, as all four features exhibit clear, monotonic changes with cycling and, critically, show a distinct shift or acceleration in slope as the battery enters the failure state (<span class="math inline">\(\text{SoH} \le 80\%\)</span>, shown in green). This strong visual correlation provides high confidence that these inputs will effectively drive the degradation component of our Bayesian model.</p>
 </section>
-<section id="model-building-generalizability-test" class="level4">
-<h4 class="anchored" data-anchor-id="model-building-generalizability-test">Model building: Generalizability Test</h4>
+</section>
+<section id="bayesian-model-building" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-model-building">Bayesian model building</h3>
 <p>Before constructing the Bayesian Beta regression model, it is necessary to define a rigorous evaluation strategy. The central question addressed here is whether a model trained on data from a single battery can successfully generalize to other batteries whose degradation trajectories were not observed during training.</p>
 <p>This setting reflects a common real-world scenario in which detailed historical data may be available for only a limited number of prototype units, while the deployed model must operate reliably across an entire manufacturing batch.</p>
 <p>To ensure a fair and controlled evaluation, all batteries considered in this study are restricted to a single cell chemistry type (“CS2”). By holding the underlying electrochemical properties constant, the analysis isolates unit-to-unit variability rather than confounding the results with chemistry-dependent effects.</p>
 <p>A one-shot generalization split is employed. A single representative battery (CALCE_CS2_38) is designated as the training set (train_df). The model learns the degradation rate (<span class="math inline">\(\lambda\)</span>) and operational sensitivities (<span class="math inline">\(\boldsymbol{\beta}\)</span>) exclusively from this unit’s historical data. All remaining batteries of the same chemistry are assigned to the test set (test_df). Model performance is therefore evaluated based on its ability to predict capacity fade for previously unseen batteries using only the generalizable parameters inferred from the training unit.</p>
-</section>
-<section id="model-building-and-inference" class="level4">
-<h4 class="anchored" data-anchor-id="model-building-and-inference">Model Building and Inference</h4>
-<p>With the input data rigorously cleaned, aligned, scaled, and reduced to the four most informative operational features (<span class="math inline">\(\mathbf{X}\)</span>), the Bayesian regression model can now be implemented and fitted. As defined in the Beta Likelihood and Priors subsection, the model is specified as a Bayesian Beta regression with a logit link function, enabling the modeling of bounded battery State of Health (<span class="math inline">\(\text{SoH}\)</span>).</p>
+<p>With the input data rigorously cleaned, aligned, scaled, and reduced to the four most informative operational features (<span class="math inline">\(\mathbf{x}\)</span>), the Bayesian regression model can now be implemented and fitted. As defined in the Beta Likelihood and Priors subsection, the model is specified as a Bayesian Beta regression with a logit link function, enabling the modeling of bounded battery capacity (<span class="math inline">\(\tilde{C}\)</span>).</p>
 <div id="38" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -878,9 +873,8 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <span id="cb21-5"><a href="#cb21-5"></a>model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</section>
-<section id="prior-predictive-check-sanity-testing-our-assumptions" class="level4">
-<h4 class="anchored" data-anchor-id="prior-predictive-check-sanity-testing-our-assumptions">Prior Predictive Check: Sanity Testing Our Assumptions</h4>
+<section id="prior-predictive-check" class="level4">
+<h4 class="anchored" data-anchor-id="prior-predictive-check">Prior Predictive Check</h4>
 <p>Following standard Bayesian practice, model validation begins with a Prior Predictive Check (PPC). The PPC involves simulating data from the model using only the prior distributions, without conditioning on any observed measurements. This procedure serves as a critical sanity check, verifying that the encoded engineering knowledge produces physically plausible behavior.</p>
 <div id="40" class="cell">
 <details class="code-fold">
@@ -926,13 +920,13 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <ul>
 <li><p>High-Confidence Initial Capacity: The predicted capacity distribution exhibits a dominant peak near <span class="math inline">\(\mu \approx 1.0\)</span>, reflecting the highly informative precision prior <span class="math inline">\(\phi \sim \text{Gamma}(100, 2.0)\)</span> (mean <span class="math inline">\(\phi = 50\)</span>). This enforces a strong prior belief in low sensor noise and high initial measurement confidence.</p></li>
 <li><p>Realistic Degradation Envelope: The prior predictive distribution remains tightly constrained across the capacity range. This behavior is driven by the informative degradation-rate prior on <span class="math inline">\(\lambda\)</span>, which minimizes the probability of immediate or catastrophic capacity loss and enforces physically plausible degradation trajectories.</p></li>
-<li><p>Acknowledgment of Failure Modes: While constrained, the prior allocates non-negligible probability mass to lower capacity regions (e.g., <span class="math inline">\(\text{SoH} \approx 0.4\)</span>–<span class="math inline">\(0.7\)</span>). This reflects uncertainty in the degradation amplitude and rate parameters, allowing for degradation and failure scenarios without overstating their likelihood.</p></li>
+<li><p>Acknowledgment of Failure Modes: While constrained, the prior allocates non-negligible probability mass to lower capacity regions (e.g., <span class="math inline">\(\tilde{C} \approx 0.4\)</span>–<span class="math inline">\(0.7\)</span>). This reflects uncertainty in the degradation amplitude and rate parameters, allowing for degradation and failure scenarios without overstating their likelihood.</p></li>
 </ul>
 <p>The PPC demonstrates that the model respects physical bounds, reflects realistic degradation behavior, and balances strong prior knowledge with controlled uncertainty. The model is therefore suitable for posterior inference.</p>
 </section>
 </section>
-<section id="running-inference-mcmc-sampling" class="level3">
-<h3 class="anchored" data-anchor-id="running-inference-mcmc-sampling">Running Inference (MCMC Sampling)</h3>
+<section id="running-inference" class="level3">
+<h3 class="anchored" data-anchor-id="running-inference">Running inference</h3>
 <p>With the model fully specified, priors validated through the PPC, and input features prepared, posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. This step approximates the posterior distribution by updating prior beliefs using the observed data, forming the core of Bayesian inference.</p>
 <div id="45" class="cell">
 <details class="code-fold">
@@ -949,8 +943,8 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <li>target_accept=0.95: Forces the sampler to take smaller, more cautious steps. This high acceptance rate is necessary to avoid divergences in challenging models, ensuring a high-quality, accurate representation of the posterior distribution, though it increases computation time.</li>
 </ul>
 <p>The resulting idata object now contains thousands of samples for every single model parameter, representing our comprehensive, uncertainty-quantified solution. The next step is to ensure these samples are reliable</p>
-<section id="model-diagnostics-has-the-mcmc-converged" class="level4">
-<h4 class="anchored" data-anchor-id="model-diagnostics-has-the-mcmc-converged">Model Diagnostics: Has the MCMC Converged?</h4>
+<section id="model-diagnostics" class="level4">
+<h4 class="anchored" data-anchor-id="model-diagnostics">Model diagnostics</h4>
 <p>After sampling, convergence diagnostics are evaluated to ensure the reliability of posterior estimates. The validity of all subsequent inferences depends on whether the Markov chains have adequately explored the parameter space.</p>
 <div id="48" class="cell">
 <details class="code-fold">
@@ -973,8 +967,8 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </ol>
 <p>These diagnostics collectively indicate successful convergence and robust posterior sampling.</p>
 </section>
-<section id="analyzing-the-posterior-distribution" class="level4">
-<h4 class="anchored" data-anchor-id="analyzing-the-posterior-distribution">Analyzing the Posterior Distribution</h4>
+<section id="analysing-the-posterior-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="analysing-the-posterior-distribution">Analysing the posterior distribution</h4>
 <p>With convergence confirmed, the sampled chains provide a reliable approximation of the posterior distribution. The marginal posterior densities and corresponding trace plots for the core model parameters are examined to quantify degradation dynamics and assess the influence of operational features.</p>
 <p>This analysis enables principled uncertainty quantification of degradation rates and feature effects, supporting interpretable and decision-relevant predictions for battery health forecasting.</p>
 <div id="51" class="cell">
@@ -983,7 +977,7 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>az.plot_trace(idata, var_names<span class="op">=</span><span class="bu">vars</span>, compact<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>The analyze_parameter function below acts as a post-processing utility dedicated to generating publication-ready summary tables from the output of the MCMC sampling.</p>
+<p>The <code>analyze_parameter</code> function below acts as a post-processing utility dedicated to generating publication-ready summary tables from the output of the MCMC sampling.</p>
 <div id="53" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -1111,7 +1105,7 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </blockquote>
 </section>
 <section id="quantifying-the-degradation-rate-lambda_textrate" class="level4">
-<h4 class="anchored" data-anchor-id="quantifying-the-degradation-rate-lambda_textrate">Quantifying the Degradation Rate (<span class="math inline">\(\lambda_{\text{rate}}\)</span>)</h4>
+<h4 class="anchored" data-anchor-id="quantifying-the-degradation-rate-lambda_textrate">Quantifying the degradation rate (<span class="math inline">\(\lambda_{\text{rate}}\)</span>)</h4>
 <p>The parameter <span class="math inline">\(\lambda_{\text{rate}}\)</span> governs the speed of capacity fade induced by cycling. By adopting a weakly informative Lognormal prior with increased dispersion (<span class="math inline">\(\sigma = 1.0\)</span>), the data is allowed to dominate the posterior estimation of this parameter.</p>
 <div id="59" class="cell">
 <details class="code-fold">
@@ -1129,7 +1123,7 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <p>The remaining uncertainty is minimal, as evidenced by a small posterior standard deviation (<span class="math inline">\(\text{SD} = 0.001\)</span>) and a narrow <span class="math inline">\(95%\)</span> HDI of <span class="math inline">\([0.002,,0.004]\)</span>. These results confirm that the MCMC sampler has effectively leveraged the data to tightly constrain the degradation speed.</p>
 </section>
 <section id="model-precision-phi" class="level4">
-<h4 class="anchored" data-anchor-id="model-precision-phi">Model Precision (<span class="math inline">\(\phi\)</span>)</h4>
+<h4 class="anchored" data-anchor-id="model-precision-phi">Model precision (<span class="math inline">\(\phi\)</span>)</h4>
 <p>The precision parameter <span class="math inline">\(\phi\)</span> controls the dispersion of the Beta likelihood, quantifying how tightly the observed <span class="math inline">\(\text{SoH}\)</span> measurements cluster around the model-predicted mean after accounting for all modeled effects.</p>
 <div id="63" class="cell">
 <details class="code-fold">
@@ -1157,8 +1151,8 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <p>The <span class="math inline">\(95%\)</span> HDI for <span class="math inline">\(\text{degr\_amp}\)</span> is narrow and entirely positive, spanning <span class="math inline">\([0.265,,0.468]\)</span>. This provides strong statistical evidence that degradation due to cycling is both certain and quantitatively well-defined, rather than an artifact of noise. The strictly positive support of this parameter confirms that capacity loss is an unavoidable consequence of repeated cycling.</p>
 </section>
 </section>
-<section id="posterior-predictive-check-model-adequacy" class="level4">
-<h4 class="anchored" data-anchor-id="posterior-predictive-check-model-adequacy">Posterior Predictive Check: Model Adequacy</h4>
+<section id="posterior-predictive-check" class="level4">
+<h4 class="anchored" data-anchor-id="posterior-predictive-check">Posterior predictive check</h4>
 <p>Following parameter interpretation, a Posterior Predictive Check (PPC) is performed to assess model adequacy. This step evaluates whether the model, using posterior parameter samples, can generate synthetic data that closely resembles the observed measurements.</p>
 <p>Using PyMC’s <code>sample_posterior_predictive</code> function, samples are drawn from the likelihood conditioned on the converged posterior chains. The resulting PPC compares three distributions: the observed data, the prior predictive distribution, and the posterior predictive distribution.</p>
 <div id="70" class="cell">
@@ -1230,64 +1224,64 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </div>
 <p>Posterior predictions for unseen batteries are generated using the `<code>get_posterior_predictions</code> procedure, which applies the fitted Bayesian model to new input data. The process consists of the following steps:</p>
 <ul>
-<li><strong>Feature Transformation</strong>: The operational features of the new battery are transformed using the same scaling object fitted during training, ensuring consistency between training and inference domains.</li>
+<li><strong>Feature Transformation</strong>: The operational features of the new battery are transformed using the same scaling object fitted during training, ensuring consistency between training and inference domains. The corresponding cycle counts are extracted separately, as they directly enter the exponential degradation component of the model.</li>
+<li></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>    x_new <span class="op">=</span> scaler.transform(data[features])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>The corresponding cycle counts are extracted separately, as they directly enter the exponential degradation component of the model.</code></pre>
 <ul>
 <li><strong>Dummy Target Initialization</strong>: A placeholder target array is supplied to satisfy the dimensional requirements of the PyMC model’s observed variable. These values are ignored during posterior prediction..</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>    y_dummy_scaled <span class="op">=</span> np.full(shape<span class="op">=</span>(X_new_scaled.shape[<span class="dv">0</span>],), fill_value<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>    y_dummy_scaled <span class="op">=</span> np.full(shape<span class="op">=</span>(X_new_scaled.shape[<span class="dv">0</span>],), fill_value<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Model update</strong>: The new feature matrix, cycle data, and dummy target are injected into the model using pm.set_data, reconfiguring the model for prediction without retraining.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>    <span class="cf">with</span> battery_model:</span>
-<span id="cb42-2"><a href="#cb42-2"></a>        pm.set_data({</span>
-<span id="cb42-3"><a href="#cb42-3"></a>            <span class="st">"x_data"</span>: x_new,</span>
-<span id="cb42-4"><a href="#cb42-4"></a>            <span class="st">"cycle_data"</span>: cycle_new,</span>
-<span id="cb42-5"><a href="#cb42-5"></a>            <span class="st">"y_obs"</span>: y_dummy_scaled</span>
-<span id="cb42-6"><a href="#cb42-6"></a>        })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>    <span class="cf">with</span> battery_model:</span>
+<span id="cb41-2"><a href="#cb41-2"></a>        pm.set_data({</span>
+<span id="cb41-3"><a href="#cb41-3"></a>            <span class="st">"x_data"</span>: x_new,</span>
+<span id="cb41-4"><a href="#cb41-4"></a>            <span class="st">"cycle_data"</span>: cycle_new,</span>
+<span id="cb41-5"><a href="#cb41-5"></a>            <span class="st">"y_obs"</span>: y_dummy_scaled</span>
+<span id="cb41-6"><a href="#cb41-6"></a>        })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Posterior Predictive Sampling</strong>: Samples are drawn from the Posterior Predictive Distribution using <code>pm.sample_posterior_predictive</code>, incorporating both posterior parameter uncertainty and observation noise..</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>    <span class="cf">with</span> battery_model:</span>
-<span id="cb43-2"><a href="#cb43-2"></a>        post_pred <span class="op">=</span> pm.sample_posterior_predictive(</span>
-<span id="cb43-3"><a href="#cb43-3"></a>            idata,</span>
-<span id="cb43-4"><a href="#cb43-4"></a>            var_names<span class="op">=</span>[<span class="st">"y_obs"</span>],</span>
-<span id="cb43-5"><a href="#cb43-5"></a>            random_seed<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb43-6"><a href="#cb43-6"></a>            predictions<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb43-7"><a href="#cb43-7"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>    <span class="cf">with</span> battery_model:</span>
+<span id="cb42-2"><a href="#cb42-2"></a>        post_pred <span class="op">=</span> pm.sample_posterior_predictive(</span>
+<span id="cb42-3"><a href="#cb42-3"></a>            idata,</span>
+<span id="cb42-4"><a href="#cb42-4"></a>            var_names<span class="op">=</span>[<span class="st">"y_obs"</span>],</span>
+<span id="cb42-5"><a href="#cb42-5"></a>            random_seed<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb42-6"><a href="#cb42-6"></a>            predictions<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb42-7"><a href="#cb42-7"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="78" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>pred_df <span class="op">=</span> get_posterior_predictions(</span>
-<span id="cb44-2"><a href="#cb44-2"></a>    idata, model, scaler, new_df, features, alpha<span class="op">=</span><span class="fl">0.1</span>, upper_bound<span class="op">=</span>upper_bound, lower_bound<span class="op">=</span>lower_bound</span>
-<span id="cb44-3"><a href="#cb44-3"></a>)</span>
-<span id="cb44-4"><a href="#cb44-4"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>pred_df <span class="op">=</span> get_posterior_predictions(</span>
+<span id="cb43-2"><a href="#cb43-2"></a>    idata, model, scaler, new_df, features, alpha<span class="op">=</span><span class="fl">0.1</span>, upper_bound<span class="op">=</span>upper_bound, lower_bound<span class="op">=</span>lower_bound</span>
+<span id="cb43-3"><a href="#cb43-3"></a>)</span>
+<span id="cb43-4"><a href="#cb43-4"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Predictions for each test battery are visualized using the plot_hdi_regression function. The plots display the observed capacity measurements (points) overlaid with the model’s posterior predictive mean and the corresponding <span class="math inline">\(95%\)</span> HDI. The blue line represents the posterior predictive mean where the shaded region represents the <span class="math inline">\(95%\)</span> HDI, quantifying predictive uncertainty.</p>
+<p>Predictions for each test battery are visualized using the plot_hdi_regression function. The plots display the observed capacity measurements (points) overlaid with the model’s posterior predictive mean and the corresponding <span class="math inline">\(90%\)</span> HDI. The blue line represents the posterior predictive mean where the shaded region represents the <span class="math inline">\(90%\)</span> HDI, quantifying predictive uncertainty.</p>
 <div id="80" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="im">from</span> bayes.plot.regres_plot <span class="im">import</span> plot_hdi_regression</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">from</span> bayes.plot.regres_plot <span class="im">import</span> plot_hdi_regression</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="81" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>plot_hdi_regression(</span>
-<span id="cb46-2"><a href="#cb46-2"></a>    pred_df,</span>
-<span id="cb46-3"><a href="#cb46-3"></a>    x_column<span class="op">=</span><span class="st">"cycle"</span>,</span>
-<span id="cb46-4"><a href="#cb46-4"></a>    y_column<span class="op">=</span><span class="st">"capacity"</span>,</span>
-<span id="cb46-5"><a href="#cb46-5"></a>    group_column<span class="op">=</span><span class="st">"BatteryID"</span>,</span>
-<span id="cb46-6"><a href="#cb46-6"></a>    pred_column<span class="op">=</span><span class="st">"pred_median"</span>,</span>
-<span id="cb46-7"><a href="#cb46-7"></a>    x_label<span class="op">=</span><span class="st">"Cycle Number"</span>,</span>
-<span id="cb46-8"><a href="#cb46-8"></a>    y_label<span class="op">=</span><span class="st">"Capacity (Ah)"</span>,</span>
-<span id="cb46-9"><a href="#cb46-9"></a>    title_prefix<span class="op">=</span><span class="st">"Battery Capacity vs. Cycle with Posterior Predictions"</span>,</span>
-<span id="cb46-10"><a href="#cb46-10"></a>    subtitle<span class="op">=</span><span class="st">"90% HDI accounts for  uncertainty."</span>,</span>
-<span id="cb46-11"><a href="#cb46-11"></a>    alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
-<span id="cb46-12"><a href="#cb46-12"></a>) <span class="op">+</span> ggsize(<span class="dv">800</span>, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>plot_hdi_regression(</span>
+<span id="cb45-2"><a href="#cb45-2"></a>    pred_df,</span>
+<span id="cb45-3"><a href="#cb45-3"></a>    x_column<span class="op">=</span><span class="st">"cycle"</span>,</span>
+<span id="cb45-4"><a href="#cb45-4"></a>    y_column<span class="op">=</span><span class="st">"capacity"</span>,</span>
+<span id="cb45-5"><a href="#cb45-5"></a>    group_column<span class="op">=</span><span class="st">"BatteryID"</span>,</span>
+<span id="cb45-6"><a href="#cb45-6"></a>    pred_column<span class="op">=</span><span class="st">"pred_median"</span>,</span>
+<span id="cb45-7"><a href="#cb45-7"></a>    x_label<span class="op">=</span><span class="st">"Cycle Number"</span>,</span>
+<span id="cb45-8"><a href="#cb45-8"></a>    y_label<span class="op">=</span><span class="st">"Capacity (Ah)"</span>,</span>
+<span id="cb45-9"><a href="#cb45-9"></a>    title_prefix<span class="op">=</span><span class="st">"Battery Capacity vs. Cycle with Posterior Predictions"</span>,</span>
+<span id="cb45-10"><a href="#cb45-10"></a>    subtitle<span class="op">=</span><span class="st">"90% HDI accounts for  uncertainty."</span>,</span>
+<span id="cb45-11"><a href="#cb45-11"></a>    alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb45-12"><a href="#cb45-12"></a>) <span class="op">+</span> ggsize(<span class="dv">800</span>, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Key Observations</p>
@@ -1303,65 +1297,65 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <div id="84" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="im">from</span> bayes.metrics.interval <span class="im">import</span> get_interval_metrics</span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="im">from</span> bayes.metrics.regression <span class="im">import</span> regression_report</span>
-<span id="cb47-3"><a href="#cb47-3"></a></span>
-<span id="cb47-4"><a href="#cb47-4"></a>metrics_list <span class="op">=</span> []</span>
-<span id="cb47-5"><a href="#cb47-5"></a><span class="cf">for</span> battery_id, df <span class="kw">in</span> pred_df.groupby(<span class="st">"BatteryID"</span>):</span>
-<span id="cb47-6"><a href="#cb47-6"></a>    reg_report <span class="op">=</span> regression_report(df[<span class="st">"capacity"</span>], df[<span class="st">"pred_median"</span>])</span>
-<span id="cb47-7"><a href="#cb47-7"></a>    interval_report <span class="op">=</span> get_interval_metrics(</span>
-<span id="cb47-8"><a href="#cb47-8"></a>        df[<span class="st">"pred_median"</span>].values,</span>
-<span id="cb47-9"><a href="#cb47-9"></a>        df[<span class="st">"capacity"</span>].values,</span>
-<span id="cb47-10"><a href="#cb47-10"></a>        df[<span class="st">"hdi_low"</span>].values,</span>
-<span id="cb47-11"><a href="#cb47-11"></a>        df[<span class="st">"hdi_high"</span>].values,</span>
-<span id="cb47-12"><a href="#cb47-12"></a>        alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
-<span id="cb47-13"><a href="#cb47-13"></a>    )</span>
-<span id="cb47-14"><a href="#cb47-14"></a>    full_report <span class="op">=</span> pd.concat([reg_report, interval_report], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb47-15"><a href="#cb47-15"></a>    full_report[<span class="st">"BatteryID"</span>] <span class="op">=</span> battery_id</span>
-<span id="cb47-16"><a href="#cb47-16"></a>    metrics_list.append(full_report)</span>
-<span id="cb47-17"><a href="#cb47-17"></a>metrics_df <span class="op">=</span> pd.concat(metrics_list, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb47-18"><a href="#cb47-18"></a></span>
-<span id="cb47-19"><a href="#cb47-19"></a>metrics_df <span class="op">=</span> metrics_df.pivot_table(</span>
-<span id="cb47-20"><a href="#cb47-20"></a>    index<span class="op">=</span>[<span class="st">"BatteryID"</span>],</span>
-<span id="cb47-21"><a href="#cb47-21"></a>    columns<span class="op">=</span><span class="st">"Metric"</span>,</span>
-<span id="cb47-22"><a href="#cb47-22"></a>    values<span class="op">=</span><span class="st">"Value"</span>,</span>
-<span id="cb47-23"><a href="#cb47-23"></a>).reset_index()</span>
-<span id="cb47-24"><a href="#cb47-24"></a></span>
-<span id="cb47-25"><a href="#cb47-25"></a></span>
-<span id="cb47-26"><a href="#cb47-26"></a></span>
-<span id="cb47-27"><a href="#cb47-27"></a><span class="kw">def</span> make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>):</span>
-<span id="cb47-28"><a href="#cb47-28"></a>    <span class="co">"""Generate a formatted GT table from cross-validation metrics."""</span></span>
-<span id="cb47-29"><a href="#cb47-29"></a>    <span class="co"># Sort to present best models first</span></span>
-<span id="cb47-30"><a href="#cb47-30"></a>    df <span class="op">=</span> metrics_df.sort_values([<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb47-31"><a href="#cb47-31"></a></span>
-<span id="cb47-32"><a href="#cb47-32"></a>    <span class="co"># Build base table</span></span>
-<span id="cb47-33"><a href="#cb47-33"></a>    gt <span class="op">=</span> (</span>
-<span id="cb47-34"><a href="#cb47-34"></a>        GT(df[[<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]])</span>
-<span id="cb47-35"><a href="#cb47-35"></a>        .tab_header(title<span class="op">=</span>title, subtitle<span class="op">=</span><span class="st">"Per-battery performance"</span>)</span>
-<span id="cb47-36"><a href="#cb47-36"></a>        .cols_label(BatteryID<span class="op">=</span><span class="st">"Test Cell"</span>, MAE<span class="op">=</span><span class="st">"MAE"</span>, RMSE<span class="op">=</span><span class="st">"RMSE"</span>, R2<span class="op">=</span>md(<span class="st">"R&lt;sup&gt;2&lt;/sup&gt;"</span>))</span>
-<span id="cb47-37"><a href="#cb47-37"></a>        .fmt_number(columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>], decimals<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb47-38"><a href="#cb47-38"></a>        .fmt_number(columns<span class="op">=</span><span class="st">"R2"</span>, decimals<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb47-39"><a href="#cb47-39"></a>        .tab_spanner(label<span class="op">=</span><span class="st">"Error Metrics"</span>, columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>])</span>
-<span id="cb47-40"><a href="#cb47-40"></a>        .tab_style(</span>
-<span id="cb47-41"><a href="#cb47-41"></a>            style<span class="op">=</span>style.text(weight<span class="op">=</span><span class="st">"bold"</span>),</span>
-<span id="cb47-42"><a href="#cb47-42"></a>            locations<span class="op">=</span>loc.body(columns<span class="op">=</span><span class="st">"Model"</span>),</span>
-<span id="cb47-43"><a href="#cb47-43"></a>        )</span>
-<span id="cb47-44"><a href="#cb47-44"></a>        .tab_options(</span>
-<span id="cb47-45"><a href="#cb47-45"></a>            table_font_size<span class="op">=</span><span class="st">"small"</span>,</span>
-<span id="cb47-46"><a href="#cb47-46"></a>            <span class="co"># row_strip_color="#fafafa"</span></span>
-<span id="cb47-47"><a href="#cb47-47"></a>        )</span>
-<span id="cb47-48"><a href="#cb47-48"></a>    )</span>
-<span id="cb47-49"><a href="#cb47-49"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]:</span>
-<span id="cb47-50"><a href="#cb47-50"></a>        best_idx <span class="op">=</span> df[col].idxmax() <span class="cf">if</span> col <span class="kw">in</span> [<span class="st">"R2"</span>, <span class="st">"PICP"</span>] <span class="cf">else</span> df[col].idxmin()</span>
-<span id="cb47-51"><a href="#cb47-51"></a>        gt <span class="op">=</span> gt.tab_style(style<span class="op">=</span>style.fill(color<span class="op">=</span><span class="st">"#E1DFDD"</span>), locations<span class="op">=</span>loc.body(rows<span class="op">=</span>best_idx, columns<span class="op">=</span>col))</span>
-<span id="cb47-52"><a href="#cb47-52"></a></span>
-<span id="cb47-53"><a href="#cb47-53"></a>    <span class="cf">return</span> gt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">from</span> bayes.metrics.interval <span class="im">import</span> get_interval_metrics</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="im">from</span> bayes.metrics.regression <span class="im">import</span> regression_report</span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a>metrics_list <span class="op">=</span> []</span>
+<span id="cb46-5"><a href="#cb46-5"></a><span class="cf">for</span> battery_id, df <span class="kw">in</span> pred_df.groupby(<span class="st">"BatteryID"</span>):</span>
+<span id="cb46-6"><a href="#cb46-6"></a>    reg_report <span class="op">=</span> regression_report(df[<span class="st">"capacity"</span>], df[<span class="st">"pred_median"</span>])</span>
+<span id="cb46-7"><a href="#cb46-7"></a>    interval_report <span class="op">=</span> get_interval_metrics(</span>
+<span id="cb46-8"><a href="#cb46-8"></a>        df[<span class="st">"pred_median"</span>].values,</span>
+<span id="cb46-9"><a href="#cb46-9"></a>        df[<span class="st">"capacity"</span>].values,</span>
+<span id="cb46-10"><a href="#cb46-10"></a>        df[<span class="st">"hdi_low"</span>].values,</span>
+<span id="cb46-11"><a href="#cb46-11"></a>        df[<span class="st">"hdi_high"</span>].values,</span>
+<span id="cb46-12"><a href="#cb46-12"></a>        alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb46-13"><a href="#cb46-13"></a>    )</span>
+<span id="cb46-14"><a href="#cb46-14"></a>    full_report <span class="op">=</span> pd.concat([reg_report, interval_report], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-15"><a href="#cb46-15"></a>    full_report[<span class="st">"BatteryID"</span>] <span class="op">=</span> battery_id</span>
+<span id="cb46-16"><a href="#cb46-16"></a>    metrics_list.append(full_report)</span>
+<span id="cb46-17"><a href="#cb46-17"></a>metrics_df <span class="op">=</span> pd.concat(metrics_list, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-18"><a href="#cb46-18"></a></span>
+<span id="cb46-19"><a href="#cb46-19"></a>metrics_df <span class="op">=</span> metrics_df.pivot_table(</span>
+<span id="cb46-20"><a href="#cb46-20"></a>    index<span class="op">=</span>[<span class="st">"BatteryID"</span>],</span>
+<span id="cb46-21"><a href="#cb46-21"></a>    columns<span class="op">=</span><span class="st">"Metric"</span>,</span>
+<span id="cb46-22"><a href="#cb46-22"></a>    values<span class="op">=</span><span class="st">"Value"</span>,</span>
+<span id="cb46-23"><a href="#cb46-23"></a>).reset_index()</span>
+<span id="cb46-24"><a href="#cb46-24"></a></span>
+<span id="cb46-25"><a href="#cb46-25"></a></span>
+<span id="cb46-26"><a href="#cb46-26"></a></span>
+<span id="cb46-27"><a href="#cb46-27"></a><span class="kw">def</span> make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>):</span>
+<span id="cb46-28"><a href="#cb46-28"></a>    <span class="co">"""Generate a formatted GT table from cross-validation metrics."""</span></span>
+<span id="cb46-29"><a href="#cb46-29"></a>    <span class="co"># Sort to present best models first</span></span>
+<span id="cb46-30"><a href="#cb46-30"></a>    df <span class="op">=</span> metrics_df.sort_values([<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-31"><a href="#cb46-31"></a></span>
+<span id="cb46-32"><a href="#cb46-32"></a>    <span class="co"># Build base table</span></span>
+<span id="cb46-33"><a href="#cb46-33"></a>    gt <span class="op">=</span> (</span>
+<span id="cb46-34"><a href="#cb46-34"></a>        GT(df[[<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]])</span>
+<span id="cb46-35"><a href="#cb46-35"></a>        .tab_header(title<span class="op">=</span>title, subtitle<span class="op">=</span><span class="st">"Per-battery performance"</span>)</span>
+<span id="cb46-36"><a href="#cb46-36"></a>        .cols_label(BatteryID<span class="op">=</span><span class="st">"Test Cell"</span>, MAE<span class="op">=</span><span class="st">"MAE"</span>, RMSE<span class="op">=</span><span class="st">"RMSE"</span>, R2<span class="op">=</span>md(<span class="st">"R&lt;sup&gt;2&lt;/sup&gt;"</span>))</span>
+<span id="cb46-37"><a href="#cb46-37"></a>        .fmt_number(columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>], decimals<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb46-38"><a href="#cb46-38"></a>        .fmt_number(columns<span class="op">=</span><span class="st">"R2"</span>, decimals<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb46-39"><a href="#cb46-39"></a>        .tab_spanner(label<span class="op">=</span><span class="st">"Error Metrics"</span>, columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>])</span>
+<span id="cb46-40"><a href="#cb46-40"></a>        .tab_style(</span>
+<span id="cb46-41"><a href="#cb46-41"></a>            style<span class="op">=</span>style.text(weight<span class="op">=</span><span class="st">"bold"</span>),</span>
+<span id="cb46-42"><a href="#cb46-42"></a>            locations<span class="op">=</span>loc.body(columns<span class="op">=</span><span class="st">"Model"</span>),</span>
+<span id="cb46-43"><a href="#cb46-43"></a>        )</span>
+<span id="cb46-44"><a href="#cb46-44"></a>        .tab_options(</span>
+<span id="cb46-45"><a href="#cb46-45"></a>            table_font_size<span class="op">=</span><span class="st">"small"</span>,</span>
+<span id="cb46-46"><a href="#cb46-46"></a>            <span class="co"># row_strip_color="#fafafa"</span></span>
+<span id="cb46-47"><a href="#cb46-47"></a>        )</span>
+<span id="cb46-48"><a href="#cb46-48"></a>    )</span>
+<span id="cb46-49"><a href="#cb46-49"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]:</span>
+<span id="cb46-50"><a href="#cb46-50"></a>        best_idx <span class="op">=</span> df[col].idxmax() <span class="cf">if</span> col <span class="kw">in</span> [<span class="st">"R2"</span>, <span class="st">"PICP"</span>] <span class="cf">else</span> df[col].idxmin()</span>
+<span id="cb46-51"><a href="#cb46-51"></a>        gt <span class="op">=</span> gt.tab_style(style<span class="op">=</span>style.fill(color<span class="op">=</span><span class="st">"#E1DFDD"</span>), locations<span class="op">=</span>loc.body(rows<span class="op">=</span>best_idx, columns<span class="op">=</span>col))</span>
+<span id="cb46-52"><a href="#cb46-52"></a></span>
+<span id="cb46-53"><a href="#cb46-53"></a>    <span class="cf">return</span> gt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="85" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><strong>Accuracy Metrics</strong></p>
@@ -1390,10 +1384,9 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
 <p>This post demonstrates that a single-level Bayesian Beta regression model, informed by physics-aware priors and carefully engineered features, can deliver highly accurate capacity predictions together with trustworthy uncertainty bounds. The model achieves near-perfect predictive accuracy while maintaining well-calibrated <span class="math inline">\(95%\)</span> credible intervals, validating the use of Beta likelihoods and informed priors for battery degradation modeling.</p>
 <p>However, the current formulation assumes that the degradation rate (<span class="math inline">\(\lambda_{\text{rate}}\)</span>) and operational sensitivities (<span class="math inline">\(\boldsymbol{\beta}\)</span>) are shared across the entire battery fleet. In practice, manufacturing variability and latent defects introduce unit-specific degradation behavior. As a result, even a highly accurate global model may underpredict risk for batteries from unfavorable batches or overestimate degradation for higher-quality units.</p>
-<p><strong>Coming Next: Addressing Heterogeneity with Hierarchical Models</strong></p>
-<p>In Part 3, this limitation is addressed by introducing Hierarchical Bayesian Models (HBMs). These models learn a robust global degradation trend while allowing each individual battery to exhibit informed local deviations in parameters such as <span class="math inline">\(\lambda_{\text{rate}}\)</span> and <span class="math inline">\(\boldsymbol{\beta}\)</span>. This hierarchical structure enables more precise risk assessment and end-of-life prediction for large, heterogeneous battery fleets.</p>
+<p><strong>Coming Next</strong>: In Part 3, this limitation will be addressed by introducing Hierarchical Bayesian Models. These models learn a robust global degradation trend while allowing each individual battery to exhibit informed local deviations in parameters such as <span class="math inline">\(\lambda_{\text{rate}}\)</span> and <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p>
 <blockquote class="blockquote">
-<p>The data and full code (along with a companion code in <a href="https://www.pymc.io/welcome.html">pymc5</a>) is available on my <a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">GITHUB</a> page.</p>
+<p>The data and full code in <a href="https://www.pymc.io/welcome.html">pymc5</a> is available on my <a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">GITHUB</a> page.</p>
 </blockquote>
 </section>
 <section id="references" class="level3">
@@ -1409,8 +1402,8 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Faustine, Anthony. 2025. <span>“Bayesian Regression Explained: A
-Real-World Battery Degradation Case Study.”</span> December 17, 2025. <a href="https://sambaiga.github.io/blog/2025/12/2025-12-1-bayesian-regression..html">https://sambaiga.github.io/blog/2025/12/2025-12-1-bayesian-regression..html</a>.
+Faustine, Anthony. 2025. <span>“Bayesian Regression: A Real-World
+Battery Degradation Case Study.”</span> December 17, 2025. <a href="https://sambaiga.github.io/blog/2025/12/2025-12-1-bayesian-regression..html">https://sambaiga.github.io/blog/2025/12/2025-12-1-bayesian-regression..html</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
