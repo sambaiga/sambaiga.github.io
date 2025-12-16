@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Anthony Faustine">
+<meta name="description" content="We break down the two main theoretical approaches to Dynamic Capabilities—the managerial Capabilities view and the process-oriented Routines view—and introduce Corporate Foresight as a key cultivation mechanism.">
 
-<title>Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective | sambaiga – Anthony Faustine</title>
+<title>Capabilities vs.&nbsp;Routines: Operationalizing Dynamic Strategy with Corporate Foresight (Part 2/3) | sambaiga – Anthony Faustine</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,11 +42,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-f8179bfdbd5e89fa70e408bad7f8ef23.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-6b228e4da481e02b60b0612d59aa3e52.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-902bd2e6defeb1459f6365207fa88cde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -125,27 +89,23 @@ ga('send', {
 </script>
 
 
-<meta property="og:title" content="Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective | sambaiga">
-<meta property="og:description" content="Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland">
-<meta property="og:image" content="https://sambaiga.github.io/files/profiles/twitter-card-large.png">
+<meta property="og:title" content="Capabilities vs.&nbsp;Routines: Operationalizing Dynamic Strategy with Corporate Foresight (Part 2/3) | sambaiga">
+<meta property="og:description" content="We break down the two main theoretical approaches to Dynamic Capabilities—the managerial Capabilities view and the process-oriented Routines view—and introduce Corporate Foresight as a key cultivation mechanism.">
+<meta property="og:image" content="https://sambaiga.github.io/blog/2024/09/dynamic-capability.jpg">
 <meta property="og:site_name" content="Anthony Faustine">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="1257">
-<meta property="og:image:width" content="2401">
-<meta name="twitter:title" content="Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective | sambaiga">
-<meta name="twitter:description" content="Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland">
-<meta name="twitter:image" content="https://sambaiga.github.io/files/profiles/twitter-card-large.png">
+<meta name="twitter:title" content="Capabilities vs.&nbsp;Routines: Operationalizing Dynamic Strategy with Corporate Foresight (Part 2/3) | sambaiga">
+<meta name="twitter:description" content="We break down the two main theoretical approaches to Dynamic Capabilities—the managerial Capabilities view and the process-oriented Routines view—and introduce Corporate Foresight as a key cultivation mechanism.">
+<meta name="twitter:image" content="https://sambaiga.github.io/blog/2024/09/dynamic-capability.jpg">
 <meta name="twitter:creator" content="@asambaiga">
 <meta name="twitter:site" content="@sambaiga">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1257">
-<meta name="twitter:image-width" content="2401">
 </head>
 
-<body class="floating nav-fixed slimcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -219,180 +179,137 @@ ga('send', {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Capabilities vs.&nbsp;Routines: Operationalizing Dynamic Strategy with Corporate Foresight (Part 2/3)</h1>
+                  <div>
+        <div class="description">
+          We break down the two main theoretical approaches to Dynamic Capabilities—the managerial Capabilities view and the process-oriented Routines view—and introduce Corporate Foresight as a key cultivation mechanism.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Strategy</div>
+                <div class="quarto-category">Leadership</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p><a href="https://www.andrewheiss.com/">Anthony Faustine</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Sunday, September 1, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#important-links" id="toc-important-links" class="nav-link active" data-scroll-target="#important-links">Important links</a></li>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#important-figures" id="toc-important-figures" class="nav-link" data-scroll-target="#important-figures">Important figures</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#two-streams-of-research-capabilities-vs.-routines" id="toc-two-streams-of-research-capabilities-vs.-routines" class="nav-link" data-scroll-target="#two-streams-of-research-capabilities-vs.-routines">Two Streams of Research: Capabilities vs.&nbsp;Routines</a>
+  <ul class="collapse">
+  <li><a href="#the-capabilities-view-teece-1997" id="toc-the-capabilities-view-teece-1997" class="nav-link" data-scroll-target="#the-capabilities-view-teece-1997">The Capabilities View (Teece, 1997)</a></li>
+  <li><a href="#the-routines-view-eisenhardt-martin-2000" id="toc-the-routines-view-eisenhardt-martin-2000" class="nav-link" data-scroll-target="#the-routines-view-eisenhardt-martin-2000">The Routines View (Eisenhardt &amp; Martin, 2000)</a></li>
+  <li><a href="#the-combined-framework-and-operationalization" id="toc-the-combined-framework-and-operationalization" class="nav-link" data-scroll-target="#the-combined-framework-and-operationalization">The Combined Framework and Operationalization</a></li>
+  <li><a href="#the-role-of-corporate-foresight-cultivating-dynamic-capability" id="toc-the-role-of-corporate-foresight-cultivating-dynamic-capability" class="nav-link" data-scroll-target="#the-role-of-corporate-foresight-cultivating-dynamic-capability">The Role of Corporate Foresight: Cultivating Dynamic Capability</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block research default page-columns page-full">
-    <div class="quarto-title-banner page-columns page-full">
-                <div class="back-nav"><a href="../../../research/">← Back to research</a></div>
-                <div class="quarto-title column-body">
-            <h1 class="title">Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective</h1>
-
-            
-            
-                        <div class="haiku">
-                sustainable energy<br>buildings<br>nilm state prediction
-            </div>
-            
-                                    <div class="quarto-categories">
-                                <div class="quarto-category">nilm</div>
-                                <div class="quarto-category">machine learning</div>
-                                <div class="quarto-category">disagregation</div>
-                            </div>
-                                </div>
-    </div>
-    
-        <div class="project-details">
-        <div class="publication-content">
-            <p>Benjamin Völker, Andreas Reinhardt, <strong>Anthony Faustine</strong> and Pereira, Lucas, “Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective,” <em>Energies</em> 2021, 14(3), 719, doi: <a href="https://doi.org/10.3390/en14030719"><code>10.1109/10.3390/en14030719</code></a></p>
-        </div>
-                <ul class="project-links">
-                        <li class="project-link">
-                <a href="https://doi.org/10.3390/en14030719,"><i class="fa-solid fa-scroll"></i> Published</a>
-            </li>
-                        <li class="project-link">
-                <a href="chaudhry-heiss-ngos-aid.pdf"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-            </li>
-                    </ul>
-            </div>
-
-    
-    <div class="quarto-title-meta-author column-body">
-      <div class="quarto-title-meta-heading">Authors</div>
-      <div class="quarto-title-meta-heading">Affiliations</div>
-      
-        <div class="quarto-title-meta-contents">
-        <p class="author">Benjamin Völker <a href="https://orcid.org/0000-0001-6945-5546" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-      </div>
-      <div class="quarto-title-meta-contents">
-            <p class="affiliation">
-                University of Freiburg, 79110 Freiburg, Germany
-              </p>
-          </div>
-        <div class="quarto-title-meta-contents">
-        <p class="author">Andreas Reinhardt <a href="https://orcid.org/0000-0002-8637-8420" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-      </div>
-      <div class="quarto-title-meta-contents">
-            <p class="affiliation">
-                Department of Informatics, TU Clausthal, 38678 Clausthal-Zellerfeld, Germany
-              </p>
-          </div>
-        <div class="quarto-title-meta-contents">
-        <p class="author"><a href="https://arelbundock.com/">Anthony Faustine</a> <a href="https://orcid.org/0000-0003-2042-7063" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-      </div>
-      <div class="quarto-title-meta-contents">
-            <p class="affiliation">
-                Université de Montréal
-              </p>
-          </div>
-        <div class="quarto-title-meta-contents">
-        <p class="author"><a href="https://ngreifer.github.io/">Nunes, Nuno Jardim</a> <a href="https://orcid.org/0000-0003-3067-7154" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-      </div>
-      <div class="quarto-title-meta-contents">
-            <p class="affiliation">
-                Institute for Quantitative Social Science, Harvard University
-              </p>
-          </div>
-        <div class="quarto-title-meta-contents">
-        <p class="author"><a href="https://www.andrewheiss.com/">Pereira, Lucas</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-      </div>
-      <div class="quarto-title-meta-contents">
-            <p class="affiliation">
-                Andrew Young School of Policy Studies, Georgia State University
-              </p>
-          </div>
-      </div>
-
-    <div class="quarto-title-meta column-body">
-
-          
-        <div>
-        <div class="quarto-title-meta-heading">Published</div>
-        <div class="quarto-title-meta-contents">
-          <p class="date">January 2021</p>
-        </div>
-      </div>
-      
-        
-        <div>
-        <div class="quarto-title-meta-heading">Doi</div>
-        <div class="quarto-title-meta-contents">
-          <p class="doi">
-            <a href="https://doi.org/10.1109/10.3390/en14030719">10.1109/10.3390/en14030719</a>
-          </p>
-        </div>
-      </div>
-      </div>
-      
-
-    
-</header>
+<main class="content quarto-banner-title-block page-columns page-full column-page-left" id="quarto-document-content">
 
 
-<section id="important-links" class="level2">
-<h2 class="anchored" data-anchor-id="important-links">Important links</h2>
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In Part 1, we established that <strong>Dynamic Capabilities</strong> are the essential strategic ability for firms to continuously reconfigure their resources to achieve competitive advantage. Here, we dive into the theoretical and practical framework that explains <em>how</em> this continuous adaptation actually happens.</p>
+</section>
+<section id="two-streams-of-research-capabilities-vs.-routines" class="level1 page-columns page-full">
+<h1>Two Streams of Research: Capabilities vs.&nbsp;Routines</h1>
+<p>While the core definition of dynamic capabilities remains consistent, academic literature divides the concept into two complementary streams that focus on different aspects: <strong>Capabilities</strong> (the managerial view) and <strong>Routines</strong> (the process view).</p>
+<section id="the-capabilities-view-teece-1997" class="level2">
+<h2 class="anchored" data-anchor-id="the-capabilities-view-teece-1997">The Capabilities View (Teece, 1997)</h2>
+<p>This influential stream, built on the work of <span class="citation" data-cites="teece1997dynamic">(<a href="#ref-teece1997dynamic" role="doc-biblioref"><strong>teece1997dynamic?</strong></a>)</span>, views dynamic capabilities as <strong>organizational capabilities</strong> that are flexible, adaptable, and distinct from everyday routines. The emphasis is on management’s role in <strong>reconfiguring resources and assets</strong> to address market changes <span class="citation" data-cites="teece2012dynamic teece2014dynamic">(<a href="#ref-teece2012dynamic" role="doc-biblioref"><strong>teece2012dynamic?</strong></a>; <a href="#ref-teece2014dynamic" role="doc-biblioref"><strong>teece2014dynamic?</strong></a>)</span>.</p>
+<p>According to this perspective, dynamic capabilities are the key competence for sustained growth, enabling firms to align and re-align resources quickly to generate abnormal returns <span class="citation" data-cites="teece2012dynamic">(<a href="#ref-teece2012dynamic" role="doc-biblioref"><strong>teece2012dynamic?</strong></a>)</span>. The critical ingredients are <strong>management capabilities</strong>:</p>
 <ul>
-<li><a href="mfxplainer.pdf">Paper (preprint)</a></li>
-<li><a href="https://github.com/sambaiga/iMLFPQ-forecast">GitHub repository</a></li>
+<li><strong>Managerial &amp; Entrepreneurial Action:</strong> Good strategies, execution, and difficult-to-imitate combinations of organizational, functional, and technological skills <span class="citation" data-cites="teece1997dynamic schwarz2rohrbecf">(<a href="#ref-teece1997dynamic" role="doc-biblioref"><strong>teece1997dynamic?</strong></a>; <a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span>.</li>
+<li><strong>Organizational Pillars:</strong> The firm’s capability rests on the <em>vision and leadership skills of managers</em> and the <em>cohesion and flexibility of the organization as a whole</em> <span class="citation" data-cites="schwarz2rohrbecf">(<a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span>.</li>
 </ul>
+<p>This view also incorporates the six crucial capabilities of entrepreneurial leaders: <strong>anticipate, challenge, interpret, decide, align, and learn</strong> <span class="citation" data-cites="day2016adapting">(<a href="#ref-day2016adapting" role="doc-biblioref"><strong>day2016adapting?</strong></a>)</span>, which must be applied together <span class="citation" data-cites="schwarz2rohrbecf">(<a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span>.</p>
 </section>
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The key advantage of smart meters over traditional metering devices is their ability to transfer consumption information to remote data processing systems. Besides enabling the automated collection of a customer’s electricity consumption for billing purposes, the data collected by these devices makes the realization of many novel use cases possible. However, the large majority of such services are tailored to improve the power grid’s operation as a whole. For example, forecasts of household energy consumption or photovoltaic production allow for improved power plant generation scheduling. Similarly, the detection of anomalous consumption patterns can indicate electricity theft and serve as a trigger for corresponding investigations. Even though customers can directly influence their electrical energy consumption, the range of use cases to the users’ benefit remains much smaller than those that benefit the grid in general. In this work, we thus review the range of services tailored to the needs of end-customers. By briefly discussing their technological foundations and their potential impact on future developments, we highlight the great potentials of utilizing smart meter data from a user-centric perspective. Several open research challenges in this domain, arising from the shortcomings of state-of-the-art data communication and processing methods, are furthermore given. We expect their investigation to lead to significant advancements in data processing services and ultimately raise the customer experience of operating smart meters.</p>
+<section id="the-routines-view-eisenhardt-martin-2000" class="level2">
+<h2 class="anchored" data-anchor-id="the-routines-view-eisenhardt-martin-2000">The Routines View (Eisenhardt &amp; Martin, 2000)</h2>
+<p>In contrast, the stream led by <span class="citation" data-cites="eisenhardt2000dynamic">(<a href="#ref-eisenhardt2000dynamic" role="doc-biblioref"><strong>eisenhardt2000dynamic?</strong></a>)</span> focuses on the operational aspect, viewing dynamic capability as <strong>context-specific <em>routines</em> or <em>processes</em></strong> that organizations use to achieve strategic fit with their environment.</p>
+<p>These are observable processes that reside in existing functions like product development, strategic decision-making, resource allocation, alliances, and R&amp;D <span class="citation" data-cites="eisenhardt2000dynamic schwarz2rohrbecf">(<a href="#ref-eisenhardt2000dynamic" role="doc-biblioref"><strong>eisenhardt2000dynamic?</strong></a>; <a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span>. This approach highlights the varied, practical capabilities firms use to adapt and evolve in response to changes, providing concrete examples of how dynamic capabilities are enacted.</p>
+<hr>
 </section>
-<section id="important-figures" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="important-figures">Important figures</h2>
+<section id="the-combined-framework-and-operationalization" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-combined-framework-and-operationalization">The Combined Framework and Operationalization</h2>
+<p>The two streams of dynamic capabilities—Teece’s focus on managerial <strong>Capabilities</strong> and Eisenhardt’s focus on <strong>Routines</strong>—are not opposing theories, but rather <strong>complementary views</strong> of the same strategic ability.</p>
+<p>The <span class="citation" data-cites="teece1997dynamic">(<a href="#ref-teece1997dynamic" role="doc-biblioref"><strong>teece1997dynamic?</strong></a>)</span> and <span class="citation" data-cites="eisenhardt2000dynamic">(<a href="#ref-eisenhardt2000dynamic" role="doc-biblioref"><strong>eisenhardt2000dynamic?</strong></a>)</span> dynamic capabilities views are complementary and can be combined as illustrated in <a href="#fig-dc-framework" class="quarto-xref">Figure&nbsp;1</a>. It becomes evident that dynamic capabilities, as perceived by <span class="citation" data-cites="teece1997dynamic">(<a href="#ref-teece1997dynamic" role="doc-biblioref"><strong>teece1997dynamic?</strong></a>)</span>, need established routines and processes for them to contribute to a competitive advantage and attain sustained firm performance. These routines and processes can be seen as the <strong>operationalization of dynamic capabilities</strong>, allowing a firm to effectively align and re-align its resources to meet the demands and opportunities of the business environment. Without these routines and processes in place, the ability to develop and acquire new resources and assets may not be fully realized, and the firm may not be able to achieve sustained performance.</p>
+<p>This perspective aligns with the results presented in <span class="citation" data-cites="di2014organizational">(<a href="#ref-di2014organizational" role="doc-biblioref"><strong>di2014organizational?</strong></a>)</span>, which suggests that dynamic capabilities are not only about the development and acquisition of new resources and assets, but also about the ability to put these resources and assets into action through established routines and processes. <span class="citation" data-cites="di2014organizational">(<a href="#ref-di2014organizational" role="doc-biblioref"><strong>di2014organizational?</strong></a>)</span> emphasizes that both <strong>latent capabilities</strong> (<span class="citation" data-cites="teece1997dynamic">(<a href="#ref-teece1997dynamic" role="doc-biblioref"><strong>teece1997dynamic?</strong></a>)</span> view) and <strong>observable routines</strong> are important for firms to achieve sustainable growth and competitiveness <span class="citation" data-cites="di2014organizational">(<a href="#ref-di2014organizational" role="doc-biblioref"><strong>di2014organizational?</strong></a>)</span>.</p>
+<p>Furthermore, <span class="citation" data-cites="kump2019toward">(<a href="#ref-kump2019toward" role="doc-biblioref"><strong>kump2019toward?</strong></a>)</span> argues that firms may possess high levels of certain aspects of dynamic capabilities and have established reliable routines that lead to similar dynamic capabilities outcomes, but they may differ in terms of the concrete methods and structures of how they achieve these dynamic capabilities outcomes. This <strong>diversity in implementation</strong> of dynamic capabilities can also be a source of competitive advantage <span class="citation" data-cites="kump2019toward">(<a href="#ref-kump2019toward" role="doc-biblioref"><strong>kump2019toward?</strong></a>)</span>.</p>
+<div id="fig-dc-framework" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-dc-framework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="mfxplainer-fig2.png" class="img-fluid figure-img"></p>
-<figcaption class="margin-caption">Figure 2: Predicted probability of impartiality by levels of equality and democracy</figcaption>
+<p><img src="Figures/Framework-of-the-dynamic-capability-theory-23-PSM-capabilities-for-a-more-resilient.png" class="img-fluid figure-img"></p>
+<figcaption class="margin-caption">Dynamic capability framework combining capability and routine views <em>source</em>: <span class="citation" data-cites="pereira2015role">(<a href="#ref-pereira2015role" role="doc-biblioref"><strong>pereira2015role?</strong></a>)</span></figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="mfxplainer-fig4.png" class="img-fluid figure-img"></p>
-<figcaption class="margin-caption">Figure 4: Tangents to the prediction function at 25 and 50</figcaption>
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-dc-framework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
 </figure>
 </div>
+<hr>
 </section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p class="buttons" style="text-align:center;">
-<a class="btn btn-danger" target="_blank" href="https://www.zotero.org/save?type=doi&amp;q=10.18637/jss.v111.i09"><i class="ai  ai-zotero" title="" style="color:"></i> Add to Zotero <i class="fa-solid fa-square-arrow-up-right" aria-label="square-arrow-up-right"></i></a>
-</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bibtex number-lines code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1"></a><span class="va">@ARTICLE</span>{<span class="ot">10529636</span>,</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="dt">author</span>={Faustine, Anthony and Nunes, Nuno Jardim and Pereira, Lucas},</span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="dt">journal</span>={IEEE Transactions on Power Systems}, </span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="dt">title</span>={Efficiency Through Simplicity: MLP-Based Approach for Net-Load Forecasting With Uncertainty Estimates in Low-Voltage Distribution Networks}, </span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="dt">year</span>={2025},</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="dt">volume</span>={40},</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="dt">number</span>={1},</span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="dt">pages</span>={46-56},</span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="dt">keywords</span>={Forecasting;Uncertainty;Probabilistic logic;Predictive models;Substations;Load modeling;Distribution networks;Deep Neural Networks (DNN) Feed-forward Neural Network (FFN) Low Voltage (LV) distribution substation;Multilayer Perceptron (MLP);net-load;probabilistic forecasting;Photovoltaics (PV) generation;quantile regression (QR)},</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="dt">doi</span>={10.1109/TPWRS.2024.3400123}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="the-role-of-corporate-foresight-cultivating-dynamic-capability" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-corporate-foresight-cultivating-dynamic-capability">The Role of Corporate Foresight: Cultivating Dynamic Capability</h2>
+<p>The practical question remains: how are these complex capabilities and routines actually cultivated? A growing body of work points to <strong>Corporate Foresight</strong> as a crucial mechanism.</p>
+<p>A recent study by <span class="citation" data-cites="schwarz2rohrbecf">(<a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span> posits that the incorporation of corporate foresight (CF) practices at the organizational level and individual level is likely to have a beneficial effect on the cultivation and resultant outcome of dynamic capabilities. Corporate foresight has been described as a set of intentional and often routine-based practices that organizations adopt to anticipate and prepare for future change. It can also be seen as an individual ability to envision and plan for the future <span class="citation" data-cites="schwarz2hrbecf">(<a href="#ref-schwarz2hrbecf" role="doc-biblioref"><strong>schwarz2hrbecf?</strong></a>)</span>.</p>
+<p>This concept neatly maps onto the two main theoretical streams: <span class="citation" data-cites="schwarz2rohrbecf">(<a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span> conceptualised corporate foresight practices on the organisational level as deliberate practices that an organisation has built and that often are routinised (<em><span class="citation" data-cites="eisenhardt2000dynamic">(<a href="#ref-eisenhardt2000dynamic" role="doc-biblioref"><strong>eisenhardt2000dynamic?</strong></a>)</span> view</em>) and on an individual level as <strong>managerial capabilities</strong> (<em><span class="citation" data-cites="teece1997dynamic">(<a href="#ref-teece1997dynamic" role="doc-biblioref"><strong>teece1997dynamic?</strong></a>)</span> view</em>) such as managerial cognition, managerial social capital, and managerial human capital <span class="citation" data-cites="schwarz2rohrbecf">(<a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span>. The study discovered that the implementation of corporate foresight practices and training can aid in the growth of a company’s dynamic capabilities <span class="citation" data-cites="schwarz2rohrbecf">(<a href="#ref-schwarz2rohrbecf" role="doc-biblioref"><strong>schwarz2rohrbecf?</strong></a>)</span>. This finding aligns with <span class="citation" data-cites="day2016adapting">(<a href="#ref-day2016adapting" role="doc-biblioref"><strong>day2016adapting?</strong></a>)</span>, who argue that corporate foresight training and practices have a significant impact on dynamic managerial capabilities and dynamic capabilities at the organizational level. Furthermore, it emphasizes that dynamic capabilities are not only based on traditional processes like research and development, strategic partnerships, and decision-making, as previously proposed by <span class="citation" data-cites="eisenhardt2000dynamic">(<a href="#ref-eisenhardt2000dynamic" role="doc-biblioref"><strong>eisenhardt2000dynamic?</strong></a>)</span>.</p>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>We’ve established that dynamic capabilities require both <strong>managerial vision</strong> and <strong>concrete routines</strong>, which can be fostered through <strong>Corporate Foresight</strong>. But what is the sequential, step-by-step process every firm must follow to make this adaptation happen?</p>
+<p>In our final post, we break down the three actionable dimensions of dynamic capabilities: <strong>Sensing, Seizing, and Transforming</strong>.</p>
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-faustine2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Faustine, Anthony. 2024. <span>“Capabilities Vs. Routines:
+Operationalizing Dynamic Strategy with Corporate Foresight (Part
+2/3).”</span> September 1, 2024. <a href="https://sambaiga.github.io/blog/2024/09/">https://sambaiga.github.io/blog/2024/09/</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
