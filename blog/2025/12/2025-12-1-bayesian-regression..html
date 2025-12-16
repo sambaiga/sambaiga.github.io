@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-5d4073339ea55b1ad5ce071f10a273ff.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-9032d708672c65d20fad7460853243e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-0878e8b92e206f8921ee7b13ba471425.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
@@ -1094,7 +1094,13 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <div id="55" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>analyze_parameter(idata, <span class="st">"beta"</span>, features<span class="op">=</span>features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"beta"</span>, features<span class="op">=</span>features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="56" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The posterior summary indicates that only one feature emerges as a statistically reliable degradation driver at the <span class="math inline">\(95%\)</span> credibility level: the discharge_voltage_crest factor. Its <span class="math inline">\(95%\)</span> HDI lies entirely below zero (from <span class="math inline">\(-0.528\)</span> to <span class="math inline">\(-0.369\)</span>), indicating strong evidence of a negative association with capacity retention. This result implies, with high certainty, that increases in this factor accelerate capacity fade. The posterior mean coefficient for the discharge_voltage_crest factor is <span class="math inline">\(\beta = -0.446\)</span>. Interpreted on the odds scale as <span class="math display">\[\text{Odds Ratio} = \exp(-0.446) \approx 0.64\]</span>.</p>
@@ -1107,10 +1113,16 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <section id="quantifying-the-degradation-rate-lambda_textrate" class="level4">
 <h4 class="anchored" data-anchor-id="quantifying-the-degradation-rate-lambda_textrate">Quantifying the Degradation Rate (<span class="math inline">\(\lambda_{\text{rate}}\)</span>)</h4>
 <p>The parameter <span class="math inline">\(\lambda_{\text{rate}}\)</span> governs the speed of capacity fade induced by cycling. By adopting a weakly informative Lognormal prior with increased dispersion (<span class="math inline">\(\sigma = 1.0\)</span>), the data is allowed to dominate the posterior estimation of this parameter.</p>
-<div id="58" class="cell">
+<div id="59" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>analyze_parameter(idata, <span class="st">"lambda_rate"</span>, title<span class="op">=</span><span class="st">"Lambda Rate Summary"</span>, subtitle<span class="op">=</span><span class="st">"Degradation rate parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"lambda_rate"</span>, title<span class="op">=</span><span class="st">"Lambda Rate Summary"</span>, subtitle<span class="op">=</span><span class="st">"Degradation rate parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="60" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The posterior summary yields a highly precise estimate of the degradation rate, with a posterior mean of <span class="math inline">\(\mathbf{0.003}\)</span> per unit of cycle data. This value is lower than the prior expectation (centered around <span class="math inline">\(0.005\)</span>), indicating that although degradation is inevitable, it progresses more gradually than initially assumed.</p>
@@ -1119,21 +1131,27 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <section id="model-precision-phi" class="level4">
 <h4 class="anchored" data-anchor-id="model-precision-phi">Model Precision (<span class="math inline">\(\phi\)</span>)</h4>
 <p>The precision parameter <span class="math inline">\(\phi\)</span> controls the dispersion of the Beta likelihood, quantifying how tightly the observed <span class="math inline">\(\text{SoH}\)</span> measurements cluster around the model-predicted mean after accounting for all modeled effects.</p>
-<div id="61" class="cell">
+<div id="63" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>analyze_parameter(idata, <span class="st">"phi"</span>, title<span class="op">=</span><span class="st">"Phi Summary"</span>, subtitle<span class="op">=</span><span class="st">"Phi  parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>analyze_parameter(idata, <span class="st">"phi"</span>, title<span class="op">=</span><span class="st">"Phi Summary"</span>, subtitle<span class="op">=</span><span class="st">"Phi  parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The posterior distribution of <span class="math inline">\(\phi\)</span> exhibits a high degree of concentration, with a posterior mean of <span class="math inline">\(233.461\)</span> and a narrow <span class="math inline">\(95%\)</span> HDI. This large mean precision implies very low residual variance in <span class="math inline">\(\text{SoH}\)</span>, indicating that the combined model structure—incorporating the exponential degradation term, the cycling rate <span class="math inline">\(\lambda\)</span>, and the operational features <span class="math inline">\(\boldsymbol{\beta}\)</span> explains the majority of observed variability across the battery fleet. The narrow HDI further indicates that this high precision is estimated with substantial certainty.</p>
 <section id="degr-amp-parameter-a" class="level5">
 <h5 class="anchored" data-anchor-id="degr-amp-parameter-a">Degr amp parameter (<span class="math inline">\(A\)</span>)</h5>
 <p>The degradation amplitude parameter, <span class="math inline">\(\text{degr\_amp}\)</span>, quantifies the maximum potential capacity fade attributable solely to the cycling process and operates on the log-odds scale. The posterior mean of <span class="math inline">\(0.367\)</span> represents the maximum reduction in <span class="math inline">\(\text{logit}(\mu)\)</span> induced by cycling over the battery’s lifetime, thereby determining the vertical extent of the degradation curve.</p>
-<div id="64" class="cell">
+<div id="66" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a></span>
-<span id="cb31-2"><a href="#cb31-2"></a>analyze_parameter(idata, <span class="st">"degr_amp"</span>, title<span class="op">=</span><span class="st">"Degr amp"</span>, subtitle<span class="op">=</span><span class="st">"A  parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a></span>
+<span id="cb33-2"><a href="#cb33-2"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"degr_amp"</span>, title<span class="op">=</span><span class="st">"Degr amp"</span>, subtitle<span class="op">=</span><span class="st">"A  parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="67" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The <span class="math inline">\(95%\)</span> HDI for <span class="math inline">\(\text{degr\_amp}\)</span> is narrow and entirely positive, spanning <span class="math inline">\([0.265,,0.468]\)</span>. This provides strong statistical evidence that degradation due to cycling is both certain and quantitatively well-defined, rather than an artifact of noise. The strictly positive support of this parameter confirms that capacity loss is an unavoidable consequence of repeated cycling.</p>
@@ -1143,44 +1161,44 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <h4 class="anchored" data-anchor-id="posterior-predictive-check-model-adequacy">Posterior Predictive Check: Model Adequacy</h4>
 <p>Following parameter interpretation, a Posterior Predictive Check (PPC) is performed to assess model adequacy. This step evaluates whether the model, using posterior parameter samples, can generate synthetic data that closely resembles the observed measurements.</p>
 <p>Using PyMC’s <code>sample_posterior_predictive</code> function, samples are drawn from the likelihood conditioned on the converged posterior chains. The resulting PPC compares three distributions: the observed data, the prior predictive distribution, and the posterior predictive distribution.</p>
-<div id="67" class="cell">
+<div id="70" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="cf">with</span> model:</span>
-<span id="cb32-2"><a href="#cb32-2"></a>    post_pred <span class="op">=</span> pm.sample_posterior_predictive(idata, var_names<span class="op">=</span>[<span class="st">"y_obs"</span>], random_seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb32-3"><a href="#cb32-3"></a></span>
-<span id="cb32-4"><a href="#cb32-4"></a>y_post <span class="op">=</span> post_pred.posterior_predictive[<span class="st">"y_obs"</span>].stack(sample<span class="op">=</span>[<span class="st">"chain"</span>, <span class="st">"draw"</span>]).values</span>
-<span id="cb32-5"><a href="#cb32-5"></a><span class="co"># Mean of the posterior predictive</span></span>
-<span id="cb32-6"><a href="#cb32-6"></a>post_mean <span class="op">=</span> y_post.mean()</span>
-<span id="cb32-7"><a href="#cb32-7"></a>n_draws <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb32-8"><a href="#cb32-8"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
-<span id="cb32-9"><a href="#cb32-9"></a>draw_idx <span class="op">=</span> rng.choice(y_post.shape[<span class="dv">0</span>], size<span class="op">=</span>n_draws, replace<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb32-10"><a href="#cb32-10"></a>y_post_subset <span class="op">=</span> y_post[:, draw_idx].flatten()</span>
-<span id="cb32-11"><a href="#cb32-11"></a>y_post_subset <span class="op">=</span> y_post_subset <span class="op">*</span> (upper_bound <span class="op">-</span> lower_bound) <span class="op">+</span> lower_bound</span>
-<span id="cb32-12"><a href="#cb32-12"></a></span>
-<span id="cb32-13"><a href="#cb32-13"></a></span>
-<span id="cb32-14"><a href="#cb32-14"></a>df_posterior <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb32-15"><a href="#cb32-15"></a>    {</span>
-<span id="cb32-16"><a href="#cb32-16"></a>        <span class="st">"SoH"</span>: np.concatenate([y_obs, y_post_subset]),</span>
-<span id="cb32-17"><a href="#cb32-17"></a>        <span class="st">"type"</span>: [<span class="st">"observed"</span>] <span class="op">*</span> <span class="bu">len</span>(y_obs) <span class="op">+</span> [<span class="st">"posterior"</span>] <span class="op">*</span> <span class="bu">len</span>(y_post_subset),</span>
-<span id="cb32-18"><a href="#cb32-18"></a>    }</span>
-<span id="cb32-19"><a href="#cb32-19"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="cf">with</span> model:</span>
+<span id="cb35-2"><a href="#cb35-2"></a>    post_pred <span class="op">=</span> pm.sample_posterior_predictive(idata, var_names<span class="op">=</span>[<span class="st">"y_obs"</span>], random_seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a>y_post <span class="op">=</span> post_pred.posterior_predictive[<span class="st">"y_obs"</span>].stack(sample<span class="op">=</span>[<span class="st">"chain"</span>, <span class="st">"draw"</span>]).values</span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="co"># Mean of the posterior predictive</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a>post_mean <span class="op">=</span> y_post.mean()</span>
+<span id="cb35-7"><a href="#cb35-7"></a>n_draws <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
+<span id="cb35-9"><a href="#cb35-9"></a>draw_idx <span class="op">=</span> rng.choice(y_post.shape[<span class="dv">0</span>], size<span class="op">=</span>n_draws, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb35-10"><a href="#cb35-10"></a>y_post_subset <span class="op">=</span> y_post[:, draw_idx].flatten()</span>
+<span id="cb35-11"><a href="#cb35-11"></a>y_post_subset <span class="op">=</span> y_post_subset <span class="op">*</span> (upper_bound <span class="op">-</span> lower_bound) <span class="op">+</span> lower_bound</span>
+<span id="cb35-12"><a href="#cb35-12"></a></span>
+<span id="cb35-13"><a href="#cb35-13"></a></span>
+<span id="cb35-14"><a href="#cb35-14"></a>df_posterior <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb35-15"><a href="#cb35-15"></a>    {</span>
+<span id="cb35-16"><a href="#cb35-16"></a>        <span class="st">"SoH"</span>: np.concatenate([y_obs, y_post_subset]),</span>
+<span id="cb35-17"><a href="#cb35-17"></a>        <span class="st">"type"</span>: [<span class="st">"observed"</span>] <span class="op">*</span> <span class="bu">len</span>(y_obs) <span class="op">+</span> [<span class="st">"posterior"</span>] <span class="op">*</span> <span class="bu">len</span>(y_post_subset),</span>
+<span id="cb35-18"><a href="#cb35-18"></a>    }</span>
+<span id="cb35-19"><a href="#cb35-19"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The figure below shows a Posterior Predictive Check (PPC), which is the gold standard for evaluating model fit in Bayesian statistics. It compares three key distributions for the capacity: the data we observed, our initial beliefs (Prior), and the model’s final predictions (Posterior).</p>
-<div id="69" class="cell">
+<div id="72" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>df <span class="op">=</span> pd.concat([df_prior, df_posterior])</span>
-<span id="cb33-2"><a href="#cb33-2"></a>plot_density(</span>
-<span id="cb33-3"><a href="#cb33-3"></a>    df,</span>
-<span id="cb33-4"><a href="#cb33-4"></a>    x_col<span class="op">=</span><span class="st">"SoH"</span>,</span>
-<span id="cb33-5"><a href="#cb33-5"></a>    color_col<span class="op">=</span><span class="st">"type"</span>,</span>
-<span id="cb33-6"><a href="#cb33-6"></a>    x_label<span class="op">=</span><span class="st">"Capacity"</span>,</span>
-<span id="cb33-7"><a href="#cb33-7"></a>    fig_size<span class="op">=</span>(<span class="dv">700</span>, <span class="dv">350</span>),</span>
-<span id="cb33-8"><a href="#cb33-8"></a>    title<span class="op">=</span><span class="st">"Prior and Posterior Comparison"</span>,</span>
-<span id="cb33-9"><a href="#cb33-9"></a>    subtitle<span class="op">=</span><span class="st">"Beta-regression"</span>,</span>
-<span id="cb33-10"><a href="#cb33-10"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df <span class="op">=</span> pd.concat([df_prior, df_posterior])</span>
+<span id="cb36-2"><a href="#cb36-2"></a>plot_density(</span>
+<span id="cb36-3"><a href="#cb36-3"></a>    df,</span>
+<span id="cb36-4"><a href="#cb36-4"></a>    x_col<span class="op">=</span><span class="st">"SoH"</span>,</span>
+<span id="cb36-5"><a href="#cb36-5"></a>    color_col<span class="op">=</span><span class="st">"type"</span>,</span>
+<span id="cb36-6"><a href="#cb36-6"></a>    x_label<span class="op">=</span><span class="st">"Capacity"</span>,</span>
+<span id="cb36-7"><a href="#cb36-7"></a>    fig_size<span class="op">=</span>(<span class="dv">700</span>, <span class="dv">350</span>),</span>
+<span id="cb36-8"><a href="#cb36-8"></a>    title<span class="op">=</span><span class="st">"Prior and Posterior Comparison"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9"></a>    subtitle<span class="op">=</span><span class="st">"Beta-regression"</span>,</span>
+<span id="cb36-10"><a href="#cb36-10"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The posterior predictive distribution aligns closely with the observed capacity distribution, indicating that the model successfully captures the underlying data-generating process. In contrast, the prior predictive distribution is smoother and exhibits broader structure, reflecting weaker and less targeted assumptions before observing data.</p>
@@ -1198,78 +1216,78 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </ol>
 <p>As a result, the model produces not a single point estimate but a credible interval (HDI) that probabilistically bounds the true capacity value at each cycle.</p>
 <p>To assess generalization performance and demonstrate practical utility for risk management, four cells from the CALCE dataset that were excluded during training are selected for evaluation. For each battery, the same four operational features used in model training are extracted and supplied to the fitted model.</p>
-<div id="72" class="cell">
+<div id="75" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="im">from</span> bayes.regression.beta_degradation <span class="im">import</span> get_posterior_predictions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">from</span> bayes.regression.beta_degradation <span class="im">import</span> get_posterior_predictions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="73" class="cell">
+<div id="76" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>new_df <span class="op">=</span> test_df[test_df[<span class="st">"BatteryID"</span>].isin([<span class="st">"CALCE_CS2_34"</span>, <span class="st">"CALCE_CS2_36"</span>, <span class="st">"CALCE_CS2_37"</span>, <span class="st">"CALCE_CS2_33"</span>])].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>new_df <span class="op">=</span> test_df[test_df[<span class="st">"BatteryID"</span>].isin([<span class="st">"CALCE_CS2_34"</span>, <span class="st">"CALCE_CS2_36"</span>, <span class="st">"CALCE_CS2_37"</span>, <span class="st">"CALCE_CS2_33"</span>])].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Posterior predictions for unseen batteries are generated using the `<code>get_posterior_predictions</code> procedure, which applies the fitted Bayesian model to new input data. The process consists of the following steps:</p>
 <ul>
 <li><strong>Feature Transformation</strong>: The operational features of the new battery are transformed using the same scaling object fitted during training, ensuring consistency between training and inference domains.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>    x_new <span class="op">=</span> scaler.transform(data[features])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>    x_new <span class="op">=</span> scaler.transform(data[features])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>The corresponding cycle counts are extracted separately, as they directly enter the exponential degradation component of the model.</code></pre>
 <ul>
 <li><strong>Dummy Target Initialization</strong>: A placeholder target array is supplied to satisfy the dimensional requirements of the PyMC model’s observed variable. These values are ignored during posterior prediction..</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>    y_dummy_scaled <span class="op">=</span> np.full(shape<span class="op">=</span>(X_new_scaled.shape[<span class="dv">0</span>],), fill_value<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>    y_dummy_scaled <span class="op">=</span> np.full(shape<span class="op">=</span>(X_new_scaled.shape[<span class="dv">0</span>],), fill_value<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Model update</strong>: The new feature matrix, cycle data, and dummy target are injected into the model using pm.set_data, reconfiguring the model for prediction without retraining.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>    <span class="cf">with</span> battery_model:</span>
-<span id="cb39-2"><a href="#cb39-2"></a>        pm.set_data({</span>
-<span id="cb39-3"><a href="#cb39-3"></a>            <span class="st">"x_data"</span>: x_new,</span>
-<span id="cb39-4"><a href="#cb39-4"></a>            <span class="st">"cycle_data"</span>: cycle_new,</span>
-<span id="cb39-5"><a href="#cb39-5"></a>            <span class="st">"y_obs"</span>: y_dummy_scaled</span>
-<span id="cb39-6"><a href="#cb39-6"></a>        })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>    <span class="cf">with</span> battery_model:</span>
+<span id="cb42-2"><a href="#cb42-2"></a>        pm.set_data({</span>
+<span id="cb42-3"><a href="#cb42-3"></a>            <span class="st">"x_data"</span>: x_new,</span>
+<span id="cb42-4"><a href="#cb42-4"></a>            <span class="st">"cycle_data"</span>: cycle_new,</span>
+<span id="cb42-5"><a href="#cb42-5"></a>            <span class="st">"y_obs"</span>: y_dummy_scaled</span>
+<span id="cb42-6"><a href="#cb42-6"></a>        })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Posterior Predictive Sampling</strong>: Samples are drawn from the Posterior Predictive Distribution using <code>pm.sample_posterior_predictive</code>, incorporating both posterior parameter uncertainty and observation noise..</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>    <span class="cf">with</span> battery_model:</span>
-<span id="cb40-2"><a href="#cb40-2"></a>        post_pred <span class="op">=</span> pm.sample_posterior_predictive(</span>
-<span id="cb40-3"><a href="#cb40-3"></a>            idata,</span>
-<span id="cb40-4"><a href="#cb40-4"></a>            var_names<span class="op">=</span>[<span class="st">"y_obs"</span>],</span>
-<span id="cb40-5"><a href="#cb40-5"></a>            random_seed<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb40-6"><a href="#cb40-6"></a>            predictions<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb40-7"><a href="#cb40-7"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="75" class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>pred_df <span class="op">=</span> get_posterior_predictions(</span>
-<span id="cb41-2"><a href="#cb41-2"></a>    idata, model, scaler, new_df, features, alpha<span class="op">=</span><span class="fl">0.1</span>, upper_bound<span class="op">=</span>upper_bound, lower_bound<span class="op">=</span>lower_bound</span>
-<span id="cb41-3"><a href="#cb41-3"></a>)</span>
-<span id="cb41-4"><a href="#cb41-4"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>Predictions for each test battery are visualized using the plot_hdi_regression function. The plots display the observed capacity measurements (points) overlaid with the model’s posterior predictive mean and the corresponding <span class="math inline">\(95%\)</span> HDI. The blue line represents the posterior predictive mean where the shaded region represents the <span class="math inline">\(95%\)</span> HDI, quantifying predictive uncertainty.</p>
-<div id="77" class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="im">from</span> bayes.plot.regres_plot <span class="im">import</span> plot_hdi_regression</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>    <span class="cf">with</span> battery_model:</span>
+<span id="cb43-2"><a href="#cb43-2"></a>        post_pred <span class="op">=</span> pm.sample_posterior_predictive(</span>
+<span id="cb43-3"><a href="#cb43-3"></a>            idata,</span>
+<span id="cb43-4"><a href="#cb43-4"></a>            var_names<span class="op">=</span>[<span class="st">"y_obs"</span>],</span>
+<span id="cb43-5"><a href="#cb43-5"></a>            random_seed<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb43-6"><a href="#cb43-6"></a>            predictions<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb43-7"><a href="#cb43-7"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="78" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>plot_hdi_regression(</span>
-<span id="cb43-2"><a href="#cb43-2"></a>    pred_df,</span>
-<span id="cb43-3"><a href="#cb43-3"></a>    x_column<span class="op">=</span><span class="st">"cycle"</span>,</span>
-<span id="cb43-4"><a href="#cb43-4"></a>    y_column<span class="op">=</span><span class="st">"capacity"</span>,</span>
-<span id="cb43-5"><a href="#cb43-5"></a>    group_column<span class="op">=</span><span class="st">"BatteryID"</span>,</span>
-<span id="cb43-6"><a href="#cb43-6"></a>    pred_column<span class="op">=</span><span class="st">"pred_median"</span>,</span>
-<span id="cb43-7"><a href="#cb43-7"></a>    x_label<span class="op">=</span><span class="st">"Cycle Number"</span>,</span>
-<span id="cb43-8"><a href="#cb43-8"></a>    y_label<span class="op">=</span><span class="st">"Capacity (Ah)"</span>,</span>
-<span id="cb43-9"><a href="#cb43-9"></a>    title_prefix<span class="op">=</span><span class="st">"Battery Capacity vs. Cycle with Posterior Predictions"</span>,</span>
-<span id="cb43-10"><a href="#cb43-10"></a>    subtitle<span class="op">=</span><span class="st">"90% HDI accounts for  uncertainty."</span>,</span>
-<span id="cb43-11"><a href="#cb43-11"></a>    alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
-<span id="cb43-12"><a href="#cb43-12"></a>) <span class="op">+</span> ggsize(<span class="dv">800</span>, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>pred_df <span class="op">=</span> get_posterior_predictions(</span>
+<span id="cb44-2"><a href="#cb44-2"></a>    idata, model, scaler, new_df, features, alpha<span class="op">=</span><span class="fl">0.1</span>, upper_bound<span class="op">=</span>upper_bound, lower_bound<span class="op">=</span>lower_bound</span>
+<span id="cb44-3"><a href="#cb44-3"></a>)</span>
+<span id="cb44-4"><a href="#cb44-4"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Predictions for each test battery are visualized using the plot_hdi_regression function. The plots display the observed capacity measurements (points) overlaid with the model’s posterior predictive mean and the corresponding <span class="math inline">\(95%\)</span> HDI. The blue line represents the posterior predictive mean where the shaded region represents the <span class="math inline">\(95%\)</span> HDI, quantifying predictive uncertainty.</p>
+<div id="80" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="im">from</span> bayes.plot.regres_plot <span class="im">import</span> plot_hdi_regression</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="81" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>plot_hdi_regression(</span>
+<span id="cb46-2"><a href="#cb46-2"></a>    pred_df,</span>
+<span id="cb46-3"><a href="#cb46-3"></a>    x_column<span class="op">=</span><span class="st">"cycle"</span>,</span>
+<span id="cb46-4"><a href="#cb46-4"></a>    y_column<span class="op">=</span><span class="st">"capacity"</span>,</span>
+<span id="cb46-5"><a href="#cb46-5"></a>    group_column<span class="op">=</span><span class="st">"BatteryID"</span>,</span>
+<span id="cb46-6"><a href="#cb46-6"></a>    pred_column<span class="op">=</span><span class="st">"pred_median"</span>,</span>
+<span id="cb46-7"><a href="#cb46-7"></a>    x_label<span class="op">=</span><span class="st">"Cycle Number"</span>,</span>
+<span id="cb46-8"><a href="#cb46-8"></a>    y_label<span class="op">=</span><span class="st">"Capacity (Ah)"</span>,</span>
+<span id="cb46-9"><a href="#cb46-9"></a>    title_prefix<span class="op">=</span><span class="st">"Battery Capacity vs. Cycle with Posterior Predictions"</span>,</span>
+<span id="cb46-10"><a href="#cb46-10"></a>    subtitle<span class="op">=</span><span class="st">"90% HDI accounts for  uncertainty."</span>,</span>
+<span id="cb46-11"><a href="#cb46-11"></a>    alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb46-12"><a href="#cb46-12"></a>) <span class="op">+</span> ggsize(<span class="dv">800</span>, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Key Observations</p>
@@ -1282,68 +1300,68 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 <section id="evaluating-predictive-performance" class="level4">
 <h4 class="anchored" data-anchor-id="evaluating-predictive-performance">Evaluating Predictive Performance</h4>
 <p>Predictive performance on the held-out batteries is quantified using both accuracy and uncertainty-based metrics.</p>
-<div id="81" class="cell">
+<div id="84" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">from</span> bayes.metrics.interval <span class="im">import</span> get_interval_metrics</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="im">from</span> bayes.metrics.regression <span class="im">import</span> regression_report</span>
-<span id="cb44-3"><a href="#cb44-3"></a></span>
-<span id="cb44-4"><a href="#cb44-4"></a>metrics_list <span class="op">=</span> []</span>
-<span id="cb44-5"><a href="#cb44-5"></a><span class="cf">for</span> battery_id, df <span class="kw">in</span> pred_df.groupby(<span class="st">"BatteryID"</span>):</span>
-<span id="cb44-6"><a href="#cb44-6"></a>    reg_report <span class="op">=</span> regression_report(df[<span class="st">"capacity"</span>], df[<span class="st">"pred_median"</span>])</span>
-<span id="cb44-7"><a href="#cb44-7"></a>    interval_report <span class="op">=</span> get_interval_metrics(</span>
-<span id="cb44-8"><a href="#cb44-8"></a>        df[<span class="st">"pred_median"</span>].values,</span>
-<span id="cb44-9"><a href="#cb44-9"></a>        df[<span class="st">"capacity"</span>].values,</span>
-<span id="cb44-10"><a href="#cb44-10"></a>        df[<span class="st">"hdi_low"</span>].values,</span>
-<span id="cb44-11"><a href="#cb44-11"></a>        df[<span class="st">"hdi_high"</span>].values,</span>
-<span id="cb44-12"><a href="#cb44-12"></a>        alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
-<span id="cb44-13"><a href="#cb44-13"></a>    )</span>
-<span id="cb44-14"><a href="#cb44-14"></a>    full_report <span class="op">=</span> pd.concat([reg_report, interval_report], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb44-15"><a href="#cb44-15"></a>    full_report[<span class="st">"BatteryID"</span>] <span class="op">=</span> battery_id</span>
-<span id="cb44-16"><a href="#cb44-16"></a>    metrics_list.append(full_report)</span>
-<span id="cb44-17"><a href="#cb44-17"></a>metrics_df <span class="op">=</span> pd.concat(metrics_list, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb44-18"><a href="#cb44-18"></a></span>
-<span id="cb44-19"><a href="#cb44-19"></a>metrics_df <span class="op">=</span> metrics_df.pivot_table(</span>
-<span id="cb44-20"><a href="#cb44-20"></a>    index<span class="op">=</span>[<span class="st">"BatteryID"</span>],</span>
-<span id="cb44-21"><a href="#cb44-21"></a>    columns<span class="op">=</span><span class="st">"Metric"</span>,</span>
-<span id="cb44-22"><a href="#cb44-22"></a>    values<span class="op">=</span><span class="st">"Value"</span>,</span>
-<span id="cb44-23"><a href="#cb44-23"></a>).reset_index()</span>
-<span id="cb44-24"><a href="#cb44-24"></a></span>
-<span id="cb44-25"><a href="#cb44-25"></a></span>
-<span id="cb44-26"><a href="#cb44-26"></a></span>
-<span id="cb44-27"><a href="#cb44-27"></a><span class="kw">def</span> make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>):</span>
-<span id="cb44-28"><a href="#cb44-28"></a>    <span class="co">"""Generate a formatted GT table from cross-validation metrics."""</span></span>
-<span id="cb44-29"><a href="#cb44-29"></a>    <span class="co"># Sort to present best models first</span></span>
-<span id="cb44-30"><a href="#cb44-30"></a>    df <span class="op">=</span> metrics_df.sort_values([<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb44-31"><a href="#cb44-31"></a></span>
-<span id="cb44-32"><a href="#cb44-32"></a>    <span class="co"># Build base table</span></span>
-<span id="cb44-33"><a href="#cb44-33"></a>    gt <span class="op">=</span> (</span>
-<span id="cb44-34"><a href="#cb44-34"></a>        GT(df[[<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]])</span>
-<span id="cb44-35"><a href="#cb44-35"></a>        .tab_header(title<span class="op">=</span>title, subtitle<span class="op">=</span><span class="st">"Per-battery performance"</span>)</span>
-<span id="cb44-36"><a href="#cb44-36"></a>        .cols_label(BatteryID<span class="op">=</span><span class="st">"Test Cell"</span>, MAE<span class="op">=</span><span class="st">"MAE"</span>, RMSE<span class="op">=</span><span class="st">"RMSE"</span>, R2<span class="op">=</span>md(<span class="st">"R&lt;sup&gt;2&lt;/sup&gt;"</span>))</span>
-<span id="cb44-37"><a href="#cb44-37"></a>        .fmt_number(columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>], decimals<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb44-38"><a href="#cb44-38"></a>        .fmt_number(columns<span class="op">=</span><span class="st">"R2"</span>, decimals<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb44-39"><a href="#cb44-39"></a>        .tab_spanner(label<span class="op">=</span><span class="st">"Error Metrics"</span>, columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>])</span>
-<span id="cb44-40"><a href="#cb44-40"></a>        .tab_style(</span>
-<span id="cb44-41"><a href="#cb44-41"></a>            style<span class="op">=</span>style.text(weight<span class="op">=</span><span class="st">"bold"</span>),</span>
-<span id="cb44-42"><a href="#cb44-42"></a>            locations<span class="op">=</span>loc.body(columns<span class="op">=</span><span class="st">"Model"</span>),</span>
-<span id="cb44-43"><a href="#cb44-43"></a>        )</span>
-<span id="cb44-44"><a href="#cb44-44"></a>        .tab_options(</span>
-<span id="cb44-45"><a href="#cb44-45"></a>            table_font_size<span class="op">=</span><span class="st">"small"</span>,</span>
-<span id="cb44-46"><a href="#cb44-46"></a>            <span class="co"># row_strip_color="#fafafa"</span></span>
-<span id="cb44-47"><a href="#cb44-47"></a>        )</span>
-<span id="cb44-48"><a href="#cb44-48"></a>    )</span>
-<span id="cb44-49"><a href="#cb44-49"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]:</span>
-<span id="cb44-50"><a href="#cb44-50"></a>        best_idx <span class="op">=</span> df[col].idxmax() <span class="cf">if</span> col <span class="kw">in</span> [<span class="st">"R2"</span>, <span class="st">"PICP"</span>] <span class="cf">else</span> df[col].idxmin()</span>
-<span id="cb44-51"><a href="#cb44-51"></a>        gt <span class="op">=</span> gt.tab_style(style<span class="op">=</span>style.fill(color<span class="op">=</span><span class="st">"#E1DFDD"</span>), locations<span class="op">=</span>loc.body(rows<span class="op">=</span>best_idx, columns<span class="op">=</span>col))</span>
-<span id="cb44-52"><a href="#cb44-52"></a></span>
-<span id="cb44-53"><a href="#cb44-53"></a>    <span class="cf">return</span> gt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="im">from</span> bayes.metrics.interval <span class="im">import</span> get_interval_metrics</span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="im">from</span> bayes.metrics.regression <span class="im">import</span> regression_report</span>
+<span id="cb47-3"><a href="#cb47-3"></a></span>
+<span id="cb47-4"><a href="#cb47-4"></a>metrics_list <span class="op">=</span> []</span>
+<span id="cb47-5"><a href="#cb47-5"></a><span class="cf">for</span> battery_id, df <span class="kw">in</span> pred_df.groupby(<span class="st">"BatteryID"</span>):</span>
+<span id="cb47-6"><a href="#cb47-6"></a>    reg_report <span class="op">=</span> regression_report(df[<span class="st">"capacity"</span>], df[<span class="st">"pred_median"</span>])</span>
+<span id="cb47-7"><a href="#cb47-7"></a>    interval_report <span class="op">=</span> get_interval_metrics(</span>
+<span id="cb47-8"><a href="#cb47-8"></a>        df[<span class="st">"pred_median"</span>].values,</span>
+<span id="cb47-9"><a href="#cb47-9"></a>        df[<span class="st">"capacity"</span>].values,</span>
+<span id="cb47-10"><a href="#cb47-10"></a>        df[<span class="st">"hdi_low"</span>].values,</span>
+<span id="cb47-11"><a href="#cb47-11"></a>        df[<span class="st">"hdi_high"</span>].values,</span>
+<span id="cb47-12"><a href="#cb47-12"></a>        alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb47-13"><a href="#cb47-13"></a>    )</span>
+<span id="cb47-14"><a href="#cb47-14"></a>    full_report <span class="op">=</span> pd.concat([reg_report, interval_report], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb47-15"><a href="#cb47-15"></a>    full_report[<span class="st">"BatteryID"</span>] <span class="op">=</span> battery_id</span>
+<span id="cb47-16"><a href="#cb47-16"></a>    metrics_list.append(full_report)</span>
+<span id="cb47-17"><a href="#cb47-17"></a>metrics_df <span class="op">=</span> pd.concat(metrics_list, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb47-18"><a href="#cb47-18"></a></span>
+<span id="cb47-19"><a href="#cb47-19"></a>metrics_df <span class="op">=</span> metrics_df.pivot_table(</span>
+<span id="cb47-20"><a href="#cb47-20"></a>    index<span class="op">=</span>[<span class="st">"BatteryID"</span>],</span>
+<span id="cb47-21"><a href="#cb47-21"></a>    columns<span class="op">=</span><span class="st">"Metric"</span>,</span>
+<span id="cb47-22"><a href="#cb47-22"></a>    values<span class="op">=</span><span class="st">"Value"</span>,</span>
+<span id="cb47-23"><a href="#cb47-23"></a>).reset_index()</span>
+<span id="cb47-24"><a href="#cb47-24"></a></span>
+<span id="cb47-25"><a href="#cb47-25"></a></span>
+<span id="cb47-26"><a href="#cb47-26"></a></span>
+<span id="cb47-27"><a href="#cb47-27"></a><span class="kw">def</span> make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>):</span>
+<span id="cb47-28"><a href="#cb47-28"></a>    <span class="co">"""Generate a formatted GT table from cross-validation metrics."""</span></span>
+<span id="cb47-29"><a href="#cb47-29"></a>    <span class="co"># Sort to present best models first</span></span>
+<span id="cb47-30"><a href="#cb47-30"></a>    df <span class="op">=</span> metrics_df.sort_values([<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb47-31"><a href="#cb47-31"></a></span>
+<span id="cb47-32"><a href="#cb47-32"></a>    <span class="co"># Build base table</span></span>
+<span id="cb47-33"><a href="#cb47-33"></a>    gt <span class="op">=</span> (</span>
+<span id="cb47-34"><a href="#cb47-34"></a>        GT(df[[<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]])</span>
+<span id="cb47-35"><a href="#cb47-35"></a>        .tab_header(title<span class="op">=</span>title, subtitle<span class="op">=</span><span class="st">"Per-battery performance"</span>)</span>
+<span id="cb47-36"><a href="#cb47-36"></a>        .cols_label(BatteryID<span class="op">=</span><span class="st">"Test Cell"</span>, MAE<span class="op">=</span><span class="st">"MAE"</span>, RMSE<span class="op">=</span><span class="st">"RMSE"</span>, R2<span class="op">=</span>md(<span class="st">"R&lt;sup&gt;2&lt;/sup&gt;"</span>))</span>
+<span id="cb47-37"><a href="#cb47-37"></a>        .fmt_number(columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>], decimals<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb47-38"><a href="#cb47-38"></a>        .fmt_number(columns<span class="op">=</span><span class="st">"R2"</span>, decimals<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb47-39"><a href="#cb47-39"></a>        .tab_spanner(label<span class="op">=</span><span class="st">"Error Metrics"</span>, columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>])</span>
+<span id="cb47-40"><a href="#cb47-40"></a>        .tab_style(</span>
+<span id="cb47-41"><a href="#cb47-41"></a>            style<span class="op">=</span>style.text(weight<span class="op">=</span><span class="st">"bold"</span>),</span>
+<span id="cb47-42"><a href="#cb47-42"></a>            locations<span class="op">=</span>loc.body(columns<span class="op">=</span><span class="st">"Model"</span>),</span>
+<span id="cb47-43"><a href="#cb47-43"></a>        )</span>
+<span id="cb47-44"><a href="#cb47-44"></a>        .tab_options(</span>
+<span id="cb47-45"><a href="#cb47-45"></a>            table_font_size<span class="op">=</span><span class="st">"small"</span>,</span>
+<span id="cb47-46"><a href="#cb47-46"></a>            <span class="co"># row_strip_color="#fafafa"</span></span>
+<span id="cb47-47"><a href="#cb47-47"></a>        )</span>
+<span id="cb47-48"><a href="#cb47-48"></a>    )</span>
+<span id="cb47-49"><a href="#cb47-49"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]:</span>
+<span id="cb47-50"><a href="#cb47-50"></a>        best_idx <span class="op">=</span> df[col].idxmax() <span class="cf">if</span> col <span class="kw">in</span> [<span class="st">"R2"</span>, <span class="st">"PICP"</span>] <span class="cf">else</span> df[col].idxmin()</span>
+<span id="cb47-51"><a href="#cb47-51"></a>        gt <span class="op">=</span> gt.tab_style(style<span class="op">=</span>style.fill(color<span class="op">=</span><span class="st">"#E1DFDD"</span>), locations<span class="op">=</span>loc.body(rows<span class="op">=</span>best_idx, columns<span class="op">=</span>col))</span>
+<span id="cb47-52"><a href="#cb47-52"></a></span>
+<span id="cb47-53"><a href="#cb47-53"></a>    <span class="cf">return</span> gt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="82" class="cell">
+<div id="85" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><strong>Accuracy Metrics</strong></p>
