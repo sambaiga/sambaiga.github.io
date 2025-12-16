@@ -1021,3 +1021,53 @@ pre.text, pre.sourceCode, .cell-output pre {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+/* ------------------------------------------------------------------- */
+/* RESPONSIVENESS FIXES FOR TABLES, CODE, AND MATH OVERFLOW */
+/* ------------------------------------------------------------------- */
+
+/* FIX 1: Responsive Tables */
+/* Force tables to allow horizontal scrolling on small screens */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+}
+
+table {
+    /* Ensures Quarto tables adopt scroll behavior */
+    display: block; 
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+}
+
+/* FIX 2: Code Blocks Overflow */
+pre.text, pre.sourceCode, .cell-output pre {
+    /* Ensures code blocks can be scrolled horizontally */
+    overflow-x: auto; 
+    /* Ensures long lines wrap if they can't scroll (Quarto default for wrap) */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* FIX 3: Inline Code and Math Equations */
+/* Target elements that cause horizontal overflow on mobile screens (max-width 768px) */
+@media (max-width: 768px) {
+    
+    /* Ensure long inline code strings can break or wrap */
+    code:not([class*="language-"]) {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    /* Force long math equations to their own line and make them scrollable */
+    .math, .inline-math {
+        display: block !important; 
+        overflow-x: auto !important; 
+        max-width: 100%;
+        padding-bottom: 0.5em; /* Space for scrollbar */
+        padding-top: 0.5em;
+    }
+}
