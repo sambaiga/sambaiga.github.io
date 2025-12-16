@@ -1061,13 +1061,5 @@ pre.text, pre.sourceCode, .cell-output pre {
         white-space: pre-wrap;
         word-break: break-all;
     }
-    
-    /* Force long math equations to their own line and make them scrollable */
-    .math, .inline-math {
-        display: block !important; 
-        overflow-x: auto !important; 
-        max-width: 100%;
-        padding-bottom: 0.5em; /* Space for scrollbar */
-        padding-top: 0.5em;
-    }
+
 }
