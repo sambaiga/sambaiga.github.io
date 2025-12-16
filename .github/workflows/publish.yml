@@ -37,7 +37,17 @@ jobs:
           key: ${{ runner.os }}-R-${{ hashFiles('**/DESCRIPTION') }}
           restore-keys: ${{ runner.os }}-R-
 
-      # 🧰 5. Setup Python (for notebooks)
+      # 🔄 5. Cache Quarto freeze directory (NEW - ADD THIS)
+      - name: Cache Quarto freeze
+        uses: actions/cache@v4
+        with:
+          path: _freeze
+          key: ${{ runner.os }}-quarto-freeze-${{ hashFiles('**/*.qmd', '**/_quarto.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-quarto-freeze-
+
+
+      # 🧰 6. Setup Python (for notebooks)
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -47,16 +57,24 @@ jobs:
         run: |
           pip install jupyter
 
-      # 📦 6. Install common R dependencies
+      # 📦 7. Install common R dependencies
       - name: Install R dependencies
         run: |
           Rscript -e 'install.packages(c("tidyverse", "knitr", "rmarkdown", "ggplot2", "readr", "dplyr"))'
 
-      # 🧱 7. Render the site
+      # 🧱 8. Render the site
       - name: Render site
         run: quarto render
 
-      # 🚀 8. Publish to GitHub Pages puplish
+      # 📁 9. Copy freeze directory to site (NEW - CRITICAL)
+      - name: Copy freeze directory for deployment
+        run: |
+          # Create _site if it doesn't exist (should exist after render)
+          mkdir -p _site
+          # Copy the entire _freeze directory into _site
+          cp -r _freeze _site/_freeze 2>/dev/null || echo "Note: No _freeze directory to copy"
+
+      # 🚀 10. Publish to GitHub Pages puplish
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
