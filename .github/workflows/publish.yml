@@ -22,8 +22,7 @@ jobs:
       # 🧰 2. Setup Quarto
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: latest
+      
 
       # 🧰 3. Setup R
       - name: Setup R
