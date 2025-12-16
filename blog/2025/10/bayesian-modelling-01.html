@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-f8179bfdbd5e89fa70e408bad7f8ef23.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-5d4073339ea55b1ad5ce071f10a273ff.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-a8e3615b03236e0c07ea6400098f2ee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-9032d708672c65d20fad7460853243e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/iconify-2.0.0/iconify-icon.min.js"></script>
@@ -183,8 +183,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Anthony Faustine</span>
     </a>
@@ -306,7 +304,7 @@ window.Quarto = {
   <li><a href="#model-utility-and-business-decision" id="toc-model-utility-and-business-decision" class="nav-link" data-scroll-target="#model-utility-and-business-decision">Model Utility and Business Decision</a></li>
   <li><a href="#common-bayesian-pitfalls-and-best-practices" id="toc-common-bayesian-pitfalls-and-best-practices" class="nav-link" data-scroll-target="#common-bayesian-pitfalls-and-best-practices">Common bayesian pitfalls and best practices</a></li>
   <li><a href="#next-steps-in-the-bayesian-journey" id="toc-next-steps-in-the-bayesian-journey" class="nav-link" data-scroll-target="#next-steps-in-the-bayesian-journey">Next steps in the bayesian journey</a></li>
-  <li><a href="#resources-to-continue-learning" id="toc-resources-to-continue-learning" class="nav-link" data-scroll-target="#resources-to-continue-learning">Resources to Continue Learning</a></li>
+  <li><a href="#resources-to-continue-learning" id="toc-resources-to-continue-learning" class="nav-link" data-scroll-target="#resources-to-continue-learning">Resources to continue learning</a></li>
   </ul>
 </nav>
     </div>
@@ -1289,21 +1287,23 @@ Expected monthly value: $-1,717</code></pre>
 </section>
 <section id="common-bayesian-pitfalls-and-best-practices" class="level3">
 <h3 class="anchored" data-anchor-id="common-bayesian-pitfalls-and-best-practices">Common bayesian pitfalls and best practices</h3>
-<p>While Bayesian modeling provides a powerful framework for decision-making under uncertainty, several common mistakes can reduce its effectiveness. &gt; The first is overconfident priors, where excessively strong prior assumptions prevent new data from influencing the results. This issue is best mitigated by starting with weak or moderately informative priors and refining them as more evidence becomes available.</p>
+<p>While Bayesian modeling provides a powerful framework for decision-making under uncertainty, several common mistakes can reduce its effectiveness.</p>
+<blockquote class="blockquote">
+<p>The first is overconfident priors, where excessively strong prior assumptions prevent new data from influencing the results. This issue is best mitigated by starting with weak or moderately informative priors and refining them as more evidence becomes available.</p>
+</blockquote>
 <blockquote class="blockquote">
 <p>A second pitfall is ignoring prior sensitivity. Conclusions may shift significantly depending on the chosen prior distribution, so it is essential to conduct sensitivity analyses using multiple plausible priors to ensure that insights are robust.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p>The third major issue involves misinterpreting probability. A statement such as “95% probability” does not imply absolute certainty; rather, it reflects the degree of belief given the available data and assumptions. Probabilities in Bayesian analysis are best interpreted in terms of relative confidence, risk, and decision trade-offs.</p>
 </blockquote>
-<p>To support rigorous implementation, the following checklist outlines a systematic workflow for Bayesian business analysis: 1. Define a clear decision or research question, 2. Collect relevant historical information to inform priors, 3. Select an appropriate likelihood function, 4. Test alternative prior specifications, 5. Run the model and verify diagnostics, 6. Interpret outcomes within the business or operational context, and communicate uncertainty transparently to stakeholders.</p>
 </section>
 <section id="next-steps-in-the-bayesian-journey" class="level3">
 <h3 class="anchored" data-anchor-id="next-steps-in-the-bayesian-journey">Next steps in the bayesian journey</h3>
-<p>We have laid the groundwork by exploring the core components of the Bayesian approach. The subsequent session will focus on advanced practical implementation. We will apply this framework to critical survival analysis problems, modeling the probability and timing of events such as equipment failure. A key focus will be on hierarchical modeling, illustrating how to pool information to capture underlying reliability patterns that span across naturally grouped datasets</p>
+<p>We have laid the groundwork by exploring the core components of the Bayesian approach. The subsequent session will focus on advanced practical implementation. We will apply this framework to critical survival analysis problems, modeling the probability and timing of events such as equipment failure.</p>
 </section>
 <section id="resources-to-continue-learning" class="level3">
-<h3 class="anchored" data-anchor-id="resources-to-continue-learning">Resources to Continue Learning</h3>
+<h3 class="anchored" data-anchor-id="resources-to-continue-learning">Resources to continue learning</h3>
 <ul>
 <li><a href="https://bayesiancomputationbook.com/welcome.html">Bayesian Modeling and Computation in Python</a></li>
 <li><a href="https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers">Bayesian Methods for Hackers</a></li>
