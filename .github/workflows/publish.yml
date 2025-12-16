@@ -46,7 +46,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      # ⚡ 4. Cache R packages
+      # ⚡ 4. Cache R packagesc
       - name: Cache R packages
         uses: actions/cache@v4
         with:
