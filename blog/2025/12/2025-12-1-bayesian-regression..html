@@ -320,7 +320,13 @@ window.Quarto = {
 
 
 <p>Predictive modeling in industrial settings is rarely just about accuracy. Decisions informed by models often carry financial, safety, and operational risks. In such environments, understanding uncertainty can be just as important as generating a good point prediction.</p>
-<p>This article offers a practical introduction to Bayesian regression through a real-world case study: predicting lithium-ion battery degradation. Instead of treating model parameters as fixed, unknown values, the Bayesian approach frames them as probability distributions—explicitly modeling uncertainty to give engineers and data scientists a richer, more actionable understanding of system behavior.</p>
+<p>This article Instead of treating model parameters as fixed, unknown values, the Bayesian approach frames them as probability distributions—explicitly modeling uncertainty to give engineers and data scientists a richer, more actionable understanding of system behavior.</p>
+<p>This post is part of the <em>Bayesian Modelling for Industrial Applications series</em> – <strong>Part 2</strong> .</p>
+<hr>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Welcome back to our series on <em>Bayesian Modelling for Industrial Applications</em>. In <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, we explored how Bayesian thinking provides a principled framework for decision-making under uncertainty when evidence is limited.</p>
+<p>In this post, we extend that foundation to continuous prediction problems, offering a practical introduction to Bayesian regression through a real-world case study: predicting lithium-ion battery degradation. If you are new to Bayesian methods, you may want to start with the first post <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, which introduces the foundational concepts of Bayesian inference.</p>
 <blockquote class="blockquote">
 <p>🛠️ <strong>Action</strong>: If you prefer to learn by doing, you can reproduce this article using the accompanying resources:</p>
 </blockquote>
@@ -328,17 +334,7 @@ window.Quarto = {
 <li><a href="https://github.com/sambaiga/bayesian-modelling">Repository</a>: Fork the <a href="https://github.com/sambaiga/bayesian-modelling">bayesian-modelling repository</a> and follow the setup instructions in the README.md</li>
 <li><a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">Notebook</a>: Launch <a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">2025-12-1-bayesian-regression.ipynb</a> in the notebook folder to follow along step-by-step.</li>
 </ol>
-<p>This post is part of the <em>Bayesian Modelling for Industrial Applications series</em> – <strong>Part 2</strong> . If you are new to Bayesian methods, you may want to start with the first post <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, which introduces the foundational concepts of Bayesian inference.</p>
-<hr>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>Welcome back to our series on <strong>Bayesian Modelling for Industrial Applications</strong>. In <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, we explored how Bayesian thinking provides a principled framework for decision-making under uncertainty when evidence is limited.</p>
-<p>In this post, we extend that foundation to <strong>continuous prediction problems</strong>, showing how <strong>Bayesian regression</strong> transforms noisy industrial data into actionable insights <em>with uncertainty explicitly quantified rather than ignored</em>.</p>
-<section id="why-bayesian-regression" class="level4">
-<h4 class="anchored" data-anchor-id="why-bayesian-regression">Why Bayesian regression?</h4>
-<p>Imagine managing a fleet of electric vehicles. One of your biggest challenges is predicting <strong>battery State of Health (SoH)</strong> over time. Early predictions inform warranty decisions, maintenance planning, and safety margins.</p>
-<p>Industrial systems, like vehicle battery packs, are inherently complex: they are characterized by noisy, non-repeatable measurements due to sensor noise, unit variability, and stochastic physical processes.</p>
-<p>Traditional, purely deterministic regression methods (which produce a single “best-fit” curve) fail to capture this complexity. A deterministic model might predict one degradation curve, but in practice, real batteries age differently even under similar conditions. This reliance on a single point estimate overlooks critical, high-risk aspects of the industrial data:</p>
+<p>Imagine managing a fleet of electric vehicles. One of your biggest challenges is predicting battery State of Health over time. This is important problem as early predictions inform warranty decisions, maintenance planning, and safety margins. However, industrial systems, like vehicle battery packs, are inherently complex: they are characterized by noisy, non-repeatable measurements due to sensor noise, unit variability, and stochastic physical processes. Traditional deterministic regression methods yield a single best-fit curve and therefore fail to capture the inherent variability and risk present in real-world industrial data which is characterised by:</p>
 <ul>
 <li>Measurement uncertainty inherent in sensors and data acquisition systems<br>
 </li>
@@ -348,12 +344,7 @@ window.Quarto = {
 </li>
 <li>Limited early-life observations, a common constraint in industrial testing</li>
 </ul>
-<p>Bayesian regression addresses this reality by treating uncertainty as a first-class citizen. Instead of delivering a single prediction, it provides <strong>ranges of plausible outcomes</strong>, allowing decisions to be made with risk explicitly accounted for.</p>
-</section>
-<section id="modeling-distributions-with-bayes-theorem" class="level4">
-<h4 class="anchored" data-anchor-id="modeling-distributions-with-bayes-theorem">Modeling distributions with bayes’ theorem</h4>
-<p>Bayesian regression models uncertainty by treating parameters as probability distributions rather than fixed values. Each coefficient represents a range of plausible effects, informed by both prior knowledge and observed data.</p>
-<p>This framework is built on three core components:</p>
+<p>Bayesian regression addresses this reality by treating model parameters as probability distributions rather than fixed values. Each coefficient represents a range of plausible effects, informed by both prior knowledge and observed data so that uncertainty and risk are explicitly accounted for. This framework is built on three core components:</p>
 <ol type="1">
 <li><strong>Priors</strong>, which encode existing engineering knowledge or physical constraints<br>
 </li>
@@ -363,13 +354,16 @@ window.Quarto = {
 </ol>
 <p>The posterior distribution enables <strong>credible intervals</strong>, allowing us to quantify how confident we are in both parameter estimates and future predictions—an essential capability in industrial decision-making.</p>
 </section>
-</section>
 <section id="case-study-predicting-battery-degradation" class="level3">
 <h3 class="anchored" data-anchor-id="case-study-predicting-battery-degradation">Case Study: Predicting battery degradation</h3>
 <p>Lithium-ion batteries are critical components in electric vehicles and stationary energy storage systems. Unexpected capacity loss can lead to service interruptions, safety risks, and costly premature replacements.</p>
-<p>The challenge is predicting future battery health when: - Direct capacity measurements are infrequent and expensive - Early-life data is sparse - Degradation accelerates nonlinearly near end of life</p>
-<p>The goal is not only to predict degradation, but to quantify uncertainty well enough to support maintenance and replacement decisions.</p>
-<p>We use battery degradation data from the <a href="https://calce.umd.edu/battery-data">CALCE Battery</a> Research Group at the University of Maryland. Battery State of Health (<span class="math inline">\(\text{SoH}\)</span>) is defined as current capacity relative to initial capacity (<span class="math inline">\(\text{SoH} = C/C_{max}\)</span>). This continuous value degrades non-linearly over the battery’s life, driven primarily by cycle count and operational conditions, with significant measurement noise. The <a href="https://calce.umd.edu/battery-data">CALCE dataset</a> provides over 1,200 capacity measurements taken at discrete cycle intervals, alongside features like charging and discharge current and voltage. This comprehensive dataset has become a benchmark in battery research, allowing rigorous comparison of degradation models</p>
+<p>The challenge is predicting future battery health when:</p>
+<ul>
+<li>Direct capacity measurements are infrequent and expensive</li>
+<li>Early-life data is sparse</li>
+<li>Degradation accelerates nonlinearly near end of life</li>
+</ul>
+<p>The goal is not only to predict degradation, but to quantify uncertainty well enough to support maintenance and replacement decisions. We use battery degradation data from the <a href="https://calce.umd.edu/battery-data">CALCE Battery</a> Research Group at the University of Maryland. The <a href="https://calce.umd.edu/battery-data">CALCE dataset</a> provides over 1,200 capacity measurements taken at discrete cycle intervals, alongside features like charging and discharge current and voltage. This comprehensive dataset has become a benchmark in battery research, allowing rigorous comparison of degradation models</p>
 <div id="8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -418,13 +412,13 @@ window.Quarto = {
 </div>
 <section id="choosing-the-beta-likelihood" class="level4">
 <h4 class="anchored" data-anchor-id="choosing-the-beta-likelihood">Choosing the Beta Likelihood</h4>
-<p>The capacity data being modeled, <span class="math inline">\(C\)</span>, represents the battery’s health and is strictly bounded between zero and its initial (maximum) capacity, <span class="math inline">\(C_{\text{max}}\)</span>. The goal of this analysis is to model the evolution of <span class="math inline">\(C\)</span>. In many standard regression approaches, the model’s likelihood function (which defines the distribution of the noise) is assumed to be Gaussian (Normal). This assumption is fundamentally incompatible with the physical reality of capacity degradation for two key reasons.</p>
+<p>The capacity data being modeled, <span class="math inline">\(C\)</span>, represents the battery’s health and is strictly bounded between $[C_{}, C_{}]. The goal of this analysis is to model the evolution of <span class="math inline">\(C_i\)</span>. In many standard regression approaches, the model’s likelihood function (which defines the distribution of the noise) is assumed to be Gaussian (Normal). This assumption is fundamentally incompatible with the physical reality of capacity degradation for two key reasons.</p>
 <ol type="1">
 <li>Gaussian models assume the target variable can take any real value (<span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>), ignoring the fact that the underlying capacity <span class="math inline">\(C\)</span> cannot fall outside their physical limits (i.e., <span class="math inline">\([C_{\text{min}}, C_{\text{max}}]\)</span> )</li>
 <li>With enough extrapolation, Gaussian models produce impossible values (e.g.,negative capacity). In safety-critical systems, such predictions are dangerous.</li>
 </ol>
-<p>The Beta distribution is consequently chosen as the likelihood function for this regression problem. The Beta distribution is flexible, capable of modeling various shapes (uniform, U-shaped, skewed) depending on its shape parameters (<span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>).Furthermore, since battery capacity degradation is continuous and strictly bounded by <span class="math inline">\([C_{\text{min}}, C_{\text{max}}]\)</span>, a Beta likelihood provides a natural modeling choice that avoids the ad-hoc truncation required by Gaussian assumptions.</p>
-<p>To fit the Beta’s intrinsic <span class="math inline">\([0, 1]\)</span> domain, capacity (<span class="math inline">\(C_i\)</span>) is first scaled into a normalized State of Health (<span class="math inline">\(\tilde{C}_i\)</span>) using the following transformation:<span class="math display">\[\tilde{C}_i = \frac{C_i - C_{\text{min}}}{C_{\text{max}} - C_{\text{min}}}\]</span>The model then utilizes the Beta distribution for the scaled capacity:<span class="math display">\[\tilde{C}_i \sim \text{Beta}(\alpha_i, \beta_i)\]</span>where <span class="math inline">\(\alpha_i, \beta_i &gt; 0\)</span> and <span class="math inline">\(\tilde{C}_i \in [0, 1]\)</span>. This modeling choice ensures all predicted <span class="math inline">\(\tilde{C}_i\)</span> values remain physically plausible while allowing for flexible modeling of degradation patterns through the shape parameters.</p>
+<p>The Beta distribution is chosen as the likelihood due to its flexible shape, governed by <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, which can model a wide range of behaviors. Because battery capacity degradation is continuous and strictly bounded within <span class="math inline">\([C_{\text{min}}, C_{\text{max}}]\)</span>, the Beta likelihood provides a natural alternative to Gaussian models that require ad-hoc truncation.</p>
+<p>To match the Beta distribution’s <span class="math inline">\([0,1]\)</span> support, capacity <span class="math inline">\(C_i\)</span> is linearly scaled to <span class="math display">\[\tilde{C}i = \frac{C_i - C{\text{min}}}{C_{\text{max}} - C_{\text{min}}}\]</span> and modeled as <span class="math inline">\(\tilde{C}_i \sim \text{Beta}(\alpha_i, \beta_i)\)</span>. This guarantees physically plausible predictions while retaining flexibility through the shape parameters.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    pm.Beta(<span class="st">"y_obs"</span>, alpha<span class="op">=</span>alpha, beta<span class="op">=</span>beta_shape, observed<span class="op">=</span>y_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="parameterization-mean-mu-and-precision-phi" class="level5">
@@ -1772,8 +1766,7 @@ font-size: 12.0px;
 </svg>
 </div>
 </div>
-<p>This weakly informative prior centers the expected degradation rate around <span class="math inline">\(\mathbf{0.5\%}\)</span>, while the spread <span class="math inline">\(\sigma = 0.5\)</span> (green/teal curve) is sufficiently wide to accommodate realistic fleet-level variability. At the same time, it remains substantially tighter than <span class="math inline">\(\sigma = 1.0\)</span> (orange curve), thereby avoiding non-physical probability mass assigned to unrealistically large degradation rates.</p>
-<p>This distribution reflects a conservative estimate of uncertainty, allowing greater variation in degradation behavior than a tighter prior (e.g., <span class="math inline">\(\sigma = 0.1\)</span>) would permit, while still preventing implausible rates.</p>
+<p>This weakly informative prior centers the expected degradation rate around <span class="math inline">\(\mathbf{0.5\%}\)</span>, while the spread <span class="math inline">\(\sigma = 0.5\)</span> (green/teal curve) is sufficiently wide to accommodate realistic fleet-level variability. At the same time, it remains substantially tighter than <span class="math inline">\(\sigma = 1.0\)</span> (orange curve), thereby avoiding non-physical probability mass assigned to unrealistically large degradation rates. This distribution reflects a conservative estimate of uncertainty, allowing greater variation in degradation behavior than a tighter prior (e.g., <span class="math inline">\(\sigma = 0.1\)</span>) would permit, while still preventing implausible rates.</p>
 <p><strong>Degradation Amplitude (<span class="math inline">\(A\)</span>)</strong></p>
 <p>The parameter degr_amp (<span class="math inline">\(A\)</span>) controls the overall amplitude of the degradation component. Since this amplitude must be non-negative, a Half-Normal distribution is used, which has support only on positive values. The scale parameter <span class="math inline">\(\sigma\)</span> determines the strength of regularization.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>   <span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
@@ -3080,7 +3073,7 @@ Figure 4: Inteporated Discharge Voltage curve at the beginning of life
 </div>
 </div>
 </div>
-<p>These statistical summaries (e.g., <span class="math inline">\(\text{Mean}(\text{IC})\)</span>, <span class="math inline">\(\text{Std}(\Delta V)\)</span>) form the input vector <span class="math inline">\(\mathbf{x}\)</span> in the linear predictor <span class="math inline">\(\eta_i = \dots + \mathbf{x}_i^{\top} \boldsymbol{\beta}\)</span>. Such summaries of early-cycle behavior often preserve key degradation signatures while significantly reducing model complexity.</p>
+<p>These statistical summaries form the input vector <span class="math inline">\(\mathbf{x}\)</span> in the linear predictor <span class="math inline">\(\eta_i = \dots + \mathbf{x}_i^{\top} \boldsymbol{\beta}\)</span>. Such summaries of early-cycle behavior often preserve key degradation signatures while significantly reducing model complexity.</p>
 </section>
 <section id="feature-selection" class="level4">
 <h4 class="anchored" data-anchor-id="feature-selection">Feature selection</h4>
