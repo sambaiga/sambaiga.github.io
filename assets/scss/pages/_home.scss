@@ -1,57 +1,43 @@
 /*-- scss:pages/home --*/
 
 // =====================================================
-// HOME PAGE SPECIFIC STYLES
+// HOME PAGE SPECIFIC STYLES (non-hero only)
 // =====================================================
 
-// These styles only apply when body has class "home"
 body.home {
-  .home-hero {
-    padding: $spacer-5 0;
-    text-align: center;
-    background: linear-gradient(135deg, $gradient-primary-start 0%, $gradient-primary-end 100%);
-    color: $white;
-    margin-bottom: $spacer-4;
-    border-radius: $border-radius-2xl;
-    box-shadow: $shadow-lg;
-    min-height: $hero-min-height-sm;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color $transition-duration-base $transition-timing-ease-in-out,
+              color $transition-duration-base $transition-timing-ease-in-out;
+  
+  // Add any page-specific styles here that are NOT hero-related
+  // For example:
+  
+  .page-container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $spacer-3;
     
     @media (min-width: $breakpoint-md) {
-      min-height: $hero-min-height;
-      padding: $hero-padding-y $hero-padding-x;
+      padding: $spacer-4;
     }
     
-    h1 {
-      font-size: clamp($hero-title-font-size-min, 4vw, $hero-title-font-size-max);
-      margin-bottom: $spacer-3;
-      font-family: $headings-font-family;
-      font-weight: $headings-font-weight;
-      line-height: $headings-line-height;
-      
-      @media (max-width: $breakpoint-md) {
-        font-size: $font-size-xxl;
-      }
-    }
-    
-    .subtitle {
-      font-size: $font-size-xl;
-      color: rgba($white, $opacity-90);
-      margin-bottom: $spacer-4;
-      font-family: $font-family-sans-serif;
-      font-weight: $font-weight-light;
-      max-width: $hero-subtitle-max-width;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: $body-line-height;
-      
-      @media (max-width: $breakpoint-md) {
-        font-size: $font-size-lg;
-        padding: 0 $spacer-3;
-      }
+    @media (min-width: $breakpoint-lg) {
+      padding: $spacer-5;
     }
   }
   
-  .home-grid {
+  // Other sections specific to home page
+  .home-intro {
+    padding: $spacer-5 0;
+    text-align: center;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: $spacer-4 0;
+    }
+  }
+  
+  .home-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: $grid-gap;
@@ -63,121 +49,57 @@ body.home {
     }
   }
   
-  .home-section {
-    padding: $section-padding-y 0;
-    
-    @media (max-width: $breakpoint-md) {
-      padding: $section-padding-y-sm 0;
-    }
-    
-    &:nth-child(even) {
-      background-color: $gray-100;
-    }
-    
-    &-title {
-      font-family: $headings-font-family;
-      font-size: $font-size-xxl;
-      color: $teal;
-      margin-bottom: $spacer-4;
-      text-align: center;
-      
-      @media (max-width: $breakpoint-md) {
-        font-size: $font-size-xl;
-      }
-    }
-    
-    &-subtitle {
-      font-size: $font-size-lg;
-      color: $gray-700;
-      margin-bottom: $spacer-4;
-      text-align: center;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: $body-line-height;
-    }
-  }
-  
-  .home-feature {
-    background: $card-bg;
-    border: $border-width-1 solid $card-border-color;
+  .feature-card {
+    background: var(--card-bg);
+    border: $border-width-1 solid var(--border-color);
     border-radius: $card-border-radius;
     padding: $card-padding;
-    transition: transform $transition-duration-base $transition-timing-ease-in-out, 
-                box-shadow $transition-duration-base $transition-timing-ease-in-out;
-    height: 100%;
+    transition: all $transition-duration-base $transition-timing-ease-in-out;
     
     &:hover {
-      transform: $card-hover-transform;
-      box-shadow: $card-hover-box-shadow;
-      border-color: $primary;
-    }
-    
-    &-icon {
-      color: $primary;
-      font-size: $font-size-xxl;
-      margin-bottom: $spacer-3;
-    }
-    
-    &-title {
-      font-family: $headings-font-family;
-      font-size: $font-size-xl;
-      color: $gray-900;
-      margin-bottom: $spacer-2;
-      line-height: $headings-line-height;
-    }
-    
-    &-description {
-      color: $gray-700;
-      line-height: $body-line-height;
-      margin-bottom: $spacer-3;
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+      border-color: var(--primary);
     }
   }
+}
+
+// Theme toggle button (optional)
+.theme-toggle {
+  position: fixed;
+  top: $spacer-4;
+  right: $spacer-4;
+  z-index: $z-index-fixed;
+  background: var(--card-bg);
+  border: $border-width-1 solid var(--border-color);
+  border-radius: $border-radius-full;
+  width: $spacer-6;
+  height: $spacer-6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  box-shadow: $shadow-md;
   
-  .home-cta {
-    background-color: $energy-accent;
-    color: $white;
-    padding: $spacer-5;
-    border-radius: $border-radius-2xl;
-    text-align: center;
-    margin-top: $spacer-5;
+  &:hover {
+    transform: scale(1.1);
     box-shadow: $shadow-lg;
+  }
+  
+  i {
+    font-size: $font-size-lg;
+    color: var(--text-primary);
+  }
+}
+
+// Dark theme specific overrides for non-hero elements
+[data-theme="dark"] body.home {
+  .feature-card {
+    box-shadow: 0 10px 25px -5px var(--shadow-color);
     
-    @media (max-width: $breakpoint-md) {
-      padding: $spacer-4;
-    }
-    
-    &-title {
-      font-family: $headings-font-family;
-      font-size: $font-size-xxl;
-      margin-bottom: $spacer-3;
-      color: $white;
-      line-height: $headings-line-height;
-      
-      @media (max-width: $breakpoint-md) {
-        font-size: $font-size-xl;
-      }
-    }
-    
-    &-subtitle {
-      font-size: $font-size-lg;
-      margin-bottom: $spacer-4;
-      opacity: $opacity-90;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: $body-line-height;
-    }
-    
-    .btn {
-      background-color: $white;
-      color: $energy-accent;
-      border: $border-width-2 solid $white;
-      
-      &:hover {
-        background-color: rgba($white, $opacity-90);
-        color: darken($energy-accent, 10%);
-      }
+    &:hover {
+      border-color: var(--primary);
     }
   }
 }

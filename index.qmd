@@ -3,14 +3,15 @@ title: ""
 author: ""
 format:
   html:
-    body-class: "home"
+    #body-class: "home"
     page-layout: full
+    include-in-header:
+      - text: |
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
     include-after-body:
       - text: |
           <script src="assets/js/home-carousel.js"></script>
 ---
-
-::: {#hero-heading}
 ```{=html}
   <div class="hero-outer-container">
   <div class="hero-card">
@@ -61,4 +62,3 @@ format:
   </div>
 </div>
 ```
-:::
