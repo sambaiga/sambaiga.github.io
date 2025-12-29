@@ -1,0 +1,839 @@
+/*-- scss:pages/projects --*/
+
+// =====================================================
+// PROJECTS PAGE SPECIFIC STYLES (Buttons Removed)
+// =====================================================
+
+.projects {
+  &-header {
+    padding: $section-padding-y 0;
+    background: linear-gradient(135deg, rgba($energy-accent, $opacity-10) 0%, rgba($ai-accent, $opacity-10) 100%);
+    margin-bottom: $spacer-5;
+    border-radius: $border-radius-3xl;
+    text-align: center;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: $section-padding-y-sm 0;
+      margin-bottom: $spacer-4;
+    }
+    
+    h1 {
+      font-family: $headings-font-family;
+      font-size: $font-size-xxxl;
+      color: $teal;
+      margin-bottom: $spacer-3;
+      line-height: $headings-line-height;
+      letter-spacing: $letter-spacing-tight;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-xxl;
+      }
+    }
+    
+    .subtitle {
+      font-size: $font-size-xl;
+      color: $gray-700;
+      max-width: 800px;
+      margin: 0 auto $spacer-4;
+      line-height: $body-line-height;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-lg;
+        padding: 0 $spacer-3;
+      }
+    }
+  }
+  
+  // Filter container (NO button styles)
+  &-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-gap-sm;
+    justify-content: center;
+    margin-bottom: $spacer-4;
+    max-width: $container-max-width-lg;
+    margin-left: auto;
+    margin-right: auto;
+    
+    // Buttons are styled by button component
+  }
+  
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: $grid-gap-xl;
+    margin: $spacer-5 0;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $grid-gap-lg;
+    }
+  }
+  
+  &-card {
+    background-color: $card-bg;
+    border: $border-width-1 solid $card-border-color;
+    border-radius: $card-border-radius;
+    padding: $card-padding;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    &:hover {
+      transform: $card-hover-transform;
+      box-shadow: $card-hover-box-shadow;
+      border-color: $primary;
+    }
+    
+    &:focus-within {
+      outline: $focus-ring;
+      outline-offset: $link-focus-outline-offset;
+    }
+    
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: $spacer-2;
+      margin-bottom: $spacer-3;
+      
+      .icon {
+        color: $energy-accent;
+        font-size: $font-size-xl;
+        flex-shrink: 0;
+      }
+      
+      h3 {
+        font-family: $headings-font-family;
+        font-size: $font-size-xl;
+        color: $gray-900;
+        margin: 0;
+        flex: 1;
+        font-weight: $headings-font-weight;
+        line-height: $headings-line-height;
+        
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+    }
+    
+    &-description {
+      color: $gray-700;
+      line-height: $body-line-height;
+      margin-bottom: $spacer-3;
+      flex: 1;
+      font-size: $font-size-base;
+    }
+    
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacer-1;
+      margin-bottom: $spacer-3;
+      
+      .tag {
+        background-color: $gray-100;
+        color: $gray-700;
+        padding: $spacer-1 * 0.5 $spacer-2;
+        border-radius: $border-radius-sm;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+        border: $border-width-1 solid $border-color-light;
+        
+        &.tech-tag {
+          background-color: rgba($cyan, $opacity-10);
+          color: $cyan;
+          border-color: rgba($cyan, $opacity-20);
+        }
+        
+        &.category-tag {
+          background-color: rgba($energy-accent, $opacity-10);
+          color: $energy-accent;
+          border-color: rgba($energy-accent, $opacity-20);
+        }
+        
+        &.ai-tag {
+          background-color: rgba($ai-accent, $opacity-10);
+          color: $ai-accent;
+          border-color: rgba($ai-accent, $opacity-20);
+        }
+      }
+    }
+    
+    // Link container (NO button styles)
+    &-links {
+      display: flex;
+      gap: $grid-gap-sm;
+      margin-top: auto;
+      
+      // Buttons are styled by button component
+    }
+    
+    &-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: $spacer-3;
+      padding-top: $spacer-3;
+      border-top: $border-width-1 solid $border-color-light;
+      font-size: $font-size-xs;
+      color: $gray-600;
+      
+      .date, .status {
+        display: flex;
+        align-items: center;
+        gap: $spacer-1;
+        
+        .icon {
+          font-size: $font-size-sm;
+        }
+      }
+      
+      .status {
+        &.active {
+          color: $green;
+        }
+        
+        &.completed {
+          color: $cyan;
+        }
+        
+        &.archived {
+          color: $gray-500;
+        }
+        
+        &.in-progress {
+          color: $orange;
+        }
+      }
+    }
+  }
+  
+  &-empty {
+    text-align: center;
+    padding: $spacer-5;
+    color: $gray-600;
+    max-width: $container-max-width-md;
+    margin: 0 auto;
+    
+    .icon {
+      font-size: $font-size-xxxl * 2;
+      color: $gray-400;
+      margin-bottom: $spacer-3;
+      opacity: $opacity-50;
+    }
+    
+    h3 {
+      font-family: $headings-font-family;
+      color: $gray-700;
+      margin-bottom: $spacer-2;
+      font-size: $font-size-xl;
+      font-weight: $headings-font-weight;
+    }
+    
+    p {
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: $body-line-height;
+      font-size: $font-size-base;
+    }
+  }
+}
+
+// =====================================================
+// INTEGRATED PROJECT LIST STYLES FROM DEFAULTS
+// =====================================================
+
+// Legacy project list styles for compatibility
+.project-list {
+  max-width: $content-max-width;
+  margin: 0 auto;
+  margin-bottom: $spacer-5;
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $spacer-4;
+
+    li.project {
+      margin-bottom: $spacer-4;
+      border-left: $border-width-4 solid $pink-dark;
+      padding-left: $spacer-3;
+      transition: border-color var(--transition-base);
+
+      &:hover {
+        border-color: $teal;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .project-content {
+    padding-left: $spacer-1;
+    
+    &.listing-pub-info {
+      font-style: italic;
+      color: $gray-700;
+      margin-bottom: $spacer-2;
+      line-height: $body-line-height;
+    }
+
+    .status {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      padding: $spacer-1 * 0.25;
+      margin-right: $spacer-1;
+      display: inline-block;
+      border-radius: $border-radius-sm;
+      
+      &.active {
+        background-color: rgba($green, $opacity-10);
+        color: $green;
+      }
+      
+      &.completed {
+        background-color: rgba($cyan, $opacity-10);
+        color: $cyan;
+      }
+    }
+  }
+
+  .haiku {
+    margin: $spacer-2 0 0;
+    font-family: $headings-font-family;
+    font-weight: $font-weight-light;
+    font-style: italic;
+    text-align: right;
+    color: $gray-700;
+    font-size: $font-size-base;
+    line-height: $line-height-snug;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  .project-details-listing {
+    margin-top: $spacer-3;
+    background-color: $code-bg;
+    font-size: $font-size-xs;
+    border-radius: $border-radius;
+    padding: $spacer-2;
+    border: $border-width-1 solid $border-color-light;
+    
+    .pub-reference {
+      font-style: italic;
+      color: $gray-700;
+      line-height: $body-line-height;
+      margin-bottom: $spacer-2;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-sm;
+    }
+
+    .project-link {
+      display: inline-block;
+      white-space: nowrap;
+      padding: $spacer-1 * 0.3 $spacer-1 * 0.3 $spacer-1 * 0.3 $spacer-1 * 0.5;
+      font-family: $headings-font-family;
+      font-weight: $font-weight-medium;
+      
+      a {
+        color: $teal;
+        text-decoration: $link-decoration;
+        
+        &:hover {
+          color: $link-hover-color;
+          text-decoration: $link-hover-decoration;
+        }
+      }
+    }
+
+    .details {
+      background-color: $pink-dark;
+      padding-right: $spacer-3;
+      border-radius: $border-radius-sm;
+      padding: $spacer-1 $spacer-2;
+      display: inline-block;
+      margin: $spacer-1 * 0.5 0;
+
+      a {
+        color: $black;
+        
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+  }
+}
+
+// Research/Project page specific styles
+.research {
+  .back-nav a {
+    color: $teal;
+    text-decoration: $link-decoration;
+    
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+
+  .quarto-title .quarto-categories .quarto-category {
+    background-color: $pink-dark;
+    color: $gray-900;
+    padding: $spacer-1 * 0.2 $spacer-1 * 0.5;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-xs;
+    opacity: 1;
+    border: $border-width-1 solid $black;
+    font-weight: $font-weight-medium;
+
+    a {
+      color: $gray-900;
+      
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+
+  .project-categories {
+    display: flex;
+    flex-wrap: wrap;
+    margin: $spacer-2 0;
+    padding-top: $spacer-2;
+    padding-left: $spacer-1 * 0.3;
+    padding-bottom: 0;
+    row-gap: $spacer-1 * 0.3;
+    column-gap: $spacer-1 * 0.3;
+    font-family: $headings-font-family;
+
+    .project-category {
+      padding: $spacer-1 * 0.2 $spacer-1 * 0.5 $spacer-1 * 0.2 0;
+      font-size: $font-size-xs;
+      text-transform: uppercase;
+      font-weight: $font-weight-medium;
+      color: $gray-600;
+    }
+  }
+  
+  // Project details for HTML title block
+  .project-details {
+    margin-top: $spacer-3;
+    background-color: $code-bg;
+    font-size: $font-size-xs;
+    border-radius: $border-radius;
+    padding: $spacer-2;
+    border: $border-width-1 solid $border-color-light;
+    
+    .publication-content {
+      margin-bottom: $spacer-2;
+      
+      p {
+        margin: 0;
+        font-style: italic;
+        color: $gray-700;
+        line-height: $body-line-height;
+      }
+    }
+    
+    .project-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      .project-link {
+        display: inline-block;
+        white-space: nowrap;
+        margin-right: $spacer-2;
+        margin-bottom: $spacer-1;
+        
+        a {
+          display: inline-flex;
+          align-items: center;
+          gap: $spacer-1 * 0.5;
+          color: $teal;
+          text-decoration: $link-decoration;
+          font-weight: $font-weight-medium;
+          
+          &:hover {
+            color: $link-hover-color;
+            text-decoration: $link-hover-decoration;
+          }
+          
+          i {
+            font-size: $font-size-sm;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Course entry styles
+.project {
+  .course-entry {
+    display: flex;
+    flex-direction: row;
+    font-family: $headings-font-family;
+    line-height: $headings-line-height;
+    margin-bottom: $spacer-5;
+    column-gap: $spacer-2;
+    border: $border-width-1 solid $border-color-light;
+    border-radius: $border-radius-lg;
+    padding: $spacer-3;
+    background-color: $white;
+    transition: box-shadow var(--transition-base);
+
+    &:hover {
+      box-shadow: $shadow-md;
+    }
+
+    .body {
+      flex: 1 1 auto;
+    }
+
+    .logo {
+      flex: 0 0 120px;
+      
+      @media (max-width: $breakpoint-md) {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        border-radius: $border-radius;
+      }
+    }
+
+    .course-title {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-lg;
+      margin-bottom: $spacer-1;
+      color: $gray-900;
+    }
+
+    .course-details {
+      font-weight: $font-weight-light;
+      font-size: $font-size-sm;
+      margin-bottom: $spacer-2;
+      color: $gray-600;
+    }
+
+    .course-description {
+      font-weight: $font-weight-light;
+      font-size: $font-size-base;
+      margin-bottom: $spacer-2;
+      line-height: $body-line-height;
+    }
+
+    .course-role {
+      font-weight: $font-weight-semibold;
+      color: $teal;
+    }
+
+    ul.course-semesters {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacer-1 * 0.5;
+
+      li {
+        display: inline-block;
+        white-space: nowrap;
+        background-color: $pink-dark;
+        padding: $spacer-1 * 0.2 $spacer-1 * 0.3;
+        font-size: $font-size-xs;
+        border-radius: $border-radius-xs;
+        border: $border-width-1 solid $black;
+        font-weight: $font-weight-medium;
+
+        &.no-link {
+          background-color: $white;
+          border: $border-width-1 solid $black;
+        }
+
+        a {
+          color: $black;
+          
+          &:hover {
+            color: $link-hover-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.listing-name {
+  // Your styles here
+  font-weight: $font-weight-medium;
+  
+  &:hover {
+    text-decoration: $link-hover-decoration;
+  }
+}
+// =====================================================
+// DARK MODE SUPPORT FOR PROJECTS PAGE (Buttons Removed)
+// =====================================================
+
+@media (prefers-color-scheme: dark) {
+  @include dark-theme-buttons;
+  
+  .projects {
+    &-header {
+      background: linear-gradient(135deg, rgba($energy-accent, $opacity-20) 0%, rgba($ai-accent, $opacity-20) 100%);
+      
+      .subtitle {
+        color: $gray-300;
+      }
+    }
+    
+    &-filter {
+      // NO button styles here - handled by button component
+    }
+    
+    &-card {
+      background-color: $dark-body-bg;
+      border-color: $gray-700;
+      color: $dark-body-color;
+      
+      &:hover {
+        border-color: $teal;
+      }
+      
+      &-header {
+        h3 {
+          color: $dark-body-color;
+        }
+      }
+      
+      &-description {
+        color: $gray-300;
+      }
+      
+      &-tags {
+        .tag {
+          background-color: $gray-800;
+          color: $gray-300;
+          border-color: $gray-700;
+          
+          &.tech-tag {
+            background-color: rgba($cyan, $opacity-20);
+            color: $cyan;
+            border-color: rgba($cyan, $opacity-30);
+          }
+          
+          &.category-tag {
+            background-color: rgba($energy-accent, $opacity-20);
+            color: $energy-accent;
+            border-color: rgba($energy-accent, $opacity-30);
+          }
+          
+          &.ai-tag {
+            background-color: rgba($ai-accent, $opacity-20);
+            color: $ai-accent;
+            border-color: rgba($ai-accent, $opacity-30);
+          }
+        }
+      }
+      
+      &-meta {
+        border-color: $gray-700;
+        color: $gray-500;
+      }
+    }
+    
+    &-empty {
+      color: $gray-400;
+      
+      h3 {
+        color: $gray-300;
+      }
+    }
+  }
+  
+  // Dark mode for legacy project list
+  .project-list {
+    li.project {
+      border-left-color: lighten($pink-dark, 20%);
+      
+      &:hover {
+        border-left-color: $teal;
+      }
+    }
+    
+    .project-details-listing {
+      background-color: rgba($gray-800, 0.5);
+      border-color: $gray-700;
+      
+      .pub-reference {
+        color: $gray-300;
+      }
+      
+      .details {
+        background-color: lighten($pink-dark, 10%);
+        
+        a {
+          color: $white;
+          
+          &:hover {
+            color: $link-hover-color;
+          }
+        }
+      }
+    }
+  }
+  
+  .research {
+    .quarto-title .quarto-categories .quarto-category {
+      background-color: lighten($pink-dark, 10%);
+      color: $white;
+      border-color: $white;
+      
+      a {
+        color: $white;
+        
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+    
+    .project-details {
+      background-color: rgba($gray-800, 0.5);
+      border-color: $gray-700;
+      
+      .publication-content p {
+        color: $gray-300;
+      }
+      
+      .project-links .project-link a {
+        color: $teal;
+        
+        &:hover {
+          color: lighten($teal, 15%);
+        }
+      }
+    }
+  }
+  
+  .project {
+    .course-entry {
+      background-color: $gray-800;
+      border-color: $gray-700;
+      
+      .course-title {
+        color: $dark-body-color;
+      }
+      
+      ul.course-semesters {
+        li {
+          background-color: lighten($pink-dark, 10%);
+          border-color: $gray-300;
+          
+          &.no-link {
+            background-color: $gray-800;
+            border-color: $gray-300;
+          }
+          
+          a {
+            color: $white;
+            
+            &:hover {
+              color: $link-hover-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// =====================================================
+// RESPONSIVE ADJUSTMENTS (Buttons Removed)
+// =====================================================
+
+@media (max-width: $breakpoint-md) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: $grid-gap;
+  }
+  
+  .project-list {
+    .project-content {
+      padding-left: 0;
+    }
+    
+    li.project {
+      padding-left: $spacer-2;
+      margin-bottom: $spacer-3;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .projects-header {
+    padding: $section-padding-y-sm $spacer-3;
+    
+    h1 {
+      font-size: $font-size-xxl;
+    }
+    
+    .subtitle {
+      font-size: $font-size-base;
+    }
+  }
+  
+  .projects-filter {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: $spacer-2;
+    
+    button {
+      flex-shrink: 0;
+    }
+  }
+  
+  .projects-card {
+    &-links {
+      flex-direction: column;
+    }
+  }
+}
+
+.projects-grid {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projects-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &-description {
+    flex: 1;
+  }
+}

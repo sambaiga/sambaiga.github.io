@@ -1,0 +1,26 @@
+{
+  "achievements": [
+    {
+      "id": 1,
+      "tag": "AWARD",
+      "title": "Eaton STAR Leadership in Data Science 2024",
+      "description": "Received Eaton's prestigious STAR Leadership Award in Data Science for demonstrating outstanding leadership and excellence in advancing data science practices.",
+      "imageUrl": "images/achievements/arts.jpg",
+      "link": {
+        "text": "",
+        "url": ""
+      }
+    },
+    {
+      "id": 2,
+      "tag": "CONFERENCE TALK",
+      "title": "AI-Driven Energy Efficiency in Low-Voltage Networks",
+      "description": "Presented at Power Systems 2024, demonstrating how machine learning models can optimize energy distribution and reduce waste in urban power networks through real-time forecasting.",
+      "imageUrl": "/images/achievements/panorama.jpg",
+      "link": {
+        "text": "Watch Presentation",
+        "url": "/talks/ai-energy-efficiency"
+      }
+    }
+  ]
+}

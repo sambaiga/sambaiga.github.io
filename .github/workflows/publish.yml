@@ -1,84 +1,29 @@
-name: Publish Quarto site
-
 on:
+  workflow_dispatch: # Allows manual trigger from GitHub UI
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches:
+      - main # Change to 'master' if that is your primary branch
+
+name: 🚀 Publish Quarto Website
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
     permissions:
-      contents: write
-      pages: write
-      id-token: write
-
+      contents: write # Required for pushing to the gh-pages branch
     steps:
-      # 🧭 1. Checkout repo
-      - name: Checkout repository
+      - name: 🚚 Checkout repository
         uses: actions/checkout@v4
 
-      # 🧰 2. Setup Quarto
-      - name: Setup Quarto
+      - name: ⚙️ Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-      
+        # Optional: Add 'tinytex: true' if you need to build PDFs[citation:6]
+        # with:
+        #   tinytex: true
 
-      # 🧰 3. Setup R
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-
-      - name: Install Python dependencies
-        run: |
-          pip install jupyter
-
-      # 📦 7. Install common R dependencies
-      - name: Install R dependencies
-        run: |
-          Rscript -e 'install.packages(c("tidyverse", "knitr", "rmarkdown", "ggplot2", "readr", "dplyr"))'
-
-       # 🧰 6. Setup Python (for notebooks)
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      # ⚡ 4. Cache R packagesc
-      - name: Cache R packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.local/share/R
-          key: ${{ runner.os }}-R-${{ hashFiles('**/DESCRIPTION') }}
-          restore-keys: ${{ runner.os }}-R-
-
-      # 🔄 5. Cache Quarto freeze directory (NEW - ADD THIS)
-      - name: Cache Quarto freeze
-        uses: actions/cache@v4
-        with:
-          path: _freeze
-          key: ${{ runner.os }}-quarto-freeze-${{ hashFiles('**/*.qmd', '**/_quarto.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-quarto-freeze-
-
-
-     
-      
-      # 🧱 8. Render the site
-      - name: Render site
-        run: quarto render
-
-      # 📁 9. Copy freeze directory to site (NEW - CRITICAL)
-      - name: Copy freeze directory for deployment
-        run: |
-          # Create _site if it doesn't exist (should exist after render)
-          mkdir -p _site
-          # Copy the entire _freeze directory into _site
-          cp -r _freeze _site/_freeze 2>/dev/null || echo "Note: No _freeze directory to copy"
-
-      # 🚀 10. Publish to GitHub Pages puplish
-      - name: Publish to GitHub Pages
+      - name: 📖 Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

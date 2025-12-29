@@ -1,0 +1,63 @@
+---
+title: "Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power"
+date: 2025-07-11  
+authors: "Anthony Faustine and Pereira, Lucas" 
+
+categories:
+  - forecasting
+  - probabilistic
+  - machine learning
+  - low voltage network
+
+
+thumbnail: "/images/publications/enhancinglv.svg"
+image: "/images/publications/enhancinglv.svg"
+
+conference: "CIRED Chicago Workshop 2024: Resilience of Electric Distribution Systems"
+
+abstract: |
+  This paper presents a probabilistic forecasting approach tailored for low voltage (LV) 
+  substations, offering short-term predictions for three crucial variables: voltage, 
+  reactive power, and active power. These parameters play a vital role in the resilience 
+  of distribution systems, especially in the presence of Distributed Energy Resources (DERs).
+
+description: |
+  This paper presents a probabilistic forecasting approach tailored for low voltage (LV) 
+  substations, offering short-term predictions for three crucial variables: voltage, 
+  reactive power, and active power. These parameters play a vital role in the resilience 
+  of distribution systems, especially in the presence of Distributed Energy Resources (DERs).
+
+
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/enhancinglv.pdf"
+      icon: file-earmark-pdf
+    - name: Link
+      url: "https://digital-library.theiet.org/doi/10.1049/icp.2024.2555"
+      icon: journal-text
+
+    
+  reference: |
+    <strong>Anthony Faustine</strong> and Pereira, Lucas, "Enhancing LV system resilience 
+    through probabilistic forecasting of interdependent variables: voltage, reactive and 
+    active power," <em>CIRED Chicago Workshop 2024: Resilience of Electric Distribution 
+    Systems, Chicago, USA,</em> 2025, pp. 27-31, doi: 
+    <a href="https://digital-library.theiet.org/doi/10.1049/icp.2024.2555">
+    <code>10.1049/icp.2024.2555</code></a>
+
+
+status: Published
+featured: false
+doi: "10.1049/icp.2024.2555"
+
+
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Pereira, Lucas
+    url: ""
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+---

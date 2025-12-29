@@ -1,0 +1,19 @@
+---
+title: "Projects"
+page-layout: full
+toc: true
+toc-location: right
+
+listing:
+  contents: projects.yaml
+  type: grid
+  sort: "date desc"
+  grid-columns: 3
+  image-height: 200px
+  max-description-length: 200
+  fields: [image, title, description, date, tags, categories, status]
+  filter-ui: false
+  #template: ../../assets/ejs/project_listing.ejs
+---
+A curated collection of tools, libraries, and experiments I've released publicly,
+with a focus on usability, research, and open-source development.

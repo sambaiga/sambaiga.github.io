@@ -1,0 +1,36 @@
+---
+title: "Unlocking the Full Potential of Neural NILM: On Automation, Hyperparameters and  Modular Pipelines"
+date: 2023-02-01
+authors: "Hafsa Bousbiat, <strong>Anthony Faustine</strong>, Christoph Klemenjak, Lucas Pereira and Wilfried Elmenreich"
+categories: ["nilm", "machine learning",  "mlops", "disaggregation"]
+
+journal:
+  name: "IEEE Transactions on Industrial Informatics"
+  volume: 19
+  number: 5
+  pages: "7002-7010"
+  year: 2023
+
+description: |
+  Power demand forecasting is becoming a crucial tool for the planning and operation of Low Voltage (LV) distribution systems. This paper introduces a novel and scalable approach to probabilistic forecasting at LV substations with PV generation.
+abstract: |
+  Nonintrusive load monitoring (NILM) techniques are increasingly becoming a key instrument for identifying the power consumption of individual appliances based on a single metering point. Particularly, deep learning (DL) models are gaining interest in this regard. However, the challenges brought by the NILM datasets and the nonavailability of common experimental guidelines tend to compromise comparison, research transparency, and replicability. The limited adoption of efficient research instruments and lack of best practices guidelines contribute in huge part to this problem, where no features, encouraging standardized formats for benchmarking, and results sharing are offered. To address these issues, we first present a brief overview of recent best practices for DL and highlight how deep NILM research can benefit from these practices. Furthermore, we suggest a novel open-source toolkit leveraging these practices, i.e., Deep-NILMTK. The proposed toolkit offers a common testing bed for NILM algorithms independently of the underlying deep learning framework with a modular NILM pipeline that can easily be customized. Furthermore, Deep-NILMTK introduces the concept of experiment templating to offer predesigned experiments allowing to enhancing research efficiency. Leveraging this concept and DL best practices, we present a case study of creating an online NILM benchmark repository1 considering eight of the most popular deep NILM algorithms. All sources relative to the tool are made publicly available on Github2 along with the corresponding documentation.
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/DeepNLMTK.pdf"
+      icon: file-earmark-pdf
+    - name: Link
+      url: "https://ieeexplore.ieee.org/document/9889174"
+      icon: "journal-text"
+    - name: "Code"
+      url: "https://github.com/BHafsa/deep-nilmtk-v1"
+      icon: "github"
+
+
+thumbnail: "/images/publications/DeepNLMTK.svg"
+image: "/images/publications/DeepNLMTK.svg"
+status: "Published"
+featured: false
+doi: 10.1109/TII.2022.3206322
+---

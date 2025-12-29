@@ -1,0 +1,32 @@
+---
+title: "A Survey on Non-Intrusive Load Monitoring Methodies and Techniques for Energy Disaggregation Problem"
+date: 2017-09-20
+authors: "<strong>Anthony Faustine</strong>, Nerey Henry Mvungi,  Shubi Kaijage and Kisangiri Michael"
+
+journal:
+  title: "CoRR"
+  volume: abs/1703.00785
+  number: ""
+  pages: ""
+  year: 2017
+categories: ["nilm", "machine learning",  "disaggregation"]
+status: Published
+
+description: |
+    This paper provides a comprehensive, up-to-date overview of NILM systems, methods, and energy disaggregation techniques. It reviews state-of-the-art NILM algorithms, performance evaluation metrics, and benchmarking frameworks.
+abstract: |
+   The rapid urbanization of developing countries coupled with explosion in construction of high rising buildings and the high power usage in them calls for conservation and efficient energy program. Such a program require monitoring of end-use appliances energy consumption in real-time. The worldwide recent adoption of smart-meter in smart-grid, has led to the rise of Non-Intrusive Load Monitoring (NILM); which enables estimation of appliance-specific power consumption from building's aggregate power consumption reading. NILM provides households with cost-effective real-time monitoring of end-use appliances to help them understand their consumption pattern and become part and parcel of energy conservation strategy. This paper presents an up to date overview of NILM system and its associated methods and techniques for energy disaggregation problem. This is followed by the review of the state-of-the art NILM algorithms. Furthermore, we review several performance metrics used by NILM researcher to evaluate NILM algorithms and discuss existing benchmarking framework for direct comparison of the state of the art NILM algorithms. Finally, the paper discuss potential NILM use-cases, presents an overview of the public available dataset and highlight challenges and future research directions.
+pub-info:
+  links:
+    - name: "Link"
+      url: "https://arxiv.org/abs/1703.00785"
+      icon: "journal-text"
+  
+
+
+
+thumbnail: "/images/publications/nilmsurvey2017.svg"
+image: "/images/publications/nilmsurvey2017.svg"
+featured: false
+doi: ""
+---

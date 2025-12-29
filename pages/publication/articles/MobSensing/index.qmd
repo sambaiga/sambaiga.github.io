@@ -1,0 +1,31 @@
+---
+title: "Ubiquitous Mobile Sensing for Water Quality Monitoring and Reporting within Lake Victoria Basin"
+date: 2014-12-20
+authors: "<strong>Anthony Faustine</strong> and Aloys N. Mvuma"
+
+journal:
+  title: "Wireless Sensor Network"
+  volume: 06
+  number: 12
+  pages: "257-264"
+  year: 2014
+categories: ["wsn", "iot", "water quality"]
+status: Published
+
+description: |
+    This paper introduces a ubiquitous mobile sensing system tailored for water quality data collection and monitoring in Lake Victoria Basin. Designed after analyzing existing solutions, the prototype leverages open-source hardware and software for cost-effectiveness and accessibility.
+abstract: |
+   As the human population growth and industry pressure in most developing countries continue to increase, effective water quality monitoring and evaluation has become critical for water resources management programs. This paper presents the ubiquitous mobile sensing system for water quality data collection and monitoring applications in developing countries. The system was designed based on the analysis of the existing solution. Open source hardware and software was used to develop the prototype of the system. Field testing of the system conducted in Nkokonjero, Uganda and Mwanza, Tanzania verified the functionalities of the system and its practical application in actual environment. Results show that proposed solution is able to collect and present data in a mobile environment.
+pub-info:
+  links:
+    - name: "Link"
+      url: "https://doi.org/10.4236/wsn.2014.612025"
+      icon: "journal-text"
+
+
+
+thumbnail: "/images/publications/mobsensing.svg"
+image: "/images/publications/mobsensing.svg"
+featured: false
+doi: 10.4236/wsn.2014.612025
+---

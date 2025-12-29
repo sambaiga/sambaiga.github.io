@@ -1,31 +1,64 @@
 ---
 title: ""
-pagetitle: "Sambaiga"
-description-meta: "Anthony Faustine is a Lead Data Scientist at Eaton's Centre for Intelligent Power in Dublin, specializing in applied machine learning and strategic innovation."
-main-photo: /files/profiles/sambaiga_profile.jpg
-main-photo-square: /files/profiles/sambaiga_profile_square.jpg
-about:
-  id: hero-heading
-  template: solana
-  image: https://avatars.githubusercontent.com/u/338440?s=400&u=288b27fe37723437d92595936622127cb074bf8d&v=4
-  image-shape: rectangle
-  image-width: 22em
-  
+author: ""
 format:
   html:
-    quarto-template-params:
-      banner-header-class: "home"
+    body-class: "home"
+    page-layout: full
+    include-after-body:
+      - text: |
+          <script src="assets/js/home-carousel.js"></script>
 ---
-:::{#hero-heading}
 
-I’m **Anthony Faustine**, a Lead Data Scientist at [Eaton’s Centre for Intelligent Power (CIP)](https://www.eaton.com/ie/en-gb/company/careers/life-at-eaton/dublin.html) in Dublin, Ireland.  At Eaton, my focus is on applying **machine learning** and **data-driven innovation** initiatives that contribute to building **intelligent power systems** for a sustainable energy future. 
+::: {#hero-heading}
+```{=html}
+  <div class="hero-outer-container">
+  <div class="hero-card">
+    <!-- HERO VISUAL (TOP) -->
+    <div class="hero-visual-area">
+      <div class="image-constraint">
+        <div id="achievementCarousel" 
+             class="achievement-carousel"
+             data-json-url="/data/achievements.json">
+        </div>
+      </div>
+    </div>
 
+    <!-- HERO CONTENT (BELOW) -->
+    <div class="hero-content">
+      <div class="hero-text-area">
+        <h1 class="hero-title">  <!-- This will use hero component styles -->
+          Leading <span class="highlight">Applied AI</span>
+          for Strategic Impact
+        </h1>
+        <p class="hero-subtitle">
+          I architect intelligent systems that translate advanced machine learning
+          into measurable business value and sustainable transformation.
+        </p>
+        <div class="hero-actions">
+          <a href="https://www.linkedin.com/in/sambaiga/" class="btn btn-primary btn-outline btn-sm">
+            <i class="bi bi-linkedin me-2" aria-hidden="true"></i>
+            Let's Connect
+          </a>
+        </div>
+      </div>
 
-Please feel free to explore my website to learn more about my work, and research interests. I'm always interested in connecting with others who share my passion for data science, AI, and innovation.
-
-[Read more →](/about){.about-links .subtitle}
-
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">10+</span>
+          <span class="stat-desc">years<br>experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">10+</span>
+          <span class="stat-desc">projects<br>delivered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">100%</span>
+          <span class="stat-desc">satisfied<br>impact</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
 :::
-
-
-

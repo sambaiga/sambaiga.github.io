@@ -1,0 +1,81 @@
+---
+title: "Shared Mental Models: The Invisible Architecture of High-Performance Teams"
+date: 2024-07-12
+description: "Learn how shared mental models common understandings of goals, roles, and teamwork—form the foundation of high performing teams."
+
+image: "team-mental-model.svg"
+twitter-card: 
+    image: "team-mental-model.svg"
+open-graph: 
+    image: "team-mental-model.svg"
+
+title-block-banner: team-banner.webp
+
+categories:
+  - Team leadership
+  - Leadership
+
+bibliography: references.bib 
+---
+
+## Introduction 
+Ever been on a team where everything just *clicks*? communication is effortless, everyone knows their role, and the team anticipates each other's moves, achieving goals with remarkable efficiency. This seamless collaboration is not a magic. It is often the result of something called a **shared mental model**, the invisible architecture that supports high-performance teamwork.
+
+This post explores what shared mental models are, why they are a critical predictor of team effectiveness, and how leaders can consciously cultivate them, especially in the complex environments of virtual and hybrid teams.
+
+## What is a Shared Mental Model?
+
+Team effectiveness and coordination are critical aspects of a high-performance team. Team members who share a similar and organized understanding of team tasks and goals — and who understand each other’s working environments — are more likely to perform well. 
+
+This shared understanding and knowledge about the mission, goals, and other relevant environments among team members are called **mental models**. The shared mental model is one of the most frequently used concepts in team cognition [@Schelble2022]. -@Lungeanu2022 further identify the shared mental model as a critical predictor of team effectiveness.
+
+@Lungeanu2022 define shared mental models as team properties reflecting how team members organize knowledge and understanding about the team's purpose, the nature of the work, and how they work together. Thus, team mental models are a collective mental representation among team members of how they interact in performing task-work [@Larson2020]. 
+
+They represent the organized mental representations of the various component pieces relevant to a team's overall task [@Schelble2022]. As [@Schelble2022] point out, shared mental models measure whether or not team members share a common understanding of their shared tasks, roles, interdependencies, and strategies.
+
+@Schelble2022 break shared mental models into two types:
+
+* **Task mental model** — covers aspects specific to understanding and completing a shared task.  
+* **Team mental model** — focuses on factors related to cooperation and communication within a team.
+
+
+
+## The Impact on Team Success
+
+Shared mental models can continually develop over time, becoming more effective and influencing various team outcomes, such as objective performance, team viability, member well-being, and strategic alignment [@Lungeanu2022]. 
+
+Teams with shared mental models can recognize one another's needs and information requirements [@Lungeanu2022; @Schelble2022], which enhances coordination and mutual support.
+
+While this may be more intuitive in physical teams, virtual teams — now an integral part of modern work — require special attention in developing and maintaining shared mental models among members.
+
+Unlike face-to-face teams, creating and sustaining mental models is harder in virtual environments. Leaders must therefore compensate for challenges such as communication barriers and cultural differences. These issues can impact relationship building, which is essential for developing and sustaining shared mental models. 
+
+As underlined in [@Larson2020], face-to-face teams tend to have stronger shared mental models than virtual ones.
+
+To improve team effectiveness and performance in virtual settings, leaders should aim to create a conducive environment for shared mental models. This can be achieved by:
+
+* Cultivating high-quality, interpersonal communication.  
+* Creating psychological safety.  
+* Adopting a leadership style that aligns well with virtual collaboration [@Larson2020].
+
+
+
+## Leadership's Role in Building a Shared Mind
+
+@Lungeanu2022 highlight that leadership  particularly **shared leadership**  plays a crucial role in creating and shaping shared mental models in teams. This applies to both face-to-face and virtual teams.  
+
+For instance, [@Lungeanu2022] note that when leadership responsibilities are shared among members, the team tends to show greater commitment and information sharing. This dynamic fosters trust and enhances performance.
+
+Teams that embrace shared leadership and have diverse skills, experiences, and perspectives are more likely to develop and maintain strong shared mental models. 
+
+Furthermore, **connected leadership**  as opposed to fragmented leadership  offers several advantages for improving similarity in team mental models. It promotes accuracy, synchronization of effort, and cohesion or trust. 
+
+For example, [@Lungeanu2022] argue that hierarchical and coordinated leadership are better at promoting shared mental models than factional or isolated forms of leadership. They also emphasize that boundaries among members of shared leadership groups are permeable, allowing reciprocal leadership processes that reduce conflict and tension.
+
+
+
+## Conclusion
+
+Ultimately, a shared mental model is not just a nice-to-have; it’s the cognitive foundation upon which effective teams are built. It serves as the shared “map” that enables a group of individuals to navigate complex tasks together with clarity and confidence. 
+
+While the rise of virtual work presents new challenges, the core principle remains: **effective leadership is the catalyst**. By fostering open communication, psychological safety, and a connected leadership structure, leaders can intentionally design the conditions for these powerful shared understandings to emerge and thrive.

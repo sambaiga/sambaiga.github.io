@@ -1,0 +1,40 @@
+---
+title: "Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks"
+date: 2020-12-20
+authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas"
+
+journal:
+  title: "Energies"
+  volume: 13
+  number: 13
+  pages: ""
+  year: 2020
+categories: ["nilm", "load recognition", "machine learning", "dissagregation"]
+status: Published
+
+description: |
+    This paper proposes a novel approach using Weighted Recurrence Graphs (WRG) derived from one-cycle voltage and current waveforms, generating image-like representations richer than binary recurrence graphs.
+abstract: |
+   Appliance recognition is one of the vital sub-tasks of NILM in which a machine learning classier is used to detect and recognize active appliances from power measurements. The performance of the appliance classifier highly depends on the signal features used to characterize the loads. Recently, different appliance features derived from the voltage–current (V–I) waveforms have been extensively used to describe appliances. However, the performance of V–I-based approaches is still unsatisfactory as it is still not distinctive enough to recognize devices that fall into the same category. Instead, we propose an appliance recognition method utilizing the recurrence graph (RG) technique and convolutional neural networks (CNNs). We introduce the weighted recurrent graph (WRG) generation that, given one-cycle current and voltage, produces an image-like representation with more values than the binary output created by RG. Experimental results on three different sub-metered datasets show that the proposed WRG-based image representation provides superior feature representation and, therefore, improves classification performance compared to V–I-based features.
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/wrg.pdf"
+      icon: file-earmark-pdf
+    - name: Poster
+      url: "../../files/slides/PosterEURONILM2019.pdf"
+      icon: file-earmark-ppt
+    - name: "Link"
+      url: "https://www.mdpi.com/1996-1073/13/13/3374"
+      icon: "journal-text"
+    - name: "Code"
+      url: "https://github.com/sambaiga/WRG-NILM"
+      icon: "github"
+
+
+
+thumbnail: "/images/publications/wrg.svg"
+image: "/images/publications/wrg.svg"
+featured: false
+doi: 10.3390/en13133374
+---

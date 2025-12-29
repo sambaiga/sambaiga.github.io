@@ -1,0 +1,505 @@
+/*-- scss:defaults --*/
+
+$theme: "twiga" !default;
+
+// ============================================
+// LAYOUT & SPACING SYSTEM
+// ============================================
+
+// Container widths
+$container-max-width: 1200px !default;
+$container-max-width-sm: 540px !default;
+$container-max-width-md: 720px !default;
+$container-max-width-lg: 960px !default;
+$container-max-width-xl: 1140px !default;
+$container-max-width-xxl: 1320px !default;
+
+// Section padding
+$section-padding-y: 4rem !default;
+$section-padding-y-sm: 2rem !default;
+$section-padding-y-lg: 6rem !default;
+$section-padding-x: 1.5rem !default;
+
+// Spacing system (8px base unit)
+$spacer-base: 1rem !default;
+$spacer-1: $spacer-base * 0.25 !default;  // 4px
+$spacer-2: $spacer-base * 0.5 !default;   // 8px
+$spacer-3: $spacer-base !default;         // 16px
+$spacer-4: $spacer-base * 1.5 !default;   // 24px
+$spacer-5: $spacer-base * 2 !default;     // 32px
+$spacer-6: $spacer-base * 3 !default;     // 48px
+$spacer-7: $spacer-base * 4 !default;     // 64px
+$spacer-8: $spacer-base * 5 !default;     // 80px
+
+// Grid gaps
+$grid-gap-sm: $spacer-2 !default;
+$grid-gap: $spacer-3 !default;
+$grid-gap-lg: $spacer-4 !default;
+$grid-gap-xl: $spacer-5 !default;
+
+// Blog page specific variables
+$blog-thumbnail-height: 200px !default;
+$blog-grid-min-width: 300px !default;
+
+// ============================================
+// BREAKPOINTS (Mobile-first)
+// ============================================
+
+$breakpoint-xs: 0 !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
+$breakpoint-xxl: 1400px !default;
+
+// ============================================
+// COLOR SYSTEM - UPDATED FOR BETTER CONTRAST
+// ============================================
+
+// Grayscale
+$white:    #FFFFFF !default;
+$gray-100: #F8F9FA !default;
+$gray-200: #E9ECEF !default;
+$gray-300: #DEE2E6 !default;
+$gray-400: #CED4DA !default;
+$gray-500: #ADB5BD !default;
+$gray-600: #6B7280 !default; // Darker for better contrast
+$gray-700: #495057 !default;
+$gray-800: #373A3C !default;
+$gray-900: #212529 !default;
+$black:    #000000 !default;
+
+// Brand Colors
+$blue:    #2563EB !default;
+$indigo:  #3C4F76 !default;
+$purple:  #6B7280 !default;
+$pink:    #FF777C !default;
+$pink-dark: #FCA5A5 !default;
+$red:     #DC2626 !default;
+$orange:  #EA580C !default;
+$light-orange: #A0D6E8 !default;
+$yellow:  #CA8A04 !default;
+$green:   #059669 !default;
+$teal:    #1E293B !default;
+$cyan:    #0369A1 !default;
+
+// Semantic Colors
+$primary:   $teal !default;
+$secondary: $gray-700 !default;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $orange !default;
+$danger:    $red !default;
+$light:     $gray-400 !default;
+$dark:      $black !default;
+
+// Accent Colors
+$energy-accent: #10B981 !default;
+$ai-accent: #8B5CF6 !default;
+
+// Gradient Colors
+$gradient-primary-start: $teal !default;
+$gradient-primary-end: darken($teal, 10%) !default;
+$gradient-secondary-start: $cyan !default;
+$gradient-secondary-end: darken($cyan, 10%) !default;
+$gradient-accent-start: $energy-accent !default;
+$gradient-accent-end: $ai-accent !default;
+
+// Opacity Levels
+$opacity-05: 0.05 !default;  
+$opacity-10: 0.1 !default;
+$opacity-15: 0.15 !default;
+$opacity-20: 0.2 !default;
+$opacity-25: 0.25 !default;
+$opacity-30: 0.3 !default;
+$opacity-35: 0.35 !default;
+$opacity-40: 0.4 !default;
+$opacity-45: 0.45 !default;
+$opacity-50: 0.5 !default;
+$opacity-55: 0.55 !default;
+$opacity-60: 0.6 !default;
+$opacity-65: 0.65 !default;
+$opacity-70: 0.7 !default;
+$opacity-75: 0.75 !default;
+$opacity-80: 0.8 !default;
+$opacity-85: 0.85 !default;
+$opacity-90: 0.9 !default;
+$opacity-95: 0.95 !default;
+
+
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
+// Font Families
+$font-family-sans-serif: "Libre Franklin" !default;
+$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, monospace !default;
+$headings-font-family: "Jost" !default;
+$navbar-font-family: "Jost" !default;
+$toc-font-family: "Jost" !default;
+$footer-font-family: "Jost" !default;
+
+// Font Weights
+$font-weight-thin: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-extrabold: 800 !default;
+
+$headings-font-weight: $font-weight-semibold !default;
+
+// Font Size Scale (modular scale - 1.25 ratio)
+$font-size-base: 1.05rem !default;
+$font-size-xs:   $font-size-base * 0.738 !default;  // ~0.775rem
+$font-size-sm:   $font-size-base * 0.833 !default;  // ~0.875rem
+$font-size-md:   $font-size-base * 0.952 !default;  // ~1rem
+$font-size-lg:   $font-size-base * 1.071 !default;  // ~1.125rem
+$font-size-xl:   $font-size-base * 1.238 !default;  // ~1.3rem
+$font-size-xxl:  $font-size-base * 1.429 !default;  // ~1.5rem
+$font-size-xxxl: $font-size-base * 1.786 !default;  // ~1.875rem
+$font-size-display: $font-size-base * 2.5 !default; // ~2.625rem
+// Add to your defaults.scss if needed:
+$h1-font-size: $font-size-xxxl !default;
+
+// Line Heights
+$line-height-tight: 1.2 !default;
+$line-height-snug: 1.3 !default;
+$line-height-normal: 1.5 !default;
+$line-height-relaxed: 1.65 !default;
+$line-height-loose: 1.8 !default;
+
+$body-line-height: $line-height-relaxed !default;
+$headings-line-height: $line-height-snug !default;
+
+// For forms
+$form-input-bg: $white !default;
+$form-input-border: 1px solid $gray-400 !default;
+$form-input-border-radius: $border-radius !default;
+$form-input-padding: $spacer-2 !default;
+$form-focus-border-color: $teal !default;
+$form-focus-box-shadow: 0 0 0 3px rgba($teal, 0.1) !default;
+
+// Letter Spacing
+$letter-spacing-tight: -0.025em !default;
+$letter-spacing-normal: 0 !default;
+$letter-spacing-wide: 0.025em !default;
+$letter-spacing-wider: 0.05em !default;
+$letter-spacing-widest: 0.1em !default;
+
+// ============================================
+// BORDERS & SHADOWS
+// ============================================
+
+// Border Radius
+$border-radius-xs: 0.125rem !default;
+$border-radius-sm: 0.25rem !default;
+$border-radius:    0.375rem !default;
+$border-radius-lg: 0.5rem !default;
+$border-radius-xl: 0.75rem !default;
+$border-radius-2xl: 1rem !default;
+$border-radius-3xl: 1.5rem !default;
+$border-radius-full: 9999px !default;
+
+// Border Widths
+$border-width-1: 1px !default;
+$border-width-2: 2px !default;
+$border-width-3: 3px !default;
+$border-width-4: 4px !default;
+
+// Border Colors
+$border-color-light: $gray-300 !default;
+$border-color: $gray-400 !default;
+$border-color-dark: $gray-500 !default;
+$border-color: $border-color-light !default; 
+$border-color: $border-color-light !default;
+
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow:    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
+$shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !default;
+
+// Shadow Colors
+$shadow-color: rgba(0, 0, 0, 0.1) !default;
+$shadow-color-dark: rgba(0, 0, 0, 0.25) !default;
+
+// ============================================
+// TRANSITIONS & ANIMATIONS
+// ============================================
+
+// Transition Durations
+$transition-duration-fast: 150ms !default;
+$transition-duration-base: 200ms !default;
+$transition-duration-slow: 300ms !default;
+$transition-duration-slower: 500ms !default;
+
+// Transition Timing Functions
+$transition-timing-linear: linear !default;
+$transition-timing-ease: ease !default;
+$transition-timing-ease-in: ease-in !default;
+$transition-timing-ease-out: ease-out !default;
+$transition-timing-ease-in-out: ease-in-out !default;
+$transition-timing-cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1) !default;
+
+// Animation Durations
+$animation-duration-fast: 0.15s !default;
+$animation-duration-base: 0.3s !default;
+$animation-duration-slow: 0.5s !default;
+$animation-duration-slower: 1s !default;
+
+// ============================================
+// BODY & LAYOUT
+// ============================================
+
+// Body
+$body-bg:   #FFFFFF !default;
+$body-color: #171717 !default;
+
+// Dark Theme Variables
+$dark-body-bg: #0F172A !default;
+$dark-body-color: #E2E8F0 !default;
+
+// Content Widths
+$content-max-width: 80ch !default; // For optimal reading
+$content-max-width-wide: 120ch !default;
+$content-max-width-narrow: 65ch !default;
+
+
+
+
+// ============================================
+// LINKS
+// ============================================
+
+$link-color: $cyan !default;
+$link-hover-color: lighten($teal, 10%) !default;
+$link-visited-color: lighten($link-color, 10%) !default;
+$link-focus-color: $link-hover-color !default;
+$link-decoration: none !default;
+$link-hover-decoration: none !default;
+$link-focus-outline: 2px solid $link-color !default;
+$link-focus-outline-offset: 2px !default;
+
+// ============================================
+// CODE
+// ============================================
+
+// Inline code
+$code-bg: #F1F5F9 !default;
+$code-color: #171717 !default;
+$code-padding: $spacer-1 $spacer-2 !default;
+$code-border-radius: $border-radius-sm !default;
+$code-font-size: $font-size-sm !default;
+
+// Code blocks
+$code-block-bg: $gray-100 !default;
+$code-block-padding: $spacer-3 !default;
+$code-block-border-radius: $border-radius !default;
+$code-block-font-size: 0.775em !default;
+
+// Code copy
+$btn-code-copy-color: $gray-600 !default;
+$btn-code-copy-color-hover: $teal !default;
+$btn-code-copy-color-active: $teal !default;
+
+// ============================================
+// COMPONENT-SPECIFIC VARIABLES
+// ============================================
+
+// Navbar
+$navbar-bg: #000000 !default;
+$navbar-fg: #FFFFFF !default;
+$navbar-hl: #A0D6E8 !default;
+$navbar-height: 64px !default;
+$navbar-padding-y: $spacer-2 !default;
+$navbar-padding-x: $spacer-3 !default;
+$navbar-border-bottom: 1px solid rgba($white, 0.1) !default;
+$navbar-box-shadow: $shadow-sm !default;
+
+// Footer
+$footer-bg: #000000 !default;
+$footer-fg: #E5E7EB !default;
+$footer-padding-y: $spacer-4 !default;
+$footer-padding-x: $spacer-3 !default;
+$footer-min-height: 3em !default;
+
+// Table of Contents
+$toc-color: $teal !default;
+$toc-font-size: 1em !default;
+$toc-font-family: $toc-font-family !default;
+$toc-font-weight: 300 !default;
+$toc-active-font-weight: 400 !default;
+$toc-padding-left: 0.6rem !default;
+$toc-border-left: 1px solid $gray-300 !default;
+
+// Hero
+$hero-min-height: 75vh !default;
+$hero-min-height-sm: 60vh !default;
+$hero-padding-y: 4rem !default;
+$hero-padding-x: 2rem !default;
+$hero-title-font-size-min: 1.3rem !default;
+$hero-title-font-size-max: 3rem !default;
+$hero-subtitle-max-width: 42rem !default;
+
+
+
+// Cards
+$card-bg: $white !default;
+$card-border-color: $gray-300 !default;
+$card-border-radius: $border-radius-lg !default;
+$card-padding: $spacer-4 !default;
+$card-box-shadow: $shadow !default;
+$card-hover-transform: translateY(-4px) !default;
+$card-hover-box-shadow: $shadow-lg !default;
+$card-box-shadow: $shadow !default;
+
+// Buttons
+$btn-border-radius: $border-radius-lg !default;
+$btn-padding-y: 0.75rem !default;
+$btn-padding-x: 1.5rem !default;
+$btn-font-family: $headings-font-family !default;
+$btn-font-weight: 500 !default;
+$btn-hover-transform: translateY(-2px) !default;
+$btn-hover-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !default;
+$box-shadow-sm: $shadow-sm !default;
+
+// Images
+$image-border-radius: $border-radius-2xl !default;
+$image-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !default;
+$image-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !default;
+$profile-image-size: 250px !default;
+$profile-image-size-sm: 200px !default;
+$profile-image-border: 4px solid $primary !default;
+
+// For pagination
+$pagination-item-min-width: 40px !default;
+$pagination-item-height: 40px !default;
+
+// Forms
+$form-input-bg: $white !default;
+$form-input-border: 1px solid $gray-400 !default;
+$form-input-border-radius: $border-radius !default;
+$form-input-padding: $spacer-2 !default;
+$form-focus-border-color: $teal !default;
+$form-focus-box-shadow: 0 0 0 3px rgba($teal, 0.1) !default;
+
+// Pagination
+$pagination-item-min-width: 40px !default;
+$pagination-item-height: 40px !default;
+$pagination-item-padding: 0 $spacer-2 !default;
+$pagination-item-border: 1px solid $gray-300 !default;
+$pagination-item-border-radius: $border-radius !default;
+$publication-grid-min-width: 350px !default;
+
+// ============================================
+// GRID SYSTEM
+// ============================================
+
+// Grid columns
+$grid-columns: 12 !default;
+
+// Grid breakpoints for responsive columns
+$grid-breakpoints: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+) !default;
+
+// Container padding at different breakpoints
+$container-padding: (
+  xs: $spacer-3,
+  sm: $spacer-3,
+  md: $spacer-4,
+  lg: $spacer-4,
+  xl: $spacer-4,
+  xxl: $spacer-5
+) !default;
+
+// ============================================
+// Z-INDEX LAYERS
+// ============================================
+
+$z-index-dropdown: 1000 !default;
+$z-index-sticky: 1020 !default;
+$z-index-fixed: 1030 !default;
+$z-index-modal-backdrop: 1040 !default;
+$z-index-modal: 1050 !default;
+$z-index-popover: 1060 !default;
+$z-index-tooltip: 1070 !default;
+$z-index-toast: 1080 !default;
+
+// ============================================
+// ACCESSIBILITY
+// ============================================
+
+$focus-ring-width: 2px !default;
+$focus-ring-color: $link-color !default;
+$focus-ring-opacity: 0.25 !default;
+$focus-ring: $focus-ring-width solid $focus-ring-color !default;
+
+// ============================================
+// GOOGLE FONTS
+// ============================================
+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" !default;
+
+// ============================================
+// CSS CUSTOM PROPERTIES (for runtime theming)
+// ============================================
+
+:root {
+  // Colors
+  --color-primary: #{$teal};
+  --color-secondary: #{$gray-700};
+  --color-success: #{$green};
+  --color-info: #{$cyan};
+  --color-warning: #{$orange};
+  --color-danger: #{$red};
+  --color-light: #{$gray-400};
+  --color-dark: #{$black};
+  --color-energy-accent: #{$energy-accent};
+  --color-ai-accent: #{$ai-accent};
+  
+  // Typography
+  --font-family-base: #{$font-family-sans-serif};
+  --font-family-headings: #{$headings-font-family};
+  --font-size-base: #{$font-size-base};
+  
+  // Spacing
+  --spacer-1: #{$spacer-1};
+  --spacer-2: #{$spacer-2};
+  --spacer-3: #{$spacer-3};
+  --spacer-4: #{$spacer-4};
+  --spacer-5: #{$spacer-5};
+  --spacer-6: #{$spacer-6};
+  
+  // Borders
+  --border-radius: #{$border-radius};
+  --border-radius-lg: #{$border-radius-lg};
+  --border-radius-xl: #{$border-radius-xl};
+  
+  // Transitions
+  --transition-base: #{$transition-duration-base} #{$transition-timing-ease-in-out};
+  
+  // Layout
+  --container-max-width: #{$container-max-width};
+  --content-max-width: #{$content-max-width};
+  
+  // Shadows
+  --shadow: #{$shadow};
+  --shadow-lg: #{$shadow-lg};
+  
+  // Component-specific
+  --navbar-height: #{$navbar-height};
+  --hero-min-height: #{$hero-min-height};
+}

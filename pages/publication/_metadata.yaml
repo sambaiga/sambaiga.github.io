@@ -1,0 +1,14 @@
+# Enable banner style title blocks
+title-block-banner: true
+# Default for table of contents
+toc: true
+toc-title: Contents
+toc-location: left
+include-back-link: true
+page-size: 8
+
+format:
+  html:
+    body-class: "publications-listing"  
+    template-partials:
+      - ../../assets/html/project_title_block.html

@@ -1,0 +1,24 @@
+/*-- scss:components/navbar --*/
+
+// =====================================================
+// NAVIGATION
+// =====================================================
+
+.navbar {
+  font-family: $navbar-font-family;
+  background-color: $navbar-bg;
+  color: $navbar-fg;
+  
+  a {
+    color: $navbar-fg;
+    
+    &:hover {
+      color: $navbar-hl;
+    }
+  }
+}
+
+// Put all the icons in a single row in the hamburger menu
+.navbar-nav.navbar-nav-scroll.ms-auto {
+  flex-direction: row;
+}

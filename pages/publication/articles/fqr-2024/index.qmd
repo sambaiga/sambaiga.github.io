@@ -1,0 +1,42 @@
+---
+title: "FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates"
+date: 2022-10-22
+authors: "Anthony Faustine and Pereira, Lucas"
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Pereira, Lucas
+    url: ""
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+
+journal:
+  title: "IEEE Transactions on Smart Grid"
+  volume: 13
+  number: 3
+  pages: "2440-2451"
+  year: 2022
+categories: ["forecasting", "machine learning", "probabilistic", "low voltage network"]
+status: Published
+description: |
+  This paper proposes parameterized deep quantile regression using a Deep Neural Network (DNN) to simultaneously learn quantile fractions and values for probabilistic forecasting. It also introduces a novel scoring metric balancing forecast accuracy and predictive uncertainty.
+abstract: |
+  The increased penetration of Renewable Energy Sources (RES) as part of a decentralized and distributed power system makes net-load forecasting a critical component in the planning and operation of power systems. However, compared to the transmission level, producing accurate short-term net-load forecasts at the distribution level is complex due to the small number of consumers. Moreover, owing to the stochastic nature of RES, it is necessary to quantify the uncertainty of the forecasted net-load at any given time, which is critical for the real-world decision process. This work presents parameterized deep quantile regression for short-term probabilistic net-load forecasting at the distribution level. To be precise, we use a Deep Neural Network (DNN) to learn both the quantile fractions and quantile values of the quantile function. Furthermore, we propose a scoring metric that reflects the trade-off between predictive uncertainty performance and forecast accuracy. We evaluate the proposed techniques on historical real-world data from a low-voltage distribution substation and further assess its robustness when applied in real-time. The experiment’s outcomes show that the resulting forecasts from our approach are well-calibrated and provide a desirable trade-off between forecasting accuracies and predictive uncertainty performance that are very robust even when applied in real-time.
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/FPSeq2Q.pdf"
+      icon: file-earmark-pdf
+    - name: "Link"
+      url: "https://ieeexplore.ieee.org/document/9701598"
+      icon: "journal-text"
+    - name: "Code"
+      url: "https://github.com/sambaiga/FPSeq2Q"
+      icon: github"
+
+
+thumbnail: "/images/publications/FPSeq2Q.svg"
+image: "/images/publications/FPSeq2Q.svg"
+featured: false
+---

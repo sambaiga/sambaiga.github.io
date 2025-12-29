@@ -1,0 +1,37 @@
+---
+title: "Adaptive Weighted Recurrence Graphs for Appliance Recognition in Non-Intrusive Load Monitoring"
+date: 2021-12-20
+authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas and Klemenjak, Christoph"
+
+journal:
+  title: "IEEE Transactions on Smart Grid"
+  volume: 12
+  number: 1
+  pages: "398-406"
+  year: 2021
+categories: ["nilm", "load recognition", "machine learning",   "disaggregation"]
+status: Published
+
+description: |
+    This paper introduces Adaptive Weighted Recurrence Graph (AWRG) blocks for improved appliance feature representation in event-based NILM. AWRG transforms one activation cycle of current waveform into a weighted recurrence graph, treating associated hyperparameters as learnable parameters
+abstract: |
+  To this day, hyperparameter tuning remains a cumbersome task in Non-Intrusive Load Monitoring (NILM) research, as researchers and practitioners are forced to invest a considerable amount of time in this task. This paper proposes adaptive weighted recurrence graph blocks (AWRG) for appliance feature representation in event-based NILM. An AWRG block can be combined with traditional deep neural network architectures such as Convolutional Neural Networks for appliance recognition. Our approach transforms one cycle per activation current into an weighted recurrence graph and treats the associated hyper-parameters as learn-able parameters. We evaluate our technique on two energy datasets, the industrial dataset LILACD and the residential PLAID dataset. The outcome of our experiments shows that transforming current waveforms into weighted recurrence graphs provides a better feature representation and thus, improved classification results. It is concluded that our approach can guarantee uniqueness of appliance features, leading to enhanced generalisation abilities when compared to the widely researched V-I image features. Furthermore, we show that the initialisation parameters of the AWRG's have a significant impact on the performance and training convergence.
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/AWRG.pdf"
+      icon: file-earmark-pdf
+    - name: "Link"
+      url: "https://ieeexplore.ieee.org/document/9144492"
+      icon: "journal-text"
+    - name: "Code"
+      url: "https://github.com/sambaiga/AWRGNILM"
+      icon: "github"
+
+
+
+thumbnail: "/images/publications/AWRG.svg"
+image: "/images/publications/AWRG.svg"
+featured: false
+doi: 10.1109/TSG.2020.3010621
+---

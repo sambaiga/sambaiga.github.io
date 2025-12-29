@@ -1,0 +1,65 @@
+- title: "Deep-NILMtk"
+  description: "A deep learning toolkit for Non-Intrusive Load Monitoring (NILM) using PyTorch"
+  date: "2023-10-01"
+  image: "../../images/default/arts.jpg"
+  tags: ["pytorch", "deep-learning", "energy", "time-series"]
+  categories: ["ai", "research", "energy"]
+  status: "active"
+  links:
+    - text: "GitHub"
+      url: "https://github.com/BHafsa/deep-nilmtk-v1"
+      icon: "github"
+    - text: "Documentation"
+      url: "https://bhafsa.github.io/deep-nilmtk-v1"
+      icon: "book"
+  icon: "⚡"
+
+- title: "MLPforecast"
+  description: "A simple and efficient neural network architecture for point forecasting. The architecture minimizes model complexity while improving forecasting performance."
+  date: "2024-05-15"
+  image: "../../images/default/arts.jpg"
+  tags: ["python", "neural-networks", "time-series", "forecasting"]
+  categories: ["ai", "tools", "data-science"]
+  status: "active"
+  links:
+    - text: "PyPI"
+      url: "https://pypi.org/project/mlpforecast/"
+      icon: "package"
+    - text: "Documentation"
+      url: "https://mlpforecast.readthedocs.io"
+      icon: "book"
+  icon: "📈"
+
+- title: "Twiga"
+  description: "A simple and efficient neural network architecture for providing point forecasting. The architecture has been designed to minimize model complexity while improving forecasting performance."
+  date: "2024-05-15"
+  image: "../../images/default/arts.jpg"
+  tags: ["python", "neural-networks", "time-series", "forecasting"]
+  categories: ["ai", "tools", "data-science"]
+  status: "in-progress"
+  links:
+    - text: "GitHub"
+      url: "https://github.com/BHafsa/twiga"
+      icon: "github"
+    - text: "Demo"
+      url: "https://twiga.demo.example.com"
+      icon: "external-link"
+  icon: "🦒"
+
+# Optional: Add more projects with this enhanced structure
+- title: "Energy Dashboard"
+  description: "Real-time energy consumption monitoring dashboard with anomaly detection capabilities."
+  date: "2024-03-10"
+  image: "../../images/projects/energy-dashboard.jpg"
+  tags: ["react", "d3.js", "python", "energy-analytics"]
+  categories: ["web", "energy", "tools"]
+  status: "completed"
+  links:
+    - text: "Live Demo"
+      url: "https://energy-dashboard.example.com"
+      icon: "external-link"
+    - text: "GitHub"
+      url: "https://github.com/BHafsa/energy-dashboard"
+      icon: "github"
+  icon: "📊"
+

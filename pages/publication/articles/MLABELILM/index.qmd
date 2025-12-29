@@ -1,0 +1,37 @@
+---
+title: "Multi-Label Learning for Appliance Recognition in NILM Using Fryze-Current Decomposition and Convolutional Neural Network"
+date: 2020-11-20
+authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas"
+
+journal:
+  title: "Energies"
+  volume: 13
+  number: 16
+  pages: "1996-1073"
+  year: 2020
+categories: ["nilm", "load recognition", "machine learning", "dissagregation"]
+status: Published
+
+description: |
+    This paper proposes multi-label learning approach to simultaneously recognize multiple active appliances. It decomposes current signals using Fryze power theory into active and non-active components, then transforms them into image-like representations via Euclidean distance similarity.
+abstract: |
+   The advance in energy-sensing and smart-meter technologies have motivated the use of a Non-Intrusive Load Monitoring (NILM), a data-driven technique that recognizes active end-use appliances by analyzing the data streams coming from these devices. NILM offers an electricity consumption pattern of individual loads at consumer premises, which is crucial in the design of energy efficiency and energy demand management strategies in buildings. Appliance classification, also known as load identification is an essential sub-task for identifying the type and status of an unknown load from appliance features extracted from the aggregate power signal. Most of the existing work for appliance recognition in NILM uses a single-label learning strategy which, assumes only one appliance is active at a time. This assumption ignores the fact that multiple devices can be active simultaneously and requires a perfect event detector to recognize the appliance. In this paper proposes the Convolutional Neural Network (CNN)-based multi-label learning approach, which links multiple loads to an observed aggregate current signal. Our approach applies the Fryze power theory to decompose the current features into active and non-active components and use the Euclidean distance similarity function to transform the decomposed current into an image-like representation which, is used as input to the CNN. Experimental results suggest that the proposed approach is sufficient for recognizing multiple appliances from aggregated measurements.
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/mlabelvi.pdf"
+      icon: file-earmark-pdf
+    - name: "Link"
+      url: "https://www.mdpi.com/1996-1073/13/16/4154"
+      icon: "journal-text"
+    - name: "Code"
+      url: "https://github.com/sambaiga/MLCFCD"
+      icon: "github"
+
+
+
+thumbnail: "/images/publications/mlabelvi.svg"
+image: "/images/publications/mlabelvi.svg"
+featured: false
+doi: 10.3390/en13164154
+---

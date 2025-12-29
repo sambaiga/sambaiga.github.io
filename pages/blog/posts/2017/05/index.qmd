@@ -1,0 +1,39 @@
+---
+title: "The Basics of the Hidden Markov Model"
+date: 2017-05-12
+description: "Learn the basics of HMM and its implementation in Python."
+
+image: "hmmpost.jpg"
+twitter-card: 
+    image: "hmmpost.jpg"
+open-graph: 
+    image: "hmmpost.jpg"
+
+title-block-banner: hmmpost.jpg
+
+categories:
+  - Machine learning
+  - Probabilistic
+
+draft: true
+---
+## Introduction
+A Hidden Markov Model (HMM) is a Markov model whose states are not directly observed. Instead, each state is characterized by a probability distribution that models the observations corresponding to that state. HMMs have been extensively used in temporal pattern recognition tasks such as speech, handwriting, gesture recognition, robotics, biological sequence analysis, and more recently in energy disaggregation. This post introduces the basic concepts of HMMs.
+
+There are two variables in an HMM: observed variables and hidden variables. The sequence of hidden variables forms a Markov process, as shown in @fig-hmm. In the context of Non-Intrusive Load Monitoring (NILM), hidden variables represent appliance states (ON, OFF, standby, etc.), while observed variables represent electrical power usage. HMMs are widely used in NILM because they effectively model internal appliance states that are not directly observable from aggregate consumption.
+
+![HMM graphical model](hmm.png){fig-cap="HMM graphical model"}
+
+::: {.callout-note}
+Key Idea
+
+Hidden states evolve according to a Markov process, while observations depend probabilistically on those states. 
+:::
+
+A typical HMM is characterised by the following: 
+
+- The finite set of hidden states  $$S $$ (e.g ON, stand-by, OFF, etc.) of an appliance,  $$S = \{s_1, s_2....,s_N\} $$. 
+- The finite set of  $$M $$ observable symbol  $$Y $$ per states (power consumption) observed in each state,  $$Y = \{y_1, y_2....,y_M\} $$. The observable symbol  $$Y $$ can be discrete or a continuous set. 
+- The transition matrix   $$ \mathbf{A}=\{a_{ij},1\leq i,j \geq N\}  $$ represents the probability of moving from state  $$s_{t-1}=i $$ to  $$s_t =j $$ such that:  $$a_{ij} = P(s_{t} =j \mid s_{t-1}=i) $$, with  $$a_{ij} \leq 0 $$ and where  $$s_t $$ denotes the state occupied by the system at time  $$t $$. The matrix  $$\mathbf{A} $$ is  $$ N x N $$.
+- The emission matrix  $$\mathbf{B} =\{b_j(k)\}  $$ representing the probability of emission of symbol  $$k $$  $$\epsilon $$  $$ Y $$ when system state is  $$s_t=j $$ such that:  $$b_j(k) = p(y_t = k  \mid  s_t=j)   $$ The matrix  $$\mathbf{B} $$ is an  $$N x M  $$. The emission probability can be discrete or continous distribution. If the emission is descrete a multinomial distribution is used and multivariate Gaussian distribution is usually used for continous emission.
+- And the initial state probability distribution  $$\mathbf{\pi}  = \{\pi_i \} $$ indicating the probability of each state of the hidden variable  at  $$t = 1 $$ such that,  $$\pi _i = P(q_1 = s_i), 1 \leq i \geq N $$.
