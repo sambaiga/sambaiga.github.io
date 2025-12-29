@@ -458,7 +458,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
 // ============================================
 
 :root {
-  // Colors
+  // Colors - Light Theme
   --color-primary: #{$teal};
   --color-secondary: #{$gray-700};
   --color-success: #{$green};
@@ -469,6 +469,16 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   --color-dark: #{$black};
   --color-energy-accent: #{$energy-accent};
   --color-ai-accent: #{$ai-accent};
+  
+  // Theme Variables - Light Theme
+  --bg-primary: #{$body-bg};
+  --bg-secondary: #{$gray-100};
+  --text-primary: #{$body-color};
+  --text-secondary: #{$gray-700};
+  --border-color: #{$border-color-light};
+  --card-bg: #{$card-bg};
+  --shadow-color: #{$shadow-color};
+  
   
   // Typography
   --font-family-base: #{$font-family-sans-serif};
@@ -502,4 +512,26 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   // Component-specific
   --navbar-height: #{$navbar-height};
   --hero-min-height: #{$hero-min-height};
+}
+
+[data-theme="dark"] {
+  // Colors
+  --color-primary: #{lighten($teal, 10%)};
+  --color-secondary: #{$gray-500};
+  --color-energy-accent: #{lighten($energy-accent, 10%)};
+  --color-ai-accent: #{lighten($ai-accent, 10%)};
+  
+  // Theme Variables
+  --bg-primary: #{$dark-body-bg};
+  --bg-secondary: #1e1e1e;
+  --text-primary: #{$dark-body-color};
+  --text-secondary: #{$gray-400};
+  --border-color: #{$gray-700};
+  --card-bg: #1a1a1a;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  
+  // Code blocks for dark theme
+  --code-bg: #2d2d2d;
+  --code-color: #f8f8f2;
+  --code-block-bg: #1e1e1e;
 }
