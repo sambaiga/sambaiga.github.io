@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+@import 'scss/defaults';
+
+/*-- scss:rules --*/
+// Import mixins first
+@import 'scss/mixins';
+
+// Import base styles
+@import 'base';
+
+// Import components
+@import 'scss/components/buttons';
+@import 'scss/components/cards';
+@import 'scss/components/navbar';
+@import 'scss/components/footer';
+@import 'scss/components/hero';
+@import 'scss/components/toc';
+@import 'scss/components/forms';        
+@import 'scss/components/pagination';   
+
+// Import pages
+@import 'scss/pages/about';
+@import 'scss/pages/blog';
+@import 'scss/pages/publications';
+@import 'scss/pages/home';
+
+
+

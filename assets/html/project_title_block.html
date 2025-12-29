@@ -1,0 +1,114 @@
+<header id="title-block-header"
+    class="quarto-title-block research default$if(quarto-template-params.banner-header-class)$ $quarto-template-params.banner-header-class$$endif$">
+    
+    <!-- Minimal title banner (like blog) -->
+    <div class="quarto-title-banner">
+        $if(include-back-link)$
+        <div class="back-nav"><a href="/research/">← Back to research</a></div>
+        $endif$
+        
+        <div class="quarto-title column-body">
+            <h1 class="title">$title$</h1>
+
+            $if(subtitle)$
+            <p class="subtitle lead">$subtitle$</p>
+            $endif$
+
+            $if(description)$
+            <div class="description">
+                $description$
+            </div>
+            $endif$
+
+            $if(haiku)$
+            <div class="haiku">
+                $for(haiku)$$haiku$$sep$<br>$endfor$
+            </div>
+            $endif$
+
+            $if(categories)$
+            $if(quarto-template-params.title-block-categories)$
+            <div class="publication-categories">
+                $for(categories)$
+                <div class="publication-category $categories.lower()$">
+                    $categories$
+                </div>
+                $endfor$
+            </div>
+            $endif$
+            $endif$
+        </div>
+    </div>
+    
+    <!-- Publication details (styled as card content) -->
+    $if(pub-info)$
+    <div class="publication-details">
+        <div class="publication-content">
+            <!-- Reference/abstract -->
+            <div class="publication-meta">
+                $if(pub-info.authors)$
+                <span class="publication-authors">
+                    <i class="fa-solid fa-users"></i> $pub-info.authors$
+                </span>
+                $endif$
+                
+                $if(pub-info.journal)$
+                <span class="publication-journal">
+                    <i class="fa-solid fa-book"></i> $pub-info.journal$
+                </span>
+                $endif$
+                
+                $if(pub-info.date)$
+                <span class="publication-date">
+                    <i class="fa-solid fa-calendar"></i> $pub-info.date$
+                </span>
+                $endif$
+                
+                $if(pub-info.doi)$
+                <span class="publication-doi">
+                    <i class="fa-solid fa-fingerprint"></i> $pub-info.doi$
+                </span>
+                $endif$
+            </div>
+            
+            <!-- Reference text -->
+            $if(pub-info.reference)$
+            <div class="publication-reference">
+                <p class="pub-reference">$pub-info.reference$</p>
+            </div>
+            $endif$
+        </div>
+        
+        <!-- Links -->
+        $if(pub-info.links)$
+        <div class="publication-footer">
+            <div class="publication-links">
+                $for(pub-info.links)$
+                <a 
+                    href="$pub-info.links.url$" 
+                    class="btn btn-sm $if(pub-info.links.type)$btn-$pub-info.links.type$$else$btn-primary$endif$"
+                    $if(pub-info.links.target)$target="$pub-info.links.target$"$endif$
+                >
+                    <i class="$pub-info.links.icon$"></i> $pub-info.links.name$
+                </a>
+                $endfor$
+            </div>
+        </div>
+        $endif$
+    </div>
+    $endif$
+
+    <!-- Quarto metadata -->
+    $title-metadata.html()$
+
+    <!-- Extra details -->
+    $if(pub-info.extra)$
+    <div class="quarto-title-meta-heading manual">Other details</div>
+    <div class="quarto-title-meta-contents">
+        <p class="publication-extra">
+            $pub-info.extra$
+        </p>
+    </div>
+    $endif$
+
+</header>

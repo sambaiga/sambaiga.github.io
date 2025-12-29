@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Faustine">
+<meta name="dcterms.date" content="2025-12-17">
+<meta name="description" content="Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.">
+
+<title>Bayesian Regression: A Real-World Battery Degradation Case Study – Anthony Faustine</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../">
+<link href="../../../../..//images/icons/favicon.ico" rel="icon">
+<script src="../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting-73b3ed812b94f25e5dd4fec30a4b4dd6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../site_libs/bootstrap/bootstrap-e0bacbb98e503dc87d52d1333ade5d74.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(blog-cover.jpg);
+background-size: cover;
+      }
+</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton">
+<meta property="og:image" content="https://sambaiga.github.io/pages/blog/posts/2025/12/posterior-comparison-1.png">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta property="og:image:height" content="625">
+<meta property="og:image:width" content="1458">
+<meta name="twitter:title" content="Bayesian Regression: A Real-World Battery Degradation Case Study – Anthony Faustine">
+<meta name="twitter:description" content="Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.">
+<meta name="twitter:image" content="https://sambaiga.github.io/pages/blog/posts/2025/12/posterior-comparison-1.png">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="625">
+<meta name="twitter:image-width" content="1458">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi-envelope-at " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-github " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-linkedin " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Bayesian Regression: A Real-World Battery Degradation Case Study</h1>
+                  <div>
+        <div class="description">
+          Learn how Bayesian regression works in practice using PyMC, through a real-world battery degradation case study.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">bayesian</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://sambaiga.github.io/">Anthony Faustine</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              CIP, Eaton Corporation, Dublin Ireland.
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 17, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#case-study-predicting-battery-degradation" id="toc-case-study-predicting-battery-degradation" class="nav-link" data-scroll-target="#case-study-predicting-battery-degradation">Case Study: Predicting battery degradation</a></li>
+  <li><a href="#translating-raw-battery-data-to-diagnostics-features" id="toc-translating-raw-battery-data-to-diagnostics-features" class="nav-link" data-scroll-target="#translating-raw-battery-data-to-diagnostics-features">Translating raw battery data to diagnostics features</a></li>
+  <li><a href="#bayesian-model-building" id="toc-bayesian-model-building" class="nav-link" data-scroll-target="#bayesian-model-building">Bayesian model building</a></li>
+  <li><a href="#running-inference" id="toc-running-inference" class="nav-link" data-scroll-target="#running-inference">Running inference</a></li>
+  <li><a href="#predict-capacity-for-a-new-battery" id="toc-predict-capacity-for-a-new-battery" class="nav-link" data-scroll-target="#predict-capacity-for-a-new-battery">Predict capacity for a new battery</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Welcome back to our series on <em>Bayesian Modelling for Industrial Applications</em>. In <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, we explored how Bayesian thinking provides a principled framework for decision-making under uncertainty when evidence is limited.</p>
+<p>In this post, we extend that foundation to continuous prediction problems, offering a practical introduction to Bayesian regression through a real-world case study: predicting lithium-ion battery degradation. If you are new to Bayesian methods, you may want to start with the first post <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, which introduces the foundational concepts of Bayesian inference.</p>
+<blockquote class="blockquote">
+<p>🛠️ <strong>Action</strong>: If you prefer to learn by doing, you can reproduce this article using the accompanying resources:</p>
+</blockquote>
+<ol type="1">
+<li><a href="https://github.com/sambaiga/bayesian-modelling">Repository</a>: Fork the <a href="https://github.com/sambaiga/bayesian-modelling">bayesian-modelling repository</a> and follow the setup instructions in the README.md</li>
+<li><a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">Notebook</a>: Launch <a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">2025-12-1-bayesian-regression.ipynb</a> in the notebook folder to follow along step-by-step.</li>
+</ol>
+<p>Imagine managing a fleet of electric vehicles. One of your biggest challenges is predicting battery State of Health over time. This is important problem as early predictions inform warranty decisions, maintenance planning, and safety margins. However, industrial systems, like vehicle battery packs, are inherently complex: they are characterized by noisy, non-repeatable measurements due to sensor noise, unit variability, and stochastic physical processes. Traditional deterministic regression methods yield a single best-fit curve and therefore fail to capture the inherent variability and risk present in real-world industrial data which is characterised by:</p>
+<ul>
+<li>Measurement uncertainty inherent in sensors and data acquisition systems<br>
+</li>
+<li>Unit-to-unit variability in components (e.g., subtle differences between nominally identical batteries)<br>
+</li>
+<li>Random and nonlinear degradation behaviour<br>
+</li>
+<li>Limited early-life observations, a common constraint in industrial testing</li>
+</ul>
+<p>Bayesian regression addresses this reality by treating model parameters as probability distributions rather than fixed values. Each coefficient represents a range of plausible effects, informed by both prior knowledge and observed data so that uncertainty and risk are explicitly accounted for. This framework is built on three core components:</p>
+<ol type="1">
+<li><strong>Priors</strong>, which encode existing engineering knowledge or physical constraints<br>
+</li>
+<li><strong>Likelihood</strong>, which links the model to noisy real-world measurements<br>
+</li>
+<li><strong>Posterior</strong>, which combines prior information and data into an updated belief</li>
+</ol>
+<p>The posterior distribution enables <strong>credible intervals</strong>, allowing us to quantify how confident we are in both parameter estimates and future predictions—an essential capability in industrial decision-making.</p>
+</section>
+<section id="case-study-predicting-battery-degradation" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-predicting-battery-degradation">Case Study: Predicting battery degradation</h3>
+<p>Lithium-ion batteries are critical components in electric vehicles and stationary energy storage systems. Unexpected capacity loss can lead to service interruptions, safety risks, and costly premature replacements.</p>
+<p>The challenge is predicting future battery health when:</p>
+<ul>
+<li>Direct capacity measurements are infrequent and expensive</li>
+<li>Early-life data is sparse</li>
+<li>Degradation accelerates nonlinearly near end of life</li>
+</ul>
+<p>The goal is not only to predict degradation, but to quantify uncertainty well enough to support maintenance and replacement decisions. We use battery degradation data from the <a href="https://calce.umd.edu/battery-data">CALCE Battery</a> Research Group at the University of Maryland. The <a href="https://calce.umd.edu/battery-data">CALCE dataset</a> provides over 1,200 capacity measurements taken at discrete cycle intervals, alongside features like charging and discharge current and voltage. This comprehensive dataset has become a benchmark in battery research, allowing rigorous comparison of degradation models</p>
+<div id="6" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> great_tables <span class="im">import</span> GT, loc, md, style</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> IPython.display <span class="im">import</span> clear_output</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> lets_plot <span class="im">import</span> (</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    LetsPlot,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    aes,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    coord_cartesian,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    facet_wrap,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    flavor_high_contrast_dark,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    geom_area,</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    geom_band,</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    geom_density,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    geom_histogram,</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    geom_line,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    geom_point,</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    geom_ribbon,</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    geom_vline,</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    gggrid,</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    ggplot,</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    ggsize,</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    guide_legend,</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    guides,</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    labs,</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    layer_tooltips,</span>
+<span id="cb1-25"><a href="#cb1-25"></a>    scale_color_brewer,</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    scale_color_manual,</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    scale_fill_manual,</span>
+<span id="cb1-28"><a href="#cb1-28"></a>    scale_y_continuous,</span>
+<span id="cb1-29"><a href="#cb1-29"></a>)</span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span>  StandardScaler</span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a>az.style.use(<span class="st">"arviz-doc"</span>)</span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="im">from</span> bayes.plot.basic_plots <span class="im">import</span> line_plot, modern_theme, pro_colors, scatter_plot</span>
+<span id="cb1-39"><a href="#cb1-39"></a></span>
+<span id="cb1-40"><a href="#cb1-40"></a>LetsPlot.setup_html(isolated_frame<span class="op">=</span><span class="va">False</span>, offline<span class="op">=</span><span class="va">True</span>, no_js<span class="op">=</span><span class="va">True</span>, show_status<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a>np.random.seed(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="choosing-the-beta-likelihood" class="level4">
+<h4 class="anchored" data-anchor-id="choosing-the-beta-likelihood">Choosing the Beta Likelihood</h4>
+<p>The capacity data being modeled, <span class="math inline">C</span>, represents the battery’s health and is strictly bounded between $[C_{}, C_{}]. The goal of this analysis is to model the evolution of <span class="math inline">C_i</span>. In many standard regression approaches, the model’s likelihood function (which defines the distribution of the noise) is assumed to be Gaussian (Normal). This assumption is fundamentally incompatible with the physical reality of capacity degradation for two key reasons.</p>
+<ol type="1">
+<li>Gaussian models assume the target variable can take any real value (<span class="math inline">-\infty</span> to <span class="math inline">+\infty</span>), ignoring the fact that the underlying capacity <span class="math inline">C</span> cannot fall outside their physical limits (i.e., <span class="math inline">[C_{\text{min}}, C_{\text{max}}]</span> )</li>
+<li>With enough extrapolation, Gaussian models produce impossible values (e.g.,negative capacity). In safety-critical systems, such predictions are dangerous.</li>
+</ol>
+<p>The Beta distribution is chosen as the likelihood due to its flexible shape, governed by <span class="math inline">\alpha</span> and <span class="math inline">\beta</span>, which can model a wide range of behaviors. Because battery capacity degradation is continuous and strictly bounded within [<span class="math inline">C_{\text{min}}</span>, <span class="math inline">C_{\text{max}}</span>], the Beta likelihood provides a natural alternative to Gaussian models that require ad-hoc truncation.</p>
+<p>To match the Beta distribution’s <span class="math inline">[0,1]</span> support, capacity <span class="math inline">C_i</span> is linearly scaled to <span class="math display">\tilde{C}i = \frac{C_i - C{\text{min}}}{C_{\text{max}} - C_{\text{min}}}</span> and modeled as <span class="math inline">\tilde{C}_i \sim \text{Beta}(\alpha_i, \beta_i)</span>. This guarantees physically plausible predictions while retaining flexibility through the shape parameters.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    pm.Beta(<span class="st">"y_obs"</span>, alpha<span class="op">=</span>alpha, beta<span class="op">=</span>beta_shape, observed<span class="op">=</span>y_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="parameterization-mean-mu-and-precision-phi" class="level5">
+<h5 class="anchored" data-anchor-id="parameterization-mean-mu-and-precision-phi">Parameterization: Mean (<span class="math inline">\mu</span>) and Precision (<span class="math inline">\phi</span>)</h5>
+<p>To make the parameters intuitive, the Beta distribution is typically reparameterized using the mean (<span class="math inline">\mu</span>) and the precision (<span class="math inline">\phi</span>).The shape parameters, <span class="math inline">\alpha_i</span> and <span class="math inline">\beta_i</span>, which define the exact shape of the distribution for a given observation, are calculated directly from the mean <span class="math inline">\mu_{i} \in (0, 1)</span> and the global precision <span class="math inline">\phi &gt; 0</span> such that:<span class="math display">\alpha_i = \mu_{i} \cdot \phi \quad \text{and} \quad \beta_i = (1 - \mu_{i}) \cdot \phi</span> The precision parameter, <span class="math inline">\phi</span>, controls the variance: a large <span class="math inline">\phi</span> means the predictions are tightly clustered around the mean <span class="math inline">\mu_{i}</span>, indicating low uncertainty (low variance).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    alpha <span class="op">=</span> mu_scaled <span class="op">*</span> phi</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    beta_shape <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> mu_scaled) <span class="op">*</span> phi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The mean parameter <span class="math inline">\mu_{i} \in (0, 1)</span> must be linked to our predictors. Since the mean is bounded by <span class="math inline">(0, 1)</span>, we use the Logit Link Function to map the linear combination of predictors (<span class="math inline">\eta_i</span>) to this interval: <span class="math display">\text{logit}(\mu_{i}) = \eta_i</span> as such , <span class="math display">\mu_{i} = \text{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}}</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    mu_scaled <span class="op">=</span> pm.Deterministic(<span class="st">"mu_scaled"</span>, pm.math.sigmoid(logit_mu))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>💡 Key Takeaway: The Logit Link function is the mathematical bridge that ensures our mean prediction, <span class="math inline">\mu_i</span>, respects the physical boundary of <span class="math inline">(0, 1)</span> imposed by the Beta distribution</p>
+</blockquote>
+</section>
+<section id="the-linear-predictor-capturing-degradation" class="level5">
+<h5 class="anchored" data-anchor-id="the-linear-predictor-capturing-degradation">The Linear Predictor: Capturing Degradation</h5>
+<p>The core of our predictive power lies in the linear predictor, <span class="math inline">\eta_i</span>. It is structured to incorporate both the fundamental, non-linear degradation due to cycling and the linear operational effects from features <span class="math inline">\mathbf{x}</span> like voltage and current: <span class="math display">\eta_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{f(k_i)}_{\text{Non-linear Decay}} + \underbrace{\mathbf{x}_i^{\top} \boldsymbol{\beta}}_{\text{Operational Effects}}</span></p>
+<p>In this work, the non-linear decay component is modeled as an exponential function: <span class="math display">f(k_i) = -A\cdot(1-e^{-\lambda \cdot k_i})</span> where <span class="math inline">k_i</span> is the cycle count, <span class="math inline">\lambda</span> is the degradation rate, and <span class="math inline">A&gt;0</span> is a learnable amplitude parameter controlling the strength of decay. This captures the physical reality that battery capacity degrades rapidly at first and then more slowly over time. where:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    degradation <span class="op">=</span> pm.math.exp(<span class="op">-</span>lambda_rate <span class="op">*</span> cycle_data)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    degradation_term <span class="op">=</span> <span class="op">-</span>degr_amp <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> degradation)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    logit_mu <span class="op">=</span> intercept <span class="op">+</span> degradation_term <span class="op">+</span> pm.math.dot(x_data, beta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The components of <span class="math inline">\eta_i</span> are as follows:</p>
+<ol type="1">
+<li>Intercept (<span class="math inline">\beta_0</span>): The baseline capacity on the logit scale when operational effects are zero and the cycle count (<span class="math inline">k_i</span>) is zero.</li>
+<li>Degradation Term (<span class="math inline">e^{-\lambda \cdot k_i}</span>): This is the non-linear exponential decay over the cycle count <span class="math inline">k_i</span>, controlled by the rate <span class="math inline">\lambda</span>. This term ensures the capacity prediction naturally trends downward toward zero capacity over time.</li>
+<li>Operational Effects (<span class="math inline">\mathbf{x}_{i}^{\top} \boldsymbol{\beta}</span>): This is a standard linear combination, where <span class="math inline">\boldsymbol{\beta}</span> is the vector of coefficients for the standardized operational features <span class="math inline">\mathbf{x}_{i}</span>.</li>
+</ol>
+<p>This models how factors like maximum temperature accelerate or slow down the degradation.</p>
+<blockquote class="blockquote">
+<p>🧠 <strong>Self-Test</strong>: You are modeling <span class="math inline">\text{SoH}</span>, which must stay in <span class="math inline">[0, 1]</span>. Your linear predictor, <span class="math inline">\eta_i = \beta_0 + \mathbf{x}_i^{\top} \boldsymbol{\beta}</span>, can produce values ranging from <span class="math inline">-\infty</span> to <span class="math inline">+\infty</span>.What would happen if you skipped the Logit Link Function and simply set <span class="math inline">\mu_i = \eta_i</span>? Why is the Logit Link function mandatory for the Beta regression model?</p>
+</blockquote>
+</section>
+</section>
+<section id="encoding-knowledge-with-priors" class="level4">
+<h4 class="anchored" data-anchor-id="encoding-knowledge-with-priors">Encoding Knowledge with Priors</h4>
+<p>In Bayesian modeling, defining priors is a critical step. This step allows domain knowledge accumulated from battery engineering to be embedded directly into the model, ensuring that predictions remain physically plausible even when data is sparse. A prior distribution is assigned to every unknown parameter (<span class="math inline">\beta_0, \boldsymbol{\beta}, \lambda, \phi</span>). These priors act as soft constraints, preventing the model from learning extreme or non-physical relationships.</p>
+<p><strong>The Intercept (<span class="math inline">\beta_0</span>)</strong></p>
+<p>The Intercept <span class="math inline">\beta_0</span> represents the initial capacity of the battery fleet on the logit scale. The orange curve in the figure below represents the selected informative prior, <span class="math inline">\text{Normal}(\mu_{\text{logit\_start}}, 0.5^2)</span>. A standard deviation of <span class="math inline">\sigma = 0.5</span> is chosen to balance prior knowledge (centering at <span class="math inline">\mu_{\text{logit\_start}}</span>) with sufficient uncertainty to allow the observed data to meaningfully influence the final estimate.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    eps<span class="op">=</span><span class="fl">1e-8</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    initial_logit_capacity_mean <span class="op">=</span> <span class="op">-</span>np.log(<span class="dv">1</span><span class="op">-</span>eps)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    intercept <span class="op">=</span> pm.Normal(<span class="st">"intercept"</span>, mu<span class="op">=</span>initial_logit_capacity_mean, sigma<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> bayes.plot.distribution <span class="im">import</span> plot_density</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="10" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>s1 <span class="op">=</span> pm.draw(pm.Normal.dist(mu<span class="op">=</span><span class="fl">0.28</span>, sigma<span class="op">=</span><span class="fl">0.1</span>), n)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>s2 <span class="op">=</span> pm.draw(pm.Normal.dist(mu<span class="op">=</span><span class="fl">0.28</span>, sigma<span class="op">=</span><span class="fl">0.2</span>), n)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>s3 <span class="op">=</span> pm.draw(pm.Normal.dist(mu<span class="op">=</span><span class="fl">0.28</span>, sigma<span class="op">=</span><span class="fl">0.5</span>), n)</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    {</span>
+<span id="cb8-8"><a href="#cb8-8"></a>        <span class="st">"value"</span>: np.concatenate([s1, s2, s3]),</span>
+<span id="cb8-9"><a href="#cb8-9"></a>        <span class="st">"distribution"</span>: np.repeat([<span class="st">"(μ=0.28, σ=0.1)"</span>, <span class="st">"(μ=0.28, σ=0.2)"</span>, <span class="st">"(μ=0.28, σ=0.5)"</span>], n),</span>
+<span id="cb8-10"><a href="#cb8-10"></a>    }</span>
+<span id="cb8-11"><a href="#cb8-11"></a>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a>plot<span class="op">=</span>plot_density(df, title<span class="op">=</span><span class="st">"Normal Distributions Intercept Priors"</span>, fig_size<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">400</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="11" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The narrower blue (<span class="math inline">\sigma = 0.1</span>) and green (<span class="math inline">\sigma = 0.2</span>) curves represent highly concentrated priors that would strongly restrict the posterior estimates. The wider <span class="math inline">\sigma = 0.5</span> (orange) distribution corresponds to a more conservative informative prior, granting the initial capacity estimate <span class="math inline">\beta_0</span> a reasonable degree of uncertainty.</p>
+<p><strong>Operational Effects (<span class="math inline">\boldsymbol{\beta}</span>)</strong></p>
+<p>The vector of coefficients <span class="math inline">\boldsymbol{\beta}</span> controls the influence of operational features on capacity fade. Engineering knowledge suggests that, unless a feature is extreme, its immediate effect on capacity should be subtle, as the overall degradation process is primarily driven by cycle count.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>    <span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    beta <span class="op">=</span> pm.Normal(<span class="st">"beta"</span>, mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="fl">0.2</span>, shape<span class="op">=</span>n_features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="14" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> bayes.plot.distribution <span class="im">import</span> plot_density</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="15" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2"></a>s1 <span class="op">=</span> pm.draw(pm.Normal.dist(mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="fl">0.1</span>), n)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>s2 <span class="op">=</span> pm.draw(pm.Normal.dist(mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="fl">0.2</span>), n)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>s3 <span class="op">=</span> pm.draw(pm.Normal.dist(mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="fl">1.0</span>), n)</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    {</span>
+<span id="cb12-8"><a href="#cb12-8"></a>        <span class="st">"value"</span>: np.concatenate([s1, s2, s3]),</span>
+<span id="cb12-9"><a href="#cb12-9"></a>        <span class="st">"distribution"</span>: np.repeat([<span class="st">"(μ=0, σ=0.1)"</span>, <span class="st">"(μ=0, σ=0.2)"</span>, <span class="st">"(μ=0, σ=1.0)"</span>], n),</span>
+<span id="cb12-10"><a href="#cb12-10"></a>    }</span>
+<span id="cb12-11"><a href="#cb12-11"></a>)</span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a>plot<span class="op">=</span>plot_density(df, title<span class="op">=</span><span class="st">"Normal Distributions Beta Priors"</span>, fig_size<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">400</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="16" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>As shown in the figure above, a tight informative prior, <span class="math inline">\text{Normal}(0, 0.2^2)</span>, is used for <span class="math inline">\boldsymbol{\beta}</span>. Centering this prior at zero reflects the assumption that, on average, operational features have no effect, while the small standard deviation (<span class="math inline">0.2</span>) requires strong evidence from the data before attributing a large effect to any single feature. This constraint prevents non-physical, abrupt changes in capacity predictions. In contrast, a broader prior such as <span class="math inline">\text{Normal}(0, 1.0^2)</span> (orange curve) allows extreme effects that are considered non-physical.</p>
+<p><strong>Degradation rate <span class="math inline">\lambda</span></strong></p>
+<p>The degradation rate <span class="math inline">\lambda</span> governs the exponential decay term <span class="math inline">e^{-\lambda k_i}</span>. Since degradation must always occur and capacity cannot increase indefinitely, it is necessary to enforce <span class="math inline">\lambda &gt; 0</span>. Accordingly, a Log-Normal prior, <span class="math inline">\text{LogNormal}(\ln(0.005), 0.5^2)</span>, is used for <span class="math inline">\lambda</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    lambda_rate <span class="op">=</span> pm.Lognormal(<span class="st">"lambda_rate"</span>, mu<span class="op">=</span>np.log(<span class="fl">0.01</span>), sigma<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>🧠 <strong>Self-Test</strong>: Recall that we set the prior for the fade rate <span class="math inline">\lambda</span> as <span class="math inline">\text{LogNormal}(\ln(0.01), 0.5^2)</span> (where <span class="math inline">\sigma = 0.5</span>). What practical problem would arise if an engineer, overly confident in their historical knowledge, reset the prior to <span class="math inline">\text{LogNormal}(\ln(0.01), 0.1^2)</span> (where <span class="math inline">\sigma = 0.1</span>)?</p>
+</blockquote>
+<div id="19" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2"></a>s1 <span class="op">=</span> pm.draw(pm.LogNormal.dist(np.log(<span class="fl">0.005</span>), sigma<span class="op">=</span><span class="fl">0.1</span>), n)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>s2 <span class="op">=</span> pm.draw(pm.LogNormal.dist(np.log(<span class="fl">0.005</span>), sigma<span class="op">=</span><span class="fl">0.5</span>), n)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>s3 <span class="op">=</span> pm.draw(pm.LogNormal.dist(np.log(<span class="fl">0.005</span>), sigma<span class="op">=</span><span class="fl">1.0</span>), n)</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb15-7"><a href="#cb15-7"></a>    {</span>
+<span id="cb15-8"><a href="#cb15-8"></a>        <span class="st">"value"</span>: np.concatenate([s1, s2, s3]),</span>
+<span id="cb15-9"><a href="#cb15-9"></a>        <span class="st">"distribution"</span>: np.repeat([<span class="st">"(μ=In(0.005), σ=0.1)"</span>, <span class="st">"(μ=In(0.005), σ=0.5)"</span>, <span class="st">"(μ=In(0.005), σ=1.0)"</span>], n),</span>
+<span id="cb15-10"><a href="#cb15-10"></a>    }</span>
+<span id="cb15-11"><a href="#cb15-11"></a>)</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a>plot<span class="op">=</span>plot_density(df, title<span class="op">=</span><span class="st">"LogNormal Distributions Priors"</span>, fig_size<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">400</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="20" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>This weakly informative prior centers the expected degradation rate around <span class="math inline">\mathbf{0.5\%}</span>, while the spread <span class="math inline">\sigma = 0.5</span> (green/teal curve) is sufficiently wide to accommodate realistic fleet-level variability. At the same time, it remains substantially tighter than <span class="math inline">\sigma = 1.0</span> (orange curve), thereby avoiding non-physical probability mass assigned to unrealistically large degradation rates. This distribution reflects a conservative estimate of uncertainty, allowing greater variation in degradation behavior than a tighter prior (e.g., <span class="math inline">\sigma = 0.1</span>) would permit, while still preventing implausible rates.</p>
+<p><strong>Degradation Amplitude (<span class="math inline">A</span>)</strong></p>
+<p>The parameter degr_amp (<span class="math inline">A</span>) controls the overall amplitude of the degradation component. Since this amplitude must be non-negative, a Half-Normal distribution is used, which has support only on positive values. The scale parameter <span class="math inline">\sigma</span> determines the strength of regularization.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>   <span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    degr_amp <span class="op">=</span> pm.HalfNormal(<span class="st">"degr_amp"</span>, sigma<span class="op">=</span><span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="23" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2"></a>s1 <span class="op">=</span> pm.draw(pm.HalfNormal.dist(sigma<span class="op">=</span><span class="fl">0.1</span>), n)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>s2 <span class="op">=</span> pm.draw(pm.HalfNormal.dist(sigma<span class="op">=</span><span class="fl">0.2</span>), n)</span>
+<span id="cb18-4"><a href="#cb18-4"></a>s3 <span class="op">=</span> pm.draw(pm.HalfNormal.dist(sigma<span class="op">=</span><span class="fl">0.5</span>), n)</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb18-8"><a href="#cb18-8"></a>    {</span>
+<span id="cb18-9"><a href="#cb18-9"></a>        <span class="st">"value"</span>: np.concatenate([s1, s2, s3]),</span>
+<span id="cb18-10"><a href="#cb18-10"></a>        <span class="st">"distribution"</span>: np.repeat([<span class="st">"σ=0.1"</span>, <span class="st">"σ=0.2"</span>, <span class="st">"σ=0.5"</span>], n),</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    }</span>
+<span id="cb18-12"><a href="#cb18-12"></a>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>plot<span class="op">=</span>plot_density(df, title<span class="op">=</span><span class="st">"Gamma Distributions Phi Priors"</span>, fig_size<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">400</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="24" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>As shown in the figure above, <span class="math inline">\text{HalfNormal}(\sigma = 0.1)</span> strongly concentrates probability mass near zero, requiring substantial evidence before attributing a large degradation amplitude. In contrast, broader priors such as <span class="math inline">\text{HalfNormal}(\sigma = 0.5)</span> place non-negligible probability on large, non-subtle amplitudes (up to approximately <span class="math inline">1.0</span>), increasing the risk of overfitting by allowing the model to explain noise through the amplitude term.</p>
+<p><strong>Precision Parameter (<span class="math inline">\phi</span>)</strong></p>
+<p>The precision parameter <span class="math inline">\phi</span> controls the variance of the Beta likelihood and represents the expected level of noise in the <span class="math inline">\text{SoH}</span> measurements. Accordingly, a highly informative Gamma prior, <span class="math inline">\text{Gamma}(100, 2)</span>, is assigned to <span class="math inline">\phi</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> battery_model:</span>
+<span id="cb20-2"><a href="#cb20-2"></a>    phi <span class="op">=</span> pm.Gamma(<span class="st">"phi"</span>, alpha<span class="op">=</span><span class="dv">100</span>, beta<span class="op">=</span><span class="fl">2.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This prior is centered at <span class="math inline">\mathbb{E}[\phi] = \alpha / \beta = 50</span> with a relatively small standard deviation (<span class="math inline">\sigma_{\phi} = 5.0</span>), indicating high confidence in this expectation. This choice encodes the belief that sensor noise is low (<span class="math inline">\sigma_{\text{noise}} \approx 0.14</span>), reflecting the physical reality of precise laboratory-grade measurements.</p>
+<div id="27" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2"></a>s1 <span class="op">=</span> pm.draw(pm.Gamma.dist(alpha<span class="op">=</span><span class="dv">10</span>, beta<span class="op">=</span><span class="dv">1</span>), n)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>s2 <span class="op">=</span> pm.draw(pm.Gamma.dist(alpha<span class="op">=</span><span class="dv">50</span>, beta<span class="op">=</span><span class="dv">5</span>), n)</span>
+<span id="cb21-4"><a href="#cb21-4"></a>s3 <span class="op">=</span> pm.draw(pm.Gamma.dist(alpha<span class="op">=</span><span class="dv">100</span>, beta<span class="op">=</span><span class="dv">2</span>), n)</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb21-8"><a href="#cb21-8"></a>    {</span>
+<span id="cb21-9"><a href="#cb21-9"></a>        <span class="st">"value"</span>: np.concatenate([s1, s2, s3]),</span>
+<span id="cb21-10"><a href="#cb21-10"></a>        <span class="st">"distribution"</span>: np.repeat([<span class="st">"Gamma(α=10, β=1)"</span>, <span class="st">"Gamma(α=50, β=5)"</span>, <span class="st">"Gamma(α=100, β=2)"</span>], n),</span>
+<span id="cb21-11"><a href="#cb21-11"></a>    }</span>
+<span id="cb21-12"><a href="#cb21-12"></a>)</span>
+<span id="cb21-13"><a href="#cb21-13"></a>plot<span class="op">=</span>plot_density(df, title<span class="op">=</span><span class="st">"Gamma Distributions Phi Priors"</span>, fig_size<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">400</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="28" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>From the figure above, it is evident that <span class="math inline">\text{Gamma}(\alpha = 100, \beta = 2.0)</span> (orange curve) provides a strong belief in high precision. In contrast, <span class="math inline">\text{Gamma}(\alpha = 10, \beta = 1.0)</span> yields a lower expected precision with greater spread, allowing excessive uncertainty and risking a flat, unphysical prior predictive distribution. Alternative Gamma priors with the same expected precision but larger variance similarly underestimate the precision of modern sensors.</p>
+<p>The complete model now combines all these components:</p>
+<div id="31" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> beta_regression_model(</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    data: pd.DataFrame,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>    features: <span class="bu">list</span>[<span class="bu">str</span>],</span>
+<span id="cb23-4"><a href="#cb23-4"></a>    target: <span class="bu">str</span> <span class="op">=</span> <span class="st">"capacity"</span>,</span>
+<span id="cb23-5"><a href="#cb23-5"></a>    scaler: StandardScaler <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    lower_bound: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    upper_bound: <span class="bu">float</span> <span class="op">=</span> <span class="fl">1.3</span>,</span>
+<span id="cb23-8"><a href="#cb23-8"></a>    eps: <span class="bu">float</span> <span class="op">=</span> <span class="fl">1e-8</span>,</span>
+<span id="cb23-9"><a href="#cb23-9"></a>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[pm.Model, StandardScaler]:</span>
+<span id="cb23-10"><a href="#cb23-10"></a>    <span class="co">"""Beta regression model for bounded battery capacity data using PyMC.</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="co">    Capacity (SoH) is scaled to the (0, 1) interval for the Beta distribution.</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="co">    Args:</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a><span class="co">        data: DataFrame containing 'capacity', 'cycle', and feature columns.</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a><span class="co">        features: List of column names used as predictors (X variables).</span></span>
+<span id="cb23-17"><a href="#cb23-17"></a><span class="co">        target: Name of the capacity column.</span></span>
+<span id="cb23-18"><a href="#cb23-18"></a><span class="co">        scaler: Pre-fitted StandardScaler object, or None to fit a new one.</span></span>
+<span id="cb23-19"><a href="#cb23-19"></a><span class="co">        lower_bound: Physical lower bound for capacity (for scaling).</span></span>
+<span id="cb23-20"><a href="#cb23-20"></a><span class="co">        upper_bound: Physical upper bound for capacity (for scaling).</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a><span class="co">        eps: Small value to avoid boundary issues in Beta distribution.</span></span>
+<span id="cb23-22"><a href="#cb23-22"></a></span>
+<span id="cb23-23"><a href="#cb23-23"></a><span class="co">    Returns:</span></span>
+<span id="cb23-24"><a href="#cb23-24"></a><span class="co">        A tuple containing the PyMC model and the fitted/provided StandardScaler.</span></span>
+<span id="cb23-25"><a href="#cb23-25"></a><span class="co">    """</span></span>
+<span id="cb23-26"><a href="#cb23-26"></a>    <span class="co"># 1. Prepare Features (X)</span></span>
+<span id="cb23-27"><a href="#cb23-27"></a>    <span class="cf">if</span> scaler <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb23-28"><a href="#cb23-28"></a>        scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb23-29"><a href="#cb23-29"></a>        x_scaled <span class="op">=</span> scaler.fit_transform(data[features])</span>
+<span id="cb23-30"><a href="#cb23-30"></a>    <span class="cf">else</span>:</span>
+<span id="cb23-31"><a href="#cb23-31"></a>        x_scaled <span class="op">=</span> scaler.transform(data[features])</span>
+<span id="cb23-32"><a href="#cb23-32"></a></span>
+<span id="cb23-33"><a href="#cb23-33"></a>    <span class="co"># 2. Prepare Targets (Y)</span></span>
+<span id="cb23-34"><a href="#cb23-34"></a>    y <span class="op">=</span> data[target].values.astype(np.float64)</span>
+<span id="cb23-35"><a href="#cb23-35"></a>    cycles <span class="op">=</span> data[<span class="st">"cycle"</span>].values.astype(np.float64)</span>
+<span id="cb23-36"><a href="#cb23-36"></a>    n_features <span class="op">=</span> <span class="bu">len</span>(features)</span>
+<span id="cb23-37"><a href="#cb23-37"></a></span>
+<span id="cb23-38"><a href="#cb23-38"></a>    <span class="co"># Transform y to (0,1) interval and clip to avoid boundaries (0 or 1)</span></span>
+<span id="cb23-39"><a href="#cb23-39"></a>    y_scaled <span class="op">=</span> (y <span class="op">-</span> lower_bound) <span class="op">/</span> (upper_bound <span class="op">-</span> lower_bound)</span>
+<span id="cb23-40"><a href="#cb23-40"></a>    y_scaled <span class="op">=</span> np.clip(y_scaled, eps, <span class="dv">1</span> <span class="op">-</span> eps)</span>
+<span id="cb23-41"><a href="#cb23-41"></a></span>
+<span id="cb23-42"><a href="#cb23-42"></a>    <span class="cf">with</span> pm.Model() <span class="im">as</span> model:</span>
+<span id="cb23-43"><a href="#cb23-43"></a>        <span class="co"># Data Containers</span></span>
+<span id="cb23-44"><a href="#cb23-44"></a>        x_data <span class="op">=</span> pm.Data(<span class="st">"x_data"</span>, x_scaled)</span>
+<span id="cb23-45"><a href="#cb23-45"></a>        cycle_data <span class="op">=</span> pm.Data(<span class="st">"cycle_data"</span>, cycles)</span>
+<span id="cb23-46"><a href="#cb23-46"></a>        y_data <span class="op">=</span> pm.Data(<span class="st">"y_data"</span>, y_scaled)</span>
+<span id="cb23-47"><a href="#cb23-47"></a></span>
+<span id="cb23-48"><a href="#cb23-48"></a>        <span class="co"># Priors</span></span>
+<span id="cb23-49"><a href="#cb23-49"></a>        initial_logit_capacity_mean <span class="op">=</span> <span class="op">-</span>np.log(<span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-6</span>)</span>
+<span id="cb23-50"><a href="#cb23-50"></a>        intercept <span class="op">=</span> pm.Normal(<span class="st">"intercept"</span>, mu<span class="op">=</span>initial_logit_capacity_mean, sigma<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb23-51"><a href="#cb23-51"></a>        lambda_rate <span class="op">=</span> pm.Lognormal(<span class="st">"lambda_rate"</span>, mu<span class="op">=</span>np.log(<span class="fl">0.005</span>), sigma<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb23-52"><a href="#cb23-52"></a>        beta <span class="op">=</span> pm.Normal(<span class="st">"beta"</span>, mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="fl">0.2</span>, shape<span class="op">=</span>n_features)</span>
+<span id="cb23-53"><a href="#cb23-53"></a>        phi <span class="op">=</span> pm.Gamma(<span class="st">"phi"</span>, alpha<span class="op">=</span><span class="dv">100</span>, beta<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb23-54"><a href="#cb23-54"></a>        degr_amp <span class="op">=</span> pm.HalfNormal(<span class="st">"degr_amp"</span>, sigma<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb23-55"><a href="#cb23-55"></a></span>
+<span id="cb23-56"><a href="#cb23-56"></a>        <span class="co"># Linear predictor (eta) on logit scale</span></span>
+<span id="cb23-57"><a href="#cb23-57"></a>        degradation <span class="op">=</span> pm.math.exp(<span class="op">-</span>lambda_rate <span class="op">*</span> cycle_data)</span>
+<span id="cb23-58"><a href="#cb23-58"></a>        degradation_term <span class="op">=</span> <span class="op">-</span>degr_amp <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> degradation)</span>
+<span id="cb23-59"><a href="#cb23-59"></a>        logit_mu <span class="op">=</span> intercept <span class="op">+</span> degradation_term <span class="op">+</span> pm.math.dot(x_data, beta)</span>
+<span id="cb23-60"><a href="#cb23-60"></a></span>
+<span id="cb23-61"><a href="#cb23-61"></a>        <span class="co"># Convert to probability scale (0,1)</span></span>
+<span id="cb23-62"><a href="#cb23-62"></a>        mu_scaled <span class="op">=</span> pm.Deterministic(<span class="st">"mu_scaled"</span>, pm.math.invlogit(logit_mu))</span>
+<span id="cb23-63"><a href="#cb23-63"></a></span>
+<span id="cb23-64"><a href="#cb23-64"></a>        <span class="co"># Beta likelihood</span></span>
+<span id="cb23-65"><a href="#cb23-65"></a>        alpha <span class="op">=</span> mu_scaled <span class="op">*</span> phi</span>
+<span id="cb23-66"><a href="#cb23-66"></a>        beta_shape <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> mu_scaled) <span class="op">*</span> phi</span>
+<span id="cb23-67"><a href="#cb23-67"></a>        pm.Beta(<span class="st">"y_obs"</span>, alpha<span class="op">=</span>alpha, beta<span class="op">=</span>beta_shape, observed<span class="op">=</span>y_data)</span>
+<span id="cb23-68"><a href="#cb23-68"></a></span>
+<span id="cb23-69"><a href="#cb23-69"></a>        <span class="co"># Transform mu back to original scale</span></span>
+<span id="cb23-70"><a href="#cb23-70"></a>        mu_original <span class="op">=</span> pm.Deterministic(<span class="st">"mu_original"</span>, mu_scaled <span class="op">*</span> (upper_bound <span class="op">-</span> lower_bound) <span class="op">+</span> lower_bound)</span>
+<span id="cb23-71"><a href="#cb23-71"></a></span>
+<span id="cb23-72"><a href="#cb23-72"></a>        pm.Deterministic(<span class="st">"capacity_pred"</span>, mu_original)</span>
+<span id="cb23-73"><a href="#cb23-73"></a>        pm.Deterministic(<span class="st">"feature_effects"</span>, beta)</span>
+<span id="cb23-74"><a href="#cb23-74"></a></span>
+<span id="cb23-75"><a href="#cb23-75"></a>    <span class="cf">return</span> model, scaler</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="translating-raw-battery-data-to-diagnostics-features" class="level3">
+<h3 class="anchored" data-anchor-id="translating-raw-battery-data-to-diagnostics-features">Translating raw battery data to diagnostics features</h3>
+<p>In the preceding sections, the output side of the Bayesian model was rigorously defined, including the Beta likelihood, the Logit link function, and physics-informed priors for the parameters (<span class="math inline">\beta_0, \boldsymbol{\beta}, \lambda, \phi</span>). However, the quality of the resulting predictions depends critically on the quality of the input features (<span class="math inline">\mathbf{x}</span>) that drive the degradation term (<span class="math inline">\eta_i = \dots + \mathbf{x}_i^{\top} \boldsymbol{\beta}</span>).</p>
+<p>Raw capacity measurement curves are noisy and variable. Therefore, before proceeding to Bayesian sampling, it is necessary to dedicate a structured process to translating real-world operational data into robust, physically meaningful diagnostic features.</p>
+<p>This motivates the crucial step of feature engineering.</p>
+<section id="data-alignment-and-cleaning" class="level4">
+<h4 class="anchored" data-anchor-id="data-alignment-and-cleaning">Data alignment and cleaning</h4>
+<p>Before extracting diagnostic features, a uniform time base must be established, as the formulas used for feature extraction require comparable voltage and current values across cycles.</p>
+<ol type="1">
+<li>Cycle Alignment (Standardization): Linear interpolation is used to resample all voltage and current time-series arrays to a uniform length (e.g., 500 points). This standardization enables direct cycle-to-cycle comparison, as illustrated by the transition from the raw data (Figures 1 and 2) to the interpolated curves (Figures 3 and 4).</li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 30px 0;">
+<div style="flex: 1; min-width: 300px; max-width: 600px; text-align: center;">
+<img src="charge_voltage.png" alt="Cycle 1" style="width: 75%; height: auto; border-radius: 8px;">
+<p style="margin-top: 12px; font-size: 15px; color: #555;">
+Figure 1: Charging Voltage curve at the beginning of life
+</p>
+</div>
+<div style="flex: 1; min-width: 300px; max-width: 600px; text-align: center;">
+<img src="discharge_voltage.png" alt="Cycle 1000" style="width: 75%; height: auto; border-radius: 8px;">
+<p style="margin-top: 12px; font-size: 15px; color: #555;">
+Figure 2: Discharge Voltage curve at the beginning of life
+</p>
+</div>
+</div>
+<p>As shown in Figures 1 and 2, voltage curves differ in length due to variations in charge and discharge durations. Linear interpolation standardizes these curves to a fixed length (e.g., 500 points), enabling direct comparison across cycles, as illustrated in Figures 3 and 4.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 30px 0;">
+<div style="flex: 1; min-width: 300px; max-width: 600px; text-align: center;">
+<img src="charge_voltage_interpolated.png" alt="Cycle 1" style="width: 75%; height: auto; border-radius: 8px;">
+<p style="margin-top: 12px; font-size: 15px; color: #555;">
+Figure 3: Inteporated Charging Voltage curve at the beginning of life
+</p>
+</div>
+<div style="flex: 1; min-width: 300px; max-width: 600px; text-align: center;">
+<img src="discharge_voltage_interpolated.png" alt="Cycle 1000" style="width: 75%; height: auto; border-radius: 8px;">
+<p style="margin-top: 12px; font-size: 15px; color: #555;">
+Figure 4: Inteporated Discharge Voltage curve at the beginning of life
+</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Data Filtering: Cycles exhibiting non-meaningful behavior (e.g., flat voltage profiles, excessive noise, or unrealistic starting or peak voltages) are removed to ensure that all inputs correspond to valid charging or discharging events.</li>
+</ol>
+</section>
+<section id="diagnostic-feature-extraction" class="level4">
+<h4 class="anchored" data-anchor-id="diagnostic-feature-extraction">Diagnostic Feature Extraction</h4>
+<p>With aligned and cleaned curves, it is now possible to reliably extract cycle-specific diagnostic features that quantify the battery’s underlying physical degradation processes. These features are sensitive to aging mechanisms such as active material loss and internal resistance growth</p>
+<blockquote class="blockquote">
+<p><strong>🧠 Reflection</strong>: We chose to derive these physically meaningful features instead of feeding the entire, aligned time-series data (Figures 3 &amp; 4). Why are these manually engineered features often preferred in industrial applications? Consider the trade-offs in <strong>model complexity</strong>, <strong>training speed</strong>, and the crucial <strong>interpretability</strong> of the final Bayesian coefficients (<span class="math inline">\beta</span>).</p>
+</blockquote>
+<div id="34" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co"># Fix the typo and create data</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-5"><a href="#cb24-5"></a>    <span class="st">"Diagnostic Feature"</span>: [</span>
+<span id="cb24-6"><a href="#cb24-6"></a>        <span class="st">"Voltage Gap"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7"></a>        <span class="st">"Voltage Hysteresis"</span>, </span>
+<span id="cb24-8"><a href="#cb24-8"></a>        <span class="st">"IC Peak Metrics"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9"></a>        <span class="st">"Hysteresis Proxy Resistance"</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>    ],</span>
+<span id="cb24-11"><a href="#cb24-11"></a>    <span class="st">"Formula"</span>: [</span>
+<span id="cb24-12"><a href="#cb24-12"></a>        <span class="st">"ΔV̄ = V̄_c - V̄_d"</span>,</span>
+<span id="cb24-13"><a href="#cb24-13"></a>        <span class="st">"ΔV(x) = V_c(x) - V_d(x)"</span>,</span>
+<span id="cb24-14"><a href="#cb24-14"></a>        <span class="st">"IC = dQ/dV"</span>,</span>
+<span id="cb24-15"><a href="#cb24-15"></a>        <span class="st">"R_proxy ∝ ΔV(x)/I_diff"</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>    ],</span>
+<span id="cb24-17"><a href="#cb24-17"></a>    <span class="st">"Physical Meaning"</span>: [</span>
+<span id="cb24-18"><a href="#cb24-18"></a>        <span class="st">"Average polarization; quantifies internal losses"</span>,</span>
+<span id="cb24-19"><a href="#cb24-19"></a>        <span class="st">"Loss mechanisms at specific state-of-charge"</span>,</span>
+<span id="cb24-20"><a href="#cb24-20"></a>        <span class="st">"Phase transitions; indicates active material loss"</span>,</span>
+<span id="cb24-21"><a href="#cb24-21"></a>        <span class="st">"Proxy for internal resistance growth"</span></span>
+<span id="cb24-22"><a href="#cb24-22"></a>    ]</span>
+<span id="cb24-23"><a href="#cb24-23"></a>})</span>
+<span id="cb24-24"><a href="#cb24-24"></a></span>
+<span id="cb24-25"><a href="#cb24-25"></a></span>
+<span id="cb24-26"><a href="#cb24-26"></a><span class="co"># Create publication-quality table</span></span>
+<span id="cb24-27"><a href="#cb24-27"></a>table <span class="op">=</span> (</span>
+<span id="cb24-28"><a href="#cb24-28"></a>    GT(data)</span>
+<span id="cb24-29"><a href="#cb24-29"></a>    .tab_header(</span>
+<span id="cb24-30"><a href="#cb24-30"></a>        title<span class="op">=</span>md(<span class="st">"**Table 1: Battery Degradation Diagnostic Features**"</span>),</span>
+<span id="cb24-31"><a href="#cb24-31"></a>        subtitle<span class="op">=</span><span class="st">"Mathematical definitions and physical interpretations of key battery health indicators"</span></span>
+<span id="cb24-32"><a href="#cb24-32"></a>    )</span>
+<span id="cb24-33"><a href="#cb24-33"></a>    .cols_label(</span>
+<span id="cb24-34"><a href="#cb24-34"></a>        <span class="op">**</span>{</span>
+<span id="cb24-35"><a href="#cb24-35"></a>            <span class="st">"Diagnostic Feature"</span>: md(<span class="st">"**Diagnostic Feature**"</span>),</span>
+<span id="cb24-36"><a href="#cb24-36"></a>            <span class="st">"Formula"</span>: md(<span class="st">"**Formula**"</span>),</span>
+<span id="cb24-37"><a href="#cb24-37"></a>            <span class="st">"Physical Meaning"</span>: md(<span class="st">"**Physical Meaning**"</span>)</span>
+<span id="cb24-38"><a href="#cb24-38"></a>        }</span>
+<span id="cb24-39"><a href="#cb24-39"></a>    )</span>
+<span id="cb24-40"><a href="#cb24-40"></a>    .tab_options(</span>
+<span id="cb24-41"><a href="#cb24-41"></a>        table_width<span class="op">=</span><span class="st">"100%"</span>,</span>
+<span id="cb24-42"><a href="#cb24-42"></a>        container_width<span class="op">=</span><span class="st">"100%"</span>,</span>
+<span id="cb24-43"><a href="#cb24-43"></a>        table_font_size<span class="op">=</span><span class="st">"14px"</span>,</span>
+<span id="cb24-44"><a href="#cb24-44"></a>        heading_title_font_size<span class="op">=</span><span class="st">"18px"</span>,</span>
+<span id="cb24-45"><a href="#cb24-45"></a>        heading_subtitle_font_size<span class="op">=</span><span class="st">"14px"</span>,</span>
+<span id="cb24-46"><a href="#cb24-46"></a>        column_labels_border_bottom_style<span class="op">=</span><span class="st">"solid"</span>,</span>
+<span id="cb24-47"><a href="#cb24-47"></a>        column_labels_border_bottom_width<span class="op">=</span><span class="st">"3px"</span>,</span>
+<span id="cb24-48"><a href="#cb24-48"></a>        column_labels_border_bottom_color<span class="op">=</span><span class="st">"#3498db"</span>,</span>
+<span id="cb24-49"><a href="#cb24-49"></a>        table_body_border_bottom_style<span class="op">=</span><span class="st">"solid"</span>,</span>
+<span id="cb24-50"><a href="#cb24-50"></a>        table_body_border_bottom_width<span class="op">=</span><span class="st">"1px"</span>,</span>
+<span id="cb24-51"><a href="#cb24-51"></a>        table_body_border_bottom_color<span class="op">=</span><span class="st">"#dee2e6"</span></span>
+<span id="cb24-52"><a href="#cb24-52"></a>    )</span>
+<span id="cb24-53"><a href="#cb24-53"></a>    .tab_source_note(</span>
+<span id="cb24-54"><a href="#cb24-54"></a>        source_note<span class="op">=</span><span class="st">"Formulas assume constant temperature and current rates unless otherwise specified."</span></span>
+<span id="cb24-55"><a href="#cb24-55"></a>    )</span>
+<span id="cb24-56"><a href="#cb24-56"></a>)</span>
+<span id="cb24-57"><a href="#cb24-57"></a></span>
+<span id="cb24-58"><a href="#cb24-58"></a><span class="co"># Display</span></span>
+<span id="cb24-59"><a href="#cb24-59"></a>table.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="statistical-feature-aggregation" class="level4">
+<h4 class="anchored" data-anchor-id="statistical-feature-aggregation">Statistical feature aggregation</h4>
+<p>The diagnostic signals derived above (e.g., incremental capacity curves) remain high-resolution time- or cycle-series data. To produce robust, concise, and comparable inputs for the Bayesian regression model, a final aggregation step is performed by extracting statistical moments from each diagnostic signal <span class="math inline">s(x)</span>. This aggregation reduces hundreds of data points per cycle into a small number of highly informative scalar features.</p>
+<div id="36" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb25-2"><a href="#cb25-2"></a>    <span class="st">"Statistical Feature"</span>: [</span>
+<span id="cb25-3"><a href="#cb25-3"></a>        <span class="st">"Mean"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>        <span class="st">"Standard Deviation"</span>, </span>
+<span id="cb25-5"><a href="#cb25-5"></a>        <span class="st">"Skewness"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>        <span class="st">"Kurtosis"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7"></a>        <span class="st">"RMS (Root-Mean-Square)"</span>,</span>
+<span id="cb25-8"><a href="#cb25-8"></a>        <span class="st">"Entropy"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9"></a>        <span class="st">"Crest Factor"</span>,</span>
+<span id="cb25-10"><a href="#cb25-10"></a>        <span class="st">"AUC (Area Under the Curve)"</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a>    ],</span>
+<span id="cb25-12"><a href="#cb25-12"></a>    <span class="st">"Role in Degradation Modeling"</span>: [</span>
+<span id="cb25-13"><a href="#cb25-13"></a>        <span class="st">"Captures the overall trend or shift of the diagnostic signal."</span>,</span>
+<span id="cb25-14"><a href="#cb25-14"></a>        <span class="st">"Measures variability and cycle-to-cycle noise."</span>,</span>
+<span id="cb25-15"><a href="#cb25-15"></a>        <span class="st">"Indicates asymmetry or bias in the signal distribution."</span>,</span>
+<span id="cb25-16"><a href="#cb25-16"></a>        <span class="st">"Quantifies the presence of extreme values or anomalies."</span>,</span>
+<span id="cb25-17"><a href="#cb25-17"></a>        <span class="st">"Represents the overall magnitude and stress level of the signal."</span>,</span>
+<span id="cb25-18"><a href="#cb25-18"></a>        <span class="st">"Measures irregularity or disorder, often increasing with non-uniform degradation."</span>,</span>
+<span id="cb25-19"><a href="#cb25-19"></a>        <span class="st">"Compares peak magnitude to average signal level, highlighting abnormal peaks."</span>,</span>
+<span id="cb25-20"><a href="#cb25-20"></a>        <span class="st">"Captures cumulative effects such as total energy loss or degradation trends."</span></span>
+<span id="cb25-21"><a href="#cb25-21"></a>    ]</span>
+<span id="cb25-22"><a href="#cb25-22"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="37" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>table <span class="op">=</span> (</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    GT(data)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    .tab_header(</span>
+<span id="cb26-4"><a href="#cb26-4"></a>        title<span class="op">=</span>md(<span class="st">"Statistical Features for Battery Degradation Modeling"</span>),</span>
+<span id="cb26-5"><a href="#cb26-5"></a>        subtitle<span class="op">=</span><span class="st">"Key signal processing metrics used to quantify degradation patterns"</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>    )</span>
+<span id="cb26-7"><a href="#cb26-7"></a>    .cols_label(</span>
+<span id="cb26-8"><a href="#cb26-8"></a>        <span class="op">**</span>{</span>
+<span id="cb26-9"><a href="#cb26-9"></a>            <span class="st">"Statistical Feature"</span>: md(<span class="st">"**Statistical Feature**"</span>),</span>
+<span id="cb26-10"><a href="#cb26-10"></a>            <span class="st">"Role in Degradation Modeling"</span>: md(<span class="st">"**Role in Degradation Modeling**"</span>)</span>
+<span id="cb26-11"><a href="#cb26-11"></a>        }</span>
+<span id="cb26-12"><a href="#cb26-12"></a>    )</span>
+<span id="cb26-13"><a href="#cb26-13"></a>    .tab_options(</span>
+<span id="cb26-14"><a href="#cb26-14"></a>        table_width<span class="op">=</span><span class="st">"100%"</span>,</span>
+<span id="cb26-15"><a href="#cb26-15"></a>        container_width<span class="op">=</span><span class="st">"100%"</span>,</span>
+<span id="cb26-16"><a href="#cb26-16"></a>        table_font_size<span class="op">=</span><span class="st">"14px"</span>,</span>
+<span id="cb26-17"><a href="#cb26-17"></a>        heading_title_font_size<span class="op">=</span><span class="st">"18px"</span>,</span>
+<span id="cb26-18"><a href="#cb26-18"></a>        heading_subtitle_font_size<span class="op">=</span><span class="st">"14px"</span>,</span>
+<span id="cb26-19"><a href="#cb26-19"></a>        column_labels_border_bottom_style<span class="op">=</span><span class="st">"solid"</span>,</span>
+<span id="cb26-20"><a href="#cb26-20"></a>        column_labels_border_bottom_width<span class="op">=</span><span class="st">"3px"</span>,</span>
+<span id="cb26-21"><a href="#cb26-21"></a>        column_labels_border_bottom_color<span class="op">=</span><span class="st">"#3498db"</span>,</span>
+<span id="cb26-22"><a href="#cb26-22"></a>        table_body_border_bottom_style<span class="op">=</span><span class="st">"solid"</span>,</span>
+<span id="cb26-23"><a href="#cb26-23"></a>        table_body_border_bottom_width<span class="op">=</span><span class="st">"1px"</span>,</span>
+<span id="cb26-24"><a href="#cb26-24"></a>        table_body_border_bottom_color<span class="op">=</span><span class="st">"#dee2e6"</span></span>
+<span id="cb26-25"><a href="#cb26-25"></a>    )</span>
+<span id="cb26-26"><a href="#cb26-26"></a>    .tab_source_note(</span>
+<span id="cb26-27"><a href="#cb26-27"></a>        source_note<span class="op">=</span><span class="st">"Bayesian Modelling|Anthony Faustine@ 2025"</span></span>
+<span id="cb26-28"><a href="#cb26-28"></a>    )</span>
+<span id="cb26-29"><a href="#cb26-29"></a>)</span>
+<span id="cb26-30"><a href="#cb26-30"></a></span>
+<span id="cb26-31"><a href="#cb26-31"></a>table.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>These statistical summaries form the input vector <span class="math inline">\mathbf{x}</span> in the linear predictor <span class="math inline">\eta_i = \dots + \mathbf{x}_i^{\top} \boldsymbol{\beta}</span>. Such summaries of early-cycle behavior often preserve key degradation signatures while significantly reducing model complexity.</p>
+</section>
+<section id="feature-selection" class="level4">
+<h4 class="anchored" data-anchor-id="feature-selection">Feature selection</h4>
+<p>After extracting a broad set of diagnostic and statistical features, feature selection is required. Using all available features can lead to overfitting, increased model complexity, and multicollinearity, which compromises interpretability of the Bayesian coefficients (<span class="math inline">\boldsymbol{\beta}</span>). The final four features selected for regression (<span class="math inline">\mathbf{x}</span>) are:</p>
+<ul>
+<li>charge_current_auc</li>
+<li>charge_current_mean</li>
+<li>discharge_voltage_auc</li>
+<li>discharge_voltage_crest</li>
+</ul>
+</section>
+<section id="load-pre-processed-calce-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="load-pre-processed-calce-dataset">Load pre-processed CALCE dataset</h4>
+<p>The raw CALCE dataset is a widely used public resource in battery prognostics and can be downloaded via the <a href="https://ieee-dataport.org/documents/calce-battery-group">CALCE dataset link</a>.</p>
+<p>For this notebook, however, we use pre-processed data that has been cleaned and formatted. This pre-processing reuses the techniques and codes originally published in this paper <a href="https://www.nature.com/articles/s42256-024-00972-x#citeas">Ref</a>. Using the cleaned data allows us to focus immediately on the Bayesian modeling aspects without the overhead of complex data preparation</p>
+<div id="41" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>FIGSHARE_DOWNLOAD_URL <span class="op">=</span> <span class="st">"https://ndownloader.figshare.com/files/59415941"</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>features <span class="op">=</span> [<span class="st">"charge_current_auc"</span>, <span class="st">"charge_current_mean"</span>, <span class="st">"discharge_voltage_crest"</span>, <span class="st">"discharge_voltage_auc"</span>]</span>
+<span id="cb27-3"><a href="#cb27-3"></a>target <span class="op">=</span> <span class="st">"capacity"</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>data <span class="op">=</span> pd.read_parquet(FIGSHARE_DOWNLOAD_URL, engine<span class="op">=</span><span class="st">"pyarrow"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5"></a>upper_bound, lower_bound <span class="op">=</span> data[target].<span class="bu">max</span>(), data[target].<span class="bu">min</span>()</span>
+<span id="cb27-6"><a href="#cb27-6"></a>df <span class="op">=</span> data[data.CellType <span class="op">==</span> <span class="st">"CS2"</span>].copy()</span>
+<span id="cb27-7"><a href="#cb27-7"></a>test_df <span class="op">=</span> df[df.BatteryID <span class="op">!=</span> <span class="st">"CALCE_CS2_38"</span>]</span>
+<span id="cb27-8"><a href="#cb27-8"></a>train_df <span class="op">=</span> df[df.BatteryID <span class="op">==</span> <span class="st">"CALCE_CS2_38"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="42" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>plots <span class="op">=</span> []</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="cf">for</span> feature_name <span class="kw">in</span> features:</span>
+<span id="cb28-3"><a href="#cb28-3"></a>    plot <span class="op">=</span> scatter_plot(train_df, y_col<span class="op">=</span>feature_name)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>    plots.append(plot <span class="op">+</span> labs(title<span class="op">=</span>feature_name) <span class="op">+</span> modern_theme(font_size<span class="op">=</span><span class="dv">9</span>))</span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a>plot<span class="op">=</span>gggrid(plots, ncol<span class="op">=</span><span class="dv">2</span>) <span class="op">+</span> ggsize(<span class="dv">650</span>, <span class="dv">450</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="43" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The figure below plots the four selected features against cycle number for a representative battery. These plots empirically validate the selection process, as all four features exhibit clear, monotonic changes with cycling and, critically, show a distinct shift or acceleration in slope as the battery enters the failure state (<span class="math inline">\text{SoH} \le 80\%</span>, shown in green). This strong visual correlation provides high confidence that these inputs will effectively drive the degradation component of our Bayesian model.</p>
+</section>
+</section>
+<section id="bayesian-model-building" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-model-building">Bayesian model building</h3>
+<p>Before constructing the Bayesian Beta regression model, it is necessary to define a rigorous evaluation strategy. The central question addressed here is whether a model trained on data from a single battery can successfully generalize to other batteries whose degradation trajectories were not observed during training.</p>
+<p>This setting reflects a common real-world scenario in which detailed historical data may be available for only a limited number of prototype units, while the deployed model must operate reliably across an entire manufacturing batch.</p>
+<p>To ensure a fair and controlled evaluation, all batteries considered in this study are restricted to a single cell chemistry type (“CS2”). By holding the underlying electrochemical properties constant, the analysis isolates unit-to-unit variability rather than confounding the results with chemistry-dependent effects.</p>
+<p>A one-shot generalization split is employed. A single representative battery (CALCE_CS2_38) is designated as the training set (train_df). The model learns the degradation rate (<span class="math inline">\lambda</span>) and operational sensitivities (<span class="math inline">\boldsymbol{\beta}</span>) exclusively from this unit’s historical data. All remaining batteries of the same chemistry are assigned to the test set (test_df). Model performance is therefore evaluated based on its ability to predict capacity fade for previously unseen batteries using only the generalizable parameters inferred from the training unit.</p>
+<p>With the input data rigorously cleaned, aligned, scaled, and reduced to the four most informative operational features (<span class="math inline">\mathbf{x}</span>), the Bayesian regression model can now be implemented and fitted. As defined in the Beta Likelihood and Priors subsection, the model is specified as a Bayesian Beta regression with a logit link function, enabling the modeling of bounded battery capacity (<span class="math inline">\tilde{C}</span>).</p>
+<div id="47" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># from bayes.regression.beta_degradation import beta_regression_model</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>model, scaler <span class="op">=</span> beta_regression_model(</span>
+<span id="cb30-3"><a href="#cb30-3"></a>    train_df, features, target<span class="op">=</span>target, upper_bound<span class="op">=</span>upper_bound, lower_bound<span class="op">=</span>lower_bound</span>
+<span id="cb30-4"><a href="#cb30-4"></a>)</span>
+<span id="cb30-5"><a href="#cb30-5"></a>model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="prior-predictive-check" class="level4">
+<h4 class="anchored" data-anchor-id="prior-predictive-check">Prior Predictive Check</h4>
+<p>Following standard Bayesian practice, model validation begins with a Prior Predictive Check (PPC). The PPC involves simulating data from the model using only the prior distributions, without conditioning on any observed measurements. This procedure serves as a critical sanity check, verifying that the encoded engineering knowledge produces physically plausible behavior.</p>
+<div id="49" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="cf">with</span> model:</span>
+<span id="cb31-2"><a href="#cb31-2"></a>    prior_pred <span class="op">=</span> pm.sample_prior_predictive(samples<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">1.8</span>))</span>
+<span id="cb31-5"><a href="#cb31-5"></a>az.plot_ppc(prior_pred, group<span class="op">=</span><span class="st">"prior"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb31-6"><a href="#cb31-6"></a>plt.xlabel(<span class="st">"Capacity"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a>plt.ylabel(<span class="st">"Density"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The figure below, compare the predicted prior distribution (green line) against the observed data (blue line). This plot is essential for validating that our model’s structural assumptions align with physical reality</p>
+<div id="51" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>y_prior <span class="op">=</span> prior_pred.prior[<span class="st">"capacity_pred"</span>].stack(sample<span class="op">=</span>[<span class="st">"chain"</span>, <span class="st">"draw"</span>]).values</span>
+<span id="cb32-2"><a href="#cb32-2"></a>y_obs <span class="op">=</span> train_df[target].values</span>
+<span id="cb32-3"><a href="#cb32-3"></a>post_mean <span class="op">=</span> y_prior.mean()</span>
+<span id="cb32-4"><a href="#cb32-4"></a>n_draws <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
+<span id="cb32-6"><a href="#cb32-6"></a>draw_idx <span class="op">=</span> rng.choice(y_prior.shape[<span class="dv">0</span>], size<span class="op">=</span>n_draws, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb32-7"><a href="#cb32-7"></a>y_prior_subset <span class="op">=</span> y_prior[:, draw_idx].flatten()</span>
+<span id="cb32-8"><a href="#cb32-8"></a>df_prior <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb32-9"><a href="#cb32-9"></a>    {</span>
+<span id="cb32-10"><a href="#cb32-10"></a>        <span class="st">"SoH"</span>: np.concatenate([y_obs, y_prior_subset]),</span>
+<span id="cb32-11"><a href="#cb32-11"></a>        <span class="st">"type"</span>: [<span class="st">"observed"</span>] <span class="op">*</span> <span class="bu">len</span>(y_obs) <span class="op">+</span> [<span class="st">"prior"</span>] <span class="op">*</span> <span class="bu">len</span>(y_prior_subset),</span>
+<span id="cb32-12"><a href="#cb32-12"></a>    }</span>
+<span id="cb32-13"><a href="#cb32-13"></a>)</span>
+<span id="cb32-14"><a href="#cb32-14"></a>plot<span class="op">=</span>plot_density(</span>
+<span id="cb32-15"><a href="#cb32-15"></a>    df_prior,</span>
+<span id="cb32-16"><a href="#cb32-16"></a>    x_col<span class="op">=</span><span class="st">"SoH"</span>,</span>
+<span id="cb32-17"><a href="#cb32-17"></a>    color_col<span class="op">=</span><span class="st">"type"</span>,</span>
+<span id="cb32-18"><a href="#cb32-18"></a>    x_label<span class="op">=</span><span class="st">"Capacity"</span>,</span>
+<span id="cb32-19"><a href="#cb32-19"></a>    fig_size<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">400</span>),</span>
+<span id="cb32-20"><a href="#cb32-20"></a>    title<span class="op">=</span><span class="st">"Prior comparison"</span>,</span>
+<span id="cb32-21"><a href="#cb32-21"></a>    subtitle<span class="op">=</span><span class="st">"Prior Predictive Check"</span>,</span>
+<span id="cb32-22"><a href="#cb32-22"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="52" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>From the two figures above, the PPC confirms the structural validity of the model:</p>
+<ul>
+<li><p>High-Confidence Initial Capacity: The predicted capacity distribution exhibits a dominant peak near <span class="math inline">\mu \approx 1.0</span>, reflecting the highly informative precision prior <span class="math inline">\phi \sim \text{Gamma}(100, 2.0)</span> (mean <span class="math inline">\phi = 50</span>). This enforces a strong prior belief in low sensor noise and high initial measurement confidence.</p></li>
+<li><p>Realistic Degradation Envelope: The prior predictive distribution remains tightly constrained across the capacity range. This behavior is driven by the informative degradation-rate prior on <span class="math inline">\lambda</span>, which minimizes the probability of immediate or catastrophic capacity loss and enforces physically plausible degradation trajectories.</p></li>
+<li><p>Acknowledgment of Failure Modes: While constrained, the prior allocates non-negligible probability mass to lower capacity regions (e.g., <span class="math inline">\tilde{C} \approx 0.4</span>–<span class="math inline">0.7</span>). This reflects uncertainty in the degradation amplitude and rate parameters, allowing for degradation and failure scenarios without overstating their likelihood.</p></li>
+</ul>
+<p>The PPC demonstrates that the model respects physical bounds, reflects realistic degradation behavior, and balances strong prior knowledge with controlled uncertainty. The model is therefore suitable for posterior inference.</p>
+</section>
+</section>
+<section id="running-inference" class="level3">
+<h3 class="anchored" data-anchor-id="running-inference">Running inference</h3>
+<p>With the model fully specified, priors validated through the PPC, and input features prepared, posterior inference is performed using Markov Chain Monte Carlo (MCMC) sampling. This step approximates the posterior distribution by updating prior beliefs using the observed data, forming the core of Bayesian inference.</p>
+<div id="55" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="cf">with</span> model:</span>
+<span id="cb34-2"><a href="#cb34-2"></a>    idata <span class="op">=</span> pm.sample(<span class="dv">2000</span>, tune<span class="op">=</span><span class="dv">2000</span>, target_accept<span class="op">=</span><span class="fl">0.95</span>, random_seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>As discussed in <a href="https://sambaiga.github.io/blog/2025/10/bayesian-modelling-01.html">Part 1</a>, the MCMC process uses the No-U-Turn Sampler (NUTS) to explore the parameter space. The primary arguments guide this process:</p>
+<ul>
+<li>tune=2000: Specifies 2000 initial samples that are used solely to adapt the sampler’s step size and are then discarded. A high tuning value is crucial for complex, highly curved posteriors (like those involving Beta distributions) to ensure stable exploration.</li>
+<li>draws=2000: Specifies 2000 final samples kept from the chain. These collected samples form the final Posterior Distribution for every model parameter (<span class="math inline">\lambda</span>, <span class="math inline">\beta</span>, <span class="math inline">\phi</span>).</li>
+<li>target_accept=0.95: Forces the sampler to take smaller, more cautious steps. This high acceptance rate is necessary to avoid divergences in challenging models, ensuring a high-quality, accurate representation of the posterior distribution, though it increases computation time.</li>
+</ul>
+<p>The resulting idata object now contains thousands of samples for every single model parameter, representing our comprehensive, uncertainty-quantified solution. The next step is to ensure these samples are reliable</p>
+<section id="model-diagnostics" class="level4">
+<h4 class="anchored" data-anchor-id="model-diagnostics">Model diagnostics</h4>
+<p>After sampling, convergence diagnostics are evaluated to ensure the reliability of posterior estimates. The validity of all subsequent inferences depends on whether the Markov chains have adequately explored the parameter space.</p>
+<div id="58" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="bu">vars</span> <span class="op">=</span> [<span class="st">"beta"</span>, <span class="st">"intercept"</span>, <span class="st">"lambda_rate"</span>, <span class="st">"phi"</span>, <span class="st">"degr_amp"</span>]</span>
+<span id="cb35-2"><a href="#cb35-2"></a>data_summary <span class="op">=</span> az.summary(idata, var_names<span class="op">=</span><span class="bu">vars</span>, kind<span class="op">=</span><span class="st">"diagnostics"</span>)[[<span class="st">"ess_bulk"</span>, <span class="st">"ess_tail"</span>, <span class="st">"r_hat"</span>]]</span>
+<span id="cb35-3"><a href="#cb35-3"></a>GT(data_summary.reset_index()).tab_header(title<span class="op">=</span><span class="st">""</span>, subtitle<span class="op">=</span><span class="st">"Diagnostics Summary"</span>).cols_label(</span>
+<span id="cb35-4"><a href="#cb35-4"></a>    {</span>
+<span id="cb35-5"><a href="#cb35-5"></a>        <span class="st">"ess_bulk"</span>: <span class="st">"ESS Bulk"</span>,</span>
+<span id="cb35-6"><a href="#cb35-6"></a>        <span class="st">"ess_tail"</span>: <span class="st">"ESS Tail."</span>,</span>
+<span id="cb35-7"><a href="#cb35-7"></a>        <span class="st">"r_hat"</span>: <span class="st">"R-hat"</span>,</span>
+<span id="cb35-8"><a href="#cb35-8"></a>    }</span>
+<span id="cb35-9"><a href="#cb35-9"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Two primary diagnostics are considered:</p>
+<ol type="1">
+<li><p><span class="math inline">\hat{R}</span> (Gelman–Rubin statistic): All parameters exhibit <span class="math inline">\hat{R} = 1.0</span>, indicating excellent chain mixing and agreement across chains.</p></li>
+<li><p>Effective Sample Size (ESS): ESS values exceed 400 for all parameters (ranging from approximately 4,200 to 7,300), confirming that a sufficient number of independent samples were obtained for stable estimation of posterior means and credible intervals.</p></li>
+</ol>
+<p>These diagnostics collectively indicate successful convergence and robust posterior sampling.</p>
+</section>
+<section id="analysing-the-posterior-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="analysing-the-posterior-distribution">Analysing the posterior distribution</h4>
+<p>With convergence confirmed, the sampled chains provide a reliable approximation of the posterior distribution. The marginal posterior densities and corresponding trace plots for the core model parameters are examined to quantify degradation dynamics and assess the influence of operational features.</p>
+<p>This analysis enables principled uncertainty quantification of degradation rates and feature effects, supporting interpretable and decision-relevant predictions for battery health forecasting.</p>
+<div id="61" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>az.plot_trace(idata, var_names<span class="op">=</span><span class="bu">vars</span>, compact<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The <code>analyze_parameter</code> function below acts as a post-processing utility dedicated to generating publication-ready summary tables from the output of the MCMC sampling.</p>
+<div id="63" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">def</span> analyze_parameter(</span>
+<span id="cb37-2"><a href="#cb37-2"></a>    idata,</span>
+<span id="cb37-3"><a href="#cb37-3"></a>    parameter: <span class="bu">str</span>,</span>
+<span id="cb37-4"><a href="#cb37-4"></a>    features: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb37-5"><a href="#cb37-5"></a>    hdi_prob: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.95</span>,</span>
+<span id="cb37-6"><a href="#cb37-6"></a>    title: <span class="bu">str</span> <span class="op">=</span> <span class="st">"Parameter Summary"</span>,</span>
+<span id="cb37-7"><a href="#cb37-7"></a>    subtitle: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb37-8"><a href="#cb37-8"></a>) <span class="op">-&gt;</span> GT:</span>
+<span id="cb37-9"><a href="#cb37-9"></a>    <span class="co">"""Generates a formatted summary table for a single parameter using Great Tables.</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a></span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="co">    This function extracts posterior summary statistics from ArviZ InferenceData and</span></span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="co">    returns a beautifully styled table suitable for reports, notebooks, or publications.</span></span>
+<span id="cb37-13"><a href="#cb37-13"></a></span>
+<span id="cb37-14"><a href="#cb37-14"></a><span class="co">    Args:</span></span>
+<span id="cb37-15"><a href="#cb37-15"></a><span class="co">        idata: ArviZ InferenceData object containing posterior samples.</span></span>
+<span id="cb37-16"><a href="#cb37-16"></a><span class="co">        parameter: Name of the parameter to summarize (e.g., "beta", "alpha", "sigma").</span></span>
+<span id="cb37-17"><a href="#cb37-17"></a><span class="co">        features: List of feature names to label rows. Required and used only when</span></span>
+<span id="cb37-18"><a href="#cb37-18"></a><span class="co">            ``parameter == "beta"``. Length must match the number of coefficients.</span></span>
+<span id="cb37-19"><a href="#cb37-19"></a><span class="co">        hdi_prob: Highest density interval probability (default: 0.95).</span></span>
+<span id="cb37-20"><a href="#cb37-20"></a><span class="co">        title: Main title for the table.</span></span>
+<span id="cb37-21"><a href="#cb37-21"></a><span class="co">        subtitle: Optional subtitle. If None and parameter is "beta", defaults to</span></span>
+<span id="cb37-22"><a href="#cb37-22"></a><span class="co">            "Beta coefficient analysis".</span></span>
+<span id="cb37-23"><a href="#cb37-23"></a></span>
+<span id="cb37-24"><a href="#cb37-24"></a><span class="co">    Returns:</span></span>
+<span id="cb37-25"><a href="#cb37-25"></a><span class="co">        A Great Tables (GT) object ready for display or further customization.</span></span>
+<span id="cb37-26"><a href="#cb37-26"></a></span>
+<span id="cb37-27"><a href="#cb37-27"></a><span class="co">    Raises:</span></span>
+<span id="cb37-28"><a href="#cb37-28"></a><span class="co">        ValueError: If ``features`` is provided for non-beta parameters or has wrong length.</span></span>
+<span id="cb37-29"><a href="#cb37-29"></a></span>
+<span id="cb37-30"><a href="#cb37-30"></a><span class="co">    Example:</span></span>
+<span id="cb37-31"><a href="#cb37-31"></a><span class="co">        &gt;&gt;&gt; gt = analyze_parameter(idata, "beta", features=X.columns.tolist())</span></span>
+<span id="cb37-32"><a href="#cb37-32"></a><span class="co">        &gt;&gt;&gt; gt  # displays nicely in Jupyter</span></span>
+<span id="cb37-33"><a href="#cb37-33"></a><span class="co">    """</span></span>
+<span id="cb37-34"><a href="#cb37-34"></a>    <span class="cf">if</span> features <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> parameter <span class="op">!=</span> <span class="st">"beta"</span>:</span>
+<span id="cb37-35"><a href="#cb37-35"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"`features` should only be provided when parameter == 'beta'"</span>)</span>
+<span id="cb37-36"><a href="#cb37-36"></a></span>
+<span id="cb37-37"><a href="#cb37-37"></a>    <span class="co"># Get summary statistics from ArviZ</span></span>
+<span id="cb37-38"><a href="#cb37-38"></a>    summary_df <span class="op">=</span> az.summary(</span>
+<span id="cb37-39"><a href="#cb37-39"></a>        idata,</span>
+<span id="cb37-40"><a href="#cb37-40"></a>        var_names<span class="op">=</span>[parameter],</span>
+<span id="cb37-41"><a href="#cb37-41"></a>        hdi_prob<span class="op">=</span>hdi_prob,</span>
+<span id="cb37-42"><a href="#cb37-42"></a>        kind<span class="op">=</span><span class="st">"stats"</span>,</span>
+<span id="cb37-43"><a href="#cb37-43"></a>        fmt<span class="op">=</span><span class="st">"wide"</span>,</span>
+<span id="cb37-44"><a href="#cb37-44"></a>    ).reset_index(names<span class="op">=</span><span class="st">"feature"</span>)</span>
+<span id="cb37-45"><a href="#cb37-45"></a></span>
+<span id="cb37-46"><a href="#cb37-46"></a>    <span class="co"># Assign meaningful feature names for beta coefficients</span></span>
+<span id="cb37-47"><a href="#cb37-47"></a>    <span class="cf">if</span> parameter <span class="op">==</span> <span class="st">"beta"</span>:</span>
+<span id="cb37-48"><a href="#cb37-48"></a>        <span class="cf">if</span> features <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb37-49"><a href="#cb37-49"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"`features` must be provided when analyzing 'beta' parameter"</span>)</span>
+<span id="cb37-50"><a href="#cb37-50"></a>        <span class="cf">if</span> <span class="bu">len</span>(features) <span class="op">!=</span> <span class="bu">len</span>(summary_df):</span>
+<span id="cb37-51"><a href="#cb37-51"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb37-52"><a href="#cb37-52"></a>                <span class="ss">f"Length of features (</span><span class="sc">{</span><span class="bu">len</span>(features)<span class="sc">}</span><span class="ss">) must equal number of beta coefficients (</span><span class="sc">{</span><span class="bu">len</span>(summary_df)<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb37-53"><a href="#cb37-53"></a>            )</span>
+<span id="cb37-54"><a href="#cb37-54"></a>        summary_df[<span class="st">"feature"</span>] <span class="op">=</span> features</span>
+<span id="cb37-55"><a href="#cb37-55"></a></span>
+<span id="cb37-56"><a href="#cb37-56"></a>    conditions <span class="op">=</span> [</span>
+<span id="cb37-57"><a href="#cb37-57"></a>        summary_df[<span class="st">"hdi_2.5%"</span>] <span class="op">&gt;</span> <span class="dv">0</span>,  <span class="co"># Entire interval is positive</span></span>
+<span id="cb37-58"><a href="#cb37-58"></a>        summary_df[<span class="st">"hdi_97.5%"</span>] <span class="op">&lt;</span> <span class="dv">0</span>,  <span class="co"># Entire interval is negative</span></span>
+<span id="cb37-59"><a href="#cb37-59"></a>    ]</span>
+<span id="cb37-60"><a href="#cb37-60"></a>    choices <span class="op">=</span> [<span class="st">"Positive"</span>, <span class="st">"Negative"</span>]</span>
+<span id="cb37-61"><a href="#cb37-61"></a>    summary_df[<span class="st">"certainty"</span>] <span class="op">=</span> np.select(conditions, choices, default<span class="op">=</span><span class="st">"Uncertain"</span>)</span>
+<span id="cb37-62"><a href="#cb37-62"></a></span>
+<span id="cb37-63"><a href="#cb37-63"></a>    <span class="co"># Set default subtitle for beta coefficients</span></span>
+<span id="cb37-64"><a href="#cb37-64"></a>    <span class="cf">if</span> subtitle <span class="kw">is</span> <span class="va">None</span> <span class="kw">and</span> parameter <span class="op">==</span> <span class="st">"beta"</span>:</span>
+<span id="cb37-65"><a href="#cb37-65"></a>        subtitle <span class="op">=</span> <span class="st">"Beta coefficient analysis"</span></span>
+<span id="cb37-66"><a href="#cb37-66"></a></span>
+<span id="cb37-67"><a href="#cb37-67"></a>    gt_table <span class="op">=</span> (</span>
+<span id="cb37-68"><a href="#cb37-68"></a>        GT(summary_df)</span>
+<span id="cb37-69"><a href="#cb37-69"></a>        .tab_header(</span>
+<span id="cb37-70"><a href="#cb37-70"></a>            title<span class="op">=</span>md(<span class="ss">f"**</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">**"</span>),</span>
+<span id="cb37-71"><a href="#cb37-71"></a>            subtitle<span class="op">=</span>md(subtitle) <span class="cf">if</span> subtitle <span class="cf">else</span> <span class="va">None</span>,</span>
+<span id="cb37-72"><a href="#cb37-72"></a>        )</span>
+<span id="cb37-73"><a href="#cb37-73"></a>        .fmt_number(</span>
+<span id="cb37-74"><a href="#cb37-74"></a>            columns<span class="op">=</span>[<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"hdi_2.5%"</span>, <span class="st">"hdi_97.5%"</span>],</span>
+<span id="cb37-75"><a href="#cb37-75"></a>            decimals<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb37-76"><a href="#cb37-76"></a>        )</span>
+<span id="cb37-77"><a href="#cb37-77"></a>        .data_color(</span>
+<span id="cb37-78"><a href="#cb37-78"></a>            columns<span class="op">=</span>[<span class="st">"certainty"</span>],</span>
+<span id="cb37-79"><a href="#cb37-79"></a>            palette<span class="op">=</span>[<span class="st">"#E1DFDD"</span>, <span class="st">"#F18F01"</span>, <span class="st">"#F18F01"</span>],</span>
+<span id="cb37-80"><a href="#cb37-80"></a>            domain<span class="op">=</span>[<span class="st">"Uncertain"</span>, <span class="st">"Negative"</span>, <span class="st">"Positive"</span>],</span>
+<span id="cb37-81"><a href="#cb37-81"></a>        )</span>
+<span id="cb37-82"><a href="#cb37-82"></a>        .cols_label(</span>
+<span id="cb37-83"><a href="#cb37-83"></a>            feature<span class="op">=</span>md(<span class="st">"**Feature**"</span>),</span>
+<span id="cb37-84"><a href="#cb37-84"></a>            mean<span class="op">=</span>md(<span class="st">"**Mean**"</span>),</span>
+<span id="cb37-85"><a href="#cb37-85"></a>            sd<span class="op">=</span>md(<span class="st">"**SD**"</span>),</span>
+<span id="cb37-86"><a href="#cb37-86"></a>            <span class="op">**</span>{<span class="st">"hdi_2.5%"</span>: md(<span class="st">"**HDI 2.5%**"</span>)},</span>
+<span id="cb37-87"><a href="#cb37-87"></a>            <span class="op">**</span>{<span class="st">"hdi_97.5%"</span>: md(<span class="st">"**HDI 97.5%**"</span>)},</span>
+<span id="cb37-88"><a href="#cb37-88"></a>        )</span>
+<span id="cb37-89"><a href="#cb37-89"></a>        .cols_align(align<span class="op">=</span><span class="st">"center"</span>, columns<span class="op">=</span>[<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"hdi_2.5%"</span>, <span class="st">"hdi_97.5%"</span>, <span class="st">"Certainty"</span>])</span>
+<span id="cb37-90"><a href="#cb37-90"></a>        .tab_options(</span>
+<span id="cb37-91"><a href="#cb37-91"></a>            table_font_size<span class="op">=</span><span class="st">"14px"</span>,</span>
+<span id="cb37-92"><a href="#cb37-92"></a>            heading_title_font_size<span class="op">=</span><span class="st">"20px"</span>,</span>
+<span id="cb37-93"><a href="#cb37-93"></a>            heading_subtitle_font_size<span class="op">=</span><span class="st">"16px"</span>,</span>
+<span id="cb37-94"><a href="#cb37-94"></a>            row_group_font_weight<span class="op">=</span><span class="st">"bold"</span>,</span>
+<span id="cb37-95"><a href="#cb37-95"></a>        )</span>
+<span id="cb37-96"><a href="#cb37-96"></a>    )</span>
+<span id="cb37-97"><a href="#cb37-97"></a></span>
+<span id="cb37-98"><a href="#cb37-98"></a>    <span class="cf">return</span> gt_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="identifying-reliable-degradation-drivers-boldsymbolbeta-coefficients" class="level4">
+<h4 class="anchored" data-anchor-id="identifying-reliable-degradation-drivers-boldsymbolbeta-coefficients">Identifying Reliable Degradation Drivers (<span class="math inline">\boldsymbol{\beta}</span> Coefficients)</h4>
+<p>The regression coefficients <span class="math inline">\boldsymbol{\beta}</span> quantify the relationship between the engineered operational features (e.g., current and voltage metrics) and battery State of Health (<span class="math inline">\text{SoH}</span>) through the logit link function, <span class="math inline">\log\left(\frac{\mu}{1-\mu}\right)</span>. The credibility of each predictor is assessed by examining whether its <span class="math inline">95%</span> Highest Density Interval (HDI) includes zero.</p>
+<div id="65" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"beta"</span>, features<span class="op">=</span>features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="66" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The posterior summary indicates that only one feature emerges as a statistically reliable degradation driver at the <span class="math inline">95%</span> credibility level: the discharge_voltage_crest factor. Its <span class="math inline">95%</span> HDI lies entirely below zero (from <span class="math inline">-0.528</span> to <span class="math inline">-0.369</span>), indicating strong evidence of a negative association with capacity retention. This result implies, with high certainty, that increases in this factor accelerate capacity fade. The posterior mean coefficient for the discharge_voltage_crest factor is <span class="math inline">\beta = -0.446</span>. Interpreted on the odds scale as <span class="math display">\text{Odds Ratio} = \exp(-0.446) \approx 0.64</span>.</p>
+<p>Thus, a one-unit increase in the crest factor is associated with an approximately <span class="math inline">36%</span> reduction in the odds of maintaining high battery capacity (<span class="math inline">1 - 0.64</span>).</p>
+<p>In contrast, the <span class="math inline">95%</span> HDIs for the remaining three features include zero (e.g., for charge_current_auc, HDI <span class="math inline">[-0.437,,0.132]</span>). As a result, the model cannot rule out the possibility that their true effects are negligible or even slightly positive. These features therefore do not constitute statistically reliable degradation drivers under the current model specification. Consequently, maintenance and monitoring efforts can be focused on the discharge_voltage_crest factor as the dominant operational indicator of degradation.</p>
+<blockquote class="blockquote">
+<p><strong>🛠️ Action</strong>: Refit the Beta regression model using only the discharge_voltage_crest factor as an operational covariate. Evaluate whether predictive performance on the test set remains comparable and whether the posterior mean and HDI for this coefficient remain stable. Such consistency would further support the conclusion that the remaining features primarily contributed noise rather than explanatory signal.</p>
+</blockquote>
+</section>
+<section id="quantifying-the-degradation-rate-lambda_textrate" class="level4">
+<h4 class="anchored" data-anchor-id="quantifying-the-degradation-rate-lambda_textrate">Quantifying the degradation rate (<span class="math inline">\lambda_{\text{rate}}</span>)</h4>
+<p>The parameter <span class="math inline">\lambda_{\text{rate}}</span> governs the speed of capacity fade induced by cycling. By adopting a weakly informative Lognormal prior with increased dispersion (<span class="math inline">\sigma = 1.0</span>), the data is allowed to dominate the posterior estimation of this parameter.</p>
+<div id="69" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"lambda_rate"</span>, title<span class="op">=</span><span class="st">"Lambda Rate Summary"</span>, subtitle<span class="op">=</span><span class="st">"Degradation rate parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="70" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The posterior summary yields a highly precise estimate of the degradation rate, with a posterior mean of <span class="math inline">\mathbf{0.003}</span> per unit of cycle data. This value is lower than the prior expectation (centered around <span class="math inline">0.005</span>), indicating that although degradation is inevitable, it progresses more gradually than initially assumed.</p>
+<p>The remaining uncertainty is minimal, as evidenced by a small posterior standard deviation (<span class="math inline">\text{SD} = 0.001</span>) and a narrow <span class="math inline">95%</span> HDI of <span class="math inline">[0.002,,0.004]</span>. These results confirm that the MCMC sampler has effectively leveraged the data to tightly constrain the degradation speed.</p>
+</section>
+<section id="model-precision-phi" class="level4">
+<h4 class="anchored" data-anchor-id="model-precision-phi">Model precision (<span class="math inline">\phi</span>)</h4>
+<p>The precision parameter <span class="math inline">\phi</span> controls the dispersion of the Beta likelihood, quantifying how tightly the observed <span class="math inline">\text{SoH}</span> measurements cluster around the model-predicted mean after accounting for all modeled effects.</p>
+<div id="73" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"phi"</span>, title<span class="op">=</span><span class="st">"Phi Summary"</span>, subtitle<span class="op">=</span><span class="st">"Phi  parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="74" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The posterior distribution of <span class="math inline">\phi</span> exhibits a high degree of concentration, with a posterior mean of <span class="math inline">233.461</span> and a narrow <span class="math inline">95%</span> HDI. This large mean precision implies very low residual variance in <span class="math inline">\text{SoH}</span>, indicating that the combined model structure—incorporating the exponential degradation term, the cycling rate <span class="math inline">\lambda</span>, and the operational features <span class="math inline">\boldsymbol{\beta}</span> explains the majority of observed variability across the battery fleet. The narrow HDI further indicates that this high precision is estimated with substantial certainty.</p>
+<section id="degr-amp-parameter-a" class="level5">
+<h5 class="anchored" data-anchor-id="degr-amp-parameter-a">Degr amp parameter (<span class="math inline">A</span>)</h5>
+<p>The degradation amplitude parameter, <span class="math inline">\text{degr\_amp}</span>, quantifies the maximum potential capacity fade attributable solely to the cycling process and operates on the log-odds scale. The posterior mean of <span class="math inline">0.367</span> represents the maximum reduction in <span class="math inline">\text{logit}(\mu)</span> induced by cycling over the battery’s lifetime, thereby determining the vertical extent of the degradation curve.</p>
+<div id="77" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a></span>
+<span id="cb44-2"><a href="#cb44-2"></a>table<span class="op">=</span>analyze_parameter(idata, <span class="st">"degr_amp"</span>, title<span class="op">=</span><span class="st">"Degr amp"</span>, subtitle<span class="op">=</span><span class="st">"A  parameter"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="78" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The <span class="math inline">95%</span> HDI for <span class="math inline">\text{degr\_amp}</span> is narrow and entirely positive, spanning <span class="math inline">[0.265,,0.468]</span>. This provides strong statistical evidence that degradation due to cycling is both certain and quantitatively well-defined, rather than an artifact of noise. The strictly positive support of this parameter confirms that capacity loss is an unavoidable consequence of repeated cycling.</p>
+</section>
+</section>
+<section id="posterior-predictive-check" class="level4">
+<h4 class="anchored" data-anchor-id="posterior-predictive-check">Posterior predictive check</h4>
+<p>Following parameter interpretation, a Posterior Predictive Check (PPC) is performed to assess model adequacy. This step evaluates whether the model, using posterior parameter samples, can generate synthetic data that closely resembles the observed measurements.</p>
+<p>Using PyMC’s <code>sample_posterior_predictive</code> function, samples are drawn from the likelihood conditioned on the converged posterior chains. The resulting PPC compares three distributions: the observed data, the prior predictive distribution, and the posterior predictive distribution.</p>
+<div id="81" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="cf">with</span> model:</span>
+<span id="cb46-2"><a href="#cb46-2"></a>    post_pred <span class="op">=</span> pm.sample_posterior_predictive(idata, var_names<span class="op">=</span>[<span class="st">"y_obs"</span>], random_seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a>y_post <span class="op">=</span> post_pred.posterior_predictive[<span class="st">"y_obs"</span>].stack(sample<span class="op">=</span>[<span class="st">"chain"</span>, <span class="st">"draw"</span>]).values</span>
+<span id="cb46-5"><a href="#cb46-5"></a><span class="co"># Mean of the posterior predictive</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a>post_mean <span class="op">=</span> y_post.mean()</span>
+<span id="cb46-7"><a href="#cb46-7"></a>n_draws <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb46-8"><a href="#cb46-8"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
+<span id="cb46-9"><a href="#cb46-9"></a>draw_idx <span class="op">=</span> rng.choice(y_post.shape[<span class="dv">0</span>], size<span class="op">=</span>n_draws, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb46-10"><a href="#cb46-10"></a>y_post_subset <span class="op">=</span> y_post[:, draw_idx].flatten()</span>
+<span id="cb46-11"><a href="#cb46-11"></a>y_post_subset <span class="op">=</span> y_post_subset <span class="op">*</span> (upper_bound <span class="op">-</span> lower_bound) <span class="op">+</span> lower_bound</span>
+<span id="cb46-12"><a href="#cb46-12"></a></span>
+<span id="cb46-13"><a href="#cb46-13"></a></span>
+<span id="cb46-14"><a href="#cb46-14"></a>df_posterior <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb46-15"><a href="#cb46-15"></a>    {</span>
+<span id="cb46-16"><a href="#cb46-16"></a>        <span class="st">"SoH"</span>: np.concatenate([y_obs, y_post_subset]),</span>
+<span id="cb46-17"><a href="#cb46-17"></a>        <span class="st">"type"</span>: [<span class="st">"observed"</span>] <span class="op">*</span> <span class="bu">len</span>(y_obs) <span class="op">+</span> [<span class="st">"posterior"</span>] <span class="op">*</span> <span class="bu">len</span>(y_post_subset),</span>
+<span id="cb46-18"><a href="#cb46-18"></a>    }</span>
+<span id="cb46-19"><a href="#cb46-19"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The figure below shows a Posterior Predictive Check (PPC), which is the gold standard for evaluating model fit in Bayesian statistics. It compares three key distributions for the capacity: the data we observed, our initial beliefs (Prior), and the model’s final predictions (Posterior).</p>
+<div id="83" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>df <span class="op">=</span> pd.concat([df_prior, df_posterior])</span>
+<span id="cb47-2"><a href="#cb47-2"></a>plot<span class="op">=</span>plot_density(</span>
+<span id="cb47-3"><a href="#cb47-3"></a>    df,</span>
+<span id="cb47-4"><a href="#cb47-4"></a>    x_col<span class="op">=</span><span class="st">"SoH"</span>,</span>
+<span id="cb47-5"><a href="#cb47-5"></a>    color_col<span class="op">=</span><span class="st">"type"</span>,</span>
+<span id="cb47-6"><a href="#cb47-6"></a>    x_label<span class="op">=</span><span class="st">"Capacity"</span>,</span>
+<span id="cb47-7"><a href="#cb47-7"></a>    fig_size<span class="op">=</span>(<span class="dv">700</span>, <span class="dv">350</span>),</span>
+<span id="cb47-8"><a href="#cb47-8"></a>    title<span class="op">=</span><span class="st">"Prior and Posterior Comparison"</span>,</span>
+<span id="cb47-9"><a href="#cb47-9"></a>    subtitle<span class="op">=</span><span class="st">"Beta-regression"</span>,</span>
+<span id="cb47-10"><a href="#cb47-10"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="84" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>The posterior predictive distribution aligns closely with the observed capacity distribution, indicating that the model successfully captures the underlying data-generating process. In contrast, the prior predictive distribution is smoother and exhibits broader structure, reflecting weaker and less targeted assumptions before observing data.</p>
+<p>The shift and sharpening from prior to posterior predictive distributions demonstrate that the observed data provided substantial information and that the model effectively updated its initial beliefs.</p>
+<p>The posterior predictive distribution is strongly skewed toward high capacity values near <span class="math inline">1.0</span>, consistent with the predominance of early- and mid-life measurements. A smaller secondary mode around <span class="math inline">0.3</span>–<span class="math inline">0.4</span> corresponds to a limited number of end-of-life observations. This agreement between synthetic and observed data provides strong evidence of model adequacy and predictive reliability.</p>
+</section>
+</section>
+<section id="predict-capacity-for-a-new-battery" class="level3">
+<h3 class="anchored" data-anchor-id="predict-capacity-for-a-new-battery">Predict capacity for a new battery</h3>
+<p>The final objective of this modeling effort is to transition from parameter estimation to practical prognosis by generating a full Posterior Predictive Distribution (PPD) for the capacity of a new or future battery state. This process converts uncertainty-aware parameter estimates into actionable prognostic predictions.</p>
+<p>The PPD explicitly incorporates two fundamental sources of uncertainty:</p>
+<ol type="1">
+<li><p>Epistemic uncertainty, arising from uncertainty in the estimated model parameters (e.g., the width of the HDI for <span class="math inline">\lambda_{\text{rate}}</span>).</p></li>
+<li><p>Aleatoric uncertainty, representing irreducible noise in the measurement process, as captured by the precision parameter <span class="math inline">\phi</span>.</p></li>
+</ol>
+<p>As a result, the model produces not a single point estimate but a credible interval (HDI) that probabilistically bounds the true capacity value at each cycle.</p>
+<p>To assess generalization performance and demonstrate practical utility for risk management, four cells from the CALCE dataset that were excluded during training are selected for evaluation. For each battery, the same four operational features used in model training are extracted and supplied to the fitted model.</p>
+<div id="87" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">from</span> bayes.regression.beta_degradation <span class="im">import</span> get_posterior_predictions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="88" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>new_df <span class="op">=</span> test_df[test_df[<span class="st">"BatteryID"</span>].isin([<span class="st">"CALCE_CS2_34"</span>, <span class="st">"CALCE_CS2_36"</span>, <span class="st">"CALCE_CS2_37"</span>, <span class="st">"CALCE_CS2_33"</span>])].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Posterior predictions for unseen batteries are generated using the `<code>get_posterior_predictions</code> procedure, which applies the fitted Bayesian model to new input data. The process consists of the following steps:</p>
+<ul>
+<li><strong>Feature Transformation</strong>: The operational features of the new battery are transformed using the same scaling object fitted during training, ensuring consistency between training and inference domains. The corresponding cycle counts are extracted separately, as they directly enter the exponential degradation component of the model.</li>
+<li></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>    x_new <span class="op">=</span> scaler.transform(data[features])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Dummy Target Initialization</strong>: A placeholder target array is supplied to satisfy the dimensional requirements of the PyMC model’s observed variable. These values are ignored during posterior prediction..</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>    y_dummy_scaled <span class="op">=</span> np.full(shape<span class="op">=</span>(X_new_scaled.shape[<span class="dv">0</span>],), fill_value<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Model update</strong>: The new feature matrix, cycle data, and dummy target are injected into the model using pm.set_data, reconfiguring the model for prediction without retraining.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>    <span class="cf">with</span> battery_model:</span>
+<span id="cb53-2"><a href="#cb53-2"></a>        pm.set_data({</span>
+<span id="cb53-3"><a href="#cb53-3"></a>            <span class="st">"x_data"</span>: x_new,</span>
+<span id="cb53-4"><a href="#cb53-4"></a>            <span class="st">"cycle_data"</span>: cycle_new,</span>
+<span id="cb53-5"><a href="#cb53-5"></a>            <span class="st">"y_obs"</span>: y_dummy_scaled</span>
+<span id="cb53-6"><a href="#cb53-6"></a>        })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Posterior Predictive Sampling</strong>: Samples are drawn from the Posterior Predictive Distribution using <code>pm.sample_posterior_predictive</code>, incorporating both posterior parameter uncertainty and observation noise..</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>    <span class="cf">with</span> battery_model:</span>
+<span id="cb54-2"><a href="#cb54-2"></a>        post_pred <span class="op">=</span> pm.sample_posterior_predictive(</span>
+<span id="cb54-3"><a href="#cb54-3"></a>            idata,</span>
+<span id="cb54-4"><a href="#cb54-4"></a>            var_names<span class="op">=</span>[<span class="st">"y_obs"</span>],</span>
+<span id="cb54-5"><a href="#cb54-5"></a>            random_seed<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb54-6"><a href="#cb54-6"></a>            predictions<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb54-7"><a href="#cb54-7"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="90" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>pred_df <span class="op">=</span> get_posterior_predictions(</span>
+<span id="cb55-2"><a href="#cb55-2"></a>    idata, model, scaler, new_df, features, alpha<span class="op">=</span><span class="fl">0.1</span>, upper_bound<span class="op">=</span>upper_bound, lower_bound<span class="op">=</span>lower_bound</span>
+<span id="cb55-3"><a href="#cb55-3"></a>)</span>
+<span id="cb55-4"><a href="#cb55-4"></a>clear_output()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Predictions for each test battery are visualized using the plot_hdi_regression function. The plots display the observed capacity measurements (points) overlaid with the model’s posterior predictive mean and the corresponding <span class="math inline">90%</span> HDI. The blue line represents the posterior predictive mean where the shaded region represents the <span class="math inline">90%</span> HDI, quantifying predictive uncertainty.</p>
+<div id="92" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="im">from</span> bayes.plot.regres_plot <span class="im">import</span> plot_hdi_regression</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="93" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>plot<span class="op">=</span>plot_hdi_regression(</span>
+<span id="cb57-2"><a href="#cb57-2"></a>    pred_df,</span>
+<span id="cb57-3"><a href="#cb57-3"></a>    x_column<span class="op">=</span><span class="st">"cycle"</span>,</span>
+<span id="cb57-4"><a href="#cb57-4"></a>    y_column<span class="op">=</span><span class="st">"capacity"</span>,</span>
+<span id="cb57-5"><a href="#cb57-5"></a>    group_column<span class="op">=</span><span class="st">"BatteryID"</span>,</span>
+<span id="cb57-6"><a href="#cb57-6"></a>    pred_column<span class="op">=</span><span class="st">"pred_median"</span>,</span>
+<span id="cb57-7"><a href="#cb57-7"></a>    x_label<span class="op">=</span><span class="st">"Cycle Number"</span>,</span>
+<span id="cb57-8"><a href="#cb57-8"></a>    y_label<span class="op">=</span><span class="st">"Capacity (Ah)"</span>,</span>
+<span id="cb57-9"><a href="#cb57-9"></a>    title_prefix<span class="op">=</span><span class="st">"Battery Capacity vs. Cycle with Posterior Predictions"</span>,</span>
+<span id="cb57-10"><a href="#cb57-10"></a>    subtitle<span class="op">=</span><span class="st">"90% HDI accounts for  uncertainty."</span>,</span>
+<span id="cb57-11"><a href="#cb57-11"></a>    alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb57-12"><a href="#cb57-12"></a>) <span class="op">+</span> ggsize(<span class="dv">800</span>, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="94" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Key Observations</p>
+<ul>
+<li><p>The posterior predictive mean closely tracks the observed capacity trajectory across the full battery lifetime, including the non-linear degradation phase near end-of-life.</p></li>
+<li><p>Approximately <span class="math inline">90\%</span> (or more) of observed data points fall within the predictive HDI, indicating well-calibrated uncertainty estimates.</p></li>
+<li><p>For batteries CS2_33, CS2_36, and CS2_37, the HDI remains narrow even during late-life degradation, reflecting high model confidence and low residual noise.</p></li>
+<li><p>For battery CS2_34, the HDI widens toward the final cycles, appropriately reflecting increased predictive uncertainty in the late-life regime.</p></li>
+</ul>
+<section id="evaluating-predictive-performance" class="level4">
+<h4 class="anchored" data-anchor-id="evaluating-predictive-performance">Evaluating Predictive Performance</h4>
+<p>Predictive performance on the held-out batteries is quantified using both accuracy and uncertainty-based metrics.</p>
+<div id="97" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="im">from</span> bayes.metrics.interval <span class="im">import</span> get_interval_metrics</span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="im">from</span> bayes.metrics.regression <span class="im">import</span> regression_report</span>
+<span id="cb59-3"><a href="#cb59-3"></a></span>
+<span id="cb59-4"><a href="#cb59-4"></a>metrics_list <span class="op">=</span> []</span>
+<span id="cb59-5"><a href="#cb59-5"></a><span class="cf">for</span> battery_id, df <span class="kw">in</span> pred_df.groupby(<span class="st">"BatteryID"</span>):</span>
+<span id="cb59-6"><a href="#cb59-6"></a>    reg_report <span class="op">=</span> regression_report(df[<span class="st">"capacity"</span>], df[<span class="st">"pred_median"</span>])</span>
+<span id="cb59-7"><a href="#cb59-7"></a>    interval_report <span class="op">=</span> get_interval_metrics(</span>
+<span id="cb59-8"><a href="#cb59-8"></a>        df[<span class="st">"pred_median"</span>].values,</span>
+<span id="cb59-9"><a href="#cb59-9"></a>        df[<span class="st">"capacity"</span>].values,</span>
+<span id="cb59-10"><a href="#cb59-10"></a>        df[<span class="st">"hdi_low"</span>].values,</span>
+<span id="cb59-11"><a href="#cb59-11"></a>        df[<span class="st">"hdi_high"</span>].values,</span>
+<span id="cb59-12"><a href="#cb59-12"></a>        alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb59-13"><a href="#cb59-13"></a>    )</span>
+<span id="cb59-14"><a href="#cb59-14"></a>    full_report <span class="op">=</span> pd.concat([reg_report, interval_report], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-15"><a href="#cb59-15"></a>    full_report[<span class="st">"BatteryID"</span>] <span class="op">=</span> battery_id</span>
+<span id="cb59-16"><a href="#cb59-16"></a>    metrics_list.append(full_report)</span>
+<span id="cb59-17"><a href="#cb59-17"></a>metrics_df <span class="op">=</span> pd.concat(metrics_list, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-18"><a href="#cb59-18"></a></span>
+<span id="cb59-19"><a href="#cb59-19"></a>metrics_df <span class="op">=</span> metrics_df.pivot_table(</span>
+<span id="cb59-20"><a href="#cb59-20"></a>    index<span class="op">=</span>[<span class="st">"BatteryID"</span>],</span>
+<span id="cb59-21"><a href="#cb59-21"></a>    columns<span class="op">=</span><span class="st">"Metric"</span>,</span>
+<span id="cb59-22"><a href="#cb59-22"></a>    values<span class="op">=</span><span class="st">"Value"</span>,</span>
+<span id="cb59-23"><a href="#cb59-23"></a>).reset_index()</span>
+<span id="cb59-24"><a href="#cb59-24"></a></span>
+<span id="cb59-25"><a href="#cb59-25"></a></span>
+<span id="cb59-26"><a href="#cb59-26"></a></span>
+<span id="cb59-27"><a href="#cb59-27"></a><span class="kw">def</span> make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>):</span>
+<span id="cb59-28"><a href="#cb59-28"></a>    <span class="co">"""Generate a formatted GT table from cross-validation metrics."""</span></span>
+<span id="cb59-29"><a href="#cb59-29"></a>    <span class="co"># Sort to present best models first</span></span>
+<span id="cb59-30"><a href="#cb59-30"></a>    df <span class="op">=</span> metrics_df.sort_values([<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-31"><a href="#cb59-31"></a></span>
+<span id="cb59-32"><a href="#cb59-32"></a>    <span class="co"># Build base table</span></span>
+<span id="cb59-33"><a href="#cb59-33"></a>    gt <span class="op">=</span> (</span>
+<span id="cb59-34"><a href="#cb59-34"></a>        GT(df[[<span class="st">"BatteryID"</span>, <span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]])</span>
+<span id="cb59-35"><a href="#cb59-35"></a>        .tab_header(title<span class="op">=</span>title, subtitle<span class="op">=</span><span class="st">"Per-battery performance"</span>)</span>
+<span id="cb59-36"><a href="#cb59-36"></a>        .cols_label(BatteryID<span class="op">=</span><span class="st">"Test Cell"</span>, MAE<span class="op">=</span><span class="st">"MAE"</span>, RMSE<span class="op">=</span><span class="st">"RMSE"</span>, R2<span class="op">=</span>md(<span class="st">"R&lt;sup&gt;2&lt;/sup&gt;"</span>))</span>
+<span id="cb59-37"><a href="#cb59-37"></a>        .fmt_number(columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>], decimals<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb59-38"><a href="#cb59-38"></a>        .fmt_number(columns<span class="op">=</span><span class="st">"R2"</span>, decimals<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb59-39"><a href="#cb59-39"></a>        .tab_spanner(label<span class="op">=</span><span class="st">"Error Metrics"</span>, columns<span class="op">=</span>[<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>])</span>
+<span id="cb59-40"><a href="#cb59-40"></a>        .tab_style(</span>
+<span id="cb59-41"><a href="#cb59-41"></a>            style<span class="op">=</span>style.text(weight<span class="op">=</span><span class="st">"bold"</span>),</span>
+<span id="cb59-42"><a href="#cb59-42"></a>            locations<span class="op">=</span>loc.body(columns<span class="op">=</span><span class="st">"Model"</span>),</span>
+<span id="cb59-43"><a href="#cb59-43"></a>        )</span>
+<span id="cb59-44"><a href="#cb59-44"></a>        .tab_options(</span>
+<span id="cb59-45"><a href="#cb59-45"></a>            table_font_size<span class="op">=</span><span class="st">"small"</span>,</span>
+<span id="cb59-46"><a href="#cb59-46"></a>            <span class="co"># row_strip_color="#fafafa"</span></span>
+<span id="cb59-47"><a href="#cb59-47"></a>        )</span>
+<span id="cb59-48"><a href="#cb59-48"></a>    )</span>
+<span id="cb59-49"><a href="#cb59-49"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"MAE"</span>, <span class="st">"RMSE"</span>, <span class="st">"R2"</span>, <span class="st">"NMPI"</span>, <span class="st">"PICP"</span>]:</span>
+<span id="cb59-50"><a href="#cb59-50"></a>        best_idx <span class="op">=</span> df[col].idxmax() <span class="cf">if</span> col <span class="kw">in</span> [<span class="st">"R2"</span>, <span class="st">"PICP"</span>] <span class="cf">else</span> df[col].idxmin()</span>
+<span id="cb59-51"><a href="#cb59-51"></a>        gt <span class="op">=</span> gt.tab_style(style<span class="op">=</span>style.fill(color<span class="op">=</span><span class="st">"#E1DFDD"</span>), locations<span class="op">=</span>loc.body(rows<span class="op">=</span>best_idx, columns<span class="op">=</span>col))</span>
+<span id="cb59-52"><a href="#cb59-52"></a></span>
+<span id="cb59-53"><a href="#cb59-53"></a>    <span class="cf">return</span> gt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="98" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>make_metrics_table(metrics_df, title<span class="op">=</span><span class="st">"Model Evaluation Results"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><strong>Accuracy Metrics</strong></p>
+<p>Point-prediction accuracy is evaluated using the coefficient of determination (<span class="math inline">R^2</span>), Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE). Together, these metrics assess how well the model’s posterior predictive mean captures the observed capacity degradation trajectory.</p>
+<ul>
+<li><p><span class="math inline">R^2</span> quantifies the proportion of variance in the observed capacity explained by the model. Values close to 1 indicate that the predicted degradation curve accurately follows the overall trend and slope of capacity fade.</p></li>
+<li><p>MAE represents the average absolute deviation between predicted and observed capacity values, expressed in State-of-Health (SoH) units. MAE provides a physically interpretable measure of typical prediction error.</p></li>
+<li><p>RMSE penalizes larger deviations more strongly than MAE and is therefore particularly sensitive to localized mismatches, especially during the highly nonlinear end-of-life degradation phase.</p></li>
+</ul>
+<p>From the results summarized above, the model achieves <span class="math inline">R^2</span> values between <span class="math inline">0.910</span> and <span class="math inline">1.0</span>, with MAE in the range of <span class="math inline">0.010</span>–<span class="math inline">0.040</span> SoH units, indicating strong point-prediction accuracy across all evaluated cells. RMSE values range from <span class="math inline">0.01</span> to <span class="math inline">0.05</span> SoH units, confirming that large deviations are generally rare.</p>
+<p>However, Cell 34 exhibits the highest RMSE (<span class="math inline">0.05</span>), along with comparatively lower <span class="math inline">R^2</span> and higher MAE than the remaining cells. This combination indicates that, while the model captures the overall degradation trend for Cell 34, it experiences larger localized errors—particularly near late-life degradation relative to other cells. These deviations suggest the presence of sharper nonlinear behavior or cell-specific degradation mechanisms not fully represented by the global model parameters.</p>
+<p><strong>Uncertainty Quality Metrics</strong></p>
+<p>Beyond point accuracy, a central goal of Bayesian modeling is to provide reliable and interpretable uncertainty estimates. This is assessed using Prediction Interval Coverage Probability (PICP) and Normalized Mean Prediction Interval (NMPI).</p>
+<ul>
+<li><p>PICP measures the fraction of observed capacity values that fall within the model’s <span class="math inline">90%</span> Highest Density Interval (HDI). A well-calibrated model should achieve PICP close to the nominal level (0.95), indicating that the predicted uncertainty accurately reflects real variability.</p></li>
+<li><p>NMPI quantifies the average width of the predictive interval, normalized by the observed capacity range. NMPI reflects the sharpness of predictions: lower values indicate tighter uncertainty bounds, which are essential for actionable maintenance and risk-based decision-making.</p></li>
+</ul>
+<p>Results show consistently low NMPI values (approximately <span class="math inline">\mathbf{0.1}</span>) across all test cells. This confirms that the predictive intervals are narrow relative to the capacity range, indicating high confidence in the model’s predictions. At the same time, PICP exceeds <span class="math inline">0.90</span> for most cells, demonstrating that this confidence is not over-stated and that the uncertainty bounds are well calibrated.</p>
+<p>Cell 34 again deviates from this pattern, exhibiting reduced PICP (<span class="math inline">75\%</span>). This indicates that a larger fraction of its observed capacity measurements fall outside the predicted <span class="math inline">90%</span> HDI, suggesting either increased intrinsic variability or degradation dynamics that differ from those captured by the global model.</p>
+<blockquote class="blockquote">
+<p><strong>🛠️ Action</strong>: To diagnose the degraded predictive performance observed for Cell 34, compare all test cells by plotting <span class="math inline">R^2</span> versus PICP to identify accuracy–reliability trade-offs. Examine whether Cell 34’s operational features fall outside the training-feature distribution, indicating extrapolation beyond the model’s learned domain. Finally, compare the capacity degradation distribution of Cell 34 with the training cell to assess whether it follows a distinct degradation regime.</p>
+</blockquote>
+</section>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This post demonstrates that a single-level Bayesian Beta regression model, informed by physics-aware priors and carefully engineered features, can deliver highly accurate capacity predictions together with trustworthy uncertainty bounds. The model achieves near-perfect predictive accuracy while maintaining well-calibrated <span class="math inline">95%</span> credible intervals, validating the use of Beta likelihoods and informed priors for battery degradation modeling.</p>
+<p>However, the current formulation assumes that the degradation rate (<span class="math inline">\lambda_{\text{rate}}</span>) and operational sensitivities (<span class="math inline">\boldsymbol{\beta}</span>) are shared across the entire battery fleet. In practice, manufacturing variability and latent defects introduce unit-specific degradation behavior. As a result, even a highly accurate global model may underpredict risk for batteries from unfavorable batches or overestimate degradation for higher-quality units.</p>
+<p><strong>Coming Next</strong>: In Part 3, this limitation will be addressed by introducing Hierarchical Bayesian Models. These models learn a robust global degradation trend while allowing each individual battery to exhibit informed local deviations in parameters such as <span class="math inline">\lambda_{\text{rate}}</span> and <span class="math inline">\boldsymbol{\beta}</span>.</p>
+<blockquote class="blockquote">
+<p>The data and full code in <a href="https://www.pymc.io/welcome.html">pymc5</a> is available on my <a href="https://github.com/sambaiga/bayesian-modelling/blob/main/notebook/2025-12-1-bayesian-regression..ipynb">GITHUB</a> page.</p>
+</blockquote>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ol type="1">
+<li>Zhang, H., Li, Y., Zheng, S. et al.&nbsp;<a href="https://www.nature.com/articles/s42256-024-00972-x#citeas">Battery lifetime prediction across diverse ageing conditions with inter-cell deep learning</a>. Nat Mach Intell 7, 270–277 (2025). https://doi.org/10.1038/s42256-024-00972-x</li>
+<li>Ferrari, S. L. P., &amp; Cribari-Neto, F. (2004). Beta regression for modelling rates and proportions. Journal of Applied Statistics, 31(7), 799–815.</li>
+<li>Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., &amp; Rubin, D. B. (2013). Bayesian Data Analysis (3rd ed.). CRC Press.</li>
+<li>McElreath, R. (2020). Statistical Rethinking (2nd ed.). CRC Press.</li>
+</ol>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{faustine2025,
+  author = {Faustine, Anthony},
+  title = {Bayesian {Regression:} {A} {Real-World} {Battery}
+    {Degradation} {Case} {Study}},
+  date = {2025-12-17},
+  url = {https://sambaiga.github.io/pages/blog/posts/2025/12/2025-12-1-bayesian-regression..html},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> 2025–2026 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> <i class="bi-cc-by " style="" role="img" aria-hidden="true"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="bi-orcid " style="" role="img" aria-hidden="true"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-7838-533X">0000-0002-7838-533X</a></span> <span class="faux-block"><i class="bi-key " style="" role="img" aria-hidden="true"></i> <a href="../../../../../pgp_ath.asc.txt">PGP public key</a>   <i class="bi-fingerprint " style="" role="img" aria-hidden="true"></i> Fingerprint:<br><span class="fingerprint">49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/sambaiga/sambaiga.github.io">View the source at <i class="bi-github " style="" role="img" aria-hidden="true"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
