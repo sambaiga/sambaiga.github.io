@@ -1,0 +1,39 @@
+---
+title: "Strategic Management of AI Investments: A Dynamic Capabilities and Business Model Innovation Perspective"
+date: 2025-12-19
+authors: "Anthony Faustine, Ethna O Connor,  Dr Tupokigwe Isagah, and  Dr Kevin Byrne"
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Ethna O Connor
+    url: ""
+    orcid: 
+    affiliation: 
+
+  - name: Dr Tupokigwe Isagah
+    url: ""
+    orcid: 
+    affiliation: 
+
+  - name: Dr Kevin Byrne
+    url: ""
+    orcid: 
+    affiliation: 
+
+journal:
+  title: "Journal of Strategic Information Systems"
+  volume: 
+  number: 
+  pages: ""
+  year: 2025
+categories: ["strategy", "innovation", "technology"]
+status: Submitted 
+abstract: |
+  Artificial Intelligence (AI) promises substantial returns in organisations, motivating firms to consider AI investments to improve their businesses. The investments offer new opportunities for transforming business processes, which can increase the company’s value. Despite the promise of AI to drive competitive advantage, organisations struggle to realise its value, often because of fragmented initiatives and strategic misalignment rather than technological failures. Current research often overlooks the strategic initiatives required to convert dynamic technological potential into sustained performance. This study addresses this gap by integrating Dynamic Capabilities (DC) and Business Model Innovation (BMI) theories to deconstruct the realisation of AI value. Employing a mixed-methods design, we triangulated a systematic literature review with exploratory practitioner interviews to contrast theoretical ideals with operational realities, aiming to benefit from AI investments. The findings reveal that the primary barriers to AI value realisation, strategic misalignment, organisational inertia, and technical/data limitations, are interconnected and mutually reinforcing, creating a negative feedback loop that prevents scaled impact. This systemic failure is driven by critical operational frictions, including data governance silos, leadership literacy gaps, and the inability to quantify AI value, which collectively disrupt the link between strategic intent and execution. Also, findings showed the potential of strategically interlinking Dynamic Capabilities (DC) and Business Model Innovation (BMI) for business value, where DC senses and mobilizes AI opportunities and BMI turns over adaptive capacities into value creation and capture, thus contributing to AI value realization in organisations.
+pub-info:
+  reference: ""
+  
+thumbnail: "/images/publications/strategicai.svg"
+image: "/images/publications/strategicai.svg"
+---

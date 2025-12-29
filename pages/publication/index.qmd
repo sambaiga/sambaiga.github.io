@@ -1,0 +1,18 @@
+---
+title: ""
+listing:
+  type: default
+  sort: "date desc"
+  template: ../../assets/ejs/publication_listing.ejs
+  categories: true
+  contents: ["articles/*/index.qmd", "conferences/*/index.qmd"] 
+page-layout: full
+include-back-link: false
+toc-location: right
+format: 
+  html: 
+    include-after-body:
+    - text: |
+            <script src="../../assets/js/abstract-toggle.js"></script>
+---
+

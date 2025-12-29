@@ -1,0 +1,49 @@
+
+## For a Journal Paper (Alternative Template):
+
+```yaml
+---
+title: "Your Journal Paper Title"
+date: 2024-01-15
+authors: "Anthony Faustine, Co-author Name, Another Author"
+
+categories:
+  - Power Systems
+  - Machine Learning
+  - Renewable Energy
+
+thumbnail: "../../images/publications/paper-thumbnail.jpg"
+image: "../../images/publications/paper-full.jpg"
+
+# Journal format (for journal papers)
+journal:
+  name: "IEEE Transactions on Power Systems"
+  volume: "39"
+  number: "2"
+  pages: "1234-1245"
+  publisher: "IEEE"
+
+description: >-
+  Brief description for the listing page...
+abstract: >-
+  Full abstract text for the listing page...
+
+pub-info:
+  reference: >-
+    <strong>Anthony Faustine</strong> et al., "Paper Title," 
+    <em>IEEE Transactions on Power Systems</em>, vol. 39, no. 2, pp. 1234-1245, 2024.
+  links:
+    - name: PDF
+      url: "https://ieeexplore.ieee.org/document/xxxx"
+      icon: file-earmark-pdf
+    - name: Code
+      url: "https://github.com/yourusername/repo"
+      icon: github
+    - name: Dataset
+      url: "https://zenodo.org/record/xxxx"
+      icon: database
+
+status: "Published"
+featured: true  # Set to true for featured publications
+doi: "10.1109/TPWRS.2024.xxxxxxx"
+---

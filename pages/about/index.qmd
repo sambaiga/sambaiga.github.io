@@ -1,0 +1,36 @@
+---
+title: "Anthony Faustine"
+subtitle: "Lead Data Scientist<br>Eaton's Centre for Intelligent Power"
+pagetitle: "Anthony Faustine | Portfolio"
+description-meta: "Lead Data Scientist specializing in applied machine learning, strategic innovation, and AI leadership at Eaton's Centre for Intelligent Power in Dublin."
+
+about:
+  id: hero-heading
+  template: trestles
+  image: ../../images/profiles/sambaiga_profile.jpg
+  image-alt: "Professional headshot of Anthony Faustine"
+  image-width: 18em
+
+
+format:
+  html:
+    body-class: "about"  
+grid:
+  body-width: 1200px
+author-meta: Anthony Faustine
+---
+::: {#hero-heading .text-justify .text-md-start}
+I am a **Lead Data Scientist** at the [Centre for Intelligent Power (CIP)](https://www.eaton.com) in Dublin, Ireland. My expertise sits at the intersection of **applied machine learning** and **strategic innovation management**. Beyond technical specialization, I function as a strategic AI leader and builder. With proven experience across industry and academia, I specialize in architecting intelligent solutions while fostering growth through mentorship and cross-functional leadership.
+
+> My mission: to lead strategic AI innovation that bridges research with real-world impact, building toward a more sustainable and intelligent future.
+
+### Ready to collaborate?
+I'm always open to discussing new opportunities, research collaborations, or speaking engagements.
+
+
+
+::: {.hero-actions .d-flex .justify-content-center .gap-3 .mt-4}
+[Schedule a Chat <i class="bi bi-calendar me-2"></i>](https://calendly.com/sambaiga){.btn .btn-primary .btn-outline .btn-sm}
+[Download CV <i class="bi bi-download me-2"></i>](/files/CV_Anthony_2025.pdf){.btn .btn-primary .btn-outline .btn-sm}
+:::
+:::

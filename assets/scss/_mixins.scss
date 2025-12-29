@@ -1,0 +1,272 @@
+
+@mixin dark-theme-buttons {
+  // Light button adjustments for dark theme
+  .btn-light {
+    background-color: rgba($light-orange, $opacity-20);
+    color: lighten($light-orange, 20%) !important;
+    border-color: rgba($light-orange, $opacity-30);
+    
+    &:hover {
+      background-color: rgba($light-orange, $opacity-30);
+      border-color: rgba($light-orange, $opacity-40);
+    }
+    
+    &.btn-outline {
+      background-color: transparent;
+      color: $light-orange !important;
+      border-color: $light-orange;
+      
+      &:hover {
+        background-color: rgba($light-orange, $opacity-20);
+      }
+    }
+  }
+  
+  // Outline light button adjustments for dark theme
+  .btn-outline-light {
+    background-color: transparent;
+    color: $gray-300 !important;
+    border-color: $gray-600;
+    
+    &:hover {
+      background-color: $gray-700;
+      color: $gray-100 !important;
+    }
+  }
+  
+  // Dark button adjustments for dark theme
+  .btn-dark {
+    background-color: $gray-800;
+    color: $white !important;
+    border-color: $gray-800;
+    
+    &:hover {
+      background-color: darken($gray-800, 10%);
+      border-color: darken($gray-800, 10%);
+    }
+  }
+  
+  // Primary button adjustments for dark theme
+  .btn-primary {
+    background-color: darken($primary, 10%);
+    color: $white !important;
+    border-color: darken($primary, 10%);
+    
+    &:hover {
+      background-color: $primary;
+      border-color: $primary;
+    }
+    
+    &.btn-outline {
+      background-color: transparent;
+      color: lighten($primary, 20%) !important;
+      border-color: lighten($primary, 20%);
+      
+      &:hover {
+        background-color: $primary;
+        color: $white !important;
+      }
+    }
+  }
+}
+
+// Mixins for project components
+@mixin publication-details-box {
+  margin-top: $spacer-4;
+  padding: $spacer-3;
+  background-color: $code-bg;
+  border-radius: $border-radius;
+  border: $border-width-1 solid $border-color-light;
+  
+  .publication-content {
+    margin-bottom: $spacer-3;
+    
+    p {
+      margin: 0;
+      font-style: italic;
+      color: $gray-700;
+      line-height: $body-line-height;
+    }
+  }
+}
+
+@mixin project-category-styles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-1 * 0.3;
+  margin: $spacer-2 0;
+  font-family: $headings-font-family;
+  
+  .quarto-category,
+  .project-category {
+    padding: $spacer-1 * 0.2 $spacer-1 * 0.5;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius-sm;
+    background-color: rgba($energy-accent, $opacity-10);
+    color: $energy-accent;
+    border: $border-width-1 solid rgba($energy-accent, $opacity-20);
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        color: $link-hover-color;
+        text-decoration: $link-hover-decoration;
+      }
+    }
+  }
+}
+
+@mixin project-links-styles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  .project-link {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: $spacer-2;
+    margin-bottom: $spacer-1;
+    
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacer-1 * 0.5;
+      color: $teal;
+      text-decoration: $link-decoration;
+      font-weight: $font-weight-medium;
+      
+      &:hover {
+        color: $link-hover-color;
+        text-decoration: $link-hover-decoration;
+      }
+      
+      i {
+        font-size: $font-size-sm;
+      }
+    }
+    
+    &.details {
+      background-color: $pink-dark;
+      padding: $spacer-1 * 0.5 $spacer-2;
+      border-radius: $border-radius-sm;
+      border: $border-width-1 solid $black;
+      
+      a {
+        color: $gray-900;
+        
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+  }
+}
+
+// Add to _mixins.scss
+@mixin focus-ring {
+  &:focus {
+    outline: $focus-ring;
+    outline-offset: $link-focus-outline-offset;
+  }
+  
+  &:focus-visible {
+    outline: $focus-ring;
+    outline-offset: $link-focus-outline-offset;
+  }
+}
+
+@mixin button-variant($background, $color) {
+  background-color: $background;
+  color: $color !important;
+  border-color: $background;
+  
+  &:hover {
+    background-color: darken($background, 10%);
+    border-color: darken($background, 10%);
+  }
+}
+
+@mixin button-hover {
+  &:hover {
+    transform: $btn-hover-transform;
+    box-shadow: $btn-hover-box-shadow;
+  }
+}
+
+@mixin make-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin container-responsive-padding {
+  @each $breakpoint, $padding in $container-padding {
+    @if $breakpoint == xs {
+      padding-left: $padding;
+      padding-right: $padding;
+    } @else {
+      @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+        padding-left: $padding;
+        padding-right: $padding;
+      }
+    }
+  }
+}
+
+@mixin section-padding($size: base) {
+  @if $size == sm {
+    padding-top: $section-padding-y-sm;
+    padding-bottom: $section-padding-y-sm;
+  } @else if $size == lg {
+    padding-top: $section-padding-y-lg;
+    padding-bottom: $section-padding-y-lg;
+  } @else {
+    padding-top: $section-padding-y;
+    padding-bottom: $section-padding-y;
+  }
+}
+
+@mixin responsive-font-size($min, $max) {
+  font-size: clamp(#{$min}, 2vw, #{$max});
+}
+
+@mixin dark-theme {
+  background-color: $dark-body-bg;
+  color: $dark-body-color;
+  
+  // Adjust link colors
+  a {
+    color: lighten($link-color, 20%);
+    
+    &:hover {
+      color: lighten($link-hover-color, 20%);
+    }
+  }
+}
+
+
+@mixin media-breakpoint-up($name) {
+  $min: map-get($grid-breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name) {
+  $max: map-get($grid-breakpoints, $name) - 0.02px;
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

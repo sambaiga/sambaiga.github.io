@@ -1,5 +1,188 @@
-/.quarto/
-**/*.quarto_ipynb
+# ===========================================
+# QUARTO & WEBSITE SPECIFIC
+# ===========================================
+# Local Quarto configuration/cache
+.quarto/
+.quarto-cache/
+**/.quarto/
 
 # Quarto build output
 _site/
+_site/**
+!.gitkeep  # Optional: keep empty directory
+
+# Quarto temporary files
+*.quarto_ipynb
+**/*.quarto_ipynb
+
+# Freeze directory (if not committing freeze files)
+# _freeze/
+
+# ===========================================
+# PYTHON & UV
+# ===========================================
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.python-version
+.pdm.toml
+.pdm-build/
+
+# UV specific
+.uv/
+uv.lock
+
+# Jupyter/Notebook checkpoints
+.ipynb_checkpoints/
+
+# ===========================================
+# R (if used alongside Python)
+# ===========================================
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# ===========================================
+# JULIA (optional - remove if not used)
+# ===========================================
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+
+# ===========================================
+# EDITOR & IDE
+# ===========================================
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===========================================
+# OPERATING SYSTEM FILES
+# ===========================================
+# macOS
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ===========================================
+# TEMPORARY & LOG FILES
+# ===========================================
+*~
+*.tmp
+*.temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+*.pid
+*.seed
+*.pid.lock
+*.tsbuildinfo
+
+# ===========================================
+# WEB DEVELOPMENT (if using npm/node)
+# ===========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ===========================================
+# OTHER DEVELOPMENT TOOLS
+# ===========================================
+# Docker
+.dockerignore
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Profiling data
+.prof
+/.quarto/

@@ -1,0 +1,44 @@
+---
+title: "Efficiency through Simplicity: MLP-based Approach for Net-Load Forecasting with Uncertainty Estimates in Low-Voltage Distribution Networks"
+date: 2025-01-01
+authors: "<strong>Anthony Faustine</strong> and Nuno Jardim Nunes and Lucas Pereira"
+categories: ["forecasting", "machine learning", "probabilistic", low voltage networks]
+
+journal:
+  name: "IEEE Transactions on Power Systems"
+  volume: 40
+  number: 1
+  pages: "46-5"
+  year: 2025
+
+description: |
+  Power demand forecasting is becoming a crucial tool for the planning and operation of Low Voltage (LV) distribution systems. This paper introduces a novel and scalable approach to probabilistic forecasting at LV substations with PV generation.
+abstract: |
+  Power demand forecasting is becoming a crucial tool for the planning and operation of Low Voltage (LV) distribution systems. Most importantly, the high penetration of Photovoltaics (PV) power generation as part of Distributed Energy Resource (DER)s has transformed the power demand forecasting problem at the distribution level into net-load forecasting. This paper introduces a novel and scalable approach to probabilistic forecasting at LV substations with PV generation. It presents a multi-variates probabilistic forecasting approach, leveraging Quantile Regression (QR). The proposed architecture uses a computationally efficient feed-forward neural net to capture the complex interaction between the historical load demands and covariate variables such as solar irradiance. It is empirically demonstrated that the proposed method can efficiently produce well-calibrated forecasts, both auto-regressively or in a single forward pass. Furthermore, a benchmark against four state-of-the-art forecasting approaches show that the proposed approach offers a desirable trade-off between forecasting accuracies, calibrated uncertainty, and computation complexity.
+
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/MLPQF.pdf"
+      icon: file-earmark-pdf
+    - name: Slide
+      url: "../../files/slides/PosterEURONILM2019.pdf"
+      icon: file-earmark-ppt
+    - name: Link
+      url: "https://ieeexplore.ieee.org/document/10529636"
+      icon: "journal-text"
+    - name: "Code"
+      url: ""
+      icon: "github"
+
+
+
+status: "Published"
+featured: true
+doi: 10.1109/TPWRS.2024.3400123
+
+thumbnail: "/images/publications/MLPQF.svg"
+image: "/images/publications/MLPQF.svg"
+---
+
+**Presented at the 44th International Symposium on Forecasting in Dijon, France June 2024**

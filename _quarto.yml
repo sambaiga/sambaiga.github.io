@@ -1,133 +1,113 @@
 project:
   type: website
   output-dir: _site
-
+  pre-render: 
+    - bash assets/bash/generate_thumbs.sh
+ 
   preview: 
     port: 5555
     browser: true
     watch-inputs: true
     navigate: true
 
-  render:
-    - "*.qmd"
-    - "*.md"
-    - "*.ipynb"
-    - "!etc/"
 
   resources:
+    - "assets/**"
+    - "images/**"
+    - "data/**"
     - "files/**"
-    - "etc/**"
+    - "posts/**"
 
     # Things that need to be at the site root
-    - ".htaccess"
-    - "LiveSearchSiteAuth.xml"
-    - "keybase.txt"
-    - "y_key_31e0c4105fc75710.html"
     - "pgp_ath.asc.txt"
 
 
-freeze: auto
-
-bibliography: files/bib/references.bib
-csl: files/bib/chicago-author-date.csl
-
-# Metadata stuff
-pagetitle: "{{< meta title >}} | sambaiga"
-author-meta: "Anthony Faustine"
 
 website:
   title: "Anthony Faustine"
   description: "Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland"
-  favicon: "/files/favicon-512.png"
+  favicon: "/images/icons/favicon.ico"
   site-url: "https://sambaiga.github.io"
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
+  page-navigation: true
+ 
 
-  google-analytics: "UA-527449-5"
+
+  open-graph:
+    title: "Anthony Faustine"
+    description: "Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton"
+    image: ""
+    locale: en_IE
 
   twitter-card: 
-    image: "/files/profiles/twitter-card-large.png"
     card-style: summary_large_image
     creator: "@asambaiga"
     site: "@sambaiga"
 
-  open-graph: 
-    image: "/files/profiles/twitter-card-large.png"
-    locale: en_US
-  
   navbar:
     pinned: true
     collapse: true
-
     left:
+      - href: index.qmd
+        text: Home
       - text: "About"
-        file: "about/index.qmd"
-      #- text: "Project"
-      #  href: "project/index.qmd"
-      - text: "Research"
-        file:  research/index.qmd
-      - text: "Talks"
-        href: "talks/index.qmd"
+        file: "pages/about/index.qmd"
       - text: "Blog"
-        file: blog/index.qmd
-      #- text: "Resources"
-      #  file: uses/index.qmd
-      - text: "CV"
-        href: "cv/index.qmd"
+        file: "pages/blog/index.qmd"
+      - text: "Research"
+        file: "pages/publication/index.qmd"
+      #- text: "Projects"
+      #  file: "pages/project/index.qmd"
 
     right:
-      - text: "{{< iconify bi rss size=1.1em title='RSS' >}}"
-        href: atom.xml
-      - text: "{{< iconify bi envelope size=1.1em title='E-mail' >}}"
+      - text: "{{< bi envelope-at size=1.1em >}}<span class='visually-hidden'>Email</span>"
         href: "mailto:sambaiga@gmail.com"
-      - text: "{{< iconify fa6-brands bluesky size=1.1em title='Bluesky' >}}"
-        href: https://bsky.app/profile/andrew.heiss.phd
-        rel: me
-      - text: "{{< iconify bi mastodon size=1.1em title='Mastodon' >}}"
-        href: https://fediscience.org/users/andrew/
-        rel: me
-      - text: "{{< iconify bi github size=1.1em title='GitHub' >}}"
+      - text: "{{< bi github size=1.1em >}}<span class='visually-hidden'>GitHub</span>"
         href: https://github.com/sambaiga
         rel: me
-      - text: "{{< iconify bi youtube size=1.1em title='YouTube' >}}"
-        href: https://www.youtube.com/sambaiga
-        rel: me
-      - text: "{{< iconify bi linkedin size=1.1em title='LinkedIn' >}}"
+      - text: "{{< bi linkedin size=1.1em >}}<span class='visually-hidden'>LinkedIn</span>"
         href: https://www.linkedin.com/in/sambaiga
         rel: me
-  
+    
   page-footer:
     left: |
-      <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Anthony Faustine</span>
-      <span class="faux-block">All content licensed under<br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>      
+      <span class="faux-block">{{< bi cc-circle >}} {{< var years >}} Anthony Faustine</span>
+      <span class="faux-block">All content licensed under<br>[{{< bi cc-circle >}} {{< bi cc-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>      
     center: |
-      <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
-      <span class="faux-block">{{< fa key >}} [PGP public key]({{< var pgp.key >}}) &emsp; {{< fa fingerprint >}} Fingerprint:</strong><br><span class="fingerprint">{{< var pgp.fingerprint >}}</span></span>
+      <span class="faux-block">{{< bi orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
+      <span class="faux-block">{{< bi key >}} [PGP public key]({{< var pgp.key >}}) &emsp; {{< bi fingerprint >}} Fingerprint:</strong><br><span class="fingerprint">{{< var pgp.fingerprint >}}</span></span>
     right: |
-      <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
-      <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
+      <span class="faux-block">Made with [Quarto](https://quarto.org/)</span>
+      <span class="faux-block">[View the source at {{< bi github >}} GitHub]({{< var github-url >}})</span>
+
+filters:
+  - quarto
+
+icons:
+  bootstrap: true
 
 format:
   html:
-    theme:
-      light: 
-        - html/ath.scss
+    theme: [cosmo, assets/twiga.scss]
+    self-contained: false
+    embed-resources: false
     responsive-images: true
-    grid: 
-      body-width: 900px
-    page-layout: full
-    toc: false
+    fig-align: center
+    clean-urls: true
     code-link: true
     anchor-sections: true
     fig-cap-location: margin
     reference-location: margin
     footnotes-hover: true
-    highlight-style: breezedark
-    code-line-numbers: true
+    aria: true
+    toc: true
 
-
-notebook-links: true
+freeze: auto
+citation: false
 execute:
-  eval: false
   echo: true
-  warning: false
-  message: false
+  message: true
+  warning: true
+
+
+

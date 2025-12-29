@@ -1,0 +1,42 @@
+
+
+blog-listing-title: "Latest Articles"
+filter-active: true
+format: 
+  html:
+    body-class: "blog"  
+    code-overflow: wrap
+    html-math-method: katex
+    highlight-style: github
+    code-copy: true
+    code-line-numbers: true
+    reading-time: true
+    code-fold: true
+    code-summary: "Show the code"
+    shift-heading-level-by: 1
+    reference-location: margin
+    smooth-scroll: true
+    
+
+# Default for table of contents
+title-block-banner: true
+toc: true
+toc-title: Table of contents
+toc-location: right
+page-size: 8
+
+author:
+  - name: Anthony Faustine
+    url: https://sambaiga.github.io/
+    orcid: 0000-0002-3948-3914
+    affiliation: CIP, Eaton Corporation, Dublin Ireland.
+    
+citation: true
+appendix-cite-as: bibtex
+
+notebook-links: true
+execute:
+  eval: false
+  echo: true
+  warning: false
+  message: false

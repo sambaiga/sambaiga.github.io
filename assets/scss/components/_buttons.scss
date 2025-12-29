@@ -1,0 +1,620 @@
+/*-- scss:components/buttons --*/
+
+// =====================================================
+// BUTTON DESIGN SYSTEM (Aligned with your design system)
+// =====================================================
+
+// Base button styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacer-2;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  line-height: $line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: $border-width-2 solid transparent;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding-y $btn-padding-x;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  white-space: nowrap;
+  
+  // Icon styles
+  .bi {
+    font-size: 1.1em;
+    line-height: $line-height-tight;
+  }
+  
+  // Focus state
+  @include focus-ring;
+  
+  // Hover and active states
+  @include button-hover;
+  
+  &:disabled,
+  &.disabled {
+    opacity: $opacity-50;
+    pointer-events: none;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  // Remove default focus styles on mouse users
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// =====================================================
+// BUTTON SIZES (Aligned with your typography scale)
+// =====================================================
+
+.btn-sm {
+  padding: $btn-padding-y * 0.666 $btn-padding-x * 0.666;
+  font-size: $font-size-sm;
+  border-radius: $border-radius;
+  line-height: $line-height-normal;
+  
+  .bi {
+    font-size: 1em;
+  }
+}
+
+.btn-lg {
+  padding: $btn-padding-y * 1.333 $btn-padding-x * 1.333;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-xl;
+  line-height: $line-height-normal;
+  
+  .bi {
+    font-size: 1.2em;
+  }
+}
+
+.btn-xl {
+  padding: $btn-padding-y * 1.666 $btn-padding-x * 2;
+  font-size: $font-size-xl;
+  border-radius: $border-radius-xl;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-semibold;
+  
+  .bi {
+    font-size: 1.3em;
+  }
+}
+
+// =====================================================
+// BUTTON VARIANTS (Using your semantic colors)
+// =====================================================
+
+// Primary button (Teal)
+.btn-primary {
+  @include button-variant($primary, $white);
+}
+
+.btn-primary.btn-outline {
+  background-color: transparent;
+  color: $primary !important;
+  border-color: $primary;
+  
+  &:hover {
+    background-color: $primary;
+    color: $white !important;
+  }
+}
+
+// Secondary button (Cyan)
+.btn-secondary {
+  @include button-variant($secondary, $white);
+}
+
+.btn-secondary.btn-outline {
+  background-color: transparent;
+  color: $secondary !important;
+  border-color: $secondary;
+  
+  &:hover {
+    background-color: $secondary;
+    color: $white !important;
+  }
+}
+
+// Success button (Green)
+.btn-success {
+  @include button-variant($success, $white);
+}
+
+.btn-success.btn-outline {
+  background-color: transparent;
+  color: $success !important;
+  border-color: $success;
+  
+  &:hover {
+    background-color: $success;
+    color: $white !important;
+  }
+}
+
+// Info button (Cyan)
+.btn-info {
+  @include button-variant($info, $white);
+}
+
+.btn-info.btn-outline {
+  background-color: transparent;
+  color: $info !important;
+  border-color: $info;
+  
+  &:hover {
+    background-color: $info;
+    color: $white !important;
+  }
+}
+
+// Warning button (Orange)
+.btn-warning {
+  @include button-variant($warning, $white);
+}
+
+.btn-warning.btn-outline {
+  background-color: transparent;
+  color: $warning !important;
+  border-color: $warning;
+  
+  &:hover {
+    background-color: $warning;
+    color: $white !important;
+  }
+}
+
+// Danger button (Red)
+.btn-danger {
+  @include button-variant($danger, $white);
+}
+
+.btn-danger.btn-outline {
+  background-color: transparent;
+  color: $danger !important;
+  border-color: $danger;
+  
+  &:hover {
+    background-color: $danger;
+    color: $white !important;
+  }
+}
+
+// Light button (Light orange)
+.btn-light {
+  background-color: $light-orange;
+  color: $teal !important;
+  border-color: $light-orange;
+  
+  @include button-hover;
+  
+  &:hover {
+    background-color: darken($light-orange, 10%);
+    border-color: darken($light-orange, 10%);
+    color: $teal !important;
+  }
+  
+  &.btn-outline {
+    background-color: transparent;
+    color: $light-orange !important;
+    border-color: $light-orange;
+    
+    &:hover {
+      background-color: $light-orange;
+      color: $teal !important;
+    }
+  }
+}
+
+// Dark button (Black)
+.btn-dark {
+  @include button-variant($dark, $white);
+}
+
+.btn-dark.btn-outline {
+  background-color: transparent;
+  color: $dark !important;
+  border-color: $dark;
+  
+  &:hover {
+    background-color: $dark;
+    color: $white !important;
+  }
+}
+
+// =====================================================
+// BUTTON GROUPS & SPECIAL CASES
+// =====================================================
+
+// Button groups
+.btn-group {
+  display: inline-flex;
+  vertical-align: middle;
+  gap: 0;
+  
+  .btn {
+    border-radius: 0;
+    
+    &:first-child {
+      border-top-left-radius: $btn-border-radius;
+      border-bottom-left-radius: $btn-border-radius;
+    }
+    
+    &:last-child {
+      border-top-right-radius: $btn-border-radius;
+      border-bottom-right-radius: $btn-border-radius;
+    }
+    
+    + .btn {
+      margin-left: -$border-width-2;
+      border-left-color: transparent;
+    }
+    
+    &:hover,
+    &:focus {
+      z-index: 1;
+    }
+  }
+}
+
+// Icon-only buttons
+.btn-icon {
+  padding: $btn-padding-y;
+  width: calc(#{$btn-padding-y * 2} + 1.5em);
+  height: calc(#{$btn-padding-y * 2} + 1.5em);
+  
+  &.btn-sm {
+    padding: $btn-padding-y * 0.666;
+    width: calc(#{$btn-padding-y * 1.332} + 1em);
+    height: calc(#{$btn-padding-y * 1.332} + 1em);
+  }
+  
+  &.btn-lg {
+    padding: $btn-padding-y * 1.333;
+    width: calc(#{$btn-padding-y * 2.666} + 1.8em);
+    height: calc(#{$btn-padding-y * 2.666} + 1.8em);
+  }
+  
+  .bi {
+    margin: 0;
+  }
+}
+
+// Block button (full width)
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+// =====================================================
+// CONTEXT-SPECIFIC BUTTON STYLES
+// =====================================================
+
+// Hero actions
+.hero-actions {
+  .btn {
+    min-width: 160px;
+    justify-content: center;
+    
+    @include media-breakpoint-down(sm) {
+      min-width: 100%;
+      width: 100%;
+    }
+  }
+}
+
+// About page specific
+.home.about-page {
+  .btn-primary {
+    background: $teal !important;
+    color: $white !important;
+    border: 2px solid $teal !important;
+    
+    &:hover {
+      background: lighten($teal, 10%) !important;
+      border-color: lighten($teal, 10%) !important;
+    }
+  }
+  
+  .btn-outline-light {
+    background: transparent !important;
+    color: $teal !important;
+    border: 2px solid $teal !important;
+    
+    &:hover {
+      background: $teal !important;
+      color: $white !important;
+    }
+  }
+  
+  .btn-light {
+    background: $light-orange !important;
+    color: $teal !important;
+    border: 2px solid $light-orange !important;
+    
+    &:hover {
+      background: darken($light-orange, 10%) !important;
+      border-color: darken($light-orange, 10%) !important;
+    }
+  }
+}
+
+// =====================================================
+// UTILITY BUTTON CLASSES
+// =====================================================
+
+.cv-download {
+  @extend .btn-primary;
+}
+
+.code-tools-button {
+  position: relative;
+  left: 5em;
+
+  @include media-breakpoint-down(md) {
+    left: 0;
+  }
+}
+
+// =====================================================
+// PROJECT-SPECIFIC BUTTONS (Fixed to avoid @extend issues)
+// =====================================================
+
+// GitHub button (specific for projects)
+.btn-github {
+  @include button-variant($gray-900, $white);
+  
+  &.btn-outline {
+    background-color: transparent;
+    color: $gray-900 !important;
+    border-color: $gray-900;
+    
+    &:hover {
+      background-color: $gray-900;
+      color: $white !important;
+    }
+  }
+}
+
+// Demo button (uses primary color)
+.btn-demo {
+  @include button-variant($primary, $white);
+}
+
+// Project filter buttons - FIXED: Remove @extend and define directly
+.btn-filter {
+  // Instead of @extend, define the styles directly
+  @include button-hover;
+  @include focus-ring;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacer-2;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  line-height: $line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: $border-width-2 solid transparent;
+  border-radius: $border-radius;
+  padding: $btn-padding-y * 0.666 $btn-padding-x * 0.666;
+  font-size: $font-size-sm;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  white-space: nowrap;
+  
+  // Light theme styles (matching .btn-outline-light)
+  background-color: transparent;
+  color: $gray-700 !important;
+  border: $border-width-1 solid $gray-400;
+  
+  &:hover {
+    background-color: $gray-400;
+    color: $gray-900 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  &.active {
+    // Instead of @extend .btn-primary, define primary styles directly
+    background-color: $primary;
+    color: $white !important;
+    border-color: $primary;
+    
+    &:hover {
+      background-color: darken($primary, 10%);
+      border-color: darken($primary, 10%);
+    }
+  }
+}
+
+// Project-specific button sizes
+.btn-project-sm {
+  @extend .btn-sm;
+  flex: 1;
+  text-align: center;
+  min-height: auto;
+}
+
+// =====================================================
+// PROJECT CARD LINK CONTAINER
+// =====================================================
+
+.projects-card-links {
+  display: flex;
+  gap: $grid-gap-sm;
+  margin-top: auto;
+  
+  .btn {
+    @extend .btn-project-sm;
+  }
+}
+
+// =====================================================
+// PROJECT FILTER CONTAINER
+// =====================================================
+
+.projects-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $grid-gap-sm;
+  justify-content: center;
+  margin-bottom: $spacer-4;
+  max-width: $container-max-width-lg;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// =====================================================
+// DARK THEME FOR PROJECT BUTTONS (Fixed to avoid @extend)
+// =====================================================
+
+@mixin dark-theme-project-buttons {
+  .btn-filter {
+    background-color: transparent;
+    color: $gray-300 !important;
+    border-color: $gray-600;
+    
+    &:hover {
+      background-color: $gray-700;
+      color: $gray-100 !important;
+    }
+    
+    &.active {
+      // Define active state directly instead of @extend
+      background-color: $primary;
+      color: $white !important;
+      border-color: $primary;
+      
+      &:hover {
+        background-color: darken($primary, 10%);
+        border-color: darken($primary, 10%);
+      }
+    }
+  }
+  
+  .btn-github {
+    // GitHub button dark theme
+    background-color: $gray-800;
+    color: $white !important;
+    border-color: $gray-800;
+    
+    &:hover {
+      background-color: darken($gray-800, 10%);
+      border-color: darken($gray-800, 10%);
+    }
+    
+    &.btn-outline {
+      background-color: transparent;
+      color: $gray-300 !important;
+      border-color: $gray-600;
+      
+      &:hover {
+        background-color: $gray-800;
+        color: $white !important;
+      }
+    }
+  }
+}
+// Add to your components/buttons.scss:
+
+// =====================================================
+// TALK-SPECIFIC BUTTON VARIANTS
+// =====================================================
+
+// Talk slides button
+.btn-talk-slides {
+  @include button-variant($cyan, $white);
+  background-color: rgba($cyan, $opacity-10);
+  color: $cyan;
+  border-color: rgba($cyan, $opacity-20);
+  
+  &:hover {
+    background-color: rgba($cyan, $opacity-20);
+    color: darken($cyan, 10%);
+    border-color: rgba($cyan, $opacity-30);
+  }
+}
+
+// Talk video button
+.btn-talk-video {
+  @include button-variant($pink-dark, $white);
+  background-color: rgba($pink-dark, $opacity-10);
+  color: darken($pink-dark, 10%);
+  border-color: rgba($pink-dark, $opacity-20);
+  
+  &:hover {
+    background-color: rgba($pink-dark, $opacity-20);
+    color: darken($pink-dark, 20%);
+    border-color: rgba($pink-dark, $opacity-30);
+  }
+}
+
+// Talk code button
+.btn-talk-code {
+  @include button-variant($gray-700, $white);
+  background-color: rgba($gray-700, $opacity-10);
+  color: $gray-700;
+  border-color: rgba($gray-700, $opacity-20);
+  
+  &:hover {
+    background-color: rgba($gray-700, $opacity-20);
+    color: $gray-900;
+    border-color: rgba($gray-700, $opacity-30);
+  }
+}
+
+// Talk paper button
+.btn-talk-paper {
+  @include button-variant($green, $white);
+  background-color: rgba($green, $opacity-10);
+  color: $green;
+  border-color: rgba($green, $opacity-20);
+  
+  &:hover {
+    background-color: rgba($green, $opacity-20);
+    color: darken($green, 10%);
+    border-color: rgba($green, $opacity-30);
+  }
+}
+
+// Talk website button
+.btn-talk-website {
+  @include button-variant($light-orange, $teal);
+  background-color: rgba($light-orange, $opacity-10);
+  color: $teal;
+  border-color: rgba($light-orange, $opacity-20);
+  
+  &:hover {
+    background-color: rgba($light-orange, $opacity-20);
+    color: darken($teal, 10%);
+    border-color: rgba($light-orange, $opacity-30);
+  }
+}
+// Apply dark theme styles via media query
+@media (prefers-color-scheme: dark) {
+  body:not(.light-mode) {
+    @include dark-theme-buttons;
+    @include dark-theme-project-buttons;
+  }
+}
+
+// Apply dark theme styles when .dark-mode class is present
+body.dark-mode {
+  @include dark-theme-buttons;
+  @include dark-theme-project-buttons;
+}
