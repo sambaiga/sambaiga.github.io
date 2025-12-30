@@ -30,7 +30,7 @@ I'm always open to discussing new opportunities, research collaborations, or spe
 
 
 ::: {.hero-actions .d-flex .justify-content-center .gap-3 .mt-4}
-[Schedule a Chat <i class="bi bi-calendar me-2"></i>](https://calendly.com/sambaiga){.btn .btn-primary .btn-outline .btn-sm}
-[Download CV <i class="bi bi-download me-2"></i>](/files/CV_Anthony_2025.pdf){.btn .btn-primary .btn-outline .btn-sm}
+[Schedule a Chat <i class="bi bi-calendar me-2"></i>](https://calendly.com/sambaiga){.btn .btn-primary .btn-sm}
+[Download CV <i class="bi bi-download me-2"></i>](/files/CV_Anthony_2025.pdf){.btn .btn-outline-primary .btn-sm}
 :::
 :::
