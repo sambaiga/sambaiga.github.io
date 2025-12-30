@@ -1,0 +1,85 @@
+/*-- scss:components/codes --*/
+// Styles for inline code elements excluding those within <pre> tags
+
+code:not(pre code) {
+  background-color: $code-bg;
+  color: $code-color;
+  padding: $code-padding;
+  border-radius: $code-border-radius;
+  font-size: $code-font-size;
+  font-family: $font-family-monospace;
+  
+  // Default responsive behavior
+  white-space: nowrap;
+  overflow-x: auto;
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: baseline;
+  line-height: $line-height-normal;
+  
+  // Smooth scrolling for touch devices
+  -webkit-overflow-scrolling: touch;
+}
+
+// Responsive adjustments using YOUR breakpoints
+@media (max-width: $breakpoint-md) {
+  code:not(pre code) {
+    font-size: $font-size-sm; // Use your smaller font size
+    padding: $spacer-1 $spacer-2; // Use your spacing variables
+    
+    // Slightly reduce line-height on smaller screens
+    line-height: $line-height-snug;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  code:not(pre code) {
+    font-size: $font-size-xs; // Use your extra small font size
+    padding: $spacer-1 $spacer-1; // Tighter padding
+    
+    // Allow wrapping for extremely long strings only when necessary
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    
+    // Only use these breaking rules for very long strings
+    &:has-text-overflow() {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  }
+}
+
+// Optional: Enhanced code blocks for dark mode compatibility
+[data-theme="dark"] {
+  code:not(pre code) {
+    background-color: var(--code-bg, $gray-800); // Use your dark mode variable
+    color: var(--code-color, $gray-200);
+    
+    // Add subtle border for better dark mode visibility
+    border: 1px solid rgba($white, $opacity-10);
+  }
+}
+
+// Special handling for code inside headings
+h1, h2, h3, h4, h5, h6 {
+  code:not(pre code) {
+    // Slightly different scaling for headings
+    @media (max-width: $breakpoint-md) {
+      font-size: 0.85em;
+    }
+    @media (max-width: $breakpoint-sm) {
+      font-size: 0.8em;
+    }
+  }
+}
+
+// Add visual cue for scrollable code (optional)
+code:not(pre code):has(scroll) {
+  &::after {
+    content: "↔";
+    margin-left: $spacer-1;
+    opacity: $opacity-50;
+    font-size: 0.8em;
+  }
+}

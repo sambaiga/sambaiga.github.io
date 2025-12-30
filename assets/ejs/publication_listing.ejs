@@ -109,7 +109,7 @@
                     dateObj = new Date();
                   }
                   %>
-                  <div class="publication-year"><%= dateObj.getFullYear() %></div> 
+                   <!--  <div class="publication-year"><%= dateObj.getFullYear() %></div>  -->
                   <div class="publication-type">
                     <% if (publication.journal) { %>
                       <span class="publication-type-icon">
@@ -126,7 +126,7 @@
                         <i class="bi bi-file-earmark-text"></i>
                       </span>
                       Publication
-                    <% } %>
+                    <% } %> <%= dateObj.getFullYear() %>
                   </div>
                 </div>
               <% } %>
