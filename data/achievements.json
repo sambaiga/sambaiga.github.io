@@ -15,11 +15,11 @@
       "id": 2,
       "tag": "CONFERENCE TALK",
       "title": "AI-Driven Energy Efficiency in Low-Voltage Networks",
-      "description": "Presented at Power Systems 2024, demonstrating how machine learning models can optimize energy distribution and reduce waste in urban power networks through real-time forecasting.",
+      "description": "Presented at SmartGridComm 2024, demonstrating how machine learning models can optimize energy distribution and reduce waste in urban power networks through real-time forecasting.",
       "imageUrl": "/images/achievements/panorama.jpg",
       "link": {
-        "text": "Watch Presentation",
-        "url": "/talks/ai-energy-efficiency"
+        "text": "See Presentation",
+        "url": "/files/slides/Oslo_cinference_2024.pdf"
       }
     }
   ]

@@ -10,8 +10,8 @@
   min-height: auto;
   display: flex;
   align-items: center;
-  padding: $spacer-3;
   justify-content: center;
+  padding: $spacer-3;
   position: relative;
   overflow: hidden;
   transition: background $transition-duration-base $transition-timing-ease-in-out;
@@ -56,35 +56,6 @@
   }
 }
 
-/* ---------- Hero Visual Area ---------- */
-.hero-visual-area {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.image-constraint {
-  width: 100%;
-  aspect-ratio: 21/9;
-  overflow: hidden;
-  border-radius: $border-radius-xl;
-  box-shadow: $shadow-lg;
-  position: relative;
-  
-  @media (max-width: $breakpoint-lg) {
-    aspect-ratio: 16/9;
-  }
-  
-  @media (max-width: $breakpoint-md) {
-    aspect-ratio: 4/3;
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    aspect-ratio: 3/4;
-  }
-}
-
 /* ---------- Hero Content Grid ---------- */
 .hero-content {
   display: grid;
@@ -101,7 +72,6 @@
   }
   
   @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1) {
-    grid-template-columns: 1fr;
     gap: $spacer-5;
   }
 }
@@ -109,6 +79,7 @@
 /* ---------- Hero Text Area ---------- */
 .hero-text-area {
   min-width: 0;
+  text-align: left;
   
   @media (max-width: $breakpoint-sm) {
     text-align: center;
@@ -123,7 +94,6 @@
   letter-spacing: $letter-spacing-tight;
   margin-bottom: $spacer-3;
   color: var(--text-primary);
-  text-align: left;
   
   @media (max-width: $breakpoint-sm) {
     text-align: center;
@@ -132,18 +102,11 @@
   }
   
   .highlight {
-    color: $pink-dark; // Use SCSS variable directly
+    color: $pink-dark;
     background: linear-gradient(120deg, $pink-dark 0%, darken($pink-dark, 10%) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    // Alternative: Use CSS variable if you want theme switching
-    // color: var(--color-energy-accent);
-    // background: linear-gradient(120deg, var(--color-energy-accent) 0%, darken($energy-accent, 10%) 100%);
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
   }
 }
 
@@ -248,6 +211,35 @@
    ACHIEVEMENT CAROUSEL
    ===================================================== */
 
+/* ---------- Hero Visual Area ---------- */
+.hero-visual-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.image-constraint {
+  width: 100%;
+  aspect-ratio: 21/9;
+  overflow: hidden;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-lg;
+  position: relative;
+  
+  @media (max-width: $breakpoint-lg) {
+    aspect-ratio: 16/9;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    aspect-ratio: 4/3;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    aspect-ratio: 3/4;
+  }
+}
+
 .achievement-carousel {
   width: 100%;
   height: 100%;
@@ -275,6 +267,7 @@
   
   @media (max-width: $breakpoint-sm) {
     padding: $spacer-3;
+    padding-bottom: calc($spacer-3 + 70px);
   }
   
   &::before {
@@ -304,6 +297,7 @@
   @media (max-width: $breakpoint-sm) {
     padding: $spacer-3;
     max-width: 95%;
+    margin-bottom: 55px;
   }
 }
 
@@ -315,6 +309,7 @@
   
   @media (max-width: $breakpoint-sm) {
     font-size: $font-size-lg;
+    margin-bottom: $spacer-2;
   }
 }
 
@@ -323,24 +318,99 @@
   line-height: $line-height-relaxed;
   margin-bottom: $spacer-4;
   color: rgba($white, 0.95);
-}
-
-/* ---------- Carousel Controls ---------- */
-.carousel-indicators {
-  position: absolute;
-  bottom: $spacer-3;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: $spacer-2;
-  z-index: 10;
   
   @media (max-width: $breakpoint-sm) {
-    bottom: $spacer-2;
+    margin-bottom: $spacer-3;
   }
 }
 
+/* =====================================================
+   ENHANCED CAROUSEL CONTROLS WITH YOUR DESIGN COLORS
+   ===================================================== */
+
+/* ---------- Modern Pill Indicators (Your Choice) ---------- */
+.carousel-indicators {
+  position: absolute;
+  bottom: $spacer-4;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: $spacer-2;
+  z-index: 20;
+  background: rgba($black, 0.7);
+  backdrop-filter: blur(10px);
+  padding: $spacer-2 $spacer-3;
+  border-radius: $border-radius-full;
+  border: 1px solid rgba($white, 0.3);
+  box-shadow: $shadow-lg;
+  
+  @media (max-width: $breakpoint-sm) {
+    bottom: $spacer-3;
+    padding: $spacer-1 $spacer-2;
+    gap: $spacer-1;
+    background: rgba($black, 0.8);
+  }
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: $border-radius-full;
+  background: rgba($white, 0.4);
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: all $transition-duration-base $transition-timing-ease-out;
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, $energy-accent 0%, $ai-accent 100%);
+    transition: width $transition-duration-slow $transition-timing-ease-out;
+  }
+  
+  &:hover {
+    background: rgba($white, 0.6);
+    transform: scale(1.2);
+  }
+  
+  &.active {
+    width: 24px;
+    background: rgba($white, 0.2);
+    
+    &::after {
+      width: 100%;
+      background: linear-gradient(90deg, $energy-accent 0%, $ai-accent 100%);
+    }
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    width: 8px;
+    height: 8px;
+    
+    &.active {
+      width: 20px;
+    }
+  }
+}
+
+/* ---------- Navigation Buttons ---------- */
 .carousel-nav {
   position: absolute;
   top: 50%;
@@ -350,7 +420,7 @@
   border-radius: $border-radius-full;
   background: rgba($black, 0.7);
   color: $white;
-  border: $border-width-2 solid rgba($white, 0.7);
+  border: $border-width-2 solid rgba($white, 0.5);
   cursor: pointer;
   z-index: 10;
   display: flex;
@@ -370,8 +440,8 @@
   }
   
   @media (max-width: $breakpoint-sm) {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
   
   &.prev { 
@@ -389,7 +459,41 @@
   }
 }
 
-/* ---------- Responsive Breakpoints ---------- */
+/* ---------- Slide Content Button ---------- */
+.slide-content .btn {
+  background: linear-gradient(135deg, $energy-accent 0%, $ai-accent 100%);
+  color: $white;
+  border: none;
+  border-radius: $border-radius-lg;
+  padding: $spacer-2 $spacer-4;
+  font-family: $headings-font-family;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-base;
+  text-decoration: none;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  box-shadow: 0 4px 12px rgba($energy-accent, 0.3);
+  
+  &:hover {
+    background: linear-gradient(135deg, darken($energy-accent, 5%) 0%, darken($ai-accent, 5%) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba($energy-accent, 0.4);
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    min-height: 44px;
+    padding: $spacer-2 $spacer-3;
+    font-size: $font-size-sm;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE BREAKPOINTS
+   ===================================================== */
+
 @media (max-width: $breakpoint-lg - 1) {
   .hero-content {
     text-align: center;
@@ -401,17 +505,6 @@
   
   .stat-item {
     align-items: center;
-  }
-}
-
-@media (max-width: $breakpoint-sm) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    
-    .btn {
-      width: 100%;
-    }
   }
   
   .carousel-nav {
@@ -425,7 +518,54 @@
   }
 }
 
-/* ---------- Dark Theme Adjustments ---------- */
+@media (max-width: $breakpoint-sm) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  /* Adjust slide content for mobile */
+  .slide-content {
+    padding: $spacer-2 !important;
+    
+    .slide-title {
+      font-size: $font-size-lg !important;
+    }
+    
+    .slide-description {
+      font-size: $font-size-sm !important;
+      max-height: none;
+      overflow-y: visible;
+    }
+  }
+  
+  .carousel-nav {
+    &.prev {
+      left: $spacer-1;
+    }
+    
+    &.next {
+      right: $spacer-1;
+    }
+  }
+}
+
+/* ---------- Safe Area Support ---------- */
+@supports (padding: max(0px)) {
+  .carousel-slide {
+    padding-left: max($spacer-3, env(safe-area-inset-left)) !important;
+    padding-right: max($spacer-3, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* =====================================================
+   DARK THEME ADJUSTMENTS
+   ===================================================== */
+
 [data-theme="dark"] {
   .hero-card {
     box-shadow: 0 20px 25px -5px var(--shadow-color);
@@ -436,7 +576,7 @@
   }
   
   .hero-title .highlight {
-    color: $pink; // Different color for dark theme
+    color: $pink;
     background: linear-gradient(120deg, $pink 0%, darken($pink, 10%) 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -454,11 +594,32 @@
   
   .carousel-nav {
     background: rgba(0, 0, 0, 0.8);
-    border-color: rgba($white, 0.8);
+    border-color: rgba($white, 0.6);
     
     &:hover:not(:disabled) {
       background: rgba(0, 0, 0, 1);
       border-color: $white;
+    }
+  }
+  
+  .carousel-indicators {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba($white, 0.2);
+  }
+  
+  .indicator {
+    &.active::after {
+      background: linear-gradient(90deg, lighten($energy-accent, 10%) 0%, lighten($ai-accent, 10%) 100%);
+    }
+  }
+  
+  .slide-content .btn {
+    background: linear-gradient(135deg, lighten($energy-accent, 10%) 0%, lighten($ai-accent, 10%) 100%);
+    box-shadow: 0 4px 12px rgba($energy-accent, 0.4);
+    
+    &:hover {
+      background: linear-gradient(135deg, $energy-accent 0%, $ai-accent 100%);
+      box-shadow: 0 6px 18px rgba($energy-accent, 0.5);
     }
   }
 }
