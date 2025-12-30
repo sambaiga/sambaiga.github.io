@@ -270,3 +270,33 @@
     @content;
   }
 }
+
+// Button mixins
+@mixin button-hover {
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: $btn-hover-box-shadow;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Media query mixin (if needed)
+@mixin media-breakpoint-down($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm - 1) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md - 1) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg - 1) { @content; }
+  }
+}
