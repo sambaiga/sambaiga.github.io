@@ -1,6 +1,10 @@
-/* =====================================================
-   MINIMAL TITLE BLOCK
-   ===================================================== */
+/*-- scss:pages/blog --*/
+
+// Blog Page Styles
+// =====================================================
+// BLOG LISTING & POST STYLES
+// =====================================================
+
 .quarto-title-banner {
   margin: $spacer-3 0 $spacer-3;
   padding-bottom: $spacer-3;
@@ -13,7 +17,7 @@
   }
   
   .quarto-title h1 {
-    font-size: $font-size-xxl;
+    font-size: $h1-font-size;
     margin-bottom: $spacer-1;
     color: $white;
     font-family: $headings-font-family;
@@ -38,15 +42,15 @@
   margin-bottom: $spacer-6;
 
   &[style*="display: none"] {
-      display: none !important;
-    }
+    display: none;
+  }
 
   .blog-post {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    
+    transition: opacity $transition-duration-base $transition-timing-ease, 
+                transform $transition-duration-base $transition-timing-ease;
     
     &[style*="display: none"] {
-      display: none !important;
+      display: none;
     }
   }
   
@@ -76,7 +80,7 @@
       margin-top: $spacer-4;
       
       .filter-btn {
-        padding: $spacer-2 $spacer-3; // Consistent padding
+        padding: $spacer-2 $spacer-3;
         border: $border-width-1 solid $border-color-light;
         border-radius: $border-radius-full;
         background: $white;
@@ -86,7 +90,7 @@
         cursor: pointer;
         
         &:hover {
-          background: rgba($primary, 0.1); // Using rgba instead of tint-color
+          background: rgba($primary, $opacity-10);
           border-color: $primary;
         }
         
@@ -171,13 +175,13 @@
     }
     
     &:focus-within {
-      box-shadow: 0 0 0 4px rgba($primary, 0.15);
+      box-shadow: 0 0 0 4px rgba($primary, $opacity-15);
     }
 
     // Thumbnail Section
     .blog-thumbnail {
       position: relative;
-      height: $blog-thumbnail-height; // Using variable instead of 220px
+      height: $blog-thumbnail-height;
       overflow: hidden;
       
       .thumbnail-link {
@@ -198,7 +202,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, transparent 60%, rgba($black, 0.3));
+        background: linear-gradient(to bottom, transparent 60%, rgba($black, $opacity-30));
         pointer-events: none;
         transition: opacity $transition-duration-slow $transition-timing-ease;
       }
@@ -214,7 +218,7 @@
         z-index: $z-index-dropdown - 10;
         
         .category-badge {
-          background: rgba($white, 0.95);
+          background: rgba($white, $opacity-95);
           color: $body-color;
           padding: $spacer-1 $spacer-3;
           border-radius: $border-radius-full;
@@ -332,6 +336,90 @@
 }
 
 /* =====================================================
+   BLOG PAGE SPECIFIC STYLES - UPDATED FOR BETTER IMAGE HANDLING
+   ===================================================== */
+
+body.blog {
+  // Add readable max-width constraint
+  .quarto-post, 
+  .quarto-page, 
+  .quarto-article, 
+  .quarto-listing {
+    max-width: $content-max-width; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 $spacer-3;
+  }
+  
+  // Adjust main content for blog pages
+  .page-layout {
+    width: 100%;
+    text-align: justify;
+  }
+  
+  // Style the reading time indicator from Quarto
+  .quarto-reading-time {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    
+    &:before {
+      content: "·";
+      margin: 0 $spacer-1;
+    }
+  }
+  
+  // Blog post content styling
+  .blog-post-content {
+    line-height: $body-line-height;
+    width: 100%;
+    max-width: 100%;
+    
+    // Base image styling - simple and effective
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: $image-border-radius;
+      margin: $spacer-4 0;
+      display: block;
+    }
+
+    // Figure containers
+    figure, 
+    .figure, 
+    .quarto-figure {
+      max-width: 100%;
+      margin: $spacer-4 0;
+      
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+      
+      figcaption {
+        font-size: $font-size-sm;
+        color: $gray-600;
+        text-align: center;
+        margin-top: $spacer-2;
+        padding: 0 $spacer-3;
+      }
+    }
+    
+    // Fix for images in paragraphs
+    p > img, 
+    div > img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    h2, h3, h4 {
+      margin-top: $spacer-5;
+      margin-bottom: $spacer-3;
+    }
+  }
+}
+
+/* =====================================================
    DARK MODE SUPPORT FOR BLOG
    ===================================================== */
 
@@ -344,7 +432,7 @@
         color: $dark-body-color;
         
         &:hover {
-          background: rgba($primary, 0.2);
+          background: rgba($primary, $opacity-20);
         }
         
         &.active {
@@ -357,7 +445,7 @@
     .blog-post {
       .blog-thumbnail {
         .category-badges .category-badge {
-          background: rgba($dark-body-bg, 0.95);
+          background: rgba($dark-body-bg, $opacity-95);
           color: $gray-300;
           
           &.more {
@@ -367,7 +455,7 @@
       }
       
       &:hover .blog-thumbnail .thumbnail-overlay {
-        background: linear-gradient(to bottom, transparent 60%, rgba($white, 0.1));
+        background: linear-gradient(to bottom, transparent 60%, rgba($white, $opacity-10));
       }
       
       .blog-content {
@@ -389,65 +477,43 @@
       }
     }
   }
+  
+  // Blog page dark mode
+  body.blog .blog-post-content {
+    img {
+      opacity: $opacity-90;
+      transition: opacity $transition-duration-base $transition-timing-ease;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+    
+    figure, .quarto-figure {
+      figcaption {
+        color: $gray-400;
+      }
+    }
+  }
 }
 
 /* =====================================================
-   BLOG PAGE SPECIFIC STYLES
+   TEXT RENDERING IMPROVEMENTS FOR BLOG
    ===================================================== */
 
 body.blog {
-  // Adjust main content for blog pages
-  .page-layout {
-    max-width: $content-max-width-wide;
-  }
-  
-  // Style the reading time indicator from Quarto
-  .quarto-reading-time {
-    font-size: $font-size-sm;
-    color: $gray-600;
-    
-    &:before {
-      content: "·";
-      margin: 0 $spacer-1;
-    }
-  }
-  
-  // Blog post content styling
-  .blog-post-content {
-    line-height: $body-line-height;
-    
-    img {
-      border-radius: $image-border-radius;
-      margin: $spacer-4 0;
-    }
-    
-    h2, h3, h4 {
-      margin-top: $spacer-5;
-      margin-bottom: $spacer-3;
-    }
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  hyphens: auto;
 }
 
 /* =====================================================
-   GLOBAL ACCESSIBILITY
-   ===================================================== */
-
-:focus-visible {
-  outline: $focus-ring;
-  outline-offset: $link-focus-outline-offset;
-  border-radius: $border-radius-sm;
-}
-
-// Visually hidden utility class
-.visually-hidden {
-  @include visually-hidden;
-}
-
-/* =====================================================
-   RESPONSIVE ADJUSTMENTS
+   RESPONSIVE ADJUSTMENTS FOR BLOG
    ===================================================== */
 
 @media (max-width: $breakpoint-md) {
+  // Blog listing adjustments
   .blog-listing {
     .posts-container {
       grid-template-columns: 1fr;
@@ -467,5 +533,314 @@ body.blog {
         }
       }
     }
+    
+    .blog-post {
+      .blog-content {
+        padding: $spacer-3;
+      }
+    }
+  }
+  
+  // Blog page responsive adjustments
+  body.blog {
+    .quarto-post, 
+    .quarto-page, 
+    .quarto-article, 
+    .quarto-listing {
+      max-width: 100%;
+      padding: 0 $spacer-2;
+    }
+    
+    .blog-post-content {
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: $spacer-3 0;
+      }
+      
+      figure, .quarto-figure {
+        margin: $spacer-3 0;
+        
+        img {
+          width: 100%;
+        }
+      }
+    }
   }
 }
+
+/* =====================================================
+   ENHANCED IMAGE FIX FOR MOBILE
+   ===================================================== */
+
+@media (max-width: $breakpoint-sm) {
+  body.blog .blog-post-content {
+    // Target image containers
+    figure, .quarto-figure, .figure {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      max-height: auto;
+      margin: $spacer-3 0;
+      padding: 0;
+      
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    
+    // Fix standalone images
+    p > img, 
+    div > img, 
+    img:not(figure img):not(.quarto-figure img) {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: $spacer-3 auto;
+    }
+  }
+  
+  // Add container constraint for better mobile readability
+  .blog-post-content {
+    p, ul, ol, blockquote, pre {
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+  }
+}
+
+/* =====================================================
+   BLOG POST SPECIFIC STYLES
+   ===================================================== */
+
+// Blog post hero/banner
+.blog-post .quarto-title-block {
+  position: relative;
+  background-color: $teal; // Fallback background color
+  background-image: var(--quarto-banner-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $white;
+  text-align: center;
+  text-shadow: 0 1px 6px rgba($black, $opacity-50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: $spacer-5 $spacer-4;             
+  border-bottom: $border-width-4 solid $pink;
+  
+  // When Quarto sets a banner (via title-block-banner), it adds gradient overlay
+  &.title-block-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba($black, $opacity-55),
+      rgba($black, $opacity-35)
+    );
+    z-index: 0;
+  }
+  
+  // For posts without banner: no gradient overlay, just solid color
+  &:not(.title-block-banner) {
+    // Remove the gradient overlay for non-banner posts
+    &::before {
+      display: none;
+    }
+    
+    // Add a subtle pattern/texture to solid color background
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba($white, $opacity-10) 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba($white, $opacity-10) 1px, transparent 1px);
+    background-size: 50px 50px;
+    
+    // Darken the text shadow for better readability on solid background
+    text-shadow: 0 2px 8px rgba($black, $opacity-60);
+  }
+}
+
+// Keep text layers above overlay
+.blog-post .quarto-title,
+.blog-post .quarto-title-author,
+.blog-post .quarto-title-meta,
+.blog-post .description {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title */
+.blog-post .quarto-title {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  margin-bottom: $spacer-2;
+  line-height: $headings-line-height;
+}
+
+/* Description */
+.blog-post .description {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-light;
+  max-width: 700px;
+  z-index: 2;
+  margin: 0 auto $spacer-3;
+  color: lighten($white, 10%);
+  opacity: $opacity-90;
+  text-align: left;
+}
+
+// Blog post categories in hero
+.blog-post .quarto-title-block .quarto-category {
+  color: $white;
+  border-color: $white;
+  position: relative;
+  z-index: 1;
+}
+
+// Blog post metadata styling
+.blog-post .quarto-title-meta {
+  font-size: $font-size-sm;
+  color: rgba($white, $opacity-80);
+  margin-top: $spacer-2;
+}
+
+/* =====================================================
+   BLOG CATEGORIES SIDEBAR
+   ===================================================== */
+
+#quarto-margin-sidebar {
+  .quarto-listing-category-title {
+    margin-left: $spacer-2;
+  }
+
+  .quarto-listing-category {
+    font-family: $toc-font-family;
+    font-weight: $toc-font-weight;
+    font-size: $font-size-base;
+    line-height: $line-height-snug;
+    padding-left: $toc-padding-left;
+    margin-left: $spacer-2;
+    border-left: $toc-border-left;
+
+    .category {
+      padding-bottom: $spacer-2;
+    }
+
+    .active {
+      font-weight: $toc-active-font-weight;
+      color: $toc-color;
+    }
+
+    .quarto-category-count {
+      font-weight: $font-weight-light;
+      font-size: $font-size-sm;
+      color: $gray-700;
+    }
+  }
+}
+
+// Dark mode for blog categories
+[data-bs-theme="dark"] {
+  #quarto-margin-sidebar {
+    .quarto-listing-category {
+      border-left-color: $gray-700;
+      
+      .quarto-category-count {
+        color: $gray-500;
+      }
+    }
+  }
+}
+
+/* =====================================================
+   BLOG POST CONTENT READABILITY
+   ===================================================== */
+
+/* Limit main content width for better reading experience on large screens */
+.quarto-post, .quarto-page, .quarto-article, .quarto-listing {
+  max-width: $content-max-width; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Blog post text rendering improvements from first file
+.blog-post {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  hyphens: auto;
+}
+
+// Code block styling specific to blog posts
+.blog-post-content {
+  pre.text, pre.sourceCode, .cell-output pre {
+    font-size: $code-block-font-size;
+  }
+  
+  // Ensure images don't overflow in code blocks as well
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* =====================================================
+   ANIMATIONS FOR BLOG POST HERO
+   ===================================================== */
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.blog-post .quarto-title {
+  animation: fadeInDown 0.8s $transition-timing-ease-in-out;
+}
+
+.blog-post .description {
+  animation: fadeInUp 1s $transition-timing-ease-in-out;
+}
+
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS FOR BLOG POST HERO
+   ===================================================== */
+
+@media (max-width: $breakpoint-md) {
+  .blog-post .quarto-title-block {
+    padding: $spacer-4 $spacer-3;
+    min-height: 40vh;
+  }
+}
+
+// Dark mode adjustments for blog post hero
+[data-bs-theme="dark"] {
+  .blog-post .quarto-title-block {
+    // For posts without banner in dark mode
+    &:not(.title-block-banner) {
+      background-color: darken($teal, 15%);
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba($white, $opacity-05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba($white, $opacity-05) 1px, transparent 1px);
+    }
+    
+    // For posts with banner in dark mode - make overlay darker
+    &.title-block-banner::before {
+      background: linear-gradient(
+        rgba($black, $opacity-70),
+        rgba($black, $opacity-50)
+      );
+    }
+  }
+}
+

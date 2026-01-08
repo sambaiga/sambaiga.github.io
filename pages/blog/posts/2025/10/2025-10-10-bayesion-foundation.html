@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting-73b3ed812b94f25e5dd4fec30a4b4dd6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../../site_libs/bootstrap/bootstrap-f01d6116b4b9912dd75c39007124cc55.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../../site_libs/bootstrap/bootstrap-301b8aac0bef513a02cd2ecce744ea95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -119,22 +119,8 @@ background-size: cover;
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -176,7 +162,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed blog quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -234,7 +220,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <div class="quarto-title-block"><div><h1 class="title">Understanding Bayesian Thinking for Industrial Applications</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+      <h1 class="title">Understanding Bayesian Thinking for Industrial Applications</h1>
                   <div>
         <div class="description">
           Learn how Bayesian thinking can enhance decision-making in industrial applications. This article lay the foundation of bayesion modelling with Pymc and their practical use cases.
@@ -317,25 +303,25 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="the-building-blocks-of-bayesian-modeling">The Building Blocks of Bayesian modeling</h3>
 <p>Traditional (Frequentist) statistics relies on large datasets the “long run” to produce confident conclusions, a limitation in industrial contexts where data are often sparse. New products, machines, or processes typically generate only small samples, while valuable expert knowledge such as an engineer’s lifespan estimate is excluded from conventional models.</p>
 <p>Bayesian inference overcomes these issues by combining <strong>prior knowledge</strong> with <strong>new data</strong>, enabling faster and more informed decisions when information is limited. This integration of expertise and evidence defines Bayesian thinking.</p>
-<p>The process of updating our beliefs is formalized by Bayes’ Theorem. <span class="math display">
+<p>The process of updating our beliefs is formalized by Bayes’ Theorem. <span class="math display">\[
 P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
-</span></p>
+\]</span></p>
 <p>While the formula looks mathematical, its components represent a beautifully intuitive learning cycle.</p>
-<p><span class="math display">
+<p><span class="math display">\[
 \mathrm{Posterior} \propto \mathrm{Likelihood} \times \mathrm{Prior}
-</span></p>
-<p>Let us break down how this relates to our machine failure problem; where <span class="math inline">\theta</span> is the machine’s expected failure rate, and <span class="math inline">D</span> is the 3 months of test data.</p>
+\]</span></p>
+<p>Let us break down how this relates to our machine failure problem; where <span class="math inline">\(\theta\)</span> is the machine’s expected failure rate, and <span class="math inline">\(D\)</span> is the 3 months of test data.</p>
 <section id="prior-likelihood-and-posterior" class="level4">
 <h4 class="anchored" data-anchor-id="prior-likelihood-and-posterior">Prior, Likelihood, and Posterior</h4>
 <ol type="1">
-<li><p><strong>Prior</strong> <span class="math inline">P(\theta)</span> represents the initial belief before observing any data. It incorporates domain expertise and historical knowledge. For instance, historical records may indicate that similar machines have an average lifespan of approximately ten years, implying a low failure rate. This prior belief defines the starting point for 𝜃 <span class="math inline">\theta</span>.</p></li>
-<li><p><strong>Likelihood</strong> <span class="math inline">P(D \mid \theta)</span> quantifies the compatibility between the observed data and a given parameter value. It expresses the probability of observing the test outcomes for different possible failure rates. In this context, the likelihood measures how probable it is to observe zero failures within three months if the true average lifespan were, for example, five or fifteen years.</p></li>
-<li><p><strong>Posterior</strong> <span class="math inline">P(\theta \mid D)</span> represents the updated belief after incorporating the observed data. It integrates prior knowledge with the evidence provided by the likelihood. In the machine-failure example, the posterior distribution expresses the updated estimate of expected lifespan after combining historical information (e.g., the ten-year prior) with the three months of failure-free operational data.</p></li>
+<li><p><strong>Prior</strong> <span class="math inline">\(P(\theta)\)</span> represents the initial belief before observing any data. It incorporates domain expertise and historical knowledge. For instance, historical records may indicate that similar machines have an average lifespan of approximately ten years, implying a low failure rate. This prior belief defines the starting point for 𝜃 <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p><strong>Likelihood</strong> <span class="math inline">\(P(D \mid \theta)\)</span> quantifies the compatibility between the observed data and a given parameter value. It expresses the probability of observing the test outcomes for different possible failure rates. In this context, the likelihood measures how probable it is to observe zero failures within three months if the true average lifespan were, for example, five or fifteen years.</p></li>
+<li><p><strong>Posterior</strong> <span class="math inline">\(P(\theta \mid D)\)</span> represents the updated belief after incorporating the observed data. It integrates prior knowledge with the evidence provided by the likelihood. In the machine-failure example, the posterior distribution expresses the updated estimate of expected lifespan after combining historical information (e.g., the ten-year prior) with the three months of failure-free operational data.</p></li>
 </ol>
 </section>
 <section id="pymc-the-probabilistic-programming-engine" class="level4">
 <h4 class="anchored" data-anchor-id="pymc-the-probabilistic-programming-engine">PyMC: The Probabilistic Programming Engine</h4>
-<p>Understanding the relationship <span class="math inline">\mathrm{Posterior} \propto \mathrm{Likelihood} \times \mathrm{Prior}</span> is the conceptual heart of Bayesian analysis. However, calculating the actual posterior distribution, <span class="math inline">P(\theta \mid D)</span>, often involves complex, multi-dimensional integration that is impossible to solve analytically for real-world industrial problems. This challenge is addressed through Probabilistic Programming Languages (PPLs) such as PyMC.</p>
+<p>Understanding the relationship <span class="math inline">\(\mathrm{Posterior} \propto \mathrm{Likelihood} \times \mathrm{Prior}\)</span> is the conceptual heart of Bayesian analysis. However, calculating the actual posterior distribution, <span class="math inline">\(P(\theta \mid D)\)</span>, often involves complex, multi-dimensional integration that is impossible to solve analytically for real-world industrial problems. This challenge is addressed through Probabilistic Programming Languages (PPLs) such as PyMC.</p>
 <p><a href="https://www.pymc.io/welcome.html">PyMC</a> is an open-source Python library for constructing and fitting Bayesian statistical models using advanced computational algorithms, including Markov Chain Monte Carlo (MCMC) and variational inference. It is one of several modern PPLs available in Python, alongside <a href="https://pyro.ai/">Pyro</a> and <a href="https://www.tensorflow.org/probability">TensorFlow Probability (TFP)</a>. This tutorial focuses on PyMC due to its clarity, community support, and extensive documentation.</p>
 </section>
 </section>
@@ -364,7 +350,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </ul>
 <div id="c9cdc1b7" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">UserWarning</span>)</span>
@@ -405,7 +391,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <h5 class="anchored" data-anchor-id="define-key-variables-and-parameters">Define key variables and parameters</h5>
 <div id="4998468c" class="cell" data-execution_count="2">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For reproducibility</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -421,15 +407,15 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <section id="define-prior-likelihood-and-posterior-in-pymc" class="level4">
 <h4 class="anchored" data-anchor-id="define-prior-likelihood-and-posterior-in-pymc">Define Prior, likelihood, and Posterior in PyMC</h4>
 <p>To model this problem in PyMC, one must first define the Prior and Likelihood distributions</p>
-<p><strong>Prior</strong>: Since the conversion rate <span class="math inline">\theta</span>, can only range between 0 and 1. The Beta distribution is ideal for modeling parameters that are bounded between 0 and 1, such as probabilities or rates.</p>
-<p>The Beta distribution is controlled by two parameters, <span class="math inline">\alpha</span> and <span class="math inline">\beta</span>. hese parameters are set to formally encode the prior knowledge: the historical 8% conversion rate. The mean of a <span class="math inline">\mathrm{Beta}(\alpha,\beta)</span> distribution is <span class="math inline">\frac{\alpha}{ \alpha + \beta}</span>. Since the historical rate is 8% (or 0.08), we need to choose <span class="math inline">\alpha</span> and <span class="math inline">\beta</span> such that: <span class="math display">
+<p><strong>Prior</strong>: Since the conversion rate <span class="math inline">\(\theta\)</span>, can only range between 0 and 1. The Beta distribution is ideal for modeling parameters that are bounded between 0 and 1, such as probabilities or rates.</p>
+<p>The Beta distribution is controlled by two parameters, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. hese parameters are set to formally encode the prior knowledge: the historical 8% conversion rate. The mean of a <span class="math inline">\(\mathrm{Beta}(\alpha,\beta)\)</span> distribution is <span class="math inline">\(\frac{\alpha}{ \alpha + \beta}\)</span>. Since the historical rate is 8% (or 0.08), we need to choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> such that: <span class="math display">\[
 \frac{\alpha}{ \alpha + \beta} = 0.08
-</span></p>
-<p>To determine the strength of this belief, a number that represents the effective sample size (ESS) of the historical knowledge is chosen. Choosing a hypothetical ESS of 100 trials, we can solve for <span class="math inline">\alpha</span> and <span class="math inline">\beta</span>: - ESS <span class="math inline">= \alpha + \beta = 100</span> - <span class="math inline">\alpha</span> (hypothetical successes) <span class="math inline">=100×0.08=8</span> - <span class="math inline">\beta</span> (hypothetical failures) <span class="math inline">=100−8=92</span></p>
+\]</span></p>
+<p>To determine the strength of this belief, a number that represents the effective sample size (ESS) of the historical knowledge is chosen. Choosing a hypothetical ESS of 100 trials, we can solve for <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>: - ESS <span class="math inline">\(= \alpha + \beta = 100\)</span> - <span class="math inline">\(\alpha\)</span> (hypothetical successes) <span class="math inline">\(=100×0.08=8\)</span> - <span class="math inline">\(\beta\)</span> (hypothetical failures) <span class="math inline">\(=100−8=92\)</span></p>
 <p><strong>Likelihood</strong> the Likelihood is determined by the process that generated the data. Since there is a fixed number of trials (N=200 visitors) and the number of successes (k=15 conversions) is counted, this is a Binomial distribution.</p>
 <div id="7a474694" class="cell" data-execution_count="3">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> conversion_model:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prior distribution based on historical performance</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    conversion_rate <span class="op">=</span> pm.Beta(<span class="st">"conversion_rate"</span>, alpha<span class="op">=</span><span class="dv">8</span>, beta<span class="op">=</span><span class="dv">92</span>)</span>
@@ -483,7 +469,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <h5 class="anchored" data-anchor-id="example-diagnostic-output">Example Diagnostic Output</h5>
 <div id="d0ce6f04" class="cell" data-execution_count="4">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diag_table<span class="op">=</span>az.summary(trace, kind<span class="op">=</span><span class="st">"diagnostics"</span>)[[<span class="st">'ess_bulk'</span>, <span class="st">'ess_tail'</span>, <span class="st">'r_hat'</span>]]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>GT(diag_table).tab_header(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">""</span>,</span>
@@ -581,7 +567,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>While the numbers in the summary table are essential, visually inspecting the MCMC chains confirms the story.</p>
 <div id="9aef9885" class="cell" data-execution_count="5">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>az.plot_trace(trace)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
@@ -592,7 +578,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 </div>
 </div>
-<p>The trace plot above shows excellent convergence for our conversion rate (<span class="math inline">\theta</span>) model, supporting the conclusions from our quantitative diagnostics. The plot is split into two panels 1. Right Panel: MCMC Sampling Behavior</p>
+<p>The trace plot above shows excellent convergence for our conversion rate (<span class="math inline">\(\theta\)</span>) model, supporting the conclusions from our quantitative diagnostics. The plot is split into two panels 1. Right Panel: MCMC Sampling Behavior</p>
 <ul>
 <li>This panel shows the raw sampled values across iterations for each of our four chains. The sampled values oscillate stably around ∼0.075 (7.5%) without any noticeable trends, sudden jumps, or long-term drifts.</li>
 <li>The different lines (chains) are thoroughly intertwined and overlap completely. This “fuzzy caterpillar” appearance is the visual proof that the sampler is efficiently exploring the parameter space and that all chains have converged to the same distribution.</li>
@@ -618,7 +604,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </blockquote>
 <div id="46f7cec5" class="cell" data-execution_count="6">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> conversion_model:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prior distribution based on historical performance</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    conversion_rate <span class="op">=</span> pm.Beta(<span class="st">"conversion_rate"</span>, alpha<span class="op">=</span><span class="dv">8</span>, beta<span class="op">=</span><span class="dv">92</span>)</span>
@@ -630,14 +616,14 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>Given our prior belief of an 8% conversion rate, we can simulate what kind of data we would expect to see if this belief were true. This is done by generating synthetic datasets from the prior distribution and comparing them to the actual observed data. This is acomplished in PyMC by running <code>pm.sample_prior_predictive()</code> function.</p>
 <div id="e4287572" class="cell" data-execution_count="7">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> conversion_model:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    prior_pred <span class="op">=</span> pm.sample_prior_predictive()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="ab219c43" class="cell" data-execution_count="8">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax<span class="op">=</span>plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="fl">2.8</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>az.plot_ppc(prior_pred, group<span class="op">=</span><span class="st">"prior"</span>, ax<span class="op">=</span>ax)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'conversions'</span>)</span>
@@ -651,7 +637,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 </div>
 </div>
-<p>The generated plot from the prior predictive sampling shows the distributions of simulated data (the number of conversions) created by sampling from the <span class="math inline">\text{Beta}(8,92)</span> prior distribution. - The distribution of the simulated data (prior predictive line) appear broadly spread out and relatively flat across a wide range (0 to 40+ conversions). This indicates that the prior allows for many different outcomes, and thus it is not overly restrictive. - The dashed line represents the average predicted number of conversions It is also quite flat and non-committal. - It evident that the prior predictive distribution does not overly concentrate around any specific number of conversions, which is desirable when we want to remain open to various possible outcomes. - So the prior predictive check confirms that our chosen Beta(8,92) prior is reasonable though it also quite weakly informative how?</p>
+<p>The generated plot from the prior predictive sampling shows the distributions of simulated data (the number of conversions) created by sampling from the <span class="math inline">\(\text{Beta}(8,92)\)</span> prior distribution. - The distribution of the simulated data (prior predictive line) appear broadly spread out and relatively flat across a wide range (0 to 40+ conversions). This indicates that the prior allows for many different outcomes, and thus it is not overly restrictive. - The dashed line represents the average predicted number of conversions It is also quite flat and non-committal. - It evident that the prior predictive distribution does not overly concentrate around any specific number of conversions, which is desirable when we want to remain open to various possible outcomes. - So the prior predictive check confirms that our chosen Beta(8,92) prior is reasonable though it also quite weakly informative how?</p>
 <p><strong>Red flags to watch for:</strong></p>
 <ul>
 <li><p><strong>Impossible values</strong>: Predictions outside the feasible range (e.g., negative conversion, &gt;200 observations)</p></li>
@@ -668,7 +654,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>To achive this it is important to generate new, simulated data from the posterior distribution and compare it to the actual observed data. This is done using the <code>pm.sample_posterior_predictive</code> function in PyMC.</p>
 <div id="bb92d732" class="cell" data-execution_count="11">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pm.Model() <span class="im">as</span> conversion_model:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prior distribution based on historical performance</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    conversion_rate <span class="op">=</span> pm.Beta(<span class="st">"conversion_rate"</span>, alpha<span class="op">=</span><span class="dv">8</span>, beta<span class="op">=</span><span class="dv">92</span>)</span>
@@ -688,7 +674,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </div>
 <div id="78d03be4" class="cell" data-execution_count="12">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ppc_summary <span class="op">=</span> az.summary(posterior_pred, kind<span class="op">=</span><span class="st">'stats'</span>, hdi_prob<span class="op">=</span><span class="fl">0.95</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ppc_table <span class="op">=</span> (</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    GT(ppc_summary)</span>
@@ -786,7 +772,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>It clear that the predicted mean (15.314) is extremely close to the actual observed count (15). This is a strong indication that the <code>conversion_rate model</code> fits the data very well. And thus the choice of the Beta Prior and Binomial Likelihood is appropriate for this data. The model predicts that 95% of the time, the number of conversions will fall between 6 and 24. Since the company observed value of 15 falls well within this 95% HDI, the actual observation is considered highly plausible according to your model.</p>
 <div id="07c99b89" class="cell" data-execution_count="13">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ppc_samples <span class="op">=</span> posterior_pred.posterior_predictive[<span class="st">'observations'</span>].values.flatten()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>percentile <span class="op">=</span> (ppc_samples <span class="op">&lt;=</span> conversions).mean() <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Observed convervation (</span><span class="sc">{</span>conversions<span class="sc">}</span><span class="ss">) is at the </span><span class="sc">{</span>percentile<span class="sc">:.1f}</span><span class="ss">th percentile of predictions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -809,7 +795,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>To achieve this, we need to extract the posterior distribution for the conversion_rate parameter that your model estimated.</p>
 <div id="e5d5d690" class="cell" data-execution_count="14">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>posterior_samples <span class="op">=</span> trace.posterior.stack(sample<span class="op">=</span>(<span class="st">"chain"</span>, <span class="st">"draw"</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>conversion_samples<span class="op">=</span>posterior_samples[<span class="st">'conversion_rate'</span>].values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -823,7 +809,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 </ul>
 <div id="3ab685f1" class="cell" data-execution_count="15">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>prob_superiority <span class="op">=</span> (conversion_samples <span class="op">&gt;</span> historical_baseline).mean()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the result</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The probability that the new feature is better than the old rate (0.08) is: </span><span class="sc">{</span>prob_superiority<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -839,7 +825,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>Depending on the business context, one might also want to calculate the probability that the new feature is better by a meaningful margin (e.g., &gt;1% improvement). This calculates the chance that the new feature is better than the old feature by a practically significant margin of at least 1 percentage point. This is a crucial business metric. Sometimes a tiny statistical “win” is not worth the cost of development and deployment. If this probability is low, it confirms the feature is not a major improvement.</p>
 <div id="fa5bdaec" class="cell" data-execution_count="16">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>prob_1pct_improvement <span class="op">=</span> (conversion_samples <span class="op">&gt;</span> historical_baseline<span class="op">+</span><span class="fl">0.01</span>).mean()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Probability of &gt;1% improvement: </span><span class="sc">{</span>prob_1pct_improvement<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -853,7 +839,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>This calculates the chance that the true conversion rate of the new feature is 10% or higher. This is useful if 10% is a specific, ambitious KPI (Key Performance Indicator) or goal set by the marketing or product team. It tells how likely the team is to meet its goal.</p>
 <div id="8621e38b" class="cell" data-execution_count="17">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>prob_10pct <span class="op">=</span> (conversion_samples <span class="op">&gt;</span> <span class="fl">0.10</span>).mean()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" Probability of &gt;10% improvement: </span><span class="sc">{</span>prob_10pct<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -868,7 +854,7 @@ P(\theta \mid D) = \frac{P(D \mid \theta) P(\theta)}{P(D)}
 <p>The goal is to translate the statistically determined average change in conversion rate into a clear financial outcome for the business. This calculation provides the most actionable insight for the go/no-go decision on the new feature.</p>
 <div id="c001958c" class="cell" data-execution_count="18">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate key business probabilities</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>expected_uplift <span class="op">=</span> conversion_samples.mean() <span class="op">-</span> historical_baseline</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -893,10 +879,10 @@ Expected monthly value: $-1,717</code></pre>
 </section>
 <section id="prior-sensitivity-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="prior-sensitivity-analysis">Prior sensitivity analysis</h4>
-<p>Assessing how the <strong>choice of prior influences the final decision</strong> is important. This transparency is a key strength of <strong>Bayesian modeling</strong>, as it allows testing every assumption. Thus, one must determine how much the choice of prior affects the outcome by comparing several <strong>Beta priors</strong>. These comparisons will include priors from very optimistic (expecting a <span class="math inline">15\%</span> conversion rate) to skeptical (expecting only <span class="math inline">4\%</span>), plus an <strong>uninformative prior</strong> that lets the data speak entirely for itself.</p>
+<p>Assessing how the <strong>choice of prior influences the final decision</strong> is important. This transparency is a key strength of <strong>Bayesian modeling</strong>, as it allows testing every assumption. Thus, one must determine how much the choice of prior affects the outcome by comparing several <strong>Beta priors</strong>. These comparisons will include priors from very optimistic (expecting a <span class="math inline">\(15\%\)</span> conversion rate) to skeptical (expecting only <span class="math inline">\(4\%\)</span>), plus an <strong>uninformative prior</strong> that lets the data speak entirely for itself.</p>
 <div id="85a03141" class="cell" data-execution_count="19">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>priors_to_test <span class="op">=</span> [</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Very Optimistic"</span>, <span class="dv">15</span>, <span class="dv">85</span>),    <span class="co"># Believes 15% conversion rate</span></span>
@@ -955,7 +941,7 @@ Expected monthly value: $-1,717</code></pre>
 <p>Let first visualise the different priors</p>
 <div id="9deabd27" class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>domain <span class="op">=</span> [<span class="st">"Very Optimistic"</span>, <span class="st">"Optimistic"</span>, <span class="st">"Historical Based"</span>, <span class="st">"Strong Historical"</span>, <span class="st">"Skeptical"</span>, <span class="st">"Uninformative"</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>reference_data <span class="op">=</span> pd.DataFrame([</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'x'</span>: <span class="fl">0.08</span>, <span class="st">'label'</span>: <span class="st">'Old Feature CR (8%)'</span>, <span class="st">'color'</span>: <span class="st">'red'</span>, <span class="st">'label_x'</span>: <span class="fl">0.08</span>},</span>
@@ -1069,7 +1055,7 @@ Expected monthly value: $-1,717</code></pre>
 <p>To support decision-making, we compile a summary table comparing key metrics across these prior choices.</p>
 <div id="756813f4" class="cell" data-execution_count="21">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sensitivity analysis table</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sensitivity_table <span class="op">=</span> (</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    GT(sensitivity_df)</span>
@@ -1379,57 +1365,6 @@ Expected monthly value: $-1,717</code></pre>
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
-        } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);

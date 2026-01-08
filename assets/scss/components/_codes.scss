@@ -1,5 +1,11 @@
 /*-- scss:components/codes --*/
-// Styles for inline code elements ONLY
+
+// Code Component SCSS
+// =====================================================
+// COMPREHENSIVE CODE STYLING SYSTEM
+// =====================================================
+
+// Inline code styling
 code:not(pre code) {
   background-color: $code-bg;
   color: $code-color;
@@ -7,62 +13,372 @@ code:not(pre code) {
   border-radius: $code-border-radius;
   font-size: $code-font-size;
   font-family: $font-family-monospace;
+  border: 1px solid rgba($gray-400, 0.5);
   
-  // Reset properties that might affect images
-  max-width: none !important;
-  overflow-x: auto;
-  display: inline;
+  // Ensure it doesn't break layout
+  display: inline-block;
   vertical-align: baseline;
   line-height: $line-height-normal;
   white-space: nowrap;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  // Smooth scrolling for mobile
+  scrollbar-width: thin;
+  scrollbar-color: $gray-400 transparent;
+  
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $gray-400;
+    border-radius: 2px;
+  }
+  
+  // Fix for long inline code on mobile
+  @media (max-width: $breakpoint-md) {
+    white-space: pre-wrap;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
-// More specific selector to ensure we only target text code
-// This prevents affecting any potential code blocks containing images
-*:not(img) > code:not(pre code),
-code:not(pre code):not(:has(img)) {
-  // Apply the scrolling behavior only to actual code text
-  -webkit-overflow-scrolling: touch;
+// Pre/code blocks (code blocks)
+pre {
+  position: relative;
+  margin: $spacer-4 0;
+  padding: $code-block-padding;
+  background-color: $code-block-bg;
+  border: 1px solid $gray-300;
+  border-radius: $code-block-border-radius;
+  overflow-x: auto;
+  font-family: $font-family-monospace;
+  font-size: $code-block-font-size;
+  line-height: $body-line-height;
+  
+  // Remove default code styling inside pre
+  code {
+    background-color: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    white-space: pre !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+    
+    // Ensure no conflicting styles
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // Line numbers if enabled
+  &[class*="line-numbers"] {
+    counter-reset: line;
+    
+    code {
+      counter-increment: line;
+      position: relative;
+      padding-left: 3.5em;
+      
+      &:before {
+        content: counter(line);
+        position: absolute;
+        left: 0;
+        width: 3em;
+        text-align: right;
+        color: $gray-500;
+        padding-right: 0.5em;
+        border-right: 1px solid $gray-300;
+        margin-right: 0.5em;
+      }
+    }
+  }
+}
+
+// Code blocks with specific languages
+.sourceCode,
+.cell-output pre {
+  @extend pre;
+  margin: $spacer-3 0;
+  
+  code {
+    // Reset any inline code styles
+    all: unset;
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+// Code copy button styling
+div.sourceCode {
+  position: relative;
+  
+  button.code-copy {
+    position: absolute;
+    top: $spacer-2;
+    right: $spacer-2;
+    z-index: $z-index-dropdown;
+    opacity: 0;
+    transition: opacity $transition-duration-base $transition-timing-ease;
+    background-color: $white;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius-sm;
+    padding: $spacer-1 $spacer-2;
+    font-size: $font-size-xs;
+    color: $btn-code-copy-color;
+    
+    &:hover, &:focus {
+      opacity: 1 !important;
+      color: $btn-code-copy-color-hover;
+      border-color: $btn-code-copy-color-hover;
+    }
+  }
+  
+  &:hover button.code-copy {
+    opacity: 0.7;
+  }
+}
+
+// Code folding
+details.code-fold {
+  summary {
+    cursor: pointer;
+    padding: $spacer-2 $spacer-3;
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $gray-700;
+    margin-bottom: 0;
+    
+    &:hover {
+      background-color: $gray-200;
+    }
+  }
+  
+  &[open] summary {
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+    border-bottom: none;
+  }
+  
+  pre {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+// Output blocks
+.cell-output {
+  pre {
+    background-color: lighten($gray-100, 2%);
+    border-color: $gray-400;
+  }
+  
+  &.stdout, &.stderr {
+    border-left: 3px solid $gray-400;
+    padding-left: $spacer-3;
+  }
+  
+  &.stdout {
+    border-left-color: $success;
+  }
+  
+  &.stderr {
+    border-left-color: $danger;
+  }
 }
 
 // Responsive adjustments
 @media (max-width: $breakpoint-md) {
   code:not(pre code) {
-    font-size: $font-size-sm;
+    font-size: $font-size-xs;
     padding: $spacer-1 $spacer-2;
-    line-height: $line-height-snug;
+    
+    // Better mobile scrolling
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    
+    &::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
+  }
+  
+  pre {
+    font-size: $font-size-xs;
+    padding: $spacer-2;
+    margin: $spacer-2 0;
+    border-radius: $border-radius;
+    
+    // Mobile optimization
+    -webkit-overflow-scrolling: touch;
+    
+    code {
+      font-size: inherit;
+    }
+  }
+  
+  div.sourceCode {
+    margin-left: -$spacer-2;
+    margin-right: -$spacer-2;
+    border-radius: 0;
+    
+    pre {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
   }
 }
 
-@media (max-width: $breakpoint-sm) {
+// Headings with code
+h1, h2, h3, h4, h5, h6 {
+  code:not(pre code) {
+    font-size: 0.85em;
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 0.8em;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: 0.75em;
+      padding: 0.1em 0.25em;
+    }
+  }
+}
+
+// Tables with code
+table {
   code:not(pre code) {
     font-size: $font-size-xs;
-    padding: $spacer-1 $spacer-1;
-    
-    // Only apply word breaking to very long code snippets
-    // This shouldn't affect images
-    overflow-wrap: break-word;
+    padding: 0.1em 0.25em;
+  }
+}
+
+// Lists with code
+li {
+  code:not(pre code) {
+    white-space: normal;
     word-break: break-word;
   }
 }
 
-// Dark mode
-[data-theme="dark"] {
+// Blockquotes with code
+blockquote {
   code:not(pre code) {
-    background-color: var(--code-bg, $gray-800);
-    color: var(--code-color, $gray-200);
-    border: 1px solid rgba($white, $opacity-10);
+    background-color: rgba($code-bg, 0.7);
   }
 }
 
-// Headings
-h1, h2, h3, h4, h5, h6 {
+// Dark mode
+[data-bs-theme="dark"] {
   code:not(pre code) {
-    @media (max-width: $breakpoint-md) {
-      font-size: 0.85em;
+    background-color: var(--code-bg, $gray-800);
+    color: var(--code-color, $gray-200);
+    border-color: $gray-700;
+  }
+  
+  pre {
+    background-color: var(--code-block-bg, $gray-900);
+    border-color: $gray-700;
+    color: $gray-200;
+    
+    code {
+      background-color: transparent;
+      color: inherit;
     }
-    @media (max-width: $breakpoint-sm) {
-      font-size: 0.8em;
+  }
+  
+  div.sourceCode {
+    button.code-copy {
+      background-color: $gray-800;
+      color: $gray-300;
+      border-color: $gray-700;
+      
+      &:hover {
+        background-color: $gray-700;
+        color: $gray-100;
+      }
     }
+  }
+  
+  details.code-fold {
+    summary {
+      background-color: $gray-800;
+      border-color: $gray-700;
+      color: $gray-300;
+      
+      &:hover {
+        background-color: $gray-700;
+      }
+    }
+  }
+  
+  .cell-output {
+    pre {
+      background-color: lighten($gray-900, 2%);
+      border-color: $gray-600;
+    }
+    
+    &.stdout {
+      border-left-color: lighten($success, 20%);
+    }
+    
+    &.stderr {
+      border-left-color: lighten($danger, 20%);
+    }
+  }
+}
+
+// Print styles
+@media print {
+  code:not(pre code) {
+    background-color: transparent;
+    border: 1px solid $gray-400;
+    color: $gray-900;
+    padding: 0;
+  }
+  
+  pre {
+    background-color: transparent;
+    border: 1px solid $gray-400;
+    page-break-inside: avoid;
+    
+    code {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+  
+  .code-copy {
+    display: none !important;
+  }
+}
+
+// Fix for code blocks in blog posts
+.blog-post-content,
+.quarto-body-content {
+  pre, code {
+    // Ensure they inherit the correct styles
+    font-family: $font-family-monospace;
+  }
+  
+  // Fix for potential conflicts
+  code:not(pre code) {
+    background-color: $code-bg;
+    color: $code-color;
   }
 }
