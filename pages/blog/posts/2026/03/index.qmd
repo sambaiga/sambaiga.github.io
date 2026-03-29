@@ -18,7 +18,6 @@ categories:
   - Technology Roadmapping
 
 bibliography: references.bib
-csl: ieee.csl
 
 execute:
   echo: false
