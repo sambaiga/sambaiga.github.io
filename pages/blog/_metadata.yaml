@@ -2,24 +2,31 @@
 
 blog-listing-title: "Latest Articles"
 filter-active: true
+page-columns: true
+image-column: page
 format: 
   html:
-    body-class: "blog"  
     code-overflow: wrap
-    html-math-method: katex
+    html-math-method: mathjax
     highlight-style: github
+    body-classes: "blog"
     code-copy: true
-    code-line-numbers: true
+    code-line-numbers: false
     reading-time: true
     code-fold: true
-    code-summary: "Show the code"
+    #code-summary: "Show the code"
+    #code-tools: true
+    #code-link: true
     shift-heading-level-by: 1
     reference-location: margin
+    fig-cap-location: bottom
     smooth-scroll: true
+    
     
 
 # Default for table of contents
 title-block-banner: true
+page-layout: full
 toc: true
 toc-title: Table of contents
 toc-location: right
@@ -33,6 +40,13 @@ author:
     
 citation: true
 appendix-cite-as: bibtex
+
+reading-time: true
+word-count: true  
+progress: true  
+smooth-scroll: true
+sr-attributes: true
+engine: knitr
 
 notebook-links: true
 execute:
