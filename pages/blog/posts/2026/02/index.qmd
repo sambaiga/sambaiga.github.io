@@ -11,7 +11,7 @@ open-graph:
     image: "crux_kernel.png"
 
 title-block-banner: mirella-callage-Kile7-U74s0-unsplash.jpg
-draft: True
+draft: false
 
 categories:
   - AI Strategy
