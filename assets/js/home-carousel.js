@@ -1,4 +1,3 @@
-// achievement-carousel.js
 class AchievementCarousel {
   constructor(containerId, dataUrl) {
     this.container = document.getElementById(containerId);
@@ -57,6 +56,36 @@ class AchievementCarousel {
     }
   }
   
+  // Add this new validation method
+  validateLink(linkData) {
+    if (!linkData || typeof linkData !== 'object') return null;
+    
+    const { url, text } = linkData;
+    
+    // Check if URL exists and is valid
+    if (!url || typeof url !== 'string') return null;
+    
+    const trimmedUrl = url.trim();
+    
+    // List of URLs to exclude (empty or index pages)
+    const excludedUrls = [
+      '', '#', '/', '/index', '/index.html', 'index', 'index.html', 
+      '#!', '#!undefined', 'javascript:void(0);', 'javascript:;'
+    ];
+    
+    if (excludedUrls.includes(trimmedUrl)) return null;
+    
+    // Check if it's just a fragment identifier without content
+    if (trimmedUrl.startsWith('#') && trimmedUrl.length < 3) return null;
+    
+    return {
+      url: trimmedUrl,
+      text: (text && typeof text === 'string' && text.trim() !== '') 
+        ? text.trim() 
+        : 'Learn More'
+    };
+  }
+  
   async loadData() {
     try {
       if (this.dataUrl) {
@@ -72,17 +101,14 @@ class AchievementCarousel {
           throw new Error('Invalid data format: missing achievements array');
         }
         
-        // Process achievements
+        // Process achievements with link validation
         this.achievements = data.achievements.map((achievement, index) => ({
           id: achievement.id || index + 1,
           tag: achievement.tag || '',
           title: achievement.title || '',
           description: achievement.description || '',
           imageUrl: achievement.imageUrl || this.getFallbackImage(index),
-          link: achievement.link ? {
-            text: achievement.link.text || 'Learn More',
-            url: achievement.link.url || '#'
-          } : null
+          link: this.validateLink(achievement.link)  // Use validation method
         }));
         
       } else {
@@ -104,12 +130,8 @@ class AchievementCarousel {
         "title": "Eaton STAR Leadership in Data Science Award 2024",
         "description": "Received Eaton's prestigious STAR Leadership Award in Data Science for demonstrating outstanding leadership and excellence in advancing data science practices.",
         "imageUrl": "images/achievements/arts.jpg",
-        "link": {
-          "text": "",
-          "url": ""
-        }
+        "link": null  // Changed from empty object to null
       }
-      // Add more achievements here if needed
     ];
   }
   
@@ -191,6 +213,11 @@ class AchievementCarousel {
       `background-image: url('${achievement.imageUrl}')` : 
       `background: ${achievement.imageUrl}`;
     
+    // Final check to ensure link should be rendered
+    const shouldRenderLink = achievement.link && 
+                            achievement.link.url && 
+                            this.validateLink(achievement.link) !== null;
+    
     return `
       <div class="carousel-slide" 
            data-index="${index}"
@@ -200,14 +227,14 @@ class AchievementCarousel {
            ${isActive ? 'aria-current="true"' : 'aria-hidden="true"'}
            ${isActive ? 'tabindex="0"' : 'tabindex="-1"'}
            style="${backgroundStyle}">
-        
-        <div class="slide-content">
-          <span class="slide-tag">${achievement.tag}</span>
+      
+        <div class="slide-content ${!shouldRenderLink ? 'no-link' : ''}">
+          ${achievement.tag ? `<span class="slide-tag">${achievement.tag}</span>` : ''}
           <h2 class="slide-title">${achievement.title}</h2>
           <p class="slide-description">${achievement.description}</p>
-          ${achievement.link && achievement.link.url ? `
-            <a href="${achievement.link.url}" class="btn btn-primary">
-              ${achievement.link.text || 'Learn More'}
+          ${shouldRenderLink ? `
+            <a href="${achievement.link.url}" class="btn btn-primary slide-link">
+              ${achievement.link.text}
               <i class="bi bi-arrow-right" aria-hidden="true"></i>
             </a>
           ` : ''}

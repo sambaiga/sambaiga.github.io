@@ -5,7 +5,7 @@ project:
     - bash assets/bash/generate_thumbs.sh
  
   preview: 
-    port: 5555
+    port: 5556
     browser: true
     watch-inputs: true
     navigate: true
@@ -80,9 +80,6 @@ website:
       <span class="faux-block">Made with [Quarto](https://quarto.org/)</span>
       <span class="faux-block">[View the source at {{< bi github >}} GitHub]({{< var github-url >}})</span>
 
-filters:
-  - quarto
-
 icons:
   bootstrap: true
 
@@ -92,15 +89,15 @@ format:
     self-contained: false
     embed-resources: false
     responsive-images: true
-    fig-align: center
     clean-urls: true
-    code-link: true
+    code-link: false
     anchor-sections: true
-    fig-cap-location: margin
+    fig-cap-location: bottom
     reference-location: margin
     footnotes-hover: true
     aria: true
     toc: true
+  
 
 freeze: auto
 citation: false

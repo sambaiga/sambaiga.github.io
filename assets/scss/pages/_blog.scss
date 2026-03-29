@@ -1,6 +1,10 @@
-/* =====================================================
-   MINIMAL TITLE BLOCK
-   ===================================================== */
+/*-- scss:pages/blog --*/
+
+// Blog Page Styles
+// =====================================================
+// BLOG LISTING & POST STYLES
+// =====================================================
+
 .quarto-title-banner {
   margin: $spacer-3 0 $spacer-3;
   padding-bottom: $spacer-3;
@@ -13,7 +17,7 @@
   }
   
   .quarto-title h1 {
-    font-size: $font-size-xxl;
+    font-size: $h1-font-size;
     margin-bottom: $spacer-1;
     color: $white;
     font-family: $headings-font-family;
@@ -38,15 +42,15 @@
   margin-bottom: $spacer-6;
 
   &[style*="display: none"] {
-      display: none !important;
-    }
+    display: none;
+  }
 
   .blog-post {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    
+    transition: opacity $transition-duration-base $transition-timing-ease, 
+                transform $transition-duration-base $transition-timing-ease;
     
     &[style*="display: none"] {
-      display: none !important;
+      display: none;
     }
   }
   
@@ -76,7 +80,7 @@
       margin-top: $spacer-4;
       
       .filter-btn {
-        padding: $spacer-2 $spacer-3; // Consistent padding
+        padding: $spacer-2 $spacer-3;
         border: $border-width-1 solid $border-color-light;
         border-radius: $border-radius-full;
         background: $white;
@@ -86,7 +90,7 @@
         cursor: pointer;
         
         &:hover {
-          background: rgba($primary, 0.1); // Using rgba instead of tint-color
+          background: rgba($primary, $opacity-10);
           border-color: $primary;
         }
         
@@ -147,37 +151,56 @@
       transform: scale(0.95);
     }
     
+    // Top accent bar — matches talk-card brand pattern
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $border-width-3;
+      background: linear-gradient(90deg, $pink-dark 0%, $cyan 50%, $teal 100%);
+      opacity: 0;
+      transition: opacity $transition-duration-base $transition-timing-ease-in-out;
+      z-index: 1;
+    }
+
     &:hover {
-      transform: translateY(-6px);
-      box-shadow: $shadow-xl;
-      
+      transform: $card-hover-transform;
+      box-shadow: $card-hover-box-shadow;
+
+      &::before {
+        opacity: 1;
+      }
+
       .blog-thumbnail {
         img {
           transform: scale(1.08);
         }
-        
+
         .thumbnail-overlay {
           opacity: 0.1;
         }
       }
-      
+
       .blog-title a {
         color: $primary;
       }
-      
+
       .read-more-link {
         gap: $spacer-2;
+        color: $energy-accent;
       }
     }
-    
+
     &:focus-within {
-      box-shadow: 0 0 0 4px rgba($primary, 0.15);
+      box-shadow: 0 0 0 4px rgba($energy-accent, $opacity-20);
     }
 
     // Thumbnail Section
     .blog-thumbnail {
       position: relative;
-      height: $blog-thumbnail-height; // Using variable instead of 220px
+      height: $blog-thumbnail-height;
       overflow: hidden;
       
       .thumbnail-link {
@@ -198,7 +221,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, transparent 60%, rgba($black, 0.3));
+        background: linear-gradient(to bottom, transparent 60%, rgba($black, $opacity-30));
         pointer-events: none;
         transition: opacity $transition-duration-slow $transition-timing-ease;
       }
@@ -214,7 +237,7 @@
         z-index: $z-index-dropdown - 10;
         
         .category-badge {
-          background: rgba($white, 0.95);
+          background: rgba($white, $opacity-95);
           color: $body-color;
           padding: $spacer-1 $spacer-3;
           border-radius: $border-radius-full;
@@ -295,7 +318,7 @@
         
         .reading-progress {
           height: 4px;
-          background: $primary;
+          background: linear-gradient(90deg, $energy-accent 0%, $ai-accent 100%);
           border-radius: $border-radius-sm;
           transition: width $transition-duration-slow $transition-timing-ease;
           flex: 1;
@@ -309,10 +332,11 @@
           display: inline-flex;
           align-items: center;
           gap: $spacer-1;
-          transition: gap $transition-duration-base $transition-timing-ease;
-          
+          transition: color $transition-duration-base $transition-timing-ease,
+                      gap $transition-duration-base $transition-timing-ease;
+
           &:hover {
-            color: $link-hover-color;
+            color: $energy-accent;
           }
         }
       }
@@ -332,6 +356,90 @@
 }
 
 /* =====================================================
+   BLOG PAGE SPECIFIC STYLES - UPDATED FOR BETTER IMAGE HANDLING
+   ===================================================== */
+
+body.blog {
+  // Add readable max-width constraint
+  .quarto-post, 
+  .quarto-page, 
+  .quarto-article, 
+  .quarto-listing {
+    max-width: $content-max-width; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 $spacer-3;
+  }
+  
+  // Adjust main content for blog pages
+  .page-layout {
+    width: 100%;
+    text-align: left; // justify degrades readability on narrow screens
+  }
+  
+  // Style the reading time indicator from Quarto
+  .quarto-reading-time {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    
+    &:before {
+      content: "·";
+      margin: 0 $spacer-1;
+    }
+  }
+  
+  // Blog post content styling
+  .blog-post-content {
+    line-height: $body-line-height;
+    width: 100%;
+    max-width: 100%;
+    
+    // Base image styling - simple and effective
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: $image-border-radius;
+      margin: $spacer-4 0;
+      display: block;
+    }
+
+    // Figure containers
+    figure, 
+    .figure, 
+    .quarto-figure {
+      max-width: 100%;
+      margin: $spacer-4 0;
+      
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+      
+      figcaption {
+        font-size: $font-size-sm;
+        color: $gray-600;
+        text-align: center;
+        margin-top: $spacer-2;
+        padding: 0 $spacer-3;
+      }
+    }
+    
+    // Fix for images in paragraphs
+    p > img, 
+    div > img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    h2, h3, h4 {
+      margin-top: $spacer-5;
+      margin-bottom: $spacer-3;
+    }
+  }
+}
+
+/* =====================================================
    DARK MODE SUPPORT FOR BLOG
    ===================================================== */
 
@@ -344,7 +452,7 @@
         color: $dark-body-color;
         
         &:hover {
-          background: rgba($primary, 0.2);
+          background: rgba($primary, $opacity-20);
         }
         
         &.active {
@@ -357,7 +465,7 @@
     .blog-post {
       .blog-thumbnail {
         .category-badges .category-badge {
-          background: rgba($dark-body-bg, 0.95);
+          background: rgba($dark-body-bg, $opacity-95);
           color: $gray-300;
           
           &.more {
@@ -367,7 +475,7 @@
       }
       
       &:hover .blog-thumbnail .thumbnail-overlay {
-        background: linear-gradient(to bottom, transparent 60%, rgba($white, 0.1));
+        background: linear-gradient(to bottom, transparent 60%, rgba($white, $opacity-10));
       }
       
       .blog-content {
@@ -389,65 +497,43 @@
       }
     }
   }
+  
+  // Blog page dark mode
+  body.blog .blog-post-content {
+    img {
+      opacity: $opacity-90;
+      transition: opacity $transition-duration-base $transition-timing-ease;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+    
+    figure, .quarto-figure {
+      figcaption {
+        color: $gray-400;
+      }
+    }
+  }
 }
 
 /* =====================================================
-   BLOG PAGE SPECIFIC STYLES
+   TEXT RENDERING IMPROVEMENTS FOR BLOG
    ===================================================== */
 
 body.blog {
-  // Adjust main content for blog pages
-  .page-layout {
-    max-width: $content-max-width-wide;
-  }
-  
-  // Style the reading time indicator from Quarto
-  .quarto-reading-time {
-    font-size: $font-size-sm;
-    color: $gray-600;
-    
-    &:before {
-      content: "·";
-      margin: 0 $spacer-1;
-    }
-  }
-  
-  // Blog post content styling
-  .blog-post-content {
-    line-height: $body-line-height;
-    
-    img {
-      border-radius: $image-border-radius;
-      margin: $spacer-4 0;
-    }
-    
-    h2, h3, h4 {
-      margin-top: $spacer-5;
-      margin-bottom: $spacer-3;
-    }
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  hyphens: auto;
 }
 
 /* =====================================================
-   GLOBAL ACCESSIBILITY
-   ===================================================== */
-
-:focus-visible {
-  outline: $focus-ring;
-  outline-offset: $link-focus-outline-offset;
-  border-radius: $border-radius-sm;
-}
-
-// Visually hidden utility class
-.visually-hidden {
-  @include visually-hidden;
-}
-
-/* =====================================================
-   RESPONSIVE ADJUSTMENTS
+   RESPONSIVE ADJUSTMENTS FOR BLOG
    ===================================================== */
 
 @media (max-width: $breakpoint-md) {
+  // Blog listing adjustments
   .blog-listing {
     .posts-container {
       grid-template-columns: 1fr;
@@ -467,5 +553,1002 @@ body.blog {
         }
       }
     }
+    
+    .blog-post {
+      .blog-content {
+        padding: $spacer-3;
+      }
+    }
+  }
+  
+  // Blog page responsive adjustments
+  body.blog {
+    .quarto-post, 
+    .quarto-page, 
+    .quarto-article, 
+    .quarto-listing {
+      max-width: 100%;
+      padding: 0 $spacer-2;
+    }
+    
+    .blog-post-content {
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: $spacer-3 0;
+      }
+      
+      figure, .quarto-figure {
+        margin: $spacer-3 0;
+        
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/* =====================================================
+   ENHANCED IMAGE FIX FOR MOBILE
+   ===================================================== */
+
+@media (max-width: $breakpoint-sm) {
+  body.blog .blog-post-content {
+    // Target image containers
+    figure, .quarto-figure, .figure {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      max-height: auto;
+      margin: $spacer-3 0;
+      padding: 0;
+      
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    
+    // Fix standalone images
+    p > img, 
+    div > img, 
+    img:not(figure img):not(.quarto-figure img) {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: $spacer-3 auto;
+    }
+  }
+  
+  // Add container constraint for better mobile readability
+  .blog-post-content {
+    p, ul, ol, blockquote, pre {
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+  }
+}
+
+/* =====================================================
+   BLOG POST SPECIFIC STYLES
+   ===================================================== */
+
+// Blog post hero/banner
+.blog-post .quarto-title-block {
+  position: relative;
+  background-color: $teal; // Fallback background color
+  background-image: var(--quarto-banner-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $white;
+  text-align: center;
+  text-shadow: 0 1px 6px rgba($black, $opacity-50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: $spacer-5 $spacer-4;             
+  border-bottom: $border-width-4 solid $pink-dark;
+  
+  // When Quarto sets a banner (via title-block-banner), it adds gradient overlay
+  &.title-block-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba($black, $opacity-55),
+      rgba($black, $opacity-35)
+    );
+    z-index: 0;
+  }
+  
+  // For posts without banner: no gradient overlay, just solid color
+  &:not(.title-block-banner) {
+    // Remove the gradient overlay for non-banner posts
+    &::before {
+      display: none;
+    }
+    
+    // Add a subtle pattern/texture to solid color background
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba($white, $opacity-10) 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba($white, $opacity-10) 1px, transparent 1px);
+    background-size: 50px 50px;
+    
+    // Darken the text shadow for better readability on solid background
+    text-shadow: 0 2px 8px rgba($black, $opacity-60);
+  }
+}
+
+// Keep text layers above overlay
+.blog-post .quarto-title,
+.blog-post .quarto-title-author,
+.blog-post .quarto-title-meta,
+.blog-post .description {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title */
+.blog-post .quarto-title {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  margin-bottom: $spacer-2;
+  line-height: $headings-line-height;
+}
+
+/* Description */
+.blog-post .description {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-light;
+  max-width: 700px;
+  z-index: 2;
+  margin: 0 auto $spacer-3;
+  color: lighten($white, 10%);
+  opacity: $opacity-90;
+  text-align: left;
+}
+
+// Blog post categories in hero
+.blog-post .quarto-title-block .quarto-category {
+  color: $white;
+  border-color: $white;
+  position: relative;
+  z-index: 1;
+}
+
+// Blog post metadata styling
+.blog-post .quarto-title-meta {
+  font-size: $font-size-sm;
+  color: rgba($white, $opacity-80);
+  margin-top: $spacer-2;
+}
+
+/* =====================================================
+   BLOG CATEGORIES SIDEBAR
+   ===================================================== */
+
+#quarto-margin-sidebar {
+  .quarto-listing-category-title {
+    margin-left: $spacer-2;
+  }
+
+  .quarto-listing-category {
+    font-family: $toc-font-family;
+    font-weight: $toc-font-weight;
+    font-size: $font-size-base;
+    line-height: $line-height-snug;
+    padding-left: $toc-padding-left;
+    margin-left: $spacer-2;
+    border-left: $toc-border-left;
+
+    .category {
+      padding-bottom: $spacer-2;
+    }
+
+    .active {
+      font-weight: $toc-active-font-weight;
+      color: $toc-color;
+    }
+
+    .quarto-category-count {
+      font-weight: $font-weight-light;
+      font-size: $font-size-sm;
+      color: $gray-700;
+    }
+  }
+}
+
+// Dark mode for blog categories
+[data-bs-theme="dark"] {
+  #quarto-margin-sidebar {
+    .quarto-listing-category {
+      border-left-color: $gray-700;
+      
+      .quarto-category-count {
+        color: $gray-500;
+      }
+    }
+  }
+}
+
+/* =====================================================
+   BLOG POST CONTENT READABILITY
+   ===================================================== */
+
+/* Limit main content width for better reading experience on large screens */
+.quarto-post, .quarto-page, .quarto-article, .quarto-listing {
+  max-width: $content-max-width; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Blog post text rendering improvements from first file
+.blog-post {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  hyphens: auto;
+}
+
+// Code block styling specific to blog posts
+.blog-post-content {
+  pre.text, pre.sourceCode, .cell-output pre {
+    font-size: $code-block-font-size;
+  }
+  
+  // Ensure images don't overflow in code blocks as well
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* =====================================================
+   ANIMATIONS FOR BLOG POST HERO
+   ===================================================== */
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.blog-post .quarto-title {
+  animation: fadeInDown 0.8s $transition-timing-ease-in-out;
+}
+
+.blog-post .description {
+  animation: fadeInUp 1s $transition-timing-ease-in-out;
+}
+
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS FOR BLOG POST HERO
+   ===================================================== */
+
+@media (max-width: $breakpoint-md) {
+  .blog-post .quarto-title-block {
+    padding: $spacer-4 $spacer-3;
+    min-height: 40vh;
+  }
+}
+
+// Dark mode adjustments for blog post hero
+[data-bs-theme="dark"] {
+  .blog-post .quarto-title-block {
+    // For posts without banner in dark mode
+    &:not(.title-block-banner) {
+      background-color: darken($teal, 15%);
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba($white, $opacity-05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba($white, $opacity-05) 1px, transparent 1px);
+    }
+    
+    // For posts with banner in dark mode - make overlay darker
+    &.title-block-banner::before {
+      background: linear-gradient(
+        rgba($black, $opacity-70),
+        rgba($black, $opacity-50)
+      );
+    }
+  }
+}
+
+
+/* =====================================================
+   BLOG POST ARTICLE PROSE — TYPOGRAPHY & SPACING
+   ===================================================== */
+
+// Target Quarto blog post article content
+#quarto-document-content,
+.quarto-post {
+
+  // Fix justify inherited from .page-layout
+  text-align: left;
+
+  p {
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacer-4;
+    color: $gray-800;
+    max-width: 72ch; // Optimal reading width
+  }
+
+  // Section headings — brand-accented separator on h2
+  h2 {
+    margin-top: $spacer-7;
+    margin-bottom: $spacer-3;
+    padding-bottom: $spacer-2;
+    border-bottom: 2px solid rgba($energy-accent, 0.25);
+
+    &:first-of-type {
+      margin-top: $spacer-5;
+    }
+  }
+
+  h3 {
+    margin-top: $spacer-6;
+    margin-bottom: $spacer-2;
+    color: $gray-800;
+  }
+
+  h4 {
+    margin-top: $spacer-5;
+    margin-bottom: $spacer-2;
+    color: $gray-700;
+  }
+
+  // Anchor link reveal on heading hover
+  h2, h3, h4 {
+    .anchorjs-link {
+      opacity: 0;
+      transition: opacity $transition-duration-base ease;
+    }
+
+    &:hover .anchorjs-link {
+      opacity: 0.5;
+    }
+  }
+
+  // Lists — better spacing and brand marker color
+  ul, ol {
+    padding-left: $spacer-5;
+    margin-bottom: $spacer-4;
+
+    li {
+      margin-bottom: $spacer-2;
+      line-height: $line-height-relaxed;
+      color: $gray-700;
+      max-width: 72ch;
+
+      &::marker {
+        color: $energy-accent;
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    // Nested lists
+    ul, ol {
+      margin-top: $spacer-2;
+      margin-bottom: $spacer-2;
+    }
+  }
+
+  // Strong and emphasis contrast
+  strong, b {
+    font-weight: $font-weight-semibold;
+    color: $gray-900;
+  }
+
+  em, i {
+    font-style: italic;
+    color: $gray-700;
+  }
+
+  // Horizontal rule — decorative divider
+  hr {
+    margin: $spacer-7 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, $gray-300, transparent);
+    position: relative;
+
+    &::after {
+      content: "§";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: $white;
+      padding: 0 $spacer-3;
+      color: $gray-400;
+      font-size: $font-size-sm;
+      font-family: Georgia, serif;
+    }
+  }
+}
+
+
+/* =====================================================
+   BLOCKQUOTE — PULL QUOTE STYLE
+   ===================================================== */
+
+#quarto-document-content,
+.quarto-post {
+  blockquote {
+    position: relative;
+    margin: $spacer-6 0;
+    padding: $spacer-4 $spacer-5 $spacer-4 $spacer-6;
+    background: rgba($energy-accent, 0.04);
+    border-left: 4px solid $energy-accent;
+    border-radius: 0 $border-radius-lg $border-radius-lg 0;
+
+    // Decorative opening quote mark
+    &::before {
+      content: "\201C";
+      font-family: Georgia, serif;
+      font-size: 3.5rem;
+      color: rgba($energy-accent, 0.25);
+      position: absolute;
+      top: -0.25rem;
+      left: 0.6rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      font-style: italic;
+      color: $gray-700;
+      line-height: $line-height-relaxed;
+      margin-bottom: 0;
+      max-width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: $spacer-2;
+      }
+    }
+
+    cite {
+      display: block;
+      margin-top: $spacer-3;
+      font-size: $font-size-sm;
+      font-style: normal;
+      font-weight: $font-weight-medium;
+      color: $gray-600;
+
+      &::before {
+        content: "— ";
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   QUARTO CALLOUT BOXES
+   ===================================================== */
+
+.callout {
+  margin: $spacer-5 0;
+  border-radius: $border-radius-lg;
+  border: 1px solid transparent;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+
+  .callout-header {
+    padding: $spacer-2 $spacer-4;
+    display: flex;
+    align-items: center;
+    gap: $spacer-2;
+    font-family: $headings-font-family;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+
+    .callout-icon-container {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-base;
+    }
+
+    .callout-title-container {
+      font-size: $font-size-sm;
+      letter-spacing: $letter-spacing-wide;
+      text-transform: uppercase;
+    }
+  }
+
+  .callout-body {
+    padding: $spacer-3 $spacer-4;
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Note — blue/info
+  &.callout-note {
+    border-color: rgba($info, 0.3);
+    background: rgba($info, 0.04);
+
+    .callout-header {
+      background: rgba($info, 0.1);
+      color: darken($info, 15%);
+    }
+  }
+
+  // Tip — green/success
+  &.callout-tip {
+    border-color: rgba($success, 0.3);
+    background: rgba($success, 0.04);
+
+    .callout-header {
+      background: rgba($success, 0.1);
+      color: darken($success, 10%);
+    }
+  }
+
+  // Warning — orange
+  &.callout-warning {
+    border-color: rgba($warning, 0.4);
+    background: rgba($warning, 0.04);
+
+    .callout-header {
+      background: rgba($warning, 0.12);
+      color: darken($warning, 10%);
+    }
+  }
+
+  // Important — red
+  &.callout-important {
+    border-color: rgba($danger, 0.3);
+    background: rgba($danger, 0.04);
+
+    .callout-header {
+      background: rgba($danger, 0.1);
+      color: $danger;
+    }
+  }
+
+  // Caution — yellow
+  &.callout-caution {
+    border-color: rgba($yellow, 0.4);
+    background: rgba($yellow, 0.04);
+
+    .callout-header {
+      background: rgba($yellow, 0.12);
+      color: darken($yellow, 15%);
+    }
+  }
+}
+
+
+/* =====================================================
+   TABLE STYLING — BLOG POST
+   ===================================================== */
+
+// Quarto wraps labeled tables in .quarto-float-tbl figure
+.quarto-float-tbl {
+  margin: $spacer-6 0;
+
+  // Table caption rendered above the table
+  figcaption,
+  .quarto-tbl-caption {
+    display: block;
+    font-family: $headings-font-family;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $gray-700;
+    padding: $spacer-3 $spacer-4;
+    background: $gray-100;
+    border: 1px solid $gray-200;
+    border-bottom: none;
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+    text-align: left;
+    letter-spacing: $letter-spacing-wide;
+  }
+
+  // The inner div wrapping the <table> — enables responsive scroll
+  > div,
+  > figure > div {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0 0 $border-radius-lg $border-radius-lg;
+    box-shadow: $shadow-md;
+    border: 1px solid $gray-200;
+    border-top: none;
+
+    scrollbar-width: thin;
+    scrollbar-color: $gray-300 transparent;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb {
+      background: $gray-300;
+      border-radius: 2px;
+    }
+  }
+}
+
+// Core table element — applied globally inside post content
+#quarto-document-content,
+.quarto-post {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+    background: $white;
+
+    // Standalone tables (not inside quarto-float wrapper): add container treatment
+    &:not(.quarto-float-tbl table) {
+      margin: $spacer-5 0;
+      border-radius: $border-radius-lg;
+      overflow: hidden;
+      box-shadow: $shadow-md;
+      border: 1px solid $gray-200;
+    }
+
+    thead {
+      tr {
+        background: $primary;
+        border-bottom: 2px solid darken($primary, 6%);
+      }
+
+      th {
+        padding: $spacer-3 $spacer-4;
+        font-family: $headings-font-family;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-xs;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-wider;
+        text-align: left;
+        color: $white;
+        border: none;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $gray-200;
+        transition: background-color $transition-duration-fast ease;
+
+        &:nth-child(odd)  { background: $white; }
+        &:nth-child(even) { background: rgba($primary, 0.03); }
+
+        &:hover {
+          background: rgba($primary, 0.07);
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      td {
+        padding: $spacer-3 $spacer-4;
+        vertical-align: top;
+        color: $gray-700;
+        border: none;
+        line-height: $line-height-relaxed;
+
+        // First column as a label
+        &:first-child {
+          font-weight: $font-weight-medium;
+          color: $gray-900;
+        }
+
+        strong {
+          font-weight: $font-weight-semibold;
+          color: $gray-900;
+        }
+      }
+    }
+
+    tfoot {
+      tr {
+        background: $gray-100;
+        border-top: 2px solid $gray-200;
+      }
+
+      td, th {
+        padding: $spacer-2 $spacer-4;
+        font-size: $font-size-xs;
+        color: $gray-600;
+      }
+    }
+
+    // Native <caption> element
+    caption {
+      caption-side: top;
+      font-family: $headings-font-family;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $gray-700;
+      padding: $spacer-3 $spacer-4;
+      text-align: left;
+      background: $gray-100;
+      border: 1px solid $gray-200;
+      border-bottom: none;
+    }
+  }
+
+  // Mobile responsive: wrap tables that aren't inside quarto-float
+  table:not(.quarto-float-tbl table) {
+    @media (max-width: $breakpoint-md) {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+
+/* =====================================================
+   FIGURE / IMAGE STYLING — BLOG POST
+   ===================================================== */
+
+// Quarto labeled figures (.quarto-float-fig)
+.quarto-float-fig {
+  margin: $spacer-6 0;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-md;
+    transition: transform $transition-duration-slow ease,
+                filter $transition-duration-slow ease;
+
+    &:hover {
+      transform: scale(1.015);
+      filter: brightness(1.03);
+    }
+  }
+
+  // Caption sits tight below the image — no background, no bar
+  figcaption,
+  .quarto-fig-caption {
+    margin-top: $spacer-2;
+    font-size: $font-size-sm;
+    color: $gray-500;
+    font-family: $headings-font-family;
+    font-style: italic;
+    text-align: center;
+    line-height: $line-height-normal;
+
+    p {
+      margin-bottom: 0;
+      font-size: $font-size-sm;
+      color: $gray-500;
+    }
+  }
+}
+
+// Unlabeled/standalone figures
+#quarto-document-content,
+.quarto-post {
+  figure:not(.quarto-float-fig) {
+    margin: $spacer-5 0;
+    text-align: center;
+
+    img {
+      border-radius: $border-radius-xl;
+      box-shadow: $shadow-md;
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      margin-top: $spacer-2;
+      font-size: $font-size-sm;
+      color: $gray-600;
+      font-style: italic;
+      text-align: center;
+    }
+  }
+}
+
+// Margin captions — Quarto places these in .column-margin
+// when fig-cap-location: margin or reference-location: margin
+.column-margin {
+  font-size: $font-size-xs;
+  color: $gray-500;
+  font-family: $headings-font-family;
+  line-height: $line-height-normal;
+  border-left: 2px solid rgba($energy-accent, 0.25);
+  padding-left: $spacer-3;
+
+  p {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    margin-bottom: $spacer-2;
+  }
+
+  .quarto-fig-caption,
+  figcaption {
+    font-style: italic;
+  }
+
+  // Margin references (footnotes, citations)
+  .footnote,
+  .citation {
+    font-size: $font-size-xs;
+    color: $gray-500;
+    margin-bottom: $spacer-2;
+    padding-bottom: $spacer-1;
+    border-bottom: 1px solid $gray-100;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+
+/* =====================================================
+   DARK MODE — PROSE, TABLE, FIGURE, CALLOUTS
+   ===================================================== */
+
+[data-bs-theme="dark"] {
+
+  // Prose
+  #quarto-document-content,
+  .quarto-post {
+    p, li { color: $gray-300; }
+    strong, b { color: $gray-100; }
+    em, i     { color: $gray-400; }
+
+    h2 { border-bottom-color: rgba($energy-accent, 0.2); }
+    h3 { color: $gray-200; }
+    h4 { color: $gray-300; }
+
+    hr {
+      background: linear-gradient(to right, transparent, $gray-700, transparent);
+
+      &::after {
+        background: $dark-body-bg;
+        color: $gray-600;
+      }
+    }
+  }
+
+  // Blockquote
+  #quarto-document-content,
+  .quarto-post {
+    blockquote {
+      background: rgba($energy-accent, 0.06);
+      border-left-color: rgba($energy-accent, 0.5);
+
+      &::before { color: rgba($energy-accent, 0.2); }
+
+      p { color: $gray-400; }
+      cite { color: $gray-500; }
+    }
+  }
+
+  // Callouts
+  .callout {
+    &.callout-note {
+      border-color: rgba($info, 0.25);
+      background: rgba($info, 0.08);
+      .callout-header { background: rgba($info, 0.15); color: lighten($info, 20%); }
+    }
+    &.callout-tip {
+      border-color: rgba($success, 0.25);
+      background: rgba($success, 0.08);
+      .callout-header { background: rgba($success, 0.15); color: lighten($success, 20%); }
+    }
+    &.callout-warning {
+      border-color: rgba($warning, 0.3);
+      background: rgba($warning, 0.08);
+      .callout-header { background: rgba($warning, 0.15); color: lighten($warning, 15%); }
+    }
+    &.callout-important {
+      border-color: rgba($danger, 0.25);
+      background: rgba($danger, 0.08);
+      .callout-header { background: rgba($danger, 0.15); color: lighten($danger, 20%); }
+    }
+    &.callout-caution {
+      border-color: rgba($yellow, 0.3);
+      background: rgba($yellow, 0.08);
+      .callout-header { background: rgba($yellow, 0.15); color: lighten($yellow, 15%); }
+    }
+  }
+
+  // Tables
+  .quarto-float-tbl {
+    figcaption,
+    .quarto-tbl-caption {
+      background: $gray-800;
+      border-color: $gray-700;
+      color: $gray-300;
+    }
+
+    > div,
+    > figure > div {
+      border-color: $gray-700;
+      scrollbar-color: $gray-600 transparent;
+      &::-webkit-scrollbar-thumb { background: $gray-600; }
+    }
+  }
+
+  #quarto-document-content,
+  .quarto-post {
+    table {
+      background: $dark-body-bg;
+
+      &:not(.quarto-float-tbl table) {
+        border-color: $gray-700;
+      }
+
+      thead tr {
+        background: darken($primary, 5%);
+        border-bottom-color: $gray-700;
+      }
+
+      tbody {
+        tr {
+          border-bottom-color: $gray-700;
+          &:nth-child(odd)  { background: $dark-body-bg; }
+          &:nth-child(even) { background: rgba($white, 0.03); }
+          &:hover           { background: rgba($white, 0.07); }
+        }
+
+        td {
+          color: $gray-400;
+          &:first-child { color: $gray-200; }
+          strong { color: $gray-100; }
+        }
+      }
+
+      tfoot {
+        tr { background: rgba($white, 0.03); border-top-color: $gray-700; }
+        td, th { color: $gray-500; }
+      }
+
+      caption {
+        background: $gray-800;
+        border-color: $gray-700;
+        color: $gray-300;
+      }
+    }
+  }
+
+  // Figures
+  .quarto-float-fig {
+    img {
+      filter: brightness(0.92);
+      box-shadow: $shadow-lg;
+    }
+
+    figcaption,
+    .quarto-fig-caption {
+      color: $gray-400;
+      p { color: $gray-400; }
+    }
+  }
+
+  // Margin notes
+  .column-margin {
+    border-left-color: rgba($energy-accent, 0.2);
+    p, figcaption, .citation, .footnote { color: $gray-500; }
+    .footnote, .citation { border-bottom-color: $gray-800; }
   }
 }
