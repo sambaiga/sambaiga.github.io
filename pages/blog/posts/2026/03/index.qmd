@@ -83,7 +83,7 @@ That mapping matters because it is not arbitrary, each row in the table is a dir
 The real value of strategic roadmapping is not the diagram you produce, it is the disciplined thinking the process forces you to do. When built around the kernel and properly facilitated [@Phaal2004; @Komssi2013], each element of the kernel finds its operational expression in the roadmap:
 
 - **Honest prioritisation** : the crux drives resource allocation, countering the inverted diagnosis problem by forcing the real obstacle into view before capabilities are chosen.
-- **Adaptive planning** : the "How Well" layer keeps the roadmap live — updating as the AI capability frontier shifts, rather than locking in assumptions that will not hold.
+- **Adaptive planning** : the "How Well" layer keeps the roadmap live, updating as the AI capability frontier shifts, rather than locking in assumptions that will not hold.
 - **Managed experimentation** : coherent actions replace scattered pilots, each tied to a specific measurable question, making emergent value visible rather than declared.
 - **Strategic alignment** : diagnosis and guiding policy ensure market, product, and technology investments pull in the same direction, not against each other.
 - **Shared language** : the roadmap makes the kernel visible across diverse teams without requiring everyone to read the same strategy document.
@@ -98,7 +98,7 @@ The question is no longer whether to build a roadmap. It is whether to build one
 
 AI is not simply a hard technology to deploy. It is a technology that structurally resists the strategy discipline that worked for every previous enterprise technology wave. It inverts the normal diagnostic sequence, shortens the useful life of any guiding policy, and produces value in forms that conventional measurement instruments cannot capture. These are not execution problems. They are design problems and they require a framework that is built with them in view.
 
-That is what combining Rumelt's kernel with a structured technology roadmap provides. The kernel supplies the architecture: a diagnosis that names the real obstacle, a guiding policy built to be revised rather than fixed, and coherent actions measured by outcomes rather than activity. The roadmap supplies the operational mechanism: a structured process that forces the five strategic questions — Why, What, How, When, and How Well — and makes the kernel visible across the organisation, not just in the strategy document.
+That is what combining Rumelt's kernel with a structured technology roadmap provides. The kernel supplies the architecture: a diagnosis that names the real obstacle, a guiding policy built to be revised rather than fixed, and coherent actions measured by outcomes rather than activity. The roadmap supplies the operational mechanism: a structured process that forces the five strategic questions, Why, What, How, When, and How Well, and makes the kernel visible across the organisation, not just in the strategy document.
 
 The gap between 80% running pilots and 5% extracting value is not a technology gap. It is a strategy gap created by frameworks that were not designed for AI's structural properties. And it is closeable but only if the framework is.
 
