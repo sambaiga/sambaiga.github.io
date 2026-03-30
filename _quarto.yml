@@ -101,6 +101,7 @@ format:
 
 freeze: auto
 citation: false
+csl: assets/ieee.csl
 execute:
   echo: true
   message: true
