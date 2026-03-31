@@ -18,8 +18,7 @@ categories:
   - Technology Roadmapping
 
 bibliography: references.bib
-draft: True
-
+draft: false
 execute:
   echo: false
 ---
