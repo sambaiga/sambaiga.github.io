@@ -83,7 +83,7 @@ IBM reports that 64% of CEOs admit to investing in technology before fully under
 
 To correct this, organisations need a roadmap that starts with a real problem not with an available capability. In AI, this does not mean ignoring what the technology makes possible. It means using that awareness as an input to diagnosis, not as a substitute for it. According to @Phaal2010, a roadmap only becomes truly strategic when it honestly addresses five questions: **Why, What, How, When, and How Well**. Without all five, you do not have a strategy. You have a to-do list with a Gantt chart attached, as shown in @fig-roadmap-gov.
 
-![Roadmapping Governing Framework: Integrating the 'Know' Layers and Strategic Questions](roadmap-govnt-framework.jpg){#fig-roadmap-gov fig-align="center" width="75%"}
+![Roadmapping Governing Framework: Integrating the 'Know' Layers and Strategic Questions](roadmap-govnt-framework.webp){#fig-roadmap-gov fig-align="center" width="75%"}
 
 What makes this combination powerful is how naturally Rumelt's three kernel elements map onto the roadmapping questions that @Kerr2022 identifies: *Where are we now? Where do we want to go? How can we get there?*  and onto the knowledge layers that @Phaal2004 describes. Rather than two separate frameworks running in parallel, they function as three lenses on the same strategic problem, each reinforcing the other, as shown in @tbl-kernel-map.
 
@@ -115,5 +115,5 @@ That is what combining Rumelt's kernel with a structured technology roadmap prov
 The gap between 80% running pilots and 5% extracting value is not a technology gap. It is a strategy gap created by frameworks that were not designed for AI's structural properties. And it is closeable, but only if the framework is.
 
 
-**[Part 2 →](../04/index.qmd)** If this post names the problem, Part 2 gives you the process: a five-step AI roadmapping framework, real case studies of what failure looks like, and a practical guide to recognising bad AI strategy before it costs you.
+The next post puts this framework into practice: a five-step AI roadmapping process, real case studies of failure, and a practical guide to spotting bad AI strategy before it costs you.
 
