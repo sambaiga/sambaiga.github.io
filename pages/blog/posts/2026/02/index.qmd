@@ -50,7 +50,7 @@ The failure starts before the roadmap is drawn. IBM reports that 64% of CEOs adm
 
 To correct this, organisations need a roadmap that starts with a real problem not with an available capability. In AI, this does not mean ignoring what the technology makes possible. It means using that awareness as an input to diagnosis, not as a substitute for it. According to @Phaal2010, a roadmap only becomes truly strategic when it honestly addresses five questions: **Why, What, How, When, and How Well**. Without all five, you do not have a strategy - you have a to-do list with a Gantt chart attached, as shown in @fig-roadmap-gov.
 
-![Roadmapping Governing Framework: Integrating the 'Know' Layers and Strategic Questions](roadmap-govnt-framework.jpg){#fig-roadmap-gov fig-align="center" width="75%"}
+![Roadmapping Governing Framework: Integrating the 'Know' Layers and Strategic Questions](roadmap-govnt-framework.webp){#fig-roadmap-gov fig-align="center" width="95%"}
 
 What makes this combination powerful is how naturally Rumelt's three kernel elements map onto the roadmapping questions that @Kerr2022 identifies: *Where are we now? Where do we want to go? How can we get there?*  and onto the knowledge layers that @Phaal2004 describes. Rather than two separate frameworks running in parallel, they function as three lenses on the same strategic problem, each reinforcing the other, as shown in @tbl-kernel-map.
 
