@@ -1,0 +1,352 @@
+/*-- scss:pages/projects --*/
+
+// =====================================================
+// PROJECTS TIMELINE PAGE
+// =====================================================
+
+.projects-page {
+  padding: $section-padding-y-sm 0;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: $section-padding-y 0;
+  }
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: $spacer-8;
+  padding: 0 $section-padding-x;
+
+  h1 {
+    font-family: $headings-font-family;
+    font-size: $font-size-xxxl;
+    font-weight: $font-weight-bold;
+    color: $primary;
+    margin-bottom: $spacer-3;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-xxl;
+    }
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $secondary;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.projects-timeline {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 $section-padding-x;
+  position: relative;
+
+  // Vertical center line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+      $energy-accent,
+      $ai-accent,
+      $energy-accent);
+    transform: translateX(-50%);
+    opacity: 0.3;
+
+    @media (max-width: $breakpoint-md) {
+      left: 20px;
+    }
+  }
+}
+
+.timeline-event {
+  display: flex;
+  margin-bottom: $spacer-8;
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    padding-left: $spacer-6;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 40px;
+      bottom: -40px;
+      width: 2px;
+      background: rgba($primary, 0.1);
+    }
+  }
+}
+
+// Alternating layout
+.timeline-event:nth-child(odd) {
+  flex-direction: row;
+
+  .timeline-content {
+    text-align: right;
+    margin-right: $spacer-5;
+    flex: 1;
+  }
+
+  .timeline-icon {
+    order: 2;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+
+    .timeline-content {
+      text-align: left;
+      margin-right: 0;
+      margin-bottom: $spacer-4;
+    }
+  }
+}
+
+.timeline-event:nth-child(even) {
+  flex-direction: row-reverse;
+
+  .timeline-content {
+    text-align: left;
+    margin-left: $spacer-5;
+    flex: 1;
+  }
+
+  .timeline-icon {
+    order: 1;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+
+    .timeline-content {
+      text-align: left;
+      margin-left: 0;
+      margin-bottom: $spacer-4;
+    }
+  }
+}
+
+.timeline-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xxl;
+  color: $white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $breakpoint-md) {
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    font-size: $font-size-lg;
+  }
+}
+
+// Status colors
+.timeline-event.status-active .timeline-icon {
+  background: $primary;
+  box-shadow: 0 0 0 4px rgba($primary, 0.1);
+}
+
+.timeline-event.status-maintained .timeline-icon {
+  background: $ai-accent;
+  box-shadow: 0 0 0 4px rgba($ai-accent, 0.1);
+}
+
+.timeline-event.status-community .timeline-icon {
+  background: $energy-accent;
+  box-shadow: 0 0 0 4px rgba($energy-accent, 0.1);
+}
+
+.timeline-content {
+  background: $white;
+  border-radius: $card-border-radius;
+  padding: $spacer-5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s $transition-timing-ease-in-out;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.timeline-year {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $gray-600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: $spacer-1;
+}
+
+.timeline-title {
+  font-family: $headings-font-family;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $primary;
+  margin: $spacer-2 0;
+  line-height: $headings-line-height;
+}
+
+.timeline-event.status-maintained .timeline-title {
+  color: $ai-accent;
+}
+
+.timeline-event.status-community .timeline-title {
+  color: $energy-accent;
+}
+
+.timeline-description {
+  font-size: $font-size-md;
+  line-height: $body-line-height;
+  color: $secondary;
+  margin: $spacer-3 0;
+}
+
+.timeline-meta {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  margin-bottom: $spacer-3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-3;
+
+  @media (max-width: $breakpoint-md) {
+    justify-content: flex-start;
+  }
+}
+
+.timeline-status {
+  display: inline-block;
+  padding: $spacer-1 $spacer-2;
+  border-radius: $card-border-radius;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeline-event.status-active .timeline-status {
+  background: rgba($primary, 0.1);
+  color: $primary;
+}
+
+.timeline-event.status-maintained .timeline-status {
+  background: rgba($ai-accent, 0.1);
+  color: $ai-accent;
+}
+
+.timeline-event.status-community .timeline-status {
+  background: rgba($energy-accent, 0.1);
+  color: $energy-accent;
+}
+
+.timeline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-2;
+  margin-top: $spacer-4;
+  padding-top: $spacer-4;
+  border-top: 1px solid $border-color-light;
+}
+
+.timeline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacer-1;
+  padding: $spacer-1 $spacer-2;
+  background: rgba($primary, 0.05);
+  color: $primary;
+  text-decoration: none;
+  border-radius: $card-border-radius;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  transition: all 0.2s $transition-timing-ease-in-out;
+  border: 1px solid transparent;
+
+  i {
+    font-size: $font-size-sm;
+  }
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+}
+
+.timeline-event.status-maintained .timeline-link {
+  background: rgba($ai-accent, 0.05);
+  color: $ai-accent;
+
+  &:hover {
+    background: $ai-accent;
+    color: $white;
+    border-color: $ai-accent;
+  }
+}
+
+.timeline-event.status-community .timeline-link {
+  background: rgba($energy-accent, 0.05);
+  color: $energy-accent;
+
+  &:hover {
+    background: $energy-accent;
+    color: $white;
+    border-color: $energy-accent;
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile adjustments
+@media (max-width: $breakpoint-md) {
+  .timeline-content {
+    padding: $spacer-4;
+  }
+
+  .timeline-title {
+    font-size: $font-size-base;
+  }
+
+  .timeline-description {
+    font-size: $font-size-sm;
+  }
+}
