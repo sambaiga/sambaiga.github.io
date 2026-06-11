@@ -88,22 +88,22 @@
 
 .hero-title {
   font-family: $headings-font-family;
-  font-size: clamp($font-size-xxl, 5vw, $font-size-display);
+  font-size: clamp($font-size-xl, 3.5vw, $font-size-xxxl);
   font-weight: $font-weight-medium;
   line-height: $headings-line-height;
   letter-spacing: $letter-spacing-tight;
   margin-bottom: $spacer-3;
   color: var(--text-primary);
-  
+
   @media (max-width: $breakpoint-sm) {
     text-align: center;
-    font-size: clamp($font-size-xl, 4vw, $font-size-xxl);
+    font-size: clamp($font-size-lg, 3vw, $font-size-xl);
     margin-bottom: $spacer-2;
   }
   
   .highlight {
-    color: $pink-dark;
-    background: linear-gradient(120deg, $pink-dark 0%, darken($pink-dark, 10%) 100%);
+    color: $ai-accent;
+    background: linear-gradient(120deg, $ai-accent 0%, darken($ai-accent, 10%) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

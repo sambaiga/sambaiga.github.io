@@ -1,0 +1,197 @@
+/*-- scss:components/links --*/
+
+// =====================================================
+// LINK COMPONENT STYLES
+// =====================================================
+
+// Base link styling
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color $animation-duration-fast $animation-timing-ease-in-out;
+  position: relative;
+
+  &:hover:not(.btn) {
+    color: $color-hover-dark;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: $color-active;
+  }
+
+  &.disabled {
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Primary link variant (default)
+.link-primary {
+  color: $primary;
+
+  &:hover {
+    color: $color-hover-dark;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: $color-active;
+  }
+
+  &.disabled {
+    color: $color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Secondary link variant
+.link-secondary {
+  color: $secondary;
+
+  &:hover {
+    color: darken($secondary, 10%);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($secondary, 0.3);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: darken($secondary, 15%);
+  }
+
+  &.disabled {
+    color: $color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Success link variant (green)
+.link-success {
+  color: $success;
+
+  &:hover {
+    color: darken($success, 10%);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($success, 0.3);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: darken($success, 15%);
+  }
+}
+
+// Danger link variant (red)
+.link-danger {
+  color: $danger;
+
+  &:hover {
+    color: darken($danger, 10%);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($danger, 0.3);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: darken($danger, 15%);
+  }
+}
+
+// Inline code links (monospace)
+a code {
+  color: inherit;
+  background-color: rgba($primary, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: rgba($primary, 0.2);
+  }
+}
+
+// Navigation links (in nav/menu contexts)
+nav a,
+.nav-link {
+  color: $body-color;
+  font-weight: $font-weight-medium;
+  padding: $spacer-2 $spacer-3;
+  border-radius: $border-radius;
+  transition: all $animation-duration-fast $animation-timing-ease-in-out;
+
+  &:hover {
+    background-color: rgba($primary, $opacity-10);
+    color: $primary;
+  }
+
+  &.active {
+    background-color: rgba($primary, $opacity-15);
+    color: $primary;
+    font-weight: $font-weight-semibold;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
+  }
+}
+
+// Breadcrumb links
+.breadcrumb a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
+  }
+}
+
+// External link indicator
+a[target="_blank"]::after {
+  content: "↗";
+  margin-left: 2px;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+// No external indicator for specific classes
+a.no-external-icon[target="_blank"]::after {
+  content: none;
+}
