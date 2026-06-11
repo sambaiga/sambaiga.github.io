@@ -102,8 +102,8 @@
   }
   
   .highlight {
-    color: $pink-dark;
-    background: linear-gradient(120deg, $pink-dark 0%, darken($pink-dark, 10%) 100%);
+    color: $ai-accent;
+    background: linear-gradient(120deg, $ai-accent 0%, darken($ai-accent, 10%) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
