@@ -247,6 +247,16 @@ $bdrs-icon: 100%;
   margin-bottom: $spacing;
 }
 
+.timeline-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  i {
+    font-size: 0.9rem;
+  }
+}
+
 .timeline-links {
   display: flex;
   flex-wrap: wrap;
