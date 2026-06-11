@@ -97,6 +97,7 @@ format:
     footnotes-hover: true
     aria: true
     toc: true
+    reading-time: true
   
 
 freeze: auto
