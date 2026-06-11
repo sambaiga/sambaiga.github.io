@@ -13,9 +13,7 @@ toc: false
 
 <div class="projects-header">
 
-## Open Source Projects
-
-Production-grade ML libraries from research to enterprise
+<p>Production-grade ML libraries from research to enterprise</p>
 
 </div>
 
