@@ -9,13 +9,18 @@
   border: $border-width-1 solid $card-border-color;
   border-radius: $card-border-radius;
   overflow: hidden;
-  box-shadow: $card-box-shadow;
-  transition: transform $transition-duration-base $transition-timing-ease-in-out, 
-              box-shadow $transition-duration-base $transition-timing-ease-in-out;
-  
+  box-shadow: $shadow-base;
+  transition: $shadow-transition,
+              transform $animation-duration-base $animation-timing-ease-in-out;
+
   &:hover {
-    transform: $card-hover-transform;
-    box-shadow: $card-hover-box-shadow;
+    transform: $transform-hover-lift;
+    box-shadow: $shadow-hover;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
   }
   
   &-header {

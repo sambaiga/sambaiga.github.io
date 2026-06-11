@@ -1,9 +1,13 @@
 /*-- scss:defaults --*/
 @import 'scss/defaults';
 
+/*-- scss:animations --*/
+@import 'scss/animations';
+
 /*-- scss:rules --*/
 // Import mixins first
 @import 'scss/mixins';
+@import 'scss/component-mixins';
 
 // Import base styles
 @import 'base';
@@ -15,8 +19,9 @@
 @import 'scss/components/footer';
 @import 'scss/components/hero';
 @import 'scss/components/toc';
-@import 'scss/components/forms';        
-@import 'scss/components/pagination';  
+@import 'scss/components/forms';
+@import 'scss/components/links';
+@import 'scss/components/pagination';
 @import 'scss/components/codes';
 
 // Import pages

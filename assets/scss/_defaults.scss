@@ -223,6 +223,49 @@ $shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !default;
 $shadow-color: rgba(0, 0, 0, 0.1) !default;
 $shadow-color-dark: rgba(0, 0, 0, 0.25) !default;
 
+// =====================================================
+// STATE COLOR SYSTEM
+// =====================================================
+
+// Hover States
+$color-hover-light: rgba($primary, $opacity-10) !default;
+$color-hover-dark: darken($primary, 10%) !default;
+
+// Active States
+$color-active: darken($primary, 15%) !default;
+
+// Disabled States
+$color-disabled: $gray-400 !default;
+$color-disabled-bg: $gray-100 !default;
+
+// Focus/Ring States
+$color-focus-ring: rgba($primary, $opacity-30) !default;
+$focus-ring-width: 2px !default;
+$focus-ring-style: 2px solid $color-focus-ring !default;
+
+// =====================================================
+// ENHANCED SHADOW SYSTEM
+// =====================================================
+
+// Base Shadows (for depth/elevation)
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05) !default;
+$shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06) !default;
+
+// Hover Shadows (elevate on hover)
+$shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$shadow-hover-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+
+// Interactive Shadow Transitions
+$shadow-transition: box-shadow 0.3s ease-in-out !default;
+
+// =====================================================
+// TRANSFORM SYSTEM
+// =====================================================
+
+$transform-hover-lift: translateY(-2px) !default;
+$transform-active-press: translateY(0) !default;
+$transform-disabled: scale(1) !default;
+
 // ============================================
 // TRANSITIONS & ANIMATIONS
 // ============================================
