@@ -48,40 +48,42 @@ for (proj in projects_data$projects) {
   links_html <- ""
   for (link in proj$links) {
     links_html <- paste0(links_html,
-      sprintf('<a href="%s" class="timeline-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i>%s</a>\n',
+      sprintf('<a href="%s" class="timeline-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i>%s</a>',
               link$url, link$label, link$icon, link$label))
   }
 
   if (!is.null(proj$paper)) {
     links_html <- paste0(links_html,
-      sprintf('<a href="%s" class="timeline-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i>Paper</a>\n',
+      sprintf('<a href="%s" class="timeline-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i>Paper</a>',
               proj$paper$url))
   }
 
   event_html <- sprintf(
     '<div class="timeline-event status-%s">
-      <div class="timeline-icon"><i class="bi bi-%s"></i></div>
       <div class="timeline-content">
-        <div class="timeline-year">%d</div>
         <h3 class="timeline-title">%s</h3>
+        <p class="timeline-description">%s</p>
         <div class="timeline-meta">
           <span class="timeline-status">%s</span>
           <span>Updated: %s</span>
         </div>
-        <p class="timeline-description">%s</p>
         <div class="timeline-links">
           %s
         </div>
       </div>
+      <div class="timeline-icon-wrapper">
+        <div class="timeline-icon"><i class="bi bi-%s"></i></div>
+        <div class="timeline-date-box">%d</div>
+      </div>
     </div>',
     status_class,
-    icon,
-    proj$year,
     proj$name,
+    proj$description,
     status_label,
     proj$updated,
-    proj$description,
-    links_html
+    links_html,
+    icon,
+    proj$year
   )
 
   html_content <- paste0(html_content, event_html, "\n")
