@@ -1,0 +1,71 @@
+# Open-source projects and libraries
+# Used by the projects timeline page
+
+projects:
+  - name: Twiga
+    slug: twiga
+    description: "Production forecasting library built on transformer and seq2seq architectures. REST-serving, MLOps, and hyperparameter optimization built in."
+    status: Active
+    year: 2024
+    links:
+      - label: "PyPI"
+        icon: "box-seam"
+        url: "https://pypi.org/project/twiga/"
+      - label: "Documentation"
+        icon: "book"
+        url: "https://sambaiga.github.io/twiga-docs/"
+      - label: "GitHub"
+        icon: "github"
+        url: "https://github.com/sambaiga/twiga"
+    highlight: "25% forecasting error reduction | Enterprise MLOps"
+
+  - name: MLPForecast
+    slug: mlpforecast
+    description: "MLP-based net-load forecasting with uncertainty estimates. Efficient implementation for low-voltage distribution networks with photovoltaic generation."
+    status: Active
+    year: 2023
+    links:
+      - label: "GitHub"
+        icon: "github"
+        url: "https://github.com/sambaiga/mlpforecast"
+    highlight: "Efficiency through simplicity | Uncertainty quantification"
+
+  - name: MLCFCD
+    slug: mlcfcd
+    description: "Machine Learning-based Conformal Forecasting for Demand. Probabilistic forecasting with valid coverage guarantees across diverse domains."
+    status: Maintained
+    year: 2023
+    links:
+      - label: "GitHub"
+        icon: "github"
+        url: "https://github.com/sambaiga/MLCFCD"
+    highlight: "Conformal prediction | Coverage guarantees"
+
+  - name: AWRGNILM
+    slug: awrgnilm
+    description: "Adaptive Weighted Recurrence Graphs for Non-Intrusive Load Monitoring. Graph-based ML approach using recurrence patterns for appliance recognition."
+    status: Maintained
+    year: 2021
+    links:
+      - label: "GitHub"
+        icon: "github"
+        url: "https://github.com/sambaiga/AWRGNILM"
+    highlight: "35% accuracy improvement | Graph-based learning"
+
+  - name: Deep-NILMtk
+    slug: deep-nilmtk
+    description: "Deep Learning Toolkit for Non-Intrusive Load Monitoring. Community-driven research platform for neural NILM with automation, hyperparameters, and modular pipelines."
+    status: Community
+    year: 2020
+    links:
+      - label: "GitHub"
+        icon: "github"
+        url: "https://github.com/BHafsa/Deep-NILMtk"
+    highlight: "Community-maintained | Foundational research"
+
+# Status colors (align with twiga.scss)
+status_colors:
+  Active: "#4CAF50"      # Green
+  Maintained: "#2196F3"  # Blue
+  Community: "#9E9E9E"   # Gray
+  Archived: "#757575"    # Dark gray
