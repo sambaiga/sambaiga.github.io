@@ -25,7 +25,7 @@ project:
 
 website:
   title: "Anthony Faustine"
-  description: "Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton in Dublin, Ireland"
+  description: "Principal ML Engineer at Analog Devices, Ireland. Building production ML systems for supply chain optimization."
   favicon: "/images/icons/favicon.ico"
   site-url: "https://sambaiga.github.io"
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
@@ -35,7 +35,7 @@ website:
 
   open-graph:
     title: "Anthony Faustine"
-    description: "Lead Data Scientist at the Centre for Intelligent Power (CIP) at Eaton"
+    description: "Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership"
     image: ""
     locale: en_IE
 
@@ -54,10 +54,10 @@ website:
         file: "pages/about/index.qmd"
       - text: "Blog"
         file: "pages/blog/index.qmd"
+      - text: "Projects"
+        file: "pages/projects/index.qmd"
       - text: "Research"
         file: "pages/publication/index.qmd"
-      #- text: "Projects"
-      #  file: "pages/project/index.qmd"
 
     right:
       - text: "{{< bi envelope-at size=1.1em >}}<span class='visually-hidden'>Email</span>"
