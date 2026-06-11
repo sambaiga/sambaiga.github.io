@@ -29,8 +29,10 @@ projects_data <- yaml::read_yaml("data.yml")
 
 html_content <- ""
 
-for (proj in projects_data$projects) {
+for (i in seq_along(projects_data$projects)) {
+  proj <- projects_data$projects[[i]]
   status_class <- tolower(proj$status)
+
   icon <- switch(proj$status,
     "Active" = "rocket",
     "Maintained" = "gear",
@@ -45,24 +47,44 @@ for (proj in projects_data$projects) {
     "Active"
   )
 
+  # Build links HTML
   links_html <- ""
   for (link in proj$links) {
     links_html <- paste0(links_html,
-      sprintf('<a href="%s" class="timeline-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i>%s</a>',
+      sprintf('<a href="%s" class="timeline-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i>%s</a>\n',
               link$url, link$label, link$icon, link$label))
   }
 
   if (!is.null(proj$paper)) {
     links_html <- paste0(links_html,
-      sprintf('<a href="%s" class="timeline-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i>Paper</a>',
+      sprintf('<a href="%s" class="timeline-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i>Paper</a>\n',
               proj$paper$url))
   }
 
+  # Calculate animation delay
+  delay_class <- switch(as.character(i),
+    "1" = "delay-3s",
+    "2" = "delay-2s",
+    "3" = "delay-1s",
+    ""
+  )
+
+  # Build event HTML - EXACT structure: icon, date, content
   event_html <- sprintf(
-    '<div class="timeline-event status-%s">
+    '<div class="timeline-event timeline-event--%s %s animated fadeInUp">
+      <div class="timeline-icon">
+        <i class="bi bi-%s"></i>
+      </div>
+      <div class="timeline-date">
+        %d
+      </div>
       <div class="timeline-content">
-        <h3 class="timeline-title">%s</h3>
-        <p class="timeline-description">%s</p>
+        <div class="timeline-title">
+          %s
+        </div>
+        <div class="timeline-description">
+          <p>%s</p>
+        </div>
         <div class="timeline-meta">
           <span class="timeline-status">%s</span>
           <span>Updated: %s</span>
@@ -71,19 +93,16 @@ for (proj in projects_data$projects) {
           %s
         </div>
       </div>
-      <div class="timeline-icon-wrapper">
-        <div class="timeline-icon"><i class="bi bi-%s"></i></div>
-        <div class="timeline-date-box">%d</div>
-      </div>
     </div>',
     status_class,
+    delay_class,
+    icon,
+    proj$year,
     proj$name,
     proj$description,
     status_label,
     proj$updated,
-    links_html,
-    icon,
-    proj$year
+    links_html
   )
 
   html_content <- paste0(html_content, event_html, "\n")
