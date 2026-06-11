@@ -20,7 +20,9 @@ projects_data <- yaml::read_yaml("data.yml")
 num_projects <- length(projects_data$projects)
 ```
 
-```{=html}
+```{r circular-timeline, results='asis', echo=FALSE}
+# Generate complete HTML for circular timeline
+html_output <- '
 <div class="projects-timeline">
   <div class="timeline-header">
     <h1>Open Source Projects</h1>
@@ -28,41 +30,43 @@ num_projects <- length(projects_data$projects)
   </div>
 
   <div class="cards-container">
+'
 
-```
+# Add cards list opening
+html_output <- paste0(html_output, sprintf('    <ul class="cards" style="--items: %d;">\n', num_projects))
 
-```{r, results='asis', echo=FALSE}
-cat(sprintf('    <ul class="cards" style="--items: %d;">\n', num_projects))
+# Generate each project item
 for (i in 1:num_projects) {
   proj <- projects_data$projects[[i]]
-  idx <- i - 1  # 0-indexed for CSS
+  idx <- i - 1
   checked <- if (i == 1) "checked" else ""
 
-  cat(sprintf('      <li style="--i: %d;">\n', idx))
-  cat(sprintf('        <input type="radio" id="item-%d" name="gallery-item" %s>\n', idx, checked))
-  cat(sprintf('        <label for="item-%d">%d</label>\n', idx, proj$year))
-  cat(sprintf('        <h2>%s</h2>\n', proj$name))
+  html_output <- paste0(html_output, sprintf('      <li style="--i: %d;">\n', idx))
+  html_output <- paste0(html_output, sprintf('        <input type="radio" id="item-%d" name="gallery-item" %s>\n', idx, checked))
+  html_output <- paste0(html_output, sprintf('        <label for="item-%d">%d</label>\n', idx, proj$year))
+  html_output <- paste0(html_output, sprintf('        <h2>%s</h2>\n', proj$name))
 
-  # Build description with key info
+  # Build project description
   desc <- sprintf('%s\n\n', proj$description)
   desc <- paste0(desc, sprintf('<strong>Updated:</strong> %s<br>\n', proj$updated))
 
-  # Add links
   desc <- paste0(desc, '<strong>Links:</strong> ')
-  link_labels <- sapply(proj$links, function(l) sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', l$url, l$label))
-  desc <- paste0(desc, paste(link_labels, collapse=' • '))
+  link_html <- sapply(proj$links, function(l) {
+    sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', l$url, l$label)
+  })
+  desc <- paste0(desc, paste(link_html, collapse=' • '))
 
-  # Add paper link if available
   if (!is.null(proj$paper)) {
-    desc <- paste0(desc, sprintf('<br><strong>Paper:</strong> <a href="%s" target="_blank" rel="noopener">%s</a>', proj$paper$url, proj$paper$title))
+    desc <- paste0(desc, sprintf('<br><strong>Paper:</strong> <a href="%s" target="_blank" rel="noopener">%s</a>',
+                                 proj$paper$url, proj$paper$title))
   }
 
-  cat(sprintf('        <p>%s</p>\n', desc))
-  cat('      </li>\n')
+  html_output <- paste0(html_output, sprintf('        <p>%s</p>\n', desc))
+  html_output <- paste0(html_output, '      </li>\n')
 }
-```
 
-```{=html}
+# Close cards list and containers
+html_output <- paste0(html_output, '
     </ul>
   </div>
 
@@ -70,6 +74,9 @@ for (i in 1:num_projects) {
     <p class="timeline-hint">Click a year to explore</p>
   </div>
 </div>
+')
+
+cat(html_output)
 ```
 
 ---
