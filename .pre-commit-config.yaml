@@ -33,9 +33,33 @@ repos:
       - id: markdownlint-cli2
         files: "\\.(md|qmd)$"
 
+  # ----------------------------------
+  # Quarto validation (custom bash)
+  # ----------------------------------
+  - repo: local
+    hooks:
+      - id: quarto-yaml-validate
+        name: Validate Quarto YAML frontmatter
+        entry: bash scripts/validate_quarto.sh
+        language: bash
+        types: [markdown]
+        files: "\.qmd$"
+        stages: [commit]
 
+      - id: bib-validate
+        name: Validate bibliography files
+        entry: bash scripts/validate_bib.sh
+        language: bash
+        files: "\.bib$"
+        stages: [commit]
 
-  
+      - id: image-asset-check
+        name: Validate image assets exist
+        entry: bash scripts/validate_images.sh
+        language: bash
+        types: [markdown]
+        files: "\.qmd$"
+        stages: [commit]
 
   # ----------------------------------
   # Spelling (code + prose)
