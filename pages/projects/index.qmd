@@ -23,7 +23,11 @@ Production-grade ML libraries from research to enterprise
 
 ```{r projects-timeline, results='asis', echo=FALSE}
 library(yaml)
+library(htmltools)
+
 projects_data <- yaml::read_yaml("data.yml")
+
+html_content <- ""
 
 for (proj in projects_data$projects) {
   status_class <- tolower(proj$status)
@@ -41,32 +45,49 @@ for (proj in projects_data$projects) {
     "Active"
   )
 
-  cat(sprintf('<div class="timeline-event status-%s">\n', status_class))
-  cat(sprintf('  <div class="timeline-icon"><i class="bi bi-%s"></i></div>\n', icon))
-  cat('  <div class="timeline-content">\n')
-  cat(sprintf('    <div class="timeline-year">%d</div>\n', proj$year))
-  cat(sprintf('    <h3 class="timeline-title">%s</h3>\n', proj$name))
-  cat('    <div class="timeline-meta">\n')
-  cat(sprintf('      <span class="timeline-status">%s</span>\n', status_label))
-  cat(sprintf('      <span>Updated: %s</span>\n', proj$updated))
-  cat('    </div>\n')
-  cat(sprintf('    <p class="timeline-description">%s</p>\n', proj$description))
-
-  cat('    <div class="timeline-links">\n')
+  links_html <- ""
   for (link in proj$links) {
-    cat(sprintf('      <a href="%s" class="timeline-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i>%s</a>\n',
-                link$url, link$label, link$icon, link$label))
+    links_html <- paste0(links_html,
+      sprintf('<a href="%s" class="timeline-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i>%s</a>\n',
+              link$url, link$label, link$icon, link$label))
   }
 
   if (!is.null(proj$paper)) {
-    cat(sprintf('      <a href="%s" class="timeline-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i>Paper</a>\n',
-                proj$paper$url))
+    links_html <- paste0(links_html,
+      sprintf('<a href="%s" class="timeline-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i>Paper</a>\n',
+              proj$paper$url))
   }
 
-  cat('    </div>\n')
-  cat('  </div>\n')
-  cat('</div>\n\n')
+  event_html <- sprintf(
+    '<div class="timeline-event status-%s">
+      <div class="timeline-icon"><i class="bi bi-%s"></i></div>
+      <div class="timeline-content">
+        <div class="timeline-year">%d</div>
+        <h3 class="timeline-title">%s</h3>
+        <div class="timeline-meta">
+          <span class="timeline-status">%s</span>
+          <span>Updated: %s</span>
+        </div>
+        <p class="timeline-description">%s</p>
+        <div class="timeline-links">
+          %s
+        </div>
+      </div>
+    </div>',
+    status_class,
+    icon,
+    proj$year,
+    proj$name,
+    status_label,
+    proj$updated,
+    proj$description,
+    links_html
+  )
+
+  html_content <- paste0(html_content, event_html, "\n")
 }
+
+HTML(html_content)
 ```
 
 </div>
