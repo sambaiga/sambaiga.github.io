@@ -1,7 +1,7 @@
 ---
-title: "Open Source Projects & Libraries"
+title: "Open Source Projects"
 pagetitle: "Projects | Anthony Faustine"
-description-meta: "Open-source ML libraries and toolkits for forecasting, load monitoring, and production machine learning systems."
+description-meta: "Open-source ML libraries for forecasting, load monitoring, and production machine learning systems."
 
 format:
   html:
@@ -19,89 +19,56 @@ library(yaml)
 projects_data <- yaml::read_yaml("data.yml")
 ```
 
-::: {.hero-section .mb-5}
-# Open Source Projects & Libraries
+::: {.projects-header}
+# Open Source Projects
 
-I build production-grade ML libraries that solve real problems. These projects span my evolution: from foundational research through enterprise production systems, with a commitment to community maintenance and long-term stewardship.
+Production-grade ML libraries built for real problems. From research to enterprise.
 
 :::
 
-```{=html}
-<div class="projects-timeline">
-```
-
-```{r, include=FALSE}
-# Group projects by status
-status_order <- c("Active", "Maintained", "Community")
-projects_by_status <- list()
-
-for (status in status_order) {
-  projects_by_status[[status]] <- list()
-  for (proj in projects_data$projects) {
-    if (proj$status == status) {
-      projects_by_status[[status]][[length(projects_by_status[[status]]) + 1]] <- proj
-    }
-  }
-}
-```
-
 ```{r, results='asis', echo=FALSE}
-for (status in status_order) {
-  projects <- projects_by_status[[status]]
-  if (length(projects) == 0) next
+cat('<div class="projects-grid">\n')
 
+for (proj in projects_data$projects) {
+  status <- proj$status
   color <- projects_data$status_colors[[status]]
 
-  cat(sprintf('<div class="timeline-section">\n'))
-  cat(sprintf('<div class="status-header" style="border-color: %s;">\n', color))
+  cat(sprintf('<div class="project-card" style="border-top-color: %s;">\n', color))
+  cat('<div class="card-header">\n')
+  cat(sprintf('<h3 class="project-name">%s</h3>\n', proj$name))
   cat(sprintf('<span class="status-badge" style="background-color: %s;">%s</span>\n', color, status))
-  cat(sprintf('<span class="project-count">%d</span>\n', length(projects)))
   cat('</div>\n')
 
-  for (proj in projects) {
-    cat(sprintf('<div class="timeline-entry" style="border-left-color: %s;">\n', color))
-    cat(sprintf('<div class="timeline-dot" style="background-color: %s;"></div>\n', color))
+  cat('<div class="card-body">\n')
+  cat(sprintf('<p class="project-description">%s</p>\n', proj$description))
+  cat(sprintf('<div class="project-highlight">%s</div>\n', proj$highlight))
 
-    cat('<div class="project-content">\n')
-    cat(sprintf('<div class="project-year">%s</div>\n', proj$year))
-    cat(sprintf('<h3 class="project-name">%s</h3>\n', proj$name))
-    cat(sprintf('<p class="project-description">%s</p>\n', proj$description))
-    cat(sprintf('<div class="project-highlight">💡 %s</div>\n', proj$highlight))
-
-    # Links
-    cat('<div class="project-links">\n')
-    for (link in proj$links) {
-      cat(sprintf('<a href="%s" class="project-link" title="%s">\n', link$url, link$label))
-      cat(sprintf('<i class="bi bi-%s"></i> %s</a>\n', link$icon, link$label))
-    }
-    cat('</div>\n')
-
-    cat('</div>\n')
-    cat('</div>\n')
+  cat('<div class="card-links">\n')
+  for (link in proj$links) {
+    cat(sprintf('<a href="%s" class="link-badge" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i> %s</a>\n',
+                link$url, link$label, link$icon, link$label))
   }
+  cat('</div>\n')
+  cat('</div>\n')
+
+  cat('<div class="card-footer">\n')
+  cat(sprintf('<span class="meta-item"><i class="bi bi-calendar"></i> Updated %s</span>\n', proj$updated))
+  if (!is.null(proj$paper)) {
+    cat(sprintf('<a href="%s" class="meta-item" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i> Paper</a>\n',
+                proj$paper$url))
+  }
+  cat('</div>\n')
 
   cat('</div>\n')
 }
-```
 
-```{=html}
-</div>
+cat('</div>\n')
 ```
 
 ---
 
-## Get Involved
+## Contribute
 
-These projects welcome contributions, feedback, and collaborations. Whether you're:
-- Using these tools in your own work
-- Reporting bugs or suggesting features
-- Contributing code or documentation
-- Citing in research
+These projects welcome contributions, feedback, and collaboration.
 
-Please reach out via [GitHub](https://github.com/sambaiga) or [email](mailto:sambaiga@gmail.com).
-
-## Status Legend
-
-- **Active**: Actively developed, regular updates, production-ready
-- **Maintained**: Stable, occasional updates, community contributions welcome
-- **Community**: Community-driven, foundational research, open to contributions
+[Open an Issue](https://github.com/sambaiga){.btn .btn-outline-primary .btn-sm} [Submit a PR](https://github.com/sambaiga){.btn .btn-outline-primary .btn-sm}
