@@ -347,45 +347,6 @@
           flex-wrap: wrap;
           gap: $grid-gap-sm;
           
-          .btn {
-            @extend .btn-sm;
-            display: inline-flex;
-            align-items: center;
-            gap: $spacer-1;
-            
-            &.btn-primary {
-              background-color: $primary;
-              border-color: $primary;
-              color: $white;
-              
-              &:hover {
-                background-color: darken($primary, 10%);
-                border-color: darken($primary, 10%);
-              }
-            }
-            
-            &.btn-outline-primary {
-              background-color: transparent;
-              color: $primary;
-              border-color: $primary;
-              
-              &:hover {
-                background-color: $primary;
-                color: $white;
-              }
-            }
-            
-            &.btn-outline-secondary {
-              background-color: transparent;
-              color: $secondary;
-              border-color: $secondary;
-              
-              &:hover {
-                background-color: $secondary;
-                color: $white;
-              }
-            }
-          }
         }
       }
     }
