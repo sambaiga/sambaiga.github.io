@@ -1,0 +1,233 @@
+/*-- scss:mixins/components --*/
+
+// =====================================================
+// REUSABLE COMPONENT MIXINS
+// =====================================================
+
+// Card Base: Standard card styling with hover effects
+@mixin card-base {
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-base;
+  transition: $shadow-transition,
+              transform $animation-duration-base $animation-timing-ease-in-out;
+
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: $transform-hover-lift;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
+  }
+}
+
+// Button Interactive: Complete button styling with all states
+@mixin button-interactive($bg-color: $primary, $text-color: $white) {
+  background-color: $bg-color;
+  color: $text-color;
+  border-color: $bg-color;
+  cursor: pointer;
+  transition: all $animation-duration-fast $animation-timing-ease-in-out;
+  user-select: none;
+
+  &:hover:not(:disabled) {
+    background-color: darken($bg-color, 5%);
+    border-color: darken($bg-color, 5%);
+    box-shadow: $shadow-hover;
+    transform: $transform-hover-lift;
+  }
+
+  &:active:not(:disabled) {
+    background-color: darken($bg-color, 10%);
+    border-color: darken($bg-color, 10%);
+    box-shadow: $shadow-sm;
+    transform: $transform-active-press;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba($bg-color, 0.5);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: $color-disabled-bg;
+    color: $color-disabled;
+    border-color: $color-disabled;
+    cursor: not-allowed;
+    opacity: $opacity-50;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+// Input Focus: Enhanced focus state for form inputs
+@mixin input-focus {
+  border-color: $primary;
+  box-shadow: 0 0 0 3px rgba($primary, $opacity-10);
+  outline: none;
+  transition: all $animation-duration-fast $animation-timing-ease-in-out;
+}
+
+// Badge: Small colored label styling
+@mixin badge($bg-color: $primary) {
+  display: inline-block;
+  padding: $spacer-1 $spacer-2;
+  background-color: rgba($bg-color, $opacity-10);
+  color: $bg-color;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  white-space: nowrap;
+}
+
+// Elevate on Hover: Combine shadow and lift for interactive elements
+@mixin elevate-on-hover {
+  transition: $shadow-transition,
+              transform $animation-duration-base $animation-timing-ease-in-out;
+
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: $transform-hover-lift;
+  }
+}
+
+// Smooth Transition: Shorthand for smooth property transitions
+@mixin transition-smooth($property: all) {
+  transition: $property $animation-duration-base $animation-timing-ease-in-out;
+}
+
+// Fast Transition: Quick transitions for immediate feedback
+@mixin transition-fast($property: all) {
+  transition: $property $animation-duration-fast $animation-timing-ease-in-out;
+}
+
+// Slow Transition: Slower transitions for entrance effects
+@mixin transition-slow($property: all) {
+  transition: $property $animation-duration-slow $animation-timing-ease-in-out;
+}
+
+// Disabled State: Consistent styling for disabled elements
+@mixin disabled-state {
+  opacity: $opacity-50;
+  color: $color-disabled;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: $color-disabled-bg;
+}
+
+// Focus Ring: Visible focus indicator for accessibility
+@mixin focus-ring($color: $primary) {
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-color: $color;
+    outline-offset: 2px;
+  }
+}
+
+// Clearfix: Clear floated elements
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Truncate Text: Single line with ellipsis
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Visually Hidden: Hide element from sight but keep for screen readers
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Flex Center: Center content with flexbox
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Responsive Image: Max width with auto height
+@mixin responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Grid Columns: Simple grid layout
+@mixin grid-columns($columns: 3, $gap: $spacer-3) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Box Shadow Elevation: Layered shadow for depth
+@mixin box-shadow-elevation($level: 1) {
+  @if $level == 1 {
+    box-shadow: $shadow-base;
+  } @else if $level == 2 {
+    box-shadow: $shadow-md;
+  } @else if $level == 3 {
+    box-shadow: $shadow-lg;
+  } @else if $level == 4 {
+    box-shadow: $shadow-xl;
+  }
+}
+
+// Pseudo Element Content: Reset pseudo element styles
+@mixin pseudo-reset {
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+  }
+}
+
+// Link Styles: Consistent link styling
+@mixin link-styles($color: $primary) {
+  color: $color;
+  text-decoration: none;
+  transition: color $animation-duration-fast $animation-timing-ease-in-out;
+
+  &:hover {
+    color: darken($color, 10%);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  &:focus-visible {
+    outline: $focus-ring-style;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    color: darken($color, 15%);
+  }
+}
