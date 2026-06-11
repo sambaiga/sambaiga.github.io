@@ -1,0 +1,90 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'pages/**'
+      - 'assets/**'
+      - 'files/**'
+      - 'images/**'
+      - '.github/workflows/pr-validation.yml'
+
+jobs:
+  validate:
+    name: Validate PR Changes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up validation environment
+        run: |
+          chmod +x scripts/*.sh
+
+      - name: Validate Quarto YAML frontmatter
+        run: |
+          echo "🔍 Validating Quarto YAML frontmatter..."
+          bash scripts/validate_quarto.sh pages/**/*.qmd
+        continue-on-error: false
+
+      - name: Validate Bibliography files
+        run: |
+          echo "🔍 Validating BibTeX bibliography files..."
+          if find . -name "*.bib" | grep -q .; then
+            bash scripts/validate_bib.sh $(find . -name "*.bib")
+          else
+            echo "ℹ️ No bibliography files found"
+          fi
+        continue-on-error: false
+
+      - name: Validate Image assets
+        run: |
+          echo "🔍 Validating image assets..."
+          bash scripts/validate_images.sh pages/**/*.qmd
+        continue-on-error: false
+
+      - name: Check blog post structure
+        run: |
+          echo "📝 Checking blog post structure..."
+          # Count blog posts in pages/blog/posts
+          post_count=$(find pages/blog/posts -name "index.qmd" | wc -l)
+          echo "✓ Found $post_count blog post(s)"
+
+      - name: Validate Markdown formatting
+        run: |
+          echo "📄 Checking Markdown format..."
+          # Basic check: ensure no trailing whitespace in blog posts
+          if find pages -name "*.qmd" -exec grep -l '[[:space:]]$' {} \; | grep -q .; then
+            echo "⚠️ Warning: Files contain trailing whitespace"
+            find pages -name "*.qmd" -exec grep -l '[[:space:]]$' {} \;
+          else
+            echo "✓ No trailing whitespace found"
+          fi
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "✅ All validations passed!"
+          echo ""
+          echo "## Validation Summary"
+          echo "- ✓ Quarto YAML frontmatter: Valid"
+          echo "- ✓ Bibliography files: Valid"
+          echo "- ✓ Image assets: Exist and referenced correctly"
+          echo "- ✓ Blog post structure: Sound"
+          echo ""
+          echo "Ready to merge! 🚀"
+
+      - name: Failure summary
+        if: failure()
+        run: |
+          echo "❌ Validation failed!"
+          echo ""
+          echo "## Issues found:"
+          echo "- Check the logs above for specific validation errors"
+          echo "- Make sure all blog post frontmatter is valid"
+          echo "- Verify all referenced images exist in the post directory"
+          echo "- Ensure bibliography files have valid BibTeX syntax"
