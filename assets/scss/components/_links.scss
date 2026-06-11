@@ -183,20 +183,24 @@ nav a,
   }
 }
 
-// External link indicator (only for regular links, NOT buttons)
-a:not(.btn)[target="_blank"]::after {
-  content: "↗";
-  margin-left: 2px;
-  font-size: 0.9em;
-  opacity: 0.7;
-}
+// External links - enhanced styling without emoji
+a[target="_blank"] {
+  position: relative;
 
-// Remove emoji from buttons - they already have Bootstrap icons
-a.btn[target="_blank"]::after {
-  content: none;
+  &:not(.btn) {
+    border-bottom: 1px solid rgba($primary, 0.3);
+
+    &:hover {
+      border-bottom-color: $primary;
+    }
+  }
 }
 
 // No external indicator for specific classes
-a.no-external-icon[target="_blank"]::after {
-  content: none;
+a.no-external-icon[target="_blank"] {
+  border-bottom: none;
+
+  &:hover {
+    border-bottom: none;
+  }
 }
