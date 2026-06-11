@@ -14,302 +14,345 @@ toc: false
 ```{r setup, include=FALSE}
 library(yaml)
 projects_data <- yaml::read_yaml("data.yml")
-num_projects <- length(projects_data$projects)
 ```
 
-```{r circular-timeline, results='asis', echo=FALSE}
-# Generate complete HTML with embedded CSS for circular timeline
+```{r timeline, results='asis', echo=FALSE}
+# Timeline CSS and HTML generation
 html_output <- '
 <style>
-input[type="radio"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+* {
+  box-sizing: border-box;
 }
 
 .projects-timeline {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-.timeline-header {
+.timeline-title {
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.timeline-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
   margin-bottom: 4rem;
 }
 
-.timeline-header h1 {
-  font-size: 2.5rem;
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-  color: #222;
-}
-
-.timeline-header p {
-  font-size: 1rem;
-  color: #666;
-  margin: 0;
-}
-
-.cards-container {
-  --base-rotation: 0deg;
-  --full-circle: 360deg;
-  --radius: 35vw;
-  --duration: 200ms;
-  --cards-container-size: calc(var(--radius) * 2);
-  --cards-container-padding: 2rem;
-  --label-offset: calc(var(--radius) * -1 - 1rem);
-  --label-size: 35px;
-  --label-color: #888;
-  --label-color-hover: #2196F3;
-  --label-line-h: 0;
-  --label-line-h-current: 2rem;
-  --label-dot-size: 12px;
-  --title-top: 1.5rem;
-  --title-offset-y: 30px;
-  --info-top: 5rem;
-  --info-width: min(80%, 600px);
-  --info-offset-y: 30px;
-
-  box-sizing: content-box;
+.timeline {
+  display: flex;
+  flex-direction: column;
   position: relative;
   margin: 0 auto;
-  width: var(--cards-container-size);
-  height: var(--cards-container-size);
-  padding: var(--cards-container-padding);
 }
 
-@media (max-width: 900px) {
-  .cards-container {
-    --radius: 40vw;
-    --label-size: 30px;
-  }
+.timeline__event {
+  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  border-radius: 6px;
+  align-self: center;
+  width: 90%;
+  max-width: 900px;
 }
 
-@media (max-width: 600px) {
-  .cards-container {
-    --radius: 45vw;
-    --label-size: 24px;
-    --label-dot-size: 8px;
-    --label-offset: calc(var(--radius) * -1 - 0.5rem);
-    --info-width: 90vw;
-  }
-
-  .timeline-header h1 {
-    font-size: 1.8rem;
-  }
+.timeline__event:nth-child(2n + 1) {
+  flex-direction: row-reverse;
 }
 
-.cards {
-  position: absolute;
-  inset: var(--cards-container-padding);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 2px solid #e0e0e0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--duration);
+.timeline__event:nth-child(2n + 1) .timeline__event__date {
+  border-radius: 0 6px 6px 0;
 }
 
-.cards li {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  padding: 0;
-  transform-origin: center;
-  display: grid;
-  place-content: center;
-  transform: rotate(calc(var(--i) * 360deg / var(--items)));
-  pointer-events: none;
+.timeline__event:nth-child(2n + 1) .timeline__event__content {
+  border-radius: 6px 0 0 6px;
 }
 
-.cards li > label {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  transform: translateY(var(--label-offset));
-  width: var(--label-size);
-  height: var(--label-size);
-  cursor: pointer;
-  pointer-events: initial;
-  text-align: center;
-  color: var(--label-color);
-  font-size: clamp(0.75rem, 2vw, 1.1rem);
-  font-weight: 600;
+.timeline__event:nth-child(2n) .timeline__event__date {
+  border-radius: 6px 0 0 6px;
+}
+
+.timeline__event:nth-child(2n) .timeline__event__content {
+  border-radius: 0 6px 6px 0;
+}
+
+.timeline__event__title {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.timeline__event__content {
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  width: calc(50% - 50px);
+  border-radius: 6px 0 0 6px;
+}
+
+.timeline__event__date {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--duration) ease-in-out;
+  white-space: nowrap;
+  padding: 0 1.5rem;
+  border-radius: 6px 0 0 6px;
+  min-width: 100px;
 }
 
-.cards li > label::before {
-  content: \'\';
-  position: absolute;
-  top: var(--cards-container-padding);
-  left: 50%;
-  translate: -50% 0;
-  width: var(--label-dot-size);
-  height: var(--label-dot-size);
+.timeline__event__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  align-self: center;
+  margin: 0 1rem;
   border-radius: 50%;
-  background-color: var(--label-color);
-  transition: background-color var(--duration) ease-in-out;
-}
-
-.cards li > label::after {
-  content: \'\';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  translate: -50% 5px;
-  width: 2px;
-  height: var(--label-line-h);
-  background-color: #2196F3;
-  transition: height 300ms ease-in-out var(--label-line-delay, 0ms);
-}
-
-.cards li > label:hover {
-  color: var(--label-color-hover);
-}
-
-.cards li > label:hover::before {
-  background-color: var(--label-color-hover);
-}
-
-.cards > li > h2,
-.cards > li > p {
-  position: absolute;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, 0);
-  transform-origin: center;
-  margin: 0;
-  width: var(--info-width);
-}
-
-.cards > li > h2 {
-  top: var(--title-top);
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: 700;
-  color: #222;
-  opacity: var(--title-opacity, 0);
-  translate: 0 var(--title-offset-y);
-  transition: var(--duration) ease-in-out var(--title-delay, 0ms);
-}
-
-.cards > li > p {
-  top: var(--info-top);
-  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-  color: #555;
-  line-height: 1.6;
-  text-align: center;
-  opacity: var(--info-opacity, 0);
-  translate: 0 var(--info-offset-y);
-  transition: var(--duration) ease-in-out var(--info-delay, 0ms);
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1.5rem;
+  position: relative;
   z-index: 10;
 }
 
-.cards > li > p a {
-  color: #2196F3;
+.timeline__event__description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.timeline__event__meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.timeline__event__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.timeline__event__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.9rem;
+  background: #f0f0f0;
+  border-radius: 4px;
   text-decoration: none;
+  color: #333;
+  font-size: 0.8rem;
   font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
 }
 
-.cards > li > p a:hover {
-  text-decoration: underline;
+.timeline__event__link:hover {
+  background: #e3f2fd;
+  color: #2196F3;
+  border-color: #2196F3;
 }
 
-li:has(input:checked) {
-  --label-opacity: 1;
-  --label-color: #2196F3;
-  --label-line-h: var(--label-line-h-current);
-  --label-line-delay: calc(var(--duration) * 2);
-  --title-opacity: 1;
-  --title-offset-y: 0;
-  --title-delay: calc(var(--duration) * 3);
-  --info-opacity: 1;
-  --info-offset-y: 0;
-  --info-delay: calc(var(--duration) * 4);
-}
-
-.cards:has(input:checked) {
-  transform: rotate(calc(var(--base-rotation) - (var(--index) * var(--full-circle) / var(--items))));
-}
-
-.cards:has(li:nth-child(1) > input:checked) { --index: 0; }
-.cards:has(li:nth-child(2) > input:checked) { --index: 1; }
-.cards:has(li:nth-child(3) > input:checked) { --index: 2; }
-.cards:has(li:nth-child(4) > input:checked) { --index: 3; }
-.cards:has(li:nth-child(5) > input:checked) { --index: 4; }
-
-.timeline-info {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.timeline-hint {
-  color: #999;
+.timeline__event__link i {
   font-size: 0.9rem;
-  margin: 0;
-  font-weight: 500;
+}
+
+/* Type 1: Active (Blue) */
+.timeline__event--type1 .timeline__event__date {
+  background: #2196F3;
+}
+
+.timeline__event--type1 .timeline__event__icon {
+  background: #E3F2FD;
+  color: #2196F3;
+}
+
+.timeline__event--type1 .timeline__event__title {
+  color: #2196F3;
+}
+
+/* Type 2: Maintained (Purple) */
+.timeline__event--type2 .timeline__event__date {
+  background: #9C27B0;
+}
+
+.timeline__event--type2 .timeline__event__icon {
+  background: #F3E5F5;
+  color: #9C27B0;
+}
+
+.timeline__event--type2 .timeline__event__title {
+  color: #9C27B0;
+}
+
+/* Type 3: Community (Green) */
+.timeline__event--type3 .timeline__event__date {
+  background: #4CAF50;
+}
+
+.timeline__event--type3 .timeline__event__icon {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.timeline__event--type3 .timeline__event__title {
+  color: #4CAF50;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.timeline__event {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.timeline__event:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.timeline__event:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.timeline__event:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.timeline__event:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.timeline__event:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .timeline-title {
+    font-size: 1.8rem;
+  }
+
+  .timeline__event {
+    flex-direction: column;
+    align-self: center;
+    width: 95%;
+  }
+
+  .timeline__event:nth-child(2n + 1) {
+    flex-direction: column;
+  }
+
+  .timeline__event__content {
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .timeline__event__date {
+    border-radius: 6px 6px 0 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .timeline__event:nth-child(2n + 1) .timeline__event__date {
+    border-radius: 6px 6px 0 0;
+  }
+
+  .timeline__event:nth-child(2n + 1) .timeline__event__content {
+    border-radius: 0 0 6px 6px;
+  }
+
+  .timeline__event__icon {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
 }
 </style>
 
 <div class="projects-timeline">
-  <div class="timeline-header">
-    <h1>Open Source Projects</h1>
-    <p>Production-grade ML libraries from research to enterprise</p>
-  </div>
+  <h2 class="timeline-title">Open Source Projects</h2>
+  <p class="timeline-subtitle">Production-grade ML libraries from research to enterprise</p>
 
-  <div class="cards-container">
+  <div class="timeline">
 '
 
-html_output <- paste0(html_output, sprintf('    <ul class="cards" style="--items: %d;">\n', num_projects))
-
-for (i in 1:num_projects) {
+# Generate timeline events
+for (i in 1:length(projects_data$projects)) {
   proj <- projects_data$projects[[i]]
-  idx <- i - 1
-  checked <- if (i == 1) "checked" else ""
 
-  html_output <- paste0(html_output, sprintf('      <li style="--i: %d;">\n', idx))
-  html_output <- paste0(html_output, sprintf('        <input type="radio" id="item-%d" name="gallery-item" %s>\n', idx, checked))
-  html_output <- paste0(html_output, sprintf('        <label for="item-%d">%d</label>\n', idx, proj$year))
-  html_output <- paste0(html_output, sprintf('        <h2>%s</h2>\n', proj$name))
+  # Determine type based on status
+  status_type <- switch(proj$status,
+    "Active" = "type1",
+    "Maintained" = "type2",
+    "Community" = "type3",
+    "type1"
+  )
 
-  desc <- sprintf('%s<br><br>', proj$description)
-  desc <- paste0(desc, sprintf('<strong>Updated:</strong> %s<br>', proj$updated))
+  # Determine icon
+  icon <- switch(proj$status,
+    "Active" = "rocket",
+    "Maintained" = "gear",
+    "Community" = "people",
+    "star"
+  )
 
-  desc <- paste0(desc, '<strong>Links:</strong> ')
-  link_html <- sapply(proj$links, function(l) {
-    sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', l$url, l$label)
-  })
-  desc <- paste0(desc, paste(link_html, collapse=' • '))
+  html_output <- paste0(html_output, sprintf('    <div class="timeline__event timeline__event--%s">\n', status_type))
+  html_output <- paste0(html_output, sprintf('      <div class="timeline__event__icon"><i class="bi bi-%s"></i></div>\n', icon))
+  html_output <- paste0(html_output, sprintf('      <div class="timeline__event__date">%d</div>\n', proj$year))
 
-  if (!is.null(proj$paper)) {
-    desc <- paste0(desc, sprintf('<br><strong>Paper:</strong> <a href="%s" target="_blank" rel="noopener">%s</a>',
-                                 proj$paper$url, proj$paper$title))
+  html_output <- paste0(html_output, '      <div class="timeline__event__content">\n')
+  html_output <- paste0(html_output, sprintf('        <h3 class="timeline__event__title">%s</h3>\n', proj$name))
+  html_output <- paste0(html_output, sprintf('        <p class="timeline__event__description">%s</p>\n', proj$description))
+
+  # Meta info
+  html_output <- paste0(html_output, sprintf('        <div class="timeline__event__meta"><strong>Status:</strong> %s | <strong>Updated:</strong> %s</div>\n',
+                                             proj$status, proj$updated))
+
+  # Links
+  html_output <- paste0(html_output, '        <div class="timeline__event__links">\n')
+  for (link in proj$links) {
+    html_output <- paste0(html_output, sprintf('          <a href="%s" class="timeline__event__link" target="_blank" rel="noopener"><i class="bi bi-%s"></i> %s</a>\n',
+                                               link$url, link$icon, link$label))
   }
 
-  html_output <- paste0(html_output, sprintf('        <p>%s</p>\n', desc))
-  html_output <- paste0(html_output, '      </li>\n')
+  # Add paper link if available
+  if (!is.null(proj$paper)) {
+    html_output <- paste0(html_output, sprintf('          <a href="%s" class="timeline__event__link" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i> Paper</a>\n',
+                                               proj$paper$url))
+  }
+
+  html_output <- paste0(html_output, '        </div>\n')
+  html_output <- paste0(html_output, '      </div>\n')
+  html_output <- paste0(html_output, '    </div>\n')
 }
 
 html_output <- paste0(html_output, '
-    </ul>
-  </div>
-
-  <div class="timeline-info">
-    <p class="timeline-hint">Click a year to explore</p>
   </div>
 </div>
 ')
