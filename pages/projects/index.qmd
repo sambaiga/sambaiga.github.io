@@ -16,10 +16,71 @@ library(yaml)
 projects_data <- yaml::read_yaml("data.yml")
 ```
 
-```{r timeline, results='asis', echo=FALSE}
-# Timeline CSS and HTML generation
-html_output <- '
-<style>
+::: {.projects-timeline}
+
+# Open Source Projects
+
+Production-grade ML libraries from research to enterprise
+
+::: {.timeline}
+
+```{r timeline-events, results='asis', echo=FALSE}
+for (i in 1:length(projects_data$projects)) {
+  proj <- projects_data$projects[[i]]
+
+  # Determine type based on status
+  status_class <- switch(proj$status,
+    "Active" = "type1",
+    "Maintained" = "type2",
+    "Community" = "type3",
+    "type1"
+  )
+
+  # Determine icon
+  icon <- switch(proj$status,
+    "Active" = "rocket",
+    "Maintained" = "gear",
+    "Community" = "people",
+    "star"
+  )
+
+  cat(sprintf('::::: {.timeline__event .timeline__event--%s}\n', status_class))
+  cat(sprintf('::::: {.timeline__event__icon}\n'))
+  cat(sprintf('<i class="bi bi-%s"></i>\n', icon))
+  cat(':::::\n\n')
+
+  cat(sprintf('::::: {.timeline__event__date}\n%d\n:::::\n\n', proj$year))
+
+  cat('::::: {.timeline__event__content}\n\n')
+  cat(sprintf('### %s {.timeline__event__title}\n\n', proj$name))
+  cat(sprintf('%s\n\n', proj$description))
+
+  cat(sprintf('**Status:** %s | **Updated:** %s\n\n', proj$status, proj$updated))
+
+  # Links
+  cat('**Links:** ')
+  links <- character()
+  for (link in proj$links) {
+    links <- c(links, sprintf('[<i class="bi bi-%s"></i> %s](%s){.timeline__event__link}', link$icon, link$label, link$url))
+  }
+
+  if (!is.null(proj$paper)) {
+    links <- c(links, sprintf('[<i class="bi bi-file-pdf"></i> Paper](%s){.timeline__event__link}', proj$paper$url))
+  }
+
+  cat(paste(links, collapse=' '))
+  cat('\n\n')
+
+  cat(':::::\n\n')
+  cat(':::::\n\n')
+}
+```
+
+:::
+
+:::
+
+```{css}
 * {
   box-sizing: border-box;
 }
@@ -30,7 +91,7 @@ html_output <- '
   max-width: 1200px;
 }
 
-.timeline-title {
+.projects-timeline h1 {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
@@ -38,7 +99,7 @@ html_output <- '
   margin-bottom: 1rem;
 }
 
-.timeline-subtitle {
+.projects-timeline > p {
   text-align: center;
   font-size: 1rem;
   color: #666;
@@ -88,7 +149,7 @@ html_output <- '
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 1px;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
 .timeline__event__content {
@@ -97,6 +158,15 @@ html_output <- '
   background: #fff;
   width: calc(50% - 50px);
   border-radius: 6px 0 0 6px;
+}
+
+.timeline__event__content p {
+  margin: 0.5rem 0;
+}
+
+.timeline__event__content strong {
+  font-weight: 600;
+  color: #333;
 }
 
 .timeline__event__date {
@@ -128,28 +198,8 @@ html_output <- '
   z-index: 10;
 }
 
-.timeline__event__description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-.timeline__event__meta {
-  font-size: 0.85rem;
-  color: #888;
-  margin: 0.5rem 0;
-}
-
-.timeline__event__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
 .timeline__event__link {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   gap: 0.35rem;
   padding: 0.4rem 0.9rem;
@@ -161,6 +211,7 @@ html_output <- '
   font-weight: 500;
   transition: all 0.2s ease;
   border: 1px solid #e0e0e0;
+  margin-right: 0.5rem;
 }
 
 .timeline__event__link:hover {
@@ -229,6 +280,7 @@ html_output <- '
 
 .timeline__event {
   animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
 }
 
 .timeline__event:nth-child(1) {
@@ -253,7 +305,7 @@ html_output <- '
 
 /* Mobile */
 @media (max-width: 768px) {
-  .timeline-title {
+  .projects-timeline h1 {
     font-size: 1.8rem;
   }
 
@@ -293,71 +345,6 @@ html_output <- '
     font-size: 1.2rem;
   }
 }
-</style>
-
-<div class="projects-timeline">
-  <h2 class="timeline-title">Open Source Projects</h2>
-  <p class="timeline-subtitle">Production-grade ML libraries from research to enterprise</p>
-
-  <div class="timeline">
-'
-
-# Generate timeline events
-for (i in 1:length(projects_data$projects)) {
-  proj <- projects_data$projects[[i]]
-
-  # Determine type based on status
-  status_type <- switch(proj$status,
-    "Active" = "type1",
-    "Maintained" = "type2",
-    "Community" = "type3",
-    "type1"
-  )
-
-  # Determine icon
-  icon <- switch(proj$status,
-    "Active" = "rocket",
-    "Maintained" = "gear",
-    "Community" = "people",
-    "star"
-  )
-
-  html_output <- paste0(html_output, sprintf('    <div class="timeline__event timeline__event--%s">\n', status_type))
-  html_output <- paste0(html_output, sprintf('      <div class="timeline__event__icon"><i class="bi bi-%s"></i></div>\n', icon))
-  html_output <- paste0(html_output, sprintf('      <div class="timeline__event__date">%d</div>\n', proj$year))
-
-  html_output <- paste0(html_output, '      <div class="timeline__event__content">\n')
-  html_output <- paste0(html_output, sprintf('        <h3 class="timeline__event__title">%s</h3>\n', proj$name))
-  html_output <- paste0(html_output, sprintf('        <p class="timeline__event__description">%s</p>\n', proj$description))
-
-  # Meta info
-  html_output <- paste0(html_output, sprintf('        <div class="timeline__event__meta"><strong>Status:</strong> %s | <strong>Updated:</strong> %s</div>\n',
-                                             proj$status, proj$updated))
-
-  # Links
-  html_output <- paste0(html_output, '        <div class="timeline__event__links">\n')
-  for (link in proj$links) {
-    html_output <- paste0(html_output, sprintf('          <a href="%s" class="timeline__event__link" target="_blank" rel="noopener"><i class="bi bi-%s"></i> %s</a>\n',
-                                               link$url, link$icon, link$label))
-  }
-
-  # Add paper link if available
-  if (!is.null(proj$paper)) {
-    html_output <- paste0(html_output, sprintf('          <a href="%s" class="timeline__event__link" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i> Paper</a>\n',
-                                               proj$paper$url))
-  }
-
-  html_output <- paste0(html_output, '        </div>\n')
-  html_output <- paste0(html_output, '      </div>\n')
-  html_output <- paste0(html_output, '    </div>\n')
-}
-
-html_output <- paste0(html_output, '
-  </div>
-</div>
-')
-
-cat(html_output)
 ```
 
 ---
