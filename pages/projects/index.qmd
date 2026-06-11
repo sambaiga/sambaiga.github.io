@@ -41,10 +41,10 @@ for (i in seq_along(projects_data$projects)) {
   )
 
   status_label <- switch(proj$status,
-    "Active" = "🚀 Active",
-    "Maintained" = "⚙️ Maintained",
-    "Community" = "👥 Community",
-    "Active"
+    "Active" = '<i class="bi bi-rocket"></i> Active',
+    "Maintained" = '<i class="bi bi-gear"></i> Maintained',
+    "Community" = '<i class="bi bi-people"></i> Community',
+    '<i class="bi bi-star"></i> Active'
   )
 
   # Build links HTML
