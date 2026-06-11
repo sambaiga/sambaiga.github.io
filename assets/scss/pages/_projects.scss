@@ -172,7 +172,7 @@ $timeline-border-radius: 6px;
   border-radius: 50%;
   width: $timeline-circle-size;
   height: $timeline-circle-size;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: $shadow-base;
   position: relative;
   flex-shrink: 0;
 
@@ -198,15 +198,15 @@ $timeline-border-radius: 6px;
 
 .timeline-content {
   padding: $spacer-3 $spacer-4;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: $shadow-base;
   background: $white;
   width: $timeline-content-width;
   border-radius: 0 $timeline-border-radius $timeline-border-radius 0;
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
+    box-shadow: $shadow-hover;
+    transform: $transform-hover-lift;
   }
 }
 
@@ -268,7 +268,7 @@ $timeline-border-radius: 6px;
   color: $primary;
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
-  transition: box-shadow 0.2s ease-in-out,
+  transition: $shadow-transition,
               color 0.15s ease-in-out,
               transform 0.15s ease-in-out;
   border: $border-width-1 solid transparent;
@@ -280,7 +280,7 @@ $timeline-border-radius: 6px;
   &:hover {
     background: $primary;
     color: $white;
-    transform: translateY(-2px);
+    transform: $transform-hover-lift;
   }
 }
 
