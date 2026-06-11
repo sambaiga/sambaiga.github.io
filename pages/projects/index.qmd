@@ -11,341 +11,244 @@ format:
 toc: false
 ---
 
-```{r setup, include=FALSE}
-library(yaml)
-projects_data <- yaml::read_yaml("data.yml")
-```
-
-::: {.projects-timeline}
-
-# Open Source Projects
-
-Production-grade ML libraries from research to enterprise
-
-::: {.timeline}
-
-```{r timeline-events, results='asis', echo=FALSE}
-for (i in 1:length(projects_data$projects)) {
-  proj <- projects_data$projects[[i]]
-
-  # Determine type based on status
-  status_class <- switch(proj$status,
-    "Active" = "type1",
-    "Maintained" = "type2",
-    "Community" = "type3",
-    "type1"
-  )
-
-  # Determine icon
-  icon <- switch(proj$status,
-    "Active" = "rocket",
-    "Maintained" = "gear",
-    "Community" = "people",
-    "star"
-  )
-
-  cat(sprintf('::::: {.timeline__event .timeline__event--%s}\n', status_class))
-  cat(sprintf('::::: {.timeline__event__icon}\n'))
-  cat(sprintf('<i class="bi bi-%s"></i>\n', icon))
-  cat(':::::\n\n')
-
-  cat(sprintf('::::: {.timeline__event__date}\n%d\n:::::\n\n', proj$year))
-
-  cat('::::: {.timeline__event__content}\n\n')
-  cat(sprintf('### %s {.timeline__event__title}\n\n', proj$name))
-  cat(sprintf('%s\n\n', proj$description))
-
-  cat(sprintf('**Status:** %s | **Updated:** %s\n\n', proj$status, proj$updated))
-
-  # Links
-  cat('**Links:** ')
-  links <- character()
-  for (link in proj$links) {
-    links <- c(links, sprintf('[<i class="bi bi-%s"></i> %s](%s){.timeline__event__link}', link$icon, link$label, link$url))
-  }
-
-  if (!is.null(proj$paper)) {
-    links <- c(links, sprintf('[<i class="bi bi-file-pdf"></i> Paper](%s){.timeline__event__link}', proj$paper$url))
-  }
-
-  cat(paste(links, collapse=' '))
-  cat('\n\n')
-
-  cat(':::::\n\n')
-  cat(':::::\n\n')
-}
-```
-
-:::
-
-:::
-
-```{css}
-* {
-  box-sizing: border-box;
+<style>
+.projects-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
 }
 
-.projects-timeline {
-  padding: 2rem;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-.projects-timeline h1 {
+.projects-header {
   text-align: center;
+  margin-bottom: 3rem;
+}
+
+.projects-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
   color: #222;
-  margin-bottom: 1rem;
-}
-
-.projects-timeline > p {
-  text-align: center;
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 4rem;
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0 auto;
-}
-
-.timeline__event {
-  margin-bottom: 2rem;
-  position: relative;
-  display: flex;
-  border-radius: 6px;
-  align-self: center;
-  width: 90%;
-  max-width: 900px;
-}
-
-.timeline__event:nth-child(2n + 1) {
-  flex-direction: row-reverse;
-}
-
-.timeline__event:nth-child(2n + 1) .timeline__event__date {
-  border-radius: 0 6px 6px 0;
-}
-
-.timeline__event:nth-child(2n + 1) .timeline__event__content {
-  border-radius: 6px 0 0 6px;
-}
-
-.timeline__event:nth-child(2n) .timeline__event__date {
-  border-radius: 6px 0 0 6px;
-}
-
-.timeline__event:nth-child(2n) .timeline__event__content {
-  border-radius: 0 6px 6px 0;
-}
-
-.timeline__event__title {
-  font-size: 1.25rem;
-  line-height: 1.4;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 1px;
   margin: 0 0 0.5rem 0;
 }
 
-.timeline__event__content {
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.projects-header p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-card {
   background: #fff;
-  width: calc(50% - 50px);
-  border-radius: 6px 0 0 6px;
+  border-left: 4px solid;
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-.timeline__event__content p {
-  margin: 0.5rem 0;
+.project-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
-.timeline__event__content strong {
-  font-weight: 600;
-  color: #333;
+.project-card.status-active {
+  border-left-color: #2196F3;
 }
 
-.timeline__event__date {
-  color: #fff;
-  font-size: 1.2rem;
+.project-card.status-maintained {
+  border-left-color: #9C27B0;
+}
+
+.project-card.status-community {
+  border-left-color: #4CAF50;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.project-title {
+  font-size: 1.25rem;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #222;
+  margin: 0;
+  flex: 1;
+}
+
+.project-year {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   white-space: nowrap;
-  padding: 0 1.5rem;
-  border-radius: 6px 0 0 6px;
-  min-width: 100px;
 }
 
-.timeline__event__icon {
+.project-meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-meta span {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  align-self: center;
-  margin: 0 1rem;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  font-size: 1.5rem;
-  position: relative;
-  z-index: 10;
+  gap: 0.25rem;
 }
 
-.timeline__event__link {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.9rem;
-  background: #f0f0f0;
+.project-status {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
-  text-decoration: none;
-  color: #333;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: 1px solid #e0e0e0;
-  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.timeline__event__link:hover {
-  background: #e3f2fd;
-  color: #2196F3;
-  border-color: #2196F3;
-}
-
-.timeline__event__link i {
-  font-size: 0.9rem;
-}
-
-/* Type 1: Active (Blue) */
-.timeline__event--type1 .timeline__event__date {
-  background: #2196F3;
-}
-
-.timeline__event--type1 .timeline__event__icon {
+.status-active {
   background: #E3F2FD;
   color: #2196F3;
 }
 
-.timeline__event--type1 .timeline__event__title {
-  color: #2196F3;
-}
-
-/* Type 2: Maintained (Purple) */
-.timeline__event--type2 .timeline__event__date {
-  background: #9C27B0;
-}
-
-.timeline__event--type2 .timeline__event__icon {
+.status-maintained {
   background: #F3E5F5;
   color: #9C27B0;
 }
 
-.timeline__event--type2 .timeline__event__title {
-  color: #9C27B0;
-}
-
-/* Type 3: Community (Green) */
-.timeline__event--type3 .timeline__event__date {
-  background: #4CAF50;
-}
-
-.timeline__event--type3 .timeline__event__icon {
+.status-community {
   background: #E8F5E9;
   color: #4CAF50;
 }
 
-.timeline__event--type3 .timeline__event__title {
-  color: #4CAF50;
+.project-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+  margin: 0.75rem 0;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 40px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
 }
 
-.timeline__event {
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 0;
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #2196F3;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
 }
 
-.timeline__event:nth-child(1) {
-  animation-delay: 0.1s;
+.project-link:hover {
+  background: #2196F3;
+  color: #fff;
+  border-color: #2196F3;
 }
 
-.timeline__event:nth-child(2) {
-  animation-delay: 0.2s;
+.project-link i {
+  font-size: 0.85rem;
 }
 
-.timeline__event:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.timeline__event:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-.timeline__event:nth-child(5) {
-  animation-delay: 0.5s;
-}
-
-/* Mobile */
 @media (max-width: 768px) {
-  .projects-timeline h1 {
+  .projects-container {
+    margin: 2rem auto;
+  }
+
+  .projects-header h1 {
     font-size: 1.8rem;
   }
 
-  .timeline__event {
-    flex-direction: column;
-    align-self: center;
-    width: 95%;
-  }
-
-  .timeline__event:nth-child(2n + 1) {
+  .project-header {
     flex-direction: column;
   }
 
-  .timeline__event__content {
-    width: 100%;
-    border-radius: 0 0 6px 6px;
-  }
-
-  .timeline__event__date {
-    border-radius: 6px 6px 0 0;
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .timeline__event:nth-child(2n + 1) .timeline__event__date {
-    border-radius: 6px 6px 0 0;
-  }
-
-  .timeline__event:nth-child(2n + 1) .timeline__event__content {
-    border-radius: 0 0 6px 6px;
-  }
-
-  .timeline__event__icon {
-    margin: 0;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+  .project-year {
+    font-size: 0.75rem;
   }
 }
+</style>
+
+<div class="projects-container">
+
+<div class="projects-header">
+
+## Open Source Projects
+
+Production-grade ML libraries from research to enterprise
+
+</div>
+
+<div class="projects-grid">
+
+```{r projects, results='asis', echo=FALSE}
+library(yaml)
+projects_data <- yaml::read_yaml("data.yml")
+
+for (proj in projects_data$projects) {
+  status_class <- tolower(proj$status)
+  status_badge <- switch(proj$status,
+    "Active" = "🚀 Active",
+    "Maintained" = "⚙️ Maintained",
+    "Community" = "👥 Community",
+    "Active"
+  )
+
+  cat(sprintf('<div class="project-card status-%s">\n', status_class))
+  cat('<div class="project-header">\n')
+  cat(sprintf('<h3 class="project-title">%s</h3>\n', proj$name))
+  cat(sprintf('<div class="project-year">%d</div>\n', proj$year))
+  cat('</div>\n')
+
+  cat(sprintf('<div class="project-meta">\n'))
+  cat(sprintf('<span><strong class="project-status status-%s">%s</strong></span>\n', status_class, status_badge))
+  cat(sprintf('<span>Updated: %s</span>\n', proj$updated))
+  cat('</div>\n')
+
+  cat(sprintf('<p class="project-description">%s</p>\n', proj$description))
+
+  cat('<div class="project-links">\n')
+  for (link in proj$links) {
+    cat(sprintf('<a href="%s" class="project-link" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i> %s</a>\n',
+                link$url, link$label, link$icon, link$label))
+  }
+
+  if (!is.null(proj$paper)) {
+    cat(sprintf('<a href="%s" class="project-link" title="View Paper" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i> Paper</a>\n',
+                proj$paper$url))
+  }
+
+  cat('</div>\n')
+  cat('</div>\n\n')
+}
 ```
+
+</div>
+
+</div>
 
 ---
 
