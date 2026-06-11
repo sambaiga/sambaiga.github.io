@@ -17,58 +17,65 @@ toc: false
 ```{r setup, include=FALSE}
 library(yaml)
 projects_data <- yaml::read_yaml("data.yml")
+num_projects <- length(projects_data$projects)
 ```
 
-::: {.projects-header}
-# Open Source Projects
+```{=html}
+<div class="projects-timeline">
+  <div class="timeline-header">
+    <h1>Open Source Projects</h1>
+    <p>Production-grade ML libraries from research to enterprise</p>
+  </div>
 
-Production-grade ML libraries built for real problems. From research to enterprise.
+  <div class="cards-container">
 
-:::
+```
 
 ```{r, results='asis', echo=FALSE}
-cat('<div class="projects-grid">\n')
+cat(sprintf('    <ul class="cards" style="--items: %d;">\n', num_projects))
+for (i in 1:num_projects) {
+  proj <- projects_data$projects[[i]]
+  idx <- i - 1  # 0-indexed for CSS
+  checked <- if (i == 1) "checked" else ""
 
-for (proj in projects_data$projects) {
-  status <- proj$status
-  color <- projects_data$status_colors[[status]]
+  cat(sprintf('      <li style="--i: %d;">\n', idx))
+  cat(sprintf('        <input type="radio" id="item-%d" name="gallery-item" %s>\n', idx, checked))
+  cat(sprintf('        <label for="item-%d">%d</label>\n', idx, proj$year))
+  cat(sprintf('        <h2>%s</h2>\n', proj$name))
 
-  cat(sprintf('<div class="project-card" style="border-top-color: %s;">\n', color))
-  cat('<div class="card-header">\n')
-  cat(sprintf('<h3 class="project-name">%s</h3>\n', proj$name))
-  cat(sprintf('<span class="status-badge" style="background-color: %s;">%s</span>\n', color, status))
-  cat('</div>\n')
+  # Build description with key info
+  desc <- sprintf('%s\n\n', proj$description)
+  desc <- paste0(desc, sprintf('<strong>Updated:</strong> %s<br>\n', proj$updated))
 
-  cat('<div class="card-body">\n')
-  cat(sprintf('<p class="project-description">%s</p>\n', proj$description))
-  cat(sprintf('<div class="project-highlight">%s</div>\n', proj$highlight))
+  # Add links
+  desc <- paste0(desc, '<strong>Links:</strong> ')
+  link_labels <- sapply(proj$links, function(l) sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', l$url, l$label))
+  desc <- paste0(desc, paste(link_labels, collapse=' • '))
 
-  cat('<div class="card-links">\n')
-  for (link in proj$links) {
-    cat(sprintf('<a href="%s" class="link-badge" title="%s" target="_blank" rel="noopener"><i class="bi bi-%s"></i> %s</a>\n',
-                link$url, link$label, link$icon, link$label))
-  }
-  cat('</div>\n')
-  cat('</div>\n')
-
-  cat('<div class="card-footer">\n')
-  cat(sprintf('<span class="meta-item"><i class="bi bi-calendar"></i> Updated %s</span>\n', proj$updated))
+  # Add paper link if available
   if (!is.null(proj$paper)) {
-    cat(sprintf('<a href="%s" class="meta-item" target="_blank" rel="noopener"><i class="bi bi-file-pdf"></i> Paper</a>\n',
-                proj$paper$url))
+    desc <- paste0(desc, sprintf('<br><strong>Paper:</strong> <a href="%s" target="_blank" rel="noopener">%s</a>', proj$paper$url, proj$paper$title))
   }
-  cat('</div>\n')
 
-  cat('</div>\n')
+  cat(sprintf('        <p>%s</p>\n', desc))
+  cat('      </li>\n')
 }
+```
 
-cat('</div>\n')
+```{=html}
+    </ul>
+  </div>
+
+  <div class="timeline-info">
+    <p class="timeline-hint">Click a year to explore</p>
+  </div>
+</div>
 ```
 
 ---
 
-## Contribute
+## Contributing
 
-These projects welcome contributions, feedback, and collaboration.
+These projects welcome contributions and collaboration.
 
 [Open an Issue](https://github.com/sambaiga){.btn .btn-outline-primary .btn-sm} [Submit a PR](https://github.com/sambaiga){.btn .btn-outline-primary .btn-sm}
