@@ -4,11 +4,11 @@
 projects:
   - name: Twiga
     slug: twiga
-    description: "Production forecasting library with REST-serving, MLOps, and hyperparameter optimization."
+    description: "A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision."
     status: Active
     year: 2024
     updated: "2024-06"
-    highlight: "25% error reduction"
+    highlight: "Point & probabilistic forecasting"
     links:
       - type: "pypi"
         label: "PyPI"
@@ -26,11 +26,11 @@ projects:
 
   - name: MLPForecast
     slug: mlpforecast
-    description: "MLP-based net-load forecasting with uncertainty quantification for distribution networks."
+    description: "A simple and efficient architecture for point and probabilistic forecasting, designed to minimize model complexity while improving forecasting performance."
     status: Active
     year: 2023
     updated: "2024-03"
-    highlight: "Efficiency through simplicity"
+    highlight: "Simple & efficient architecture"
     links:
       - type: "github"
         label: "GitHub"
@@ -42,11 +42,11 @@ projects:
 
   - name: MLCFCD
     slug: mlcfcd
-    description: "Machine learning-based conformal forecasting with probabilistic predictions and coverage guarantees."
+    description: "Multi-label Learning for Appliances Recognition in NILM using Fryze-Current Decomposition and Convolutional Neural Network."
     status: Maintained
     year: 2023
     updated: "2023-12"
-    highlight: "Conformal prediction"
+    highlight: "NILM & multi-label learning"
     links:
       - type: "github"
         label: "GitHub"
