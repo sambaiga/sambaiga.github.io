@@ -40,35 +40,19 @@
 }
 
 .projects-timeline {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 $section-padding-x;
-  position: relative;
-
-  // Vertical center line
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom,
-      $energy-accent,
-      $ai-accent,
-      $energy-accent);
-    transform: translateX(-50%);
-    opacity: 0.3;
-
-    @media (max-width: $breakpoint-md) {
-      left: 20px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  gap: $spacer-8;
 }
 
 .timeline-event {
-  display: flex;
-  margin-bottom: $spacer-8;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: $spacer-5;
+  align-items: center;
   position: relative;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
@@ -79,75 +63,69 @@
     }
   }
 
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
-    padding-left: $spacer-6;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 40px;
-      bottom: -40px;
-      width: 2px;
-      background: rgba($primary, 0.1);
-    }
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+    gap: $spacer-4;
   }
 }
 
-// Alternating layout
+// Odd items: icon/date on right
 .timeline-event:nth-child(odd) {
-  flex-direction: row;
+  .timeline-icon-wrapper {
+    order: 3;
+  }
 
   .timeline-content {
+    order: 1;
     text-align: right;
-    margin-right: $spacer-5;
-    flex: 1;
   }
 
-  .timeline-icon {
-    order: 2;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
+  @media (max-width: $breakpoint-lg) {
+    .timeline-icon-wrapper {
+      order: 2;
+    }
 
     .timeline-content {
+      order: 1;
       text-align: left;
-      margin-right: 0;
-      margin-bottom: $spacer-4;
     }
   }
 }
 
+// Even items: icon/date on left
 .timeline-event:nth-child(even) {
-  flex-direction: row-reverse;
-
-  .timeline-content {
-    text-align: left;
-    margin-left: $spacer-5;
-    flex: 1;
-  }
-
-  .timeline-icon {
+  .timeline-icon-wrapper {
     order: 1;
   }
 
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
+  .timeline-content {
+    order: 3;
+    text-align: left;
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    .timeline-icon-wrapper {
+      order: 2;
+    }
 
     .timeline-content {
+      order: 1;
       text-align: left;
-      margin-left: 0;
-      margin-bottom: $spacer-4;
     }
   }
 }
 
+.timeline-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacer-3;
+  order: 2;
+}
+
 .timeline-icon {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -155,20 +133,16 @@
   font-size: $font-size-xxl;
   color: $white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  position: relative;
-  z-index: 1;
+  flex-shrink: 0;
 
-  @media (max-width: $breakpoint-md) {
-    position: absolute;
-    left: -4px;
-    top: 0;
-    width: 40px;
-    height: 40px;
+  @media (max-width: $breakpoint-lg) {
+    width: 50px;
+    height: 50px;
     font-size: $font-size-lg;
   }
 }
 
-// Status colors
+// Status colors for icons
 .timeline-event.status-active .timeline-icon {
   background: $primary;
   box-shadow: 0 0 0 4px rgba($primary, 0.1);
@@ -184,6 +158,42 @@
   box-shadow: 0 0 0 4px rgba($energy-accent, 0.1);
 }
 
+.timeline-date-box {
+  background: $primary;
+  color: $white;
+  padding: $spacer-5;
+  border-radius: $card-border-radius;
+  text-align: center;
+  min-width: 140px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: $breakpoint-lg) {
+    min-width: 120px;
+    min-height: auto;
+    padding: $spacer-4;
+    font-size: $font-size-lg;
+  }
+}
+
+// Status colors for date boxes
+.timeline-event.status-active .timeline-date-box {
+  background: $primary;
+}
+
+.timeline-event.status-maintained .timeline-date-box {
+  background: $ai-accent;
+}
+
+.timeline-event.status-community .timeline-date-box {
+  background: $energy-accent;
+}
+
 .timeline-content {
   background: $white;
   border-radius: $card-border-radius;
@@ -195,15 +205,10 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
-}
 
-.timeline-year {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  color: $gray-600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: $spacer-1;
+  @media (max-width: $breakpoint-lg) {
+    padding: $spacer-4;
+  }
 }
 
 .timeline-title {
@@ -211,8 +216,10 @@
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   color: $primary;
-  margin: $spacer-2 0;
+  margin: 0 0 $spacer-2 0;
   line-height: $headings-line-height;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .timeline-event.status-maintained .timeline-title {
@@ -227,7 +234,7 @@
   font-size: $font-size-md;
   line-height: $body-line-height;
   color: $secondary;
-  margin: $spacer-3 0;
+  margin: 0 0 $spacer-3 0;
 }
 
 .timeline-meta {
@@ -235,8 +242,8 @@
   color: $gray-600;
   margin-bottom: $spacer-3;
   display: flex;
-  flex-wrap: wrap;
   gap: $spacer-3;
+  flex-wrap: wrap;
 
   @media (max-width: $breakpoint-md) {
     justify-content: flex-start;
@@ -272,8 +279,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: $spacer-2;
-  margin-top: $spacer-4;
-  padding-top: $spacer-4;
+  margin-top: $spacer-3;
+  padding-top: $spacer-3;
   border-top: 1px solid $border-color-light;
 }
 
@@ -299,6 +306,7 @@
     background: $primary;
     color: $white;
     border-color: $primary;
+    transform: translateY(-2px);
   }
 }
 
@@ -337,7 +345,7 @@
 }
 
 // Mobile adjustments
-@media (max-width: $breakpoint-md) {
+@media (max-width: $breakpoint-lg) {
   .timeline-content {
     padding: $spacer-4;
   }
