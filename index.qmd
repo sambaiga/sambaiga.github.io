@@ -29,12 +29,12 @@ format:
     <div class="hero-content">
       <div class="hero-text-area">
         <h1 class="hero-title">  <!-- This will use hero component styles -->
-          Leading <span class="highlight">Applied AI</span>
-          for Strategic Impact
+          Principal ML Engineer<br>
+          <span class="highlight">Building Production ML Systems</span>
         </h1>
         <p class="hero-subtitle">
-          I architect intelligent systems that translate advanced machine learning
-          into measurable business value and sustainable transformation.
+          I architect composable ML systems for supply chain optimization and intelligent edge computing,
+          delivering measurable business impact through resilient, production-grade machine learning.
         </p>
         <div class="hero-actions">
           <a href="https://www.linkedin.com/in/sambaiga/" class="btn btn-primary btn-sm">

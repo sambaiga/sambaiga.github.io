@@ -1,8 +1,8 @@
 ---
 title: "Anthony Faustine"
-subtitle: "Lead Data Scientist<br>Eaton's Centre for Intelligent Power"
+subtitle: "Principal ML Engineer<br>Analog Devices, Ireland"
 pagetitle: "Anthony Faustine | Portfolio"
-description-meta: "Lead Data Scientist specializing in applied machine learning, strategic innovation, and AI leadership at Eaton's Centre for Intelligent Power in Dublin."
+description-meta: "Principal ML Engineer and Systems Architect specializing in machine learning system design and implementation at scale, with strategic technology leadership and engineering excellence at Analog Devices, Ireland."
 
 about:
   id: hero-heading
@@ -14,23 +14,25 @@ about:
 
 format:
   html:
-    body-class: "about"  
+    body-class: "about"
 grid:
   body-width: 1200px
 author-meta: Anthony Faustine
 ---
 ::: {#hero-heading .text-justify .text-md-start}
-I am a **Lead Data Scientist** at the [Centre for Intelligent Power (CIP)](https://www.eaton.com) in Dublin, Ireland. My expertise sits at the intersection of **applied machine learning** and **strategic innovation management**. Beyond technical specialization, I function as a strategic AI leader and builder. With proven experience across industry and academia, I specialize in architecting intelligent solutions while fostering growth through mentorship and cross-functional leadership.
+I am a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland, building production ML systems for supply chain optimization and intelligent edge computing. Over 10+ years, I've designed, deployed, and scaled ML systems across energy, industrial, and semiconductor domains.
 
-> My mission: to lead strategic AI innovation that bridges research with real-world impact, building toward a more sustainable and intelligent future.
+I specialize in **machine learning system design and implementation at scale**. From architecture and modeling through production governance and observability, I drive strategic technology leadership that translates research into resilient, production-grade systems. I advance engineering excellence through mentorship and cross-functional leadership.
+
+> My mission: architect and deliver ML systems that solve real business problems with measurable impact.
 
 ### Ready to collaborate?
-I'm always open to discussing new opportunities, research collaborations, or speaking engagements.
+I'm always open to discussing new opportunities, research collaborations, technical speaking engagements, or mentoring emerging AI engineers.
 
 
 
 ::: {.hero-actions .d-flex .justify-content-center .gap-3 .mt-4}
 [Schedule a Chat <i class="bi bi-calendar me-2"></i>](https://calendly.com/sambaiga){.btn .btn-primary .btn-sm}
-[Download CV <i class="bi bi-download me-2"></i>](/files/CV_Anthony_2025.pdf){.btn .btn-outline-primary .btn-sm}
+[Download CV <i class="bi bi-download me-2"></i>](/files/Anthony_CV_2026_ADI.pdf){.btn .btn-outline-primary .btn-sm}
 :::
 :::

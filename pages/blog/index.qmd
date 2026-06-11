@@ -3,12 +3,12 @@ title: ""
 author: ""
 description: "Anthony Faustine's blog on AI and Energy"
 listing:
-  contents: posts 
+  contents: posts
   sort: "date desc"
   max-description-length: 100
   categories: true
   feed: true
-  fields: [title, date, author, categories, description, image, reading-time]
+  fields: [title, date, author, categories, description, reading-time, image]
   image-placeholder: ../../images/blogs/arts.jpg
   template: ../../assets/ejs/posts_listing.ejs
 
