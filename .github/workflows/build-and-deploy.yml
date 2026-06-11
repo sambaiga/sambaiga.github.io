@@ -1,0 +1,71 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pages/**'
+      - 'assets/**'
+      - 'images/**'
+      - 'index.qmd'
+      - '_quarto.yml'
+      - '.github/workflows/build-and-deploy.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Quarto Site
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Validate before build
+        run: |
+          echo "🔍 Running validation checks..."
+          chmod +x scripts/*.sh
+          bash scripts/validate_quarto.sh pages/**/*.qmd || exit 1
+          bash scripts/validate_bib.sh $(find . -name "*.bib") || true
+          bash scripts/validate_images.sh pages/**/*.qmd || exit 1
+          echo "✓ All validations passed"
+
+      - name: Build site
+        run: |
+          echo "🔨 Building site with Quarto..."
+          quarto render
+          echo "✓ Site built successfully"
+
+      - name: Upload site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site/
+          retention-days: 1
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          cname: sambaiga.github.io
+
+      - name: Summary
+        run: |
+          echo "✅ Site built and deployed successfully!"
+          echo ""
+          echo "## Deployment Summary"
+          echo "- Branch: ${{ github.ref }}"
+          echo "- Commit: ${{ github.sha }}"
+          echo "- Site: https://sambaiga.github.io"
