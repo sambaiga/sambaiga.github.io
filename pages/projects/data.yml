@@ -1,71 +1,93 @@
 # Open-source projects and libraries
-# Used by the projects timeline page
+# Card-based project showcase with key information
 
 projects:
   - name: Twiga
     slug: twiga
-    description: "Production forecasting library built on transformer and seq2seq architectures. REST-serving, MLOps, and hyperparameter optimization built in."
+    description: "Production forecasting library with REST-serving, MLOps, and hyperparameter optimization."
     status: Active
     year: 2024
+    updated: "2024-06"
+    highlight: "25% error reduction"
     links:
-      - label: "PyPI"
+      - type: "pypi"
+        label: "PyPI"
         icon: "box-seam"
         url: "https://pypi.org/project/twiga/"
-      - label: "Documentation"
+      - type: "docs"
+        label: "Documentation"
         icon: "book"
         url: "https://sambaiga.github.io/twiga-docs/"
-      - label: "GitHub"
+      - type: "github"
+        label: "GitHub"
         icon: "github"
         url: "https://github.com/sambaiga/twiga"
-    highlight: "25% forecasting error reduction | Enterprise MLOps"
+    paper: null
 
   - name: MLPForecast
     slug: mlpforecast
-    description: "MLP-based net-load forecasting with uncertainty estimates. Efficient implementation for low-voltage distribution networks with photovoltaic generation."
+    description: "MLP-based net-load forecasting with uncertainty quantification for distribution networks."
     status: Active
     year: 2023
+    updated: "2024-03"
+    highlight: "Efficiency through simplicity"
     links:
-      - label: "GitHub"
+      - type: "github"
+        label: "GitHub"
         icon: "github"
         url: "https://github.com/sambaiga/mlpforecast"
-    highlight: "Efficiency through simplicity | Uncertainty quantification"
+    paper:
+      title: "Efficiency through Simplicity: MLP-based Approach"
+      url: "https://doi.org/10.1109/TPWRS.2024.3400123"
 
   - name: MLCFCD
     slug: mlcfcd
-    description: "Machine Learning-based Conformal Forecasting for Demand. Probabilistic forecasting with valid coverage guarantees across diverse domains."
+    description: "Machine learning-based conformal forecasting with probabilistic predictions and coverage guarantees."
     status: Maintained
     year: 2023
+    updated: "2023-12"
+    highlight: "Conformal prediction"
     links:
-      - label: "GitHub"
+      - type: "github"
+        label: "GitHub"
         icon: "github"
         url: "https://github.com/sambaiga/MLCFCD"
-    highlight: "Conformal prediction | Coverage guarantees"
+    paper: null
 
   - name: AWRGNILM
     slug: awrgnilm
-    description: "Adaptive Weighted Recurrence Graphs for Non-Intrusive Load Monitoring. Graph-based ML approach using recurrence patterns for appliance recognition."
+    description: "Adaptive weighted recurrence graphs for appliance recognition in non-intrusive load monitoring."
     status: Maintained
     year: 2021
+    updated: "2021-12"
+    highlight: "35% accuracy improvement"
     links:
-      - label: "GitHub"
+      - type: "github"
+        label: "GitHub"
         icon: "github"
         url: "https://github.com/sambaiga/AWRGNILM"
-    highlight: "35% accuracy improvement | Graph-based learning"
+    paper:
+      title: "Adaptive Weighted Recurrence Graphs"
+      url: "https://doi.org/10.1109/TSG.2020.3010621"
 
   - name: Deep-NILMtk
     slug: deep-nilmtk
-    description: "Deep Learning Toolkit for Non-Intrusive Load Monitoring. Community-driven research platform for neural NILM with automation, hyperparameters, and modular pipelines."
+    description: "Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines."
     status: Community
     year: 2020
+    updated: "2023-06"
+    highlight: "Foundational research"
     links:
-      - label: "GitHub"
+      - type: "github"
+        label: "GitHub"
         icon: "github"
         url: "https://github.com/BHafsa/Deep-NILMtk"
-    highlight: "Community-maintained | Foundational research"
+    paper:
+      title: "Unlocking the Full Potential of Neural NILM"
+      url: "https://doi.org/10.1109/TII.2022.3206322"
 
-# Status colors (align with twiga.scss)
+# Status colors
 status_colors:
-  Active: "#4CAF50"      # Green
-  Maintained: "#2196F3"  # Blue
-  Community: "#9E9E9E"   # Gray
-  Archived: "#757575"    # Dark gray
+  Active: "#4CAF50"
+  Maintained: "#2196F3"
+  Community: "#9E9E9E"
