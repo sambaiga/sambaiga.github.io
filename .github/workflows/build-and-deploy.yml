@@ -60,6 +60,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           cname: sambaiga.github.io
+          force_orphan: true
 
       - name: Summary
         run: |
