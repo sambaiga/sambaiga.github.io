@@ -1,12 +1,14 @@
 - title: "From Data to Impact"
   subtitle: "A Structured Path from Python Fundamentals to Production-Ready Data Science"
-  description: "A structured, project-based learning journey progressing from foundational Python through engineering practices to production-grade ML systems. Covers 10 parts across 20+ chapters — from Python core and NumPy through classical ML, deep learning, LLMs, and MLOps deployment."
+  description: "A structured, project-based learning journey progressing from foundational Python through engineering practices to production-grade ML systems. Covers 10 parts across 20+ chapters from Python core and NumPy through classical ML, deep learning, LLMs, and MLOps deployment."
   author: "Anthony Faustine"
   year: 2024
   genre: "Data Science & MLOps"
-  theme: "tech"
+  icon: "graph-up-arrow"
+  variant: "primary"
   status: "in-progress"
   status_label: "In Progress"
+  status_icon: "lightning-fill"
   tags: ["Python", "Machine Learning", "MLOps", "Deep Learning", "Data Science"]
   chapters: "10 Parts · 20+ Chapters"
   url: "https://sambaiga.github.io/ds-mlops-path/"
@@ -17,9 +19,11 @@
   author: "Anthony Faustine"
   year: 2026
   genre: "Faith & Relationships"
-  theme: "personal"
+  icon: "heart-fill"
+  variant: "accent"
   status: "available"
   status_label: "Available"
+  status_icon: "check-circle-fill"
   tags: ["Relationships", "Faith", "Emotional Intelligence", "Personality"]
   chapters: "4 Days · Self-guided"
   url: "https://sambaiga.github.io/love-that-lasts/"

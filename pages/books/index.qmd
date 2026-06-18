@@ -25,72 +25,63 @@ books_data <- yaml::read_yaml("books.yaml")
 
 html_content <- ""
 
-for (book in books_data) {
-
-  # Status icon and color class
-  status_icon <- switch(book$status,
-    "in-progress" = "lightning-fill",
-    "available"   = "check-circle-fill",
-    "star-fill"
-  )
-
-  status_class <- switch(book$status,
-    "in-progress" = "book-status--active",
-    "available"   = "book-status--available",
-    ""
-  )
+for (i in seq_along(books_data)) {
+  book <- books_data[[i]]
 
   # Build tags HTML
   tags_html <- ""
   for (tag in book$tags) {
     tags_html <- paste0(tags_html,
-      sprintf('<span class="book-tag">%s</span>\n', tag))
+      sprintf('<span class="book-tag">%s</span>', tag))
   }
 
+  delay_style <- sprintf('animation-delay: %.1fs;', i * 0.15)
+
   card_html <- sprintf(
-    '<article class="book-card book-card--%s">
-      <div class="book-cover">
-        <div class="book-cover-pattern"></div>
-        <div class="book-cover-content">
+    '<article class="book-card book-card--%s animated fadeInUp" style="%s">
+      <div class="book-card-header">
+        <div class="book-icon">
+          <i class="bi bi-%s"></i>
+        </div>
+        <div class="book-card-header-meta">
           <span class="book-genre">%s</span>
-          <h2 class="book-title">%s</h2>
-          <p class="book-subtitle">%s</p>
-          <span class="book-author">%s</span>
+          <span class="book-year">%d</span>
         </div>
       </div>
-      <div class="book-body">
-        <p class="book-description">%s</p>
-        <div class="book-tags">
-          %s
+      <div class="book-card-body">
+        <div class="book-card-title">%s</div>
+        <div class="book-card-subtitle">%s</div>
+        <div class="book-card-description">
+          <p>%s</p>
         </div>
-        <div class="book-meta">
-          <span class="book-meta-item"><i class="bi bi-calendar3"></i> %d</span>
-          <span class="book-meta-item"><i class="bi bi-journal-text"></i> %s</span>
-          <span class="book-meta-item book-status %s">
+        <div class="book-card-meta">
+          <span class="book-card-status">
             <i class="bi bi-%s"></i> %s
           </span>
+          <span><i class="bi bi-journal-text"></i> %s</span>
         </div>
-        <div class="book-actions">
-          <a href="%s" class="book-cta%s" target="_blank" rel="noopener">
-            Read Online <i class="bi bi-arrow-right"></i>
+        <div class="book-tags">%s</div>
+        <div class="book-card-links">
+          <a href="%s" class="book-link" title="Read %s online" target="_blank" rel="noopener">
+            <i class="bi bi-book-half"></i>Read Online
           </a>
         </div>
       </div>
     </article>',
-    book$theme,
+    book$variant,
+    delay_style,
+    book$icon,
     book$genre,
+    book$year,
     book$title,
     book$subtitle,
-    book$author,
     book$description,
-    tags_html,
-    book$year,
-    book$chapters,
-    status_class,
-    status_icon,
+    book$status_icon,
     book$status_label,
+    book$chapters,
+    tags_html,
     book$url,
-    if (book$theme == "personal") " book-cta--personal" else ""
+    book$title
   )
 
   html_content <- paste0(html_content, card_html, "\n")
