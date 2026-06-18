@@ -56,6 +56,8 @@ website:
         file: "pages/blog/index.qmd"
       - text: "Projects"
         file: "pages/projects/index.qmd"
+      - text: "Books"
+        file: "pages/books/index.qmd"
       - text: "Research"
         file: "pages/publication/index.qmd"
 
