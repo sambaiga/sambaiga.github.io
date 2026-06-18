@@ -1,0 +1,330 @@
+/*-- scss:pages/books --*/
+
+// =====================================================
+// BOOKS PAGE
+// =====================================================
+
+.books-page {
+  background: $gray-100;
+}
+
+.books-header {
+  text-align: center;
+  margin-bottom: $spacer-6;
+
+  p {
+    font-size: $font-size-lg;
+    color: $gray-700;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacer-6;
+  max-width: 1000px;
+  margin: $spacer-5 auto;
+  padding: 0 $spacer-4;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
+}
+
+// =====================================================
+// BOOK CARD
+// =====================================================
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-base;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: $card-hover-transform;
+    box-shadow: $card-hover-box-shadow;
+
+    .book-cta i {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// =====================================================
+// BOOK COVER
+// =====================================================
+
+.book-cover {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Dot grid overlay
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba($white, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+// Hatched stripe texture
+.book-cover-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba($white, 0.6) 0px,
+    rgba($white, 0.6) 1px,
+    transparent 0px,
+    transparent 50%
+  );
+  background-size: 20px 20px;
+}
+
+.book-cover-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: $spacer-4 $spacer-5;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacer-2;
+}
+
+.book-genre {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-widest;
+  background: rgba($white, 0.2);
+  border: 1px solid rgba($white, 0.35);
+  border-radius: $border-radius-full;
+  padding: $spacer-1 $spacer-3;
+}
+
+.book-cover-content .book-title {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $white;
+  margin: 0;
+  line-height: $line-height-tight;
+  text-shadow: 0 2px 12px rgba($black, 0.25);
+}
+
+.book-cover-content .book-subtitle {
+  font-size: $font-size-sm;
+  color: rgba($white, 0.85);
+  line-height: $line-height-snug;
+  margin: 0;
+  max-width: 280px;
+}
+
+.book-author {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: rgba($white, 0.7);
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+  margin-top: $spacer-1;
+}
+
+// Tech book: primary teal → info cyan → energy green
+.book-card--tech .book-cover {
+  background: linear-gradient(145deg, $primary 0%, $cyan 55%, $energy-accent 100%);
+}
+
+// Personal book: deep purple → pink → amber
+.book-card--personal .book-cover {
+  background: linear-gradient(145deg, #5B21B6 0%, #DB2777 55%, #D97706 100%);
+}
+
+// =====================================================
+// BOOK BODY
+// =====================================================
+
+.book-body {
+  padding: $spacer-4;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: $spacer-3;
+}
+
+.book-description {
+  color: $gray-700;
+  font-size: $font-size-base;
+  line-height: $body-line-height;
+  margin: 0;
+}
+
+// =====================================================
+// BOOK TAGS
+// =====================================================
+
+.book-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-2;
+}
+
+.book-tag {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: $spacer-1 $spacer-3;
+  border-radius: $border-radius-full;
+  background: rgba($primary, $opacity-10);
+  color: $primary;
+  border: $border-width-1 solid rgba($primary, $opacity-15);
+}
+
+.book-card--personal .book-tag {
+  background: rgba(#5B21B6, 0.08);
+  color: #5B21B6;
+  border-color: rgba(#5B21B6, 0.18);
+}
+
+// =====================================================
+// BOOK META
+// =====================================================
+
+.book-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-3;
+  font-size: $font-size-sm;
+  color: $gray-600;
+  padding-bottom: $spacer-3;
+  border-bottom: $border-width-1 solid $border-color-light;
+}
+
+.book-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacer-1;
+}
+
+.book-status {
+  font-weight: $font-weight-medium;
+
+  &.book-status--active {
+    color: $energy-accent;
+  }
+
+  &.book-status--available {
+    color: $success;
+  }
+}
+
+// =====================================================
+// BOOK ACTIONS
+// =====================================================
+
+.book-actions {
+  margin-top: auto;
+}
+
+.book-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacer-2;
+  padding: $spacer-2 $spacer-4;
+  background: $primary;
+  color: $white;
+  border-radius: $border-radius;
+  text-decoration: none;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  transition: background 0.2s ease, gap 0.2s ease;
+
+  &:hover {
+    background: darken($primary, 8%);
+    color: $white;
+    text-decoration: none;
+    gap: $spacer-3;
+  }
+
+  i {
+    font-size: $font-size-sm;
+    transition: transform 0.2s ease;
+  }
+}
+
+.book-cta--personal {
+  background: #5B21B6;
+
+  &:hover {
+    background: darken(#5B21B6, 8%);
+    color: $white;
+  }
+}
+
+// =====================================================
+// RESPONSIVE
+// =====================================================
+
+@media (max-width: $breakpoint-sm) {
+  .books-grid {
+    padding: 0 $spacer-3;
+  }
+
+  .book-cover {
+    height: 240px;
+  }
+
+  .book-cover-content .book-title {
+    font-size: $font-size-xl;
+  }
+}
+
+// =====================================================
+// DARK MODE
+// =====================================================
+
+[data-bs-theme="dark"] {
+  .books-page {
+    background: $dark-body-bg;
+  }
+
+  .book-card {
+    background: lighten($dark-body-bg, 5%);
+  }
+
+  .book-description {
+    color: $gray-400;
+  }
+
+  .book-tag {
+    background: rgba($primary, 0.15);
+    color: lighten($primary, 30%);
+    border-color: rgba($primary, 0.25);
+  }
+
+  .book-card--personal .book-tag {
+    background: rgba(#7C3AED, 0.15);
+    color: lighten(#7C3AED, 30%);
+    border-color: rgba(#7C3AED, 0.25);
+  }
+
+  .book-meta {
+    color: $gray-500;
+    border-bottom-color: $gray-700;
+  }
+}

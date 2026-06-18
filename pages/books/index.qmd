@@ -1,0 +1,102 @@
+---
+title: "Books"
+pagetitle: "Books | Anthony Faustine"
+description-meta: "Books by Anthony Faustine on data science, machine learning, and personal growth."
+
+format:
+  html:
+    page-layout: full
+    body-class: "books-page"
+
+toc: false
+---
+
+<div class="books-header">
+<p>Writing that bridges technical depth and human flourishing</p>
+</div>
+
+<div class="books-grid">
+
+```{r books-grid, results='asis', echo=FALSE}
+library(yaml)
+library(htmltools)
+
+books_data <- yaml::read_yaml("books.yaml")
+
+html_content <- ""
+
+for (book in books_data) {
+
+  # Status icon and color class
+  status_icon <- switch(book$status,
+    "in-progress" = "lightning-fill",
+    "available"   = "check-circle-fill",
+    "star-fill"
+  )
+
+  status_class <- switch(book$status,
+    "in-progress" = "book-status--active",
+    "available"   = "book-status--available",
+    ""
+  )
+
+  # Build tags HTML
+  tags_html <- ""
+  for (tag in book$tags) {
+    tags_html <- paste0(tags_html,
+      sprintf('<span class="book-tag">%s</span>\n', tag))
+  }
+
+  card_html <- sprintf(
+    '<article class="book-card book-card--%s">
+      <div class="book-cover">
+        <div class="book-cover-pattern"></div>
+        <div class="book-cover-content">
+          <span class="book-genre">%s</span>
+          <h2 class="book-title">%s</h2>
+          <p class="book-subtitle">%s</p>
+          <span class="book-author">%s</span>
+        </div>
+      </div>
+      <div class="book-body">
+        <p class="book-description">%s</p>
+        <div class="book-tags">
+          %s
+        </div>
+        <div class="book-meta">
+          <span class="book-meta-item"><i class="bi bi-calendar3"></i> %d</span>
+          <span class="book-meta-item"><i class="bi bi-journal-text"></i> %s</span>
+          <span class="book-meta-item book-status %s">
+            <i class="bi bi-%s"></i> %s
+          </span>
+        </div>
+        <div class="book-actions">
+          <a href="%s" class="book-cta%s" target="_blank" rel="noopener">
+            Read Online <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </article>',
+    book$theme,
+    book$genre,
+    book$title,
+    book$subtitle,
+    book$author,
+    book$description,
+    tags_html,
+    book$year,
+    book$chapters,
+    status_class,
+    status_icon,
+    book$status_label,
+    book$url,
+    if (book$theme == "personal") " book-cta--personal" else ""
+  )
+
+  html_content <- paste0(html_content, card_html, "\n")
+}
+
+HTML(html_content)
+```
+
+</div>
