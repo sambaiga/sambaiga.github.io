@@ -1,0 +1,182 @@
+---
+title: "The Hype vs. The Kernel: Why Your AI Strategy is Failing"
+subtitle: "A Practical Framework for Finding the Crux, Building the Roadmap, and Closing the AI Value Gap"
+date: 2026-02-10
+description: "AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt's strategic kernel and technology roadmapping to diagnose why - and gives you a five-step process to build an AI strategy that is genuinely coherent rather than merely busy."
+
+image: "crux_kernel.png"
+twitter-card:
+    image: "crux_kernel.png"
+open-graph:
+    image: "crux_kernel.png"
+
+title-block-banner: mirella-callage-Kile7-U74s0-unsplash.jpg
+draft: True
+
+categories:
+  - AI Strategy
+  - Innovation Management
+  - Technology Roadmapping
+
+bibliography: references.bib
+
+execute:
+  echo: false
+---
+
+AI investment is surging driven by board mandates, competitive fear, and the pressure of not being left behind, yet most organisations have very little to show for it. It is the organisation that deploys a chatbot because the board asked for "an AI initiative," celebrates the launch, and calls it transformation.
+
+The problem is not a lack of ambition. It is a confusion between *wanting* something and knowing *how* to get it. "We will grow AI-driven revenue by 30%" is not a strategy. It is a goal. And when organisations commit technology budgets on the basis of a goal dressed up as strategy, they are not investing. They are hoping.
+
+There is a framework that explains exactly why and what to do instead. Chapter 5 of Richard Rumelt's *Good Strategy / Bad Strategy* [@Rumelt2011] gets to the heart of this. Rumelt argues that a real strategy is a tool for overcoming obstacles, not a vision statement, not a goal, not a budget. He calls the structure behind it the **strategic kernel** with three key elements that must work together: A **diagnosis** that names the real obstacle honestly, a **guiding policy** that decides how to attack it, and **coherent actions** that point every resource, money, people, time in the same direction, as illustrated in @fig-kernel.
+
+![Rumelt's Strategic Kernel --- Diagnosis, Guiding Policy, and Coherent Actions anchored by the Crux](crux_kernel.png){#fig-kernel fig-align="center" width="75%"}
+
+The kernel gives you the structure. But in *The Crux* [@Rumelt2022], Rumelt adds a sharper demand: within your diagnosis, you must identify the **crux**, the one obstacle that, if removed, unlocks everything else. Most organisations sense where it lies. They just choose not to go there. Instead, they build strategy *around* it while the real obstacle sits untouched.
+
+Nowhere is this more visible than in enterprise AI. Despite unprecedented investment, 80% of organisations are running pilots, yet only 5% have extracted measurable value [@Joshi2026; @MLQ2025]. That gap is not a technology failure, it is a strategy failure, and often a double one. The kernel is rarely applied properly: no honest diagnosis, no real guiding policy, just a list of initiatives dressed up as direction. Without the kernel, the crux goes unfound. The result is not merely effort pointed at the wrong problem. It is effort that is not pointed at anything at all.
+
+The question is how to operationalise these ideas inside a real organisation. That is where **technology roadmapping** comes in. At its core, a technology roadmap is a structured visual framework that aligns market needs, business objectives, and technology capabilities across time [@Phaal2004]. It is not a project plan or a feature backlog, it is a strategic instrument that forces the hard questions: why are we doing this, what exactly are we building, and do we have what it takes [@Phaal2010]? When built around the kernel, it becomes the mechanism that translates diagnosis into direction and direction into coherent action.
+
+This post explores how combining Rumelt's strategic kernel with a structured technology roadmapping process [@Komssi2013; @o2021agile] can close that gap by giving organisations the tools to find the crux, build a guiding policy around it, and take actions that are genuinely coherent rather than merely busy.
+
+
+## Why Most AI Roadmaps Fail - and What the Kernel Changes
+
+The failure starts before the roadmap is drawn. IBM reports that 64% of CEOs admit to investing in technology before fully understanding its potential impact [@IBM2025]. There are two ways this goes wrong. The first is a *technology-driven* strategy - starting with available capabilities and working backwards, hoping a business case materialises. The second, less obvious failure is waiting for perfect market insight before engaging with the technology at all. In AI, neither extreme works. The roadmapping literature points to a more disciplined path: one that starts with a real, felt problem, uses technology awareness to sharpen the diagnosis, and then asks what capabilities are genuinely required to solve it [@Vishnevskiy2016; @Noh2021], as shown in @fig-tech-vs-market.
+
+![Technology-Driven vs Market-Driven AI Strategy --- starting from capability alone, without a diagnosed problem, is where most AI investments lose their way](technology_vs_market.png){#fig-tech-vs-market fig-align="center" width="75%"}
+
+
+To correct this, organisations need a roadmap that starts with a real problem not with an available capability. In AI, this does not mean ignoring what the technology makes possible. It means using that awareness as an input to diagnosis, not as a substitute for it. According to @Phaal2010, a roadmap only becomes truly strategic when it honestly addresses five questions: **Why, What, How, When, and How Well**. Without all five, you do not have a strategy - you have a to-do list with a Gantt chart attached, as shown in @fig-roadmap-gov.
+
+![Roadmapping Governing Framework: Integrating the 'Know' Layers and Strategic Questions](roadmap-govnt-framework.webp){#fig-roadmap-gov fig-align="center" width="95%"}
+
+What makes this combination powerful is how naturally Rumelt's three kernel elements map onto the roadmapping questions that @Kerr2022 identifies: *Where are we now? Where do we want to go? How can we get there?*  and onto the knowledge layers that @Phaal2004 describes. Rather than two separate frameworks running in parallel, they function as three lenses on the same strategic problem, each reinforcing the other, as shown in @tbl-kernel-map.
+
+| Rumelt's Kernel | Roadmapping Question | Roadmap Layer | Strategic Focus |
+|:---|:---|:---|:---|
+| **Diagnosis** | Where are we now? | **Know-Why** | Market trends, value gaps, and identifying the "Crux" |
+| **Guiding Policy** | Where do we want to go? | **Know-What** | Strategic intent, AI offerings, and business alignment |
+| **Coherent Actions** | How can we get there? | **Know-How** | Skills, capabilities, and execution |
+| **Coherent Actions** | When and how well? | **Know-When / How Well** | Timelines, milestones, performance metrics, and continuous review |
+
+: **Integration of Rumelt's Kernel and Roadmapping Layers** {#tbl-kernel-map}
+
+That mapping matters because it changes what the roadmapping process is asked to do. The real value of strategic roadmapping is not the diagram you produce, it is the disciplined thinking the process forces you to do. When built around the kernel and properly facilitated [@Phaal2004; @Komssi2013], each element of the kernel finds its operational expression in the roadmap, directly addressing the failure modes described above:
+
+
+- **Strategic alignment** : diagnosis and guiding policy ensure market, product, and technology investments pull in the same direction, not against each other.
+- **Shared language** : the roadmap makes the kernel visible across diverse teams without requiring everyone to read the same strategy document.
+- **Honest prioritisation** : the crux drives resource allocation, so effort flows to what matters most rather than to what is loudest in the room.
+- **Adaptive planning** : the "How Well" layer keeps the roadmap live, updating as assumptions are tested and new information arrives.
+- **Managed experimentation** : coherent actions replace scattered pilots, each tied to a specific question the organisation is trying to answer.
+
+The layered nature of this framework - Market, Product, and Technology working together - is shown in @fig-kernel-strategy.
+
+![The layered roadmapping framework --- Market (Know-Why), Product (Know-What), and Technology (Know-How) working together](kernel_strategy.png){#fig-kernel-strategy fig-align="center" width="65%"}
+
+The question is no longer whether to build a roadmap. It is whether to build one that actually works.
+
+
+## Putting the Kernel to Work: A Five-Step AI Roadmapping Process
+
+Knowing what the kernel requires is not enough. The harder question is how to operationalise it inside a real organisation under real constraints. The five-step process outlined by @Phaal2010, depicted in @fig-roadmap-process, provides that structure, each step forcing an answer to one of the strategic questions the kernel demands. Questions, notably, that most AI strategies never seriously ask.
+
+![Strategic roadmapping process](Strategic-Roadmap-Template.jpg){#fig-roadmap-process fig-align="center" width="75%"}
+
+### Step 1: Find the Crux Before You Build the Roadmap
+
+This is the first half of Rumelt's **Diagnosis**, the kernel element that everything else depends on. In roadmapping terms, it is your **Know-Why**: the market need, the value gap, the reason this AI initiative exists at all. Without it, every subsequent step is pointed at the wrong destination.
+
+Most organisations skip this step. Or rather, they think they have done it when they have not. Defining the value opportunity is not about writing a vision statement. It means identifying the **crux** [@Rumelt2022]: the single most critical obstacle that, if resolved, unlocks disproportionate value for the business. Not the most urgent problem. Not the easiest one to fix. The one that matters most.
+
+Rumelt illustrates this with SpaceX. Making space travel economically viable involved dozens of obstacles - propulsion, materials, regulation, funding. But Musk did not treat them as equally urgent. He stopped and asked which one, if resolved, would make everything else tractable. The answer was clear: rockets were single-use. You built an enormously expensive machine, flew it once, and it was gone. That single diagnosis  not a list of priorities, not a vision statement  became the crux the entire SpaceX strategy was built around.
+
+That is exactly what most AI strategies fail to do. They begin executing before they have finished diagnosing, treating data quality, talent gaps, and tooling choices as equally urgent problems, rather than stopping to ask which one, if resolved, changes everything else. Without that question answered, there is no crux. And without the crux, the roadmap has no anchor, as @fig-crux-avoidance illustrates.
+
+![Strategy built around the crux vs. through it the difference between activity and direction](crux_avoidance.png){#fig-crux-avoidance fig-align="center" width="75%"}
+
+This requires a shift in the question you are asking. Instead of *"How can we apply AI?"* ask *"What is the one challenge where AI gives us a unique, defensible advantage and where solving it changes everything?"* That answer is your **Know-Why** the foundation of the entire roadmap [@verdin2015you; @burstrom2021ai].
+
+Organisations that skip this step do not fail at execution. They fail at direction. They build technically impressive roadmaps pointed at the wrong destination.
+
+### Step 2: Be Brutally Honest About Where You Are
+
+Steps 1 and 2 together complete the kernel's **Diagnosis** element. Step 1 found the crux, the obstacle that matters most. This step builds the full picture: a candid assessment of where the organisation actually stands, which in roadmapping terms means grounding your **Know-Why** in reality rather than aspiration.
+
+Honest diagnosis sounds straightforward. It is not. This step requires a candid assessment of your starting point: data maturity, technical infrastructure, organisational capabilities, and the regulatory landscape,  wherever you actually are, not where you wish you were [@Kerr2022]. It answers the hardest of the three roadmapping questions: *Where are we now?*
+
+@Deloitte2025 identifies overestimating data maturity as the primary cause of AI pilot failure. Organisations assume their data is cleaner, more complete, and better governed than it actually is. The result is a **"Data Poverty"** problem that surfaces only after budgets are committed and timelines are set. What makes this worse is that the gap is rarely visible from the top. As one practitioner in my research put it, *"there's an expectation at higher levels that data collection and analysis are simple, but they don't understand the granular steps involved in connecting, collecting, storing, visualising, and using the data."* The overconfidence is not carelessness - it is distance.
+
+This matters beyond data quality alone. The current-state assessment must treat data as a strategic dimension in its own right - not just an input to clean up, but a capability to map: what data exists, how it is governed, how it can be integrated, and what value it can generate [@Phaal2004; @Komssi2013]. An AI strategy built on an incomplete picture of data capability will hit walls that were never mapped.
+
+Rumelt illustrates what honest diagnosis looks like in *Good Strategy/Bad Strategy* [@Rumelt2011] through Andy Grove at Intel. By the mid-1980s, Intel's memory chip business was being destroyed by Japanese competition. Grove asked his leadership team a blunt question: if the board replaced them tomorrow, what would the new management do? The answer was obvious - exit memory and focus on microprocessors. But the existing team could not see it, because their identity was built around memory. The crux was clear to any honest observer. The organisation had built a strategy around not looking at it. Grove looked. Intel survived.
+
+This step also asks the "How Well" question early [@burtonshaw2008essential]: does this organisation have the actual capacity to execute? Not the theoretical capacity - the real one. Getting this wrong at step two makes every subsequent step a fiction.
+
+### Step 3: Turn Your Diagnosis Into a Direction
+
+With Diagnosis complete, crux identified, current state honestly assessed - the kernel's second element comes into view: the **Guiding Policy**. This is the bridge between where you are and where you are choosing to go [@sjodin2020value]. In roadmapping terms, it is the **Know-What** layer: the tangible AI offerings, platforms, and initiatives that will deliver stakeholder value, defined clearly enough to make trade-offs possible.
+
+But here is the part most strategy processes miss: a guiding policy is not a list of priorities. It is a *filter*. It tells you what to say yes to and, more importantly, what to say no to [@FRitala2013].
+
+
+
+This step develops your core AI strategy across short, medium, and long-term horizons, identifying market drivers, financing requirements, technology choices, and the partnerships you will need. Without it, every initiative looks equally important. With it, you have a basis for making decisions under pressure.
+
+Rumelt gives the clearest example of this in *Good Strategy/Bad Strategy* [@Rumelt2011] through Steve Jobs at Apple. When Jobs returned in 1997, Apple had dozens of products, computers, printers, peripherals, servers, each with its own team and roadmap. His diagnosis: the company was spreading itself into irrelevance. His guiding policy was not a new list of priorities. It was a decision to cut everything that did not fit a single matrix: consumer or professional, desktop or portable. Four products. Everything else gone. That choice made every subsequent decision simpler  not because it reduced complexity, but because it created a basis for saying no.
+
+Musk's SpaceX did the same thing in an engineering context. Once the crux was clear rockets are single-use  his guiding policy was not a list of capabilities to develop. It was one constraint: every engineering decision had to advance reusability. That single filter, like Jobs's product matrix, made every subsequent choice easier to make and easier to justify.
+
+In my research, a common failure was confusing strategic roadmaps with product or feature delivery timelines. Teams produced detailed plans, but those plans described *what* would be built quarter by quarter, not *why* those choices advanced a coherent position. The guiding policy was missing. The roadmap was just a schedule with ambition attached.
+
+### Step 4: Take Coherent Actions, Not Scattered Pilots
+
+A guiding policy tells you what to pursue. Now comes the kernel's third element: **Coherent Actions** and in AI, this is where most organisations discover that knowing what to pursue and knowing how to get there are two different things. This step is about designing that exploration deliberately, through the **Know-How** layer: the skills, partnerships, and capabilities assembled for the specific paths you are actually taking, not speculatively pre-built for paths you may never need.
+
+At SpaceX, coherent actions meant pointing every resource  engineering, manufacturing, testing at reusability alone. Not spread across propulsion improvements, material costs, and regulatory strategy simultaneously. At one obstacle. In AI, the discipline is the same: every pilot, every capability built, every hire should connect back to the crux identified in Step 1 and the guiding policy set in Step 3.
+
+In practice, coherent actions in AI take the form of deliberate experiments - each one designed to test a specific assumption about the crux or validate a path toward the guiding policy. Two failure modes get in the way. The first is deploying a capability before the diagnosis is complete and hoping value follows. The second is waiting for perfect certainty before committing to any path. Neither is coherent. Coherent actions are question-driven: what do we need to learn, and what is the smallest experiment that answers it [@opresnik2015value; @shollo2022shifting]?
+
+Organisations that treat coherent actions as questions rather than deliverables describe a recognisably different rhythm. As one respondent in my research explained, *"the strategy is to develop and implement small features incrementally... I began with preliminary data to create a basic application and then refined it based on feedback. This necessitates a committed business and a problem that can be developed in stages."* That is not just good product practice - it is what coherent action looks like in an AI context.
+
+### Step 5: Build in the "How Well" From the Start
+
+The final step is the one most organisations treat as an afterthought. It should not be - because this is what keeps the kernel honest over time. Diagnosis decays as markets shift. Guiding policies outlive their usefulness. Coherent actions can drift from discipline into habit. The **Know-When / How Well** layer exists to catch this: structured reviews that ask whether the crux has changed, whether the guiding policy still holds, and whether the actions remain genuinely coherent.
+
+Keeping the roadmap dynamic is not an administrative task [@Phaal2004]. It is a strategic discipline. Given that AI ROI typically takes two to four years to materialise [@Deloitte2025], and that the landscape shifts faster than most planning cycles, regular review is not optional - it is how the kernel stays honest.
+
+And critically - if the crux you identified in Step 1 is no longer the most important obstacle, the roadmap should say so. Honesty at this stage is not a sign of failure. It is a sign that the process is working [@Kerr2022].
+
+That discipline extends to measurement itself. As one practitioner put it directly: *"metrics should be captured from day one - everyone in the team should understand and follow the process for creating and capturing value."* That is not overhead. That is accountability built into the kernel from the beginning, not retrofitted after the fact.
+
+These five steps are what a real AI strategy looks like in practice. Knowing them also makes it easier to recognise when a strategy is missing them entirely.
+
+
+## How to Spot a Bad AI Strategy
+
+Most AI strategies fail for the same reasons, and they are not hard to spot once you know what to look for [@Rumelt2011; @Rumelt2022].
+
+**Fluff.** Language like "leveraging disruptive GenAI synergies to unlock enterprise value" sounds authoritative. It means nothing. Fluff fills the space where an honest Diagnosis should be it signals that the Know-Why was never seriously established. In practice, it tends to proliferate when leaders are under pressure to show AI progress without having named the actual problem. The language sounds strategic precisely because it is untestable.
+
+**Avoiding the crux.** This is the most common failure at the Diagnosis stage, and Rumelt dedicates an entire book to it [@Rumelt2022]. Leaders sense that the real obstacle - poor data governance, a fragmented organisation, misaligned incentives - is too political or too painful to confront. So they build activity around it. Workshops are run. Pilots are launched. The crux remains untouched. In my research, a telling symptom was stakeholder disengagement: when executives are not meaningfully involved in the roadmapping process, there is no one with authority to name the real obstacle, and no one accountable for addressing it. 
+
+**Mistaking goals for strategy.** "We will achieve 20% revenue growth through AI" is not a strategy. It is a wish. A Guiding Policy tells you how to get there; a goal only tells you where you want to be. Without the former, there is no mechanism - no way of actually getting you there [@Rumelt2011]. The Know-What layer stays empty, and every initiative competes for priority because nothing has been ruled out.
+
+**Feature roadmaps masquerading as strategy.** When the roadmap lists every AI feature to be built quarter by quarter but says nothing about why those choices advance a coherent position, it is not a strategic instrument  it is a delivery schedule. @Komssi2013 identifies this as one of the most persistent roadmapping failures: a focus on low-level features rather than the value proposition and outcomes the organisation is trying to achieve. The result is a roadmap that looks comprehensive but offers no basis for saying no. Every request gets added. Every pilot gets approved. The Coherent Actions layer fragments into a backlog, and the crux the one obstacle that matters most - remains unaddressed because the roadmap was never designed to find it [@o2021agile].
+
+
+## Conclusion
+
+The AI Divide is not a technology problem. It is a strategy problem - specifically, the failure to build a real kernel: an honest diagnosis that finds the crux, a guiding policy that channels effort, and coherent actions that execute with discipline.
+
+Strategic roadmapping is the mechanism that makes that kernel visible. It forces the hard questions - *Why are we doing this? What exactly are we building? Do we actually have what it takes?* - and structures the answers into something an organisation can act on, revisit, and adapt.
+
+As I reflect on the organisations that have successfully navigated the shift from AI hype to measurable value, the pattern is consistent. They did not have better technology. They had better diagnosis. They understood what AI could do - and used that understanding to find the crux, build a roadmap around it, and hold themselves accountable to the "How Well" question every step of the way.
+
+The organisation that deployed a chatbot and called it transformation still has a choice: keep hoping, or build a kernel.
+
+The question worth asking yourself today is simple: does your organisation have a real AI strategy - with a diagnosis, a guiding policy, and coherent actions - or does it have a very polished wish list?
+
+The answer matters more than the technology.

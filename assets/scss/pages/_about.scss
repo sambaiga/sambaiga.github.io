@@ -1,0 +1,362 @@
+/*-- scss:pages/about --*/
+
+// =====================================================
+// ABOUT PAGE SPECIFIC STYLES
+// =====================================================
+
+.about {
+  &-header {
+    padding: $spacer-5 0;
+    background: linear-gradient(135deg, rgba($teal, $opacity-10) 0%, rgba($cyan, $opacity-10) 100%);
+    margin-bottom: $spacer-5;
+    border-radius: $border-radius-xl;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: $spacer-4 0;
+      margin-bottom: $spacer-4;
+    }
+  }
+  
+  &-profile {
+    display: grid;
+    grid-template-columns: $profile-image-size 1fr;
+    gap: $spacer-4;
+    align-items: center;
+    margin-bottom: $spacer-5;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: $spacer-3;
+    }
+    
+    img {
+      width: 100%;
+      max-width: $profile-image-size;
+      height: auto;
+      border-radius: $border-radius-full;
+      border: $profile-image-border;
+      box-shadow: $image-box-shadow;
+      
+      @media (max-width: $breakpoint-md) {
+        max-width: $profile-image-size-sm;
+        margin: 0 auto;
+      }
+    }
+    
+    &-info {
+      h1 {
+        font-family: $headings-font-family;
+        font-size: $font-size-xxxl;
+        color: $primary;
+        margin-bottom: $spacer-2;
+        
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-xxl;
+        }
+      }
+      
+      .title {
+        font-size: $font-size-xl;
+        color: $gray-700;
+        margin-bottom: $spacer-3;
+        font-weight: $font-weight-normal;
+        
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+      
+      .bio {
+        color: $gray-700;
+        line-height: $line-height-relaxed;
+        margin-bottom: $spacer-3;
+        font-size: $font-size-base;
+      }
+    }
+  }
+  
+  &-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacer-2;
+    margin-bottom: $spacer-4;
+    
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacer-1;
+      padding: $spacer-1 $spacer-2;
+      background: $light-orange;
+      color: $primary;
+      border-radius: $border-radius;
+      text-decoration: $link-decoration;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      transition: all $transition-duration-base $transition-timing-ease-in-out;
+      
+      &:hover {
+        background: darken($light-orange, 10%);
+        transform: $btn-hover-transform;
+        text-decoration: $link-hover-decoration;
+      }
+      
+      .icon {
+        font-size: $font-size-base;
+      }
+    }
+  }
+  
+  &-skills {
+    margin-bottom: $spacer-5;
+    
+    &-title {
+      font-family: $headings-font-family;
+      font-size: $font-size-xxl;
+      color: $primary;
+      margin-bottom: $spacer-3;
+      text-align: center;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-xl;
+      }
+    }
+    
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: $grid-gap-lg;
+      
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+        gap: $grid-gap;
+      }
+    }
+    
+    .skill-category {
+      background: $card-bg;
+      border: $border-width-1 solid $card-border-color;
+      border-radius: $card-border-radius;
+      padding: $card-padding;
+      
+      h3 {
+        font-family: $headings-font-family;
+        font-size: $font-size-xl;
+        color: $primary;
+        margin-bottom: $spacer-3;
+        text-align: center;
+      }
+      
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacer-2;
+        justify-content: center;
+        
+        .skill-tag {
+          background-color: $ai-accent;
+          color: $white;
+          padding: $spacer-1 $spacer-2;
+          border-radius: $border-radius;
+          font-size: $font-size-sm;
+          font-weight: $font-weight-medium;
+          transition: transform $transition-duration-base $transition-timing-ease-in-out;
+          
+          &:hover {
+            transform: $btn-hover-transform;
+            box-shadow: $shadow-sm;
+          }
+        }
+      }
+    }
+  }
+  
+  &-timeline {
+    margin-bottom: $spacer-5;
+    
+    &-title {
+      font-family: $headings-font-family;
+      font-size: $font-size-xxl;
+      color: $primary;
+      margin-bottom: $spacer-3;
+      text-align: center;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-xl;
+      }
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: $container-max-width-lg;
+      margin: 0 auto;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: $border-width-2;
+        height: 100%;
+        background-color: $primary;
+        
+        @media (max-width: $breakpoint-md) {
+          left: $spacer-4;
+        }
+      }
+      
+      .timeline-item {
+        position: relative;
+        margin-bottom: $spacer-4;
+        width: 50%;
+        padding-right: $spacer-4;
+        
+        &:nth-child(even) {
+          margin-left: auto;
+          padding-left: $spacer-4;
+          padding-right: 0;
+          
+          @media (max-width: $breakpoint-md) {
+            margin-left: 0;
+            padding-left: calc($spacer-4 * 2);
+            padding-right: 0;
+          }
+          
+          &::before {
+            left: -($spacer-1);
+            right: auto;
+          }
+        }
+        
+        @media (max-width: $breakpoint-md) {
+          width: 100%;
+          padding-left: calc($spacer-4 * 2);
+          padding-right: 0;
+        }
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -($spacer-1);
+          width: $spacer-2;
+          height: $spacer-2;
+          border-radius: $border-radius-full;
+          background-color: $primary;
+          border: $border-width-3 solid $white;
+          box-shadow: 0 0 0 $border-width-2 $primary;
+          
+          @media (max-width: $breakpoint-md) {
+            left: calc($spacer-4 - $spacer-1);
+            right: auto;
+          }
+        }
+        
+        .timeline-content {
+          background: $card-bg;
+          border: $border-width-1 solid $card-border-color;
+          border-radius: $card-border-radius;
+          padding: $spacer-3;
+          box-shadow: $shadow;
+          
+          h3 {
+            font-family: $headings-font-family;
+            font-size: $font-size-lg;
+            color: $primary;
+            margin-bottom: $spacer-1;
+          }
+          
+          .date {
+            color: $gray-600;
+            font-size: $font-size-sm;
+            margin-bottom: $spacer-2;
+            font-weight: $font-weight-medium;
+          }
+          
+          .description {
+            color: $gray-700;
+            line-height: $line-height-relaxed;
+            font-size: $font-size-base;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode support for about page
+@media (prefers-color-scheme: dark) {
+  .about {
+    &-header {
+      background: linear-gradient(135deg, rgba($teal, $opacity-20) 0%, rgba($cyan, $opacity-20) 100%);
+    }
+    
+    &-profile {
+      img {
+        border-color: $primary;
+      }
+      
+      &-info {
+        .title {
+          color: $gray-400;
+        }
+        
+        .bio {
+          color: $gray-300;
+        }
+      }
+    }
+    
+    &-contact {
+      .contact-link {
+        background: rgba($light-orange, $opacity-20);
+        color: $light-orange;
+        
+        &:hover {
+          background: rgba($light-orange, $opacity-30);
+        }
+      }
+    }
+    
+    .skill-category {
+      background: $gray-800;
+      border-color: $gray-700;
+      
+      h3 {
+        color: $cyan;
+      }
+    }
+    
+    .timeline {
+      &::before {
+        background-color: $primary;
+      }
+      
+      .timeline-item {
+        &::before {
+          background-color: $primary;
+          border-color: $dark-body-bg;
+          box-shadow: 0 0 0 $border-width-2 $primary;
+        }
+        
+        .timeline-content {
+          background: $gray-800;
+          border-color: $gray-700;
+          color: $dark-body-color;
+          
+          h3 {
+            color: $cyan;
+          }
+          
+          .date {
+            color: $gray-400;
+          }
+          
+          .description {
+            color: $gray-300;
+          }
+        }
+      }
+    }
+  }
+}

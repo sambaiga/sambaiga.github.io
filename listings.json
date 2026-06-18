@@ -1,0 +1,34 @@
+[
+  {
+    "listing": "/pages/project/index.html",
+    "items": []
+  },
+  {
+    "listing": "/pages/blog/index.html",
+    "items": [
+      "/pages/blog/posts/2026/03/index.html",
+      "/pages/blog/posts/2025/12/2025-12-1-bayesian-regression..html",
+      "/pages/blog/posts/2025/10/2025-10-10-bayesion-foundation.html",
+      "/pages/blog/posts/2024/09/index.html",
+      "/pages/blog/posts/2024/07/index.html"
+    ]
+  },
+  {
+    "listing": "/pages/publication/index.html",
+    "items": [
+      "/pages/publication/articles/strategic_ai/index.html",
+      "/pages/publication/conferences/cired-chicago-2024/index.html",
+      "/pages/publication/articles/mlpf-2025/index.html",
+      "/pages/publication/conferences/smartgrid-2024/index.html",
+      "/pages/publication/articles/deep-nilmtk-2023/index.html",
+      "/pages/publication/articles/fqr-2024/index.html",
+      "/pages/publication/articles/AWRGNILM/index.html",
+      "/pages/publication/articles/WattsupHome/index.html",
+      "/pages/publication/articles/WRGNILM/index.html",
+      "/pages/publication/articles/MLABELILM/index.html",
+      "/pages/publication/articles/Arviz-nilm/index.html",
+      "/pages/publication/articles/MobSensing/index.html",
+      "/pages/publication/articles/WSNWQM/index.html"
+    ]
+  }
+]

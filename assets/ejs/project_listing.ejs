@@ -1,0 +1,459 @@
+```{=html}
+<!-- assets/ejs/projects_listing.ejs -->
+<% 
+  // ====================================================
+  // GET CONFIGURATION FROM METADATA
+  // ====================================================
+  let itemsPerPage = 9; // Default fallback for projects
+  
+  // Get configuration from metadata passed by Quarto
+  // Note: In Quarto, these come from the metadata object, not from items
+  let gridColumns = 3; // Default
+  let maxDescriptionLength = 200;
+  let imageHeight = 200;
+  
+  if (typeof metadata !== 'undefined') {
+    gridColumns = metadata['grid-columns'] || 3;
+    itemsPerPage = metadata['page-size'] || 9;
+    maxDescriptionLength = metadata['max-description-length'] || 200;
+    imageHeight = metadata['image-height'] || 200;
+  }
+  
+  // Helper function to truncate description
+  const truncateDescription = (text, maxLength) => {
+    if (!text) return '';
+    if (text.length <= maxLength) return text;
+    return text.substr(0, text.lastIndexOf(' ', maxLength)) + '...';
+  };
+  
+  // Helper to format date
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'short', 
+      day: 'numeric' 
+    });
+  };
+  
+  // Extract all unique categories for filtering
+  const allCategories = [];
+  if (items && items.length > 0) {
+    items.forEach(item => {
+      if (item.categories && Array.isArray(item.categories)) {
+        item.categories.forEach(cat => {
+          if (!allCategories.includes(cat)) {
+            allCategories.push(cat);
+          }
+        });
+      }
+    });
+  }
+  
+  // Status labels
+  const statusLabels = {
+    'active': 'Active',
+    'completed': 'Completed',
+    'in-progress': 'In Progress',
+    'archived': 'Archived'
+  };
+%>
+
+<div class="projects">
+  <header class="projects-header">
+    <% if (typeof title !== 'undefined') { %>
+      <h1><%= title %></h1>
+    <% } %>
+
+    <% if (typeof description !== 'undefined') { %>
+      <p class="subtitle"><%= description %></p>
+    <% } %>
+  </header>
+
+  <!-- Filters Section - Only show if filter-ui is true -->
+  <% if (typeof metadata !== 'undefined' && metadata['filter-ui'] && allCategories.length > 0) { %>
+    <div class="projects-filter">
+      <button class="button button-outline filter-btn active" data-filter="all">All Projects</button>
+      <% allCategories.forEach(cat => { %>
+        <button class="button button-outline filter-btn" data-filter="<%= cat %>"><%= cat %></button>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid" style="--grid-columns: <%= gridColumns %>;">
+    <% if (!items || items.length === 0) { %>
+      <div class="projects-empty">
+        <i class="bi bi-boxes"></i>
+        <h3>No projects found</h3>
+        <p>Check back soon for new projects and updates.</p>
+      </div>
+    <% } else { %>
+      <% items.forEach((project, index) => { %>
+        <div class="projects-card"
+             data-categories="<%= project.categories ? project.categories.join(' ') : '' %>"
+             <% if (index >= itemsPerPage) { %>style="display: none;"<% } %>>
+          
+          <!-- Project Header with Icon -->
+          <div class="projects-card-header">
+            <% if (project.icon) { %>
+              <span class="icon"><%= project.icon %></span>
+            <% } else { %>
+              <span class="icon">📦</span>
+            <% } %>
+            <h3><%= project.title %></h3>
+          </div>
+
+          <!-- Project Image -->
+          <% if (project.image) { %>
+            <img 
+              src="<%= project.image %>" 
+              alt="<%= project.title %>" 
+              style="width: 100%; height: <%= imageHeight %>px; object-fit: cover; border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;"
+              onerror="this.src='../../images/default/arts.jpg'; this.onerror=null;"
+            />
+          <% } %>
+
+          <!-- Project Description -->
+          <div class="projects-card-description">
+            <%= truncateDescription(project.description, maxDescriptionLength) %>
+          </div>
+
+          <!-- Project Tags -->
+          <% if (project.tags && project.tags.length > 0) { %>
+            <div class="projects-card-tags">
+              <% project.tags.slice(0, 3).forEach(tag => { %>
+                <span class="tag tech-tag"><%= tag %></span>
+              <% }) %>
+              <% if (project.tags.length > 3) { %>
+                <span class="tag">+<%= project.tags.length - 3 %></span>
+              <% } %>
+            </div>
+          <% } %>
+
+          <!-- Categories as Tags -->
+          <% if (project.categories && project.categories.length > 0) { %>
+            <div class="projects-card-tags">
+              <% project.categories.forEach(category => { %>
+                <% if (category === 'ai') { %>
+                  <span class="tag ai-tag"><%= category %></span>
+                <% } else if (category === 'energy') { %>
+                  <span class="tag category-tag"><%= category %></span>
+                <% } else { %>
+                  <span class="tag"><%= category %></span>
+                <% } %>
+              <% }) %>
+            </div>
+          <% } %>
+
+          <!-- Project Links -->
+          <% if (project.links && project.links.length > 0) { %>
+            <div class="projects-card-links">
+              <% project.links.slice(0, 2).forEach(link => { %>
+                <a href="<%= link.url %>" class="button button-sm button-outline" target="_blank" rel="noopener">
+                  <%= link.text %>
+                </a>
+              <% }) %>
+            </div>
+          <% } else if (project.url) { %>
+            <!-- Fallback to single URL -->
+            <div class="projects-card-links">
+              <a href="<%= project.url %>" class="button button-sm button-outline" target="_blank" rel="noopener">
+                View Project
+              </a>
+            </div>
+          <% } %>
+
+          <!-- Project Meta -->
+          <div class="projects-card-meta">
+            <% if (project.date) { %>
+              <div class="date">
+                <i class="bi bi-calendar3"></i>
+                <%= formatDate(project.date) %>
+              </div>
+            <% } %>
+            
+            <% if (project.status) { %>
+              <div class="status <%= project.status %>">
+                <i class="bi bi-circle-fill"></i>
+                <%= statusLabels[project.status] || project.status %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+
+  <!-- PAGINATION -->
+  <% if (items && items.length > 0) { %>
+    <% 
+      const totalItems = items.length;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      
+      if (totalPages > 1) {
+        const projectsPaginationId = 'projects-pag-' + Math.random().toString(36).substr(2, 9);
+    %>
+    
+    <nav class="pagination projects-pagination" 
+         aria-label="Projects navigation" 
+         id="pagination-<%= projectsPaginationId %>">
+      <button type="button" 
+              class="pagination-item pagination-item-prev disabled" 
+              disabled
+              aria-label="Previous page (disabled)">
+        <i class="bi bi-chevron-left"></i>
+        <span class="pagination-text">Prev</span>
+      </button>
+      
+      <div class="pagination-numbers" id="numbers-<%= projectsPaginationId %>"></div>
+      
+      <button type="button" 
+              class="pagination-item pagination-item-next"
+              aria-label="Go to next page">
+        <span class="pagination-text">Next</span>
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </nav>
+    
+    <script>
+      (function() {
+        const PAGE_SIZE = <%= itemsPerPage %>;
+        const TOTAL_PAGES = <%= totalPages %>;
+        const PAGINATION_ID = '<%= projectsPaginationId %>';
+        
+        const paginationNav = document.getElementById('pagination-' + PAGINATION_ID);
+        const listingContainer = paginationNav.closest('.projects');
+        const allItems = listingContainer.querySelectorAll('.projects-card');
+        const numbersContainer = document.getElementById('numbers-' + PAGINATION_ID);
+        const prevBtn = paginationNav.querySelector('.pagination-item-prev');
+        const nextBtn = paginationNav.querySelector('.pagination-item-next');
+        
+        // Get current page from URL hash or default to 1
+        let currentPage = 1;
+        const hashMatch = window.location.hash.match(/projects-page=(\d+)/);
+        if (hashMatch) {
+          const pageFromHash = parseInt(hashMatch[1]);
+          if (pageFromHash >= 1 && pageFromHash <= TOTAL_PAGES) {
+            currentPage = pageFromHash;
+          }
+        }
+        
+        function showPage(pageNumber) {
+          if (pageNumber < 1 || pageNumber > TOTAL_PAGES) return;
+          
+          // Hide all items
+          allItems.forEach(item => {
+            item.style.display = 'none';
+            item.setAttribute('aria-hidden', 'true');
+          });
+          
+          // Show items for current page
+          const startIndex = (pageNumber - 1) * PAGE_SIZE;
+          const endIndex = Math.min(startIndex + PAGE_SIZE, allItems.length);
+          
+          for (let i = startIndex; i < endIndex; i++) {
+            allItems[i].style.display = '';
+            allItems[i].setAttribute('aria-hidden', 'false');
+          }
+          
+          currentPage = pageNumber;
+          updateButtonStates();
+          updatePageNumberButtons();
+          updateAriaLabels();
+          
+          // Update URL without reloading
+          const newUrl = window.location.pathname + '#projects-page=' + currentPage;
+          window.history.replaceState({}, '', newUrl);
+          
+          // Scroll to top of projects container for better UX
+          const projectsGrid = listingContainer.querySelector('.projects-grid');
+          if (projectsGrid && pageNumber > 1) {
+            projectsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+        
+        function updateButtonStates() {
+          const isFirstPage = currentPage === 1;
+          const isLastPage = currentPage === TOTAL_PAGES;
+          
+          prevBtn.disabled = isFirstPage;
+          prevBtn.classList.toggle('disabled', isFirstPage);
+          
+          nextBtn.disabled = isLastPage;
+          nextBtn.classList.toggle('disabled', isLastPage);
+        }
+        
+        function updatePageNumberButtons() {
+          numbersContainer.innerHTML = '';
+          
+          numbersContainer.appendChild(createPageButton(1));
+          
+          if (currentPage > 3) {
+            numbersContainer.appendChild(createEllipsis());
+          }
+          
+          const startPage = Math.max(2, currentPage - 1);
+          const endPage = Math.min(TOTAL_PAGES - 1, currentPage + 1);
+          
+          for (let i = startPage; i <= endPage; i++) {
+            numbersContainer.appendChild(createPageButton(i));
+          }
+          
+          if (currentPage < TOTAL_PAGES - 2) {
+            numbersContainer.appendChild(createEllipsis());
+          }
+          
+          if (TOTAL_PAGES > 1) {
+            numbersContainer.appendChild(createPageButton(TOTAL_PAGES));
+          }
+        }
+        
+        function createPageButton(pageNum) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'pagination-item' + (pageNum === currentPage ? ' active' : '');
+          button.textContent = pageNum;
+          button.setAttribute('aria-label', 'Page ' + pageNum);
+          button.setAttribute('aria-current', pageNum === currentPage ? 'page' : 'false');
+          
+          button.onclick = (e) => {
+            e.preventDefault();
+            showPage(pageNum);
+          };
+          
+          return button;
+        }
+        
+        function createEllipsis() {
+          const ellipsis = document.createElement('span');
+          ellipsis.className = 'pagination-item pagination-item-ellipsis';
+          ellipsis.textContent = '...';
+          ellipsis.setAttribute('aria-hidden', 'true');
+          return ellipsis;
+        }
+        
+        function updateAriaLabels() {
+          prevBtn.setAttribute('aria-label', 
+            currentPage === 1 ? 'Previous page (disabled)' : 'Go to previous page, page ' + (currentPage - 1));
+          nextBtn.setAttribute('aria-label', 
+            currentPage === TOTAL_PAGES ? 'Next page (disabled)' : 'Go to next page, page ' + (currentPage + 1));
+          
+          const activeButton = numbersContainer.querySelector('.pagination-item.active');
+          if (activeButton) {
+            activeButton.setAttribute('aria-current', 'page');
+          }
+        }
+        
+        prevBtn.onclick = (e) => {
+          e.preventDefault();
+          if (currentPage > 1) showPage(currentPage - 1);
+        };
+        
+        nextBtn.onclick = (e) => {
+          e.preventDefault();
+          if (currentPage < TOTAL_PAGES) showPage(currentPage + 1);
+        };
+        
+        paginationNav.addEventListener('keydown', (e) => {
+          if (!paginationNav.contains(document.activeElement)) return;
+          
+          switch(e.key) {
+            case 'ArrowLeft':
+              e.preventDefault();
+              if (currentPage > 1) showPage(currentPage - 1);
+              break;
+            case 'ArrowRight':
+              e.preventDefault();
+              if (currentPage < TOTAL_PAGES) showPage(currentPage + 1);
+              break;
+            case 'Home':
+              e.preventDefault();
+              showPage(1);
+              break;
+            case 'End':
+              e.preventDefault();
+              showPage(TOTAL_PAGES);
+              break;
+          }
+        });
+        
+        showPage(currentPage);
+      })();
+    </script>
+    
+    <% } // End if (totalPages > 1) %>
+  <% } // End if (items && items.length > 0) %>
+</div>
+
+<!-- FILTERING SCRIPT -->
+<% if (typeof metadata !== 'undefined' && metadata['filter-ui']) { %>
+<script>
+  (function() {
+    const filterButtons = document.querySelectorAll('.projects-filter .filter-btn');
+    const projectCards = document.querySelectorAll('.projects-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const filterValue = this.getAttribute('data-filter');
+        
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        let visibleCount = 0;
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-categories');
+          
+          if (filterValue === 'all' || 
+              (categories && categories.includes(filterValue))) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        const emptyState = document.querySelector('.projects-empty');
+        if (visibleCount === 0) {
+          if (!emptyState) {
+            const grid = document.querySelector('.projects-grid');
+            const emptyDiv = document.createElement('div');
+            emptyDiv.className = 'projects-empty';
+            emptyDiv.innerHTML = `
+              <i class="bi bi-search"></i>
+              <h3>No projects found</h3>
+              <p>Try selecting a different category or check back later for new projects.</p>
+            `;
+            grid.innerHTML = '';
+            grid.appendChild(emptyDiv);
+          }
+        } else if (emptyState) {
+          emptyState.remove();
+        }
+      });
+    });
+  })();
+</script>
+<% } %>
+
+<!-- CSS FOR GRID COLUMNS -->
+<style>
+  .projects-grid {
+    grid-template-columns: repeat(var(--grid-columns, 3), 1fr) !important;
+  }
+  
+  @media (max-width: 1200px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+```
