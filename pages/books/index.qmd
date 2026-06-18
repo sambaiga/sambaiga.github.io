@@ -1,0 +1,93 @@
+---
+title: "Books"
+pagetitle: "Books | Anthony Faustine"
+description-meta: "Books by Anthony Faustine on data science, machine learning, and personal growth."
+
+format:
+  html:
+    page-layout: full
+    body-class: "books-page"
+
+toc: false
+---
+
+<div class="books-header">
+<p>Writing that bridges technical depth and human flourishing</p>
+</div>
+
+<div class="books-grid">
+
+```{r books-grid, results='asis', echo=FALSE}
+library(yaml)
+library(htmltools)
+
+books_data <- yaml::read_yaml("books.yaml")
+
+html_content <- ""
+
+for (i in seq_along(books_data)) {
+  book <- books_data[[i]]
+
+  # Build tags HTML
+  tags_html <- ""
+  for (tag in book$tags) {
+    tags_html <- paste0(tags_html,
+      sprintf('<span class="book-tag">%s</span>', tag))
+  }
+
+  delay_style <- sprintf('animation-delay: %.1fs;', i * 0.15)
+
+  card_html <- sprintf(
+    '<article class="book-card book-card--%s animated fadeInUp" style="%s">
+      <div class="book-card-header">
+        <div class="book-icon">
+          <i class="bi bi-%s"></i>
+        </div>
+        <div class="book-card-header-meta">
+          <span class="book-genre">%s</span>
+          <span class="book-year">%d</span>
+        </div>
+      </div>
+      <div class="book-card-body">
+        <div class="book-card-title">%s</div>
+        <div class="book-card-subtitle">%s</div>
+        <div class="book-card-description">
+          <p>%s</p>
+        </div>
+        <div class="book-card-meta">
+          <span class="book-card-status">
+            <i class="bi bi-%s"></i> %s
+          </span>
+          <span><i class="bi bi-journal-text"></i> %s</span>
+        </div>
+        <div class="book-tags">%s</div>
+        <div class="book-card-links">
+          <a href="%s" class="book-link" title="Read %s online" target="_blank" rel="noopener">
+            <i class="bi bi-book-half"></i>Read Online
+          </a>
+        </div>
+      </div>
+    </article>',
+    book$variant,
+    delay_style,
+    book$icon,
+    book$genre,
+    book$year,
+    book$title,
+    book$subtitle,
+    book$description,
+    book$status_icon,
+    book$status_label,
+    book$chapters,
+    tags_html,
+    book$url,
+    book$title
+  )
+
+  html_content <- paste0(html_content, card_html, "\n")
+}
+
+HTML(html_content)
+```
+
+</div>

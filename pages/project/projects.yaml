@@ -32,7 +32,7 @@
 
 - title: "Twiga"
   description: "A simple and efficient neural network architecture for providing point forecasting. The architecture has been designed to minimize model complexity while improving forecasting performance."
-  date: "2024-05-15"
+  date: "2026-05-01"
   image: "../../images/default/arts.jpg"
   tags: ["python", "neural-networks", "time-series", "forecasting"]
   categories: ["ai", "tools", "data-science"]
