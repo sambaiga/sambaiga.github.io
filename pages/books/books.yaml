@@ -13,6 +13,21 @@
   chapters: "10 Parts · 20+ Chapters"
   url: "https://sambaiga.github.io/ds-mlops-path/"
 
+- title: "Machine Learning for Smart Meter Data"
+  subtitle: "A Structured Path from Meter Signal to Business Insight"
+  description: "A structured, project-based path through smart meter data: disaggregation, forecasting, anomaly detection, and grid-edge value. Every chapter pairs a narrative page with a companion notebook, run against real data and code from the author's own published NILM research."
+  author: "Anthony Faustine"
+  year: 2026
+  genre: "Energy Systems & Machine Learning"
+  icon: "speedometer2"
+  variant: "energy"
+  status: "in-progress"
+  status_label: "In Progress"
+  status_icon: "lightning-fill"
+  tags: ["NILM", "Energy Disaggregation", "Smart Meters", "Machine Learning", "Deep Learning"]
+  chapters: "4 Parts · 2 Chapters Live"
+  url: "https://sambaiga.github.io/ml-energy-disaggregation/"
+
 - title: "Love That Lasts"
   subtitle: "A 4-Day Guide for Couples Integrating Faith, Personality, and Emotional Intelligence"
   description: "A self-guided 4-day journey enabling couples to move from experiencing love to actively practicing it. Integrates biblical foundations, the Big Five personality framework, and emotional intelligence to build lasting relational habits — 20–30 minutes per day."

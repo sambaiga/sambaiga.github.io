@@ -133,6 +133,11 @@ $book-icon-inner: 28px;
   background: $ai-accent;
 }
 
+// Energy variant — for energy/grid-focused work ($energy-accent)
+.book-card--energy .book-card-header {
+  background: $energy-accent;
+}
+
 // =====================================================
 // CARD BODY — mirrors timeline-content interior
 // =====================================================
@@ -212,6 +217,12 @@ $book-icon-inner: 28px;
   border-color: rgba($ai-accent, $opacity-10);
 }
 
+.book-card--energy .book-tag {
+  background: rgba($energy-accent, $opacity-05);
+  color: $energy-accent;
+  border-color: rgba($energy-accent, $opacity-10);
+}
+
 // Mirrors .timeline-links / .timeline-link
 .book-card-links {
   display: flex;
@@ -258,6 +269,16 @@ $book-icon-inner: 28px;
   }
 }
 
+.book-card--energy .book-link {
+  background: rgba($energy-accent, $opacity-05);
+  color: $energy-accent;
+
+  &:hover {
+    background: $energy-accent;
+    color: $white;
+  }
+}
+
 // Status color variants — mirrors timeline-event type variants
 .book-card--primary {
   .book-card-title  { color: $primary; }
@@ -267,6 +288,11 @@ $book-icon-inner: 28px;
 .book-card--accent {
   .book-card-title  { color: $ai-accent; }
   .book-card-status { color: $success; }
+}
+
+.book-card--energy {
+  .book-card-title  { color: $energy-accent; }
+  .book-card-status { color: $primary; }
 }
 
 // =====================================================
@@ -305,6 +331,12 @@ $book-icon-inner: 28px;
     background: rgba($ai-accent, $opacity-15);
     color: lighten($ai-accent, 20%);
     border-color: rgba($ai-accent, $opacity-25);
+  }
+
+  .book-card--energy .book-tag {
+    background: rgba($energy-accent, $opacity-15);
+    color: lighten($energy-accent, 20%);
+    border-color: rgba($energy-accent, $opacity-25);
   }
 
   .book-card-links {
