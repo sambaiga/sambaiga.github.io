@@ -29,19 +29,178 @@ We also demonstrated that integrating Rumelt’s strategic kernel with a structu
 
 This post is intended for leaders already engaged with AI, such as CDOs, strategy leads, and senior executives who have invested in AI but have yet to see clear results. If your organisation is still considering AI investment, begin with Part 1. If you have invested and are struggling to achieve results, this post will help.
 
-Putting the Kernel to Work: A Five-Step AI Roadmapping Process
+## Putting the Kernel to Work: A Five-Step AI Roadmapping Process
 
 The five-step process here is based on Phaal’s [@Phaal2010] roadmapping framework and the author’s research with organisations using AI. These five steps form the core of a broader seven-stage process from that research. Each step answers a key strategic question from the kernel, as shown in @fig-roadmap-process. These are questions that most AI strategies rarely address.
 
 ::: {#fig-roadmap-process}
 
-{{< include diagram-roadmap-process.html >}}
+```{=html}
+<style>
+.dg-process {
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+  font-family: 'Jost', system-ui, sans-serif;
+}
+.dg-process-flow {
+  display: flex;
+  align-items: stretch;
+  min-width: 640px;
+  gap: 0;
+}
+.dg-step {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #E9ECEF;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.dg-step-hd {
+  padding: 9px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.dg-step-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+}
+.dg-step-kernel {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+.dg-step-icon {
+  padding: 14px 8px 8px;
+  text-align: center;
+}
+.dg-step-icon i { font-size: 26px; }
+.dg-step-body {
+  padding: 0 10px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.dg-step-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1E293B;
+  text-align: center;
+  line-height: 1.35;
+}
+.dg-step-layer {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-top: auto;
+}
+.dg-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 16px;
+}
+.dg-s1 .dg-step-hd, .dg-s2 .dg-step-hd { background: #1E293B; }
+.dg-s1 .dg-step-icon i, .dg-s2 .dg-step-icon i { color: #1E293B; }
+.dg-s1 .dg-step-layer, .dg-s2 .dg-step-layer { background: #1E293B; }
+.dg-s3 .dg-step-hd { background: #8B5CF6; }
+.dg-s3 .dg-step-icon i { color: #8B5CF6; }
+.dg-s3 .dg-step-layer { background: #8B5CF6; }
+.dg-s4 .dg-step-hd { background: #10B981; }
+.dg-s4 .dg-step-icon i { color: #10B981; }
+.dg-s4 .dg-step-layer { background: #10B981; }
+.dg-s5 .dg-step-hd { background: #0369A1; }
+.dg-s5 .dg-step-icon i { color: #0369A1; }
+.dg-s5 .dg-step-layer { background: #0369A1; }
+</style>
+<div class="dg-process" role="img" aria-label="Five-step AI roadmapping process. Step 1: Find the Crux, Diagnosis, Know-Why. Step 2: Honest Starting Point, Diagnosis, Know-Why. Step 3: Diagnosis into Direction, Guiding Policy, Know-What. Step 4: Coherent Actions, Know-How. Step 5: How Well From Day One, Know-When.">
+  <div class="dg-process-flow">
+    <div class="dg-step dg-s1">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 01</span>
+        <span class="dg-step-kernel">Diagnosis</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-crosshair" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Find the Crux</div>
+        <span class="dg-step-layer">Know-Why</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s2">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 02</span>
+        <span class="dg-step-kernel">Diagnosis</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-clipboard-data" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Honest Starting Point</div>
+        <span class="dg-step-layer">Know-Why</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s3">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 03</span>
+        <span class="dg-step-kernel">Guiding Policy</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-compass" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Diagnosis into Direction</div>
+        <span class="dg-step-layer">Know-What</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s4">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 04</span>
+        <span class="dg-step-kernel">Coherent Actions</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-lightning-charge" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Coherent Actions</div>
+        <span class="dg-step-layer">Know-How</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s5">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 05</span>
+        <span class="dg-step-kernel">Know-When</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">How Well From Day One</div>
+        <span class="dg-step-layer">Know-When</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
 Five-step AI roadmapping process — each step maps to a kernel element and planning layer, from crux identification through to measurement.
 
 :::
 
-Step 1: Find the Crux Before You Build the Roadmap
+### Step 1: Find the Crux Before You Build the Roadmap
 
 This is the first part of Rumelt’s Diagnosis, the core element that everything else relies on. In roadmapping, this is your Know-Why: the market need, the value gap, and the reason for your AI initiative. Without this, every next step heads in the wrong direction.
 
@@ -55,7 +214,148 @@ This is where most AI strategies go wrong. They start executing before finishing
 
 ::: {#fig-crux-avoidance}
 
-{{< include diagram-crux-comparison.html >}}
+```{=html}
+<style>
+.dg-crux {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 0;
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px;
+}
+.dg-crux-panel {
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.dg-crux-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+.dg-crux-badge.bad  { background: #FEE2E2; color: #DC2626; }
+.dg-crux-badge.good { background: #D1FAE5; color: #059669; }
+.dg-scatter {
+  position: relative;
+  width: 170px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.dg-scatter-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  border: 2px dashed #9CA3AF;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #9CA3AF;
+  z-index: 2;
+}
+.dg-chip {
+  position: absolute;
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.dg-chip.scattered {
+  background: #F3F4F6;
+  border: 1px solid #D1D5DB;
+  color: #6B7280;
+}
+.dg-chip.focused {
+  background: rgba(30,41,59,0.07);
+  border: 1px solid rgba(30,41,59,0.18);
+  color: #1E293B;
+  display: flex; align-items: center; gap: 3px;
+}
+.dg-chip.focused i { font-size: 9px; color: #10B981; }
+.dg-converge {
+  position: relative;
+  width: 170px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.dg-converge-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.1);
+  border: 2px solid #10B981;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #10B981;
+  z-index: 2;
+}
+.dg-metric {
+  font-size: 10px;
+  color: #6B7280;
+  font-style: italic;
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid #F3F4F6;
+  width: 100%;
+  margin-top: auto;
+}
+.dg-crux-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ADB5BD;
+  letter-spacing: 0.05em;
+}
+</style>
+<div class="dg-crux" role="img" aria-label="Comparison: Without a crux, AI initiatives scatter in all directions — HR AI, chatbots, analytics, automation, vision — with no clear obstacle targeted. With a crux, all activities converge on one diagnosed obstacle, producing coherent experiments and measurable progress.">
+  <div class="dg-crux-panel">
+    <span class="dg-crux-badge bad">
+      <i class="bi bi-x-circle-fill" aria-hidden="true"></i> Without a Crux
+    </span>
+    <div class="dg-scatter" aria-hidden="true">
+      <div class="dg-scatter-center"><i class="bi bi-question-lg"></i></div>
+      <span class="dg-chip scattered" style="top:2px;left:4px">↖ HR AI</span>
+      <span class="dg-chip scattered" style="top:2px;right:4px">↗ Vision</span>
+      <span class="dg-chip scattered" style="top:44%;left:-8px">← Chatbot</span>
+      <span class="dg-chip scattered" style="bottom:8px;left:4px">↙ Analytics</span>
+      <span class="dg-chip scattered" style="bottom:2px;right:0">↘ Gen AI</span>
+    </div>
+    <div class="dg-metric">15 pilots · no clear learning</div>
+  </div>
+  <div class="dg-crux-vs" aria-hidden="true">VS</div>
+  <div class="dg-crux-panel">
+    <span class="dg-crux-badge good">
+      <i class="bi bi-check-circle-fill" aria-hidden="true"></i> With a Crux
+    </span>
+    <div class="dg-converge" aria-hidden="true">
+      <div class="dg-converge-center"><i class="bi bi-bullseye"></i></div>
+      <span class="dg-chip focused" style="top:2px;left:2px"><i class="bi bi-arrow-down-right"></i>Forecast accuracy</span>
+      <span class="dg-chip focused" style="top:2px;right:0"><i class="bi bi-arrow-down-left"></i>Data quality</span>
+      <span class="dg-chip focused" style="bottom:8px;left:0"><i class="bi bi-arrow-up-right"></i>Pipeline gaps</span>
+      <span class="dg-chip focused" style="bottom:2px;right:0"><i class="bi bi-arrow-up-left"></i>Model drift</span>
+    </div>
+    <div class="dg-metric">3 coherent experiments · measurable progress</div>
+  </div>
+</div>
+```
 
 Without a crux, AI initiatives scatter — many pilots, no shared obstacle. With a diagnosed crux, every experiment points at the same thing.
 
@@ -65,6 +365,8 @@ This requires a shift in the question you are asking. Instead of “How can we a
 
 Organisations that skip this step do not fail because of poor execution; they fail due to a lack of direction. They may create impressive roadmaps, but these are aimed at the wrong goal. Step 1 identifies the crux—the most important obstacle. This step builds a complete picture: an honest assessment of the organisation’s actual position, grounding your Know-Why in reality rather than aspiration.
 
+### Step 2: Build an Honest Starting Point
+
 An honest diagnosis may sound simple, but it is challenging. This step requires a clear assessment of your starting point: data maturity, technical infrastructure, organisational skills, and regulatory environment. Begin from your actual situation, not where you wish you were [@Kerr2022]. Overestimating data maturity is a primary cause of AI pilot failure. Organisations often assume their data is cleaner, more complete, and better governed than it is. This leads to a “Data Poverty” problem that emerges only after budgets are committed and timelines are set. The gap is rarely visible to senior leaders, who see only aggregated dashboards and summaries, not the raw pipelines, inconsistent schemas, and governance gaps that determine AI’s true potential. This overconfidence stems from structural distance, not carelessness.
 
 This matters beyond data quality alone. The current-state assessment must treat data as a strategic dimension in its own right, not just an input to clean up, but a capability to map: what data exists, how it is governed, how it can be integrated, and what value it can generate [@Phaal2004; @Komssi2013]. In Helmer’s [@Helmer2016] framework, proprietary data is a Cornered Resource: an asset competitors cannot easily buy or replicate. Honest diagnosis of data capability is therefore not an IT assessment. It is a strategic one: are you building, protecting, and governing the one asset that compounds into a durable position, or treating it as infrastructure to be cleaned up later? An AI strategy built on an incomplete picture of data capabilities will hit walls that were never mapped and forfeit the cornered-resource position it did not know it was squandering.
@@ -73,7 +375,7 @@ A precise AI-native example is Google’s deployment of a deep learning system f
 
 This step also brings up the “How Well” question early [@burtonshaw2008essential]: does the organisation truly have the capacity to execute? Not just in theory, but in reality. If you get this wrong at step two, every step after that is based on fiction.
 
-Step 3: Turn Your Diagnosis Into a Direction
+### Step 3: Turn Your Diagnosis Into a Direction
 
 With Diagnosis complete, the crux identified, and the current state honestly assessed, the kernel’s second element comes into view: the Guiding Policy. This is the bridge between where you are and where you are choosing to go [@sjodin2020value]. In roadmapping terms, it is the Know-What layer: the tangible AI offerings, platforms, and initiatives that will deliver stakeholder value, clearly defined enough to enable trade-offs.
 
@@ -85,7 +387,7 @@ Rumelt gives the clearest example of this in Good Strategy/Bad Strategy [@Rumelt
 
 Without a clear filter, the roadmap fills with what seems reasonable rather than what the strategy requires. @Komssi2013 highlights a common failure: teams create detailed quarterly plans but do not explain how these choices support a clear position. When the guiding policy is missing, the roadmap becomes a schedule with ambitious goals but no strategic direction. As capabilities advance faster than most planning cycles, what @Mollick2024 calls the “jagged frontier,” a fixed guiding policy quickly becomes outdated [@Suleyman2023]. The discipline is not only to build a filter, but to include explicit review points in the roadmap: moments to test the guiding policy against current technology capabilities. In practice, this involves scenario analysis to map how capability shifts affect the policy, sensitivity testing of key assumptions, and formal evaluation of alternative strategies as new information emerges. This approach helps avoid the Counter-Positioning trap described in Part 1 [@Helmer2016], where incumbents cannot adopt superior new capabilities without undermining prior investments. Review points are not just good planning; they are essential for defending against unexpected shifts in the capability frontier.
 
-Step 4: Take Coherent Actions, Not Scattered Pilots
+### Step 4: Take Coherent Actions, Not Scattered Pilots
 
 A guiding policy tells you what to pursue. The next step is Coherent Actions, the third part of the kernel. In AI, many organisations discover that knowing what to pursue and knowing how to achieve it are different. This step involves intentionally designing your approach through the Know-How layer: building the skills, partnerships, and capabilities needed for the specific paths you are taking, not for every possible path. Every hire and initiative should connect back to the crux identified in Step 1 and the guiding policy from Step 3. Coherent actions focus resources on the most important obstacle. For example, if the crux is unreliable demand forecasting, the organisation should not run unrelated pilots in HR automation, customer service chatbots, or contract review. All resources should address the single obstacle that, if solved, changes the organisation’s position.
 
@@ -93,7 +395,7 @@ Coherent actions cluster around four domains that conventional technology roadma
 
 In practice, coherent actions in AI take the form of deliberate experiments, each one designed to test a specific assumption about the crux or validate a path toward the guiding policy. Two failure modes get in the way. The first is deploying a capability before the diagnosis is complete and hoping value follows. The second is waiting for perfect certainty before committing to any path. Neither is coherent. Coherent actions are question-driven: what do we need to learn, and what is the smallest experiment that answers it [@opresnik2015value; @shollo2022shifting]? The roadmap adapts as the answers come in. That is not agile for its own sake. It is the only rational response to a technology whose right path is rarely visible in advance.
 
-Step 5: Build in the “How Well” From the Start
+### Step 5: Build in the “How Well” From the Start
 
 The last step is often treated as an afterthought, but it should not be. This step keeps the kernel honest over time. As markets change, diagnoses can become outdated, guiding policies can lose relevance, and actions can turn into routine. The Know-When / How Well layer is there to catch this: regular reviews that check if the crux has changed, if the guiding policy still fits, and if actions are still truly coherent.
 
@@ -121,7 +423,172 @@ Taken together, the five steps produce a recognisable pattern. GitHub Copilot is
 
 ::: {#fig-ai-roadmap}
 
-{{< include diagram-strategy-roadmap.html >}}
+```{=html}
+<style>
+.dg-roadmap {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px;
+  overflow-x: auto;
+}
+.dg-roadmap-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(3, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  gap: 6px;
+  min-width: 580px;
+}
+.dg-rh-col {
+  padding: 6px 8px 5px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6B7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.dg-rh-col i { font-size: 14px; color: #ADB5BD; }
+.dg-rl-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 8px 10px 0;
+  gap: 3px;
+}
+.dg-rl-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.dg-rl-sublabel {
+  font-size: 9px;
+  color: #6B7280;
+  padding-left: 2px;
+}
+.dg-rl-row.r1 .dg-rl-label { background: #1E293B; }
+.dg-rl-row.r2 .dg-rl-label { background: #8B5CF6; }
+.dg-rl-row.r3 .dg-rl-label { background: #10B981; }
+.dg-cell {
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 7px;
+  padding: 10px 10px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.dg-cell-icon { font-size: 16px; }
+.dg-cell-text {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #1E293B;
+  line-height: 1.3;
+}
+.dg-cell-sub {
+  font-size: 9.5px;
+  color: #6B7280;
+  line-height: 1.3;
+}
+.dg-cell.r1 { border-left: 3px solid #1E293B; }
+.dg-cell.r2 { border-left: 3px solid #8B5CF6; }
+.dg-cell.r3 { border-left: 3px solid #10B981; }
+.dg-crux-anchor {
+  grid-column: 1 / -1;
+  background: rgba(30,41,59,0.05);
+  border: 1px dashed #1E293B;
+  border-radius: 7px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+.dg-crux-anchor i { font-size: 14px; color: #1E293B; }
+.dg-crux-anchor-text { font-size: 10px; font-weight: 600; color: #1E293B; }
+.dg-crux-anchor-sub { font-size: 9.5px; color: #6B7280; margin-left: 2px; }
+</style>
+<div class="dg-roadmap" role="img" aria-label="AI strategy roadmap with three layers across three time horizons. Know-Why layer: now identify market gap and value opportunity; 6–12 months map value opportunity; 1–3 years reach cornered resource position. Know-What layer: now build AI prototype; 6–12 months run pilots targeting the crux; 1–3 years scale the AI platform. Know-How layer: now audit data governance; 6–12 months build the ML team and partnerships; 1–3 years deliver end-to-end ML pipeline. All layers anchor to a single diagnosed crux.">
+  <div class="dg-roadmap-grid">
+    <div class="dg-rh-corner"></div>
+    <div class="dg-rh-col"><i class="bi bi-house" aria-hidden="true"></i>Now</div>
+    <div class="dg-rh-col"><i class="bi bi-calendar2-month" aria-hidden="true"></i>6–12 Months</div>
+    <div class="dg-rh-col"><i class="bi bi-flag" aria-hidden="true"></i>1–3 Years</div>
+    <div class="dg-rl-row r1">
+      <span class="dg-rl-label">Know-Why</span>
+      <span class="dg-rl-sublabel">Market</span>
+    </div>
+    <div class="dg-cell r1">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-crosshair" style="color:#1E293B"></i></span>
+      <div class="dg-cell-text">Identify market gap</div>
+      <div class="dg-cell-sub">What crux blocks value?</div>
+    </div>
+    <div class="dg-cell r1">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-map" style="color:#1E293B"></i></span>
+      <div class="dg-cell-text">Map value opportunity</div>
+      <div class="dg-cell-sub">Validate crux with stakeholders</div>
+    </div>
+    <div class="dg-cell r1">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-trophy" style="color:#1E293B"></i></span>
+      <div class="dg-cell-text">Cornered resource position</div>
+      <div class="dg-cell-sub">Durable competitive advantage</div>
+    </div>
+    <div class="dg-rl-row r2">
+      <span class="dg-rl-label">Know-What</span>
+      <span class="dg-rl-sublabel">Product / AI</span>
+    </div>
+    <div class="dg-cell r2">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-cpu" style="color:#8B5CF6"></i></span>
+      <div class="dg-cell-text">AI prototype</div>
+      <div class="dg-cell-sub">Smallest testable product</div>
+    </div>
+    <div class="dg-cell r2">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-lightning-charge" style="color:#8B5CF6"></i></span>
+      <div class="dg-cell-text">Pilots targeting the crux</div>
+      <div class="dg-cell-sub">Question-driven experiments</div>
+    </div>
+    <div class="dg-cell r2">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-layers" style="color:#8B5CF6"></i></span>
+      <div class="dg-cell-text">AI platform scaled</div>
+      <div class="dg-cell-sub">Embedded in core workflows</div>
+    </div>
+    <div class="dg-rl-row r3">
+      <span class="dg-rl-label">Know-How</span>
+      <span class="dg-rl-sublabel">Technology</span>
+    </div>
+    <div class="dg-cell r3">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-database" style="color:#10B981"></i></span>
+      <div class="dg-cell-text">Data governance audit</div>
+      <div class="dg-cell-sub">Honest current-state picture</div>
+    </div>
+    <div class="dg-cell r3">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-people" style="color:#10B981"></i></span>
+      <div class="dg-cell-text">ML team + partnerships</div>
+      <div class="dg-cell-sub">Capabilities for the chosen path</div>
+    </div>
+    <div class="dg-cell r3">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-diagram-3" style="color:#10B981"></i></span>
+      <div class="dg-cell-text">End-to-end ML pipeline</div>
+      <div class="dg-cell-sub">Production-grade infrastructure</div>
+    </div>
+    <div class="dg-crux-anchor">
+      <i class="bi bi-bullseye" aria-hidden="true"></i>
+      <span class="dg-crux-anchor-text">Crux Anchor</span>
+      <span class="dg-crux-anchor-sub">— every layer and time horizon points back to the single most important obstacle</span>
+    </div>
+  </div>
+</div>
+```
 
 AI strategy roadmap with three planning layers (Know-Why, Know-What, Know-How) across three time horizons, anchored to a single diagnosed crux.
 
@@ -129,7 +596,7 @@ AI strategy roadmap with three planning layers (Know-Why, Know-What, Know-How) a
 
 The five steps also serve as a diagnostic instrument. Run them against any AI strategy and the gaps become visible. Run them against IBM Watson Health, and the picture is unambiguous.
 
-The Kernel in Practice: What IBM Watson Health Got Wrong
+## The Kernel in Practice: What IBM Watson Health Got Wrong
 
 Between 2015 and 2022, IBM invested over $4 billion in building Watson Health into what it called the future of AI-driven medicine [@Strickland2022]. It never made a profit. In January 2022, IBM sold the assets to a private equity firm for approximately $1 billion. The most telling detail: its flagship partnership with MD Anderson Cancer Centre ran for five years, cost $62 million, and was terminated before Watson was ever used on a real patient [@Mukherjee2017; @Ross2017].
 
@@ -145,7 +612,7 @@ Each of the five steps exposes a specific point of failure. Step 1 was skipped: 
 
 The $4 billion question was never “was Watson capable?” It was “Was there a real crux at the centre of the strategy?” There was not. And without it, the roadmap had no anchor, exactly as the framework predicts.
 
-How to Spot a Bad AI Strategy
+## How to Spot a Bad AI Strategy
 
 Most AI strategies fail for the same reasons. Here are the five that are particular to this technology [@Rumelt2011; @Rumelt2022].
 
@@ -161,7 +628,7 @@ The fixed roadmap in a moving landscape. A three-year AI roadmap with no designa
 
 These five failure modes are connected and build on each other. Starting with a technology-led diagnosis leads to a platform with no clear goal. That platform results in scattered pilots that do not produce learning. These pilots are measured at the wrong level, which delays honest evaluation. Since the guiding policy was not designed to be updated, the organisation reaches a new capability frontier with a strategy it cannot change. The kernel is missing at every stage, and each missing step makes the next one harder to fix.
 
-Conclusion
+## Conclusion
 
 The gap between the 80% of organisations running AI pilots and the 5% getting real value is not about technology. It is about the missing kernel. There is no honest diagnosis, no guiding policy that acts as a filter, and no coherent actions that build toward a clear result. Instead, there is just a list of initiatives that look like strategy, measured by activity rather than real progress.
 

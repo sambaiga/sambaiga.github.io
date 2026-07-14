@@ -31,7 +31,7 @@ Osterwalder and Pigneur [@Osterwalder2010] say a business model is how an organi
 
 This post tackles that problem. The AI Business Model Innovation Framework helps turn strategy into a business model that really captures AI value. It does not replace the roadmap from Part 2, but works underneath it, filling in the gaps that a roadmap alone cannot cover.
 
-Why AI Breaks Existing Business Models
+## Why AI Breaks Existing Business Models
 
 Before we look at the framework, let’s clarify what makes AI disruptive to business models, not just to strategy.
 
@@ -41,13 +41,251 @@ Amazon Alexa is a good example of this problem. Technically, Alexa was impressiv
 
 The key question was never really answered before Alexa launched: what real problem would voice AI solve for a customer who would pay for it? This is not just a strategy issue; it is a business model issue. Organisations that mix up the two often end up with results like Alexa.
 
-The AI Business Model Innovation Framework
+## The AI Business Model Innovation Framework
 
 The AI Business Model Innovation Framework has four parts: Data Foundation Establishment, Value-Centric Data Exploitation, Strategic AI Co-Innovation, and AI Value Realisation. The first three occur in order, while the fourth, AI Value Realisation, should be present throughout the process, not just at the end. This matters because many organisations treat value realisation as something to add after launch, but with AI, that approach fails. Value realisation needs to be built in from the beginning, right alongside the data foundation.
 
 ::: {#fig-bmi-framework}
 
-{{< include diagram-bmi-framework.html >}}
+```{=html}
+<style>
+.dg-bmi {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+}
+.dg-bmi-inner {
+  min-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.dg-bmi-seq {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.dg-bmi-el {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  padding: 14px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: relative;
+}
+.dg-bmi-el::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  border-radius: 8px 8px 0 0;
+}
+.dg-bmi-el.el1::before { background: #1E293B; }
+.dg-bmi-el.el2::before { background: #8B5CF6; }
+.dg-bmi-el.el3::before { background: #7C3AED; }
+.dg-bmi-el-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ADB5BD;
+}
+.dg-bmi-el-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.dg-bmi-el.el1 .dg-bmi-el-icon { background: rgba(30,41,59,0.08); color: #1E293B; }
+.dg-bmi-el.el2 .dg-bmi-el-icon { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+.dg-bmi-el.el3 .dg-bmi-el-icon { background: rgba(124,58,237,0.1); color: #7C3AED; }
+.dg-bmi-el-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: #1E293B;
+  line-height: 1.3;
+}
+.dg-bmi-el-sub {
+  font-size: 10px;
+  color: #6B7280;
+  text-align: center;
+  line-height: 1.35;
+}
+.dg-bmi-seq-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 15px;
+  padding-top: 4px;
+}
+.dg-bmi-connectors {
+  display: flex;
+  gap: 0;
+}
+.dg-bmi-connector-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.dg-bmi-connector-col .dg-connector-line {
+  width: 2px;
+  height: 16px;
+  background: #DEE2E6;
+}
+.dg-bmi-connector-gap {
+  width: 28px;
+  flex-shrink: 0;
+}
+.dg-bmi-transversal {
+  background: #fff;
+  border: 1.5px solid #10B981;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(16,185,129,0.12);
+}
+.dg-bmi-tv-header {
+  background: #10B981;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dg-bmi-tv-header i { font-size: 16px; color: #fff; }
+.dg-bmi-tv-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.dg-bmi-tv-badge {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dg-bmi-tv-components {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+.dg-bmi-tv-comp {
+  padding: 12px 12px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.dg-bmi-tv-comp + .dg-bmi-tv-comp {
+  border-left: 1px solid #E9ECEF;
+}
+.dg-bmi-tv-comp i {
+  font-size: 16px;
+  color: #10B981;
+}
+.dg-bmi-tv-comp-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1E293B;
+}
+.dg-bmi-tv-comp-q {
+  font-size: 9.5px;
+  color: #6B7280;
+  line-height: 1.3;
+  font-style: italic;
+}
+</style>
+<div class="dg-bmi" role="img" aria-label="AI Business Model Innovation Framework. Three sequential elements: Element 1, Data Foundation — proprietary data as a cornered resource. Element 2, Value-Centric Data Exploitation — insights anchored to business goals. Element 3, Strategic AI Co-Innovation — redesigning the business model. Below all three, running transversally, is AI Value Realisation with three components: Value Architecture (who is this for and what does it solve), Monetisation (how is value captured), and Valuation (are we tracking outcomes or activity).">
+  <div class="dg-bmi-inner">
+    <div class="dg-bmi-seq">
+      <div class="dg-bmi-el el1">
+        <span class="dg-bmi-el-num">Element 01</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-database"></i>
+        </div>
+        <div class="dg-bmi-el-title">Data Foundation</div>
+        <div class="dg-bmi-el-sub">Proprietary data as a cornered resource</div>
+      </div>
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="dg-bmi-el el2">
+        <span class="dg-bmi-el-num">Element 02</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-graph-up-arrow"></i>
+        </div>
+        <div class="dg-bmi-el-title">Value-Centric Data Exploitation</div>
+        <div class="dg-bmi-el-sub">Insights anchored to business goals</div>
+      </div>
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="dg-bmi-el el3">
+        <span class="dg-bmi-el-num">Element 03</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-people"></i>
+        </div>
+        <div class="dg-bmi-el-title">Strategic AI Co-Innovation</div>
+        <div class="dg-bmi-el-sub">Redesigning the business model</div>
+      </div>
+    </div>
+    <div class="dg-bmi-connectors" aria-hidden="true">
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+    </div>
+    <div class="dg-bmi-transversal">
+      <div class="dg-bmi-tv-header">
+        <i class="bi bi-cash-coin" aria-hidden="true"></i>
+        <span class="dg-bmi-tv-title">AI Value Realisation — Element 04</span>
+        <span class="dg-bmi-tv-badge">
+          <i class="bi bi-arrows-expand" aria-hidden="true"></i> Transversal
+        </span>
+      </div>
+      <div class="dg-bmi-tv-components">
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Value Architecture</div>
+          <div class="dg-bmi-tv-comp-q">Who is this for, and what specifically does it solve?</div>
+        </div>
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-cash-coin" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Monetisation</div>
+          <div class="dg-bmi-tv-comp-q">How does the organisation capture value, and when is that decided?</div>
+        </div>
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Valuation</div>
+          <div class="dg-bmi-tv-comp-q">Are we tracking outcomes or counting activity?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
 The AI Business Model Innovation Framework: three sequential elements flow from data foundation through to co-innovation, while AI Value Realisation runs transversally — present at every stage, not just at the end.
 
@@ -55,7 +293,7 @@ The AI Business Model Innovation Framework: three sequential elements flow from 
 
 @fig-bmi-framework shows how the four elements connect. The rest of this section explains each one in detail.
 
-Element 1: Data Foundation Establishment
+### Element 1: Data Foundation Establishment
 
 The data foundation is the starting point for everything else. In terms of planning, it aligns with Step 2 in Part 2: honestly assessing the organisation’s data maturity, infrastructure, and governance.
 
@@ -63,7 +301,7 @@ From a business model perspective, the data foundation is more than just a techn
 
 At this stage, the main tasks are updating data strategy and governance, finding the right data sources, building data pipelines, and running regular quality checks. @Deloitte2025 points out that overestimating data maturity is the top reason AI pilots fail. Many organisations think their data is better than it is, and only realise the problem after spending money and setting deadlines. Being honest here prevents that. Investing in the data foundation is not just a cost; it is the key asset for the whole framework.
 
-Element 2: Value-Centric Data Exploitation
+### Element 2: Value-Centric Data Exploitation
 
 Once the data foundation is in place, the next step is to derive useful insights from the data and connect them to business goals. This is called value-centric data exploitation. It is not just about running technical queries—it means every analysis is tied to a clear business goal, not just exploring data for its own sake.
 
@@ -77,7 +315,7 @@ For example, a logistics company facing unpredictable last-mile deliveries does 
 
 The result of this step is not just a tidy dataset. It is a set of proven insights that support a value proposition, along with a prototype to see whether customers would actually pay for it.
 
-Element 3: Strategic AI Co-Innovation
+### Element 3: Strategic AI Co-Innovation
 
 The third element is where insights turn into products and the business model gets redesigned. This step is not just about improving current operations; it is about creating AI-powered offerings that can change the way business is done.
 
@@ -89,7 +327,7 @@ Key activities here include developing an AI strategy aligned with co-innovation
 
 At this stage, actions should be driven by clear questions, just like in Part 2. Every experiment should test a specific idea about a real problem. Without this focus, co-innovation can lead to lots of impressive technology but no clear value for customers.
 
-Element 4: AI Value Realisation
+### Element 4: AI Value Realisation
 
 AI Value Realisation is not just the last step. It is a practice that should be present from the start—when building the data foundation, during data use and co-innovation, and all the way through to product launch. Treating it as something to do at the end leads to problems, like IBM Watson Health measuring agreement rates instead of real clinical results, or Amazon Alexa counting device activations instead of actual value per user.
 
@@ -111,7 +349,7 @@ Valuation is the final piece. In AI, common KPIs like model accuracy or deployme
 
 : AI Value Realisation: Components, Questions, and Failure Modes {#tbl-value-realisation}
 
-The Capabilities That Make It Work
+## The Capabilities That Make It Work
 
 The four elements need a base of technology, organisation, and leadership skills to work. These are not extra steps; they are the conditions needed for the framework to succeed.
 
@@ -121,7 +359,7 @@ Leadership skills are often overlooked but are the most important. As @Iansiti20
 
 When these capabilities are missing, the problem is not with technology—it is with structure. AI teams and business teams work separately, each focused on their own goals, and neither sees the full business model. The framework requires both groups to work together from the start, agreeing on the main challenge and designing value realisation before building the data foundation or product roadmap.
 
-How to Spot a Bad AI Business Model
+## How to Spot a Bad AI Business Model
 
 The four-part framework also works as a diagnostic tool. When used on any AI project, it reveals problems that most organisations only notice after they have already invested.
 
@@ -135,7 +373,7 @@ Sometimes, organisations build up AI talent, data platforms, and governance, but
 
 These four failure modes are connected. If an organisation does not have a clear value proposition, it will add monetisation later because there is nothing specific to price. When monetisation is added late, it usually relies on activity metrics, since outcomes were never defined. Activity metrics do not show if decision-making has changed, so the capability gap stays hidden—until a competitor with the right model exposes the problem.
 
-Conclusion: Strategy, Roadmap, Business Model
+## Conclusion: Strategy, Roadmap, Business Model
 
 Parts 1 and 2 showed that the gap between 80% of organisations running AI pilots and the 5% getting real value is mostly about strategy. That is still true, but there is another layer. If organisations fix their strategy but do not update their business model, they are just making the same mistake in a different direction.
 
