@@ -2,7 +2,7 @@
 title: "Anthony Faustine"
 subtitle: "Principal ML Engineer<br>Analog Devices, Ireland"
 pagetitle: "Anthony Faustine | Portfolio"
-description-meta: "Principal ML Engineer and Systems Architect specializing in machine learning system design and implementation at scale, with strategic technology leadership and engineering excellence at Analog Devices, Ireland."
+description-meta: "Principal ML Engineer and systems architect focused on designing and running machine learning systems at scale for supply chain and edge applications at Analog Devices, Ireland."
 
 about:
   id: hero-heading
@@ -20,9 +20,14 @@ grid:
 author-meta: Anthony Faustine
 ---
 ::: {#hero-heading .text-justify .text-md-start}
-I'm a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland, building production ML systems for supply chain optimization and intelligent edge computing. Over 10+ years, I've designed, deployed, and scaled ML systems across energy, industrial, and semiconductor domains.
+I'm a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland. I design and ship machine learning systems that support supply chain decisions and intelligent edge products. Over the past decade, I’ve worked across manufacturing, industrial, energy and semiconductor domains, taking ideas from early prototypes to reliable production systems.
 
-I specialize in **machine learning system design and implementation at scale**. From architecture and modeling through production governance and observability, I drive strategic technology leadership that translates research into resilient, production-grade systems. I advance engineering excellence through mentorship and cross-functional leadership.
+My focus is end to end ML systems at scale and strategic technology management. I care about clean architecture, robust model deployment, and strong monitoring and governance once systems are in production. I work closely with business and product leaders to make sure investments in AI and analytics translate into clear, measurable value for the organisation.
+
+I also spend much of my time mentoring engineers and collaborating with product and operations teams so that ML work stays aligned with real world problems and long term strategy.
+
+Alongside my industry role, I am active in research and development. I collaborate with [Lucas Pereira](https://www.alspereira.info/) at ITI, LARSyS, Técnico Lisboa on machine learning and data analytics solutions for clean energy systems and the broader energy transition.
+
 
 > My mission: architect and deliver ML systems that solve real business problems with measurable impact.
 

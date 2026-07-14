@@ -33,8 +33,7 @@ format:
           <span class="highlight">Building Production ML Systems</span>
         </h1>
         <p class="hero-subtitle">
-          I architect composable ML systems for supply chain optimization and intelligent edge computing,
-          delivering measurable business impact through resilient, production-grade machine learning.
+          I architect machine learning systems for semiconductor supply chain, focusing on demand planning, resilient production deployments and clear measurable business value.
         </p>
         <div class="hero-actions">
           <a href="https://www.linkedin.com/in/sambaiga/" class="btn btn-primary btn-sm">
