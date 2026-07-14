@@ -45,7 +45,7 @@ The AI Business Model Innovation Framework
 
 The AI Business Model Innovation Framework has four parts: Data Foundation Establishment, Value-Centric Data Exploitation, Strategic AI Co-Innovation, and AI Value Realisation. The first three occur in order, while the fourth, AI Value Realisation, should be present throughout the process, not just at the end. This matters because many organisations treat value realisation as something to add after launch, but with AI, that approach fails. Value realisation needs to be built in from the beginning, right alongside the data foundation.
 
-The AI Business Model Innovation Framework, showing the four elements and the transversal role of AI Value Realisation across all stages{#fig-bmi-framework fig-align=“center” width=“100%”}
+![The AI Business Model Innovation Framework, showing the four elements and the transversal role of AI Value Realisation across all stages](ai_bmi_framework.png){#fig-bmi-framework fig-align=”center” width=”100%”}
 
 @fig-bmi-framework shows how the four elements connect. The rest of this section explains each one in detail.
 
@@ -97,12 +97,11 @@ Valuation is the final piece. In AI, common KPIs like model accuracy or deployme
 
 @tbl-value-realisation summarises the three components and the question each one forces.
 
-Column 1	Column 2	Column 3
-Component	Question It Forces	What Bad Looks Like
-Value Architecture	Who is this for, and what specifically does it solve?	Value proposition describes the technology, not the customer problem
-Monetisation	How does the organisation capture value, and when is that decided?	Revenue model designed after the product is built
-Valuation	Are we tracking outcomes or counting activity?	KPIs measure model performance, not business impact
-
+| Component | Question It Forces | What Bad Looks Like |
+|-----------|-------------------|---------------------|
+| Value Architecture | Who is this for, and what specifically does it solve? | Value proposition describes the technology, not the customer problem |
+| Monetisation | How does the organisation capture value, and when is that decided? | Revenue model designed after the product is built |
+| Valuation | Are we tracking outcomes or counting activity? | KPIs measure model performance, not business impact |
 
 : AI Value Realisation: Components, Questions, and Failure Modes {#tbl-value-realisation}
 

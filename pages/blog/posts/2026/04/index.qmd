@@ -33,7 +33,7 @@ Putting the Kernel to Work: A Five-Step AI Roadmapping Process
 
 The five-step process here is based on Phaal’s [@Phaal2010] roadmapping framework and the author’s research with organisations using AI. These five steps form the core of a broader seven-stage process from that research. Each step answers a key strategic question from the kernel, as shown in @fig-roadmap-process. These are questions that most AI strategies rarely address.
 
-Strategic roadmapping process{#fig-roadmap-process fig-align=“center” width=“75%”}
+![Strategic roadmapping process](crux_kernel.png){#fig-roadmap-process fig-align=”center” width=”75%”}
 
 Step 1: Find the Crux Before You Build the Roadmap
 
@@ -47,7 +47,7 @@ Rumelt illustrates this with SpaceX. Making space travel economically viable inv
 
 This is where most AI strategies go wrong. They start executing before finishing the diagnosis, treating data quality, talent gaps, and tooling choices as equally urgent, instead of asking which one, if solved, would change everything else. Without answering that question, there is no crux. And without the crux, the roadmap has no anchor, as @fig-crux-avoidance shows.
 
-Strategy built around the crux vs. through it — the difference between activity and direction{#fig-crux-avoidance fig-align=“center” width=“75%”}
+![Strategy built around the crux vs. through it — the difference between activity and direction](crux_avoidance.png){#fig-crux-avoidance fig-align=”center” width=”75%”}
 
 This requires a shift in the question you are asking. Instead of “How can we apply AI?” ask “What is the one obstacle that, if resolved, gives us a position no competitor can easily copy?” That answer is your Know-Why, the foundation of the entire roadmap [@verdin2015you; @burstrom2021ai].
 
@@ -95,20 +95,21 @@ Taken together, the five steps produce a recognisable pattern. GitHub Copilot is
 
 @tbl-five-steps summarises how the five steps map onto the kernel elements, the AI-specific challenge each one addresses, and the question that step is designed to force.
 
-Column 1	Column 2	Column 3	Column 4
-Step	Kernel Element	AI-Specific Challenge	The Question to Answer
-1: Find the Crux	Diagnosis	Inverted diagnostic sequence	What is the one obstacle that, if removed, changes everything?
-2: Honest Starting Point	Diagnosis	Data maturity overconfidence	Where do we actually stand?
-3: Diagnosis into Direction	Guiding Policy	Policy decay and the jagged frontier	What do we say no to, and when do we revisit that decision?
-4: Coherent Actions	Coherent Actions	Scattered pilots without learning	What specific question does each experiment answer?
-5: How Well From Day One	Know-When / How Well	Emergent, indirect value	Are we tracking outcomes or counting activity?
-
+| Step | Kernel Element | AI-Specific Challenge | The Question to Answer |
+|------|----------------|----------------------|------------------------|
+| 1: Find the Crux | Diagnosis | Inverted diagnostic sequence | What is the one obstacle that, if removed, changes everything? |
+| 2: Honest Starting Point | Diagnosis | Data maturity overconfidence | Where do we actually stand? |
+| 3: Diagnosis into Direction | Guiding Policy | Policy decay and the jagged frontier | What do we say no to, and when do we revisit that decision? |
+| 4: Coherent Actions | Coherent Actions | Scattered pilots without learning | What specific question does each experiment answer? |
+| 5: How Well From Day One | Know-When / How Well | Emergent, indirect value | Are we tracking outcomes or counting activity? |
 
 : The Five-Step AI Roadmapping Framework: Kernel Elements, AI-Specific Challenges, and the Questions Each Step Forces {#tbl-five-steps}
 
 @fig-ai-roadmap illustrates what the output looks like when all five steps are completed: a layered roadmap with AI and data components aligned across market needs, product direction, and technology capability, anchored by a diagnosed crux and structured around the kernel’s three elements.
 
-A strategic AI roadmap with AI and data components, showing market, product, and technology layers aligned across time horizons{#fig-ai-roadmap fig-align=“center” width=“1The five steps also serve as a diagnostic instrument.rument. Run them against any AI strategy and the gaps become visible. Run them against IBM Watson Health, and the picture is unambiguous.
+![A strategic AI roadmap with AI and data components, showing market, product, and technology layers aligned across time horizons](Strategic-Roadmap-Template.jpg){#fig-ai-roadmap fig-align=”center” width=”100%”}
+
+The five steps also serve as a diagnostic instrument. Run them against any AI strategy and the gaps become visible. Run them against IBM Watson Health, and the picture is unambiguous.
 
 The Kernel in Practice: What IBM Watson Health Got Wrong
 
