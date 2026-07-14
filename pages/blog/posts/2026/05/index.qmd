@@ -45,7 +45,13 @@ The AI Business Model Innovation Framework
 
 The AI Business Model Innovation Framework has four parts: Data Foundation Establishment, Value-Centric Data Exploitation, Strategic AI Co-Innovation, and AI Value Realisation. The first three occur in order, while the fourth, AI Value Realisation, should be present throughout the process, not just at the end. This matters because many organisations treat value realisation as something to add after launch, but with AI, that approach fails. Value realisation needs to be built in from the beginning, right alongside the data foundation.
 
-![The AI Business Model Innovation Framework, showing the four elements and the transversal role of AI Value Realisation across all stages](ai_bmi_framework.png){#fig-bmi-framework fig-align=”center” width=”100%”}
+::: {#fig-bmi-framework}
+
+{{< include diagram-bmi-framework.html >}}
+
+The AI Business Model Innovation Framework: three sequential elements flow from data foundation through to co-innovation, while AI Value Realisation runs transversally — present at every stage, not just at the end.
+
+:::
 
 @fig-bmi-framework shows how the four elements connect. The rest of this section explains each one in detail.
 

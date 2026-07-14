@@ -1,0 +1,155 @@
+<style>
+.dg-crux {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 0;
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px;
+}
+.dg-crux-panel {
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.dg-crux-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+.dg-crux-badge.bad  { background: #FEE2E2; color: #DC2626; }
+.dg-crux-badge.good { background: #D1FAE5; color: #059669; }
+
+/* Scatter layout */
+.dg-scatter {
+  position: relative;
+  width: 170px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.dg-scatter-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  border: 2px dashed #9CA3AF;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #9CA3AF;
+  z-index: 2;
+}
+.dg-chip {
+  position: absolute;
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.dg-chip.scattered {
+  background: #F3F4F6;
+  border: 1px solid #D1D5DB;
+  color: #6B7280;
+}
+.dg-chip.focused {
+  background: rgba(30,41,59,0.07);
+  border: 1px solid rgba(30,41,59,0.18);
+  color: #1E293B;
+  display: flex; align-items: center; gap: 3px;
+}
+.dg-chip.focused i { font-size: 9px; color: #10B981; }
+
+/* Converge layout */
+.dg-converge {
+  position: relative;
+  width: 170px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.dg-converge-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.1);
+  border: 2px solid #10B981;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #10B981;
+  z-index: 2;
+}
+
+.dg-metric {
+  font-size: 10px;
+  color: #6B7280;
+  font-style: italic;
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid #F3F4F6;
+  width: 100%;
+  margin-top: auto;
+}
+
+.dg-crux-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ADB5BD;
+  letter-spacing: 0.05em;
+}
+</style>
+
+<div class="dg-crux" role="img" aria-label="Comparison: Without a crux, AI initiatives scatter in all directions — HR AI, chatbots, analytics, automation, vision — with no clear obstacle targeted. With a crux, all activities converge on one diagnosed obstacle, producing coherent experiments and measurable progress.">
+
+  <div class="dg-crux-panel">
+    <span class="dg-crux-badge bad">
+      <i class="bi bi-x-circle-fill" aria-hidden="true"></i> Without a Crux
+    </span>
+
+    <div class="dg-scatter" aria-hidden="true">
+      <div class="dg-scatter-center"><i class="bi bi-question-lg"></i></div>
+      <span class="dg-chip scattered" style="top:2px;left:4px">↖ HR AI</span>
+      <span class="dg-chip scattered" style="top:2px;right:4px">↗ Vision</span>
+      <span class="dg-chip scattered" style="top:44%;left:-8px">← Chatbot</span>
+      <span class="dg-chip scattered" style="bottom:8px;left:4px">↙ Analytics</span>
+      <span class="dg-chip scattered" style="bottom:2px;right:0">↘ Gen AI</span>
+    </div>
+
+    <div class="dg-metric">15 pilots · no clear learning</div>
+  </div>
+
+  <div class="dg-crux-vs" aria-hidden="true">VS</div>
+
+  <div class="dg-crux-panel">
+    <span class="dg-crux-badge good">
+      <i class="bi bi-check-circle-fill" aria-hidden="true"></i> With a Crux
+    </span>
+
+    <div class="dg-converge" aria-hidden="true">
+      <div class="dg-converge-center"><i class="bi bi-bullseye"></i></div>
+      <span class="dg-chip focused" style="top:2px;left:2px"><i class="bi bi-arrow-down-right"></i>Forecast accuracy</span>
+      <span class="dg-chip focused" style="top:2px;right:0"><i class="bi bi-arrow-down-left"></i>Data quality</span>
+      <span class="dg-chip focused" style="bottom:8px;left:0"><i class="bi bi-arrow-up-right"></i>Pipeline gaps</span>
+      <span class="dg-chip focused" style="bottom:2px;right:0"><i class="bi bi-arrow-up-left"></i>Model drift</span>
+    </div>
+
+    <div class="dg-metric">3 coherent experiments · measurable progress</div>
+  </div>
+
+</div>
