@@ -1,0 +1,49 @@
+---
+title: "Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities"
+date: 2020-06-15
+authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas and Ngondya, Isakwisa and Benabbou, Loubna"
+
+categories:
+  - machine learning
+  - energy communities
+  - sustainable energy
+  - self-sufficiency
+  - demand response
+
+thumbnail: "/images/publications/climateai2020.svg"
+image: "/images/publications/climateai2020.svg"
+
+conference: "Workshop on AI for Earth Sciences, ICML 2020, Virtual"
+
+abstract: |
+  Energy communities — groups of households and businesses that share local renewable energy resources — are emerging as a key mechanism for the energy transition. Realising self-sufficiency within such communities requires intelligent coordination of generation, storage, and consumption. This paper investigates how machine learning can support this coordination by addressing three interrelated problems: short-term solar and demand forecasting, appliance-level load disaggregation via NILM, and community-scale demand response optimisation. We propose an integrated ML pipeline connecting these modules and evaluate it on a simulated energy community with real solar irradiance and consumption data. Results demonstrate that the combined ML approach improves self-sufficiency rates by 18% compared to rule-based scheduling, with forecasting accuracy being the dominant factor in overall community performance.
+
+description: |
+  This paper proposes an integrated machine learning pipeline — combining energy forecasting, NILM-based disaggregation, and demand response optimisation — to improve self-sufficiency in renewable energy communities.
+
+pub-info:
+  links:
+    - name: Link
+      url: "https://scholar.google.com/citations?user=nhzHBTQAAAAJ&hl=en"
+      icon: journal-text
+  reference: |
+    <strong>Anthony Faustine</strong>, Pereira, Lucas, Ngondya, Isakwisa and Benabbou, Loubna,
+    "Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities,"
+    <em>Workshop on AI for Earth Sciences, ICML 2020, Virtual,</em> 2020.
+
+status: Published
+featured: false
+doi: ""
+
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+  - name: Pereira, Lucas
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+  - name: Ngondya, Isakwisa
+    affiliation: Nelson Mandela African Institution of Science and Technology (NM-AIST), Tanzania
+  - name: Benabbou, Loubna
+    affiliation: Université du Québec à Rimouski, Canada
+---

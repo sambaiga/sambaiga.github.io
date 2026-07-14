@@ -20,7 +20,7 @@ grid:
 author-meta: Anthony Faustine
 ---
 ::: {#hero-heading .text-justify .text-md-start}
-I am a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland, building production ML systems for supply chain optimization and intelligent edge computing. Over 10+ years, I've designed, deployed, and scaled ML systems across energy, industrial, and semiconductor domains.
+I'm a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland, building production ML systems for supply chain optimization and intelligent edge computing. Over 10+ years, I've designed, deployed, and scaled ML systems across energy, industrial, and semiconductor domains.
 
 I specialize in **machine learning system design and implementation at scale**. From architecture and modeling through production governance and observability, I drive strategic technology leadership that translates research into resilient, production-grade systems. I advance engineering excellence through mentorship and cross-functional leadership.
 

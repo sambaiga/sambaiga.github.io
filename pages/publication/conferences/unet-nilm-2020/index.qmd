@@ -1,0 +1,57 @@
+---
+title: "UNet-NILM: A deep neural network for multi-tasks appliances state detection and power estimation in NILM"
+date: 2020-11-18
+authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas and Bousbiat, Hafsa and Kulkarni, Shridhar"
+
+categories:
+  - nilm
+  - deep learning
+  - appliance detection
+  - energy disaggregation
+  - multi-task learning
+
+thumbnail: "/images/publications/MLABEL.svg"
+image: "/images/publications/MLABEL.svg"
+
+conference: "5th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM), BuildSys 2020, Virtual"
+
+abstract: |
+  Non-Intrusive Load Monitoring (NILM) is the task of decomposing aggregate power consumption into individual appliance-level signals. Existing deep learning approaches for NILM typically address either appliance state detection or power estimation as separate tasks, limiting their practical utility. This paper proposes UNet-NILM, a multi-task deep neural network architecture inspired by the U-Net encoder-decoder design for semantic segmentation. UNet-NILM simultaneously detects appliance ON/OFF states and estimates per-appliance active power consumption from aggregate mains readings. We evaluate the approach on the UK-DALE and REFIT datasets across five target appliances. Results show that UNet-NILM achieves state-of-the-art performance on both tasks simultaneously, demonstrating that joint optimisation of detection and estimation objectives is mutually beneficial. The proposed architecture offers a practical step toward deployable NILM systems that provide both appliance status and fine-grained energy consumption data.
+
+description: |
+  UNet-NILM proposes a multi-task U-Net inspired architecture for simultaneous appliance state detection and power estimation in non-intrusive load monitoring, achieving state-of-the-art results on UK-DALE and REFIT datasets.
+
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/UNetNILM.pdf"
+      icon: file-earmark-pdf
+    - name: Link
+      url: "https://dl.acm.org/doi/10.1145/3427773.3427866"
+      icon: journal-text
+    - name: Code
+      url: "https://github.com/sambaiga/UNETNiLM"
+      icon: github
+  reference: |
+    <strong>Anthony Faustine</strong>, Pereira, Lucas, Bousbiat, Hafsa and Kulkarni, Shridhar,
+    "UNet-NILM: A deep neural network for multi-tasks appliances state detection and power
+    estimation in NILM," <em>Proceedings of the 5th International Workshop on Non-Intrusive
+    Appliance Load Monitoring, BuildSys 2020, Virtual Event,</em> 2020, doi:
+    <a href="https://dl.acm.org/doi/10.1145/3427773.3427866"><code>10.1145/3427773.3427866</code></a>
+
+status: Published
+featured: false
+doi: "10.1145/3427773.3427866"
+
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+  - name: Pereira, Lucas
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+  - name: Bousbiat, Hafsa
+    affiliation: Graz University of Technology, Graz, Austria
+  - name: Kulkarni, Shridhar
+    affiliation: Graz University of Technology, Graz, Austria
+---

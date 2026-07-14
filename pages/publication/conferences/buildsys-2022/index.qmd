@@ -1,0 +1,47 @@
+---
+title: "Appliance recognition with combined single- and multi-label approaches"
+date: 2022-11-09
+authors: "Manca, Matteo and <strong>Anthony Faustine</strong> and Pereira, Lucas"
+
+categories:
+  - nilm
+  - multi-label learning
+  - appliance recognition
+  - energy disaggregation
+
+thumbnail: "/images/publications/mlabelvi.svg"
+image: "/images/publications/mlabelvi.svg"
+
+conference: "7th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM@BuildSys 2022), Boston, MA, USA"
+
+abstract: |
+  Appliance recognition in non-intrusive load monitoring (NILM) is typically framed as either a single-label or multi-label classification problem. Single-label approaches predict one appliance per activation event, while multi-label approaches predict the set of simultaneously active appliances. Both paradigms have complementary strengths: single-label methods excel at isolating dominant loads with clear event signatures, whereas multi-label methods handle concurrent appliance operation. This paper proposes a combined approach that leverages both paradigms within a unified recognition pipeline. We train a single-label classifier for isolated events and a multi-label classifier for overlapping load periods, then fuse their outputs via a learned gating mechanism. Evaluation on the UK-DALE dataset shows that the combined approach outperforms either method in isolation, achieving higher F1 scores across all evaluated appliances.
+
+description: |
+  This paper proposes a combined single-label and multi-label appliance recognition approach for NILM that outperforms individual paradigms by fusing their complementary strengths via a learned gating mechanism.
+
+pub-info:
+  links:
+    - name: Link
+      url: "https://dl.acm.org/doi/10.1145/3563357.3566169"
+      icon: journal-text
+  reference: |
+    Manca, Matteo, <strong>Anthony Faustine</strong> and Pereira, Lucas, "Appliance recognition
+    with combined single- and multi-label approaches," <em>Proceedings of the 7th International
+    Workshop on Non-Intrusive Appliance Load Monitoring (NILM@BuildSys), Boston, MA, USA,</em>
+    2022, doi: <a href="https://dl.acm.org/doi/10.1145/3563357.3566169"><code>10.1145/3563357.3566169</code></a>
+
+status: Published
+featured: false
+doi: "10.1145/3563357.3566169"
+
+author:
+  - name: Manca, Matteo
+    affiliation: University of Cagliari, Cagliari, Italy
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Pereira, Lucas
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+---

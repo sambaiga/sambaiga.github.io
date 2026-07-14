@@ -1,0 +1,34 @@
+---
+title: "On metrics to assess the transferability of machine learning models in non-intrusive load monitoring"
+date: 2019-12-13
+authors: "Klemenjak, Christoph and <strong>Anthony Faustine</strong> and Makonin, Stephen and Elmenreich, Wilfried"
+
+journal:
+  title: "Energy Informatics"
+  volume: 2
+  number: 1
+  pages: "1-15"
+  year: 2019
+categories: ["nilm", "machine learning", "transfer learning", "load monitoring"]
+status: Published
+
+description: |
+  This paper examines evaluation metrics for assessing the transferability of machine learning models across different datasets in non-intrusive load monitoring, providing a systematic framework for benchmarking cross-dataset generalisation.
+
+abstract: |
+  Non-intrusive load monitoring (NILM) research has produced a rich body of machine learning approaches for appliance state detection and energy disaggregation. However, the community lacks standardised metrics for evaluating how well models trained on one dataset transfer to another. This paper addresses this gap by analysing existing evaluation metrics, identifying their limitations for cross-dataset transfer, and proposing a framework of transferability metrics grounded in information-theoretic and statistical measures. We demonstrate the framework on multiple residential energy datasets and show how commonly used metrics such as F1 score can be misleading when assessing model transferability. Our findings provide guidance for researchers on selecting appropriate metrics when reporting NILM model performance in multi-dataset settings.
+
+pub-info:
+  links:
+    - name: Link
+      url: "https://doi.org/10.1186/s42162-019-0088-3"
+      icon: journal-text
+    - name: arXiv
+      url: "https://arxiv.org/abs/1912.06200"
+      icon: journal-text
+
+thumbnail: "/images/publications/nilmsurvey2017.svg"
+image: "/images/publications/nilmsurvey2017.svg"
+featured: false
+doi: "10.1186/s42162-019-0088-3"
+---

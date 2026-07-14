@@ -1,0 +1,31 @@
+---
+title: "Open source cellular technologies for cost effective cellular connectivity in rural areas"
+date: 2016-07-01
+authors: "<strong>Anthony Faustine</strong> and Gabriel, M. and Shao, B."
+
+journal:
+  title: "International Journal of Computer Applications (IJCA)"
+  volume: 145
+  number: 11
+  pages: "1-6"
+  year: 2016
+categories: ["cellular networks", "rural connectivity", "open source", "telecommunications"]
+status: Published
+
+description: |
+  This paper investigates open source cellular technologies as a cost-effective solution for providing cellular connectivity in rural and underserved areas, evaluating platforms, deployment strategies, and economic viability.
+
+abstract: |
+  Rural communities in developing regions continue to face significant barriers to cellular connectivity due to the high capital costs of proprietary telecommunications infrastructure. This paper investigates the feasibility of open source cellular technologies — including OpenBTS, OpenBSC, and Osmocom — as low-cost alternatives for rural area coverage. We evaluate deployment architectures, spectrum requirements, hardware costs, and community network governance models. A comparative analysis of open source and proprietary solutions is conducted with respect to total cost of ownership, maintenance complexity, and quality of service. Our findings suggest that open source cellular platforms can reduce infrastructure costs by up to 70% compared to conventional approaches while delivering acceptable service quality for voice and basic data services in rural deployments.
+
+pub-info:
+  links:
+    - name: Link
+      url: "https://www.ijcaonline.org/archives/volume145/number11/"
+      icon: journal-text
+
+thumbnail: "/images/publications/mobsensing.svg"
+image: "/images/publications/mobsensing.svg"
+featured: false
+doi: ""
+---

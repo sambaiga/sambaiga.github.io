@@ -1,0 +1,50 @@
+---
+title: "Applying symmetrical component transform for industrial appliance classification in non-intrusive load monitoring"
+date: 2023-06-04
+authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas"
+
+categories:
+  - nilm
+  - industrial
+  - signal processing
+  - appliance classification
+  - symmetrical components
+
+thumbnail: "/images/publications/IndustrialNILM.svg"
+image: "/images/publications/IndustrialNILM.svg"
+
+conference: "IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023), Rhodes Island, Greece"
+
+abstract: |
+  Industrial non-intrusive load monitoring (NILM) presents unique challenges compared to residential settings, including complex three-phase power systems, diverse load types, and high measurement noise. This paper proposes applying the symmetrical component transform (SCT) — a classical power systems technique — as a feature extraction step for industrial appliance classification in NILM. The SCT decomposes three-phase current and voltage signals into positive, negative, and zero sequence components, which encode distinct physical properties of each load type. We integrate SCT-derived features with a convolutional neural network classifier and evaluate the approach on the LILACD industrial dataset. Experimental results demonstrate that SCT features significantly improve classification accuracy over raw signal approaches, particularly for distinguishing motor-driven loads and non-linear power electronics. Our work bridges classical power engineering knowledge with modern deep learning for more effective industrial NILM.
+
+description: |
+  This paper applies the symmetrical component transform as a feature extraction method for industrial appliance classification in NILM, demonstrating improved accuracy over raw signal approaches on the LILACD industrial dataset.
+
+pub-info:
+  links:
+    - name: PDF
+      url: "../../files/papers/IndustrialNILM.pdf"
+      icon: file-earmark-pdf
+    - name: Link
+      url: "https://doi.org/10.1109/ICASSP49357.2023.10094613"
+      icon: journal-text
+  reference: |
+    <strong>Anthony Faustine</strong> and Pereira, Lucas, "Applying symmetrical component
+    transform for industrial appliance classification in non-intrusive load monitoring,"
+    <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP),
+    Rhodes Island, Greece,</em> 2023, doi:
+    <a href="https://doi.org/10.1109/ICASSP49357.2023.10094613"><code>10.1109/ICASSP49357.2023.10094613</code></a>
+
+status: Published
+featured: false
+doi: "10.1109/ICASSP49357.2023.10094613"
+
+author:
+  - name: Anthony Faustine
+    orcid: 0000-0002-7838-533X
+    affiliation: Center for Intelligent Power (CIP), Eaton Corporation, Dublin, Ireland
+  - name: Pereira, Lucas
+    orcid: 0000-0002-9110-8775
+    affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+---

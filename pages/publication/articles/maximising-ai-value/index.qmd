@@ -1,0 +1,28 @@
+---
+title: "Maximising AI Value: Strategic Approaches and Practical Frameworks for Organisational Success"
+date: 2024-03-01
+authors: "<strong>Anthony Faustine</strong>"
+
+journal:
+  title: "Arrow@TU Dublin"
+  year: 2024
+categories: ["artificial intelligence", "strategy", "organisations", "AI adoption", "frameworks"]
+status: Published
+
+description: |
+  This paper presents strategic approaches and practical frameworks to help organisations maximise the business value of AI investments, addressing common pitfalls in AI adoption and providing actionable guidance for AI programme design.
+
+abstract: |
+  Artificial intelligence adoption has accelerated across industries, yet many organisations struggle to translate AI investments into sustained business value. This paper identifies the strategic and organisational factors that differentiate high-value AI implementations from those that underdeliver. Drawing on practitioner frameworks and case analysis, we propose a multi-layer model for AI value creation encompassing data readiness, model governance, human-AI collaboration design, and executive alignment. We examine common failure modes — including misaligned incentives, poor problem scoping, and inadequate change management — and provide practical prescriptions for each. The resulting framework is designed to guide AI practitioners, product owners, and senior leaders in structuring AI programmes that deliver measurable organisational impact.
+
+pub-info:
+  links:
+    - name: Link
+      url: "https://arrow.tudublin.ie/"
+      icon: journal-text
+
+thumbnail: "/images/publications/strategicai.svg"
+image: "/images/publications/strategicai.svg"
+featured: false
+doi: ""
+---
