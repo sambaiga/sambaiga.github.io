@@ -369,6 +369,71 @@ Organisations that skip this step do not fail because of poor execution; they fa
 
 An honest diagnosis may sound simple, but it is challenging. This step requires a clear assessment of your starting point: data maturity, technical infrastructure, organisational skills, and regulatory environment. Begin from your actual situation, not where you wish you were [@Kerr2022]. Overestimating data maturity is a primary cause of AI pilot failure. Organisations often assume their data is cleaner, more complete, and better governed than it is. This leads to a “Data Poverty” problem that emerges only after budgets are committed and timelines are set. The gap is rarely visible to senior leaders, who see only aggregated dashboards and summaries, not the raw pipelines, inconsistent schemas, and governance gaps that determine AI’s true potential. This overconfidence stems from structural distance, not carelessness.
 
+::: {#fig-data-maturity}
+
+```{=html}
+<style>
+.dg-mat { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-mat-inner { min-width:460px; }
+.dg-mat-hd { display:grid; grid-template-columns:1fr 130px 130px; gap:8px; padding:0 0 8px; border-bottom:2px solid #E9ECEF; margin-bottom:2px; }
+.dg-mat-hd-blank { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9CA3AF; display:flex; align-items:center; }
+.dg-mat-hd-col { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:4px 10px; border-radius:4px; color:#fff; display:flex; align-items:center; justify-content:center; gap:5px; }
+.dg-mat-hd-col.perceived { background:#1E293B; }
+.dg-mat-hd-col.reality { background:#DC2626; }
+.dg-mat-row { display:grid; grid-template-columns:1fr 130px 130px; gap:8px; align-items:center; padding:9px 0 8px; border-bottom:1px solid #F3F4F6; }
+.dg-mat-row-label { font-size:11px; font-weight:600; color:#1E293B; display:flex; align-items:center; gap:7px; }
+.dg-mat-row-label i { font-size:14px; color:#6B7280; }
+.dg-mat-dots { display:flex; gap:4px; justify-content:center; }
+.dg-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.dg-dot.on-dk { background:#1E293B; }
+.dg-dot.off-dk { background:#E9ECEF; }
+.dg-dot.on-rd { background:#DC2626; }
+.dg-dot.off-rd { background:#FEE2E2; }
+.dg-mat-gap { margin-top:14px; background:rgba(220,38,38,.06); border:1px dashed #DC2626; border-radius:7px; padding:9px 12px; display:flex; align-items:center; gap:8px; }
+.dg-mat-gap i { color:#DC2626; font-size:14px; flex-shrink:0; }
+.dg-mat-gap-text { font-size:10px; color:#DC2626; font-weight:600; }
+.dg-mat-gap-sub { font-size:9.5px; color:#6B7280; margin-left:2px; }
+</style>
+<div class="dg-mat" role="img" aria-label="Data maturity scorecard comparing what leaders perceive versus what AI deployment exposes. Perceived ratings across data quality, governance, pipelines, and integration are all high (4 to 5 out of 5). Reality ratings are much lower: data quality 2 of 5, governance 1 of 5, pipelines 2 of 5, integration 2 of 5. The gap between perception and reality is where AI pilots fail.">
+  <div class="dg-mat-inner">
+    <div class="dg-mat-hd">
+      <span class="dg-mat-hd-blank">Dimension</span>
+      <span class="dg-mat-hd-col perceived"><i class="bi bi-eye" aria-hidden="true"></i> What Leaders See</span>
+      <span class="dg-mat-hd-col reality"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> What AI Exposes</span>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-database" aria-hidden="true"></i>Data Quality</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-shield-check" aria-hidden="true"></i>Governance</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot off-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-diagram-2" aria-hidden="true"></i>Pipelines</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-arrow-left-right" aria-hidden="true"></i>Integration</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot off-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-gap">
+      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+      <span class="dg-mat-gap-text">The Maturity Gap</span>
+      <span class="dg-mat-gap-sub">— the distance between the executive dashboard and the actual data pipelines is where AI pilots fail</span>
+    </div>
+  </div>
+</div>
+```
+
+The data maturity gap: aggregated dashboards give leaders a high-confidence picture that the underlying infrastructure rarely supports.
+
+:::
+
 This matters beyond data quality alone. The current-state assessment must treat data as a strategic dimension in its own right, not just an input to clean up, but a capability to map: what data exists, how it is governed, how it can be integrated, and what value it can generate [@Phaal2004; @Komssi2013]. In Helmer’s [@Helmer2016] framework, proprietary data is a Cornered Resource: an asset competitors cannot easily buy or replicate. Honest diagnosis of data capability is therefore not an IT assessment. It is a strategic one: are you building, protecting, and governing the one asset that compounds into a durable position, or treating it as infrastructure to be cleaned up later? An AI strategy built on an incomplete picture of data capabilities will hit walls that were never mapped and forfeit the cornered-resource position it did not know it was squandering.
 
 A precise AI-native example is Google’s deployment of a deep learning system for diabetic retinopathy screening in Thai clinics [@Beede2020]. In laboratory conditions, the model matched or exceeded specialist ophthalmologists. The organisation’s current-state assessment was built on that result. In practice, nurses in the clinics could not consistently produce images of the quality the model required. Connectivity was too slow to run the software reliably. The system had not been designed into the clinical workflow. The gap between laboratory performance and operational reality was not a technology failure. It was a diagnosis failure: the current-state assessment had been built on controlled test data, not on the actual conditions of deployment. The crux, reliable performance at the point of care, had never been honestly assessed. It surfaced only after the system was live.
@@ -384,6 +449,64 @@ But here is what most strategy processes miss: a guiding policy is not just a li
 A guiding policy is not just one decision. It covers short-term investments, medium-term capability bets, and long-term positions on markets and partnerships. What makes it strategic is the filter it applies at each stage: does this choice move you closer to the crux, or does it distract from it? Without this test, every initiative seems equally important. With it, you have a clear way to make tough decisions and a reason to say no.
 
 Rumelt gives the clearest example of this in Good Strategy/Bad Strategy [@Rumelt2011] through Steve Jobs at Apple. When Jobs returned in 1997, Apple had dozens of products, computers, printers, peripherals, and servers, each with its own team and roadmap. His diagnosis: the company was spreading itself into irrelevance. His guiding policy was not a new list of priorities. It was a decision to cut everything that did not fit a single matrix: consumer or professional, desktop or portable. Four products. Everything else is gone. That choice made every subsequent decision simpler, not because it reduced complexity, but because it created a basis for saying no.
+
+::: {#fig-policy-filter}
+
+```{=html}
+<style>
+.dg-filt { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-filt-flow { display:grid; grid-template-columns:1fr 64px 1fr; align-items:center; gap:0; min-width:500px; }
+.dg-filt-in { display:flex; flex-direction:column; gap:4px; align-items:flex-end; }
+.dg-filt-in-label { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9CA3AF; margin-bottom:4px; text-align:right; }
+.dg-filt-tag { display:inline-flex; align-items:center; font-size:9.5px; font-weight:600; padding:3px 9px; border-radius:99px; background:#F3F4F6; border:1px solid #E5E7EB; color:#6B7280; white-space:nowrap; }
+.dg-filt-tags { display:flex; flex-wrap:wrap; gap:5px; justify-content:flex-end; }
+.dg-filt-center { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.dg-filt-arr { font-size:16px; color:#CED4DA; text-align:center; }
+.dg-filt-gate { background:#8B5CF6; border-radius:8px; padding:12px 8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 2px 8px rgba(139,92,246,.25); width:52px; }
+.dg-filt-gate i { font-size:20px; color:#fff; }
+.dg-filt-gate-label { font-size:7.5px; font-weight:700; color:#fff; letter-spacing:.08em; text-transform:uppercase; text-align:center; line-height:1.3; }
+.dg-filt-gate-q { font-size:8px; color:rgba(255,255,255,.8); text-align:center; line-height:1.3; margin-top:2px; }
+.dg-filt-out { display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
+.dg-filt-out-label { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9CA3AF; margin-bottom:4px; }
+.dg-filt-out-tag { display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:700; padding:5px 11px; border-radius:99px; background:rgba(16,185,129,.1); border:1.5px solid #10B981; color:#10B981; white-space:nowrap; }
+.dg-filt-out-tag i { font-size:11px; }
+</style>
+<div class="dg-filt" role="img" aria-label="Guiding policy as filter. Many AI opportunities enter from the left: GenAI, Vision, HR AI, Analytics, Chatbots, Forecasting, LLMs, Computer Vision. They pass through a purple filter gate asking: does this solve the diagnosed crux? Only crux-aligned initiatives emerge on the right: demand forecasting and supply chain AI.">
+  <div class="dg-filt-flow">
+    <div class="dg-filt-in">
+      <span class="dg-filt-in-label">All AI Opportunities</span>
+      <div class="dg-filt-tags">
+        <span class="dg-filt-tag">GenAI</span>
+        <span class="dg-filt-tag">Vision</span>
+        <span class="dg-filt-tag">HR AI</span>
+        <span class="dg-filt-tag">Analytics</span>
+        <span class="dg-filt-tag">Chatbots</span>
+        <span class="dg-filt-tag">Forecasting</span>
+        <span class="dg-filt-tag">LLMs</span>
+        <span class="dg-filt-tag">NLP</span>
+      </div>
+    </div>
+    <div class="dg-filt-center">
+      <div class="dg-filt-arr" aria-hidden="true">→</div>
+      <div class="dg-filt-gate" role="img" aria-label="Guiding policy filter gate: Does this solve the diagnosed crux?">
+        <i class="bi bi-funnel-fill" aria-hidden="true"></i>
+        <span class="dg-filt-gate-label">Guiding Policy</span>
+        <span class="dg-filt-gate-q">Solves the crux?</span>
+      </div>
+      <div class="dg-filt-arr" aria-hidden="true">→</div>
+    </div>
+    <div class="dg-filt-out">
+      <span class="dg-filt-out-label">Crux-Aligned Only</span>
+      <span class="dg-filt-out-tag"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Demand Forecasting AI</span>
+      <span class="dg-filt-out-tag"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Supply Chain Intelligence</span>
+    </div>
+  </div>
+</div>
+```
+
+The guiding policy works as a filter: many AI opportunities enter, only those that address the diagnosed crux pass through. Everything else is deferred or dropped.
+
+:::
 
 Without a clear filter, the roadmap fills with what seems reasonable rather than what the strategy requires. @Komssi2013 highlights a common failure: teams create detailed quarterly plans but do not explain how these choices support a clear position. When the guiding policy is missing, the roadmap becomes a schedule with ambitious goals but no strategic direction. As capabilities advance faster than most planning cycles, what @Mollick2024 calls the “jagged frontier,” a fixed guiding policy quickly becomes outdated [@Suleyman2023]. The discipline is not only to build a filter, but to include explicit review points in the roadmap: moments to test the guiding policy against current technology capabilities. In practice, this involves scenario analysis to map how capability shifts affect the policy, sensitivity testing of key assumptions, and formal evaluation of alternative strategies as new information emerges. This approach helps avoid the Counter-Positioning trap described in Part 1 [@Helmer2016], where incumbents cannot adopt superior new capabilities without undermining prior investments. Review points are not just good planning; they are essential for defending against unexpected shifts in the capability frontier.
 

@@ -323,6 +323,81 @@ It is important to understand the difference between the two ways of using AI. T
 
 Klarna’s AI assistant [@Klarna2024] shows this difference well. Instead of just speeding up its customer service team, Klarna replaced about 700 agents with an AI system that handled two-thirds of all chats in its first month. This was not just improving a task—it was a whole new way of working, with a new cost structure and a new way to capture value. The business model changed, and this shift came from co-innovating with partners and the AI itself, not just following a roadmap.
 
+::: {#fig-aug-vs-autonomous}
+
+```{=html}
+<style>
+.dg-aug { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-aug-grid { display:grid; grid-template-columns:1fr 36px 1fr; align-items:start; gap:0; min-width:500px; }
+.dg-aug-card { background:#fff; border:1px solid #E9ECEF; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.dg-aug-card-hd { padding:10px 12px 9px; display:flex; align-items:center; gap:7px; }
+.dg-aug-card-hd i { font-size:15px; color:#fff; }
+.dg-aug-card-hd-text { font-size:11px; font-weight:700; color:#fff; }
+.dg-aug-card.augment .dg-aug-card-hd { background:#1E293B; }
+.dg-aug-card.autonomous .dg-aug-card-hd { background:#8B5CF6; }
+.dg-aug-card-body { padding:12px 12px 14px; display:flex; flex-direction:column; gap:8px; }
+.dg-aug-item { display:flex; gap:7px; align-items:flex-start; }
+.dg-aug-item i { font-size:13px; margin-top:1px; flex-shrink:0; }
+.dg-aug-card.augment .dg-aug-item i { color:#1E293B; }
+.dg-aug-card.autonomous .dg-aug-item i { color:#8B5CF6; }
+.dg-aug-item-text { font-size:10px; color:#374151; line-height:1.4; }
+.dg-aug-item-label { font-size:9.5px; font-weight:700; color:#1E293B; display:block; margin-bottom:1px; }
+.dg-aug-example { margin-top:6px; padding-top:8px; border-top:1px solid #F3F4F6; font-size:9px; color:#6B7280; font-style:italic; line-height:1.4; }
+.dg-aug-vs { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#ADB5BD; padding-top:48px; }
+</style>
+<div class="dg-aug" role="img" aria-label="Two AI deployment modes compared. Task augmentation: layers AI onto existing processes, keeps the same business model and cost structure, produces efficiency gains that are easily replicated. Example: AI drafting contracts faster, better forecasts. Autonomous systems: replaces entire processes with AI-native operations, restructures costs, creates new revenue models and structural competitive advantage. Example: Klarna replaced 700 agents with an AI system handling two-thirds of all chats.">
+  <div class="dg-aug-grid">
+    <div class="dg-aug-card augment">
+      <div class="dg-aug-card-hd">
+        <i class="bi bi-layers" aria-hidden="true"></i>
+        <span class="dg-aug-card-hd-text">Task Augmentation</span>
+      </div>
+      <div class="dg-aug-card-body">
+        <div class="dg-aug-item">
+          <i class="bi bi-arrow-up-circle" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">What changes</span>Speed and accuracy of existing tasks</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-currency-dollar" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Business model</span>Same structure, incremental cost reduction</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-shield" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Competitive position</span>Efficiency gains, easily replicated by rivals</div>
+        </div>
+        <div class="dg-aug-example">e.g. AI drafts contracts faster · demand forecasts improve accuracy</div>
+      </div>
+    </div>
+    <div class="dg-aug-vs" aria-hidden="true">VS</div>
+    <div class="dg-aug-card autonomous">
+      <div class="dg-aug-card-hd">
+        <i class="bi bi-cpu" aria-hidden="true"></i>
+        <span class="dg-aug-card-hd-text">Autonomous Systems</span>
+      </div>
+      <div class="dg-aug-card-body">
+        <div class="dg-aug-item">
+          <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">What changes</span>Entire process replaced by AI-native system</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Business model</span>Restructured costs, new revenue model</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-trophy" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Competitive position</span>Structural advantage, hard to replicate</div>
+        </div>
+        <div class="dg-aug-example">e.g. Klarna: 700 agents replaced · AI handled ⅔ of all chats in month one</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Task augmentation and autonomous systems lead to fundamentally different business models, cost structures, and competitive positions — choosing between them is a strategic decision, not a technical one.
+
+:::
+
 Key activities here include developing an AI strategy aligned with co-innovation goals, identifying opportunities for both task improvement and new autonomous systems, forming partnerships, and testing AI-powered products in small-scale settings before a full launch. Working with external partners is especially important now, since most organisations lack the full range of skills needed for real AI co-innovation. Those willing to co-design with others rather than work alone are the ones who truly change their business models.
 
 At this stage, actions should be driven by clear questions, just like in Part 2. Every experiment should test a specific idea about a real problem. Without this focus, co-innovation can lead to lots of impressive technology but no clear value for customers.
@@ -354,6 +429,78 @@ Valuation is the final piece. In AI, common KPIs like model accuracy or deployme
 The four elements need a base of technology, organisation, and leadership skills to work. These are not extra steps; they are the conditions needed for the framework to succeed.
 
 Technological capabilities include data infrastructure, AI platforms, cloud computing, and analytics. Organisational capabilities mean having a data-driven culture, skilled AI staff, and good governance. Together, these create an environment where AI can deliver real value, not just technical results.
+
+::: {#fig-capability-pillars}
+
+```{=html}
+<style>
+.dg-cap { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px 0; overflow-x:auto; }
+.dg-cap-inner { min-width:460px; display:flex; flex-direction:column; gap:0; }
+.dg-cap-pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.dg-cap-pillar { background:#fff; border:1px solid #E9ECEF; border-radius:8px 8px 0 0; border-bottom:none; padding:14px 12px 16px; display:flex; flex-direction:column; gap:8px; position:relative; }
+.dg-cap-pillar::before { content:''; position:absolute; top:0;left:0;width:100%;height:4px;border-radius:8px 8px 0 0; }
+.dg-cap-pillar.tech::before { background:#1E293B; }
+.dg-cap-pillar.org::before { background:#8B5CF6; }
+.dg-cap-pillar.lead::before { background:#10B981; }
+.dg-cap-icon { width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px; }
+.dg-cap-pillar.tech .dg-cap-icon { background:rgba(30,41,59,.08);color:#1E293B; }
+.dg-cap-pillar.org .dg-cap-icon { background:rgba(139,92,246,.1);color:#8B5CF6; }
+.dg-cap-pillar.lead .dg-cap-icon { background:rgba(16,185,129,.1);color:#10B981; }
+.dg-cap-title { font-size:11px;font-weight:700;color:#1E293B;line-height:1.3; }
+.dg-cap-items { display:flex;flex-direction:column;gap:5px; }
+.dg-cap-item { font-size:9.5px;color:#6B7280;display:flex;align-items:flex-start;gap:5px;line-height:1.35; }
+.dg-cap-item::before { content:'·';font-weight:700;flex-shrink:0; }
+.dg-cap-foundation { background:#1E293B;border-radius:0 0 8px 8px;padding:10px 14px;display:flex;align-items:center;gap:8px; }
+.dg-cap-foundation i { font-size:14px;color:rgba(255,255,255,.7);flex-shrink:0; }
+.dg-cap-foundation-text { font-size:10px;font-weight:700;color:#fff;letter-spacing:.04em; }
+.dg-cap-foundation-sub { font-size:9.5px;color:rgba(255,255,255,.6);margin-left:4px; }
+</style>
+<div class="dg-cap" role="img" aria-label="Three capability pillars required for the AI Business Model Innovation Framework. Technological pillar: data infrastructure, AI and ML platforms, cloud computing, analytics tooling. Organisational pillar: data-driven culture, skilled AI teams, cross-functional alignment, governance frameworks. Leadership pillar: planned authority shifts to algorithms, AI-native decision making, risk appetite for AI bets, strategic AI literacy. All three pillars rest on a shared foundation — missing any one prevents value from flowing through the framework.">
+  <div class="dg-cap-inner">
+    <div class="dg-cap-pillars">
+      <div class="dg-cap-pillar tech">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-server"></i></div>
+        <div class="dg-cap-title">Technological</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Data infrastructure</span>
+          <span class="dg-cap-item">AI / ML platforms</span>
+          <span class="dg-cap-item">Cloud computing</span>
+          <span class="dg-cap-item">Analytics tooling</span>
+        </div>
+      </div>
+      <div class="dg-cap-pillar org">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-people"></i></div>
+        <div class="dg-cap-title">Organisational</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Data-driven culture</span>
+          <span class="dg-cap-item">Skilled AI teams</span>
+          <span class="dg-cap-item">Cross-functional alignment</span>
+          <span class="dg-cap-item">Governance frameworks</span>
+        </div>
+      </div>
+      <div class="dg-cap-pillar lead">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-person-check"></i></div>
+        <div class="dg-cap-title">Leadership</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Planned authority shifts to algorithms</span>
+          <span class="dg-cap-item">AI-native decision-making</span>
+          <span class="dg-cap-item">Risk appetite for AI bets</span>
+          <span class="dg-cap-item">Strategic AI literacy</span>
+        </div>
+      </div>
+    </div>
+    <div class="dg-cap-foundation">
+      <i class="bi bi-building" aria-hidden="true"></i>
+      <span class="dg-cap-foundation-text">Shared Foundation</span>
+      <span class="dg-cap-foundation-sub">— missing any one pillar prevents value from flowing through the framework</span>
+    </div>
+  </div>
+</div>
+```
+
+Three capability pillars — technological, organisational, and leadership — must all be in place for the framework to deliver. Technology without leadership change is the most common gap.
+
+:::
 
 Leadership skills are often overlooked but are the most important. As @Iansiti2020 explains, AI-native organisations do more than just use AI tools; they change how decisions are made, shifting authority from people to algorithms in planned ways. This is a leadership choice, not just a tech upgrade. The organisations that get the most value from AI are those where leaders understand this shift and make it happen on purpose, not by accident.
 
