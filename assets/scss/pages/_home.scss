@@ -1,0 +1,105 @@
+/*-- scss:pages/home --*/
+
+// =====================================================
+// HOME PAGE SPECIFIC STYLES (non-hero only)
+// =====================================================
+
+body.home {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color $transition-duration-base $transition-timing-ease-in-out,
+              color $transition-duration-base $transition-timing-ease-in-out;
+  
+  // Add any page-specific styles here that are NOT hero-related
+  // For example:
+  
+  .page-container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $spacer-3;
+    
+    @media (min-width: $breakpoint-md) {
+      padding: $spacer-4;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      padding: $spacer-5;
+    }
+  }
+  
+  // Other sections specific to home page
+  .home-intro {
+    padding: $spacer-5 0;
+    text-align: center;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: $spacer-4 0;
+    }
+  }
+  
+  .home-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $grid-gap;
+    margin: $spacer-5 0;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $grid-gap-sm;
+    }
+  }
+  
+  .feature-card {
+    background: var(--card-bg);
+    border: $border-width-1 solid var(--border-color);
+    border-radius: $card-border-radius;
+    padding: $card-padding;
+    transition: all $transition-duration-base $transition-timing-ease-in-out;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+      border-color: var(--primary);
+    }
+  }
+}
+
+// Theme toggle button (optional)
+.theme-toggle {
+  position: fixed;
+  top: $spacer-4;
+  right: $spacer-4;
+  z-index: $z-index-fixed;
+  background: var(--card-bg);
+  border: $border-width-1 solid var(--border-color);
+  border-radius: $border-radius-full;
+  width: $spacer-6;
+  height: $spacer-6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  box-shadow: $shadow-md;
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: $shadow-lg;
+  }
+  
+  i {
+    font-size: $font-size-lg;
+    color: var(--text-primary);
+  }
+}
+
+// Dark theme specific overrides for non-hero elements
+[data-theme="dark"] body.home {
+  .feature-card {
+    box-shadow: 0 10px 25px -5px var(--shadow-color);
+    
+    &:hover {
+      border-color: var(--primary);
+    }
+  }
+}

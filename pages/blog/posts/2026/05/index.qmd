@@ -1,0 +1,531 @@
+---
+title: "The Missing Layer: How AI Business Models Actually Capture Value"
+subtitle: "Part 3: Why the Gap Between Strategic Direction and Revenue Is Where Most AI Value Disappears"
+date: 2026-05-06
+description: "Having a coherent AI strategy is not the same as having a business model that captures the value AI creates. This post introduces the AI Business Model Innovation Framework, showing how organisations can translate strategic direction into revenue, outcomes, and durable competitive position."
+
+image: "cover.png"
+twitter-card:
+    image: "cover.png"
+open-graph:
+    image: "cover.png"
+
+title-block-banner: banner.jpg
+
+categories:
+  - AI Strategy
+  - Business Model Innovation
+  - Technology Roadmapping
+
+bibliography: references.bib
+draft: false
+execute:
+  echo: false
+---
+
+In Parts 1 and 2, we saw that while 80% of organisations run AI pilots, only 5% actually get measurable value. Those posts argued that this gap is mostly about strategy; many AI projects fail because they lack a clear focus, a guiding policy, or targeted actions. That explanation is still true, but it is not the full picture.
+
+Some organisations have followed the advice from Parts 1 and 2. They have a clear focus, a solid strategy, and well-planned pilots. Yet, they still struggle to turn these efforts into real business value. Having a strategy and roadmap is important, but it is not enough. What is missing is a strong business model.
+
+Osterwalder and Pigneur [@Osterwalder2010] say a business model is how an organisation creates, delivers, and captures value. Strategy is about direction and navigation. The business model explains how value is created, who benefits, how it is delivered, and how the organisation keeps enough value to keep going. In most tech shifts, the difference between strategy and business model is clear. With AI, though, all three parts change at once, often in ways old business models cannot handle. Without a framework for this, even a good AI strategy might not lead to revenue, a lasting advantage, or a clear reason for the investment.
+
+This post tackles that problem. The AI Business Model Innovation Framework helps turn strategy into a business model that really captures AI value. It does not replace the roadmap from Part 2, but works underneath it, filling in the gaps that a roadmap alone cannot cover.
+
+## Why AI Breaks Existing Business Models
+
+Before we look at the framework, let’s clarify what makes AI disruptive to business models, not just to strategy.
+
+The three main AI features from Part 1 are clearly evident in business models. First, organisations often find out what AI can do before they know which customer problem it solves. This leads to products that talk about themselves instead of solving real problems. Second, revenue models based on today’s AI capabilities can quickly become outdated before the product can grow. Third, AI often creates value in ways that do not match up with when revenue is earned. Traditional business models, which link product delivery directly to payment, do not fit well with these AI realities.
+
+Amazon Alexa is a good example of this problem. Technically, Alexa was impressive: top-notch voice recognition, strong platform integration, and devices in millions of homes. The AI strategy made sense, and the platform worked well. But the business model did not succeed. Most users only used Alexa for free features like timers, weather, and music. The revenue Amazon hoped for from shopping, subscriptions, and paid services never reached the needed scale. By 2022, the division was losing about ten billion dollars a year [@AmazonAlexa2022]. In 2023, Amazon restructured the team, cutting hundreds of jobs and quietly admitting the business model was not working.
+
+The key question was never really answered before Alexa launched: what real problem would voice AI solve for a customer who would pay for it? This is not just a strategy issue; it is a business model issue. Organisations that mix up the two often end up with results like Alexa.
+
+## The AI Business Model Innovation Framework
+
+The AI Business Model Innovation Framework has four parts: Data Foundation Establishment, Value-Centric Data Exploitation, Strategic AI Co-Innovation, and AI Value Realisation. The first three occur in order, while the fourth, AI Value Realisation, should be present throughout the process, not just at the end. This matters because many organisations treat value realisation as something to add after launch, but with AI, that approach fails. Value realisation needs to be built in from the beginning, right alongside the data foundation.
+
+::: {#fig-bmi-framework}
+
+```{=html}
+<style>
+.dg-bmi {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+}
+.dg-bmi-inner {
+  min-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.dg-bmi-seq {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.dg-bmi-el {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  padding: 14px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: relative;
+}
+.dg-bmi-el::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  border-radius: 8px 8px 0 0;
+}
+.dg-bmi-el.el1::before { background: #1E293B; }
+.dg-bmi-el.el2::before { background: #8B5CF6; }
+.dg-bmi-el.el3::before { background: #7C3AED; }
+.dg-bmi-el-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ADB5BD;
+}
+.dg-bmi-el-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.dg-bmi-el.el1 .dg-bmi-el-icon { background: rgba(30,41,59,0.08); color: #1E293B; }
+.dg-bmi-el.el2 .dg-bmi-el-icon { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+.dg-bmi-el.el3 .dg-bmi-el-icon { background: rgba(124,58,237,0.1); color: #7C3AED; }
+.dg-bmi-el-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: #1E293B;
+  line-height: 1.3;
+}
+.dg-bmi-el-sub {
+  font-size: 10px;
+  color: #6B7280;
+  text-align: center;
+  line-height: 1.35;
+}
+.dg-bmi-seq-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 15px;
+  padding-top: 4px;
+}
+.dg-bmi-connectors {
+  display: flex;
+  gap: 0;
+}
+.dg-bmi-connector-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.dg-bmi-connector-col .dg-connector-line {
+  width: 2px;
+  height: 16px;
+  background: #DEE2E6;
+}
+.dg-bmi-connector-gap {
+  width: 28px;
+  flex-shrink: 0;
+}
+.dg-bmi-transversal {
+  background: #fff;
+  border: 1.5px solid #10B981;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(16,185,129,0.12);
+}
+.dg-bmi-tv-header {
+  background: #10B981;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dg-bmi-tv-header i { font-size: 16px; color: #fff; }
+.dg-bmi-tv-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.dg-bmi-tv-badge {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dg-bmi-tv-components {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+.dg-bmi-tv-comp {
+  padding: 12px 12px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.dg-bmi-tv-comp + .dg-bmi-tv-comp {
+  border-left: 1px solid #E9ECEF;
+}
+.dg-bmi-tv-comp i {
+  font-size: 16px;
+  color: #10B981;
+}
+.dg-bmi-tv-comp-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1E293B;
+}
+.dg-bmi-tv-comp-q {
+  font-size: 9.5px;
+  color: #6B7280;
+  line-height: 1.3;
+  font-style: italic;
+}
+</style>
+<div class="dg-bmi" role="img" aria-label="AI Business Model Innovation Framework. Three sequential elements: Element 1, Data Foundation — proprietary data as a cornered resource. Element 2, Value-Centric Data Exploitation — insights anchored to business goals. Element 3, Strategic AI Co-Innovation — redesigning the business model. Below all three, running transversally, is AI Value Realisation with three components: Value Architecture (who is this for and what does it solve), Monetisation (how is value captured), and Valuation (are we tracking outcomes or activity).">
+  <div class="dg-bmi-inner">
+    <div class="dg-bmi-seq">
+      <div class="dg-bmi-el el1">
+        <span class="dg-bmi-el-num">Element 01</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-database"></i>
+        </div>
+        <div class="dg-bmi-el-title">Data Foundation</div>
+        <div class="dg-bmi-el-sub">Proprietary data as a cornered resource</div>
+      </div>
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="dg-bmi-el el2">
+        <span class="dg-bmi-el-num">Element 02</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-graph-up-arrow"></i>
+        </div>
+        <div class="dg-bmi-el-title">Value-Centric Data Exploitation</div>
+        <div class="dg-bmi-el-sub">Insights anchored to business goals</div>
+      </div>
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="dg-bmi-el el3">
+        <span class="dg-bmi-el-num">Element 03</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-people"></i>
+        </div>
+        <div class="dg-bmi-el-title">Strategic AI Co-Innovation</div>
+        <div class="dg-bmi-el-sub">Redesigning the business model</div>
+      </div>
+    </div>
+    <div class="dg-bmi-connectors" aria-hidden="true">
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+    </div>
+    <div class="dg-bmi-transversal">
+      <div class="dg-bmi-tv-header">
+        <i class="bi bi-cash-coin" aria-hidden="true"></i>
+        <span class="dg-bmi-tv-title">AI Value Realisation — Element 04</span>
+        <span class="dg-bmi-tv-badge">
+          <i class="bi bi-arrows-expand" aria-hidden="true"></i> Transversal
+        </span>
+      </div>
+      <div class="dg-bmi-tv-components">
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Value Architecture</div>
+          <div class="dg-bmi-tv-comp-q">Who is this for, and what specifically does it solve?</div>
+        </div>
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-cash-coin" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Monetisation</div>
+          <div class="dg-bmi-tv-comp-q">How does the organisation capture value, and when is that decided?</div>
+        </div>
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Valuation</div>
+          <div class="dg-bmi-tv-comp-q">Are we tracking outcomes or counting activity?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+The AI Business Model Innovation Framework: three sequential elements flow from data foundation through to co-innovation, while AI Value Realisation runs transversally — present at every stage, not just at the end.
+
+:::
+
+@fig-bmi-framework shows how the four elements connect. The rest of this section explains each one in detail.
+
+### Element 1: Data Foundation Establishment
+
+The data foundation is the starting point for everything else. In terms of planning, it aligns with Step 2 in Part 2: honestly assessing the organisation’s data maturity, infrastructure, and governance.
+
+From a business model perspective, the data foundation is more than just a technical need. In Helmer’s [@Helmer2016] framework, proprietary data is a Cornered Resource, something competitors cannot easily get. This is the stage when that resource is created or lost. If organisations treat data as something to fix later, they not only build up technical debt—they also lose a long-term advantage. Managing data well, connecting it across systems, and aligning it with business goals does more than prepare for AI. It creates a position that is hard for others to copy.
+
+At this stage, the main tasks are updating data strategy and governance, finding the right data sources, building data pipelines, and running regular quality checks. @Deloitte2025 points out that overestimating data maturity is the top reason AI pilots fail. Many organisations think their data is better than it is, and only realise the problem after spending money and setting deadlines. Being honest here prevents that. Investing in the data foundation is not just a cost; it is the key asset for the whole framework.
+
+### Element 2: Value-Centric Data Exploitation
+
+Once the data foundation is in place, the next step is to derive useful insights from the data and connect them to business goals. This is called value-centric data exploitation. It is not just about running technical queries—it means every analysis is tied to a clear business goal, not just exploring data for its own sake.
+
+@opresnik2015value calls this the point at which data shifts from being just an asset to a tool. This matters because data that does not answer a business question is just sitting there. Insights from value-centric exploitation serve as the basis for building AI models and creating new products or services.
+
+The main activities here align with the guiding policy in Part 2. At this stage, developing or updating your AI strategy means ensuring your analysis aligns with the main challenge identified earlier. Improving AI governance, transforming data, extracting knowledge, and testing new ideas all help turn strategy into a business model.
+
+::: {.callout-note appearance=“simple”}
+For example, a logistics company facing unpredictable last-mile deliveries does not analyse all its data. Instead, it focuses on route, weather, and demand data to support dynamic scheduling. Every insight is checked by asking: does this help solve the main problem? This focus is what makes value-centric exploitation different from just exploring data with a budget.
+:::
+
+The result of this step is not just a tidy dataset. It is a set of proven insights that support a value proposition, along with a prototype to see whether customers would actually pay for it.
+
+### Element 3: Strategic AI Co-Innovation
+
+The third element is where insights turn into products and the business model gets redesigned. This step is not just about improving current operations; it is about creating AI-powered offerings that can change the way business is done.
+
+It is important to understand the difference between the two ways of using AI. Task augmentation means using AI to improve current processes, such as speeding up paperwork or improving forecasts. Autonomous systems use AI to create brand new products or services. Both are valid, but each leads to very different business models, revenue streams, costs, and competition.
+
+Klarna’s AI assistant [@Klarna2024] shows this difference well. Instead of just speeding up its customer service team, Klarna replaced about 700 agents with an AI system that handled two-thirds of all chats in its first month. This was not just improving a task—it was a whole new way of working, with a new cost structure and a new way to capture value. The business model changed, and this shift came from co-innovating with partners and the AI itself, not just following a roadmap.
+
+::: {#fig-aug-vs-autonomous}
+
+```{=html}
+<style>
+.dg-aug { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-aug-grid { display:grid; grid-template-columns:1fr 36px 1fr; align-items:start; gap:0; min-width:500px; }
+.dg-aug-card { background:#fff; border:1px solid #E9ECEF; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.dg-aug-card-hd { padding:10px 12px 9px; display:flex; align-items:center; gap:7px; }
+.dg-aug-card-hd i { font-size:15px; color:#fff; }
+.dg-aug-card-hd-text { font-size:11px; font-weight:700; color:#fff; }
+.dg-aug-card.augment .dg-aug-card-hd { background:#1E293B; }
+.dg-aug-card.autonomous .dg-aug-card-hd { background:#8B5CF6; }
+.dg-aug-card-body { padding:12px 12px 14px; display:flex; flex-direction:column; gap:8px; }
+.dg-aug-item { display:flex; gap:7px; align-items:flex-start; }
+.dg-aug-item i { font-size:13px; margin-top:1px; flex-shrink:0; }
+.dg-aug-card.augment .dg-aug-item i { color:#1E293B; }
+.dg-aug-card.autonomous .dg-aug-item i { color:#8B5CF6; }
+.dg-aug-item-text { font-size:10px; color:#374151; line-height:1.4; }
+.dg-aug-item-label { font-size:9.5px; font-weight:700; color:#1E293B; display:block; margin-bottom:1px; }
+.dg-aug-example { margin-top:6px; padding-top:8px; border-top:1px solid #F3F4F6; font-size:9px; color:#6B7280; font-style:italic; line-height:1.4; }
+.dg-aug-vs { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#ADB5BD; padding-top:48px; }
+</style>
+<div class="dg-aug" role="img" aria-label="Two AI deployment modes compared. Task augmentation: layers AI onto existing processes, keeps the same business model and cost structure, produces efficiency gains that are easily replicated. Example: AI drafting contracts faster, better forecasts. Autonomous systems: replaces entire processes with AI-native operations, restructures costs, creates new revenue models and structural competitive advantage. Example: Klarna replaced 700 agents with an AI system handling two-thirds of all chats.">
+  <div class="dg-aug-grid">
+    <div class="dg-aug-card augment">
+      <div class="dg-aug-card-hd">
+        <i class="bi bi-layers" aria-hidden="true"></i>
+        <span class="dg-aug-card-hd-text">Task Augmentation</span>
+      </div>
+      <div class="dg-aug-card-body">
+        <div class="dg-aug-item">
+          <i class="bi bi-arrow-up-circle" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">What changes</span>Speed and accuracy of existing tasks</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-currency-dollar" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Business model</span>Same structure, incremental cost reduction</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-shield" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Competitive position</span>Efficiency gains, easily replicated by rivals</div>
+        </div>
+        <div class="dg-aug-example">e.g. AI drafts contracts faster · demand forecasts improve accuracy</div>
+      </div>
+    </div>
+    <div class="dg-aug-vs" aria-hidden="true">VS</div>
+    <div class="dg-aug-card autonomous">
+      <div class="dg-aug-card-hd">
+        <i class="bi bi-cpu" aria-hidden="true"></i>
+        <span class="dg-aug-card-hd-text">Autonomous Systems</span>
+      </div>
+      <div class="dg-aug-card-body">
+        <div class="dg-aug-item">
+          <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">What changes</span>Entire process replaced by AI-native system</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Business model</span>Restructured costs, new revenue model</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-trophy" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Competitive position</span>Structural advantage, hard to replicate</div>
+        </div>
+        <div class="dg-aug-example">e.g. Klarna: 700 agents replaced · AI handled ⅔ of all chats in month one</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Task augmentation and autonomous systems lead to fundamentally different business models, cost structures, and competitive positions — choosing between them is a strategic decision, not a technical one.
+
+:::
+
+Key activities here include developing an AI strategy aligned with co-innovation goals, identifying opportunities for both task improvement and new autonomous systems, forming partnerships, and testing AI-powered products in small-scale settings before a full launch. Working with external partners is especially important now, since most organisations lack the full range of skills needed for real AI co-innovation. Those willing to co-design with others rather than work alone are the ones who truly change their business models.
+
+At this stage, actions should be driven by clear questions, just like in Part 2. Every experiment should test a specific idea about a real problem. Without this focus, co-innovation can lead to lots of impressive technology but no clear value for customers.
+
+### Element 4: AI Value Realisation
+
+AI Value Realisation is not just the last step. It is a practice that should be present from the start—when building the data foundation, during data use and co-innovation, and all the way through to product launch. Treating it as something to do at the end leads to problems, like IBM Watson Health measuring agreement rates instead of real clinical results, or Amazon Alexa counting device activations instead of actual value per user.
+
+The element has three interdependent components: Value Architecture, Monetisation, and Valuation.
+
+Value Architecture makes sure AI projects are built around a clear value proposition for a specific group of customers. It asks the tough questions early: who is this for, what problem does it solve, how is it different from competitors, and how do we explain that difference? Without this, the AI project might work technically, but no one will want to buy it.
+
+Monetisation turns the value architecture into a means of making money. This should be done before starting development, not after. Setting up revenue streams, cost structures, and linking AI projects to long-term strategy is much easier to plan from the start than to add later. Palantir is a good example; they set up contracts based on outcomes, not just software access. Customers pay for solutions, not licenses. This approach made Palantir define exactly what problems they were solving before setting a price, so the business model and problem-solving went hand in hand.
+
+Valuation is the final piece. In AI, common KPIs like model accuracy or deployment numbers measure technology, not business results. As @Iansiti2020 points out, real AI value comes from better workflows and decisions at scale, not just from launching a model. The important KPIs are those that show if the main problem has been solved—like faster decisions, fewer errors, or customer issues fixed. These are harder to track, but they are the only ones that show if the business model works.
+
+@tbl-value-realisation summarises the three components and the question each one forces.
+
+| Component | Question It Forces | What Bad Looks Like |
+|-----------|-------------------|---------------------|
+| Value Architecture | Who is this for, and what specifically does it solve? | Value proposition describes the technology, not the customer problem |
+| Monetisation | How does the organisation capture value, and when is that decided? | Revenue model designed after the product is built |
+| Valuation | Are we tracking outcomes or counting activity? | KPIs measure model performance, not business impact |
+
+: AI Value Realisation: Components, Questions, and Failure Modes {#tbl-value-realisation}
+
+## The Capabilities That Make It Work
+
+The four elements need a base of technology, organisation, and leadership skills to work. These are not extra steps; they are the conditions needed for the framework to succeed.
+
+Technological capabilities include data infrastructure, AI platforms, cloud computing, and analytics. Organisational capabilities mean having a data-driven culture, skilled AI staff, and good governance. Together, these create an environment where AI can deliver real value, not just technical results.
+
+::: {#fig-capability-pillars}
+
+```{=html}
+<style>
+.dg-cap { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px 0; overflow-x:auto; }
+.dg-cap-inner { min-width:460px; display:flex; flex-direction:column; gap:0; }
+.dg-cap-pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.dg-cap-pillar { background:#fff; border:1px solid #E9ECEF; border-radius:8px 8px 0 0; border-bottom:none; padding:14px 12px 16px; display:flex; flex-direction:column; gap:8px; position:relative; }
+.dg-cap-pillar::before { content:''; position:absolute; top:0;left:0;width:100%;height:4px;border-radius:8px 8px 0 0; }
+.dg-cap-pillar.tech::before { background:#1E293B; }
+.dg-cap-pillar.org::before { background:#8B5CF6; }
+.dg-cap-pillar.lead::before { background:#10B981; }
+.dg-cap-icon { width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px; }
+.dg-cap-pillar.tech .dg-cap-icon { background:rgba(30,41,59,.08);color:#1E293B; }
+.dg-cap-pillar.org .dg-cap-icon { background:rgba(139,92,246,.1);color:#8B5CF6; }
+.dg-cap-pillar.lead .dg-cap-icon { background:rgba(16,185,129,.1);color:#10B981; }
+.dg-cap-title { font-size:11px;font-weight:700;color:#1E293B;line-height:1.3; }
+.dg-cap-items { display:flex;flex-direction:column;gap:5px; }
+.dg-cap-item { font-size:9.5px;color:#6B7280;display:flex;align-items:flex-start;gap:5px;line-height:1.35; }
+.dg-cap-item::before { content:'·';font-weight:700;flex-shrink:0; }
+.dg-cap-foundation { background:#1E293B;border-radius:0 0 8px 8px;padding:10px 14px;display:flex;align-items:center;gap:8px; }
+.dg-cap-foundation i { font-size:14px;color:rgba(255,255,255,.7);flex-shrink:0; }
+.dg-cap-foundation-text { font-size:10px;font-weight:700;color:#fff;letter-spacing:.04em; }
+.dg-cap-foundation-sub { font-size:9.5px;color:rgba(255,255,255,.6);margin-left:4px; }
+</style>
+<div class="dg-cap" role="img" aria-label="Three capability pillars required for the AI Business Model Innovation Framework. Technological pillar: data infrastructure, AI and ML platforms, cloud computing, analytics tooling. Organisational pillar: data-driven culture, skilled AI teams, cross-functional alignment, governance frameworks. Leadership pillar: planned authority shifts to algorithms, AI-native decision making, risk appetite for AI bets, strategic AI literacy. All three pillars rest on a shared foundation — missing any one prevents value from flowing through the framework.">
+  <div class="dg-cap-inner">
+    <div class="dg-cap-pillars">
+      <div class="dg-cap-pillar tech">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-server"></i></div>
+        <div class="dg-cap-title">Technological</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Data infrastructure</span>
+          <span class="dg-cap-item">AI / ML platforms</span>
+          <span class="dg-cap-item">Cloud computing</span>
+          <span class="dg-cap-item">Analytics tooling</span>
+        </div>
+      </div>
+      <div class="dg-cap-pillar org">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-people"></i></div>
+        <div class="dg-cap-title">Organisational</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Data-driven culture</span>
+          <span class="dg-cap-item">Skilled AI teams</span>
+          <span class="dg-cap-item">Cross-functional alignment</span>
+          <span class="dg-cap-item">Governance frameworks</span>
+        </div>
+      </div>
+      <div class="dg-cap-pillar lead">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-person-check"></i></div>
+        <div class="dg-cap-title">Leadership</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Planned authority shifts to algorithms</span>
+          <span class="dg-cap-item">AI-native decision-making</span>
+          <span class="dg-cap-item">Risk appetite for AI bets</span>
+          <span class="dg-cap-item">Strategic AI literacy</span>
+        </div>
+      </div>
+    </div>
+    <div class="dg-cap-foundation">
+      <i class="bi bi-building" aria-hidden="true"></i>
+      <span class="dg-cap-foundation-text">Shared Foundation</span>
+      <span class="dg-cap-foundation-sub">— missing any one pillar prevents value from flowing through the framework</span>
+    </div>
+  </div>
+</div>
+```
+
+Three capability pillars — technological, organisational, and leadership — must all be in place for the framework to deliver. Technology without leadership change is the most common gap.
+
+:::
+
+Leadership skills are often overlooked but are the most important. As @Iansiti2020 explains, AI-native organisations do more than just use AI tools; they change how decisions are made, shifting authority from people to algorithms in planned ways. This is a leadership choice, not just a tech upgrade. The organisations that get the most value from AI are those where leaders understand this shift and make it happen on purpose, not by accident.
+
+When these capabilities are missing, the problem is not with technology—it is with structure. AI teams and business teams work separately, each focused on their own goals, and neither sees the full business model. The framework requires both groups to work together from the start, agreeing on the main challenge and designing value realisation before building the data foundation or product roadmap.
+
+## How to Spot a Bad AI Business Model
+
+The four-part framework also works as a diagnostic tool. When used on any AI project, it reveals problems that most organisations only notice after they have already invested.
+
+Sometimes, the value proposition focuses on the technology instead of the customer. The organisation can explain what its AI does, but not what problem it solves for a specific buyer. For example, IBM Watson Health’s marketing talked about what Watson could do with data, but never clearly said which clinical outcome it improved, for which patients, or in what setting. A value proposition based on features, not real problems, does not help customers decide to buy.
+
+Monetisation is retrofitted. The revenue model was designed after the product was built, which means it captures activity rather than value. Platform subscriptions, per-seat licensing, and usage fees charge for access to a capability rather than for problem resolution. Outcome-linked revenue models require a precise definition of the outcome before the contract can be written. That discipline forces the diagnostic precision that activity-based models allow organisations to avoid. Organisations that retrofit monetisation consistently end up with a revenue model that the customer’s buying process was never designed to accommodate.
+
+Sometimes, valuation focuses on the wrong things. KPIs like model accuracy, response times, or deployment numbers measure technology, not whether the main problem is solved. An organisation can show great tech results but still not fix the business issue that justified the investment. This is not just a measurement problem—it is a design problem. The valuation system was set up before the value architecture was clear, so it measured what was easy, not what mattered.
+
+Sometimes, organisations build up AI talent, data platforms, and governance, but leaders keep making decisions the same way as before. The technology is there, but the real organisational change needed to create value is missing. This is called capabilities theatre—it looks like the organisation is ready for AI, but the decision-making has not changed.
+
+These four failure modes are connected. If an organisation does not have a clear value proposition, it will add monetisation later because there is nothing specific to price. When monetisation is added late, it usually relies on activity metrics, since outcomes were never defined. Activity metrics do not show if decision-making has changed, so the capability gap stays hidden—until a competitor with the right model exposes the problem.
+
+## Conclusion: Strategy, Roadmap, Business Model
+
+Parts 1 and 2 showed that the gap between 80% of organisations running AI pilots and the 5% getting real value is mostly about strategy. That is still true, but there is another layer. If organisations fix their strategy but do not update their business model, they are just making the same mistake in a different direction.
+
+The AI Business Model Innovation Framework is the missing piece under the roadmap. The data foundation is where you build or lose your unique resource. Value-centric exploitation turns data into the base for AI innovation, not just storage. Strategic co-innovation is when you truly redesign the business model. AI Value Realisation, present throughout, makes sure value architecture, monetisation, and valuation are planned together, not added later.
+
+Together, these three posts form a complete story. The kernel and roadmap show you where to go and how to get there. The business model innovation framework explains how value is created, who benefits, what it costs, and how to measure success. You need both parts; they are what set the 5% apart from the 80%.
+
+The real question is not if you need a business model, but whether you design it before you invest or after you have already spent the money.

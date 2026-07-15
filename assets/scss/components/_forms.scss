@@ -1,0 +1,95 @@
+/*-- scss:components/forms --*/
+
+// =====================================================
+// FORM COMPONENTS
+// =====================================================
+
+.form {
+  &-group {
+    margin-bottom: $spacer-3;
+    
+    label {
+      display: block;
+      margin-bottom: $spacer-1;
+      font-family: $headings-font-family;
+      font-weight: $font-weight-medium;
+      color: $gray-800;
+    }
+    
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: $form-input-padding;
+      border: $form-input-border;
+      border-radius: $form-input-border-radius;
+      font-family: $font-family-sans-serif;
+      font-size: $font-size-base;
+      color: $gray-800;
+      background-color: $form-input-bg;
+      transition: border-color $transition-duration-base $transition-timing-ease-in-out, 
+                  box-shadow $transition-duration-base $transition-timing-ease-in-out;
+      
+      &:focus {
+        outline: none;
+        border-color: $form-focus-border-color;
+        box-shadow: $form-focus-box-shadow;
+      }
+      
+      &:disabled {
+        background-color: $gray-100;
+        color: $gray-500;
+        cursor: not-allowed;
+      }
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .error {
+      color: $danger;
+      font-size: $font-size-sm;
+      margin-top: $spacer-1;
+      display: flex;
+      align-items: center;
+      gap: $spacer-1;
+    }
+    
+    &.has-error {
+      input,
+      textarea,
+      select {
+        border-color: $danger;
+        
+        &:focus {
+          box-shadow: 0 0 0 3px rgba($danger, $opacity-10);
+        }
+      }
+    }
+  }
+  
+  &-actions {
+    display: flex;
+    gap: $spacer-2;
+    margin-top: $spacer-4;
+    
+    .btn {
+      min-width: 120px;
+      
+      &:disabled {
+        opacity: $opacity-60;
+        cursor: not-allowed;
+      }
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

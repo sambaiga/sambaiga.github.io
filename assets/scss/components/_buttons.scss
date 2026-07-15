@@ -1,0 +1,632 @@
+/*-- scss:components/buttons --*/
+
+// =====================================================
+// BUTTON DESIGN SYSTEM (Using Your Mixins)
+// =====================================================
+
+// Base button styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacer-2;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  line-height: $line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: $border-width-2 solid transparent;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding-y $btn-padding-x;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  white-space: normal; // Changed from nowrap for responsiveness
+  word-wrap: break-word;
+  
+  // Responsive font sizing
+  @include responsive-font-size($font-size-sm, $font-size-base);
+  
+  @media (max-width: $breakpoint-sm) {
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  // Icon styles (Bootstrap Icons)
+  .bi {
+    font-size: 1.1em;
+    line-height: $line-height-tight;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 1em;
+    }
+  }
+  
+  // Focus state
+  @include focus-ring;
+  
+  // Hover state
+  @include button-hover;
+  
+  &:disabled,
+  &.disabled {
+    opacity: $opacity-50;
+    pointer-events: none;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  // Remove default focus styles on mouse users
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// =====================================================
+// BUTTON SIZES (Fully Responsive)
+// =====================================================
+
+.btn-sm {
+  padding: $spacer-2 $spacer-3;
+  font-size: $font-size-sm;
+  border-radius: $border-radius;
+  line-height: $line-height-normal;
+
+  .bi {
+    font-size: 1em;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacer-2 $spacer-2;
+    font-size: $font-size-xs;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.btn-lg {
+  padding: $spacer-3 $spacer-5;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-xl;
+  line-height: $line-height-normal;
+  
+  .bi {
+    font-size: 1.2em;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacer-2 $spacer-4;
+    font-size: $font-size-base;
+  }
+}
+
+.btn-xl {
+  padding: $spacer-4 $spacer-6;
+  font-size: $font-size-xl;
+  border-radius: $border-radius-xl;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-semibold;
+  
+  .bi {
+    font-size: 1.3em;
+  }
+  
+  @include media-breakpoint-down(md) {
+    padding: $spacer-3 $spacer-5;
+    font-size: $font-size-lg;
+  }
+  
+  @include media-breakpoint-down(sm) {
+    padding: $spacer-2 $spacer-4;
+    font-size: $font-size-base;
+  }
+}
+
+// =====================================================
+// BUTTON VARIANTS (Using Your Mixins)
+// =====================================================
+
+// Mixin for outline variants (enhanced)
+@mixin button-outline-variant($color) {
+  background-color: transparent;
+  color: $color !important;
+  border-color: $color;
+  
+  &:hover:not(:disabled) {
+    background-color: $color;
+    color: $white !important;
+  }
+  
+  &:active:not(:disabled) {
+    background-color: darken($color, 10%);
+    border-color: darken($color, 10%);
+  }
+}
+
+// Primary button (Teal)
+.btn-primary {
+  @include button-variant($primary, $white);
+}
+
+.btn-primary.btn-outline {
+  @include button-outline-variant($primary);
+}
+
+// Secondary button (Gray)
+.btn-secondary {
+  @include button-variant($secondary, $white);
+}
+
+.btn-secondary.btn-outline {
+  @include button-outline-variant($secondary);
+}
+
+// Success button (Green)
+.btn-success {
+  @include button-variant($success, $white);
+}
+
+.btn-success.btn-outline {
+  @include button-outline-variant($success);
+}
+
+// Info button (Cyan)
+.btn-info {
+  @include button-variant($info, $white);
+}
+
+.btn-info.btn-outline {
+  @include button-outline-variant($info);
+}
+
+// Warning button (Orange)
+.btn-warning {
+  @include button-variant($warning, $white);
+}
+
+.btn-warning.btn-outline {
+  @include button-outline-variant($warning);
+}
+
+// Danger button (Red)
+.btn-danger {
+  @include button-variant($danger, $white);
+}
+
+.btn-danger.btn-outline {
+  @include button-outline-variant($danger);
+}
+
+// Light button (Light orange)
+.btn-light {
+  background-color: $light-orange;
+  color: $teal !important;
+  border-color: $light-orange;
+  
+  @include button-hover;
+  
+  &:hover:not(:disabled) {
+    background-color: darken($light-orange, 10%);
+    border-color: darken($light-orange, 10%);
+    color: $teal !important;
+  }
+  
+  &.btn-outline {
+    @include button-outline-variant($light-orange);
+    
+    &:hover:not(:disabled) {
+      color: $teal !important;
+    }
+  }
+}
+
+// Dark button (Black)
+.btn-dark {
+  @include button-variant($dark, $white);
+}
+
+.btn-dark.btn-outline {
+  @include button-outline-variant($dark);
+}
+
+// =====================================================
+// RESPONSIVE BUTTON GROUPS
+// =====================================================
+
+// Button groups
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-1;
+  
+  .btn {
+    flex: 1;
+    min-width: 0;
+    
+    @include media-breakpoint-down(sm) {
+      flex: 1 0 auto;
+      min-width: 120px;
+    }
+    
+    &:first-child {
+      border-radius: $btn-border-radius 0 0 $btn-border-radius;
+      
+      @include media-breakpoint-down(sm) {
+        border-radius: $btn-border-radius;
+      }
+    }
+    
+    &:last-child {
+      border-radius: 0 $btn-border-radius $btn-border-radius 0;
+      
+      @include media-breakpoint-down(sm) {
+        border-radius: $btn-border-radius;
+      }
+    }
+    
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      
+      @include media-breakpoint-down(sm) {
+        border-radius: $btn-border-radius;
+      }
+    }
+    
+    + .btn {
+      margin-left: -$border-width-2;
+      border-left-color: transparent;
+      
+      @include media-breakpoint-down(sm) {
+        margin-left: 0;
+        border-left-color: inherit;
+      }
+    }
+    
+    &:hover,
+    &:focus {
+      z-index: 1;
+    }
+  }
+  
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    gap: $spacer-2;
+  }
+}
+
+// Icon-only buttons (Responsive)
+.btn-icon {
+  padding: $spacer-2;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  &.btn-sm {
+    padding: $spacer-1;
+  }
+  
+  &.btn-lg {
+    padding: $spacer-3;
+  }
+  
+  .bi {
+    margin: 0;
+  }
+}
+
+// Block button (full width)
+.btn-block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+// =====================================================
+// CONTEXT-SPECIFIC BUTTON STYLES (Responsive)
+// =====================================================
+
+// Hero actions - FIXED
+.hero-actions {
+  .btn {
+    min-width: 140px;
+    
+    @include media-breakpoint-down(md) {
+      min-width: 120px;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+}
+
+// Project-specific button sizes
+.btn-project-sm {
+  @extend .btn-sm;
+  text-align: center;
+  min-height: auto;
+  
+  @include media-breakpoint-down(sm) {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+}
+
+// Projects card links container
+.projects-card-links {
+  display: flex;
+  gap: $grid-gap-sm;
+  margin-top: auto;
+  
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    width: 100%;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// Project filter container
+.projects-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $grid-gap-sm;
+  justify-content: center;
+  margin-bottom: $spacer-4;
+  max-width: $container-max-width-lg;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @include media-breakpoint-down(sm) {
+    gap: $grid-gap-sm;
+    
+    .btn-filter {
+      flex: 1;
+      min-width: calc(50% - #{$grid-gap-sm});
+      text-align: center;
+    }
+  }
+}
+
+// Project filter buttons (FIXED: No @extend issues)
+.btn-filter {
+  // Base button styles (copied from .btn-sm to avoid @extend)
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacer-2;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  line-height: $line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: $border-width-1 solid $gray-400;
+  border-radius: $border-radius;
+  padding: $spacer-2 $spacer-3;
+  font-size: $font-size-sm;
+  transition: all $transition-duration-base $transition-timing-ease-in-out;
+  white-space: nowrap;
+  
+  @include media-breakpoint-down(sm) {
+    padding: $spacer-1 $spacer-2;
+    font-size: $font-size-xs;
+    white-space: normal;
+  }
+  
+  // Variant styles
+  color: $gray-700 !important;
+  
+  @include button-hover;
+  @include focus-ring;
+  
+  &:hover:not(.active) {
+    background-color: $gray-400;
+    color: $gray-900 !important;
+  }
+  
+  &.active {
+    @include button-variant($primary, $white);
+  }
+}
+
+// =====================================================
+// SPECIAL BUTTON VARIANTS
+// =====================================================
+
+// GitHub button
+.btn-github {
+  @include button-variant($gray-900, $white);
+  
+  &.btn-outline {
+    @include button-outline-variant($gray-900);
+  }
+}
+
+// Demo button
+.btn-demo {
+  @include button-variant($primary, $white);
+}
+
+// Talk buttons
+.btn-talk-slides {
+  @include button-outline-variant($cyan);
+}
+
+.btn-talk-video {
+  @include button-outline-variant($pink-dark);
+}
+
+.btn-talk-code {
+  @include button-outline-variant($gray-700);
+}
+
+.btn-talk-paper {
+  @include button-outline-variant($green);
+}
+
+.btn-talk-website {
+  @include button-outline-variant($light-orange);
+  
+  &:hover:not(:disabled) {
+    color: $teal !important;
+  }
+}
+
+// CV Download
+.cv-download {
+  @extend .btn-primary;
+}
+
+// Code tools button
+.code-tools-button {
+  @include media-breakpoint-up(lg) {
+    position: relative;
+    left: 5em;
+  }
+}
+
+// =====================================================
+// DARK THEME ADJUSTMENTS (Using Your Mixin)
+// =====================================================
+
+// Apply dark theme via data attribute
+[data-theme="dark"] {
+  @include dark-theme-buttons;
+  
+  // Additional dark theme adjustments
+  .btn-filter {
+    color: $gray-300 !important;
+    border-color: $gray-600;
+    
+    &:hover:not(.active) {
+      background-color: $gray-700;
+      color: $gray-100 !important;
+    }
+  }
+  
+  .btn-github {
+    @include button-variant($gray-800, $white);
+    
+    &.btn-outline {
+      color: $gray-300 !important;
+      border-color: $gray-600;
+      
+      &:hover {
+        background-color: $gray-800;
+        color: $white !important;
+      }
+    }
+  }
+  
+  // Adjust outline buttons for dark theme
+  .btn-outline {
+    border-color: var(--border-color);
+    
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+  
+  // Dark theme for talk buttons
+  .btn-talk-slides {
+    color: lighten($cyan, 20%) !important;
+    border-color: rgba($cyan, 0.3);
+    
+    &:hover {
+      background-color: rgba($cyan, 0.2);
+      color: lighten($cyan, 30%) !important;
+    }
+  }
+  
+  .btn-talk-video {
+    color: lighten($pink-dark, 20%) !important;
+    border-color: rgba($pink-dark, 0.3);
+    
+    &:hover {
+      background-color: rgba($pink-dark, 0.2);
+      color: lighten($pink-dark, 30%) !important;
+    }
+  }
+}
+
+// =====================================================
+// ACCESSIBILITY & TOUCH TARGETS
+// =====================================================
+
+@include media-breakpoint-down(md) {
+  // Ensure minimum touch target size (44x44px recommended)
+  .btn:not(.btn-icon) {
+    min-height: 44px;
+    padding-top: max($spacer-2, 12px);
+    padding-bottom: max($spacer-2, 12px);
+  }
+  
+  .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+// =====================================================
+// UTILITIES FOR RESPONSIVE BUTTONS
+// =====================================================
+
+// Stack buttons vertically on mobile
+.btn-stack-mobile {
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    width: 100%;
+    
+    .btn {
+      width: 100%;
+      margin-bottom: $spacer-2;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Auto-width buttons that shrink on mobile
+.btn-auto {
+  flex: 0 0 auto;
+  
+  @include media-breakpoint-down(sm) {
+    flex: 1;
+  }
+}
+
+// =====================================================
+// PROJECT-SPECIFIC BUTTON STYLES
+// =====================================================
+
+// Apply project category styles
+.project-category {
+  @include project-category-styles;
+}
+
+// Apply publication details styles
+.publication-details {
+  @include publication-details-box;
+}
+
+// Apply project links styles
+.project-links {
+  @include project-links-styles;
+}

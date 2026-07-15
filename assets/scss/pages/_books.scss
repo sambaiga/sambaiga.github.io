@@ -1,0 +1,345 @@
+/*-- scss:pages/books --*/
+
+// =====================================================
+// BOOKS PAGE — mirrors project timeline branding
+// =====================================================
+
+$book-card-border-radius: 6px;
+$book-icon-size: 52px;
+$book-icon-inner: 28px;
+
+.books-page {
+  background: $gray-100;
+}
+
+.books-header {
+  text-align: center;
+  margin-bottom: $spacer-6;
+
+  p {
+    text-align: center;
+    font-size: $font-size-lg;
+    color: $gray-700;
+    margin-bottom: $spacer-6;
+  }
+}
+
+// =====================================================
+// GRID LAYOUT
+// =====================================================
+
+.books-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacer-5;
+  margin: $spacer-5 auto;
+  padding: 0 $section-padding-x;
+  width: 100%;
+
+  @media (min-width: $breakpoint-lg) {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1100px;
+  }
+}
+
+// =====================================================
+// BOOK CARD — adapts timeline-event content box style
+// =====================================================
+
+.book-card {
+  background: $white;
+  border-radius: $book-card-border-radius;
+  box-shadow: $shadow-base;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  opacity: 0;
+  animation: fadeInUp $animation-duration-slow $animation-timing-ease-out forwards;
+
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: $transform-hover-lift;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    flex: 1;
+    max-width: 520px;
+  }
+}
+
+// =====================================================
+// CARD HEADER — mirrors timeline-date + timeline-icon
+// =====================================================
+
+.book-card-header {
+  display: flex;
+  align-items: center;
+  gap: $spacer-3;
+  padding: $spacer-3 $spacer-4;
+  color: $white;
+}
+
+.book-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $book-icon-size;
+  height: $book-icon-size;
+  border-radius: 50%;
+  background: rgba($white, 0.2);
+  flex-shrink: 0;
+  box-shadow: $shadow-sm;
+
+  i {
+    font-size: $book-icon-inner;
+  }
+}
+
+.book-card-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer-1;
+}
+
+.book-genre {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  color: rgba($white, 0.85);
+}
+
+.book-year {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $white;
+  line-height: $line-height-tight;
+}
+
+// Primary variant — matches timeline-event Active ($primary)
+.book-card--primary .book-card-header {
+  background: $primary;
+}
+
+// Accent variant — matches timeline-event Maintained ($ai-accent)
+.book-card--accent .book-card-header {
+  background: $ai-accent;
+}
+
+// Energy variant — for energy/grid-focused work ($energy-accent)
+.book-card--energy .book-card-header {
+  background: $energy-accent;
+}
+
+// =====================================================
+// CARD BODY — mirrors timeline-content interior
+// =====================================================
+
+.book-card-body {
+  padding: $spacer-3 $spacer-4;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: $spacer-3;
+}
+
+// Mirrors .timeline-title
+.book-card-title {
+  font-size: $font-size-lg;
+  line-height: $headings-line-height;
+  text-transform: uppercase;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: 0;
+}
+
+.book-card-subtitle {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  line-height: $line-height-snug;
+  margin-top: calc(#{$spacer-1} * -1);
+}
+
+// Mirrors .timeline-description
+.book-card-description {
+  font-size: $font-size-base;
+  color: $gray-700;
+  line-height: $body-line-height;
+
+  p { margin: 0; }
+}
+
+// Mirrors .timeline-meta
+.book-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-3;
+  font-size: $font-size-sm;
+  color: $gray-600;
+}
+
+// Mirrors .timeline-status
+.book-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  i { font-size: 0.9rem; }
+}
+
+// Tags
+.book-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-2;
+}
+
+.book-tag {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: $spacer-1 $spacer-3;
+  border-radius: $border-radius-full;
+  background: rgba($primary, $opacity-05);
+  color: $primary;
+  border: $border-width-1 solid rgba($primary, $opacity-10);
+}
+
+.book-card--accent .book-tag {
+  background: rgba($ai-accent, $opacity-05);
+  color: $ai-accent;
+  border-color: rgba($ai-accent, $opacity-10);
+}
+
+.book-card--energy .book-tag {
+  background: rgba($energy-accent, $opacity-05);
+  color: $energy-accent;
+  border-color: rgba($energy-accent, $opacity-10);
+}
+
+// Mirrors .timeline-links / .timeline-link
+.book-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-2;
+  margin-top: $spacer-1;
+  padding-top: $spacer-3;
+  border-top: $border-width-1 solid $border-color-light;
+}
+
+.book-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacer-1;
+  padding: $spacer-2 $spacer-3;
+  background: rgba($primary, $opacity-05);
+  border-radius: $border-radius;
+  text-decoration: none;
+  color: $primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  transition: $shadow-transition,
+              color 0.15s ease-in-out,
+              transform 0.15s ease-in-out;
+  border: $border-width-1 solid transparent;
+
+  i { font-size: $font-size-sm; }
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    transform: $transform-hover-lift;
+    text-decoration: none;
+  }
+}
+
+.book-card--accent .book-link {
+  background: rgba($ai-accent, $opacity-05);
+  color: $ai-accent;
+
+  &:hover {
+    background: $ai-accent;
+    color: $white;
+  }
+}
+
+.book-card--energy .book-link {
+  background: rgba($energy-accent, $opacity-05);
+  color: $energy-accent;
+
+  &:hover {
+    background: $energy-accent;
+    color: $white;
+  }
+}
+
+// Status color variants — mirrors timeline-event type variants
+.book-card--primary {
+  .book-card-title  { color: $primary; }
+  .book-card-status { color: $energy-accent; }
+}
+
+.book-card--accent {
+  .book-card-title  { color: $ai-accent; }
+  .book-card-status { color: $success; }
+}
+
+.book-card--energy {
+  .book-card-title  { color: $energy-accent; }
+  .book-card-status { color: $primary; }
+}
+
+// =====================================================
+// RESPONSIVE
+// =====================================================
+
+@media (max-width: $breakpoint-md) {
+  .books-grid {
+    padding: 0 $spacer-3;
+  }
+}
+
+// =====================================================
+// DARK MODE
+// =====================================================
+
+[data-bs-theme="dark"] {
+  .books-page   { background: $dark-body-bg; }
+
+  .book-card {
+    background: lighten($dark-body-bg, 5%);
+    box-shadow: $shadow-md;
+  }
+
+  .book-card-description { color: $gray-400; }
+  .book-card-subtitle    { color: $gray-500; }
+  .book-card-meta        { color: $gray-500; }
+
+  .book-tag {
+    background: rgba($primary, $opacity-15);
+    color: lighten($primary, 30%);
+    border-color: rgba($primary, $opacity-25);
+  }
+
+  .book-card--accent .book-tag {
+    background: rgba($ai-accent, $opacity-15);
+    color: lighten($ai-accent, 20%);
+    border-color: rgba($ai-accent, $opacity-25);
+  }
+
+  .book-card--energy .book-tag {
+    background: rgba($energy-accent, $opacity-15);
+    color: lighten($energy-accent, 20%);
+    border-color: rgba($energy-accent, $opacity-25);
+  }
+
+  .book-card-links {
+    border-top-color: $gray-700;
+  }
+}

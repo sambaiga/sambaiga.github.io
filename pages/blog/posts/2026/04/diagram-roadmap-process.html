@@ -1,0 +1,170 @@
+<style>
+.dg-process {
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+  font-family: 'Jost', system-ui, sans-serif;
+}
+.dg-process-flow {
+  display: flex;
+  align-items: stretch;
+  min-width: 640px;
+  gap: 0;
+}
+.dg-step {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #E9ECEF;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.dg-step-hd {
+  padding: 9px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.dg-step-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+}
+.dg-step-kernel {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+.dg-step-icon {
+  padding: 14px 8px 8px;
+  text-align: center;
+}
+.dg-step-icon i { font-size: 26px; }
+.dg-step-body {
+  padding: 0 10px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.dg-step-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1E293B;
+  text-align: center;
+  line-height: 1.35;
+}
+.dg-step-layer {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-top: auto;
+}
+.dg-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 16px;
+}
+/* Color variants */
+.dg-s1 .dg-step-hd, .dg-s2 .dg-step-hd { background: #1E293B; }
+.dg-s1 .dg-step-icon i, .dg-s2 .dg-step-icon i { color: #1E293B; }
+.dg-s1 .dg-step-layer, .dg-s2 .dg-step-layer { background: #1E293B; }
+.dg-s3 .dg-step-hd { background: #8B5CF6; }
+.dg-s3 .dg-step-icon i { color: #8B5CF6; }
+.dg-s3 .dg-step-layer { background: #8B5CF6; }
+.dg-s4 .dg-step-hd { background: #10B981; }
+.dg-s4 .dg-step-icon i { color: #10B981; }
+.dg-s4 .dg-step-layer { background: #10B981; }
+.dg-s5 .dg-step-hd { background: #0369A1; }
+.dg-s5 .dg-step-icon i { color: #0369A1; }
+.dg-s5 .dg-step-layer { background: #0369A1; }
+</style>
+
+<div class="dg-process" role="img" aria-label="Five-step AI roadmapping process. Step 1: Find the Crux, Diagnosis, Know-Why. Step 2: Honest Starting Point, Diagnosis, Know-Why. Step 3: Diagnosis into Direction, Guiding Policy, Know-What. Step 4: Coherent Actions, Know-How. Step 5: How Well From Day One, Know-When.">
+  <div class="dg-process-flow">
+
+    <div class="dg-step dg-s1">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 01</span>
+        <span class="dg-step-kernel">Diagnosis</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-crosshair" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Find the Crux</div>
+        <span class="dg-step-layer">Know-Why</span>
+      </div>
+    </div>
+
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+    <div class="dg-step dg-s2">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 02</span>
+        <span class="dg-step-kernel">Diagnosis</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-clipboard-data" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Honest Starting Point</div>
+        <span class="dg-step-layer">Know-Why</span>
+      </div>
+    </div>
+
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+    <div class="dg-step dg-s3">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 03</span>
+        <span class="dg-step-kernel">Guiding Policy</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-compass" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Diagnosis into Direction</div>
+        <span class="dg-step-layer">Know-What</span>
+      </div>
+    </div>
+
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+    <div class="dg-step dg-s4">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 04</span>
+        <span class="dg-step-kernel">Coherent Actions</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-lightning-charge" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Coherent Actions</div>
+        <span class="dg-step-layer">Know-How</span>
+      </div>
+    </div>
+
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+    <div class="dg-step dg-s5">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 05</span>
+        <span class="dg-step-kernel">Know-When</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">How Well From Day One</div>
+        <span class="dg-step-layer">Know-When</span>
+      </div>
+    </div>
+
+  </div>
+</div>

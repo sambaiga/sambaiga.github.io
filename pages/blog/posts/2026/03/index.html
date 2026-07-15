@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Faustine">
+<meta name="dcterms.date" content="2026-03-28">
+<meta name="description" content="AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt’s strategic kernel and technology roadmapping to diagnose why and shows you the framework for building an AI strategy that is genuinely coherent rather than merely busy.">
+
+<title>The Hype vs.&nbsp;The Kernel: Why Your AI Strategy is Failing – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../">
+<link href="../../../../..//images/icons/favicon.ico" rel="icon">
+<script src="../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting-218bf51cdc365e200b8da9544fc0b29b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../site_libs/bootstrap/bootstrap-f59b4d659a71da732953eda2dc3d8051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(mirella-callage-Kile7-U74s0-unsplash.jpg);
+background-size: cover;
+      }
+</style>
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership">
+<meta property="og:image" content="https://sambaiga.github.io/pages/blog/posts/2026/03/crux_kernel.png">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta property="og:image:height" content="768">
+<meta property="og:image:width" content="1408">
+<meta name="twitter:title" content="The Hype vs.&nbsp;The Kernel: Why Your AI Strategy is Failing – Anthony Faustine">
+<meta name="twitter:description" content="AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt’s strategic kernel and technology roadmapping to diagnose why and shows you the framework for building an AI strategy that is genuinely coherent rather than merely busy.">
+<meta name="twitter:image" content="https://sambaiga.github.io/pages/blog/posts/2026/03/crux_kernel.png">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="768">
+<meta name="twitter:image-width" content="1408">
+</head>
+
+<body class="nav-fixed blog quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi-envelope-at " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-github " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-linkedin " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">The Hype vs.&nbsp;The Kernel: Why Your AI Strategy is Failing</h1>
+            <p class="subtitle lead">Part 1: Why Standard Strategy Breaks on AI, and What to Build Instead</p>
+                  <div>
+        <div class="description">
+          AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt’s strategic kernel and technology roadmapping to diagnose why and shows you the framework for building an AI strategy that is genuinely coherent rather than merely busy.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">AI Strategy</div>
+                <div class="quarto-category">Innovation Management</div>
+                <div class="quarto-category">Technology Roadmapping</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://sambaiga.github.io/">Anthony Faustine</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              CIP, Eaton Corporation, Dublin Ireland.
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 28, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-ai-is-not-just-another-technology-initiative" id="toc-why-ai-is-not-just-another-technology-initiative" class="nav-link active" data-scroll-target="#why-ai-is-not-just-another-technology-initiative">Why AI Is Not Just Another Technology Initiative</a></li>
+  <li><a href="#why-most-ai-roadmaps-fail-and-what-the-kernel-changes" id="toc-why-most-ai-roadmaps-fail-and-what-the-kernel-changes" class="nav-link" data-scroll-target="#why-most-ai-roadmaps-fail-and-what-the-kernel-changes">Why Most AI Roadmaps Fail and What the Kernel Changes</a></li>
+  <li><a href="#conclusion-the-kernel-is-the-roadmap-the-roadmap-is-the-kernel" id="toc-conclusion-the-kernel-is-the-roadmap-the-roadmap-is-the-kernel" class="nav-link" data-scroll-target="#conclusion-the-kernel-is-the-roadmap-the-roadmap-is-the-kernel">Conclusion: The Kernel is the Roadmap, the Roadmap is the Kernel</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<p>AI investment is surging, driven by board mandates, competitive fear, and the pressure of not being left behind. Most organisations have very little to show for it. The pattern is familiar: a board asks for “an AI initiative,” a chatbot gets deployed, a launch gets celebrated, and the result gets called transformation.</p>
+<p>The problem is not a lack of ambition. It is a confusion between <em>wanting</em> something and knowing <em>how</em> to get it. For example, “We will grow AI-driven revenue by 30%” is not a strategy. It is a goal. And when organisations commit technology budgets on the basis of a goal dressed up as strategy, they are not investing. They are hoping.</p>
+<p>There is a framework that explains exactly why and what to do instead. Chapter 5 of Richard Rumelt’s <em>Good Strategy / Bad Strategy</em> <span class="citation" data-cites="Rumelt2011"><a href="#ref-Rumelt2011" role="doc-biblioref">[1]</a></span> gets to the heart of this. Rumelt argues that a real strategy is a tool for overcoming obstacles, not a vision statement, not a goal, not a budget. He calls the structure behind it the <strong>strategic kernel</strong>. It has three elements that must work together: a <strong>diagnosis</strong> that names the real obstacle honestly, a <strong>guiding policy</strong> that decides how to attack it, and <strong>coherent actions</strong> that align every resource (money, people, time) in the same direction, as illustrated in <a href="#fig-kernel" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-kernel" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="crux_kernel.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Rumelt’s Strategic Kernel — Diagnosis, Guiding Policy, and Coherent Actions anchored by the Crux
+</figcaption>
+</figure>
+</div>
+<p>The kernel gives you the structure. But in <em>The Crux</em> <span class="citation" data-cites="Rumelt2022"><a href="#ref-Rumelt2022" role="doc-biblioref">[2]</a></span>, Rumelt adds a sharper demand: within your diagnosis, you must identify the <strong>crux</strong>, the one obstacle that, if removed, unlocks everything else. Most organisations sense where it lies. They just choose not to go there. Instead, they build strategy <em>around</em> it while the real obstacle sits untouched. In AI, the crux is rarely the model. It is the data quality the model cannot overcome, the decision rights no one wants to negotiate, or the workflow the technology has no way to integrate into.</p>
+<p>Sometimes it is more fundamental still: the target itself is wrong. This happens in a recognisable pattern. Stakeholders frame problems as solutions: “we need a forecast model” rather than “we cannot meet demand”, and the actual obstacle never gets named. Technical teams, under pressure to deliver, do not push back on the problem statement. And organisations confuse <em>using</em> AI with <em>solving problems</em> with AI.</p>
+<p>The result is a well-executed project aimed at the wrong thing: the model works, the metric it was built to move improves, and the business problem remains untouched.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Example:</strong> A retailer commissions a demand forecasting model to reduce stockouts. The model reaches strong accuracy. Stockouts persist. The actual constraint was that the distribution centre could not process replenishment orders any faster regardless of how early they were placed. The bottleneck was operational capacity, not forecast accuracy. No one asked whether a better forecast would change anything downstream before the project began.</p>
+</div>
+</div>
+</div>
+<p>Data quality, decision rights, workflow friction, wrong target: each is diagnosable before a line of code is written. Each is consistently avoided.</p>
+<p>Nowhere is this more visible than in enterprise AI. Despite unprecedented investment, 80% of organisations are running pilots, yet only 5% have extracted measurable value <span class="citation" data-cites="Joshi2026 MLQ2025"><a href="#ref-Joshi2026" role="doc-biblioref">[3]</a>, <a href="#ref-MLQ2025" role="doc-biblioref">[4]</a></span>. That gap is not a technology failure. It is a strategy failure. No honest diagnosis, no real guiding policy, just a list of initiatives dressed up as direction. Without the kernel, the crux goes unfound. The result is not merely effort pointed at the wrong problem. It is effort not pointed at anything at all.</p>
+<p>What makes AI a particularly acute case is not a competence failure or an ambition failure. It is that AI has structural properties that actively resist each element of the kernel in ways that cloud adoption, ERP, or even the early internet did not. Understanding those properties, explored in the next section, is what separates a framework that produces a coherent AI strategy from one that merely looks like one.</p>
+<p>The answer is <strong>technology roadmapping</strong>. A roadmap is not a project plan or a feature backlog. It is a structured framework that aligns market needs, business objectives, and technology capabilities across time <span class="citation" data-cites="Phaal2004"><a href="#ref-Phaal2004" role="doc-biblioref">[5]</a></span>. As a strategic instrument, it forces the hard questions: why are we doing this, what are we building, and do we have what it takes <span class="citation" data-cites="Phaal2010"><a href="#ref-Phaal2010" role="doc-biblioref">[6]</a></span>? When built around the kernel, it becomes the mechanism that translates diagnosis into direction and direction into coherent action.</p>
+<p>This post, the first of two, explores how combining Rumelt’s strategic kernel with a structured technology roadmapping process <span class="citation" data-cites="Komssi2013 o2021agile"><a href="#ref-Komssi2013" role="doc-biblioref">[7]</a>, <a href="#ref-o2021agile" role="doc-biblioref">[8]</a></span> can close that gap by giving organisations the tools to find the crux, build a guiding policy around it, and take actions that are genuinely coherent rather than merely busy. The second part puts the framework into practice with a five-step AI roadmapping process and a guide to spotting bad AI strategy before it costs you.</p>
+<section id="why-ai-is-not-just-another-technology-initiative" class="level3">
+<h3 class="anchored" data-anchor-id="why-ai-is-not-just-another-technology-initiative">Why AI Is Not Just Another Technology Initiative</h3>
+<p>Before reaching for any framework, it is worth being precise about what makes AI harder to strategise around than previous technology waves. The failure rate is not simply bad strategy. It comes from AI having three properties that resist the approaches that worked for cloud, ERP, or the early internet.</p>
+<p><strong>The diagnosis problem is inverted.</strong> With most technologies, organisations identify a problem first and then evaluate whether a technology can solve it. With AI, a capability appears, such as a language model, computer vision API, or predictive platform, and the organisation searches for a problem it might solve. This is rational given AI’s novelty, but it means the crux, the real obstacle, is rarely identified. Often the problem is misframed. A demand forecast gets built because someone said “we lack accuracy,” when the real obstacle was that the sales team never acted on forecasts. The model is not wrong. The target was.</p>
+<p><strong>The guiding policy has a shorter half-life.</strong> Conventional technology strategy works because capabilities change slowly. AI breaks this. The capability frontier moves faster than planning cycles, creating what <span class="citation" data-cites="Mollick2024"><a href="#ref-Mollick2024" role="doc-biblioref">[9]</a></span> calls the “jagged frontier.” A policy calibrated to LLMs in 2022 was already wrong by 2024. Helmer’s <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[10]</a></span> <strong>Counter-Positioning</strong> explains why incumbents often cannot adopt superior AI without undermining existing investments. Inaction becomes rational precisely when the policy most needs to change. Roadmaps built on three to five year horizons are planning with assumptions that will not hold.</p>
+<p><strong>Value is indirect, emergent, and hard to attribute.</strong> Conventional enterprise technology allows a cost model to be measured upfront. AI does not <span class="citation" data-cites="Iansiti2020"><a href="#ref-Iansiti2020" role="doc-biblioref">[11]</a></span>. Helmer’s <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[10]</a></span> concepts of <strong>Process Power</strong> and <strong>Scale Economies</strong> show why. Advantage builds through proprietary feedback loops and data, not deployment. Competitors starting later begin from scratch. Value grows through use.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Example:</strong> A bank deploys AI for credit underwriting. In year one, analysts process applications faster, but headcount stays the same and productivity gains are hard to measure. In year two, default rates fall subtly across thousands of decisions. By year three, the model identifies a reliable segment of small business owners, enabling a new product line. Each outcome is real, but none could have been predicted in the original business case.</p>
+</div>
+</div>
+</div>
+<p>Measuring AI by deployed models or completed pilots is misleading. Emergent value is often hidden, causing organisations to either declare success on activity rather than outcomes or abandon quietly working initiatives.</p>
+<p>These three properties do not make AI unstrategisable. They demand a framework designed to handle them. The diagnosis process must uncover the crux even if it is obscured. The guiding policy must be built to be revised. The performance layer must accommodate ambiguity without collapsing into vanity metrics. Combining Rumelt’s strategic kernel with a structured technology roadmapping process makes this possible, but only if the framework is applied with these failure modes in mind.</p>
+</section>
+<section id="why-most-ai-roadmaps-fail-and-what-the-kernel-changes" class="level3">
+<h3 class="anchored" data-anchor-id="why-most-ai-roadmaps-fail-and-what-the-kernel-changes">Why Most AI Roadmaps Fail and What the Kernel Changes</h3>
+<p>Each of those three structural properties has a direct expression in how AI roadmaps are typically built and why they fail. Most fail before the first slide is drawn. The failure is not in the execution. It is in where the process starts.</p>
+<p>IBM reports that 64% of CEOs admit to investing in technology before fully understanding its potential impact <span class="citation" data-cites="IBM2025"><a href="#ref-IBM2025" role="doc-biblioref">[12]</a></span>. There are two ways this goes wrong. The first is a <em>technology-driven</em> strategy: starting with available capabilities and working backwards, hoping a business case materialises. The second, less obvious failure is waiting for perfect market insight before engaging with the technology at all. In AI, neither extreme works. The roadmapping literature points to a more disciplined path: one that starts with a real, felt problem, uses technology awareness to sharpen the diagnosis, and then asks what capabilities are genuinely required to solve it <span class="citation" data-cites="Vishnevskiy2016 Noh2021"><a href="#ref-Vishnevskiy2016" role="doc-biblioref">[13]</a>, <a href="#ref-Noh2021" role="doc-biblioref">[14]</a></span>, as shown in <a href="#fig-tech-vs-market" class="quarto-xref">Figure&nbsp;2</a>.</p>
+<div id="fig-tech-vs-market" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tech-vs-market-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="technology_vs_market.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tech-vs-market-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Technology-Driven vs Market-Driven AI Strategy — starting from capability alone, without a diagnosed problem, is where most AI investments lose their way
+</figcaption>
+</figure>
+</div>
+<p>To correct this, organisations need a roadmap that starts with a real problem not with an available capability. In AI, this does not mean ignoring what the technology makes possible. It means using that awareness as an input to diagnosis, not as a substitute for it. According to <span class="citation" data-cites="Phaal2010"><a href="#ref-Phaal2010" role="doc-biblioref">[6]</a></span>, a roadmap only becomes truly strategic when it honestly addresses five questions: <strong>Why, What, How, When, and How Well</strong>. Without all five, you do not have a strategy. You have a to-do list with a Gantt chart attached, as shown in <a href="#fig-roadmap-gov" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<div id="fig-roadmap-gov" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-roadmap-gov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="roadmap-govnt-framework.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-roadmap-gov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Roadmapping Governing Framework: Integrating the ‘Know’ Layers and Strategic Questions
+</figcaption>
+</figure>
+</div>
+<p>What makes this combination powerful is how naturally Rumelt’s three kernel elements map onto the roadmapping questions that <span class="citation" data-cites="Kerr2022"><a href="#ref-Kerr2022" role="doc-biblioref">[15]</a></span> identifies: <em>Where are we now? Where do we want to go? How can we get there?</em> and onto the knowledge layers that <span class="citation" data-cites="Phaal2004"><a href="#ref-Phaal2004" role="doc-biblioref">[5]</a></span> describes. Rather than two separate frameworks running in parallel, they function as three lenses on the same strategic problem, each reinforcing the other, as shown in <a href="#tbl-kernel-map" class="quarto-xref">Table&nbsp;1</a>.</p>
+<div id="tbl-kernel-map" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-kernel-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>Integration of Rumelt’s Kernel and Roadmapping Layers</strong>
+</figcaption>
+<div aria-describedby="tbl-kernel-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rumelt’s Kernel</th>
+<th style="text-align: left;">Roadmapping Question</th>
+<th style="text-align: left;">Roadmap Layer</th>
+<th style="text-align: left;">Strategic Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Diagnosis</strong></td>
+<td style="text-align: left;">Where are we now?</td>
+<td style="text-align: left;"><strong>Know-Why</strong></td>
+<td style="text-align: left;">Market trends, value gaps, and identifying the “Crux”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Guiding Policy</strong></td>
+<td style="text-align: left;">Where do we want to go?</td>
+<td style="text-align: left;"><strong>Know-What</strong></td>
+<td style="text-align: left;">Strategic intent, AI offerings, and business alignment</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Coherent Actions</strong></td>
+<td style="text-align: left;">How can we get there?</td>
+<td style="text-align: left;"><strong>Know-How</strong></td>
+<td style="text-align: left;">Skills, capabilities, and execution</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Coherent Actions</strong></td>
+<td style="text-align: left;">When and how well?</td>
+<td style="text-align: left;"><strong>Know-When / How Well</strong></td>
+<td style="text-align: left;">Timelines, milestones, performance metrics, and continuous review</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>That mapping matters because it is not arbitrary. Each row in the table is a direct response to one of the three structural AI challenges described earlier. The <strong>Diagnosis / Know-Why</strong> layer confronts the inverted diagnosis problem: by anchoring the process in market trends and value gaps, it forces the question of what problem actually needs solving before any capability is selected. The <strong>Guiding Policy / Know-What</strong> layer addresses policy decay: rather than a fixed strategic intent, it is designed to be revisited as the capability frontier shifts. The <strong>Coherent Actions / Know-When / How Well</strong> layer addresses emergent value: it replaces activity metrics with outcome-linked milestones that can hold ambiguity without collapsing into vanity measures.</p>
+<p>The real value of strategic roadmapping is not the diagram you produce. It is the disciplined thinking the process forces you to do. When built around the kernel <span class="citation" data-cites="Phaal2004 Komssi2013"><a href="#ref-Phaal2004" role="doc-biblioref">[5]</a>, <a href="#ref-Komssi2013" role="doc-biblioref">[7]</a></span>, the crux drives resource allocation rather than enthusiasm. The guiding policy is built to be revised as the capability frontier shifts, not locked in with assumptions that will not hold. Coherent actions replace scattered pilots, each tied to a specific measurable question, making emergent value visible rather than declared. And the roadmap makes the kernel visible across diverse teams, not just in the strategy document, but in the work.</p>
+<p>The layered nature of this framework (Market, Product, and Technology working together) is shown in <a href="#fig-kernel-strategy" class="quarto-xref">Figure&nbsp;4</a>.</p>
+<div id="fig-kernel-strategy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kernel-strategy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="kernel_strategy.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kernel-strategy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The layered roadmapping framework — Market (Know-Why), Product (Know-What), and Technology (Know-How) working together
+</figcaption>
+</figure>
+</div>
+<p>The question is no longer whether to build a roadmap. It is whether to build one that actually works.</p>
+</section>
+<section id="conclusion-the-kernel-is-the-roadmap-the-roadmap-is-the-kernel" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-the-kernel-is-the-roadmap-the-roadmap-is-the-kernel">Conclusion: The Kernel is the Roadmap, the Roadmap is the Kernel</h3>
+<p>AI is not simply a hard technology to deploy. It is a technology that structurally resists the strategy discipline that worked for every previous enterprise technology wave. It inverts the normal diagnostic sequence, shortens the useful life of any guiding policy, and produces value in forms that conventional measurement instruments cannot capture. These are not execution problems. They are design problems and they require a framework that is built with them in view.</p>
+<p>That is what combining Rumelt’s kernel with a structured technology roadmap provides. The kernel supplies the architecture: a diagnosis that names the real obstacle, a guiding policy built to be revised rather than fixed, and coherent actions measured by outcomes rather than activity. The roadmap supplies the operational mechanism: a structured process that forces the five strategic questions, Why, What, How, When, and How Well, and makes the kernel visible across the organisation, not just in the strategy document.</p>
+<p>The gap between 80% running pilots and 5% extracting value is not a technology gap. It is a strategy gap created by frameworks that were not designed for AI’s structural properties. And it is closeable, but only if the framework is.</p>
+<p>The next post puts this framework into practice: a five-step AI roadmapping process, real case studies of failure, and a practical guide to spotting bad AI strategy before it costs you.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Rumelt2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">R. P. Rumelt, <em>Good strategy/bad strategy: The difference and why it matters</em>. New York, NY: Crown Business, 2011.</div>
+</div>
+<div id="ref-Rumelt2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">R. P. Rumelt, <em>The crux: High-stakes problems and the art of strategy</em>. New York, NY: PublicAffairs, 2022.</div>
+</div>
+<div id="ref-Joshi2026" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M. Joshi, <span>“Most <span>AI</span> strategies don’t fail on vision – they fail on execution design.”</span> [Online]. Available: <a href="https://www.raconteur.net/technology/ai-failure-is-rarely-ambition-or-funding-its-execution-design">https://www.raconteur.net/technology/ai-failure-is-rarely-ambition-or-funding-its-execution-design</a></div>
+</div>
+<div id="ref-MLQ2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">MIT Project NANDA, <span>“The <span>GenAI</span> divide: State of <span>AI</span> in business 2025,”</span> Massachusetts Institute of Technology, 2025. Available: <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf">https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf</a></div>
+</div>
+<div id="ref-Phaal2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">R. Phaal, C. J. P. Farrukh, and D. Probert, <span>“Technology roadmapping – <span>A</span> planning framework for evolution and revolution,”</span> <em>Technological Forecasting and Social Change</em>, vol. 71, pp. 5–26, 2004, doi: <a href="https://doi.org/10.1016/S0040-1625(03)00072-6">10.1016/S0040-1625(03)00072-6</a>.</div>
+</div>
+<div id="ref-Phaal2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">R. Phaal, C. J. P. Farrukh, and D. R. Probert, <em>Roadmapping for strategy and innovation: Aligning technology and markets in a dynamic world</em>. Cambridge, UK: University of Cambridge, Institute for Manufacturing, 2010.</div>
+</div>
+<div id="ref-Komssi2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">M. Komssi, M. Kauppinen, H. Töhönen, L. Lehtola, and A. M. Davis, <span>“Roadmapping problems in practice: Value creation from the perspective of the customers,”</span> <em>Requirements Engineering</em>, vol. 20, no. 1, 2013, doi: <a href="https://doi.org/10.1007/s00766-013-0186-3">10.1007/s00766-013-0186-3</a>.</div>
+</div>
+<div id="ref-o2021agile" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">E. O’Sullivan, R. Phaal, and Ch. Featherston, <span>“Agile roadmapping: An adaptive approach to technology foresight,”</span> <em>Foresight and STI Governance</em>, vol. 15, no. 2, pp. 65–81, 2021, doi: <a href="https://doi.org/10.17323/2500-2597.2021.2.65.81">10.17323/2500-2597.2021.2.65.81</a>.</div>
+</div>
+<div id="ref-Mollick2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">E. Mollick, <em>Co-intelligence: Living and working with <span>AI</span></em>. New York, NY: Portfolio/Penguin, 2024.</div>
+</div>
+<div id="ref-Helmer2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">H. Helmer, <em>7 powers: The foundations of business strategy</em>. Deep Strategy LLC, 2016.</div>
+</div>
+<div id="ref-Iansiti2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">M. Iansiti and K. R. Lakhani, <em>Competing in the age of <span>AI</span>: Strategy and leadership when algorithms and networks run the world</em>. Boston, MA: Harvard Business Review Press, 2020.</div>
+</div>
+<div id="ref-IBM2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">IBM Institute for Business Value, <span>“<span>CEO</span> study 2025: The transformative <span>CEO</span>,”</span> IBM, 2025. Available: <a href="https://www.ibm.com/thought-leadership/institute-business-value/en-us/c-suite-study/ceo">https://www.ibm.com/thought-leadership/institute-business-value/en-us/c-suite-study/ceo</a></div>
+</div>
+<div id="ref-Vishnevskiy2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">K. Vishnevskiy, O. Karasev, and D. Meissner, <span>“Integrated roadmaps for strategic management and planning,”</span> <em>Technological Forecasting and Social Change</em>, vol. 110, pp. 153–166, 2016, doi: <a href="https://doi.org/10.1016/j.techfore.2015.10.020">10.1016/j.techfore.2015.10.020</a>.</div>
+</div>
+<div id="ref-Noh2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">H. Noh, Y. Song, and S. Lee, <span>“Technology roadmapping for <span>R&amp;D</span> planning and the development of emerging fields,”</span> <em>Journal of Engineering and Technology Management</em>, vol. 62, p. 101650, 2021, doi: <a href="https://doi.org/10.1016/j.jengtecman.2021.101650">10.1016/j.jengtecman.2021.101650</a>.</div>
+</div>
+<div id="ref-Kerr2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. Kerr and R. Phaal, <span>“Roadmapping and roadmaps: Definition and underpinning concepts,”</span> <em>IEEE Transactions on Engineering Management</em>, vol. 69, no. 1, pp. 6–16, 2022, doi: <a href="https://doi.org/10.1109/TEM.2021.3096012">10.1109/TEM.2021.3096012</a>.</div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{faustine2026,
+  author = {Faustine, Anthony},
+  title = {The {Hype} Vs. {The} {Kernel:} {Why} {Your} {AI} {Strategy}
+    Is {Failing}},
+  date = {2026-03-28},
+  url = {https://sambaiga.github.io/pages/blog/posts/2026/03/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> 2025–2026 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> <i class="bi-cc-by " style="" role="img" aria-hidden="true"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="bi-orcid " style="" role="img" aria-hidden="true"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-7838-533X">0000-0002-7838-533X</a></span> <span class="faux-block"><i class="bi-key " style="" role="img" aria-hidden="true"></i> <a href="../../../../../pgp_ath.asc.txt">PGP public key</a>   <i class="bi-fingerprint " style="" role="img" aria-hidden="true"></i> Fingerprint:<br><span class="fingerprint">49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/sambaiga/sambaiga.github.io">View the source at <i class="bi-github " style="" role="img" aria-hidden="true"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

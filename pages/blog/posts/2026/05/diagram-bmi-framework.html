@@ -1,0 +1,271 @@
+<style>
+.dg-bmi {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+}
+.dg-bmi-inner {
+  min-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Sequential elements row ─────────────────────────────── */
+.dg-bmi-seq {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.dg-bmi-el {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  padding: 14px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: relative;
+}
+/* left accent bar */
+.dg-bmi-el::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  border-radius: 8px 8px 0 0;
+}
+.dg-bmi-el.el1::before { background: #1E293B; }
+.dg-bmi-el.el2::before { background: #8B5CF6; }
+.dg-bmi-el.el3::before { background: #7C3AED; }
+
+.dg-bmi-el-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ADB5BD;
+}
+.dg-bmi-el-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.dg-bmi-el.el1 .dg-bmi-el-icon { background: rgba(30,41,59,0.08); color: #1E293B; }
+.dg-bmi-el.el2 .dg-bmi-el-icon { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+.dg-bmi-el.el3 .dg-bmi-el-icon { background: rgba(124,58,237,0.1); color: #7C3AED; }
+
+.dg-bmi-el-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: #1E293B;
+  line-height: 1.3;
+}
+.dg-bmi-el-sub {
+  font-size: 10px;
+  color: #6B7280;
+  text-align: center;
+  line-height: 1.35;
+}
+
+/* Arrows between sequential elements */
+.dg-bmi-seq-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 15px;
+  padding-top: 4px; /* offset for top border */
+}
+
+/* ── Connector zone ──────────────────────────────────────── */
+.dg-bmi-connectors {
+  display: flex;
+  gap: 0;
+}
+.dg-bmi-connector-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.dg-bmi-connector-col .dg-connector-line {
+  width: 2px;
+  height: 16px;
+  background: #DEE2E6;
+}
+.dg-bmi-connector-gap {
+  width: 28px;
+  flex-shrink: 0;
+}
+
+/* ── Transversal band ────────────────────────────────────── */
+.dg-bmi-transversal {
+  background: #fff;
+  border: 1.5px solid #10B981;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(16,185,129,0.12);
+}
+.dg-bmi-tv-header {
+  background: #10B981;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dg-bmi-tv-header i { font-size: 16px; color: #fff; }
+.dg-bmi-tv-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.dg-bmi-tv-badge {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dg-bmi-tv-components {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+.dg-bmi-tv-comp {
+  padding: 12px 12px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.dg-bmi-tv-comp + .dg-bmi-tv-comp {
+  border-left: 1px solid #E9ECEF;
+}
+.dg-bmi-tv-comp i {
+  font-size: 16px;
+  color: #10B981;
+}
+.dg-bmi-tv-comp-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1E293B;
+}
+.dg-bmi-tv-comp-q {
+  font-size: 9.5px;
+  color: #6B7280;
+  line-height: 1.3;
+  font-style: italic;
+}
+</style>
+
+<div class="dg-bmi" role="img" aria-label="AI Business Model Innovation Framework. Three sequential elements: Element 1, Data Foundation — proprietary data as a cornered resource. Element 2, Value-Centric Data Exploitation — insights anchored to business goals. Element 3, Strategic AI Co-Innovation — redesigning the business model. Below all three, running transversally, is AI Value Realisation with three components: Value Architecture (who is this for and what does it solve), Monetisation (how is value captured), and Valuation (are we tracking outcomes or activity).">
+
+  <div class="dg-bmi-inner">
+
+    <!-- Sequential elements -->
+    <div class="dg-bmi-seq">
+
+      <div class="dg-bmi-el el1">
+        <span class="dg-bmi-el-num">Element 01</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-database"></i>
+        </div>
+        <div class="dg-bmi-el-title">Data Foundation</div>
+        <div class="dg-bmi-el-sub">Proprietary data as a cornered resource</div>
+      </div>
+
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+
+      <div class="dg-bmi-el el2">
+        <span class="dg-bmi-el-num">Element 02</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-graph-up-arrow"></i>
+        </div>
+        <div class="dg-bmi-el-title">Value-Centric Data Exploitation</div>
+        <div class="dg-bmi-el-sub">Insights anchored to business goals</div>
+      </div>
+
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+
+      <div class="dg-bmi-el el3">
+        <span class="dg-bmi-el-num">Element 03</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-people"></i>
+        </div>
+        <div class="dg-bmi-el-title">Strategic AI Co-Innovation</div>
+        <div class="dg-bmi-el-sub">Redesigning the business model</div>
+      </div>
+
+    </div>
+
+    <!-- Connector lines down to transversal band -->
+    <div class="dg-bmi-connectors" aria-hidden="true">
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+    </div>
+
+    <!-- Transversal: AI Value Realisation -->
+    <div class="dg-bmi-transversal">
+
+      <div class="dg-bmi-tv-header">
+        <i class="bi bi-cash-coin" aria-hidden="true"></i>
+        <span class="dg-bmi-tv-title">AI Value Realisation — Element 04</span>
+        <span class="dg-bmi-tv-badge">
+          <i class="bi bi-arrows-expand" aria-hidden="true"></i> Transversal
+        </span>
+      </div>
+
+      <div class="dg-bmi-tv-components">
+
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Value Architecture</div>
+          <div class="dg-bmi-tv-comp-q">Who is this for, and what specifically does it solve?</div>
+        </div>
+
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-cash-coin" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Monetisation</div>
+          <div class="dg-bmi-tv-comp-q">How does the organisation capture value, and when is that decided?</div>
+        </div>
+
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Valuation</div>
+          <div class="dg-bmi-tv-comp-q">Are we tracking outcomes or counting activity?</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

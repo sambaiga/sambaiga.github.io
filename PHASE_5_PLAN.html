@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>phase_5_plan – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href=".//images/icons/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-eaf3286719570f5f2ce9bb8ae75157f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-306ad45076f7d97859ae6f5e8473a36f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta name="twitter:title" content="Anthony Faustine">
+<meta name="twitter:description" content="Principal ML Engineer at Analog Devices, Ireland. Building production ML systems for supply chain optimization.">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi-envelope-at " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-github " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-linkedin " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#phase-5-design-system-consolidation-polish" id="toc-phase-5-design-system-consolidation-polish" class="nav-link active" data-scroll-target="#phase-5-design-system-consolidation-polish">Phase 5: Design System Consolidation &amp; Polish</a>
+  <ul class="collapse">
+  <li><a href="#phase-overview" id="toc-phase-overview" class="nav-link" data-scroll-target="#phase-overview">📋 Phase Overview</a>
+  <ul class="collapse">
+  <li><a href="#success-definition" id="toc-success-definition" class="nav-link" data-scroll-target="#success-definition">Success Definition</a></li>
+  </ul></li>
+  <li><a href="#work-breakdown" id="toc-work-breakdown" class="nav-link" data-scroll-target="#work-breakdown">🔧 Work Breakdown</a>
+  <ul class="collapse">
+  <li><a href="#task-1-refactor-projects-page-scss-priority-critical" id="toc-task-1-refactor-projects-page-scss-priority-critical" class="nav-link" data-scroll-target="#task-1-refactor-projects-page-scss-priority-critical">Task 1: Refactor Projects Page SCSS (Priority: 🔴 CRITICAL)</a></li>
+  <li><a href="#task-2-create-shared-animation-system-priority-medium-high" id="toc-task-2-create-shared-animation-system-priority-medium-high" class="nav-link" data-scroll-target="#task-2-create-shared-animation-system-priority-medium-high">Task 2: Create Shared Animation System (Priority: 🟡 MEDIUM-HIGH)</a></li>
+  <li><a href="#task-3-create-state-color-shadow-tokens-priority-medium" id="toc-task-3-create-state-color-shadow-tokens-priority-medium" class="nav-link" data-scroll-target="#task-3-create-state-color-shadow-tokens-priority-medium">Task 3: Create State Color &amp; Shadow Tokens (Priority: 🟡 MEDIUM)</a></li>
+  <li><a href="#task-4-standardize-interaction-patterns-priority-medium" id="toc-task-4-standardize-interaction-patterns-priority-medium" class="nav-link" data-scroll-target="#task-4-standardize-interaction-patterns-priority-medium">Task 4: Standardize Interaction Patterns (Priority: 🟡 MEDIUM)</a></li>
+  <li><a href="#task-5-add-accessibility-improvements-priority-medium" id="toc-task-5-add-accessibility-improvements-priority-medium" class="nav-link" data-scroll-target="#task-5-add-accessibility-improvements-priority-medium">Task 5: Add Accessibility Improvements (Priority: 🟡 MEDIUM)</a></li>
+  <li><a href="#task-6-create-design-system-documentation-priority-medium-low" id="toc-task-6-create-design-system-documentation-priority-medium-low" class="nav-link" data-scroll-target="#task-6-create-design-system-documentation-priority-medium-low">Task 6: Create Design System Documentation (Priority: 🟢 MEDIUM-LOW)</a></li>
+  <li><a href="#task-7-create-reusable-component-mixins-priority-low" id="toc-task-7-create-reusable-component-mixins-priority-low" class="nav-link" data-scroll-target="#task-7-create-reusable-component-mixins-priority-low">Task 7: Create Reusable Component Mixins (Priority: 🟢 LOW)</a></li>
+  </ul></li>
+  <li><a href="#phase-5-summary-table" id="toc-phase-5-summary-table" class="nav-link" data-scroll-target="#phase-5-summary-table">📊 Phase 5 Summary Table</a></li>
+  <li><a href="#implementation-strategy" id="toc-implementation-strategy" class="nav-link" data-scroll-target="#implementation-strategy">🚀 Implementation Strategy</a>
+  <ul class="collapse">
+  <li><a href="#phase-5a-foundation-hours-1-3" id="toc-phase-5a-foundation-hours-1-3" class="nav-link" data-scroll-target="#phase-5a-foundation-hours-1-3">Phase 5A: Foundation (Hours 1-3)</a></li>
+  <li><a href="#phase-5b-enhancement-hours-4-7" id="toc-phase-5b-enhancement-hours-4-7" class="nav-link" data-scroll-target="#phase-5b-enhancement-hours-4-7">Phase 5B: Enhancement (Hours 4-7)</a></li>
+  <li><a href="#phase-5c-documentation-hours-8-10" id="toc-phase-5c-documentation-hours-8-10" class="nav-link" data-scroll-target="#phase-5c-documentation-hours-8-10">Phase 5C: Documentation (Hours 8-10)</a></li>
+  </ul></li>
+  <li><a href="#merge-strategy" id="toc-merge-strategy" class="nav-link" data-scroll-target="#merge-strategy">✅ Merge Strategy</a></li>
+  <li><a href="#phase-5-success-indicators" id="toc-phase-5-success-indicators" class="nav-link" data-scroll-target="#phase-5-success-indicators">🎯 Phase 5 Success Indicators</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">📝 Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="phase-5-design-system-consolidation-polish" class="level1">
+<h1>Phase 5: Design System Consolidation &amp; Polish</h1>
+<p><strong>Objective</strong>: Achieve 100% branding consistency, improve UI/UX, and establish reusable patterns</p>
+<hr>
+<section id="phase-overview" class="level2">
+<h2 class="anchored" data-anchor-id="phase-overview">📋 Phase Overview</h2>
+<p><strong>Duration</strong>: 2-3 sprints (estimated 10 hours)<br>
+<strong>Priority</strong>: Medium-High (improves maintainability and user experience)<br>
+<strong>Dependencies</strong>: Phases 1-4 complete ✅</p>
+<section id="success-definition" class="level3">
+<h3 class="anchored" data-anchor-id="success-definition">Success Definition</h3>
+<ul>
+<li>✅ All pages use centralized SCSS variables (no local redefinitions)</li>
+<li>✅ Consistent hover/focus/active states across all interactive elements</li>
+<li>✅ Animation system unified with standard durations</li>
+<li>✅ Design tokens documented for future reference</li>
+<li>✅ Component patterns established and reusable</li>
+<li>✅ WCAG AA accessibility compliance on all interactive elements</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="work-breakdown" class="level2">
+<h2 class="anchored" data-anchor-id="work-breakdown">🔧 Work Breakdown</h2>
+<section id="task-1-refactor-projects-page-scss-priority-critical" class="level3">
+<h3 class="anchored" data-anchor-id="task-1-refactor-projects-page-scss-priority-critical">Task 1: Refactor Projects Page SCSS (Priority: 🔴 CRITICAL)</h3>
+<p><strong>Effort</strong>: 1.5 hours | <strong>Impact</strong>: HIGH</p>
+<section id="current-issues" class="level4">
+<h4 class="anchored" data-anchor-id="current-issues">Current Issues:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// ❌ WRONG - Custom color redefinition</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">$color1</span>: <span class="cn">#1E293B</span><span class="op">;</span>  <span class="co">// Duplicates $primary</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">$color2</span>: <span class="cn">#E0F2FE</span><span class="op">;</span>  <span class="co">// Custom, should use rgba($primary, $opacity-10)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">$color3</span>: <span class="cn">#8B5CF6</span><span class="op">;</span>  <span class="co">// Duplicates $ai-accent</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">$color5</span>: <span class="cn">#10B981</span><span class="op">;</span>  <span class="co">// Duplicates $energy-accent</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">// ❌ WRONG - Hard-coded values</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>background: <span class="pp">#f6f9fc</span><span class="er">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>color: #525f7f;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>padding: $spacing 1<span class="fu">.2rem</span><span class="er">;</span>  <span class="co">// Mixing custom + implicit</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>border-top: 1px solid <span class="pp">#eee</span><span class="er">;</span>  <span class="co">// Should be $border-color-light</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="required-changes" class="level4">
+<h4 class="anchored" data-anchor-id="required-changes">Required Changes:</h4>
+<ol type="1">
+<li><p><strong>Remove custom color variables</strong>, replace with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Replace $color1 with $primary</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Replace $color2 with rgba($primary, $opacity-10)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Replace $color3 with $ai-accent</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Replace $color5 with $energy-accent</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Replace hard-coded values</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>background: <span class="pp">#f6f9fc</span><span class="er">;</span>           → background: $gray-100;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>color: #525f7f;                → color: $gray-700;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>padding: $spacing 1<span class="fu">.2rem</span><span class="er">;</span>      → padding: $spacer-3 $spacer-4<span class="er">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>border-top: 1px solid <span class="pp">#eee</span><span class="er">;</span>    → border-top: $border-width-1 solid $border-color-light<span class="er">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>font-size: 1<span class="fu">.1rem</span><span class="er">;</span>             → font-size: $font-size-lg;</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>font-weight: 600;              → font-weight: $font-weight-semibold;</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>margin-bottom: 0<span class="fu">.5rem</span><span class="er">;</span>         → margin-bottom: $spacer-2;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Replace custom spacing values</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">$spacing</span>: <span class="dv">16</span><span class="dt">px</span>  → <span class="dv">Remove</span> variable<span class="op">,</span> use <span class="va">$spacer-3</span> <span class="op">or</span> <span class="va">$spacer-4</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>margin: <span class="dv">1.5</span><span class="dt">rem</span> <span class="dv">0</span>  → margin: <span class="va">$spacer-5</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>padding: 0 $spacing  → padding<span class="in">: 0 $spacer-3</span><span class="er">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Update animation timing</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Replace hard-coded durations with new variables</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>animation: fadeInUp 0<span class="fu">.6s</span> ease-out forwards<span class="er">;</span>  → Use $animation-duration-base</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>animation<span class="in">: fillTop</span> 2s forwards 4s ease-in-out<span class="er">;</span>  → Use $animation-duration-slow</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Use breakpoint variables</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> (<span class="kw">max-width</span>: <span class="dv">786</span><span class="dt">px</span>)  → @media (<span class="kw">max-width</span>: <span class="va">$breakpoint-lg</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> (<span class="kw">min-width</span>: <span class="dv">1024</span><span class="dt">px</span>)  → @media (<span class="kw">min-width</span>: <span class="va">$breakpoint-lg</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+</section>
+<section id="checklist" class="level4">
+<h4 class="anchored" data-anchor-id="checklist">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Remove <code>$color1-6</code> variable definitions</label></li>
+<li><label><input type="checkbox">Replace all <code>$color*</code> references with branding variables</label></li>
+<li><label><input type="checkbox">Replace hard-coded color hex values with system variables</label></li>
+<li><label><input type="checkbox">Replace hard-coded font sizes with typography scale</label></li>
+<li><label><input type="checkbox">Replace hard-coded spacing with $spacer system</label></li>
+<li><label><input type="checkbox">Replace custom breakpoint with <code>$breakpoint-lg</code></label></li>
+<li><label><input type="checkbox">Test page at all breakpoints</label></li>
+<li><label><input type="checkbox">Verify no visual changes</label></li>
+<li><label><input type="checkbox">Commit with message: “Refactor: Consolidate Projects page to use branding SCSS variables”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="task-2-create-shared-animation-system-priority-medium-high" class="level3">
+<h3 class="anchored" data-anchor-id="task-2-create-shared-animation-system-priority-medium-high">Task 2: Create Shared Animation System (Priority: 🟡 MEDIUM-HIGH)</h3>
+<p><strong>Effort</strong>: 1 hour | <strong>Impact</strong>: MEDIUM</p>
+<section id="new-file-assetsscss_animations.scss" class="level4">
+<h4 class="anchored" data-anchor-id="new-file-assetsscss_animations.scss">New File: <code>assets/scss/_animations.scss</code></h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:animations --*/</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">// ANIMATION &amp; TRANSITION SYSTEM</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Duration Variables</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-duration-fast</span>: <span class="dv">0.15</span><span class="dt">s</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-duration-base</span>: <span class="dv">0.3</span><span class="dt">s</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-duration-slow</span>: <span class="dv">0.6</span><span class="dt">s</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-duration-very-slow</span>: <span class="dv">1</span><span class="dt">s</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Timing Functions</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-timing-linear</span>: <span class="dv">linear</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-timing-ease</span>: <span class="dv">ease</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-timing-ease-in</span>: <span class="dv">ease-in</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-timing-ease-out</span>: <span class="dv">ease-out</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="va">$animation-timing-ease-in-out</span>: <span class="dv">ease-in-out</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">// Entrance Animations</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fadeIn {</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  from { <span class="kw">opacity</span>: <span class="dv">0</span><span class="op">;</span> }</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  to { <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span> }</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fadeInUp {</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  from {</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateY(<span class="dv">30</span><span class="dt">px</span>)<span class="op">;</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  to {</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateY(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fadeInDown {</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  from {</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateY(<span class="op">-</span><span class="dv">30</span><span class="dt">px</span>)<span class="op">;</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  to {</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateY(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> slideInLeft {</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  from {</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateX(<span class="op">-</span><span class="dv">30</span><span class="dt">px</span>)<span class="op">;</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  to {</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateX(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> slideInRight {</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  from {</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateX(<span class="dv">30</span><span class="dt">px</span>)<span class="op">;</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  to {</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: translateX(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="co">// Timeline-specific Animations (moved from _projects.scss)</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fillLeft {</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  100% { <span class="kw">right</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span> }</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fillTop {</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>  100% { <span class="kw">top</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span> }</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> fillLeftOdd {</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>  100% { <span class="kw">left</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span> }</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="co">// Scale Animations</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> scaleUp {</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  from {</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">0.95</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  to {</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a><span class="co">// Rotate Animations</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> spin {</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>  from { <span class="kw">transform</span>: <span class="fu">rotate(</span><span class="dv">0</span><span class="dt">deg</span><span class="fu">)</span><span class="op">;</span> }</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>  to { <span class="kw">transform</span>: <span class="fu">rotate(</span><span class="dv">360</span><span class="dt">deg</span><span class="fu">)</span><span class="op">;</span> }</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="co">// Pulse Animation</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> pulse {</span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>  0%<span class="op">,</span> 100% { <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span> }</span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>  50% { <span class="kw">opacity</span>: <span class="dv">0.5</span><span class="op">;</span> }</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="co">// Bounce Animation</span></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a><span class="im">@keyframes</span> bounce {</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>  0%<span class="op">,</span> 100% { <span class="kw">transform</span>: translateY(<span class="dv">0</span>)<span class="op">;</span> }</span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  50% { <span class="kw">transform</span>: translateY(<span class="op">-</span><span class="dv">10</span><span class="dt">px</span>)<span class="op">;</span> }</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a><span class="co">// TRANSITION MIXINS</span></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">transition-smooth</span>(<span class="va">$property</span><span class="er">:</span> <span class="er">all</span>) {</span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$property</span> <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">transition-fast</span>(<span class="va">$property</span><span class="er">:</span> <span class="er">all</span>) {</span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$property</span> <span class="va">$animation-duration-fast</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">transition-slow</span>(<span class="va">$property</span><span class="er">:</span> <span class="er">all</span>) {</span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$property</span> <span class="va">$animation-duration-slow</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="update-assetstwiga.scss" class="level4">
+<h4 class="anchored" data-anchor-id="update-assetstwiga.scss">Update <code>assets/twiga.scss</code>:</h4>
+<p>Add near the top:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:animations --*/</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="st">'scss/animations'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="update-_projects.scss" class="level4">
+<h4 class="anchored" data-anchor-id="update-_projects.scss">Update <code>_projects.scss</code>:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Remove @keyframes definitions (now in _animations.scss)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Update animation references:</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>animation: fadeInUp $animation-duration-base $animation-timing-ease-out forwards<span class="er">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="checklist-1" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-1">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Create <code>_animations.scss</code> with all animations</label></li>
+<li><label><input type="checkbox">Add duration and timing variables</label></li>
+<li><label><input type="checkbox">Create transition mixins</label></li>
+<li><label><input type="checkbox">Update <code>twiga.scss</code> import</label></li>
+<li><label><input type="checkbox">Update <code>_projects.scss</code> to remove duplicate animations</label></li>
+<li><label><input type="checkbox">Test all animations on homepage and projects page</label></li>
+<li><label><input type="checkbox">Verify smooth 60fps animations</label></li>
+<li><label><input type="checkbox">Commit: “feat: Create centralized animation system with reusable animations and timing”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="task-3-create-state-color-shadow-tokens-priority-medium" class="level3">
+<h3 class="anchored" data-anchor-id="task-3-create-state-color-shadow-tokens-priority-medium">Task 3: Create State Color &amp; Shadow Tokens (Priority: 🟡 MEDIUM)</h3>
+<p><strong>Effort</strong>: 1.5 hours | <strong>Impact</strong>: MEDIUM</p>
+<section id="update-assetsscss_defaults.scss" class="level4">
+<h4 class="anchored" data-anchor-id="update-assetsscss_defaults.scss">Update <code>assets/scss/_defaults.scss</code></h4>
+<p>Add after opacity levels section:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">// STATE COLOR SYSTEM</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Hover States</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="va">$color-hover-light</span>: <span class="fu">rgba(</span><span class="va">$primary</span><span class="op">,</span> <span class="va">$opacity-10</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="va">$color-hover-dark</span>: <span class="fu">darken(</span><span class="va">$primary</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Active States</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="va">$color-active</span>: <span class="fu">darken(</span><span class="va">$primary</span><span class="op">,</span> <span class="dv">15</span><span class="dt">%</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Disabled States</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="va">$color-disabled</span>: <span class="va">$gray-400</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="va">$color-disabled-bg</span>: <span class="va">$gray-100</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">// Focus/Ring States</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="va">$color-focus-ring</span>: <span class="fu">rgba(</span><span class="va">$primary</span><span class="op">,</span> <span class="va">$opacity-30</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="va">$focus-ring-width</span>: <span class="dv">2</span><span class="dt">px</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="va">$focus-ring-style</span>: <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="va">$color-focus-ring</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">// SHADOW SYSTEM</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">// Base Shadows (for depth/elevation)</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-xs</span>: <span class="dv">0</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">2</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.05</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-sm</span>: <span class="dv">0</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">3</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.1</span><span class="fu">)</span><span class="op">,</span> <span class="dv">0</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">2</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.06</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-base</span>: <span class="dv">0</span> <span class="dv">4</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.1</span><span class="fu">)</span><span class="op">,</span> <span class="dv">0</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">4</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.06</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-md</span>: <span class="dv">0</span> <span class="dv">10</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span> <span class="op">-</span><span class="dv">3</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.1</span><span class="fu">)</span><span class="op">,</span> <span class="dv">0</span> <span class="dv">4</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="op">-</span><span class="dv">2</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.05</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-lg</span>: <span class="dv">0</span> <span class="dv">20</span><span class="dt">px</span> <span class="dv">25</span><span class="dt">px</span> <span class="op">-</span><span class="dv">5</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.1</span><span class="fu">)</span><span class="op">,</span> <span class="dv">0</span> <span class="dv">10</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> <span class="op">-</span><span class="dv">5</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.04</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-xl</span>: <span class="dv">0</span> <span class="dv">25</span><span class="dt">px</span> <span class="dv">50</span><span class="dt">px</span> <span class="op">-</span><span class="dv">12</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.25</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">// Hover Shadows (elevate on hover)</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-hover</span>: <span class="va">$shadow-md</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-hover-lg</span>: <span class="va">$shadow-lg</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co">// Interactive Shadow Transitions</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="va">$shadow-transition</span>: box-shadow <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span> <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="co">// TRANSFORM SYSTEM</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co">// =====================================================</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="va">$transform-hover-lift</span>: translateY(<span class="op">-</span><span class="dv">2</span><span class="dt">px</span>) <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="va">$transform-active-press</span>: translateY(<span class="dv">0</span>) <span class="at">!default</span><span class="op">;</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="va">$transform-disabled</span>: <span class="fu">scale(</span><span class="dv">1</span><span class="fu">)</span> <span class="at">!default</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="use-in-components" class="level4">
+<h4 class="anchored" data-anchor-id="use-in-components">Use in Components</h4>
+<p>Update <code>_cards.scss</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.card</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">box-shadow</span>: <span class="va">$shadow-base</span><span class="op">;</span>  <span class="co">// Was $card-box-shadow</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-hover</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-hover-lift</span><span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:focus-visible</span> {</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline</span>: <span class="va">$focus-ring-style</span><span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:disabled</span> {</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">0.6</span><span class="op">;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="va">$color-disabled</span><span class="op">;</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="checklist-2" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-2">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Add state color variables to <code>_defaults.scss</code></label></li>
+<li><label><input type="checkbox">Add shadow system variables</label></li>
+<li><label><input type="checkbox">Add transform variables</label></li>
+<li><label><input type="checkbox">Update <code>_cards.scss</code> to use new variables</label></li>
+<li><label><input type="checkbox">Update <code>_buttons.scss</code> to use state colors</label></li>
+<li><label><input type="checkbox">Update <code>_projects.scss</code> shadow references</label></li>
+<li><label><input type="checkbox">Test hover/focus/active states on all interactive elements</label></li>
+<li><label><input type="checkbox">Commit: “feat: Add state color and shadow token system for consistency”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="task-4-standardize-interaction-patterns-priority-medium" class="level3">
+<h3 class="anchored" data-anchor-id="task-4-standardize-interaction-patterns-priority-medium">Task 4: Standardize Interaction Patterns (Priority: 🟡 MEDIUM)</h3>
+<p><strong>Effort</strong>: 2 hours | <strong>Impact</strong>: MEDIUM-HIGH</p>
+<section id="button-consistency" class="level4">
+<h4 class="anchored" data-anchor-id="button-consistency">Button Consistency</h4>
+<p>Update <code>assets/scss/components/_buttons.scss</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$shadow-transition</span><span class="op">,</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              <span class="dv">color</span> <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-hover</span><span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-hover-lift</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:active</span> {</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-sm</span><span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-active-press</span><span class="op">;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:focus-visible</span> {</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline</span>: <span class="va">$focus-ring-style</span><span class="op">;</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline-offset</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:disabled</span> {</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$color-disabled-bg</span><span class="op">;</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="va">$color-disabled</span><span class="op">;</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cursor</span>: <span class="dv">not-allowed</span><span class="op">;</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="link-consistency" class="level4">
+<h4 class="anchored" data-anchor-id="link-consistency">Link Consistency</h4>
+<p>Create <code>assets/scss/components/_links.scss</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:components/links --*/</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="dv">color</span> <span class="va">$animation-duration-fast</span> <span class="va">$animation-timing-ease</span><span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-decoration-thickness</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-underline-offset</span>: <span class="dv">4</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:focus-visible</span> {</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline</span>: <span class="va">$focus-ring-style</span><span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline-offset</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">.link-primary</span> {</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$primary</span><span class="op">;</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="va">$color-hover-dark</span><span class="op">;</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">.link-secondary</span> {</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$secondary</span><span class="op">;</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="fu">darken(</span><span class="va">$secondary</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="card-consistency-update-existing" class="level4">
+<h4 class="anchored" data-anchor-id="card-consistency-update-existing">Card Consistency (Update existing)</h4>
+<p>All cards should follow:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.card</span> {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">box-shadow</span>: <span class="va">$shadow-base</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$shadow-transition</span><span class="op">,</span> transform <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-hover</span><span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-hover-lift</span><span class="op">;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="projects-page-cards" class="level4">
+<h4 class="anchored" data-anchor-id="projects-page-cards">Projects Page Cards</h4>
+<p>Update timeline-content:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.timeline-content</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">box-shadow</span>: <span class="va">$shadow-base</span><span class="op">;</span>  <span class="co">// Not hard-coded</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$shadow-transition</span><span class="op">,</span> transform <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-hover</span><span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-hover-lift</span><span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="checklist-3" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-3">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Standardize all button hover/focus/active states</label></li>
+<li><label><input type="checkbox">Create <code>_links.scss</code> component</label></li>
+<li><label><input type="checkbox">Update all card hover states</label></li>
+<li><label><input type="checkbox">Test keyboard navigation (Tab through all interactive elements)</label></li>
+<li><label><input type="checkbox">Verify focus rings visible on all inputs</label></li>
+<li><label><input type="checkbox">Test disabled states</label></li>
+<li><label><input type="checkbox">Commit: “refactor: Standardize interaction patterns (hover, focus, active states)”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="task-5-add-accessibility-improvements-priority-medium" class="level3">
+<h3 class="anchored" data-anchor-id="task-5-add-accessibility-improvements-priority-medium">Task 5: Add Accessibility Improvements (Priority: 🟡 MEDIUM)</h3>
+<p><strong>Effort</strong>: 1.5 hours | <strong>Impact</strong>: MEDIUM</p>
+<section id="update-assetsscssbase.scss" class="level4">
+<h4 class="anchored" data-anchor-id="update-assetsscssbase.scss">Update <code>assets/scss/base.scss</code></h4>
+<p>Add focus styles:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Keyboard Navigation</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="in">:focus-visible</span> {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">outline</span>: <span class="va">$focus-ring-style</span><span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">outline-offset</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Skip to main content link (hide but accessible)</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">.skip-to-main</span> {</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">top</span>: <span class="op">-</span><span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="va">$primary</span><span class="op">;</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$white</span><span class="op">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="va">$spacer-3</span> <span class="va">$spacer-4</span><span class="op">;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">z-index</span>: <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:focus</span> {</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">top</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="add-aria-label-support" class="level4">
+<h4 class="anchored" data-anchor-id="add-aria-label-support">Add ARIA-label support</h4>
+<p>Update <code>_buttons.scss</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.btn</span><span class="ex">[aria-busy</span><span class="op">=</span><span class="st">"true"</span><span class="ex">]</span> {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span>: <span class="dv">0.7</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">pointer-events</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="color-contrast-verification" class="level4">
+<h4 class="anchored" data-anchor-id="color-contrast-verification">Color Contrast Verification</h4>
+<p>Create checklist for WCAG AA (4.5:1 for text, 3:1 for UI): - [ ] Primary text on white: $gray-900 or $gray-800 ✅ (15:1) - [ ] Primary text on $primary: $white ✅ (10:1) - [ ] Secondary text: $gray-700 ✅ (8:1) - [ ] Disabled text: $gray-400 ⚠️ (Check: 2.3:1 - below target, needs review)</p>
+</section>
+<section id="checklist-4" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-4">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Add focus-visible styles to all interactive elements</label></li>
+<li><label><input type="checkbox">Test keyboard navigation (no mouse)</label></li>
+<li><label><input type="checkbox">Verify color contrasts with accessibility checker</label></li>
+<li><label><input type="checkbox">Add ARIA labels to interactive components</label></li>
+<li><label><input type="checkbox">Test with screen reader (NVDA/JAWS)</label></li>
+<li><label><input type="checkbox">Document accessible patterns</label></li>
+<li><label><input type="checkbox">Commit: “a11y: Add keyboard navigation and focus state improvements”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="task-6-create-design-system-documentation-priority-medium-low" class="level3">
+<h3 class="anchored" data-anchor-id="task-6-create-design-system-documentation-priority-medium-low">Task 6: Create Design System Documentation (Priority: 🟢 MEDIUM-LOW)</h3>
+<p><strong>Effort</strong>: 2 hours | <strong>Impact</strong>: HIGH (long-term)</p>
+<section id="file-1-design_tokens.md" class="level4">
+<h4 class="anchored" data-anchor-id="file-1-design_tokens.md">File 1: <code>DESIGN_TOKENS.md</code></h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Design Tokens Reference</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Colors</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">### Primary</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Teal (#1E293B) - Primary brand color</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Light Teal (rgba) - Hover states</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dark Teal - Active states</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Semantic</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Success: $green (#059669)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Warning: $orange (#EA580C)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Danger: $red (#DC2626)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Info: $cyan (#0369A1)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### Accent</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Energy: #10B981 (Community projects)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AI: #8B5CF6 (Maintained projects)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Typography Scale</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Display: 2.625rem</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>H1: 1.875rem</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>H2: 1.5rem</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>H3: 1.3rem</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>...etc</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Spacing System</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Base: 1rem (16px)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Spacer-1: 4px</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Spacer-2: 8px</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Spacer-3: 16px</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>...up to Spacer-8: 80px</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Shadows</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>xs: Small elevation</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>base: Default cards</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>hover: Hover state</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>lg: Modal/overlay</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Animations</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Duration: 0.15s (fast), 0.3s (base), 0.6s (slow)</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Timing: ease, ease-in-out, ease-out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="file-2-component_guide.md" class="level4">
+<h4 class="anchored" data-anchor-id="file-2-component_guide.md">File 2: <code>COMPONENT_GUIDE.md</code></h4>
+<p>Document patterns for: - Card types (basic, elevated, outlined) - Button variations - Link behaviors - Form inputs - Navigation patterns - Timeline component (Projects page) - Blog listing - Publication grid</p>
+</section>
+<section id="checklist-5" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-5">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Create <code>DESIGN_TOKENS.md</code></label></li>
+<li><label><input type="checkbox">Create <code>COMPONENT_GUIDE.md</code></label></li>
+<li><label><input type="checkbox">Document all color variables</label></li>
+<li><label><input type="checkbox">Document typography scale</label></li>
+<li><label><input type="checkbox">Document spacing system</label></li>
+<li><label><input type="checkbox">Document shadow system</label></li>
+<li><label><input type="checkbox">Document animation system</label></li>
+<li><label><input type="checkbox">Commit: “docs: Add design system and component documentation”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="task-7-create-reusable-component-mixins-priority-low" class="level3">
+<h3 class="anchored" data-anchor-id="task-7-create-reusable-component-mixins-priority-low">Task 7: Create Reusable Component Mixins (Priority: 🟢 LOW)</h3>
+<p><strong>Effort</strong>: 1 hour | <strong>Impact</strong>: MEDIUM (future use)</p>
+<section id="new-file-assetsscss_component-mixins.scss" class="level4">
+<h4 class="anchored" data-anchor-id="new-file-assetsscss_component-mixins.scss">New File: <code>assets/scss/_component-mixins.scss</code></h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:mixins/components --*/</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Card with consistent styling</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">card-base</span> {</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="va">$white</span><span class="op">;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="va">$border-radius-lg</span><span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">box-shadow</span>: <span class="va">$shadow-base</span><span class="op">;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="va">$shadow-transition</span><span class="op">,</span> transform <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-hover</span><span class="op">;</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-hover-lift</span><span class="op">;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">// Button with consistent interactive states</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">button-interactive</span>(<span class="va">$bg-color</span><span class="er">:</span> <span class="va">$primary</span><span class="op">,</span> <span class="va">$text-color</span><span class="er">:</span> <span class="va">$white</span>) {</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="va">$bg-color</span><span class="op">;</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$text-color</span><span class="op">;</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="dv">all</span> <span class="va">$animation-duration-base</span> <span class="va">$animation-timing-ease-in-out</span><span class="op">;</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">cursor</span>: <span class="dv">pointer</span><span class="op">;</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:hover</span> {</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="fu">darken(</span><span class="va">$bg-color</span><span class="op">,</span> <span class="dv">5</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-hover</span><span class="op">;</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-hover-lift</span><span class="op">;</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:active</span> {</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="va">$shadow-sm</span><span class="op">;</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="va">$transform-active-press</span><span class="op">;</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:focus-visible</span> {</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline</span>: <span class="va">$focus-ring-style</span><span class="op">;</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">outline-offset</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="in">:disabled</span> {</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span>: <span class="va">$color-disabled-bg</span><span class="op">;</span></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="va">$color-disabled</span><span class="op">;</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>    <span class="kw">cursor</span>: <span class="dv">not-allowed</span><span class="op">;</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transform</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a><span class="co">// Text input focus state</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">input-focus</span> {</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-color</span>: <span class="va">$primary</span><span class="op">;</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">box-shadow</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">3</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="va">$primary</span><span class="op">,</span> <span class="va">$opacity-10</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>  <span class="kw">outline</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="co">// Badge/label styling</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a><span class="im">@mixin</span> <span class="fu">badge</span>(<span class="va">$bg-color</span><span class="er">:</span> <span class="va">$primary</span>) {</span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>  <span class="kw">display</span>: <span class="dv">inline-block</span><span class="op">;</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="va">$spacer-1</span> <span class="va">$spacer-2</span><span class="op">;</span></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="fu">rgba(</span><span class="va">$bg-color</span><span class="op">,</span> <span class="va">$opacity-10</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$bg-color</span><span class="op">;</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="va">$border-radius-full</span><span class="op">;</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="va">$font-size-xs</span><span class="op">;</span></span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="va">$font-weight-semibold</span><span class="op">;</span></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-transform</span>: <span class="dv">uppercase</span><span class="op">;</span></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>  <span class="kw">letter-spacing</span>: <span class="va">$letter-spacing-wider</span><span class="op">;</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="checklist-6" class="level4">
+<h4 class="anchored" data-anchor-id="checklist-6">Checklist:</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Create <code>_component-mixins.scss</code></label></li>
+<li><label><input type="checkbox">Add to <code>twiga.scss</code> imports</label></li>
+<li><label><input type="checkbox">Document mixin usage</label></li>
+<li><label><input type="checkbox">Update components to use mixins</label></li>
+<li><label><input type="checkbox">Commit: “refactor: Add reusable component mixins for consistency”</label></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="phase-5-summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="phase-5-summary-table">📊 Phase 5 Summary Table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 32%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Duration</th>
+<th>Priority</th>
+<th>Files Changed</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Refactor Projects Page</td>
+<td>1.5h</td>
+<td>🔴 CRITICAL</td>
+<td>_projects.scss</td>
+<td>HIGH</td>
+</tr>
+<tr class="even">
+<td>2. Animation System</td>
+<td>1h</td>
+<td>🟡 MEDIUM</td>
+<td>_animations.scss, twiga.scss</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="odd">
+<td>3. State Tokens</td>
+<td>1.5h</td>
+<td>🟡 MEDIUM</td>
+<td>_defaults.scss, _cards.scss, _buttons.scss</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="even">
+<td>4. Interaction Patterns</td>
+<td>2h</td>
+<td>🟡 MEDIUM</td>
+<td>_buttons.scss, _cards.scss, _projects.scss</td>
+<td>MEDIUM-HIGH</td>
+</tr>
+<tr class="odd">
+<td>5. Accessibility</td>
+<td>1.5h</td>
+<td>🟡 MEDIUM</td>
+<td>base.scss</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="even">
+<td>6. Documentation</td>
+<td>2h</td>
+<td>🟢 LOW</td>
+<td>DESIGN_TOKENS.md, COMPONENT_GUIDE.md</td>
+<td>HIGH</td>
+</tr>
+<tr class="odd">
+<td>7. Component Mixins</td>
+<td>1h</td>
+<td>🟢 LOW</td>
+<td>_component-mixins.scss</td>
+<td>MEDIUM</td>
+</tr>
+<tr class="even">
+<td><strong>TOTAL</strong></td>
+<td><strong>10h</strong></td>
+<td>—</td>
+<td><strong>10 files</strong></td>
+<td><strong>TRANSFORMATIVE</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="implementation-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-strategy">🚀 Implementation Strategy</h2>
+<section id="phase-5a-foundation-hours-1-3" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5a-foundation-hours-1-3">Phase 5A: Foundation (Hours 1-3)</h3>
+<p>Priority: Complete Task 1 &amp; 2 first 1. Refactor Projects page (1.5h) 2. Create animation system (1.5h) - <strong>Result</strong>: Consolidation of custom variables, reusable animations</p>
+</section>
+<section id="phase-5b-enhancement-hours-4-7" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5b-enhancement-hours-4-7">Phase 5B: Enhancement (Hours 4-7)</h3>
+<p>Priority: Add state system &amp; patterns 3. State color tokens (1.5h) 4. Interaction patterns (2h) 5. Accessibility (1.5h) - <strong>Result</strong>: Consistent hover/focus/active states, WCAG compliance</p>
+</section>
+<section id="phase-5c-documentation-hours-8-10" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5c-documentation-hours-8-10">Phase 5C: Documentation (Hours 8-10)</h3>
+<p>Priority: Codify knowledge for team 6. Design system docs (2h) 7. Component mixins (1h) - <strong>Result</strong>: Reference guide for future development</p>
+<hr>
+</section>
+</section>
+<section id="merge-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="merge-strategy">✅ Merge Strategy</h2>
+<ul>
+<li><strong>Create branch</strong>: <code>feature/design-system-consolidation</code></li>
+<li><strong>Commit frequency</strong>: After each task completes</li>
+<li><strong>Testing</strong>: Manual visual regression testing at each step</li>
+<li><strong>Review</strong>: Check all pages at multiple breakpoints</li>
+<li><strong>Final</strong>: Comprehensive comparison: Before Phase 5 vs.&nbsp;After Phase 5</li>
+</ul>
+<hr>
+</section>
+<section id="phase-5-success-indicators" class="level2">
+<h2 class="anchored" data-anchor-id="phase-5-success-indicators">🎯 Phase 5 Success Indicators</h2>
+<p>By end of Phase 5: - ✅ Zero custom color variables (all use branding system) - ✅ Zero hard-coded dimensions (all use spacing system) - ✅ Consistent hover states across all interactive elements - ✅ Visible focus states for keyboard navigation - ✅ Animation system unified - ✅ Design tokens documented - ✅ Component patterns established - ✅ WCAG AA compliance verified - ✅ Site feels more cohesive and professional - ✅ Future changes easier to implement</p>
+<hr>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">📝 Notes</h2>
+<ul>
+<li>Changes are <strong>non-breaking</strong> - visual output should remain identical</li>
+<li>All changes are <strong>maintainability improvements</strong></li>
+<li>Can be merged directly to main (no QA blocker)</li>
+<li>Recommended to preview in browser to verify no regressions</li>
+<li>Provides foundation for future features (dark mode, themes, etc.)</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> 2025–2026 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> <i class="bi-cc-by " style="" role="img" aria-hidden="true"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="bi-orcid " style="" role="img" aria-hidden="true"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-7838-533X">0000-0002-7838-533X</a></span> <span class="faux-block"><i class="bi-key " style="" role="img" aria-hidden="true"></i> <a href="pgp_ath.asc.txt">PGP public key</a>   <i class="bi-fingerprint " style="" role="img" aria-hidden="true"></i> Fingerprint:<br><span class="fingerprint">49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/sambaiga/sambaiga.github.io">View the source at <i class="bi-github " style="" role="img" aria-hidden="true"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

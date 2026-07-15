@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Faustine">
+<meta name="dcterms.date" content="2026-03-29">
+<meta name="description" content="Knowing what the strategic kernel requires is not enough. This post walks through a five-step AI roadmapping process built around Rumelt’s kernel and gives you the diagnostic tools to recognise a bad AI strategy before it costs you.">
+
+<title>From Framework to Practice: Building an AI Strategy That Sticks – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../">
+<link href="../../../../..//images/icons/favicon.ico" rel="icon">
+<script src="../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting-218bf51cdc365e200b8da9544fc0b29b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../site_libs/bootstrap/bootstrap-f59b4d659a71da732953eda2dc3d8051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(mirella-callage-Kile7-U74s0-unsplash.jpg);
+background-size: cover;
+      }
+</style>
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership">
+<meta property="og:image" content="https://sambaiga.github.io/pages/blog/posts/2026/04/cover.png">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta name="twitter:title" content="From Framework to Practice: Building an AI Strategy That Sticks – Anthony Faustine">
+<meta name="twitter:description" content="Knowing what the strategic kernel requires is not enough. This post walks through a five-step AI roadmapping process built around Rumelt’s kernel and gives you the diagnostic tools to recognise a bad AI strategy before it costs you.">
+<meta name="twitter:image" content="https://sambaiga.github.io/pages/blog/posts/2026/04/cover.png">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed blog quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi-envelope-at " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-github " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-linkedin " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">From Framework to Practice: Building an AI Strategy That Sticks</h1>
+            <p class="subtitle lead">Part 2: A Five-Step Roadmapping Process and How to Spot a Bad AI Strategy</p>
+                  <div>
+        <div class="description">
+          Knowing what the strategic kernel requires is not enough. This post walks through a five-step AI roadmapping process built around Rumelt’s kernel and gives you the diagnostic tools to recognise a bad AI strategy before it costs you.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">AI Strategy</div>
+                <div class="quarto-category">Innovation Management</div>
+                <div class="quarto-category">Technology Roadmapping</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://sambaiga.github.io/">Anthony Faustine</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              CIP, Eaton Corporation, Dublin Ireland.
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 29, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#putting-the-kernel-to-work-a-five-step-ai-roadmapping-process" id="toc-putting-the-kernel-to-work-a-five-step-ai-roadmapping-process" class="nav-link active" data-scroll-target="#putting-the-kernel-to-work-a-five-step-ai-roadmapping-process">Putting the Kernel to Work: A Five-Step AI Roadmapping Process</a></li>
+  <li><a href="#the-kernel-in-practice-what-ibm-watson-health-got-wrong" id="toc-the-kernel-in-practice-what-ibm-watson-health-got-wrong" class="nav-link" data-scroll-target="#the-kernel-in-practice-what-ibm-watson-health-got-wrong">The Kernel in Practice: What IBM Watson Health Got Wrong</a></li>
+  <li><a href="#how-to-spot-a-bad-ai-strategy" id="toc-how-to-spot-a-bad-ai-strategy" class="nav-link" data-scroll-target="#how-to-spot-a-bad-ai-strategy">How to Spot a Bad AI Strategy</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<p>In Part 1, we explained why most AI strategies fail, highlighting that the issue goes beyond poor planning. AI presents three challenges: it reverses the typical diagnostic process, causes guiding policies to become outdated quickly, and creates value that standard measurement tools often overlook. As a result, many strategies lack an honest diagnosis and a real guiding policy, leaving only a list of initiatives that resemble a strategy but are not one.</p>
+<p>We also demonstrated that integrating Rumelt’s strategic kernel with a structured technology roadmap creates a framework tailored to these challenges, rather than replicating outdated approaches. However, understanding the framework is only the beginning. The real challenge lies in applying it within an organisation’s constraints. This post addresses that challenge by presenting a five-step process for building an AI roadmap around the kernel and providing practical guidance for identifying when a strategy is lacking.</p>
+<p>This post is intended for leaders already engaged with AI, such as CDOs, strategy leads, and senior executives who have invested in AI but have yet to see clear results. If your organisation is still considering AI investment, begin with Part 1. If you have invested and are struggling to achieve results, this post will help.</p>
+<section id="putting-the-kernel-to-work-a-five-step-ai-roadmapping-process" class="level3">
+<h3 class="anchored" data-anchor-id="putting-the-kernel-to-work-a-five-step-ai-roadmapping-process">Putting the Kernel to Work: A Five-Step AI Roadmapping Process</h3>
+<p>The five-step process here is based on Phaal’s <span class="citation" data-cites="Phaal2010"><a href="#ref-Phaal2010" role="doc-biblioref">[1]</a></span> roadmapping framework and the author’s research with organisations using AI. These five steps form the core of a broader seven-stage process from that research. Each step answers a key strategic question from the kernel, as shown in <a href="#fig-roadmap-process" class="quarto-xref">Figure&nbsp;1</a>. These are questions that most AI strategies rarely address.</p>
+<div id="fig-roadmap-process" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-roadmap-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-process {
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+  font-family: 'Jost', system-ui, sans-serif;
+}
+.dg-process-flow {
+  display: flex;
+  align-items: stretch;
+  min-width: 640px;
+  gap: 0;
+}
+.dg-step {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #E9ECEF;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.dg-step-hd {
+  padding: 9px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.dg-step-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+}
+.dg-step-kernel {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+.dg-step-icon {
+  padding: 14px 8px 8px;
+  text-align: center;
+}
+.dg-step-icon i { font-size: 26px; }
+.dg-step-body {
+  padding: 0 10px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.dg-step-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1E293B;
+  text-align: center;
+  line-height: 1.35;
+}
+.dg-step-layer {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-top: auto;
+}
+.dg-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 16px;
+}
+.dg-s1 .dg-step-hd, .dg-s2 .dg-step-hd { background: #1E293B; }
+.dg-s1 .dg-step-icon i, .dg-s2 .dg-step-icon i { color: #1E293B; }
+.dg-s1 .dg-step-layer, .dg-s2 .dg-step-layer { background: #1E293B; }
+.dg-s3 .dg-step-hd { background: #8B5CF6; }
+.dg-s3 .dg-step-icon i { color: #8B5CF6; }
+.dg-s3 .dg-step-layer { background: #8B5CF6; }
+.dg-s4 .dg-step-hd { background: #10B981; }
+.dg-s4 .dg-step-icon i { color: #10B981; }
+.dg-s4 .dg-step-layer { background: #10B981; }
+.dg-s5 .dg-step-hd { background: #0369A1; }
+.dg-s5 .dg-step-icon i { color: #0369A1; }
+.dg-s5 .dg-step-layer { background: #0369A1; }
+</style>
+<div class="dg-process" role="img" aria-label="Five-step AI roadmapping process. Step 1: Find the Crux, Diagnosis, Know-Why. Step 2: Honest Starting Point, Diagnosis, Know-Why. Step 3: Diagnosis into Direction, Guiding Policy, Know-What. Step 4: Coherent Actions, Know-How. Step 5: How Well From Day One, Know-When.">
+  <div class="dg-process-flow">
+    <div class="dg-step dg-s1">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 01</span>
+        <span class="dg-step-kernel">Diagnosis</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-crosshair" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Find the Crux</div>
+        <span class="dg-step-layer">Know-Why</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s2">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 02</span>
+        <span class="dg-step-kernel">Diagnosis</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-clipboard-data" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Honest Starting Point</div>
+        <span class="dg-step-layer">Know-Why</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s3">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 03</span>
+        <span class="dg-step-kernel">Guiding Policy</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-compass" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Diagnosis into Direction</div>
+        <span class="dg-step-layer">Know-What</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s4">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 04</span>
+        <span class="dg-step-kernel">Coherent Actions</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-lightning-charge" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">Coherent Actions</div>
+        <span class="dg-step-layer">Know-How</span>
+      </div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div class="dg-step dg-s5">
+      <div class="dg-step-hd">
+        <span class="dg-step-num">Step 05</span>
+        <span class="dg-step-kernel">Know-When</span>
+      </div>
+      <div class="dg-step-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
+      <div class="dg-step-body">
+        <div class="dg-step-title">How Well From Day One</div>
+        <span class="dg-step-layer">Know-When</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-roadmap-process-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Five-step AI roadmapping process — each step maps to a kernel element and planning layer, from crux identification through to measurement.
+</figcaption>
+</figure>
+</div>
+<section id="step-1-find-the-crux-before-you-build-the-roadmap" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-find-the-crux-before-you-build-the-roadmap">Step 1: Find the Crux Before You Build the Roadmap</h4>
+<p>This is the first part of Rumelt’s Diagnosis, the core element that everything else relies on. In roadmapping, this is your Know-Why: the market need, the value gap, and the reason for your AI initiative. Without this, every next step heads in the wrong direction.</p>
+<p>Most organisations skip this step, or think they have done it when they have not. The reason is structural: as <span class="citation" data-cites="Agrawal2022"><a href="#ref-Agrawal2022" role="doc-biblioref">[2]</a></span> explain, AI flips the usual diagnostic process. A capability appears, and the organisation then looks for a problem to solve. Diagnosis happens after the solution is chosen, so the crux is rarely found before the budget is set. Defining the value opportunity is not about writing a vision statement. It means finding the crux <span class="citation" data-cites="Rumelt2022"><a href="#ref-Rumelt2022" role="doc-biblioref">[3]</a></span>: the single most important obstacle that, if solved, unlocks the most value for the business. It is not the most urgent or the easiest problem, but the one that matters most.</p>
+<p>This creates a tension that needs to be addressed. If AI flips the diagnostic process and a capability appears before the problem is clear, should technology come first? Not exactly. The key is how you use that awareness. If you use it to search for a problem, that is capability searching. If you use it to refine a diagnosis you already have, that is different. The crux does not replace value analysis; it grounds it. When you know the crux, you have a way to judge what AI can really do for you: not just a list of ideas, but a clear test of whether a capability solves the most important obstacle. Without this, a list of AI opportunities is just a wishlist based on excitement, not strategy.</p>
+<p>Rumelt illustrates this with SpaceX. Making space travel economically viable involved dozens of obstacles: propulsion, materials, regulation, funding. But Musk did not treat them as equally urgent. He stopped and asked which one, if resolved, would make everything else tractable. The answer was clear: rockets were single-use. You built an enormously expensive machine, flew it once, and it was gone. That single diagnosis, not a list of priorities, not a vision statement, became the crux around which the entire SpaceX strategy was built.</p>
+<p>This is where most AI strategies go wrong. They start executing before finishing the diagnosis, treating data quality, talent gaps, and tooling choices as equally urgent, instead of asking which one, if solved, would change everything else. Without answering that question, there is no crux. And without the crux, the roadmap has no anchor, as <a href="#fig-crux-avoidance" class="quarto-xref">Figure&nbsp;2</a> shows.</p>
+<div id="fig-crux-avoidance" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-crux-avoidance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-crux {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 0;
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px;
+}
+.dg-crux-panel {
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.dg-crux-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+.dg-crux-badge.bad  { background: #FEE2E2; color: #DC2626; }
+.dg-crux-badge.good { background: #D1FAE5; color: #059669; }
+.dg-scatter {
+  position: relative;
+  width: 170px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.dg-scatter-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  border: 2px dashed #9CA3AF;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #9CA3AF;
+  z-index: 2;
+}
+.dg-chip {
+  position: absolute;
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.dg-chip.scattered {
+  background: #F3F4F6;
+  border: 1px solid #D1D5DB;
+  color: #6B7280;
+}
+.dg-chip.focused {
+  background: rgba(30,41,59,0.07);
+  border: 1px solid rgba(30,41,59,0.18);
+  color: #1E293B;
+  display: flex; align-items: center; gap: 3px;
+}
+.dg-chip.focused i { font-size: 9px; color: #10B981; }
+.dg-converge {
+  position: relative;
+  width: 170px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.dg-converge-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.1);
+  border: 2px solid #10B981;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #10B981;
+  z-index: 2;
+}
+.dg-metric {
+  font-size: 10px;
+  color: #6B7280;
+  font-style: italic;
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid #F3F4F6;
+  width: 100%;
+  margin-top: auto;
+}
+.dg-crux-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ADB5BD;
+  letter-spacing: 0.05em;
+}
+</style>
+<div class="dg-crux" role="img" aria-label="Comparison: Without a crux, AI initiatives scatter in all directions — HR AI, chatbots, analytics, automation, vision — with no clear obstacle targeted. With a crux, all activities converge on one diagnosed obstacle, producing coherent experiments and measurable progress.">
+  <div class="dg-crux-panel">
+    <span class="dg-crux-badge bad">
+      <i class="bi bi-x-circle-fill" aria-hidden="true"></i> Without a Crux
+    </span>
+    <div class="dg-scatter" aria-hidden="true">
+      <div class="dg-scatter-center"><i class="bi bi-question-lg"></i></div>
+      <span class="dg-chip scattered" style="top:2px;left:4px">↖ HR AI</span>
+      <span class="dg-chip scattered" style="top:2px;right:4px">↗ Vision</span>
+      <span class="dg-chip scattered" style="top:44%;left:-8px">← Chatbot</span>
+      <span class="dg-chip scattered" style="bottom:8px;left:4px">↙ Analytics</span>
+      <span class="dg-chip scattered" style="bottom:2px;right:0">↘ Gen AI</span>
+    </div>
+    <div class="dg-metric">15 pilots · no clear learning</div>
+  </div>
+  <div class="dg-crux-vs" aria-hidden="true">VS</div>
+  <div class="dg-crux-panel">
+    <span class="dg-crux-badge good">
+      <i class="bi bi-check-circle-fill" aria-hidden="true"></i> With a Crux
+    </span>
+    <div class="dg-converge" aria-hidden="true">
+      <div class="dg-converge-center"><i class="bi bi-bullseye"></i></div>
+      <span class="dg-chip focused" style="top:2px;left:2px"><i class="bi bi-arrow-down-right"></i>Forecast accuracy</span>
+      <span class="dg-chip focused" style="top:2px;right:0"><i class="bi bi-arrow-down-left"></i>Data quality</span>
+      <span class="dg-chip focused" style="bottom:8px;left:0"><i class="bi bi-arrow-up-right"></i>Pipeline gaps</span>
+      <span class="dg-chip focused" style="bottom:2px;right:0"><i class="bi bi-arrow-up-left"></i>Model drift</span>
+    </div>
+    <div class="dg-metric">3 coherent experiments · measurable progress</div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crux-avoidance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Without a crux, AI initiatives scatter — many pilots, no shared obstacle. With a diagnosed crux, every experiment points at the same thing.
+</figcaption>
+</figure>
+</div>
+<p>This requires a shift in the question you are asking. Instead of “How can we apply AI?” ask “What is the one obstacle that, if resolved, gives us a position no competitor can easily copy?” That answer is your Know-Why, the foundation of the entire roadmap <span class="citation" data-cites="verdin2015you burstrom2021ai"><a href="#ref-verdin2015you" role="doc-biblioref">[4]</a>, <a href="#ref-burstrom2021ai" role="doc-biblioref">[5]</a></span>.</p>
+<p>Organisations that skip this step do not fail because of poor execution; they fail due to a lack of direction. They may create impressive roadmaps, but these are aimed at the wrong goal. Step 1 identifies the crux—the most important obstacle. This step builds a complete picture: an honest assessment of the organisation’s actual position, grounding your Know-Why in reality rather than aspiration.</p>
+</section>
+<section id="step-2-build-an-honest-starting-point" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-build-an-honest-starting-point">Step 2: Build an Honest Starting Point</h4>
+<p>An honest diagnosis may sound simple, but it is challenging. This step requires a clear assessment of your starting point: data maturity, technical infrastructure, organisational skills, and regulatory environment. Begin from your actual situation, not where you wish you were <span class="citation" data-cites="Kerr2022"><a href="#ref-Kerr2022" role="doc-biblioref">[6]</a></span>. Overestimating data maturity is a primary cause of AI pilot failure. Organisations often assume their data is cleaner, more complete, and better governed than it is. This leads to a “Data Poverty” problem that emerges only after budgets are committed and timelines are set. The gap is rarely visible to senior leaders, who see only aggregated dashboards and summaries, not the raw pipelines, inconsistent schemas, and governance gaps that determine AI’s true potential. This overconfidence stems from structural distance, not carelessness.</p>
+<div id="fig-data-maturity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-maturity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-mat { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-mat-inner { min-width:460px; }
+.dg-mat-hd { display:grid; grid-template-columns:1fr 130px 130px; gap:8px; padding:0 0 8px; border-bottom:2px solid #E9ECEF; margin-bottom:2px; }
+.dg-mat-hd-blank { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9CA3AF; display:flex; align-items:center; }
+.dg-mat-hd-col { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:4px 10px; border-radius:4px; color:#fff; display:flex; align-items:center; justify-content:center; gap:5px; }
+.dg-mat-hd-col.perceived { background:#1E293B; }
+.dg-mat-hd-col.reality { background:#DC2626; }
+.dg-mat-row { display:grid; grid-template-columns:1fr 130px 130px; gap:8px; align-items:center; padding:9px 0 8px; border-bottom:1px solid #F3F4F6; }
+.dg-mat-row-label { font-size:11px; font-weight:600; color:#1E293B; display:flex; align-items:center; gap:7px; }
+.dg-mat-row-label i { font-size:14px; color:#6B7280; }
+.dg-mat-dots { display:flex; gap:4px; justify-content:center; }
+.dg-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.dg-dot.on-dk { background:#1E293B; }
+.dg-dot.off-dk { background:#E9ECEF; }
+.dg-dot.on-rd { background:#DC2626; }
+.dg-dot.off-rd { background:#FEE2E2; }
+.dg-mat-gap { margin-top:14px; background:rgba(220,38,38,.06); border:1px dashed #DC2626; border-radius:7px; padding:9px 12px; display:flex; align-items:center; gap:8px; }
+.dg-mat-gap i { color:#DC2626; font-size:14px; flex-shrink:0; }
+.dg-mat-gap-text { font-size:10px; color:#DC2626; font-weight:600; }
+.dg-mat-gap-sub { font-size:9.5px; color:#6B7280; margin-left:2px; }
+</style>
+<div class="dg-mat" role="img" aria-label="Data maturity scorecard comparing what leaders perceive versus what AI deployment exposes. Perceived ratings across data quality, governance, pipelines, and integration are all high (4 to 5 out of 5). Reality ratings are much lower: data quality 2 of 5, governance 1 of 5, pipelines 2 of 5, integration 2 of 5. The gap between perception and reality is where AI pilots fail.">
+  <div class="dg-mat-inner">
+    <div class="dg-mat-hd">
+      <span class="dg-mat-hd-blank">Dimension</span>
+      <span class="dg-mat-hd-col perceived"><i class="bi bi-eye" aria-hidden="true"></i> What Leaders See</span>
+      <span class="dg-mat-hd-col reality"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> What AI Exposes</span>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-database" aria-hidden="true"></i>Data Quality</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-shield-check" aria-hidden="true"></i>Governance</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot off-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-diagram-2" aria-hidden="true"></i>Pipelines</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-row">
+      <span class="dg-mat-row-label"><i class="bi bi-arrow-left-right" aria-hidden="true"></i>Integration</span>
+      <div class="dg-mat-dots"><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot on-dk"></span><span class="dg-dot off-dk"></span></div>
+      <div class="dg-mat-dots"><span class="dg-dot on-rd"></span><span class="dg-dot on-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span><span class="dg-dot off-rd"></span></div>
+    </div>
+    <div class="dg-mat-gap">
+      <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+      <span class="dg-mat-gap-text">The Maturity Gap</span>
+      <span class="dg-mat-gap-sub">— the distance between the executive dashboard and the actual data pipelines is where AI pilots fail</span>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-maturity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: The data maturity gap: aggregated dashboards give leaders a high-confidence picture that the underlying infrastructure rarely supports.
+</figcaption>
+</figure>
+</div>
+<p>This matters beyond data quality alone. The current-state assessment must treat data as a strategic dimension in its own right, not just an input to clean up, but a capability to map: what data exists, how it is governed, how it can be integrated, and what value it can generate <span class="citation" data-cites="Phaal2004 Komssi2013"><a href="#ref-Phaal2004" role="doc-biblioref">[7]</a>, <a href="#ref-Komssi2013" role="doc-biblioref">[8]</a></span>. In Helmer’s <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[9]</a></span> framework, proprietary data is a Cornered Resource: an asset competitors cannot easily buy or replicate. Honest diagnosis of data capability is therefore not an IT assessment. It is a strategic one: are you building, protecting, and governing the one asset that compounds into a durable position, or treating it as infrastructure to be cleaned up later? An AI strategy built on an incomplete picture of data capabilities will hit walls that were never mapped and forfeit the cornered-resource position it did not know it was squandering.</p>
+<p>A precise AI-native example is Google’s deployment of a deep learning system for diabetic retinopathy screening in Thai clinics <span class="citation" data-cites="Beede2020"><a href="#ref-Beede2020" role="doc-biblioref">[10]</a></span>. In laboratory conditions, the model matched or exceeded specialist ophthalmologists. The organisation’s current-state assessment was built on that result. In practice, nurses in the clinics could not consistently produce images of the quality the model required. Connectivity was too slow to run the software reliably. The system had not been designed into the clinical workflow. The gap between laboratory performance and operational reality was not a technology failure. It was a diagnosis failure: the current-state assessment had been built on controlled test data, not on the actual conditions of deployment. The crux, reliable performance at the point of care, had never been honestly assessed. It surfaced only after the system was live.</p>
+<p>This step also brings up the “How Well” question early <span class="citation" data-cites="burtonshaw2008essential"><a href="#ref-burtonshaw2008essential" role="doc-biblioref">[11]</a></span>: does the organisation truly have the capacity to execute? Not just in theory, but in reality. If you get this wrong at step two, every step after that is based on fiction.</p>
+</section>
+<section id="step-3-turn-your-diagnosis-into-a-direction" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-turn-your-diagnosis-into-a-direction">Step 3: Turn Your Diagnosis Into a Direction</h4>
+<p>With Diagnosis complete, the crux identified, and the current state honestly assessed, the kernel’s second element comes into view: the Guiding Policy. This is the bridge between where you are and where you are choosing to go <span class="citation" data-cites="sjodin2020value"><a href="#ref-sjodin2020value" role="doc-biblioref">[12]</a></span>. In roadmapping terms, it is the Know-What layer: the tangible AI offerings, platforms, and initiatives that will deliver stakeholder value, clearly defined enough to enable trade-offs.</p>
+<p>But here is what most strategy processes miss: a guiding policy is not just a list of priorities. It is a filter. It tells you what to say yes to, and even more importantly, what to say no to <span class="citation" data-cites="FRitala2013"><a href="#ref-FRitala2013" role="doc-biblioref">[13]</a></span>.</p>
+<p>A guiding policy is not just one decision. It covers short-term investments, medium-term capability bets, and long-term positions on markets and partnerships. What makes it strategic is the filter it applies at each stage: does this choice move you closer to the crux, or does it distract from it? Without this test, every initiative seems equally important. With it, you have a clear way to make tough decisions and a reason to say no.</p>
+<p>Rumelt gives the clearest example of this in Good Strategy/Bad Strategy <span class="citation" data-cites="Rumelt2011"><a href="#ref-Rumelt2011" role="doc-biblioref">[14]</a></span> through Steve Jobs at Apple. When Jobs returned in 1997, Apple had dozens of products, computers, printers, peripherals, and servers, each with its own team and roadmap. His diagnosis: the company was spreading itself into irrelevance. His guiding policy was not a new list of priorities. It was a decision to cut everything that did not fit a single matrix: consumer or professional, desktop or portable. Four products. Everything else is gone. That choice made every subsequent decision simpler, not because it reduced complexity, but because it created a basis for saying no.</p>
+<div id="fig-policy-filter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-policy-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-filt { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-filt-flow { display:grid; grid-template-columns:1fr 64px 1fr; align-items:center; gap:0; min-width:500px; }
+.dg-filt-in { display:flex; flex-direction:column; gap:4px; align-items:flex-end; }
+.dg-filt-in-label { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9CA3AF; margin-bottom:4px; text-align:right; }
+.dg-filt-tag { display:inline-flex; align-items:center; font-size:9.5px; font-weight:600; padding:3px 9px; border-radius:99px; background:#F3F4F6; border:1px solid #E5E7EB; color:#6B7280; white-space:nowrap; }
+.dg-filt-tags { display:flex; flex-wrap:wrap; gap:5px; justify-content:flex-end; }
+.dg-filt-center { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.dg-filt-arr { font-size:16px; color:#CED4DA; text-align:center; }
+.dg-filt-gate { background:#8B5CF6; border-radius:8px; padding:12px 8px; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 2px 8px rgba(139,92,246,.25); width:52px; }
+.dg-filt-gate i { font-size:20px; color:#fff; }
+.dg-filt-gate-label { font-size:7.5px; font-weight:700; color:#fff; letter-spacing:.08em; text-transform:uppercase; text-align:center; line-height:1.3; }
+.dg-filt-gate-q { font-size:8px; color:rgba(255,255,255,.8); text-align:center; line-height:1.3; margin-top:2px; }
+.dg-filt-out { display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
+.dg-filt-out-label { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9CA3AF; margin-bottom:4px; }
+.dg-filt-out-tag { display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:700; padding:5px 11px; border-radius:99px; background:rgba(16,185,129,.1); border:1.5px solid #10B981; color:#10B981; white-space:nowrap; }
+.dg-filt-out-tag i { font-size:11px; }
+</style>
+<div class="dg-filt" role="img" aria-label="Guiding policy as filter. Many AI opportunities enter from the left: GenAI, Vision, HR AI, Analytics, Chatbots, Forecasting, LLMs, Computer Vision. They pass through a purple filter gate asking: does this solve the diagnosed crux? Only crux-aligned initiatives emerge on the right: demand forecasting and supply chain AI.">
+  <div class="dg-filt-flow">
+    <div class="dg-filt-in">
+      <span class="dg-filt-in-label">All AI Opportunities</span>
+      <div class="dg-filt-tags">
+        <span class="dg-filt-tag">GenAI</span>
+        <span class="dg-filt-tag">Vision</span>
+        <span class="dg-filt-tag">HR AI</span>
+        <span class="dg-filt-tag">Analytics</span>
+        <span class="dg-filt-tag">Chatbots</span>
+        <span class="dg-filt-tag">Forecasting</span>
+        <span class="dg-filt-tag">LLMs</span>
+        <span class="dg-filt-tag">NLP</span>
+      </div>
+    </div>
+    <div class="dg-filt-center">
+      <div class="dg-filt-arr" aria-hidden="true">→</div>
+      <div class="dg-filt-gate" role="img" aria-label="Guiding policy filter gate: Does this solve the diagnosed crux?">
+        <i class="bi bi-funnel-fill" aria-hidden="true"></i>
+        <span class="dg-filt-gate-label">Guiding Policy</span>
+        <span class="dg-filt-gate-q">Solves the crux?</span>
+      </div>
+      <div class="dg-filt-arr" aria-hidden="true">→</div>
+    </div>
+    <div class="dg-filt-out">
+      <span class="dg-filt-out-label">Crux-Aligned Only</span>
+      <span class="dg-filt-out-tag"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Demand Forecasting AI</span>
+      <span class="dg-filt-out-tag"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Supply Chain Intelligence</span>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-policy-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The guiding policy works as a filter: many AI opportunities enter, only those that address the diagnosed crux pass through. Everything else is deferred or dropped.
+</figcaption>
+</figure>
+</div>
+<p>Without a clear filter, the roadmap fills with what seems reasonable rather than what the strategy requires. <span class="citation" data-cites="Komssi2013"><a href="#ref-Komssi2013" role="doc-biblioref">[8]</a></span> highlights a common failure: teams create detailed quarterly plans but do not explain how these choices support a clear position. When the guiding policy is missing, the roadmap becomes a schedule with ambitious goals but no strategic direction. As capabilities advance faster than most planning cycles, what <span class="citation" data-cites="Mollick2024"><a href="#ref-Mollick2024" role="doc-biblioref">[15]</a></span> calls the “jagged frontier,” a fixed guiding policy quickly becomes outdated <span class="citation" data-cites="Suleyman2023"><a href="#ref-Suleyman2023" role="doc-biblioref">[16]</a></span>. The discipline is not only to build a filter, but to include explicit review points in the roadmap: moments to test the guiding policy against current technology capabilities. In practice, this involves scenario analysis to map how capability shifts affect the policy, sensitivity testing of key assumptions, and formal evaluation of alternative strategies as new information emerges. This approach helps avoid the Counter-Positioning trap described in Part 1 <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[9]</a></span>, where incumbents cannot adopt superior new capabilities without undermining prior investments. Review points are not just good planning; they are essential for defending against unexpected shifts in the capability frontier.</p>
+</section>
+<section id="step-4-take-coherent-actions-not-scattered-pilots" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-take-coherent-actions-not-scattered-pilots">Step 4: Take Coherent Actions, Not Scattered Pilots</h4>
+<p>A guiding policy tells you what to pursue. The next step is Coherent Actions, the third part of the kernel. In AI, many organisations discover that knowing what to pursue and knowing how to achieve it are different. This step involves intentionally designing your approach through the Know-How layer: building the skills, partnerships, and capabilities needed for the specific paths you are taking, not for every possible path. Every hire and initiative should connect back to the crux identified in Step 1 and the guiding policy from Step 3. Coherent actions focus resources on the most important obstacle. For example, if the crux is unreliable demand forecasting, the organisation should not run unrelated pilots in HR automation, customer service chatbots, or contract review. All resources should address the single obstacle that, if solved, changes the organisation’s position.</p>
+<p>Coherent actions cluster around four domains that conventional technology roadmaps rarely name explicitly: data quality and governance, talent development, ethical and regulatory compliance, and AI lifecycle management. Each one is a class of crux-adjacent obstacles that only becomes visible once the diagnosis has been made honestly. These are not simultaneous workstreams. They are diagnostic categories: places to look for the obstacle that is quietly blocking value. Which one is your crux depends entirely on the diagnosis. Scattered pilots typically avoid finding out.</p>
+<p>In practice, coherent actions in AI take the form of deliberate experiments, each one designed to test a specific assumption about the crux or validate a path toward the guiding policy. Two failure modes get in the way. The first is deploying a capability before the diagnosis is complete and hoping value follows. The second is waiting for perfect certainty before committing to any path. Neither is coherent. Coherent actions are question-driven: what do we need to learn, and what is the smallest experiment that answers it <span class="citation" data-cites="opresnik2015value shollo2022shifting"><a href="#ref-opresnik2015value" role="doc-biblioref">[17]</a>, <a href="#ref-shollo2022shifting" role="doc-biblioref">[18]</a></span>? The roadmap adapts as the answers come in. That is not agile for its own sake. It is the only rational response to a technology whose right path is rarely visible in advance.</p>
+</section>
+<section id="step-5-build-in-the-how-well-from-the-start" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-build-in-the-how-well-from-the-start">Step 5: Build in the “How Well” From the Start</h4>
+<p>The last step is often treated as an afterthought, but it should not be. This step keeps the kernel honest over time. As markets change, diagnoses can become outdated, guiding policies can lose relevance, and actions can turn into routine. The Know-When / How Well layer is there to catch this: regular reviews that check if the crux has changed, if the guiding policy still fits, and if actions are still truly coherent.</p>
+<p>Keeping the roadmap flexible is not just an administrative job <span class="citation" data-cites="Phaal2004"><a href="#ref-Phaal2004" role="doc-biblioref">[7]</a></span>. It is a strategic discipline. Since AI ROI usually takes two to four years to show up <span class="citation" data-cites="Deloitte2025"><a href="#ref-Deloitte2025" role="doc-biblioref">[19]</a></span>, and the landscape changes faster than most planning cycles, regular reviews are essential. This is how the kernel stays honest.</p>
+<p>The measurement challenge in AI is structural, not operational. Most organisations reach for the metrics that are easiest to count: models deployed, pilots completed, costs saved in individual workflows. These are the wrong instruments for a technology whose value is systemic and emergent. As <span class="citation" data-cites="Iansiti2020"><a href="#ref-Iansiti2020" role="doc-biblioref">[20]</a></span> shows, AI value accumulates through embedded workflows and improved decision-making at scale, not at the point of model deployment. Helmer’s <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[9]</a></span> concept of Process Power explains why: the value that matters is the kind competitors cannot easily replicate because it is built into proprietary ways of working, compounding decisions, and organisational capabilities that took time to build. It shows up in outcomes, not in deployment counts.</p>
+<p>In practice, the “How Well” layer should track outcomes such as faster decisions, fewer errors, and frontline problems solved, even if these are difficult to measure or attribute to a specific model. If a metric is easy to present to the board, it likely measures activity rather than impact. Metrics that are harder to measure but indicate progress on the crux are more valuable. Build accountability from the outset, not after a failed pilot. If the crux identified in Step 1 is no longer the main obstacle, update the roadmap accordingly. Being honest at this stage is not a failure; it demonstrates that the process is working <span class="citation" data-cites="Kerr2022"><a href="#ref-Kerr2022" role="doc-biblioref">[6]</a></span>.</p>
+<p>Taken together, the five steps produce a recognisable pattern. GitHub Copilot is the clearest recent example of what that pattern looks like when it holds. The team identified the crux: the bottleneck in software development is not architecture or planning. It is the gap between intent and working code at the keystroke level. That diagnosis produced a filter: one product, one user, one constraint. Coherent actions pointed every resource at that single obstacle. Measurement was outcome-linked from the start: a 2023 peer-reviewed study found developers completed tasks 55.8% faster <span class="citation" data-cites="Peng2023"><a href="#ref-Peng2023" role="doc-biblioref">[21]</a></span>, and by 2024 GitHub reported adoption across 90% of Fortune 100 companies <span class="citation" data-cites="GitHub2024"><a href="#ref-GitHub2024" role="doc-biblioref">[22]</a></span>. No $4 billion platform. No scattered pilots. A diagnosed crux and a roadmap built around it.</p>
+<p><a href="#tbl-five-steps" class="quarto-xref">Table&nbsp;1</a> summarises how the five steps map onto the kernel elements, the AI-specific challenge each one addresses, and the question that step is designed to force.</p>
+<div id="tbl-five-steps" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-five-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The Five-Step AI Roadmapping Framework: Kernel Elements, AI-Specific Challenges, and the Questions Each Step Forces
+</figcaption>
+<div aria-describedby="tbl-five-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 23%">
+<col style="width: 32%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Kernel Element</th>
+<th>AI-Specific Challenge</th>
+<th>The Question to Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1: Find the Crux</td>
+<td>Diagnosis</td>
+<td>Inverted diagnostic sequence</td>
+<td>What is the one obstacle that, if removed, changes everything?</td>
+</tr>
+<tr class="even">
+<td>2: Honest Starting Point</td>
+<td>Diagnosis</td>
+<td>Data maturity overconfidence</td>
+<td>Where do we actually stand?</td>
+</tr>
+<tr class="odd">
+<td>3: Diagnosis into Direction</td>
+<td>Guiding Policy</td>
+<td>Policy decay and the jagged frontier</td>
+<td>What do we say no to, and when do we revisit that decision?</td>
+</tr>
+<tr class="even">
+<td>4: Coherent Actions</td>
+<td>Coherent Actions</td>
+<td>Scattered pilots without learning</td>
+<td>What specific question does each experiment answer?</td>
+</tr>
+<tr class="odd">
+<td>5: How Well From Day One</td>
+<td>Know-When / How Well</td>
+<td>Emergent, indirect value</td>
+<td>Are we tracking outcomes or counting activity?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#fig-ai-roadmap" class="quarto-xref">Figure&nbsp;5</a> illustrates what the output looks like when all five steps are completed: a layered roadmap with AI and data components aligned across market needs, product direction, and technology capability, anchored by a diagnosed crux and structured around the kernel’s three elements.</p>
+<div id="fig-ai-roadmap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-roadmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-roadmap {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px;
+  overflow-x: auto;
+}
+.dg-roadmap-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(3, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  gap: 6px;
+  min-width: 580px;
+}
+.dg-rh-col {
+  padding: 6px 8px 5px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6B7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.dg-rh-col i { font-size: 14px; color: #ADB5BD; }
+.dg-rl-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 8px 10px 0;
+  gap: 3px;
+}
+.dg-rl-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.dg-rl-sublabel {
+  font-size: 9px;
+  color: #6B7280;
+  padding-left: 2px;
+}
+.dg-rl-row.r1 .dg-rl-label { background: #1E293B; }
+.dg-rl-row.r2 .dg-rl-label { background: #8B5CF6; }
+.dg-rl-row.r3 .dg-rl-label { background: #10B981; }
+.dg-cell {
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 7px;
+  padding: 10px 10px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.dg-cell-icon { font-size: 16px; }
+.dg-cell-text {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #1E293B;
+  line-height: 1.3;
+}
+.dg-cell-sub {
+  font-size: 9.5px;
+  color: #6B7280;
+  line-height: 1.3;
+}
+.dg-cell.r1 { border-left: 3px solid #1E293B; }
+.dg-cell.r2 { border-left: 3px solid #8B5CF6; }
+.dg-cell.r3 { border-left: 3px solid #10B981; }
+.dg-crux-anchor {
+  grid-column: 1 / -1;
+  background: rgba(30,41,59,0.05);
+  border: 1px dashed #1E293B;
+  border-radius: 7px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+.dg-crux-anchor i { font-size: 14px; color: #1E293B; }
+.dg-crux-anchor-text { font-size: 10px; font-weight: 600; color: #1E293B; }
+.dg-crux-anchor-sub { font-size: 9.5px; color: #6B7280; margin-left: 2px; }
+</style>
+<div class="dg-roadmap" role="img" aria-label="AI strategy roadmap with three layers across three time horizons. Know-Why layer: now identify market gap and value opportunity; 6–12 months map value opportunity; 1–3 years reach cornered resource position. Know-What layer: now build AI prototype; 6–12 months run pilots targeting the crux; 1–3 years scale the AI platform. Know-How layer: now audit data governance; 6–12 months build the ML team and partnerships; 1–3 years deliver end-to-end ML pipeline. All layers anchor to a single diagnosed crux.">
+  <div class="dg-roadmap-grid">
+    <div class="dg-rh-corner"></div>
+    <div class="dg-rh-col"><i class="bi bi-house" aria-hidden="true"></i>Now</div>
+    <div class="dg-rh-col"><i class="bi bi-calendar2-month" aria-hidden="true"></i>6–12 Months</div>
+    <div class="dg-rh-col"><i class="bi bi-flag" aria-hidden="true"></i>1–3 Years</div>
+    <div class="dg-rl-row r1">
+      <span class="dg-rl-label">Know-Why</span>
+      <span class="dg-rl-sublabel">Market</span>
+    </div>
+    <div class="dg-cell r1">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-crosshair" style="color:#1E293B"></i></span>
+      <div class="dg-cell-text">Identify market gap</div>
+      <div class="dg-cell-sub">What crux blocks value?</div>
+    </div>
+    <div class="dg-cell r1">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-map" style="color:#1E293B"></i></span>
+      <div class="dg-cell-text">Map value opportunity</div>
+      <div class="dg-cell-sub">Validate crux with stakeholders</div>
+    </div>
+    <div class="dg-cell r1">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-trophy" style="color:#1E293B"></i></span>
+      <div class="dg-cell-text">Cornered resource position</div>
+      <div class="dg-cell-sub">Durable competitive advantage</div>
+    </div>
+    <div class="dg-rl-row r2">
+      <span class="dg-rl-label">Know-What</span>
+      <span class="dg-rl-sublabel">Product / AI</span>
+    </div>
+    <div class="dg-cell r2">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-cpu" style="color:#8B5CF6"></i></span>
+      <div class="dg-cell-text">AI prototype</div>
+      <div class="dg-cell-sub">Smallest testable product</div>
+    </div>
+    <div class="dg-cell r2">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-lightning-charge" style="color:#8B5CF6"></i></span>
+      <div class="dg-cell-text">Pilots targeting the crux</div>
+      <div class="dg-cell-sub">Question-driven experiments</div>
+    </div>
+    <div class="dg-cell r2">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-layers" style="color:#8B5CF6"></i></span>
+      <div class="dg-cell-text">AI platform scaled</div>
+      <div class="dg-cell-sub">Embedded in core workflows</div>
+    </div>
+    <div class="dg-rl-row r3">
+      <span class="dg-rl-label">Know-How</span>
+      <span class="dg-rl-sublabel">Technology</span>
+    </div>
+    <div class="dg-cell r3">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-database" style="color:#10B981"></i></span>
+      <div class="dg-cell-text">Data governance audit</div>
+      <div class="dg-cell-sub">Honest current-state picture</div>
+    </div>
+    <div class="dg-cell r3">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-people" style="color:#10B981"></i></span>
+      <div class="dg-cell-text">ML team + partnerships</div>
+      <div class="dg-cell-sub">Capabilities for the chosen path</div>
+    </div>
+    <div class="dg-cell r3">
+      <span class="dg-cell-icon" aria-hidden="true"><i class="bi bi-diagram-3" style="color:#10B981"></i></span>
+      <div class="dg-cell-text">End-to-end ML pipeline</div>
+      <div class="dg-cell-sub">Production-grade infrastructure</div>
+    </div>
+    <div class="dg-crux-anchor">
+      <i class="bi bi-bullseye" aria-hidden="true"></i>
+      <span class="dg-crux-anchor-text">Crux Anchor</span>
+      <span class="dg-crux-anchor-sub">— every layer and time horizon points back to the single most important obstacle</span>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-roadmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: AI strategy roadmap with three planning layers (Know-Why, Know-What, Know-How) across three time horizons, anchored to a single diagnosed crux.
+</figcaption>
+</figure>
+</div>
+<p>The five steps also serve as a diagnostic instrument. Run them against any AI strategy and the gaps become visible. Run them against IBM Watson Health, and the picture is unambiguous.</p>
+</section>
+</section>
+<section id="the-kernel-in-practice-what-ibm-watson-health-got-wrong" class="level3">
+<h3 class="anchored" data-anchor-id="the-kernel-in-practice-what-ibm-watson-health-got-wrong">The Kernel in Practice: What IBM Watson Health Got Wrong</h3>
+<p>Between 2015 and 2022, IBM invested over $4 billion in building Watson Health into what it called the future of AI-driven medicine <span class="citation" data-cites="Strickland2022"><a href="#ref-Strickland2022" role="doc-biblioref">[23]</a></span>. It never made a profit. In January 2022, IBM sold the assets to a private equity firm for approximately $1 billion. The most telling detail: its flagship partnership with MD Anderson Cancer Centre ran for five years, cost $62 million, and was terminated before Watson was ever used on a real patient <span class="citation" data-cites="Mukherjee2017 Ross2017"><a href="#ref-Mukherjee2017" role="doc-biblioref">[24]</a>, <a href="#ref-Ross2017" role="doc-biblioref">[25]</a></span>.</p>
+<p>This was not primarily a technology failure. It was a strategy failure, and it maps precisely onto all three structural AI properties identified in Part 1.</p>
+<p>The diagnosis was inverted from the start. IBM did not begin with a diagnosed crux in oncology. It began with Watson, a natural language processing system that had won Jeopardy! in 2011, and went looking for the most ambitious problem it could apply it to. Healthcare was chosen for its scale and prestige, not because IBM had identified a specific obstacle that Watson uniquely solved. As <span class="citation" data-cites="Agrawal2022"><a href="#ref-Agrawal2022" role="doc-biblioref">[2]</a></span> argue, this is the structural failure mode that AI invites: a capability becomes visible, and the organisation goes looking for a problem it might solve. At IBM, diagnosis happened after the solution was chosen, which meant the crux, the specific, solvable obstacle that would have unlocked genuine clinical value, was never found. IBM did not build a strategy around a problem. It built a marketing campaign around a capability <span class="citation" data-cites="Davenport2019"><a href="#ref-Davenport2019" role="doc-biblioref">[26]</a></span>.</p>
+<p>The guiding policy had no filter and no review mechanism. With no real crux to anchor it, IBM’s guiding policy expanded rather than narrowed. Watson was applied to oncology, radiology, genomics, and clinical trial recruitment simultaneously. Every initiative looked equally important because nothing had been ruled out. When the LLM era arrived and the underlying capability frontier shifted, there was no mechanism to review whether Watson’s architecture still served its original intent. A guiding policy built to be revised would have recognised the structural shift early. IBM’s was not. It was tied to an approach that was becoming obsolete faster than the roadmap could keep up with <span class="citation" data-cites="Ross2017"><a href="#ref-Ross2017" role="doc-biblioref">[25]</a></span>.</p>
+<p>The value was measured at the wrong layer. IBM cited Watson’s agreement rate with oncologists’ treatment recommendations as evidence of progress, at one point claiming over 90% concordance in lung cancer cases. But agreement on training data is not a clinical outcome <span class="citation" data-cites="Mukherjee2017"><a href="#ref-Mukherjee2017" role="doc-biblioref">[24]</a></span>. No survival rates. No improvements in treatment accuracy at the point of care. No measurable reduction in diagnostic error. IBM was counting the wrong thing entirely, exactly the failure mode that Helmer’s <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[9]</a></span> concept of Process Power illuminates: the value that matters accumulates in embedded clinical workflows and improved decisions, not in model agreement metrics. As <span class="citation" data-cites="Iansiti2020"><a href="#ref-Iansiti2020" role="doc-biblioref">[20]</a></span> shows, the value of AI is systemic and indirect. IBM’s measurement layer was designed for activity, not for the outcomes the organisation had originally promised.</p>
+<p>Each of the five steps exposes a specific point of failure. Step 1 was skipped: no crux was identified before the budget was committed. Step 2 was inflated: IBM overestimated the maturity of clinical data, which turned out to be unstructured, full of shorthand and abbreviations, and deeply inconsistent across hospital systems <span class="citation" data-cites="Ross2017"><a href="#ref-Ross2017" role="doc-biblioref">[25]</a></span>. Step 3 produced no real filter: without a guiding policy grounded in a specific crux, Watson was pointed at too many problems simultaneously. Step 4 scattered pilots globally before any single experiment had answered a specific question about the crux. Step 5 tracked activity instead of outcomes. When value failed to materialise, there was no honest measurement layer to indicate as much.</p>
+<p>The $4 billion question was never “was Watson capable?” It was “Was there a real crux at the centre of the strategy?” There was not. And without it, the roadmap had no anchor, exactly as the framework predicts.</p>
+</section>
+<section id="how-to-spot-a-bad-ai-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-spot-a-bad-ai-strategy">How to Spot a Bad AI Strategy</h3>
+<p>Most AI strategies fail for the same reasons. Here are the five that are particular to this technology <span class="citation" data-cites="Rumelt2011 Rumelt2022"><a href="#ref-Rumelt2022" role="doc-biblioref">[3]</a>, <a href="#ref-Rumelt2011" role="doc-biblioref">[14]</a></span>.</p>
+<p>Technology-led diagnosis. The roadmap starts from a capability and works backwards to find a problem. A language model is available, so the organisation goes looking for something it might solve. This is the structural failure mode that Part 1 identified: AI inverts the diagnostic sequence, and organisations that do not actively resist it will build strategies anchored to a capability rather than a crux. IBM Watson Health is the most expensive known example, but the pattern is far more common than the price tag. If the answer to “why are we using AI for this?” is “because we have the platform,” the diagnosis was never completed.</p>
+<p>The platform fallacy. The organisation builds a data infrastructure, a governance layer, and a capability framework before identifying the crux. The logic is sound in isolation: you need clean data before AI can work. But a data platform is not a strategy. It is a prerequisite, and a prerequisite without a destination is just cost. Amazon spent over $25 billion building Alexa into a world-class voice AI platform, assuming users would transact by voice. Instead, users used it almost entirely for free tasks: timers, weather, music. By 2022, the division was estimated to be losing $10 billion annually <span class="citation" data-cites="AmazonAlexa2022"><a href="#ref-AmazonAlexa2022" role="doc-biblioref">[27]</a></span>. In 2023, Amazon restructured and laid off hundreds of engineers, acknowledging the platform had no coherent path to monetisation. The question that was never seriously asked: what specific, diagnosed obstacle would voice AI uniquely resolve? Organisations that invest eighteen months in data infrastructure before running a single experiment are making the same error at a smaller scale.</p>
+<p>Pilot proliferation without learning. Fifteen pilots running simultaneously, none designed to answer a specific question about the crux. Each one is too small to fail visibly and too scattered to compound. The organisation reports progress by counting pilots. MIT Sloan research found that 95% of enterprise generative AI pilots fail to deliver measurable business impact, and S&amp;P Global data shows 42% of companies have abandoned most of their AI initiatives <span class="citation" data-cites="MIT2025 MLQ2025"><a href="#ref-MIT2025" role="doc-biblioref">[28]</a>, <a href="#ref-MLQ2025" role="doc-biblioref">[29]</a></span>. The consistent finding is not that AI does not work. It is that pilots without a hypothesis do not produce learning. A pilot that does not test a specific assumption about a specific obstacle is a demonstration project. When none of them produces measurable value, the conclusion drawn is usually that AI is not ready, rather than that the experiments were never coherent.</p>
+<p>Measuring the wrong layer. Model accuracy, agreement rates with human experts, and deployment counts are metrics of the technology layer, not the strategy layer. As the Watson case showed, 90% concordance with oncologists is not clinically valuable. If the measurement layer cannot answer whether the crux has been resolved, it is not a strategic instrument. It is a reporting mechanism that can declare success independently of whether anything has actually changed.</p>
+<p>The fixed roadmap in a moving landscape. A three-year AI roadmap with no designated review points for the capability frontier is not a planning failure. It is a design failure <span class="citation" data-cites="o2021agile"><a href="#ref-o2021agile" role="doc-biblioref">[30]</a></span>. Google’s Bard launch in February 2023 is the clearest illustration. Google’s guiding assumption was that its search infrastructure gave it a durable moat against conversational AI. When ChatGPT went viral, Google rushed Bard to market, bypassing its own safety protocols. In the first public demo, Bard stated that the James Webb Space Telescope had taken the first images of an exoplanet. That was factually wrong. Alphabet lost $100 billion in market cap in a single day <span class="citation" data-cites="GoogleBard2023"><a href="#ref-GoogleBard2023" role="doc-biblioref">[31]</a></span>. The underlying failure was not the hallucination. It was that Google’s guiding policy was calibrated to a search-era threat model and lacked a mechanism to evaluate the different failure modes of generative AI. Bard was deprecated entirely and replaced by Gemini in 2024. The discipline is not just to build the filter. It is to schedule the moment when the filter is examined, before the frontier passes it.</p>
+<p>These five failure modes are connected and build on each other. Starting with a technology-led diagnosis leads to a platform with no clear goal. That platform results in scattered pilots that do not produce learning. These pilots are measured at the wrong level, which delays honest evaluation. Since the guiding policy was not designed to be updated, the organisation reaches a new capability frontier with a strategy it cannot change. The kernel is missing at every stage, and each missing step makes the next one harder to fix.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>The gap between the 80% of organisations running AI pilots and the 5% getting real value is not about technology. It is about the missing kernel. There is no honest diagnosis, no guiding policy that acts as a filter, and no coherent actions that build toward a clear result. Instead, there is just a list of initiatives that look like strategy, measured by activity rather than real progress.</p>
+<p>The organisations that closed this gap did not do it with better technology. GitHub Copilot did not succeed because of better models, and Klarna’s AI assistant did not win because of more advanced infrastructure. They succeeded because they identified a specific crux, built a guiding policy around it, and measured outcomes instead of just activity <span class="citation" data-cites="Peng2023 Klarna2024"><a href="#ref-Peng2023" role="doc-biblioref">[21]</a>, <a href="#ref-Klarna2024" role="doc-biblioref">[32]</a></span>. The technology was good enough. The strategy was clear. That combination is still rare.</p>
+<p>If there is one thing that would improve most AI strategies, it is not launching another pilot. It is holding a real diagnostic workshop with the people who understand the true obstacles. One room. One question: what is the single challenge that, if solved, changes everything for this organisation? That answer is the crux. The roadmap begins there. Everything else is execution.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Phaal2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">R. Phaal, C. J. P. Farrukh, and D. R. Probert, <em>Roadmapping for strategy and innovation: Aligning technology and markets in a dynamic world</em>. Cambridge, UK: University of Cambridge, Institute for Manufacturing, 2010.</div>
+</div>
+<div id="ref-Agrawal2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. Agrawal, J. Gans, and A. Goldfarb, <em>Power and prediction: The disruptive economics of artificial intelligence</em>. Boston, MA: Harvard Business Review Press, 2022.</div>
+</div>
+<div id="ref-Rumelt2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">R. P. Rumelt, <em>The crux: High-stakes problems and the art of strategy</em>. New York, NY: PublicAffairs, 2022.</div>
+</div>
+<div id="ref-verdin2015you" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">P. Verdin and K. Tackx, <span>“Are you creating or capturing value? <span>A</span> dynamic framework for sustainable strategy,”</span> <em>SOLVAY Brussels School of Economics and Management Research Paper</em>, 2015.</div>
+</div>
+<div id="ref-burstrom2021ai" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">T. Burstrom, V. Parida, T. Lahti, and J. Wincent, <span>“<span>AI</span>-enabled business-model innovation and transformation in industrial ecosystems: <span>A</span> framework, model and outline for further research,”</span> <em>Journal of Business Research</em>, vol. 128, pp. 586–595, 2021, doi: <a href="https://doi.org/10.1016/j.jbusres.2020.10.016">10.1016/j.jbusres.2020.10.016</a>.</div>
+</div>
+<div id="ref-Kerr2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">C. Kerr and R. Phaal, <span>“Roadmapping and roadmaps: Definition and underpinning concepts,”</span> <em>IEEE Transactions on Engineering Management</em>, vol. 69, no. 1, pp. 6–16, 2022, doi: <a href="https://doi.org/10.1109/TEM.2021.3096012">10.1109/TEM.2021.3096012</a>.</div>
+</div>
+<div id="ref-Phaal2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">R. Phaal, C. J. P. Farrukh, and D. Probert, <span>“Technology roadmapping – <span>A</span> planning framework for evolution and revolution,”</span> <em>Technological Forecasting and Social Change</em>, vol. 71, pp. 5–26, 2004, doi: <a href="https://doi.org/10.1016/S0040-1625(03)00072-6">10.1016/S0040-1625(03)00072-6</a>.</div>
+</div>
+<div id="ref-Komssi2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">M. Komssi, J. Kauppinen, H. Lakkala, and C. Lassenius, <span>“Roadmapping problems in practice: Value creation and challenges,”</span> <em>Journal of Software: Evolution and Process</em>, vol. 26, no. 4, pp. 1899–1916, 2013, doi: <a href="https://doi.org/10.1002/smr.1628">10.1002/smr.1628</a>.</div>
+</div>
+<div id="ref-Helmer2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">H. Helmer, <em>7 powers: The foundations of business strategy</em>. Deep Strategy LLC, 2016.</div>
+</div>
+<div id="ref-Beede2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">E. Beede <em>et al.</em>, <span>“A human-centered evaluation of a deep learning system deployed in clinics for the detection of diabetic retinopathy,”</span> in <em>Proceedings of the 2020 <span>CHI</span> conference on human factors in computing systems</em>, 2020. doi: <a href="https://doi.org/10.1145/3313831.3376718">10.1145/3313831.3376718</a>.</div>
+</div>
+<div id="ref-burtonshaw2008essential" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">S. A. Burtonshaw-Gunn, <em>The essential management toolbox: Tools, models and notes for managers and consultants</em>. Chichester, UK: John Wiley &amp; Sons, 2008.</div>
+</div>
+<div id="ref-sjodin2020value" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">D. Sjodin, V. Parida, M. Leksell, and A. Petrovic, <span>“Smart factory implementation and process innovation: <span>A</span> framework for capturing value from digitalization in manufacturing,”</span> <em>Research-Technology Management</em>, vol. 61, no. 5, pp. 22–31, 2020, doi: <a href="https://doi.org/10.1080/08956308.2018.1471277">10.1080/08956308.2018.1471277</a>.</div>
+</div>
+<div id="ref-FRitala2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">P. Ritala, A. Pohle, and P. Hurmelinna-Laukkanen, <span>“Intangible assets boost value capture ability in ecosystems: <span>A</span> systemic perspective,”</span> <em>Journal of Intellectual Capital</em>, vol. 14, no. 4, pp. 549–569, 2013, doi: <a href="https://doi.org/10.1108/JIC-05-2013-0051">10.1108/JIC-05-2013-0051</a>.</div>
+</div>
+<div id="ref-Rumelt2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">R. P. Rumelt, <em>Good strategy/bad strategy: The difference and why it matters</em>. New York, NY: Crown Business, 2011.</div>
+</div>
+<div id="ref-Mollick2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">E. Mollick, <em>Co-intelligence: Living and working with <span>AI</span></em>. New York, NY: Portfolio/Penguin, 2024.</div>
+</div>
+<div id="ref-Suleyman2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">M. Suleyman and M. Bhaskar, <em>The coming wave: Technology, power, and the twenty-first century’s greatest dilemma</em>. New York, NY: Crown, 2023.</div>
+</div>
+<div id="ref-opresnik2015value" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">D. Opresnik and M. Taisch, <span>“The value of <span>Big Data</span> in servitization,”</span> <em>International Journal of Production Economics</em>, vol. 165, pp. 174–184, 2015, doi: <a href="https://doi.org/10.1016/j.ijpe.2014.12.036">10.1016/j.ijpe.2014.12.036</a>.</div>
+</div>
+<div id="ref-shollo2022shifting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">A. Shollo, A. Karpovsky, and R. D. Galliers, <span>“How does (big) data change organizations?”</span> <em>Journal of Organizational Change Management</em>, vol. 35, no. 1, pp. 171–191, 2022, doi: <a href="https://doi.org/10.1108/JOCM-07-2020-0201">10.1108/JOCM-07-2020-0201</a>.</div>
+</div>
+<div id="ref-Deloitte2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">Deloitte Consulting, <span>“<span>AI ROI</span>: The paradox of rising investment and elusive returns,”</span> <em>Deloitte Articles</em>, 2025, Available: <a href="https://www.deloitte.com/ie/en/issues/generative-ai/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html">https://www.deloitte.com/ie/en/issues/generative-ai/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html</a></div>
+</div>
+<div id="ref-Iansiti2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">M. Iansiti and K. R. Lakhani, <em>Competing in the age of <span>AI</span>: Strategy and leadership when algorithms and networks run the world</em>. Boston, MA: Harvard Business Review Press, 2020.</div>
+</div>
+<div id="ref-Peng2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">S. Peng, E. Kalliamvakou, P. Cihon, and M. Demirer, <span>“The impact of <span>AI</span> on developer productivity: Evidence from <span>GitHub Copilot</span>,”</span> <em>arXiv preprint arXiv:2302.06590</em>, 2023, Available: <a href="https://arxiv.org/abs/2302.06590">https://arxiv.org/abs/2302.06590</a></div>
+</div>
+<div id="ref-GitHub2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">GitHub, <span>“GitHub <span>Copilot</span> is now available to all companies on <span>GitHub Enterprise</span>.”</span> [Online]. Available: <a href="https://github.blog/news-insights/product-news/github-copilot-is-now-available-to-all-companies-on-github-enterprise/">https://github.blog/news-insights/product-news/github-copilot-is-now-available-to-all-companies-on-github-enterprise/</a></div>
+</div>
+<div id="ref-Strickland2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">E. Strickland, <span>“How <span>IBM</span>’s <span>Watson</span> went from the future of health care to sold off for parts,”</span> <em>Slate</em>, 2022, Available: <a href="https://slate.com/technology/2022/01/ibm-watson-health-failure-artificial-intelligence.html">https://slate.com/technology/2022/01/ibm-watson-health-failure-artificial-intelligence.html</a></div>
+</div>
+<div id="ref-Mukherjee2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">S. Mukherjee, <span>“<span>M. D. Anderson</span> breaks with <span>IBM Watson</span>, raising questions about artificial intelligence in oncology,”</span> <em>Journal of the National Cancer Institute</em>, vol. 109, no. 5, 2017, doi: <a href="https://doi.org/10.1093/jnci/djx113">10.1093/jnci/djx113</a>.</div>
+</div>
+<div id="ref-Ross2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">C. Ross and I. Swetlitz, <span>“<span>IBM</span> pitched its <span>Watson</span> supercomputer as a revolution in cancer care. <span class="nocase">It’s</span> nowhere close,”</span> <em>STAT News</em>, 2017, Available: <a href="https://www.statnews.com/2017/09/05/watson-ibm-cancer/">https://www.statnews.com/2017/09/05/watson-ibm-cancer/</a></div>
+</div>
+<div id="ref-Davenport2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">T. Davenport and R. Kalakota, <span>“The potential for artificial intelligence in healthcare,”</span> <em>Future Healthcare Journal</em>, vol. 6, no. 2, pp. 94–98, 2019, doi: <a href="https://doi.org/10.7861/futurehosp.6-2-94">10.7861/futurehosp.6-2-94</a>.</div>
+</div>
+<div id="ref-AmazonAlexa2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">E. Kim and A. Palmer, <span>“Amazon’s <span>Alexa</span> is on track to lose $10 billion this year.”</span> [Online]. Available: <a href="https://www.businessinsider.com/amazon-alexa-losing-10-billion-year-2022-11">https://www.businessinsider.com/amazon-alexa-losing-10-billion-year-2022-11</a></div>
+</div>
+<div id="ref-MIT2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">MIT Sloan Management Review, <span>“The state of <span>AI</span> in the enterprise: Why <span>GenAI</span> pilots fail to scale,”</span> MIT Sloan Management Review, 2025. Available: <a href="https://sloanreview.mit.edu/">https://sloanreview.mit.edu/</a></div>
+</div>
+<div id="ref-MLQ2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">MLQ.ai, <span>“State of <span>AI</span> in business 2025 report: Bridging the <span>GenAI</span> divide,”</span> MLQ.ai, 2025. Available: <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf">https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf</a></div>
+</div>
+<div id="ref-o2021agile" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">E. O’Sullivan, R. Phaal, and Ch. Featherston, <span>“Agile roadmapping: An adaptive approach to technology foresight,”</span> <em>Foresight and STI Governance</em>, vol. 15, no. 2, pp. 65–81, 2021, doi: <a href="https://doi.org/10.17323/25002597.2021.2.65.81">10.17323/25002597.2021.2.65.81</a>.</div>
+</div>
+<div id="ref-GoogleBard2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline">B. Allyn, <span>“Google’s <span>AI</span> chatbot, <span>Bard</span>, sparks a $100 billion loss in <span>Alphabet</span> shares.”</span> [Online]. Available: <a href="https://www.npr.org/2023/02/09/1155650909/google-chatbot--error-bard-shares">https://www.npr.org/2023/02/09/1155650909/google-chatbot--error-bard-shares</a></div>
+</div>
+<div id="ref-Klarna2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline">Klarna, <span>“Klarna <span>AI</span> assistant handles two-thirds of customer service chats in its first month.”</span> [Online]. Available: <a href="https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/">https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/</a></div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{faustine2026,
+  author = {Faustine, Anthony},
+  title = {From {Framework} to {Practice:} {Building} an {AI} {Strategy}
+    {That} {Sticks}},
+  date = {2026-03-29},
+  url = {https://sambaiga.github.io/pages/blog/posts/2026/04/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> 2025–2026 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> <i class="bi-cc-by " style="" role="img" aria-hidden="true"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="bi-orcid " style="" role="img" aria-hidden="true"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-7838-533X">0000-0002-7838-533X</a></span> <span class="faux-block"><i class="bi-key " style="" role="img" aria-hidden="true"></i> <a href="../../../../../pgp_ath.asc.txt">PGP public key</a>   <i class="bi-fingerprint " style="" role="img" aria-hidden="true"></i> Fingerprint:<br><span class="fingerprint">49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/sambaiga/sambaiga.github.io">View the source at <i class="bi-github " style="" role="img" aria-hidden="true"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

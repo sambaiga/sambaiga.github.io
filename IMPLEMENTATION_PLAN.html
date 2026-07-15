@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>implementation_plan – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href=".//images/icons/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-eaf3286719570f5f2ce9bb8ae75157f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-306ad45076f7d97859ae6f5e8473a36f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta name="twitter:title" content="Anthony Faustine">
+<meta name="twitter:description" content="Principal ML Engineer at Analog Devices, Ireland. Building production ML systems for supply chain optimization.">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi-envelope-at " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-github " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-linkedin " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#website-enhancement-implementation-plan" id="toc-website-enhancement-implementation-plan" class="nav-link active" data-scroll-target="#website-enhancement-implementation-plan">Website Enhancement Implementation Plan</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#key-requirements" id="toc-key-requirements" class="nav-link" data-scroll-target="#key-requirements">Key Requirements</a></li>
+  </ul></li>
+  <li><a href="#phase-breakdown" id="toc-phase-breakdown" class="nav-link" data-scroll-target="#phase-breakdown">Phase Breakdown</a>
+  <ul class="collapse">
+  <li><a href="#phase-1-foundation-cv-update-45-min" id="toc-phase-1-foundation-cv-update-45-min" class="nav-link" data-scroll-target="#phase-1-foundation-cv-update-45-min">Phase 1: Foundation &amp; CV Update ⏱️ ~45 min</a></li>
+  <li><a href="#phase-2-pre-commit-hooks-quality-gates-40-min" id="toc-phase-2-pre-commit-hooks-quality-gates-40-min" class="nav-link" data-scroll-target="#phase-2-pre-commit-hooks-quality-gates-40-min">Phase 2: Pre-commit Hooks &amp; Quality Gates ⏱️ ~40 min</a></li>
+  <li><a href="#phase-3a-projects-page---card-grid-design-1-hour" id="toc-phase-3a-projects-page---card-grid-design-1-hour" class="nav-link" data-scroll-target="#phase-3a-projects-page---card-grid-design-1-hour">Phase 3A: Projects Page - Card Grid Design ⏱️ ~1 hour</a></li>
+  <li><a href="#phase-3b-projects-page---timeline-design-1-hour" id="toc-phase-3b-projects-page---timeline-design-1-hour" class="nav-link" data-scroll-target="#phase-3b-projects-page---timeline-design-1-hour">Phase 3B: Projects Page - Timeline Design ⏱️ ~1 hour</a></li>
+  <li><a href="#phase-4-github-actions-cicd-30-min" id="toc-phase-4-github-actions-cicd-30-min" class="nav-link" data-scroll-target="#phase-4-github-actions-cicd-30-min">Phase 4: GitHub Actions CI/CD ⏱️ ~30 min</a></li>
+  <li><a href="#phase-5-design-refinement-polish-20-min" id="toc-phase-5-design-refinement-polish-20-min" class="nav-link" data-scroll-target="#phase-5-design-refinement-polish-20-min">Phase 5: Design Refinement &amp; Polish ⏱️ ~20 min</a></li>
+  </ul></li>
+  <li><a href="#merge-order" id="toc-merge-order" class="nav-link" data-scroll-target="#merge-order">Merge Order</a></li>
+  <li><a href="#decision-points" id="toc-decision-points" class="nav-link" data-scroll-target="#decision-points">Decision Points</a>
+  <ul class="collapse">
+  <li><a href="#decision-1-projects-page-design-phase-3" id="toc-decision-1-projects-page-design-phase-3" class="nav-link" data-scroll-target="#decision-1-projects-page-design-phase-3">Decision 1: Projects Page Design (Phase 3)</a></li>
+  </ul></li>
+  <li><a href="#testing-review-checklist" id="toc-testing-review-checklist" class="nav-link" data-scroll-target="#testing-review-checklist">Testing &amp; Review Checklist</a>
+  <ul class="collapse">
+  <li><a href="#before-each-phase-merge" id="toc-before-each-phase-merge" class="nav-link" data-scroll-target="#before-each-phase-merge">Before Each Phase Merge</a></li>
+  <li><a href="#local-testing-commands" id="toc-local-testing-commands" class="nav-link" data-scroll-target="#local-testing-commands">Local Testing Commands</a></li>
+  <li><a href="#review-deliverables" id="toc-review-deliverables" class="nav-link" data-scroll-target="#review-deliverables">Review Deliverables</a></li>
+  </ul></li>
+  <li><a href="#timeline" id="toc-timeline" class="nav-link" data-scroll-target="#timeline">Timeline</a>
+  <ul class="collapse">
+  <li><a href="#estimated-schedule" id="toc-estimated-schedule" class="nav-link" data-scroll-target="#estimated-schedule">Estimated Schedule</a></li>
+  <li><a href="#realistic-project-timeline" id="toc-realistic-project-timeline" class="nav-link" data-scroll-target="#realistic-project-timeline">Realistic Project Timeline</a></li>
+  </ul></li>
+  <li><a href="#success-criteria" id="toc-success-criteria" class="nav-link" data-scroll-target="#success-criteria">Success Criteria</a></li>
+  <li><a href="#notes-assumptions" id="toc-notes-assumptions" class="nav-link" data-scroll-target="#notes-assumptions">Notes &amp; Assumptions</a></li>
+  <li><a href="#questions-before-we-start" id="toc-questions-before-we-start" class="nav-link" data-scroll-target="#questions-before-we-start">Questions Before We Start?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="website-enhancement-implementation-plan" class="level1">
+<h1>Website Enhancement Implementation Plan</h1>
+<p><strong>Status:</strong> Ready to Start<br>
+<strong>Date Created:</strong> 2026-06-11<br>
+<strong>Project:</strong> sambaiga.github.io Website Improvements<br>
+<strong>Lead:</strong> Claude Code</p>
+<hr>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#phase-breakdown">Phase Breakdown</a></li>
+<li><a href="#merge-order">Merge Order</a></li>
+<li><a href="#decision-points">Decision Points</a></li>
+<li><a href="#testing--review-checklist">Testing &amp; Review Checklist</a></li>
+<li><a href="#timeline">Timeline</a></li>
+</ol>
+<hr>
+</section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="approach" class="level3">
+<h3 class="anchored" data-anchor-id="approach">Approach</h3>
+<ul>
+<li><strong>Strategy:</strong> Parallel preparation with sequential merging (3-5 feature branches running in parallel)</li>
+<li><strong>Review Cadence:</strong> After each branch is ready, you test locally, review, then merge to main</li>
+<li><strong>Estimated Total Time:</strong> 3-4 hours work (30-45 min per phase after parallelization)</li>
+<li><strong>Branches Strategy:</strong> Independent feature branches to avoid conflicts</li>
+</ul>
+</section>
+<section id="key-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="key-requirements">Key Requirements</h3>
+<p>✅ Create feature branch from main<br>
+✅ Replace CV with new one (from June 2026 PDF)<br>
+✅ Update current role to reflect “Principal AI Engineer” at Analog Devices<br>
+✅ Add pre-commit hooks for quality gates (YAML, bib, links, images)<br>
+✅ Create open-source projects page with all 5 projects<br>
+✅ Set up GitHub Actions for PR validation<br>
+✅ Design consistency with existing branding (twiga.scss)<br>
+✅ Test locally before merging each phase</p>
+<hr>
+</section>
+</section>
+<section id="phase-breakdown" class="level2">
+<h2 class="anchored" data-anchor-id="phase-breakdown">Phase Breakdown</h2>
+<section id="phase-1-foundation-cv-update-45-min" class="level3">
+<h3 class="anchored" data-anchor-id="phase-1-foundation-cv-update-45-min">Phase 1: Foundation &amp; CV Update ⏱️ ~45 min</h3>
+<p><strong>Branch:</strong> <code>feature/cv-and-site-updates</code><br>
+<strong>Status:</strong> Foundation - no conflicts with other branches</p>
+<p><strong>Tasks:</strong> 1. Replace CV file (<code>files/CV_Anthony_2025.pdf</code> with new June 2026 version) 2. Update homepage (<code>index.qmd</code>): - Update hero section: “Leading Applied AI for Strategic Impact” - Update stats (years of experience, projects, impact) - Verify company/role alignment with CV 3. Update about page (<code>pages/about/index.qmd</code>): - Refresh bio to reflect current Principal AI Engineer role at Analog Devices - Update current employer and location details - Highlight strategic AI leadership and MLOps expertise 4. Update current role info across site 5. Add reading-time estimates to all blog posts (2024, 2025, 2026) 6. Mark Part 3 draft (<code>pages/blog/posts/2026/05/index.qmd</code>) as <code>draft: true</code> and commit safely</p>
+<p><strong>Review Checklist:</strong> - [ ] CV loads correctly from <code>/files/</code> - [ ] Homepage accurately reflects your current role (Principal AI Engineer) - [ ] About page bio is current and compelling - [ ] Reading time estimates appear on blog listing - [ ] Site builds without errors: <code>quarto preview</code> - [ ] Homepage visually accurate on mobile and desktop</p>
+<p><strong>Merge Decision:</strong> Approve before moving to Phase 2</p>
+<hr>
+</section>
+<section id="phase-2-pre-commit-hooks-quality-gates-40-min" class="level3">
+<h3 class="anchored" data-anchor-id="phase-2-pre-commit-hooks-quality-gates-40-min">Phase 2: Pre-commit Hooks &amp; Quality Gates ⏱️ ~40 min</h3>
+<p><strong>Branch:</strong> <code>feature/pre-commit-hooks</code><br>
+<strong>Dependencies:</strong> None (can run in parallel, but best merged before Phase 4)</p>
+<p><strong>Tasks:</strong> 1. Add Quarto-specific pre-commit validation: - Validate YAML frontmatter in all <code>.qmd</code> files - Check for required fields: <code>title</code>, <code>date</code>, <code>description</code>, <code>draft</code> 2. Add bibliography validation for <code>.bib</code> files: - Ensure all citation keys are defined - Check for duplicate keys 3. Create shell script for internal link validation: - Verify relative links like <code>../03/</code> point to existing files - Check cross-post references are valid 4. Create image asset validation script: - Verify <code>cover.png</code> exists for each blog post with <code>image:</code> in frontmatter - Verify <code>banner.jpg</code> exists when <code>title-block-banner:</code> is set - Report missing images before commit 5. Update <code>.pre-commit-config.yaml</code> with all new hooks 6. Test with <code>pre-commit run --all-files</code> on existing posts</p>
+<p><strong>Pre-commit Config Structure:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto YAML validation</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> custom</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> quarto-yaml-validate</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bibliography validation</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> custom</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> bib-validate</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Link validation</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> custom</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> internal-link-check</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Image validation</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> custom</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> image-asset-check</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Review Checklist:</strong> - [ ] <code>pre-commit run --all-files</code> passes with no false positives - [ ] Existing posts pass all validations - [ ] Draft post detection works correctly - [ ] No legitimate links flagged as broken - [ ] Image validation catches missing assets - [ ] Pre-commit runs quickly (&lt;5 sec) on typical commit</p>
+<p><strong>Merge Decision:</strong> Approve before Phase 4 (GitHub Actions)</p>
+<hr>
+</section>
+<section id="phase-3a-projects-page---card-grid-design-1-hour" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3a-projects-page---card-grid-design-1-hour">Phase 3A: Projects Page - Card Grid Design ⏱️ ~1 hour</h3>
+<p><strong>Branch:</strong> <code>feature/projects-page-cards</code><br>
+<strong>Status:</strong> Design Option A (choose between 3A or 3B)</p>
+<p><strong>Tasks:</strong> 1. Create <code>pages/projects/index.qmd</code> (card grid layout): - Page title: “Open Source Projects &amp; Libraries” - Introduction: Brief statement about your OSS contributions - Responsive card grid (4 columns desktop, 2 tablet, 1 mobile)</p>
+<ol start="2" type="1">
+<li><p>Create <code>pages/projects/data.yml</code> with project metadata:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">projects</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Twiga</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Production forecasting library built on transformer and seq2seq architectures"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">status</span><span class="kw">:</span><span class="at"> Active</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2024</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"PyPI"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://pypi.org/project/twiga/"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"Docs"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://sambaiga.github.io/twiga-docs/"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"GitHub"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/sambaiga/twiga"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">stars</span><span class="kw">:</span><span class="at"> </span><span class="dv">250</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> </span><span class="st">"package"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> MLPForecast</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"MLP-based net-load forecasting with uncertainty estimates"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">status</span><span class="kw">:</span><span class="at"> Active</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2023</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"GitHub"</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/sambaiga/mlpforecast"</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> </span><span class="st">"chart-line"</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> MLCFCD</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Machine Learning-based Conformal Forecasting for Demand"</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">status</span><span class="kw">:</span><span class="at"> Maintained</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2023</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"GitHub"</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/sambaiga/MLCFCD"</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> </span><span class="st">"brain"</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> AWRGNILM</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Adaptive Weighted Recurrence Graphs for Non-Intrusive Load Monitoring"</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">status</span><span class="kw">:</span><span class="at"> Maintained</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2021</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"GitHub"</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/sambaiga/AWRGNILM"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> </span><span class="st">"bolt"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Deep-NILMtk</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Deep Learning Toolkit for Non-Intrusive Load Monitoring"</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">status</span><span class="kw">:</span><span class="at"> Community</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2020</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> </span><span class="st">"GitHub"</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://github.com/BHafsa/Deep-NILMtk"</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> </span><span class="st">"zap"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Design card component with:</p>
+<ul>
+<li>Icon/status badge (color-coded: green=Active, blue=Maintained, gray=Community)</li>
+<li>Project name and description</li>
+<li>Year started (bottom left)</li>
+<li>Links (PyPI, Docs, GitHub) with icons</li>
+<li>Optional: Star count from GitHub API (if available)</li>
+<li>Hover effects (lift effect, link highlight)</li>
+</ul></li>
+<li><p>Style using twiga.scss color scheme:</p>
+<ul>
+<li>Active: <code>#4CAF50</code> (green)</li>
+<li>Maintained: <code>#2196F3</code> (blue)</li>
+<li>Community: <code>#9E9E9E</code> (gray)</li>
+</ul></li>
+<li><p>Add to navbar in <code>_quarto.yml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Projects"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">file</span><span class="kw">:</span><span class="at"> </span><span class="st">"pages/projects/index.qmd"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Add breadcrumb navigation (optional)</p></li>
+</ol>
+<p><strong>Review Checklist:</strong> - [ ] Cards display correctly in 4-column grid on desktop - [ ] Cards stack properly on tablet (2 columns) and mobile (1 column) - [ ] All 5 projects listed with complete information - [ ] Status badges color-coded correctly - [ ] Links work (test each project’s GitHub/PyPI/Docs) - [ ] Styling matches twiga.scss color scheme - [ ] Hover effects smooth and visible - [ ] Page loads quickly - [ ] Site builds without errors: <code>quarto preview</code></p>
+<p><strong>Visual Reference:</strong></p>
+<pre><code>┌──────────────────────────────────────────┐
+│  📦 Twiga                    Active ✓     │
+│  Production forecasting library           │
+│  Built on transformers &amp; seq2seq          │
+│  ⭐ 250 · 2024                           │
+│  [PyPI] [Docs] [GitHub]                  │
+└──────────────────────────────────────────┘
+[Card repeats 4 across on desktop]</code></pre>
+<p><strong>Merge Decision:</strong> Choose this OR Phase 3B, not both</p>
+<hr>
+</section>
+<section id="phase-3b-projects-page---timeline-design-1-hour" class="level3">
+<h3 class="anchored" data-anchor-id="phase-3b-projects-page---timeline-design-1-hour">Phase 3B: Projects Page - Timeline Design ⏱️ ~1 hour</h3>
+<p><strong>Branch:</strong> <code>feature/projects-page-timeline</code><br>
+<strong>Status:</strong> Design Option B (choose between 3A or 3B)</p>
+<p><strong>Tasks:</strong> 1. Create <code>pages/projects/index.qmd</code> (timeline layout): - Page title: “Open Source Projects &amp; Libraries” - Grouped by status (Active → Maintained → Community) - Vertical timeline with visual flow</p>
+<ol start="2" type="1">
+<li><p>Reuse <code>pages/projects/data.yml</code> from Phase 3A (same data, different layout)</p></li>
+<li><p>Design timeline component:</p>
+<ul>
+<li>Left/right alternating entries on desktop (single column on mobile)</li>
+<li>Status group headers (Active, Maintained, Community)</li>
+<li>Visual timeline connector (vertical line with dots)</li>
+<li>Each project entry shows:
+<ul>
+<li>Project name</li>
+<li>Year started</li>
+<li>Description</li>
+<li>Status badge</li>
+<li>Links</li>
+<li>Icon</li>
+</ul></li>
+</ul></li>
+<li><p>Add filtering/toggling by status (optional: collapse maintained/community sections)</p></li>
+<li><p>Style matching twiga.scss (same status colors)</p></li>
+<li><p>Add to navbar in <code>_quarto.yml</code></p></li>
+</ol>
+<p><strong>Review Checklist:</strong> - [ ] Timeline displays correctly on desktop and mobile - [ ] Status groups clearly separated and labeled - [ ] All 5 projects visible with complete information - [ ] Timeline connectors visually clear - [ ] Filtering/toggling works (if implemented) - [ ] Links functional - [ ] Color scheme matches site - [ ] Site builds: <code>quarto preview</code></p>
+<p><strong>Visual Reference:</strong></p>
+<pre><code>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ACTIVE (3)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ●─── 2024: 🔷 Twiga
+     │    Production forecasting library
+     │    [PyPI] [Docs] [GitHub]
+     │
+     ●─── 2023: 🟦 MLPForecast
+     │    MLP-based forecasting
+     │    [GitHub]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MAINTAINED (2)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ●─── 2023: MLCFCD
+     │    ...</code></pre>
+<p><strong>Merge Decision:</strong> Choose this OR Phase 3A, not both. After both are ready, you decide which design wins.</p>
+<hr>
+</section>
+<section id="phase-4-github-actions-cicd-30-min" class="level3">
+<h3 class="anchored" data-anchor-id="phase-4-github-actions-cicd-30-min">Phase 4: GitHub Actions CI/CD ⏱️ ~30 min</h3>
+<p><strong>Branch:</strong> <code>feature/github-actions</code><br>
+<strong>Dependencies:</strong> Phase 2 (pre-commit hooks should be merged first for consistency)</p>
+<p><strong>Tasks:</strong> 1. Create <code>.github/workflows/pr-validation.yml</code>: ```yaml name: PR Validation on: pull_request: push: branches: [main]</p>
+<p>jobs: quarto-validate: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - name: Quarto YAML Validation run: | # Validate all .qmd files for proper YAML frontmatter # Check required fields: title, date, description, draft</p>
+<pre><code> bibliography-validate:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v4
+     - name: Bibliography Validation
+       run: |
+         # Check all .bib files for valid keys
+         # Ensure no duplicate citations
+     
+ link-check:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v4
+     - name: Internal Link Validation
+       run: |
+         # Check all relative links exist
+         # Verify ../XX/ cross-references
+     
+ image-validate:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v4
+     - name: Image Asset Validation
+       run: |
+         # Verify cover.png for posts with image: field
+         # Verify banner.jpg for posts with title-block-banner:</code></pre>
+<pre><code>
+2. Configure validation rules:
+- **Quarto YAML:** Check all `.qmd` files in `pages/blog/posts/**`
+- **Bibliography:** Validate all `.bib` files
+- **Links:** Check internal references in `.qmd` files
+- **Images:** Verify assets exist before commit
+
+3. Set up GitHub branch protection:
+- Require all checks to pass before merging to main
+- Require at least 1 review (optional, for future enforcement)
+
+4. Create documentation in PR template (`.github/pull_request_template.md`):
+- Explain validation checks
+- Guide for fixing common issues
+- Checklist for blog post PRs
+
+5. Test workflow with a test PR (to be done after merge)
+
+**GitHub Actions Workflow Details:**
+
+```yaml
+# .github/workflows/pr-validation.yml
+name: Validate Blog Posts and Content
+
+on:
+pull_request:
+ paths:
+   - 'pages/blog/**'
+   - '.github/workflows/**'
+   - '.qmd'
+   - '.bib'
+push:
+ branches: [main]
+ paths:
+   - 'pages/blog/**'
+
+jobs:
+quarto-validate:
+ name: Quarto YAML Validation
+ runs-on: ubuntu-latest
+ steps:
+   - uses: actions/checkout@v4
+   - name: Install dependencies
+     run: |
+       python -m pip install pyyaml
+   - name: Validate Quarto files
+     run: |
+       python scripts/validate_quarto.py
+
+bib-validate:
+ name: Bibliography Validation
+ runs-on: ubuntu-latest
+ steps:
+   - uses: actions/checkout@v4
+   - name: Validate BibTeX files
+     run: |
+       python scripts/validate_bib.py
+
+link-validate:
+ name: Internal Link Check
+ runs-on: ubuntu-latest
+ steps:
+   - uses: actions/checkout@v4
+   - name: Check internal links
+     run: |
+       python scripts/validate_links.py
+
+image-validate:
+ name: Image Asset Validation
+ runs-on: ubuntu-latest
+ steps:
+   - uses: actions/checkout@v4
+   - name: Check image assets
+     run: |
+       python scripts/validate_images.py</code></pre>
+<p><strong>Review Checklist:</strong> - [ ] Workflow file has valid YAML syntax - [ ] All four checks configured (YAML, bib, links, images) - [ ] Tests run on both PR and main branch push - [ ] Validation scripts created in <code>scripts/</code> directory - [ ] Branch protection rule created - [ ] Test PR created to verify workflow executes - [ ] All checks pass on a valid post - [ ] Checks fail appropriately on invalid input</p>
+<p><strong>Merge Decision:</strong> Approve and merge</p>
+<hr>
+</section>
+<section id="phase-5-design-refinement-polish-20-min" class="level3">
+<h3 class="anchored" data-anchor-id="phase-5-design-refinement-polish-20-min">Phase 5: Design Refinement &amp; Polish ⏱️ ~20 min</h3>
+<p><strong>Branch:</strong> <code>feature/design-polish</code><br>
+<strong>Dependencies:</strong> Phase 3 (projects page should be merged)</p>
+<p><strong>Tasks:</strong> 1. Add breadcrumb navigation: - Homepage &gt; Projects &gt; [Project Name] - Helps with site navigation and SEO</p>
+<ol start="2" type="1">
+<li>Ensure consistent spacing:
+<ul>
+<li>Match padding/margins across all pages</li>
+<li>Verify card/timeline spacing consistent with other sections</li>
+</ul></li>
+<li>Add meta descriptions:
+<ul>
+<li>Projects page: “Open-source libraries for AI forecasting, load monitoring, and intelligent power systems”</li>
+<li>Review pages for completeness</li>
+</ul></li>
+<li>Test social card previews:
+<ul>
+<li>Verify Open Graph tags render correctly</li>
+<li>Twitter card display correct</li>
+</ul></li>
+<li>Mobile responsiveness check:
+<ul>
+<li>Test all new pages on iPhone/iPad screen sizes</li>
+<li>Verify touch targets are adequate</li>
+</ul></li>
+<li>Performance check:
+<ul>
+<li>Run Quarto build and check output size</li>
+<li>Verify site loads quickly with new assets</li>
+</ul></li>
+<li>Accessibility check:
+<ul>
+<li>Verify color contrast on status badges</li>
+<li>Check link underlines/focus states</li>
+<li>Test with screen reader (ARIA labels)</li>
+</ul></li>
+</ol>
+<p><strong>Review Checklist:</strong> - [ ] Breadcrumbs display correctly - [ ] Spacing consistent across pages - [ ] Meta descriptions accurate and present - [ ] Social cards preview correctly - [ ] Mobile layout responsive and usable - [ ] Site builds quickly - [ ] Accessibility features working - [ ] No visual regressions in existing pages</p>
+<p><strong>Merge Decision:</strong> Final approval, ready to push to live</p>
+<hr>
+</section>
+</section>
+<section id="merge-order" class="level2">
+<h2 class="anchored" data-anchor-id="merge-order">Merge Order</h2>
+<p>This is the recommended sequence. <strong>Each phase must be reviewed and approved before merging:</strong></p>
+<pre><code>1. feature/cv-and-site-updates
+   └─ Status: Foundation - no conflicts
+   └─ Review: CV, homepage, about page
+   └─ Merge: ✓ Required before next phases
+
+2. feature/pre-commit-hooks
+   └─ Status: Independent but should merge before Phase 4
+   └─ Review: Run pre-commit, verify validations
+   └─ Merge: ✓ Required before Phase 4
+
+3. feature/projects-page-{cards OR timeline}
+   └─ Status: YOU CHOOSE ONE
+   └─ Options: 
+      - Card Grid (Phase 3A): Visual, scrollable, modern
+      - Timeline (Phase 3B): Narrative, status-grouped, evolutionary
+   └─ Review: Layout, links, responsive design
+   └─ Merge: ✓ Pick winner, delete loser
+
+4. feature/github-actions
+   └─ Status: Quality gates
+   └─ Review: Workflow syntax, validation logic
+   └─ Merge: ✓ Final quality protection
+
+5. feature/design-polish
+   └─ Status: Final touches
+   └─ Review: Full site polish
+   └─ Merge: ✓ Ready for live</code></pre>
+<hr>
+</section>
+<section id="decision-points" class="level2">
+<h2 class="anchored" data-anchor-id="decision-points">Decision Points</h2>
+<section id="decision-1-projects-page-design-phase-3" class="level3">
+<h3 class="anchored" data-anchor-id="decision-1-projects-page-design-phase-3">Decision 1: Projects Page Design (Phase 3)</h3>
+<p><strong>When:</strong> After both 3A and 3B branches are ready<br>
+<strong>Options:</strong> - <strong>Card Grid (3A):</strong> 4 columns, modern, visual-first, scrollable - <strong>Timeline (3B):</strong> Vertical narrative, status-grouped, evolutionary story</p>
+<p><strong>How to Decide:</strong> 1. Preview both locally: <code>quarto preview</code> 2. Check on mobile: responsive test 3. Which feels more “you”? Which better tells your OSS story? 4. Tell me which wins, I merge that and delete the other</p>
+<p><strong>Recommendation:</strong> Timeline better shows the <strong>evolution</strong> of your work (2020→2024) and <strong>maturity levels</strong> (Active/Maintained/Community). Card grid is more conventional but less narrative. Your choice!</p>
+<hr>
+</section>
+</section>
+<section id="testing-review-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="testing-review-checklist">Testing &amp; Review Checklist</h2>
+<section id="before-each-phase-merge" class="level3">
+<h3 class="anchored" data-anchor-id="before-each-phase-merge">Before Each Phase Merge</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Code builds without errors: <code>quarto preview</code></label></li>
+<li><label><input type="checkbox">No TypeScript/ESLint errors (if applicable)</label></li>
+<li><label><input type="checkbox">No broken internal links</label></li>
+<li><label><input type="checkbox">Responsive design tested on mobile/tablet/desktop</label></li>
+<li><label><input type="checkbox">All links (GitHub, PyPI, Docs) verified working</label></li>
+<li><label><input type="checkbox">No spelling/grammar errors</label></li>
+<li><label><input type="checkbox">Metadata complete (title, date, description, image)</label></li>
+<li><label><input type="checkbox">Color contrast meets accessibility standards (WCAG AA)</label></li>
+<li><label><input type="checkbox">Page loads reasonably fast</label></li>
+</ul>
+</section>
+<section id="local-testing-commands" class="level3">
+<h3 class="anchored" data-anchor-id="local-testing-commands">Local Testing Commands</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build and preview</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for errors</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate markdown/yaml</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> run <span class="at">--all-files</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Check links (when implemented)</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/validate_links.py</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Build static output</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="review-deliverables" class="level3">
+<h3 class="anchored" data-anchor-id="review-deliverables">Review Deliverables</h3>
+<p>Each phase PR should include: - Summary of changes - Link to preview (or “run <code>quarto preview</code> locally”) - Checklist of tested items - Screenshot (for visual changes) - Any breaking changes or deprecations</p>
+<hr>
+</section>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<section id="estimated-schedule" class="level3">
+<h3 class="anchored" data-anchor-id="estimated-schedule">Estimated Schedule</h3>
+<ul>
+<li><strong>Phase 1:</strong> 45 min (CV update, homepage, about page)</li>
+<li><strong>Phase 2:</strong> 40 min (pre-commit hooks)</li>
+<li><strong>Phases 3A + 3B:</strong> 1 hour each (parallel: both ready in ~1.5 hours wall time, but your choice picks one)</li>
+<li><strong>Phase 4:</strong> 30 min (GitHub Actions)</li>
+<li><strong>Phase 5:</strong> 20 min (design polish)</li>
+</ul>
+<p><strong>Total active development:</strong> ~3-4 hours<br>
+<strong>Your review time:</strong> ~15-30 min per phase × 5 phases = ~2-2.5 hours total</p>
+</section>
+<section id="realistic-project-timeline" class="level3">
+<h3 class="anchored" data-anchor-id="realistic-project-timeline">Realistic Project Timeline</h3>
+<ul>
+<li><strong>Now → Next 2 hours:</strong> Phases 1-2 complete and merged</li>
+<li><strong>Next 2-3 hours:</strong> Phase 3 (design decision point)</li>
+<li><strong>Next 1 hour:</strong> Phase 4-5 (final polish &amp; protection)</li>
+<li><strong>Total project duration:</strong> 3-4 hours, 1 day to completion</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="success-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="success-criteria">Success Criteria</h2>
+<p>✅ <strong>Phase 1:</strong> CV updated, homepage/about reflect current role<br>
+✅ <strong>Phase 2:</strong> Pre-commit hooks prevent invalid posts<br>
+✅ <strong>Phase 3:</strong> Projects page showcases all 5 OSS projects beautifully<br>
+✅ <strong>Phase 4:</strong> GitHub Actions validates every PR automatically<br>
+✅ <strong>Phase 5:</strong> Site is polished, responsive, accessible</p>
+<p><strong>Final Outcome:</strong> - Website reflects your current role as Principal AI Engineer - Open-source contributions are prominently featured - Quality gates prevent deployment of invalid content - Site is performant, accessible, and maintainable - You can confidently push new blog posts knowing they’re validated</p>
+<hr>
+</section>
+<section id="notes-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="notes-assumptions">Notes &amp; Assumptions</h2>
+<ul>
+<li>All work is on <strong>feature branches</strong>, not main</li>
+<li>Each phase is <strong>independent</strong> — you approve before merge</li>
+<li>Pre-commit hooks assume <strong>Python 3.8+</strong> is available</li>
+<li>GitHub Actions requires <strong>.github/</strong> directory exists (create if needed)</li>
+<li>Projects page data can be <strong>extended later</strong> (add more projects easily)</li>
+<li>Timeline filter is <strong>optional</strong> (can be added if needed)</li>
+</ul>
+<hr>
+</section>
+<section id="questions-before-we-start" class="level2">
+<h2 class="anchored" data-anchor-id="questions-before-we-start">Questions Before We Start?</h2>
+<ol type="1">
+<li><strong>Projects page preference:</strong> Card grid vs.&nbsp;Timeline? (Can decide after seeing both)</li>
+<li><strong>Navigation:</strong> Should Projects link from navbar or just footer?</li>
+<li><strong>Blog reading time:</strong> Should it show minutes or be hidden?</li>
+<li><strong>Status badges:</strong> Color-coded OK or prefer text labels?</li>
+<li><strong>Accessibility:</strong> Any specific requirements beyond WCAG AA?</li>
+</ol>
+<hr>
+<p><strong>Ready to start?</strong> 🚀</p>
+<p>Next step: Create <code>feature/cv-and-site-updates</code> branch and update CV + homepage.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> 2025–2026 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> <i class="bi-cc-by " style="" role="img" aria-hidden="true"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="bi-orcid " style="" role="img" aria-hidden="true"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-7838-533X">0000-0002-7838-533X</a></span> <span class="faux-block"><i class="bi-key " style="" role="img" aria-hidden="true"></i> <a href="pgp_ath.asc.txt">PGP public key</a>   <i class="bi-fingerprint " style="" role="img" aria-hidden="true"></i> Fingerprint:<br><span class="fingerprint">49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/sambaiga/sambaiga.github.io">View the source at <i class="bi-github " style="" role="img" aria-hidden="true"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

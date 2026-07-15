@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Faustine">
+<meta name="dcterms.date" content="2026-05-06">
+<meta name="description" content="Having a coherent AI strategy is not the same as having a business model that captures the value AI creates. This post introduces the AI Business Model Innovation Framework, showing how organisations can translate strategic direction into revenue, outcomes, and durable competitive position.">
+
+<title>The Missing Layer: How AI Business Models Actually Capture Value – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../../">
+<link href="../../../../..//images/icons/favicon.ico" rel="icon">
+<script src="../../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../../site_libs/quarto-html/quarto-syntax-highlighting-218bf51cdc365e200b8da9544fc0b29b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../../site_libs/bootstrap/bootstrap-f59b4d659a71da732953eda2dc3d8051.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../../site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: banner.jpg;
+      }
+</style>
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership">
+<meta property="og:image" content="https://sambaiga.github.io/pages/blog/posts/2026/05/cover.png">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta name="twitter:title" content="The Missing Layer: How AI Business Models Actually Capture Value – Anthony Faustine">
+<meta name="twitter:description" content="Having a coherent AI strategy is not the same as having a business model that captures the value AI creates. This post introduces the AI Business Model Innovation Framework, showing how organisations can translate strategic direction into revenue, outcomes, and durable competitive position.">
+<meta name="twitter:image" content="https://sambaiga.github.io/pages/blog/posts/2026/05/cover.png">
+<meta name="twitter:creator" content="@asambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed blog quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../../pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi-envelope-at " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-github " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi-linkedin " style="font-size: 1.1em;" role="img" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">The Missing Layer: How AI Business Models Actually Capture Value</h1>
+            <p class="subtitle lead">Part 3: Why the Gap Between Strategic Direction and Revenue Is Where Most AI Value Disappears</p>
+                  <div>
+        <div class="description">
+          Having a coherent AI strategy is not the same as having a business model that captures the value AI creates. This post introduces the AI Business Model Innovation Framework, showing how organisations can translate strategic direction into revenue, outcomes, and durable competitive position.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">AI Strategy</div>
+                <div class="quarto-category">Business Model Innovation</div>
+                <div class="quarto-category">Technology Roadmapping</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://sambaiga.github.io/">Anthony Faustine</a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              CIP, Eaton Corporation, Dublin Ireland.
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 6, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-ai-breaks-existing-business-models" id="toc-why-ai-breaks-existing-business-models" class="nav-link active" data-scroll-target="#why-ai-breaks-existing-business-models">Why AI Breaks Existing Business Models</a></li>
+  <li><a href="#the-ai-business-model-innovation-framework" id="toc-the-ai-business-model-innovation-framework" class="nav-link" data-scroll-target="#the-ai-business-model-innovation-framework">The AI Business Model Innovation Framework</a></li>
+  <li><a href="#the-capabilities-that-make-it-work" id="toc-the-capabilities-that-make-it-work" class="nav-link" data-scroll-target="#the-capabilities-that-make-it-work">The Capabilities That Make It Work</a></li>
+  <li><a href="#how-to-spot-a-bad-ai-business-model" id="toc-how-to-spot-a-bad-ai-business-model" class="nav-link" data-scroll-target="#how-to-spot-a-bad-ai-business-model">How to Spot a Bad AI Business Model</a></li>
+  <li><a href="#conclusion-strategy-roadmap-business-model" id="toc-conclusion-strategy-roadmap-business-model" class="nav-link" data-scroll-target="#conclusion-strategy-roadmap-business-model">Conclusion: Strategy, Roadmap, Business Model</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<p>In Parts 1 and 2, we saw that while 80% of organisations run AI pilots, only 5% actually get measurable value. Those posts argued that this gap is mostly about strategy; many AI projects fail because they lack a clear focus, a guiding policy, or targeted actions. That explanation is still true, but it is not the full picture.</p>
+<p>Some organisations have followed the advice from Parts 1 and 2. They have a clear focus, a solid strategy, and well-planned pilots. Yet, they still struggle to turn these efforts into real business value. Having a strategy and roadmap is important, but it is not enough. What is missing is a strong business model.</p>
+<p>Osterwalder and Pigneur <span class="citation" data-cites="Osterwalder2010"><a href="#ref-Osterwalder2010" role="doc-biblioref">[1]</a></span> say a business model is how an organisation creates, delivers, and captures value. Strategy is about direction and navigation. The business model explains how value is created, who benefits, how it is delivered, and how the organisation keeps enough value to keep going. In most tech shifts, the difference between strategy and business model is clear. With AI, though, all three parts change at once, often in ways old business models cannot handle. Without a framework for this, even a good AI strategy might not lead to revenue, a lasting advantage, or a clear reason for the investment.</p>
+<p>This post tackles that problem. The AI Business Model Innovation Framework helps turn strategy into a business model that really captures AI value. It does not replace the roadmap from Part 2, but works underneath it, filling in the gaps that a roadmap alone cannot cover.</p>
+<section id="why-ai-breaks-existing-business-models" class="level3">
+<h3 class="anchored" data-anchor-id="why-ai-breaks-existing-business-models">Why AI Breaks Existing Business Models</h3>
+<p>Before we look at the framework, let’s clarify what makes AI disruptive to business models, not just to strategy.</p>
+<p>The three main AI features from Part 1 are clearly evident in business models. First, organisations often find out what AI can do before they know which customer problem it solves. This leads to products that talk about themselves instead of solving real problems. Second, revenue models based on today’s AI capabilities can quickly become outdated before the product can grow. Third, AI often creates value in ways that do not match up with when revenue is earned. Traditional business models, which link product delivery directly to payment, do not fit well with these AI realities.</p>
+<p>Amazon Alexa is a good example of this problem. Technically, Alexa was impressive: top-notch voice recognition, strong platform integration, and devices in millions of homes. The AI strategy made sense, and the platform worked well. But the business model did not succeed. Most users only used Alexa for free features like timers, weather, and music. The revenue Amazon hoped for from shopping, subscriptions, and paid services never reached the needed scale. By 2022, the division was losing about ten billion dollars a year <span class="citation" data-cites="AmazonAlexa2022"><a href="#ref-AmazonAlexa2022" role="doc-biblioref">[2]</a></span>. In 2023, Amazon restructured the team, cutting hundreds of jobs and quietly admitting the business model was not working.</p>
+<p>The key question was never really answered before Alexa launched: what real problem would voice AI solve for a customer who would pay for it? This is not just a strategy issue; it is a business model issue. Organisations that mix up the two often end up with results like Alexa.</p>
+</section>
+<section id="the-ai-business-model-innovation-framework" class="level3">
+<h3 class="anchored" data-anchor-id="the-ai-business-model-innovation-framework">The AI Business Model Innovation Framework</h3>
+<p>The AI Business Model Innovation Framework has four parts: Data Foundation Establishment, Value-Centric Data Exploitation, Strategic AI Co-Innovation, and AI Value Realisation. The first three occur in order, while the fourth, AI Value Realisation, should be present throughout the process, not just at the end. This matters because many organisations treat value realisation as something to add after launch, but with AI, that approach fails. Value realisation needs to be built in from the beginning, right alongside the data foundation.</p>
+<div id="fig-bmi-framework" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bmi-framework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-bmi {
+  font-family: 'Jost', system-ui, sans-serif;
+  background: #F8F9FA;
+  border-radius: 10px;
+  padding: 20px 16px 16px;
+  overflow-x: auto;
+}
+.dg-bmi-inner {
+  min-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.dg-bmi-seq {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.dg-bmi-el {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #E9ECEF;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  padding: 14px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: relative;
+}
+.dg-bmi-el::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  border-radius: 8px 8px 0 0;
+}
+.dg-bmi-el.el1::before { background: #1E293B; }
+.dg-bmi-el.el2::before { background: #8B5CF6; }
+.dg-bmi-el.el3::before { background: #7C3AED; }
+.dg-bmi-el-num {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ADB5BD;
+}
+.dg-bmi-el-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.dg-bmi-el.el1 .dg-bmi-el-icon { background: rgba(30,41,59,0.08); color: #1E293B; }
+.dg-bmi-el.el2 .dg-bmi-el-icon { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+.dg-bmi-el.el3 .dg-bmi-el-icon { background: rgba(124,58,237,0.1); color: #7C3AED; }
+.dg-bmi-el-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: #1E293B;
+  line-height: 1.3;
+}
+.dg-bmi-el-sub {
+  font-size: 10px;
+  color: #6B7280;
+  text-align: center;
+  line-height: 1.35;
+}
+.dg-bmi-seq-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  flex-shrink: 0;
+  color: #CED4DA;
+  font-size: 15px;
+  padding-top: 4px;
+}
+.dg-bmi-connectors {
+  display: flex;
+  gap: 0;
+}
+.dg-bmi-connector-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.dg-bmi-connector-col .dg-connector-line {
+  width: 2px;
+  height: 16px;
+  background: #DEE2E6;
+}
+.dg-bmi-connector-gap {
+  width: 28px;
+  flex-shrink: 0;
+}
+.dg-bmi-transversal {
+  background: #fff;
+  border: 1.5px solid #10B981;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(16,185,129,0.12);
+}
+.dg-bmi-tv-header {
+  background: #10B981;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dg-bmi-tv-header i { font-size: 16px; color: #fff; }
+.dg-bmi-tv-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.dg-bmi-tv-badge {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dg-bmi-tv-components {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 0;
+}
+.dg-bmi-tv-comp {
+  padding: 12px 12px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.dg-bmi-tv-comp + .dg-bmi-tv-comp {
+  border-left: 1px solid #E9ECEF;
+}
+.dg-bmi-tv-comp i {
+  font-size: 16px;
+  color: #10B981;
+}
+.dg-bmi-tv-comp-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1E293B;
+}
+.dg-bmi-tv-comp-q {
+  font-size: 9.5px;
+  color: #6B7280;
+  line-height: 1.3;
+  font-style: italic;
+}
+</style>
+<div class="dg-bmi" role="img" aria-label="AI Business Model Innovation Framework. Three sequential elements: Element 1, Data Foundation — proprietary data as a cornered resource. Element 2, Value-Centric Data Exploitation — insights anchored to business goals. Element 3, Strategic AI Co-Innovation — redesigning the business model. Below all three, running transversally, is AI Value Realisation with three components: Value Architecture (who is this for and what does it solve), Monetisation (how is value captured), and Valuation (are we tracking outcomes or activity).">
+  <div class="dg-bmi-inner">
+    <div class="dg-bmi-seq">
+      <div class="dg-bmi-el el1">
+        <span class="dg-bmi-el-num">Element 01</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-database"></i>
+        </div>
+        <div class="dg-bmi-el-title">Data Foundation</div>
+        <div class="dg-bmi-el-sub">Proprietary data as a cornered resource</div>
+      </div>
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="dg-bmi-el el2">
+        <span class="dg-bmi-el-num">Element 02</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-graph-up-arrow"></i>
+        </div>
+        <div class="dg-bmi-el-title">Value-Centric Data Exploitation</div>
+        <div class="dg-bmi-el-sub">Insights anchored to business goals</div>
+      </div>
+      <div class="dg-bmi-seq-arrow" aria-hidden="true">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="dg-bmi-el el3">
+        <span class="dg-bmi-el-num">Element 03</span>
+        <div class="dg-bmi-el-icon" aria-hidden="true">
+          <i class="bi bi-people"></i>
+        </div>
+        <div class="dg-bmi-el-title">Strategic AI Co-Innovation</div>
+        <div class="dg-bmi-el-sub">Redesigning the business model</div>
+      </div>
+    </div>
+    <div class="dg-bmi-connectors" aria-hidden="true">
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+      <div class="dg-bmi-connector-gap"></div>
+      <div class="dg-bmi-connector-col"><div class="dg-connector-line"></div></div>
+    </div>
+    <div class="dg-bmi-transversal">
+      <div class="dg-bmi-tv-header">
+        <i class="bi bi-cash-coin" aria-hidden="true"></i>
+        <span class="dg-bmi-tv-title">AI Value Realisation — Element 04</span>
+        <span class="dg-bmi-tv-badge">
+          <i class="bi bi-arrows-expand" aria-hidden="true"></i> Transversal
+        </span>
+      </div>
+      <div class="dg-bmi-tv-components">
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Value Architecture</div>
+          <div class="dg-bmi-tv-comp-q">Who is this for, and what specifically does it solve?</div>
+        </div>
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-cash-coin" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Monetisation</div>
+          <div class="dg-bmi-tv-comp-q">How does the organisation capture value, and when is that decided?</div>
+        </div>
+        <div class="dg-bmi-tv-comp">
+          <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+          <div class="dg-bmi-tv-comp-title">Valuation</div>
+          <div class="dg-bmi-tv-comp-q">Are we tracking outcomes or counting activity?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bmi-framework-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The AI Business Model Innovation Framework: three sequential elements flow from data foundation through to co-innovation, while AI Value Realisation runs transversally — present at every stage, not just at the end.
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-bmi-framework" class="quarto-xref">Figure&nbsp;1</a> shows how the four elements connect. The rest of this section explains each one in detail.</p>
+<section id="element-1-data-foundation-establishment" class="level4">
+<h4 class="anchored" data-anchor-id="element-1-data-foundation-establishment">Element 1: Data Foundation Establishment</h4>
+<p>The data foundation is the starting point for everything else. In terms of planning, it aligns with Step 2 in Part 2: honestly assessing the organisation’s data maturity, infrastructure, and governance.</p>
+<p>From a business model perspective, the data foundation is more than just a technical need. In Helmer’s <span class="citation" data-cites="Helmer2016"><a href="#ref-Helmer2016" role="doc-biblioref">[3]</a></span> framework, proprietary data is a Cornered Resource, something competitors cannot easily get. This is the stage when that resource is created or lost. If organisations treat data as something to fix later, they not only build up technical debt—they also lose a long-term advantage. Managing data well, connecting it across systems, and aligning it with business goals does more than prepare for AI. It creates a position that is hard for others to copy.</p>
+<p>At this stage, the main tasks are updating data strategy and governance, finding the right data sources, building data pipelines, and running regular quality checks. <span class="citation" data-cites="Deloitte2025"><a href="#ref-Deloitte2025" role="doc-biblioref">[4]</a></span> points out that overestimating data maturity is the top reason AI pilots fail. Many organisations think their data is better than it is, and only realise the problem after spending money and setting deadlines. Being honest here prevents that. Investing in the data foundation is not just a cost; it is the key asset for the whole framework.</p>
+</section>
+<section id="element-2-value-centric-data-exploitation" class="level4">
+<h4 class="anchored" data-anchor-id="element-2-value-centric-data-exploitation">Element 2: Value-Centric Data Exploitation</h4>
+<p>Once the data foundation is in place, the next step is to derive useful insights from the data and connect them to business goals. This is called value-centric data exploitation. It is not just about running technical queries—it means every analysis is tied to a clear business goal, not just exploring data for its own sake.</p>
+<p><span class="citation" data-cites="opresnik2015value"><a href="#ref-opresnik2015value" role="doc-biblioref">[5]</a></span> calls this the point at which data shifts from being just an asset to a tool. This matters because data that does not answer a business question is just sitting there. Insights from value-centric exploitation serve as the basis for building AI models and creating new products or services.</p>
+<p>The main activities here align with the guiding policy in Part 2. At this stage, developing or updating your AI strategy means ensuring your analysis aligns with the main challenge identified earlier. Improving AI governance, transforming data, extracting knowledge, and testing new ideas all help turn strategy into a business model.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For example, a logistics company facing unpredictable last-mile deliveries does not analyse all its data. Instead, it focuses on route, weather, and demand data to support dynamic scheduling. Every insight is checked by asking: does this help solve the main problem? This focus is what makes value-centric exploitation different from just exploring data with a budget.</p>
+</div>
+</div>
+<p>The result of this step is not just a tidy dataset. It is a set of proven insights that support a value proposition, along with a prototype to see whether customers would actually pay for it.</p>
+</section>
+<section id="element-3-strategic-ai-co-innovation" class="level4">
+<h4 class="anchored" data-anchor-id="element-3-strategic-ai-co-innovation">Element 3: Strategic AI Co-Innovation</h4>
+<p>The third element is where insights turn into products and the business model gets redesigned. This step is not just about improving current operations; it is about creating AI-powered offerings that can change the way business is done.</p>
+<p>It is important to understand the difference between the two ways of using AI. Task augmentation means using AI to improve current processes, such as speeding up paperwork or improving forecasts. Autonomous systems use AI to create brand new products or services. Both are valid, but each leads to very different business models, revenue streams, costs, and competition.</p>
+<p>Klarna’s AI assistant <span class="citation" data-cites="Klarna2024"><a href="#ref-Klarna2024" role="doc-biblioref">[6]</a></span> shows this difference well. Instead of just speeding up its customer service team, Klarna replaced about 700 agents with an AI system that handled two-thirds of all chats in its first month. This was not just improving a task—it was a whole new way of working, with a new cost structure and a new way to capture value. The business model changed, and this shift came from co-innovating with partners and the AI itself, not just following a roadmap.</p>
+<div id="fig-aug-vs-autonomous" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aug-vs-autonomous-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-aug { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px; overflow-x:auto; }
+.dg-aug-grid { display:grid; grid-template-columns:1fr 36px 1fr; align-items:start; gap:0; min-width:500px; }
+.dg-aug-card { background:#fff; border:1px solid #E9ECEF; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.dg-aug-card-hd { padding:10px 12px 9px; display:flex; align-items:center; gap:7px; }
+.dg-aug-card-hd i { font-size:15px; color:#fff; }
+.dg-aug-card-hd-text { font-size:11px; font-weight:700; color:#fff; }
+.dg-aug-card.augment .dg-aug-card-hd { background:#1E293B; }
+.dg-aug-card.autonomous .dg-aug-card-hd { background:#8B5CF6; }
+.dg-aug-card-body { padding:12px 12px 14px; display:flex; flex-direction:column; gap:8px; }
+.dg-aug-item { display:flex; gap:7px; align-items:flex-start; }
+.dg-aug-item i { font-size:13px; margin-top:1px; flex-shrink:0; }
+.dg-aug-card.augment .dg-aug-item i { color:#1E293B; }
+.dg-aug-card.autonomous .dg-aug-item i { color:#8B5CF6; }
+.dg-aug-item-text { font-size:10px; color:#374151; line-height:1.4; }
+.dg-aug-item-label { font-size:9.5px; font-weight:700; color:#1E293B; display:block; margin-bottom:1px; }
+.dg-aug-example { margin-top:6px; padding-top:8px; border-top:1px solid #F3F4F6; font-size:9px; color:#6B7280; font-style:italic; line-height:1.4; }
+.dg-aug-vs { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#ADB5BD; padding-top:48px; }
+</style>
+<div class="dg-aug" role="img" aria-label="Two AI deployment modes compared. Task augmentation: layers AI onto existing processes, keeps the same business model and cost structure, produces efficiency gains that are easily replicated. Example: AI drafting contracts faster, better forecasts. Autonomous systems: replaces entire processes with AI-native operations, restructures costs, creates new revenue models and structural competitive advantage. Example: Klarna replaced 700 agents with an AI system handling two-thirds of all chats.">
+  <div class="dg-aug-grid">
+    <div class="dg-aug-card augment">
+      <div class="dg-aug-card-hd">
+        <i class="bi bi-layers" aria-hidden="true"></i>
+        <span class="dg-aug-card-hd-text">Task Augmentation</span>
+      </div>
+      <div class="dg-aug-card-body">
+        <div class="dg-aug-item">
+          <i class="bi bi-arrow-up-circle" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">What changes</span>Speed and accuracy of existing tasks</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-currency-dollar" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Business model</span>Same structure, incremental cost reduction</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-shield" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Competitive position</span>Efficiency gains, easily replicated by rivals</div>
+        </div>
+        <div class="dg-aug-example">e.g. AI drafts contracts faster · demand forecasts improve accuracy</div>
+      </div>
+    </div>
+    <div class="dg-aug-vs" aria-hidden="true">VS</div>
+    <div class="dg-aug-card autonomous">
+      <div class="dg-aug-card-hd">
+        <i class="bi bi-cpu" aria-hidden="true"></i>
+        <span class="dg-aug-card-hd-text">Autonomous Systems</span>
+      </div>
+      <div class="dg-aug-card-body">
+        <div class="dg-aug-item">
+          <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">What changes</span>Entire process replaced by AI-native system</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Business model</span>Restructured costs, new revenue model</div>
+        </div>
+        <div class="dg-aug-item">
+          <i class="bi bi-trophy" aria-hidden="true"></i>
+          <div class="dg-aug-item-text"><span class="dg-aug-item-label">Competitive position</span>Structural advantage, hard to replicate</div>
+        </div>
+        <div class="dg-aug-example">e.g. Klarna: 700 agents replaced · AI handled ⅔ of all chats in month one</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aug-vs-autonomous-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Task augmentation and autonomous systems lead to fundamentally different business models, cost structures, and competitive positions — choosing between them is a strategic decision, not a technical one.
+</figcaption>
+</figure>
+</div>
+<p>Key activities here include developing an AI strategy aligned with co-innovation goals, identifying opportunities for both task improvement and new autonomous systems, forming partnerships, and testing AI-powered products in small-scale settings before a full launch. Working with external partners is especially important now, since most organisations lack the full range of skills needed for real AI co-innovation. Those willing to co-design with others rather than work alone are the ones who truly change their business models.</p>
+<p>At this stage, actions should be driven by clear questions, just like in Part 2. Every experiment should test a specific idea about a real problem. Without this focus, co-innovation can lead to lots of impressive technology but no clear value for customers.</p>
+</section>
+<section id="element-4-ai-value-realisation" class="level4">
+<h4 class="anchored" data-anchor-id="element-4-ai-value-realisation">Element 4: AI Value Realisation</h4>
+<p>AI Value Realisation is not just the last step. It is a practice that should be present from the start—when building the data foundation, during data use and co-innovation, and all the way through to product launch. Treating it as something to do at the end leads to problems, like IBM Watson Health measuring agreement rates instead of real clinical results, or Amazon Alexa counting device activations instead of actual value per user.</p>
+<p>The element has three interdependent components: Value Architecture, Monetisation, and Valuation.</p>
+<p>Value Architecture makes sure AI projects are built around a clear value proposition for a specific group of customers. It asks the tough questions early: who is this for, what problem does it solve, how is it different from competitors, and how do we explain that difference? Without this, the AI project might work technically, but no one will want to buy it.</p>
+<p>Monetisation turns the value architecture into a means of making money. This should be done before starting development, not after. Setting up revenue streams, cost structures, and linking AI projects to long-term strategy is much easier to plan from the start than to add later. Palantir is a good example; they set up contracts based on outcomes, not just software access. Customers pay for solutions, not licenses. This approach made Palantir define exactly what problems they were solving before setting a price, so the business model and problem-solving went hand in hand.</p>
+<p>Valuation is the final piece. In AI, common KPIs like model accuracy or deployment numbers measure technology, not business results. As <span class="citation" data-cites="Iansiti2020"><a href="#ref-Iansiti2020" role="doc-biblioref">[7]</a></span> points out, real AI value comes from better workflows and decisions at scale, not just from launching a model. The important KPIs are those that show if the main problem has been solved—like faster decisions, fewer errors, or customer issues fixed. These are harder to track, but they are the only ones that show if the business model works.</p>
+<p><a href="#tbl-value-realisation" class="quarto-xref">Table&nbsp;1</a> summarises the three components and the question each one forces.</p>
+<div id="tbl-value-realisation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-value-realisation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: AI Value Realisation: Components, Questions, and Failure Modes
+</figcaption>
+<div aria-describedby="tbl-value-realisation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 37%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Question It Forces</th>
+<th>What Bad Looks Like</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Value Architecture</td>
+<td>Who is this for, and what specifically does it solve?</td>
+<td>Value proposition describes the technology, not the customer problem</td>
+</tr>
+<tr class="even">
+<td>Monetisation</td>
+<td>How does the organisation capture value, and when is that decided?</td>
+<td>Revenue model designed after the product is built</td>
+</tr>
+<tr class="odd">
+<td>Valuation</td>
+<td>Are we tracking outcomes or counting activity?</td>
+<td>KPIs measure model performance, not business impact</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="the-capabilities-that-make-it-work" class="level3">
+<h3 class="anchored" data-anchor-id="the-capabilities-that-make-it-work">The Capabilities That Make It Work</h3>
+<p>The four elements need a base of technology, organisation, and leadership skills to work. These are not extra steps; they are the conditions needed for the framework to succeed.</p>
+<p>Technological capabilities include data infrastructure, AI platforms, cloud computing, and analytics. Organisational capabilities mean having a data-driven culture, skilled AI staff, and good governance. Together, these create an environment where AI can deliver real value, not just technical results.</p>
+<div id="fig-capability-pillars" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-capability-pillars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style>
+.dg-cap { font-family:'Jost',system-ui,sans-serif; background:#F8F9FA; border-radius:10px; padding:20px 16px 0; overflow-x:auto; }
+.dg-cap-inner { min-width:460px; display:flex; flex-direction:column; gap:0; }
+.dg-cap-pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.dg-cap-pillar { background:#fff; border:1px solid #E9ECEF; border-radius:8px 8px 0 0; border-bottom:none; padding:14px 12px 16px; display:flex; flex-direction:column; gap:8px; position:relative; }
+.dg-cap-pillar::before { content:''; position:absolute; top:0;left:0;width:100%;height:4px;border-radius:8px 8px 0 0; }
+.dg-cap-pillar.tech::before { background:#1E293B; }
+.dg-cap-pillar.org::before { background:#8B5CF6; }
+.dg-cap-pillar.lead::before { background:#10B981; }
+.dg-cap-icon { width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px; }
+.dg-cap-pillar.tech .dg-cap-icon { background:rgba(30,41,59,.08);color:#1E293B; }
+.dg-cap-pillar.org .dg-cap-icon { background:rgba(139,92,246,.1);color:#8B5CF6; }
+.dg-cap-pillar.lead .dg-cap-icon { background:rgba(16,185,129,.1);color:#10B981; }
+.dg-cap-title { font-size:11px;font-weight:700;color:#1E293B;line-height:1.3; }
+.dg-cap-items { display:flex;flex-direction:column;gap:5px; }
+.dg-cap-item { font-size:9.5px;color:#6B7280;display:flex;align-items:flex-start;gap:5px;line-height:1.35; }
+.dg-cap-item::before { content:'·';font-weight:700;flex-shrink:0; }
+.dg-cap-foundation { background:#1E293B;border-radius:0 0 8px 8px;padding:10px 14px;display:flex;align-items:center;gap:8px; }
+.dg-cap-foundation i { font-size:14px;color:rgba(255,255,255,.7);flex-shrink:0; }
+.dg-cap-foundation-text { font-size:10px;font-weight:700;color:#fff;letter-spacing:.04em; }
+.dg-cap-foundation-sub { font-size:9.5px;color:rgba(255,255,255,.6);margin-left:4px; }
+</style>
+<div class="dg-cap" role="img" aria-label="Three capability pillars required for the AI Business Model Innovation Framework. Technological pillar: data infrastructure, AI and ML platforms, cloud computing, analytics tooling. Organisational pillar: data-driven culture, skilled AI teams, cross-functional alignment, governance frameworks. Leadership pillar: planned authority shifts to algorithms, AI-native decision making, risk appetite for AI bets, strategic AI literacy. All three pillars rest on a shared foundation — missing any one prevents value from flowing through the framework.">
+  <div class="dg-cap-inner">
+    <div class="dg-cap-pillars">
+      <div class="dg-cap-pillar tech">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-server"></i></div>
+        <div class="dg-cap-title">Technological</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Data infrastructure</span>
+          <span class="dg-cap-item">AI / ML platforms</span>
+          <span class="dg-cap-item">Cloud computing</span>
+          <span class="dg-cap-item">Analytics tooling</span>
+        </div>
+      </div>
+      <div class="dg-cap-pillar org">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-people"></i></div>
+        <div class="dg-cap-title">Organisational</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Data-driven culture</span>
+          <span class="dg-cap-item">Skilled AI teams</span>
+          <span class="dg-cap-item">Cross-functional alignment</span>
+          <span class="dg-cap-item">Governance frameworks</span>
+        </div>
+      </div>
+      <div class="dg-cap-pillar lead">
+        <div class="dg-cap-icon" aria-hidden="true"><i class="bi bi-person-check"></i></div>
+        <div class="dg-cap-title">Leadership</div>
+        <div class="dg-cap-items">
+          <span class="dg-cap-item">Planned authority shifts to algorithms</span>
+          <span class="dg-cap-item">AI-native decision-making</span>
+          <span class="dg-cap-item">Risk appetite for AI bets</span>
+          <span class="dg-cap-item">Strategic AI literacy</span>
+        </div>
+      </div>
+    </div>
+    <div class="dg-cap-foundation">
+      <i class="bi bi-building" aria-hidden="true"></i>
+      <span class="dg-cap-foundation-text">Shared Foundation</span>
+      <span class="dg-cap-foundation-sub">— missing any one pillar prevents value from flowing through the framework</span>
+    </div>
+  </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-capability-pillars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Three capability pillars — technological, organisational, and leadership — must all be in place for the framework to deliver. Technology without leadership change is the most common gap.
+</figcaption>
+</figure>
+</div>
+<p>Leadership skills are often overlooked but are the most important. As <span class="citation" data-cites="Iansiti2020"><a href="#ref-Iansiti2020" role="doc-biblioref">[7]</a></span> explains, AI-native organisations do more than just use AI tools; they change how decisions are made, shifting authority from people to algorithms in planned ways. This is a leadership choice, not just a tech upgrade. The organisations that get the most value from AI are those where leaders understand this shift and make it happen on purpose, not by accident.</p>
+<p>When these capabilities are missing, the problem is not with technology—it is with structure. AI teams and business teams work separately, each focused on their own goals, and neither sees the full business model. The framework requires both groups to work together from the start, agreeing on the main challenge and designing value realisation before building the data foundation or product roadmap.</p>
+</section>
+<section id="how-to-spot-a-bad-ai-business-model" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-spot-a-bad-ai-business-model">How to Spot a Bad AI Business Model</h3>
+<p>The four-part framework also works as a diagnostic tool. When used on any AI project, it reveals problems that most organisations only notice after they have already invested.</p>
+<p>Sometimes, the value proposition focuses on the technology instead of the customer. The organisation can explain what its AI does, but not what problem it solves for a specific buyer. For example, IBM Watson Health’s marketing talked about what Watson could do with data, but never clearly said which clinical outcome it improved, for which patients, or in what setting. A value proposition based on features, not real problems, does not help customers decide to buy.</p>
+<p>Monetisation is retrofitted. The revenue model was designed after the product was built, which means it captures activity rather than value. Platform subscriptions, per-seat licensing, and usage fees charge for access to a capability rather than for problem resolution. Outcome-linked revenue models require a precise definition of the outcome before the contract can be written. That discipline forces the diagnostic precision that activity-based models allow organisations to avoid. Organisations that retrofit monetisation consistently end up with a revenue model that the customer’s buying process was never designed to accommodate.</p>
+<p>Sometimes, valuation focuses on the wrong things. KPIs like model accuracy, response times, or deployment numbers measure technology, not whether the main problem is solved. An organisation can show great tech results but still not fix the business issue that justified the investment. This is not just a measurement problem—it is a design problem. The valuation system was set up before the value architecture was clear, so it measured what was easy, not what mattered.</p>
+<p>Sometimes, organisations build up AI talent, data platforms, and governance, but leaders keep making decisions the same way as before. The technology is there, but the real organisational change needed to create value is missing. This is called capabilities theatre—it looks like the organisation is ready for AI, but the decision-making has not changed.</p>
+<p>These four failure modes are connected. If an organisation does not have a clear value proposition, it will add monetisation later because there is nothing specific to price. When monetisation is added late, it usually relies on activity metrics, since outcomes were never defined. Activity metrics do not show if decision-making has changed, so the capability gap stays hidden—until a competitor with the right model exposes the problem.</p>
+</section>
+<section id="conclusion-strategy-roadmap-business-model" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-strategy-roadmap-business-model">Conclusion: Strategy, Roadmap, Business Model</h3>
+<p>Parts 1 and 2 showed that the gap between 80% of organisations running AI pilots and the 5% getting real value is mostly about strategy. That is still true, but there is another layer. If organisations fix their strategy but do not update their business model, they are just making the same mistake in a different direction.</p>
+<p>The AI Business Model Innovation Framework is the missing piece under the roadmap. The data foundation is where you build or lose your unique resource. Value-centric exploitation turns data into the base for AI innovation, not just storage. Strategic co-innovation is when you truly redesign the business model. AI Value Realisation, present throughout, makes sure value architecture, monetisation, and valuation are planned together, not added later.</p>
+<p>Together, these three posts form a complete story. The kernel and roadmap show you where to go and how to get there. The business model innovation framework explains how value is created, who benefits, what it costs, and how to measure success. You need both parts; they are what set the 5% apart from the 80%.</p>
+<p>The real question is not if you need a business model, but whether you design it before you invest or after you have already spent the money.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-Osterwalder2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Osterwalder and Y. Pigneur, <em>Business model generation: A handbook for visionaries, game changers, and challengers</em>. Hoboken, NJ: John Wiley &amp; Sons, 2010.</div>
+</div>
+<div id="ref-AmazonAlexa2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">E. Kim and A. Palmer, <span>“Amazon’s <span>Alexa</span> is on track to lose $10 billion this year.”</span> [Online]. Available: <a href="https://www.businessinsider.com/amazon-alexa-losing-10-billion-year-2022-11">https://www.businessinsider.com/amazon-alexa-losing-10-billion-year-2022-11</a></div>
+</div>
+<div id="ref-Helmer2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">H. Helmer, <em>7 powers: The foundations of business strategy</em>. Deep Strategy LLC, 2016.</div>
+</div>
+<div id="ref-Deloitte2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">Deloitte Consulting, <span>“<span>AI ROI</span>: The paradox of rising investment and elusive returns,”</span> <em>Deloitte Articles</em>, 2025, Available: <a href="https://www.deloitte.com/ie/en/issues/generative-ai/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html">https://www.deloitte.com/ie/en/issues/generative-ai/ai-roi-the-paradox-of-rising-investment-and-elusive-returns.html</a></div>
+</div>
+<div id="ref-opresnik2015value" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">D. Opresnik and M. Taisch, <span>“The value of <span>Big Data</span> in servitization,”</span> <em>International Journal of Production Economics</em>, vol. 165, pp. 174–184, 2015, doi: <a href="https://doi.org/10.1016/j.ijpe.2014.12.036">10.1016/j.ijpe.2014.12.036</a>.</div>
+</div>
+<div id="ref-Klarna2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Klarna, <span>“Klarna <span>AI</span> assistant handles two-thirds of customer service chats in its first month.”</span> [Online]. Available: <a href="https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/">https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/</a></div>
+</div>
+<div id="ref-Iansiti2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">M. Iansiti and K. R. Lakhani, <em>Competing in the age of <span>AI</span>: Strategy and leadership when algorithms and networks run the world</em>. Boston, MA: Harvard Business Review Press, 2020.</div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{faustine2026,
+  author = {Faustine, Anthony},
+  title = {The {Missing} {Layer:} {How} {AI} {Business} {Models}
+    {Actually} {Capture} {Value}},
+  date = {2026-05-06},
+  url = {https://sambaiga.github.io/pages/blog/posts/2026/05/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> 2025–2026 Anthony Faustine</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="bi-cc-circle " style="" role="img" aria-hidden="true"></i> <i class="bi-cc-by " style="" role="img" aria-hidden="true"></i> Creative Commons CC BY 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="bi-orcid " style="" role="img" aria-hidden="true"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0002-7838-533X">0000-0002-7838-533X</a></span> <span class="faux-block"><i class="bi-key " style="" role="img" aria-hidden="true"></i> <a href="../../../../../pgp_ath.asc.txt">PGP public key</a>   <i class="bi-fingerprint " style="" role="img" aria-hidden="true"></i> Fingerprint:<br><span class="fingerprint">49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</span></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/sambaiga/sambaiga.github.io">View the source at <i class="bi-github " style="" role="img" aria-hidden="true"></i> GitHub</a></span></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

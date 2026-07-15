@@ -1,0 +1,467 @@
+/*-- scss:components/pagination --*/
+
+// =====================================================
+// PAGINATION COMPONENT (General Purpose)
+// =====================================================
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacer-2;
+  margin: $spacer-5 0;
+  flex-wrap: wrap;
+  
+  // Use the same font family as buttons
+  font-family: $btn-font-family;
+  
+  &-item {
+    // Base button styles that match .btn and .btn-sm
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: $btn-padding-y * 0.666 $btn-padding-x * 0.666;
+    border: $border-width-2 solid transparent;
+    border-radius: $border-radius;
+    background-color: transparent;
+    color: $gray-700;
+    text-decoration: none;
+    font-family: $btn-font-family;
+    font-size: $font-size-sm;
+    font-weight: $btn-font-weight;
+    line-height: $line-height-normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    transition: all $transition-duration-base $transition-timing-ease-in-out;
+    white-space: nowrap;
+    
+    // Focus styles that match .btn
+    &:focus {
+      outline: 2px solid $primary;
+      outline-offset: 2px;
+    }
+    
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+    
+    // Default pagination item (like btn-outline-secondary)
+    background-color: $white;
+    border-color: $gray-300;
+    color: $gray-700;
+    
+    &:hover:not(.disabled):not(.active):not(&-ellipsis) {
+      background-color: $gray-100;
+      border-color: $gray-400;
+      color: $gray-900;
+      transform: translateY(-2px);
+      box-shadow: $box-shadow-sm;
+    }
+    
+    // Active state (like btn-primary)
+    &.active {
+      background-color: $primary;
+      border-color: $primary;
+      color: $white;
+      box-shadow: $box-shadow-sm;
+      
+      &:hover {
+        background-color: darken($primary, 10%);
+        border-color: darken($primary, 10%);
+      }
+    }
+    
+    &.disabled {
+      opacity: $opacity-50;
+      cursor: not-allowed;
+      pointer-events: none;
+      
+      &:hover {
+        background-color: $white;
+        border-color: $gray-300;
+        color: $gray-700;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+    
+    // Previous/Next specific styles
+    &-prev,
+    &-next {
+      min-width: 100px;
+      padding: $btn-padding-y * 0.666 $btn-padding-x;
+      gap: $spacer-2;
+      
+      .icon,
+      .bi {
+        font-size: $font-size-sm;
+        line-height: $line-height-tight;
+      }
+    }
+    
+    &-prev {
+      margin-right: $spacer-3;
+      
+      // Apply btn-outline-primary styles
+      background-color: transparent;
+      border-color: $primary;
+      color: $primary;
+      
+      &:hover:not(.disabled) {
+        background-color: $primary;
+        color: $white;
+      }
+      
+      &.disabled {
+        background-color: transparent;
+        border-color: $gray-400;
+        color: $gray-500;
+        
+        &:hover {
+          background-color: transparent;
+          border-color: $gray-400;
+          color: $gray-500;
+        }
+      }
+    }
+    
+    &-next {
+      margin-left: $spacer-3;
+      
+      // Apply btn-primary styles
+      background-color: $primary;
+      border-color: $primary;
+      color: $white;
+      
+      &:hover:not(.disabled) {
+        background-color: darken($primary, 10%);
+        border-color: darken($primary, 10%);
+      }
+      
+      &.disabled {
+        background-color: $gray-400;
+        border-color: $gray-400;
+        color: $gray-700;
+        
+        &:hover {
+          background-color: $gray-400;
+          border-color: $gray-400;
+          color: $gray-700;
+        }
+      }
+    }
+    
+    // Ellipsis styling
+    &-ellipsis {
+      border: none;
+      background: transparent;
+      cursor: default;
+      min-width: auto;
+      padding: 0 $spacer-2;
+      color: $gray-500;
+      
+      &:hover {
+        background: transparent;
+        border: none;
+        transform: none;
+        box-shadow: none;
+        color: $gray-500;
+      }
+    }
+  }
+  
+  // Blog pagination specific
+  &.blog-pagination {
+    margin-top: $spacer-6;
+  }
+  
+  // Projects pagination specific
+  &.projects-pagination {
+    margin-top: $spacer-4;
+  }
+  
+  // Talks pagination specific
+  &.talks-pagination {
+    margin-top: $spacer-5;
+  }
+  
+  // Publications pagination specific
+  &.publications-pagination {
+    margin-top: $spacer-5;
+  }
+  
+  // Responsive adjustments
+  @include media-breakpoint-down(md) {
+    gap: $spacer-1;
+    
+    &-item {
+      min-width: 36px;
+      height: 36px;
+      padding: $btn-padding-y * 0.5 $btn-padding-x * 0.5;
+      font-size: $font-size-sm;
+      
+      &-prev,
+      &-next {
+        min-width: 80px;
+        padding: $btn-padding-y * 0.5 $btn-padding-x * 0.75;
+      }
+      
+      &-prev {
+        margin-right: $spacer-2;
+      }
+      
+      &-next {
+        margin-left: $spacer-2;
+      }
+    }
+  }
+  
+  @include media-breakpoint-down(sm) {
+    flex-wrap: wrap;
+    gap: $spacer-1;
+    
+    &-item {
+      min-width: 32px;
+      height: 32px;
+      padding: $btn-padding-y * 0.5 $btn-padding-x * 0.5;
+      font-size: $font-size-sm;
+      
+      &-prev,
+      &-next {
+        min-width: 70px;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}
+
+// =====================================================
+// PAGINATION VARIANTS
+// =====================================================
+
+// Minimal pagination
+.pagination-minimal {
+  .pagination-item {
+    background-color: transparent;
+    border-color: transparent;
+    color: $gray-600;
+    min-width: auto;
+    padding: $spacer-1 $spacer-2;
+    
+    &:hover:not(.disabled):not(.active):not(.pagination-item-ellipsis) {
+      background-color: $gray-100;
+      color: $gray-900;
+      border-color: transparent;
+    }
+    
+    &.active {
+      background-color: $primary;
+      color: $white !important;
+      border-color: $primary;
+    }
+    
+    // Prev/Next in minimal variant
+    &-prev,
+    &-next {
+      background-color: transparent !important;
+      border-color: transparent !important;
+      color: $primary !important;
+      
+      &:hover:not(.disabled) {
+        background-color: $gray-100 !important;
+        border-color: transparent !important;
+      }
+      
+      &.disabled {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        color: $gray-500 !important;
+        
+        &:hover {
+          background-color: transparent !important;
+          border-color: transparent !important;
+          color: $gray-500 !important;
+        }
+      }
+    }
+  }
+}
+
+// Filled pagination
+.pagination-filled {
+  .pagination-item:not(.active):not(.disabled):not(.pagination-item-ellipsis) {
+    background-color: $gray-100;
+    border-color: $gray-300;
+    color: $gray-700;
+    
+    &:hover {
+      background-color: $gray-200;
+      border-color: $gray-400;
+      color: $gray-900;
+    }
+  }
+}
+
+// Outline pagination (like btn-outline-primary)
+.pagination-outline {
+  .pagination-item:not(.active):not(.disabled):not(.pagination-item-ellipsis) {
+    background-color: transparent;
+    border-color: $primary;
+    color: $primary;
+    
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
+
+// =====================================================
+// DARK THEME FOR PAGINATION
+// =====================================================
+
+@mixin dark-theme-pagination {
+  .pagination {
+    &-item {
+      background-color: $gray-800;
+      border-color: $gray-700;
+      color: $gray-300;
+      
+      &:hover:not(.disabled):not(.active):not(.pagination-item-ellipsis) {
+        background-color: $gray-700;
+        border-color: $gray-600;
+        color: $gray-100;
+      }
+      
+      &.active {
+        background-color: $primary;
+        border-color: $primary;
+        color: $white;
+        
+        &:hover {
+          background-color: darken($primary, 10%);
+          border-color: darken($primary, 10%);
+        }
+      }
+      
+      &.disabled {
+        &:hover {
+          background-color: $gray-800;
+          border-color: $gray-700;
+          color: $gray-300;
+        }
+      }
+      
+      // Prev/Next dark theme
+      &-prev {
+        background-color: transparent;
+        border-color: $primary;
+        color: $primary;
+        
+        &:hover:not(.disabled) {
+          background-color: $primary;
+          color: $white;
+        }
+        
+        &.disabled {
+          background-color: transparent;
+          border-color: $gray-600;
+          color: $gray-500;
+          
+          &:hover {
+            background-color: transparent;
+            border-color: $gray-600;
+            color: $gray-500;
+          }
+        }
+      }
+      
+      &-next {
+        background-color: $primary;
+        border-color: $primary;
+        color: $white;
+        
+        &:hover:not(.disabled) {
+          background-color: darken($primary, 10%);
+          border-color: darken($primary, 10%);
+        }
+        
+        &.disabled {
+          background-color: $gray-700;
+          border-color: $gray-700;
+          color: $gray-500;
+          
+          &:hover {
+            background-color: $gray-700;
+            border-color: $gray-700;
+            color: $gray-500;
+          }
+        }
+      }
+      
+      &-ellipsis {
+        color: $gray-500;
+        background: transparent;
+        
+        &:hover {
+          color: $gray-500;
+        }
+      }
+    }
+    
+    // Variants in dark theme
+    &.pagination-minimal {
+      .pagination-item {
+        color: $gray-400;
+        
+        &:hover:not(.disabled):not(.active):not(.pagination-item-ellipsis) {
+          background-color: $gray-800;
+          color: $gray-200;
+        }
+      }
+    }
+    
+    &.pagination-filled {
+      .pagination-item:not(.active):not(.disabled):not(.pagination-item-ellipsis) {
+        background-color: $gray-800;
+        border-color: $gray-700;
+        color: $gray-300;
+        
+        &:hover {
+          background-color: $gray-700;
+          border-color: $gray-600;
+          color: $gray-100;
+        }
+      }
+    }
+    
+    &.pagination-outline {
+      .pagination-item:not(.active):not(.disabled):not(.pagination-item-ellipsis) {
+        background-color: transparent;
+        border-color: $primary;
+        color: $primary;
+        
+        &:hover {
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+// Apply dark theme via media query
+@media (prefers-color-scheme: dark) {
+  body:not(.light-mode) {
+    @include dark-theme-pagination;
+  }
+}
+
+// Apply dark theme when .dark-mode class is present
+body.dark-mode {
+  @include dark-theme-pagination;
+}
