@@ -26,11 +26,111 @@
     margin: 0 auto $spacer-6;
     padding: 0;
 
-    .quarto-listing-container-custom {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+  }
+
+  .bk-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .bk-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bk-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    a {
+      padding: 0.3rem 0.75rem;
+      border: 1px solid #d5e2ec;
+      border-radius: 999px;
+      background: #fff;
+      font-size: 0.82rem;
+      color: #1e293b;
+      text-decoration: none;
+
+      span {
+        margin-left: 0.2rem;
+        color: #475569;
+      }
+
+      &:hover,
+      &.active {
+        border-color: #1e293b;
+      }
+
+      &.active {
+        background: #1e293b;
+        color: #fff;
+
+        span {
+          color: #cbd5e1;
+        }
+      }
     }
+  }
+
+  .bk-search {
+    min-width: 13rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #d5e2ec;
+    border-radius: 0.35rem;
+    font-size: 0.9rem;
+    background: #fff;
+  }
+
+  .bk-empty {
+    color: #475569;
+  }
+
+  // More than six books: smaller rows, two-line descriptions, no subtitle.
+  .bk-list--compact {
+    gap: 0.8rem;
+
+    .bk {
+      grid-template-columns: 3.5rem 1fr;
+    }
+
+    .bk-cover {
+      padding-top: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .bk-body {
+      padding: 0.85rem 1.1rem;
+    }
+
+    .bk-top h3 {
+      font-size: 1.1rem;
+    }
+
+    .bk-subtitle {
+      display: none;
+    }
+
+    .bk-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 0.6rem !important;
+    }
+
+    .bk-tags {
+      display: none;
+    }
+  }
+
+  .bk[hidden] {
+    display: none !important;
   }
 
   .bk {

@@ -17,6 +17,9 @@ format:
   html:
     page-layout: full
     body-classes: "books-page"
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/books-filter.js"></script>
 
 toc: false
 ---

@@ -1,6 +1,25 @@
 ```{=html}
+<%
+  const compact = items.length > 6;
+  const genres = [...new Set(items.map((b) => b.genre))];
+  const counts = {};
+  items.forEach((b) => { counts[b.genre] = (counts[b.genre] || 0) + 1; });
+%>
+<% if (compact) { %>
+<div class="bk-controls">
+<nav class="bk-genres" aria-label="Book topics">
+  <a href="#" data-genre="all" class="active">All <span><%= items.length %></span></a>
+<% genres.forEach((g) => { %>
+  <a href="#" data-genre="<%= g %>"><%= g %> <span><%= counts[g] %></span></a>
+<% }) %>
+</nav>
+<input type="search" class="bk-search" placeholder="Search books" aria-label="Search books">
+</div>
+<p class="bk-empty" hidden>No book matches the current filter.</p>
+<% } %>
+<div class="bk-list<%= compact ? ' bk-list--compact' : '' %>">
 <% items.forEach((book) => { %>
-<article class="bk bk--<%= book.variant %>">
+<article class="bk bk--<%= book.variant %>" data-genre="<%= book.genre %>">
   <div class="bk-cover"><i class="bi bi-<%= book.icon %>"></i></div>
   <div class="bk-body">
     <div class="bk-top">
@@ -21,4 +40,5 @@
   </div>
 </article>
 <% }) %>
+</div>
 ```
