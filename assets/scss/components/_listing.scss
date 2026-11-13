@@ -27,6 +27,25 @@
   --ls-code: #f1f5f9;
   --ls-hover: #e2e8f0;
   --ls-orange: #e26029;
+  // Featured panels (Books, Research, Writing): a pale tinted panel in the light theme
+  --pn-from: #eef5fb;
+  --pn-to: #f8fafc;
+  --pn-border: #d5e2ec;
+  --pn-shadow: 0 18px 40px -28px rgba(15, 23, 42, 0.28);
+  --pn-glow: rgba(3, 105, 161, 0.1);
+  --pn-title: #0f172a;
+  --pn-text: #334155;
+  --pn-muted: #64748b;
+  --pn-kicker: #0369a1;
+  --pn-link-hover: #0369a1;
+  --pn-chip-bg: #e2e8f0;
+  --pn-chip-fg: #1e293b;
+  --pn-card-bg: #ffffff;
+  --pn-card-border: #d5e2ec;
+  --pn-card-hover: #f8fafc;
+  --pn-ghost-bg: rgba(15, 23, 42, 0.07);
+  --pn-ghost-hover: rgba(15, 23, 42, 0.13);
+  --pn-ghost-fg: #1e293b;
 }
 
 body.quarto-dark {
@@ -49,6 +68,25 @@ body.quarto-dark {
   --ls-ok-fg: #86efac;
   --ls-code: #0f172a;
   --ls-hover: #334155;
+  // Featured panels: the dark slate panel of the dark theme
+  --pn-from: #1e293b;
+  --pn-to: #0f172a;
+  --pn-border: transparent;
+  --pn-shadow: 0 18px 40px -22px rgba(15, 23, 42, 0.7);
+  --pn-glow: rgba(3, 105, 161, 0.5);
+  --pn-title: #ffffff;
+  --pn-text: #cbd5e1;
+  --pn-muted: #94a3b8;
+  --pn-kicker: #38bdf8;
+  --pn-link-hover: #7dd3fc;
+  --pn-chip-bg: rgba(148, 163, 184, 0.16);
+  --pn-chip-fg: #e2e8f0;
+  --pn-card-bg: rgba(148, 163, 184, 0.08);
+  --pn-card-border: rgba(148, 163, 184, 0.22);
+  --pn-card-hover: rgba(148, 163, 184, 0.14);
+  --pn-ghost-bg: rgba(148, 163, 184, 0.16);
+  --pn-ghost-hover: rgba(148, 163, 184, 0.3);
+  --pn-ghost-fg: #ffffff;
 }
 
 .books-page,
@@ -123,10 +161,11 @@ body.quarto-dark {
   }
 
   &--ghost {
-    background: rgba(148, 163, 184, 0.16);
+    background: var(--pn-ghost-bg);
+    color: var(--pn-ghost-fg) !important;
 
     &:hover {
-      background: rgba(148, 163, 184, 0.3);
+      background: var(--pn-ghost-hover);
     }
   }
 }

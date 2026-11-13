@@ -347,18 +347,18 @@ $btn-code-copy-color-active: $teal !default;
 // ============================================
 
 // Navbar
-$navbar-bg: #1E293B !default;
-$navbar-fg: #FFFFFF !default;
-$navbar-hl: #A0D6E8 !default;
+$navbar-bg: #FFFFFF !default;
+$navbar-fg: #1E293B !default;
+$navbar-hl: #0369A1 !default;
 $navbar-height: 64px !default;
 $navbar-padding-y: $spacer-2 !default;
 $navbar-padding-x: $spacer-3 !default;
-$navbar-border-bottom: 1px solid rgba($white, 0.1) !default;
+$navbar-border-bottom: 1px solid #D5E2EC !default;
 $navbar-box-shadow: $shadow-sm !default;
 
 // Footer
-$footer-bg: #1E293B !default;
-$footer-fg: #E5E7EB !default;
+$footer-bg: #F1F5F9 !default;
+$footer-fg: #334155 !default;
 $footer-padding-y: $spacer-4 !default;
 $footer-padding-x: $spacer-3 !default;
 $footer-min-height: 3em !default;
