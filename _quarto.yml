@@ -91,7 +91,10 @@ icons:
 
 format:
   html:
-    theme: [cosmo, assets/twiga.scss]
+    theme:
+      light: [cosmo, assets/twiga.scss]
+      dark: [darkly, assets/twiga-dark.scss]
+    respect-user-color-scheme: true
     self-contained: false
     embed-resources: false
     responsive-images: true

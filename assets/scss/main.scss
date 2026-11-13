@@ -283,17 +283,6 @@ a {
 .shadow-lg { box-shadow: $shadow-lg !important; }
 .shadow-xl { box-shadow: $shadow-xl !important; }
 
-// ========== DARK THEME ==========
-@media (prefers-color-scheme: dark) {
-  body:not(.light-mode) {
-    @include dark-theme;
-  }
-}
-
-body.dark-mode {
-  @include dark-theme;
-}
-
 // ========== RESPONSIVE TYPOGRAPHY ==========
 @include media-breakpoint-down(md) {
   h1 { 

@@ -15,7 +15,7 @@ $timeline-border-radius: 6px;
 }
 
 .projects-page {
-  background: $gray-100;
+  background: var(--ls-page);
 }
 
 .projects-header {
@@ -460,25 +460,25 @@ $timeline-border-radius: 6px;
       align-items: center;
       gap: 0.4rem;
       padding: 0.3rem 0.75rem;
-      border: 1px solid #d5e2ec;
+      border: 1px solid var(--ls-border);
       border-radius: 999px;
-      background: #fff;
+      background: var(--ls-surface);
       font-size: 0.82rem;
-      color: #1e293b;
+      color: var(--ls-text);
       text-decoration: none;
 
       span {
-        color: #475569;
+        color: var(--ls-muted);
         font-variant-numeric: tabular-nums;
       }
 
       &:hover,
       &.active {
-        border-color: #1e293b;
+        border-color: var(--ls-text);
       }
 
       &.active {
-        background: #1e293b;
+        background: var(--ls-button);
         color: #fff;
 
         span {
@@ -491,16 +491,16 @@ $timeline-border-radius: 6px;
   .tl-search {
     min-width: 13rem;
     padding: 0.4rem 0.8rem;
-    border: 1px solid #d5e2ec;
+    border: 1px solid var(--ls-border);
     border-radius: 0.35rem;
     font-size: 0.9rem;
-    background: #fff;
+    background: var(--ls-surface);
   }
 
   .tl-empty {
     max-width: 56rem;
     margin: 0 auto;
-    color: #475569;
+    color: var(--ls-muted);
   }
 
   .tl {
@@ -521,7 +521,7 @@ $timeline-border-radius: 6px;
     align-self: start;
     padding: 0.6rem 0;
     border-radius: 6px;
-    background: #1e293b;
+    background: var(--ls-button);
     color: #fff;
     font-size: 1.2rem;
     font-weight: 700;
@@ -534,19 +534,19 @@ $timeline-border-radius: 6px;
     flex-direction: column;
     gap: 0.9rem;
     padding-left: 1.5rem;
-    border-left: 2px solid #d5e2ec;
+    border-left: 2px solid var(--ls-border);
   }
 
   .tl-item {
     position: relative;
     padding: 1rem 1.2rem;
-    border: 1px solid #d5e2ec;
+    border: 1px solid var(--ls-border);
     border-radius: 6px;
-    background: #fff;
+    background: var(--ls-surface);
     transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 
     &:hover {
-      border-color: #94a3b8;
+      border-color: var(--ls-border-strong);
       box-shadow: 0 12px 24px -16px rgba(15, 23, 42, 0.35);
       transform: translateY(-2px);
     }
@@ -558,9 +558,9 @@ $timeline-border-radius: 6px;
       left: calc(-1.5rem - 6px);
       width: 10px;
       height: 10px;
-      border: 2px solid #fff;
+      border: 2px solid var(--ls-surface);
       border-radius: 50%;
-      background: #1e293b;
+      background: var(--ls-button);
     }
   }
 
@@ -585,8 +585,8 @@ $timeline-border-radius: 6px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: #eaf3fa;
-      color: #0369a1;
+      background: var(--ls-tint);
+      color: var(--ls-accent);
       font-size: 1.25rem;
     }
   }
@@ -595,14 +595,14 @@ $timeline-border-radius: 6px;
     margin: 0 !important;
     padding: 0;
     font-size: 1.1rem;
-    color: #1e293b;
+    color: var(--ls-text);
   }
 
   .tl-area {
     padding: 0.1rem 0.55rem;
     border-radius: 999px;
-    background: #eaf3fa;
-    color: #0369a1;
+    background: var(--ls-tint);
+    color: var(--ls-accent);
     font-size: 0.72rem;
     letter-spacing: 0.02em;
   }
@@ -625,11 +625,11 @@ $timeline-border-radius: 6px;
   .tl-meta {
     margin: 0;
     font-size: 0.8rem;
-    color: #475569;
+    color: var(--ls-muted);
 
     .bi {
       margin-right: 0.35rem;
-      color: #0369a1;
+      color: var(--ls-accent);
     }
 
     span {
@@ -652,16 +652,16 @@ $timeline-border-radius: 6px;
     gap: 0.25rem;
     margin-top: 0.7rem;
     padding: 0.2rem 0.3rem 0.2rem 0.7rem;
-    border: 1px solid #d5e2ec;
+    border: 1px solid var(--ls-border);
     border-radius: 0.4rem;
-    background: #f1f5f9;
+    background: var(--ls-code);
 
     code {
       padding: 0;
       border: 0;
       background: transparent;
       font-size: 0.8rem;
-      color: #1e293b;
+      color: var(--ls-text);
     }
   }
 
@@ -670,17 +670,17 @@ $timeline-border-radius: 6px;
     border: 0;
     border-radius: 0.3rem;
     background: transparent;
-    color: #475569;
+    color: var(--ls-muted);
     cursor: pointer;
 
     &:hover,
     &:focus-visible {
-      background: #e2e8f0;
-      color: #0369a1;
+      background: var(--ls-hover);
+      color: var(--ls-accent);
     }
 
     &.copied {
-      color: #166534;
+      color: var(--ls-ok-fg);
     }
 
     .bi {
@@ -689,9 +689,9 @@ $timeline-border-radius: 6px;
   }
 
   .tl-links .tl-used {
-    border-color: #bae0f5;
-    background: #eaf3fa;
-    color: #0369a1;
+    border-color: var(--ls-tint-border);
+    background: var(--ls-tint);
+    color: var(--ls-accent);
   }
 
   .tl-private {
@@ -699,7 +699,7 @@ $timeline-border-radius: 6px;
     align-items: center;
     gap: 0.35rem;
     font-size: 0.8rem;
-    color: #475569;
+    color: var(--ls-muted);
   }
 
   .tl-links {
@@ -713,15 +713,15 @@ $timeline-border-radius: 6px;
       align-items: center;
       gap: 0.35rem;
       padding: 0.25rem 0.65rem;
-      border: 1px solid #d5e2ec;
+      border: 1px solid var(--ls-border);
       border-radius: 0.35rem;
       font-size: 0.8rem;
-      color: #1e293b;
+      color: var(--ls-text);
       text-decoration: none;
 
       &:hover {
-        border-color: #0369a1;
-        color: #0369a1;
+        border-color: var(--ls-accent);
+        color: var(--ls-accent);
       }
     }
   }

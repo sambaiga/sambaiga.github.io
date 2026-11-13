@@ -7,7 +7,7 @@
 // =====================================================
 
 .publications-page {
-  background: $gray-100;
+  background: var(--ls-page);
 
   .pubs {
     max-width: 64rem;
@@ -17,7 +17,7 @@
   .pubs-stats {
     margin: 0 0 1.75rem;
     font-size: $font-size-lg;
-    color: #475569;
+    color: var(--ls-muted);
     text-align: left;
 
     span {
@@ -162,13 +162,13 @@
       padding: 0 !important;
       border: 0 !important;
       font-size: 1.45rem;
-      color: #1e293b !important;
+      color: var(--ls-text) !important;
 
       span {
         font-family: $font-family-sans-serif;
         font-size: 0.8rem;
         font-weight: 500;
-        color: #475569;
+        color: var(--ls-muted);
       }
 
       &::after {
@@ -176,7 +176,7 @@
         flex: 1;
         align-self: center;
         height: 1px;
-        background: #d5e2ec;
+        background: var(--ls-border);
       }
     }
   }
@@ -187,13 +187,13 @@
     gap: 1.25rem;
     margin-bottom: 0.8rem;
     padding: 1.1rem 1.3rem;
-    border: 1px solid #d5e2ec;
+    border: 1px solid var(--ls-border);
     border-radius: 10px;
-    background: #fff;
+    background: var(--ls-surface);
     transition: box-shadow 0.25s ease, border-color 0.25s ease;
 
     &:hover {
-      border-color: #94a3b8;
+      border-color: var(--ls-border-strong);
       box-shadow: 0 12px 24px -16px rgba(15, 23, 42, 0.35);
     }
   }
@@ -256,12 +256,12 @@
       line-height: 1.35;
 
       a {
-        color: #1e293b !important;
+        color: var(--ls-text) !important;
         text-decoration: none !important;
         border-bottom: 0 !important;
 
         &:hover {
-          color: #0369a1 !important;
+          color: var(--ls-accent) !important;
         }
       }
     }
@@ -274,10 +274,10 @@
   .pub-authors {
     margin: 0 0 0.15rem !important;
     font-size: 0.86rem;
-    color: #475569;
+    color: var(--ls-muted);
 
     strong {
-      color: #1e293b !important;
+      color: var(--ls-text) !important;
     }
   }
 
@@ -285,7 +285,7 @@
     margin: 0 0 0.6rem !important;
     font-size: 0.86rem;
     font-style: italic;
-    color: #475569;
+    color: var(--ls-muted);
   }
 
   .pub-meta {
@@ -297,7 +297,7 @@
 
     .pub-kind {
       font-size: 0.78rem;
-      color: #475569;
+      color: var(--ls-muted);
     }
   }
 
@@ -311,10 +311,10 @@
       align-items: center;
       gap: 0.35rem;
       padding: 0.2rem 0.65rem;
-      border: 1px solid #d5e2ec;
+      border: 1px solid var(--ls-border);
       border-radius: 0.35rem;
       font-size: 0.8rem;
-      color: #1e293b !important;
+      color: var(--ls-text) !important;
       text-decoration: none !important;
 
       .bi {
@@ -322,8 +322,8 @@
       }
 
       &:hover {
-        border-color: #0369a1;
-        color: #0369a1 !important;
+        border-color: var(--ls-accent);
+        color: var(--ls-accent) !important;
       }
     }
   }
@@ -335,14 +335,14 @@
       cursor: pointer;
       font-size: 0.82rem;
       font-weight: 600;
-      color: #0369a1;
+      color: var(--ls-accent);
     }
 
     p {
       margin: 0.6rem 0 0 !important;
       font-size: 0.9rem;
       line-height: 1.6;
-      color: #1e293b;
+      color: var(--ls-text);
     }
   }
 

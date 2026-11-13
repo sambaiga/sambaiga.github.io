@@ -14,7 +14,7 @@ toc: false
 title-block-banner: false
 format:
   html:
-    body-classes: "publications-page light-mode"
+    body-classes: "publications-page"
     include-after-body:
       - text: |
           <script src="../../assets/js/listing-filter.js"></script>

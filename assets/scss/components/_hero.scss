@@ -317,7 +317,8 @@
   font-size: clamp($font-size-sm, 2vw, $font-size-base);
   line-height: $line-height-relaxed;
   margin-bottom: $spacer-4;
-  color: rgba($white, 0.95);
+  // The slide sits on a dark image in both themes, so its text is always light.
+  color: rgba($white, 0.95) !important;
   
   @media (max-width: $breakpoint-sm) {
     margin-bottom: $spacer-3;
