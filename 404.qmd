@@ -1,0 +1,16 @@
+---
+title: "Page not found"
+pagetitle: "Page not found | Anthony Faustine"
+description: "The page you asked for does not exist."
+toc: false
+title-block-banner: false
+page-layout: article
+---
+
+The address may have changed or the page may have moved. These pages are a good place to continue.
+
+- [Home](/index.html)
+- [Writing](/pages/blog/index.html)
+- [Research](/pages/publication/index.html)
+- [Projects](/pages/projects/index.html)
+- [Books](/pages/books/index.html)

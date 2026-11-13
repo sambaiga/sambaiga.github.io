@@ -1,5 +1,5 @@
 ---
-title: "Research"
+title: ""
 pagetitle: "Research | Anthony Faustine"
 description-meta: "Peer-reviewed papers by Anthony Faustine on probabilistic forecasting, non-intrusive load monitoring, energy systems and the strategic management of AI."
 listing:

@@ -1,5 +1,7 @@
 ---
 title: ""
+pagetitle: "Anthony Faustine | Principal ML Engineer"
+description: "Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology."
 author: ""
 format:
   html:
@@ -18,7 +20,7 @@ format:
     <!-- HERO VISUAL (TOP) -->
     <div class="hero-visual-area">
       <div class="image-constraint">
-        <div id="achievementCarousel" 
+        <div id="achievementCarousel"
              class="achievement-carousel"
              data-json-url="/data/achievements.json">
         </div>

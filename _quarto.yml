@@ -1,15 +1,17 @@
 project:
   type: website
   output-dir: _site
-  pre-render: 
+  pre-render:
     - bash assets/bash/generate_thumbs.sh
+  post-render:
+    - python3 scripts/post_render.py
   render:
     - "*.qmd"
     - "pages/**/*.qmd"
     - "pages/**/*.ipynb"
     - "!pages/project/"
- 
-  preview: 
+
+  preview:
     port: 5556
     browser: true
     watch-inputs: true
@@ -32,9 +34,10 @@ website:
   description: "Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology."
   favicon: "/images/icons/favicon.ico"
   site-url: "https://sambaiga.github.io"
+  draft-mode: gone
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
   page-navigation: true
- 
+
 
 
   open-graph:
@@ -43,7 +46,7 @@ website:
     image: "images/og/default.png"
     locale: en_IE
 
-  twitter-card: 
+  twitter-card:
     card-style: summary_large_image
     creator: "@sambaiga"
     site: "@sambaiga"
@@ -66,35 +69,40 @@ website:
         file: "pages/publication/index.qmd"
 
     right:
-      - text: "{{< bi envelope-at size=1.1em >}}<span class='visually-hidden'>Email</span>"
+      - text: "<i class='bi bi-envelope-at' style='font-size:1.1em' aria-hidden='true'></i><span class='visually-hidden'>Email</span>"
         href: "mailto:sambaiga@gmail.com"
-      - text: "{{< bi github size=1.1em >}}<span class='visually-hidden'>GitHub</span>"
+      - text: "<i class='bi bi-github' style='font-size:1.1em' aria-hidden='true'></i><span class='visually-hidden'>GitHub</span>"
         href: https://github.com/sambaiga
         rel: me
-      - text: "{{< bi linkedin size=1.1em >}}<span class='visually-hidden'>LinkedIn</span>"
+      - text: "<i class='bi bi-linkedin' style='font-size:1.1em' aria-hidden='true'></i><span class='visually-hidden'>LinkedIn</span>"
         href: https://www.linkedin.com/in/sambaiga
         rel: me
-    
+
   page-footer:
     left: |
-      <span class="faux-block">{{< bi cc-circle >}} {{< var years >}} Anthony Faustine</span>
-      <span class="faux-block">All content licensed under<br>[{{< bi cc-circle >}} {{< bi cc-by >}} Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>      
+      <span class="faux-block"><i class="bi bi-cc-circle"></i> {{< var years >}} Anthony Faustine</span>
+      <span class="faux-block">All content licensed under<br>[<i class="bi bi-cc-circle"></i> <i class="bi bi-cc-by"></i> Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>
     center: |
-      <span class="faux-block">{{< bi orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
-      <span class="faux-block">{{< bi key >}} [PGP public key]({{< var pgp.key >}}) &emsp; {{< bi fingerprint >}} Fingerprint:</strong><br><span class="fingerprint">{{< var pgp.fingerprint >}}</span></span>
+      <span class="faux-block"><i class="bi bi-orcid"></i> <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
+      <span class="faux-block"><i class="bi bi-key"></i> [PGP public key]({{< var pgp.key >}}) &emsp; <i class="bi bi-fingerprint"></i> Fingerprint:</strong><br><span class="fingerprint">{{< var pgp.fingerprint >}}</span></span>
     right: |
       <span class="faux-block">Made with [Quarto](https://quarto.org/)</span>
-      <span class="faux-block">[View the source at {{< bi github >}} GitHub]({{< var github-url >}})</span>
+      <span class="faux-block">[View the source at <i class="bi bi-github"></i> GitHub]({{< var github-url >}})</span>
 
 icons:
   bootstrap: true
 
 format:
   html:
+    include-in-header:
+      - text: |
+          <link rel="preload" href="/assets/fonts/libre-franklin-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+          <link rel="preload" href="/assets/fonts/jost-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
     theme:
       light: [cosmo, assets/twiga.scss]
       dark: [darkly, assets/twiga-dark.scss]
     respect-user-color-scheme: true
+    canonical-url: true
     self-contained: false
     embed-resources: false
     responsive-images: true
@@ -107,7 +115,7 @@ format:
     aria: true
     toc: true
     reading-time: true
-  
+
 
 freeze: auto
 citation: false
@@ -116,6 +124,3 @@ execute:
   echo: true
   message: true
   warning: true
-
-
-

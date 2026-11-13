@@ -1,5 +1,5 @@
 ---
-title: "Books"
+title: ""
 pagetitle: "Books | Anthony Faustine"
 description-meta: "Books by Anthony Faustine on data science, machine learning, and personal growth."
 
