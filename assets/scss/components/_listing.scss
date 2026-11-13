@@ -31,6 +31,12 @@ $ls-chip: #eef2f6;
     background: #dcfce7;
     color: #166534;
   }
+
+  &--community,
+  &--maintained {
+    background: $ls-chip;
+    color: $ls-muted;
+  }
 }
 
 .ls-chip {

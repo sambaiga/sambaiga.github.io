@@ -18,6 +18,7 @@
   updated: 2026-11
   pypi: https://pypi.org/project/popo-flow/
   docs: https://sambaiga.github.io/popo-docs/
+  book: true
 - title: Milia
   area: analysis
   logo: ../../images/projects/milia.svg
@@ -27,6 +28,7 @@
   updated: 2026-11
   pypi: https://pypi.org/project/pundamilia/
   docs: https://sambaiga.github.io/pundamilia-docs/
+  book: true
 - title: Twiga
   area: forecasting
   logo: ../../images/projects/twiga.svg
@@ -36,6 +38,7 @@
   updated: 2026-11
   pypi: https://pypi.org/project/twiga/
   docs: https://sambaiga.github.io/twiga-docs/
+  book: true
 - title: Deep-NILMtk
   area: nilm
   description: Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines.

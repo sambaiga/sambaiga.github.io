@@ -34,4 +34,20 @@
     });
   });
   if (search) search.addEventListener("input", apply);
+
+  document.querySelectorAll(".tl-copy").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var text = button.getAttribute("data-copy");
+      var icon = button.querySelector(".bi");
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(text).then(function () {
+        button.classList.add("copied");
+        if (icon) icon.className = "bi bi-check2";
+        setTimeout(function () {
+          button.classList.remove("copied");
+          if (icon) icon.className = "bi bi-clipboard";
+        }, 1500);
+      });
+    });
+  });
 })();
