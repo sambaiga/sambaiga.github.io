@@ -1,6 +1,7 @@
 ---
 title: "Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks"
 date: 2020-12-20
+topic: "NILM"
 authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas"
 
 journal:
@@ -9,7 +10,7 @@ journal:
   number: 13
   pages: ""
   year: 2020
-categories: ["nilm", "load recognition", "machine learning", "dissagregation"]
+categories: ["nilm", "load recognition", "machine learning", "disaggregation"]
 status: Published
 
 description: |

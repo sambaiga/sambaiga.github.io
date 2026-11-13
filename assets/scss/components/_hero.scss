@@ -15,12 +15,12 @@
   position: relative;
   overflow: hidden;
   transition: background $transition-duration-base $transition-timing-ease-in-out;
-  
+
   @media (min-width: $breakpoint-md) {
     padding: $spacer-4;
     min-height: 80vh;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     padding-top: $spacer-4;
     padding-bottom: $spacer-4;
@@ -43,12 +43,12 @@
   max-width: $container-max-width;
   width: 100%;
   border: $border-width-1 solid var(--border-color);
-  
+
   @media (min-width: $breakpoint-md) {
     padding: $spacer-5;
     gap: $spacer-5;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     padding: $spacer-3;
     border-radius: $border-radius-xl;
@@ -64,13 +64,13 @@
   align-items: center;
   gap: $spacer-5;
   padding: $spacer-4 0;
-  
+
   @media (min-width: $breakpoint-lg) {
     grid-template-columns: 2fr 1fr;
     gap: $spacer-6;
     padding: $spacer-5 0;
   }
-  
+
   @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1) {
     gap: $spacer-5;
   }
@@ -80,7 +80,7 @@
 .hero-text-area {
   min-width: 0;
   text-align: left;
-  
+
   @media (max-width: $breakpoint-sm) {
     text-align: center;
   }
@@ -100,7 +100,7 @@
     font-size: clamp($font-size-lg, 3vw, $font-size-xl);
     margin-bottom: $spacer-2;
   }
-  
+
   .highlight {
     color: $ai-accent;
     background: linear-gradient(120deg, $ai-accent 0%, darken($ai-accent, 10%) 100%);
@@ -117,7 +117,7 @@
   color: var(--text-secondary);
   margin-bottom: $spacer-4;
   overflow-wrap: break-word;
-  
+
   @media (max-width: $breakpoint-sm) {
     font-size: $font-size-base;
     text-align: center;
@@ -131,15 +131,15 @@
   gap: $spacer-3;
   margin-top: $spacer-2;
   flex-wrap: wrap;
-  
+
   @media (max-width: $breakpoint-sm) {
     justify-content: center;
     gap: $spacer-2;
   }
-  
+
   .btn {
     transition: all $transition-duration-base $transition-timing-ease-in-out;
-    
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: $shadow-md;
@@ -156,13 +156,13 @@
   border: $border-width-1 solid var(--border-color);
   border-radius: $border-radius-xl;
   background: var(--bg-secondary);
-  
+
   @media (min-width: $breakpoint-lg) {
     border-left: $border-width-1 solid var(--border-color);
     border-top: none;
     padding-left: $spacer-6;
   }
-  
+
   @media (max-width: $breakpoint-lg - 1) {
     border-left: none;
     border-top: $border-width-1 solid var(--border-color);
@@ -170,7 +170,7 @@
     padding-top: $spacer-5;
     margin-top: $spacer-4;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     grid-template-columns: 1fr;
     gap: $spacer-3;
@@ -184,7 +184,7 @@
   align-items: center;
   text-align: center;
   gap: $spacer-1;
-  
+
   @media (min-width: $breakpoint-lg) {
     align-items: flex-start;
     text-align: left;
@@ -226,15 +226,15 @@
   border-radius: $border-radius-xl;
   box-shadow: $shadow-lg;
   position: relative;
-  
+
   @media (max-width: $breakpoint-lg) {
     aspect-ratio: 16/9;
   }
-  
+
   @media (max-width: $breakpoint-md) {
     aspect-ratio: 4/3;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     aspect-ratio: 3/4;
   }
@@ -264,12 +264,12 @@
   position: relative;
   background-size: cover;
   background-position: center;
-  
+
   @media (max-width: $breakpoint-sm) {
     padding: $spacer-3;
     padding-bottom: calc($spacer-3 + 70px);
   }
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -293,7 +293,7 @@
   border-radius: $border-radius-lg;
   text-align: center;
   color: $white;
-  
+
   @media (max-width: $breakpoint-sm) {
     padding: $spacer-3;
     max-width: 95%;
@@ -306,7 +306,7 @@
   font-weight: $font-weight-medium;
   margin-bottom: $spacer-3;
   color: $white;
-  
+
   @media (max-width: $breakpoint-sm) {
     font-size: $font-size-lg;
     margin-bottom: $spacer-2;
@@ -317,8 +317,9 @@
   font-size: clamp($font-size-sm, 2vw, $font-size-base);
   line-height: $line-height-relaxed;
   margin-bottom: $spacer-4;
-  color: rgba($white, 0.95);
-  
+  // The slide sits on a dark image in both themes, so its text is always light.
+  color: rgba($white, 0.95) !important;
+
   @media (max-width: $breakpoint-sm) {
     margin-bottom: $spacer-3;
   }
@@ -344,7 +345,7 @@
   border-radius: $border-radius-full;
   border: 1px solid rgba($white, 0.3);
   box-shadow: $shadow-lg;
-  
+
   @media (max-width: $breakpoint-sm) {
     bottom: $spacer-3;
     padding: $spacer-1 $spacer-2;
@@ -364,7 +365,7 @@
   transition: all $transition-duration-base $transition-timing-ease-out;
   position: relative;
   overflow: hidden;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -375,35 +376,35 @@
     background: linear-gradient(90deg, $energy-accent 0%, $ai-accent 100%);
     transition: width $transition-duration-slow $transition-timing-ease-out;
   }
-  
+
   &:hover {
     background: rgba($white, 0.6);
     transform: scale(1.2);
   }
-  
+
   &.active {
     width: 24px;
     background: rgba($white, 0.2);
-    
+
     &::after {
       width: 100%;
       background: linear-gradient(90deg, $energy-accent 0%, $ai-accent 100%);
     }
-    
+
     &:hover {
       transform: scale(1.1);
     }
   }
-  
+
   &:focus-visible {
     outline: 2px solid $white;
     outline-offset: 2px;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     width: 8px;
     height: 8px;
-    
+
     &.active {
       width: 20px;
     }
@@ -427,31 +428,31 @@
   align-items: center;
   justify-content: center;
   transition: all $transition-duration-base $transition-timing-ease-in-out;
-  
+
   &:hover:not(:disabled) {
     background: rgba($black, 0.9);
     border-color: $white;
     transform: translateY(-50%) scale(1.1);
   }
-  
+
   &:disabled {
     opacity: 0.3;
     cursor: not-allowed;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     width: 36px;
     height: 36px;
   }
-  
-  &.prev { 
+
+  &.prev {
     left: $spacer-3;
     @media (min-width: $breakpoint-md) {
       left: $spacer-4;
     }
   }
-  
-  &.next { 
+
+  &.next {
     right: $spacer-3;
     @media (min-width: $breakpoint-md) {
       right: $spacer-4;
@@ -472,13 +473,13 @@
   text-decoration: none;
   transition: all $transition-duration-base $transition-timing-ease-in-out;
   box-shadow: 0 4px 12px rgba($energy-accent, 0.3);
-  
+
   &:hover {
     background: linear-gradient(135deg, darken($energy-accent, 5%) 0%, darken($ai-accent, 5%) 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba($energy-accent, 0.4);
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     min-height: 44px;
     padding: $spacer-2 $spacer-3;
@@ -498,20 +499,20 @@
   .hero-content {
     text-align: center;
   }
-  
+
   .hero-stats {
     margin-top: $spacer-4;
   }
-  
+
   .stat-item {
     align-items: center;
   }
-  
+
   .carousel-nav {
     &.prev {
       left: $spacer-2;
     }
-    
+
     &.next {
       right: $spacer-2;
     }
@@ -522,32 +523,32 @@
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    
+
     .btn {
       width: 100%;
     }
   }
-  
+
   /* Adjust slide content for mobile */
   .slide-content {
     padding: $spacer-2 !important;
-    
+
     .slide-title {
       font-size: $font-size-lg !important;
     }
-    
+
     .slide-description {
       font-size: $font-size-sm !important;
       max-height: none;
       overflow-y: visible;
     }
   }
-  
+
   .carousel-nav {
     &.prev {
       left: $spacer-1;
     }
-    
+
     &.next {
       right: $spacer-1;
     }
@@ -570,11 +571,11 @@
   .hero-card {
     box-shadow: 0 20px 25px -5px var(--shadow-color);
   }
-  
+
   .hero-stats {
     background: var(--bg-secondary);
   }
-  
+
   .hero-title .highlight {
     color: $pink;
     background: linear-gradient(120deg, $pink 0%, darken($pink, 10%) 100%);
@@ -582,7 +583,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   .carousel-slide::before {
     background: linear-gradient(
       135deg,
@@ -591,32 +592,32 @@
       rgba($black, 0.5) 100%
     );
   }
-  
+
   .carousel-nav {
     background: rgba(0, 0, 0, 0.8);
     border-color: rgba($white, 0.6);
-    
+
     &:hover:not(:disabled) {
       background: rgba(0, 0, 0, 1);
       border-color: $white;
     }
   }
-  
+
   .carousel-indicators {
     background: rgba(0, 0, 0, 0.8);
     border-color: rgba($white, 0.2);
   }
-  
+
   .indicator {
     &.active::after {
       background: linear-gradient(90deg, lighten($energy-accent, 10%) 0%, lighten($ai-accent, 10%) 100%);
     }
   }
-  
+
   .slide-content .btn {
     background: linear-gradient(135deg, lighten($energy-accent, 10%) 0%, lighten($ai-accent, 10%) 100%);
     box-shadow: 0 4px 12px rgba($energy-accent, 0.4);
-    
+
     &:hover {
       background: linear-gradient(135deg, $energy-accent 0%, $ai-accent 100%);
       box-shadow: 0 6px 18px rgba($energy-accent, 0.5);

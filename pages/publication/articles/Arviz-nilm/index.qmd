@@ -1,6 +1,7 @@
 ---
 title: "A Survey on Non-Intrusive Load Monitoring Methodies and Techniques for Energy Disaggregation Problem"
 date: 2017-09-20
+topic: "NILM"
 authors: "<strong>Anthony Faustine</strong>, Nerey Henry Mvungi,  Shubi Kaijage and Kisangiri Michael"
 
 journal:
@@ -21,7 +22,7 @@ pub-info:
     - name: "Link"
       url: "https://arxiv.org/abs/1703.00785"
       icon: "journal-text"
-  
+
 
 
 

@@ -5,10 +5,10 @@ class AchievementCarousel {
       console.error(`Carousel container with ID "${containerId}" not found`);
       return;
     }
-    
+
     // Add the achievement-carousel class for SCSS targeting
     this.container.classList.add('achievement-carousel');
-    
+
     this.dataUrl = dataUrl;
     this.currentIndex = 0;
     this.achievements = [];
@@ -16,7 +16,7 @@ class AchievementCarousel {
     this.touchStartX = 0;
     this.touchEndX = 0;
     this.autoSlideInterval = null;
-    
+
     // Configuration
     this.config = {
       autoSlideInterval: 5000,
@@ -24,30 +24,30 @@ class AchievementCarousel {
       transitionDuration: 500,
       reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
     };
-    
+
     this.init();
   }
-  
+
   async init() {
     try {
       // Add loading state
       this.container.setAttribute('aria-busy', 'true');
       this.container.classList.add('loading');
-      
+
       await this.loadData();
-      
+
       // Remove loading state
       this.container.removeAttribute('aria-busy');
       this.container.classList.remove('loading');
-      
+
       this.renderCarousel();
       this.setupEventListeners();
-      
+
       // Only start auto-slide if user doesn't prefer reduced motion
       if (!this.config.reducedMotion) {
         this.startAutoSlide();
       }
-      
+
     } catch (error) {
       console.error('Error initializing achievement carousel:', error);
       this.container.removeAttribute('aria-busy');
@@ -55,52 +55,52 @@ class AchievementCarousel {
       this.showErrorMessage();
     }
   }
-  
+
   // Add this new validation method
   validateLink(linkData) {
     if (!linkData || typeof linkData !== 'object') return null;
-    
+
     const { url, text } = linkData;
-    
+
     // Check if URL exists and is valid
     if (!url || typeof url !== 'string') return null;
-    
+
     const trimmedUrl = url.trim();
-    
+
     // List of URLs to exclude (empty or index pages)
     const excludedUrls = [
-      '', '#', '/', '/index', '/index.html', 'index', 'index.html', 
+      '', '#', '/', '/index', '/index.html', 'index', 'index.html',
       '#!', '#!undefined', 'javascript:void(0);', 'javascript:;'
     ];
-    
+
     if (excludedUrls.includes(trimmedUrl)) return null;
-    
+
     // Check if it's just a fragment identifier without content
     if (trimmedUrl.startsWith('#') && trimmedUrl.length < 3) return null;
-    
+
     return {
       url: trimmedUrl,
-      text: (text && typeof text === 'string' && text.trim() !== '') 
-        ? text.trim() 
+      text: (text && typeof text === 'string' && text.trim() !== '')
+        ? text.trim()
         : 'Learn More'
     };
   }
-  
+
   async loadData() {
     try {
       if (this.dataUrl) {
         const response = await fetch(this.dataUrl);
-        
+
         if (!response.ok) {
           throw new Error(`Failed to load data: ${response.status} ${response.statusText}`);
         }
-        
+
         const data = await response.json();
-        
+
         if (!data.achievements || !Array.isArray(data.achievements)) {
           throw new Error('Invalid data format: missing achievements array');
         }
-        
+
         // Process achievements with link validation
         this.achievements = data.achievements.map((achievement, index) => ({
           id: achievement.id || index + 1,
@@ -110,18 +110,18 @@ class AchievementCarousel {
           imageUrl: achievement.imageUrl || this.getFallbackImage(index),
           link: this.validateLink(achievement.link)  // Use validation method
         }));
-        
+
       } else {
         // Fallback data
         this.achievements = this.getDefaultData();
       }
-      
+
     } catch (error) {
       console.error('Error loading carousel data:', error);
       this.achievements = this.getDefaultData();
     }
   }
-  
+
   getDefaultData() {
     return [
       {
@@ -134,12 +134,12 @@ class AchievementCarousel {
       }
     ];
   }
-  
+
   getFallbackImage(index) {
     // Use your gradient colors from SCSS
     return `linear-gradient(135deg, ${this.getColor(index, 'start')} 0%, ${this.getColor(index, 'end')} 100%)`;
   }
-  
+
   getColor(index, type) {
     const colors = [
       { start: '#FF777C', end: '#FCA5A5' }, // pink to pink-dark
@@ -150,34 +150,34 @@ class AchievementCarousel {
     const colorSet = colors[index % colors.length];
     return type === 'start' ? colorSet.start : colorSet.end;
   }
-  
+
   renderCarousel() {
     if (!this.container || this.achievements.length === 0) {
       this.showEmptyState();
       return;
     }
-    
+
     this.container.innerHTML = `
       <div class="carousel-track">
         ${this.achievements.map((achievement, index) => this.renderSlide(achievement, index)).join('')}
       </div>
-      
-      <button class="carousel-nav prev" 
+
+      <button class="carousel-nav prev"
         aria-label="Previous slide"
         ${this.achievements.length <= 1 ? 'disabled' : ''}>
         <i class="bi bi-chevron-left" aria-hidden="true"></i>
       </button>
-      <button class="carousel-nav next" 
+      <button class="carousel-nav next"
         aria-label="Next slide"
         ${this.achievements.length <= 1 ? 'disabled' : ''}>
         <i class="bi bi-chevron-right" aria-hidden="true"></i>
       </button>
-      
-      <div class="carousel-indicators" 
-           role="tablist" 
+
+      <div class="carousel-indicators"
+           role="tablist"
            aria-label="Select a slide to display">
         ${this.achievements.map((_, index) => `
-          <button class="indicator ${index === 0 ? 'active' : ''}" 
+          <button class="indicator ${index === 0 ? 'active' : ''}"
                   data-index="${index}"
                   role="tab"
                   aria-label="Slide ${index + 1}"
@@ -185,49 +185,49 @@ class AchievementCarousel {
                   ${index === 0 ? 'tabindex="0"' : 'tabindex="-1"'}></button>
         `).join('')}
       </div>
-      
+
       <div class="carousel-status" aria-live="polite" aria-atomic="true">
         <span class="sr-only">Slide ${this.currentIndex + 1} of ${this.achievements.length}</span>
       </div>
     `;
-    
+
     // Cache DOM elements
     this.carouselTrack = this.container.querySelector('.carousel-track');
     this.indicators = this.container.querySelectorAll('.indicator');
     this.prevBtn = this.container.querySelector('.carousel-nav.prev');
     this.nextBtn = this.container.querySelector('.carousel-nav.next');
     this.carouselStatus = this.container.querySelector('.carousel-status');
-    
+
     this.updateCarousel();
   }
-  
+
   renderSlide(achievement, index) {
     const isActive = index === 0;
-    const isImageUrl = achievement.imageUrl && 
-                      (achievement.imageUrl.includes('http') || 
-                       achievement.imageUrl.includes('/') || 
-                       achievement.imageUrl.includes('.jpg') || 
+    const isImageUrl = achievement.imageUrl &&
+                      (achievement.imageUrl.includes('http') ||
+                       achievement.imageUrl.includes('/') ||
+                       achievement.imageUrl.includes('.jpg') ||
                        achievement.imageUrl.includes('.png'));
-    
-    const backgroundStyle = isImageUrl ? 
-      `background-image: url('${achievement.imageUrl}')` : 
+
+    const backgroundStyle = isImageUrl ?
+      `background-image: url('${achievement.imageUrl}')` :
       `background: ${achievement.imageUrl}`;
-    
+
     // Final check to ensure link should be rendered
-    const shouldRenderLink = achievement.link && 
-                            achievement.link.url && 
+    const shouldRenderLink = achievement.link &&
+                            achievement.link.url &&
                             this.validateLink(achievement.link) !== null;
-    
+
     return `
-      <div class="carousel-slide" 
+      <div class="carousel-slide"
            data-index="${index}"
            role="tabpanel"
            aria-roledescription="slide"
            aria-label="${index + 1} of ${this.achievements.length}"
-           ${isActive ? 'aria-current="true"' : 'aria-hidden="true"'}
+           ${isActive ? 'aria-current="true"' : 'aria-hidden="true" inert'}
            ${isActive ? 'tabindex="0"' : 'tabindex="-1"'}
            style="${backgroundStyle}">
-      
+
         <div class="slide-content ${!shouldRenderLink ? 'no-link' : ''}">
           ${achievement.tag ? `<span class="slide-tag">${achievement.tag}</span>` : ''}
           <h2 class="slide-title">${achievement.title}</h2>
@@ -242,10 +242,10 @@ class AchievementCarousel {
       </div>
     `;
   }
-  
+
   setupEventListeners() {
     if (this.achievements.length <= 1) return;
-    
+
     // Indicators
     this.indicators.forEach(indicator => {
       indicator.addEventListener('click', (e) => {
@@ -253,16 +253,16 @@ class AchievementCarousel {
         this.goToSlide(index);
       });
     });
-    
+
     // Navigation buttons
     this.prevBtn.addEventListener('click', () => {
       this.prevSlide();
     });
-    
+
     this.nextBtn.addEventListener('click', () => {
       this.nextSlide();
     });
-    
+
     // Keyboard navigation
     this.container.addEventListener('keydown', (e) => {
       switch (e.key) {
@@ -284,33 +284,33 @@ class AchievementCarousel {
           break;
       }
     });
-    
+
     // Mouse events
     this.container.addEventListener('mouseenter', () => {
       this.pauseAutoSlide();
     });
-    
+
     this.container.addEventListener('mouseleave', () => {
       if (!this.config.reducedMotion) {
         this.resumeAutoSlide();
       }
     });
-    
+
     // Touch events
     this.container.addEventListener('touchstart', (e) => {
       this.touchStartX = e.touches[0].clientX;
       this.pauseAutoSlide();
     }, { passive: true });
-    
+
     this.container.addEventListener('touchend', (e) => {
       this.touchEndX = e.changedTouches[0].clientX;
       this.handleSwipe();
     }, { passive: true });
   }
-  
+
   handleSwipe() {
     const diff = this.touchStartX - this.touchEndX;
-    
+
     if (Math.abs(diff) > this.config.swipeThreshold) {
       if (diff > 0) {
         this.nextSlide();
@@ -319,27 +319,28 @@ class AchievementCarousel {
       }
     }
   }
-  
+
   updateCarousel() {
     if (!this.carouselTrack || !this.indicators) return;
-    
+
     // Update track position
     if (!this.config.reducedMotion) {
       this.carouselTrack.style.transition = `transform ${this.config.transitionDuration}ms ease-in-out`;
     } else {
       this.carouselTrack.style.transition = 'none';
     }
-    
+
     this.carouselTrack.style.transform = `translateX(-${this.currentIndex * 100}%)`;
-    
+
     // Update slides
     this.container.querySelectorAll('.carousel-slide').forEach((slide, index) => {
       const isActive = index === this.currentIndex;
       slide.setAttribute('aria-hidden', !isActive);
+      slide.inert = !isActive;
       slide.setAttribute('aria-current', isActive ? 'true' : 'false');
       slide.tabIndex = isActive ? 0 : -1;
     });
-    
+
     // Update indicators
     this.indicators.forEach((indicator, index) => {
       const isActive = index === this.currentIndex;
@@ -347,73 +348,73 @@ class AchievementCarousel {
       indicator.setAttribute('aria-selected', isActive);
       indicator.tabIndex = isActive ? 0 : -1;
     });
-    
+
     // Update status
     if (this.carouselStatus) {
       this.carouselStatus.innerHTML = `
         <span class="sr-only">
-          Slide ${this.currentIndex + 1} of ${this.achievements.length}: 
+          Slide ${this.currentIndex + 1} of ${this.achievements.length}:
           ${this.achievements[this.currentIndex]?.title || ''}
         </span>
       `;
     }
-    
+
     // Update button states
     if (this.prevBtn && this.nextBtn) {
       this.prevBtn.disabled = this.currentIndex === 0;
       this.nextBtn.disabled = this.currentIndex === this.achievements.length - 1;
     }
   }
-  
+
   goToSlide(index) {
     if (this.isAnimating || index === this.currentIndex || index < 0 || index >= this.achievements.length) {
       return;
     }
-    
+
     this.isAnimating = true;
     this.currentIndex = index;
     this.updateCarousel();
-    
+
     setTimeout(() => {
       this.isAnimating = false;
     }, this.config.transitionDuration);
   }
-  
+
   nextSlide() {
     const nextIndex = (this.currentIndex + 1) % this.achievements.length;
     this.goToSlide(nextIndex);
   }
-  
+
   prevSlide() {
-    const prevIndex = this.currentIndex === 0 ? 
-      this.achievements.length - 1 : 
+    const prevIndex = this.currentIndex === 0 ?
+      this.achievements.length - 1 :
       this.currentIndex - 1;
     this.goToSlide(prevIndex);
   }
-  
+
   startAutoSlide() {
     if (this.achievements.length <= 1 || this.config.reducedMotion) return;
-    
+
     this.pauseAutoSlide();
-    
+
     this.autoSlideInterval = setInterval(() => {
       this.nextSlide();
     }, this.config.autoSlideInterval);
   }
-  
+
   pauseAutoSlide() {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
       this.autoSlideInterval = null;
     }
   }
-  
+
   resumeAutoSlide() {
     if (!this.autoSlideInterval && !this.config.reducedMotion && this.achievements.length > 1) {
       this.startAutoSlide();
     }
   }
-  
+
   showErrorMessage() {
     this.container.innerHTML = `
       <div class="carousel-error">
@@ -422,7 +423,7 @@ class AchievementCarousel {
       </div>
     `;
   }
-  
+
   showEmptyState() {
     this.container.innerHTML = `
       <div class="carousel-empty">
@@ -430,7 +431,7 @@ class AchievementCarousel {
       </div>
     `;
   }
-  
+
   destroy() {
     this.pauseAutoSlide();
   }

@@ -1,0 +1,116 @@
+// =====================================================
+// DARK THEME OVERRIDES
+// Loaded only by twiga-dark.scss. The light stylesheet draws some surfaces from $white, which is also the colour
+// of text on dark panels, so the surfaces are set here instead of changing the variable.
+// =====================================================
+
+body.quarto-dark {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .title,
+  .quarto-listing-category-title {
+    color: #f1f5f9;
+  }
+
+  strong,
+  b {
+    color: #f1f5f9 !important;
+  }
+
+  // Cards drawn from $white
+  .hero-card,
+  .blog-post {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .blog-post .category-badge {
+    background: rgba(15, 23, 42, 0.88) !important;
+    color: #e2e8f0 !important;
+  }
+
+  .blog-post h2 a,
+  .blog-post h3 a,
+  .blog-post .post-title a {
+    color: #f1f5f9 !important;
+  }
+
+  .blog-post .post-date,
+  .blog-post .post-author {
+    color: #94a3b8;
+  }
+
+  // Sky blue buttons and badges need dark text to stay readable
+  .btn-primary,
+  a.btn-primary,
+  .featured-badge {
+    color: #0f172a !important;
+  }
+
+  // Buttons on the slides of the home page keep white text over the slide image
+  [class*="slide"] .btn-primary {
+    color: #ffffff !important;
+  }
+
+  // Transparent figures in blog thumbnails are drawn for a white page, so they get a white mat
+  .blog-thumbnail {
+    background: #ffffff;
+  }
+
+  .blog-post.featured-post {
+    border-color: #38bdf8;
+  }
+
+  // Home: a sky-blue accent instead of purple, and a hero card that lifts off the page
+  .hero-title .highlight {
+    background: none !important;
+    color: #38bdf8 !important;
+    -webkit-text-fill-color: #38bdf8 !important;
+  }
+
+  .hero-card {
+    background: linear-gradient(180deg, #1e293b 0%, #162033 100%);
+    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.08);
+  }
+
+  // Tables: transparent rows, a slate header, light text
+  .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: #e2e8f0;
+    --bs-table-striped-bg: rgba(148, 163, 184, 0.08);
+    --bs-table-border-color: #334155;
+    background: transparent !important;
+    color: #e2e8f0;
+
+    tbody tr,
+    tr.odd,
+    tr.even {
+      background: transparent !important;
+    }
+
+    tbody tr.odd {
+      background: rgba(148, 163, 184, 0.08) !important;
+    }
+
+    td,
+    td strong {
+      color: #e2e8f0 !important;
+    }
+
+    thead,
+    thead th {
+      background: #1e3a5f !important;
+      color: #f1f5f9 !important;
+    }
+  }
+
+  // Figure captions styled inline for a white page
+  p[style*="color: #555"],
+  p[style*="color:#555"] {
+    color: #94a3b8 !important;
+  }
+}

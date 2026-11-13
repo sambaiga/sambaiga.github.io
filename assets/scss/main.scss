@@ -10,7 +10,7 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
-  
+
   @media (prefers-reduced-motion: reduce) {
     scroll-behavior: auto;
   }
@@ -30,7 +30,7 @@ body {
   text-rendering: optimizeLegibility;
   text-align: left;
   hyphens: auto;
-  
+
   &.rtl {
     direction: rtl;
     text-align: right;
@@ -48,25 +48,25 @@ h1, h2, h3, h4, h5, h6, .headings-font-family {
   text-rendering: optimizeLegibility;
 }
 
-h1 { 
-  font-size: $font-size-xxxl; 
+h1 {
+  font-size: $font-size-xxxl;
   letter-spacing: $letter-spacing-tight;
 }
-h2 { 
-  font-size: $font-size-xxl; 
+h2 {
+  font-size: $font-size-xxl;
   letter-spacing: $letter-spacing-tight;
 }
-h3 { 
-  font-size: $font-size-xl; 
+h3 {
+  font-size: $font-size-xl;
 }
-h4 { 
-  font-size: $font-size-lg; 
+h4 {
+  font-size: $font-size-lg;
 }
-h5 { 
-  font-size: $font-size-base; 
+h5 {
+  font-size: $font-size-base;
 }
-h6 { 
-  font-size: $font-size-sm; 
+h6 {
+  font-size: $font-size-sm;
   text-transform: uppercase;
   letter-spacing: $letter-spacing-wider;
 }
@@ -93,18 +93,18 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
   transition: color $transition-duration-base $transition-timing-ease-in-out;
-  
+
   @include focus-ring;
-  
+
   &:hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
-  
+
   &:visited {
     color: $link-visited-color;
   }
-  
+
   &:active {
     transform: translateY(1px);
   }
@@ -115,7 +115,7 @@ a {
   @include make-container;
   @include container-responsive-padding;
   width: 100%;
-  
+
   @include media-breakpoint-down(md) {
     // Mobile-specific adjustments
     padding-left: $spacer-2;
@@ -134,11 +134,11 @@ a {
 // Section spacing
 .section {
   @include section-padding;
-  
+
   &-sm {
     @include section-padding(sm);
   }
-  
+
   &-lg {
     @include section-padding(lg);
   }
@@ -148,11 +148,11 @@ a {
 .grid {
   display: grid;
   gap: $grid-gap;
-  
+
   &-sm { gap: $grid-gap-sm; }
   &-lg { gap: $grid-gap-lg; }
   &-xl { gap: $grid-gap-xl; }
-  
+
   @for $i from 1 through $grid-columns {
     &-#{$i} {
       grid-template-columns: repeat($i, 1fr);
@@ -221,7 +221,7 @@ a {
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: if($breakpoint == xs, '', -#{$breakpoint});
-    
+
     .d#{$infix}-none { display: none !important; }
     .d#{$infix}-block { display: block !important; }
     .d#{$infix}-inline { display: inline !important; }
@@ -283,34 +283,23 @@ a {
 .shadow-lg { box-shadow: $shadow-lg !important; }
 .shadow-xl { box-shadow: $shadow-xl !important; }
 
-// ========== DARK THEME ==========
-@media (prefers-color-scheme: dark) {
-  body:not(.light-mode) {
-    @include dark-theme;
-  }
-}
-
-body.dark-mode {
-  @include dark-theme;
-}
-
 // ========== RESPONSIVE TYPOGRAPHY ==========
 @include media-breakpoint-down(md) {
-  h1 { 
-    font-size: $font-size-xxl; 
+  h1 {
+    font-size: $font-size-xxl;
     @include responsive-font-size($font-size-xl, $font-size-xxl);
   }
-  
-  h2 { 
-    font-size: $font-size-xl; 
+
+  h2 {
+    font-size: $font-size-xl;
     @include responsive-font-size($font-size-lg, $font-size-xl);
   }
-  
-  h3 { 
-    font-size: $font-size-lg; 
+
+  h3 {
+    font-size: $font-size-lg;
     @include responsive-font-size($font-size-base, $font-size-lg);
   }
-  
+
   .lead {
     font-size: $font-size-base;
   }
@@ -324,37 +313,37 @@ body.dark-mode {
     text-shadow: none !important;
     box-shadow: none !important;
   }
-  
+
   a:not(.btn) {
     text-decoration: underline;
   }
-  
+
   abbr[title]::after {
     content: " (" attr(title) ")";
   }
-  
+
   pre {
     white-space: pre-wrap !important;
   }
-  
+
   pre,
   blockquote {
     border: $border-width-1 solid $gray-500;
     page-break-inside: avoid;
   }
-  
+
   tr,
   img {
     page-break-inside: avoid;
   }
-  
+
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3;
   }
-  
+
   h2,
   h3 {
     page-break-after: avoid;

@@ -1,6 +1,7 @@
 ---
 title: "Multi-Label Learning for Appliance Recognition in NILM Using Fryze-Current Decomposition and Convolutional Neural Network"
 date: 2020-11-20
+topic: "NILM"
 authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas"
 
 journal:
@@ -9,7 +10,7 @@ journal:
   number: 16
   pages: "1996-1073"
   year: 2020
-categories: ["nilm", "load recognition", "machine learning", "dissagregation"]
+categories: ["nilm", "load recognition", "machine learning", "disaggregation"]
 status: Published
 
 description: |

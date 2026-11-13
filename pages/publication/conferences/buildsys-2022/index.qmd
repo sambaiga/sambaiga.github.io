@@ -1,6 +1,7 @@
 ---
 title: "Appliance recognition with combined single- and multi-label approaches"
 date: 2022-11-09
+topic: "NILM"
 authors: "Manca, Matteo and <strong>Anthony Faustine</strong> and Pereira, Lucas"
 
 categories:

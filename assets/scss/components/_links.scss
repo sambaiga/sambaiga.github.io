@@ -204,3 +204,11 @@ a.no-external-icon[target="_blank"] {
     border-bottom: none;
   }
 }
+
+// Links inside running text and in the footer are underlined, so they do not rely on colour alone
+p a:not([class]),
+li a:not([class]),
+.nav-footer a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}

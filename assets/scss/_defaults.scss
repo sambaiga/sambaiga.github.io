@@ -106,7 +106,7 @@ $gradient-accent-start: $energy-accent !default;
 $gradient-accent-end: $ai-accent !default;
 
 // Opacity Levels
-$opacity-05: 0.05 !default;  
+$opacity-05: 0.05 !default;
 $opacity-10: 0.1 !default;
 $opacity-15: 0.15 !default;
 $opacity-20: 0.2 !default;
@@ -347,7 +347,7 @@ $btn-code-copy-color-active: $teal !default;
 // ============================================
 
 // Navbar
-$navbar-bg: #000000 !default;
+$navbar-bg: #1E293B !default;
 $navbar-fg: #FFFFFF !default;
 $navbar-hl: #A0D6E8 !default;
 $navbar-height: 64px !default;
@@ -357,7 +357,7 @@ $navbar-border-bottom: 1px solid rgba($white, 0.1) !default;
 $navbar-box-shadow: $shadow-sm !default;
 
 // Footer
-$footer-bg: #000000 !default;
+$footer-bg: #1E293B !default;
 $footer-fg: #E5E7EB !default;
 $footer-padding-y: $spacer-4 !default;
 $footer-padding-x: $spacer-3 !default;
@@ -474,7 +474,7 @@ $focus-ring: $focus-ring-width solid $focus-ring-color !default;
 // GOOGLE FONTS
 // ============================================
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" !default;
+$web-font-path: null; // no web font import, not even the one of the Bootswatch themes: fonts are self-hosted (scss/_fonts.scss)
 
 // ============================================
 // CSS CUSTOM PROPERTIES (for runtime theming)
@@ -492,7 +492,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   --color-dark: #{$black};
   --color-energy-accent: #{$energy-accent};
   --color-ai-accent: #{$ai-accent};
-  
+
   // Theme Variables - Light Theme
   --bg-primary: #{$body-bg};
   --bg-secondary: #{$gray-100};
@@ -501,17 +501,17 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   --border-color: #{$border-color-light};
   --card-bg: #{$card-bg};
   --shadow-color: #{$shadow-color};
-  
+
   // Code Colors
   --code-bg: #{$code-bg};
   --code-color: #{$code-color};
   --code-block-bg: #{$code-block-bg};
-  
+
   // Typography
   --font-family-base: #{$font-family-sans-serif};
   --font-family-headings: #{$headings-font-family};
   --font-size-base: #{$font-size-base};
-  
+
   // Spacing
   --spacer-1: #{$spacer-1};
   --spacer-2: #{$spacer-2};
@@ -519,23 +519,23 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   --spacer-4: #{$spacer-4};
   --spacer-5: #{$spacer-5};
   --spacer-6: #{$spacer-6};
-  
+
   // Borders
   --border-radius: #{$border-radius};
   --border-radius-lg: #{$border-radius-lg};
   --border-radius-xl: #{$border-radius-xl};
-  
+
   // Transitions
   --transition-base: #{$transition-duration-base} #{$transition-timing-ease-in-out};
-  
+
   // Layout
   --container-max-width: #{$container-max-width};
   --content-max-width: #{$content-max-width};
-  
+
   // Shadows
   --shadow: #{$shadow};
   --shadow-lg: #{$shadow-lg};
-  
+
   // Component-specific
   --navbar-height: #{$navbar-height};
   --hero-min-height: #{$hero-min-height};
@@ -547,7 +547,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   --color-secondary: #{$gray-500};
   --color-energy-accent: #{lighten($energy-accent, 10%)};
   --color-ai-accent: #{lighten($ai-accent, 10%)};
-  
+
   // Theme Variables
   --bg-primary: #{$dark-body-bg};
   --bg-secondary: #1e1e1e;
@@ -556,7 +556,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..
   --border-color: #{$gray-700};
   --card-bg: #1a1a1a;
   --shadow-color: rgba(0, 0, 0, 0.4);
-  
+
   // Code blocks for dark theme
   --code-bg: #2d2d2d;
   --code-color: #f8f8f2;

@@ -10,3 +10,15 @@ dependencies = []
 dev = [
     "pre-commit>=4.3.0",
 ]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["_site", "_freeze", ".venv", "_extensions", "*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "D", "S"]
+ignore = ["D203", "D213", "S101", "S603", "S607"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

@@ -1,6 +1,7 @@
 ---
 title: "Unlocking the Full Potential of Neural NILM: On Automation, Hyperparameters and  Modular Pipelines"
 date: 2023-02-01
+topic: "NILM"
 authors: "Hafsa Bousbiat, <strong>Anthony Faustine</strong>, Christoph Klemenjak, Lucas Pereira and Wilfried Elmenreich"
 categories: ["nilm", "machine learning",  "mlops", "disaggregation"]
 

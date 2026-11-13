@@ -1,6 +1,7 @@
 ---
 title: "Efficiency through Simplicity: MLP-based Approach for Net-Load Forecasting with Uncertainty Estimates in Low-Voltage Distribution Networks"
 date: 2025-01-01
+topic: "Forecasting"
 authors: "<strong>Anthony Faustine</strong> and Nuno Jardim Nunes and Lucas Pereira"
 categories: ["forecasting", "machine learning", "probabilistic", low voltage networks]
 

@@ -1,6 +1,7 @@
 ---
 title: "Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective"
 date: 2021-12-01
+topic: "NILM"
 authors: "Völker, Benjamin,  Reinhardt, Andreas,  <strong>Anthony Faustine</strong> and Pereira, Lucas"
 categories: ["nilm", "machine learning", "disaggregation"]
 

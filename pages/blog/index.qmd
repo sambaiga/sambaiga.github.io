@@ -1,27 +1,26 @@
 ---
 title: ""
+pagetitle: "Writing | Anthony Faustine"
+title-block-banner: false
 author: ""
 description: "Anthony Faustine's blog on AI and Energy"
 listing:
   contents: posts
   sort: "date desc"
-  max-description-length: 100
-  categories: true
+  max-description-length: 260
+  categories: false
   feed: true
-  fields: [title, date, author, categories, description, reading-time, image]
+  fields: [title, date, categories, description, reading-time, image, featured]
   image-placeholder: ../../images/blogs/arts.jpg
   template: ../../assets/ejs/posts_listing.ejs
 
-format: 
+format:
   html:
-    body-class: "blog"
+    body-classes: "blog writing-page"
     include-after-body:
       - text: |
-          <script src="../../assets/js/blog-filters.js"></script>
-      - text: |
-          <script src="../../assets/js/blog-progress.js"></script>
+          <script src="../../assets/js/listing-filter.js"></script>
 
-freeze: true
 page-layout: full
 toc-location: right
 citation: false

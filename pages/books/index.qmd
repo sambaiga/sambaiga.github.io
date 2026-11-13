@@ -1,5 +1,5 @@
 ---
-title: "Books"
+title: ""
 pagetitle: "Books | Anthony Faustine"
 description-meta: "Books by Anthony Faustine on data science, machine learning, and personal growth."
 
@@ -24,11 +24,12 @@ format:
 toc: false
 ---
 
+<div class="books-grid">
+
 <div class="books-header">
+<h1 class="ls-title">Books</h1>
 <p>Books on machine learning for energy systems, data science practice and relationships.</p>
 </div>
-
-<div class="books-grid">
 
 ::: {#books-listing}
 :::

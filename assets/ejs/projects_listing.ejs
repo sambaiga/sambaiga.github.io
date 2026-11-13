@@ -51,12 +51,24 @@
           <span class="tl-area"><%= areaTitle[p.area] %></span>
         </div>
         <p class="tl-description"><%= p.description %></p>
+<% if (p.pypi) { const pkg = String(p.pypi).replace(/\/$/, "").split("/").pop(); %>
+        <div class="tl-install">
+          <code>pip install <%= pkg %></code>
+          <button type="button" class="tl-copy" data-copy="pip install <%= pkg %>" aria-label="Copy the install command"><i class="bi bi-clipboard"></i></button>
+        </div>
+<% } %>
         <div class="tl-foot">
-        <p class="tl-meta"><i class="bi bi-<%= statusIcon[p.status] || 'star-fill' %>"></i><%= p.status %><span>Updated <%= p.updated %></span></p>
+        <p class="tl-meta"><span class="ls-pill ls-pill--<%= String(p.status).toLowerCase() %>"><i class="bi bi-<%= statusIcon[p.status] || 'star-fill' %>"></i><%= p.status %></span><span>Updated <%= p.updated %></span></p>
         <div class="tl-links">
 <% links.forEach(([key, label, icon]) => { if (p[key]) { %>
           <a href="<%= p[key] %>" target="_blank" rel="noopener"><i class="bi bi-<%= icon %>"></i><%= label %></a>
 <% } }) %>
+<% if (p.book) { %>
+          <a class="tl-used" href="../books/index.html"><i class="bi bi-book-half"></i>Used in the book</a>
+<% } %>
+<% if (!links.some(([key]) => p[key])) { %>
+          <span class="tl-private"><i class="bi bi-lock"></i>Private repository</span>
+<% } %>
         </div>
         </div>
       </article>

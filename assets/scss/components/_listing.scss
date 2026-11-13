@@ -1,0 +1,222 @@
+// =====================================================
+// SHARED PARTS OF THE LISTING PAGES (Books, Research, Projects)
+// Colours are CSS custom properties: light values here, dark values under
+// body.quarto-dark, which Quarto sets when the reader picks the dark theme.
+// The palette is slate #1e293b, blue #0369a1 and orange #e26029.
+// The filter script is assets/js/listing-filter.js.
+// =====================================================
+
+:root {
+  --ls-page: #f8fafc;
+  --ls-surface: #ffffff;
+  --ls-text: #1e293b;
+  --ls-muted: #475569;
+  --ls-border: #d5e2ec;
+  --ls-border-strong: #94a3b8;
+  --ls-chip: #eef2f6;
+  --ls-tint: #eaf3fa;
+  --ls-tint-border: #bae0f5;
+  --ls-accent: #0369a1;
+  --ls-button: #1e293b;
+  --ls-active-bg: #1e293b;
+  --ls-on-active: #ffffff;
+  --ls-pill-bg: #e0f2fe;
+  --ls-pill-fg: #075985;
+  --ls-ok-bg: #dcfce7;
+  --ls-ok-fg: #166534;
+  --ls-code: #f1f5f9;
+  --ls-hover: #e2e8f0;
+  --ls-orange: #e26029;
+}
+
+body.quarto-dark {
+  --ls-page: #0f172a;
+  --ls-surface: #1e293b;
+  --ls-text: #e2e8f0;
+  --ls-muted: #94a3b8;
+  --ls-border: #334155;
+  --ls-border-strong: #64748b;
+  --ls-chip: #334155;
+  --ls-tint: rgba(56, 189, 248, 0.14);
+  --ls-tint-border: rgba(56, 189, 248, 0.32);
+  --ls-accent: #38bdf8;
+  --ls-button: #334155;
+  --ls-active-bg: #38bdf8;
+  --ls-on-active: #0f172a;
+  --ls-pill-bg: rgba(56, 189, 248, 0.16);
+  --ls-pill-fg: #7dd3fc;
+  --ls-ok-bg: rgba(74, 222, 128, 0.16);
+  --ls-ok-fg: #86efac;
+  --ls-code: #0f172a;
+  --ls-hover: #334155;
+}
+
+.books-page,
+.publications-page,
+.projects-page,
+.writing-page {
+  background: var(--ls-page);
+}
+
+.ls-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--ls-pill-bg);
+  color: var(--ls-pill-fg);
+
+  &--published,
+  &--available {
+    background: var(--ls-ok-bg);
+    color: var(--ls-ok-fg);
+  }
+
+  &--community,
+  &--maintained {
+    background: var(--ls-chip);
+    color: var(--ls-muted);
+  }
+}
+
+.ls-chip {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: var(--ls-chip);
+  color: var(--ls-text);
+  font-size: 0.75rem;
+}
+
+.ls-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 0.4rem;
+  background: var(--ls-button);
+  color: #fff !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  .bi {
+    color: inherit !important;
+  }
+
+  &:hover {
+    background: var(--ls-orange);
+    transform: translateY(-1px);
+  }
+
+  &--accent {
+    background: var(--ls-orange);
+
+    &:hover {
+      background: #f07a45;
+    }
+  }
+
+  &--ghost {
+    background: rgba(148, 163, 184, 0.16);
+
+    &:hover {
+      background: rgba(148, 163, 184, 0.3);
+    }
+  }
+}
+
+.ls-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ls-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  a {
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 999px;
+    background: var(--ls-surface);
+    font-size: 0.82rem;
+    color: var(--ls-text) !important;
+    text-decoration: none !important;
+
+    span {
+      margin-left: 0.2rem;
+      color: var(--ls-muted);
+    }
+
+    &:hover,
+    &.active {
+      border-color: var(--ls-text);
+    }
+
+    &.active {
+      border-color: var(--ls-active-bg);
+      background: var(--ls-active-bg);
+      color: var(--ls-on-active) !important;
+
+      span {
+        color: var(--ls-on-active);
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+.ls-search {
+  min-width: 13rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--ls-border);
+  border-radius: 0.35rem;
+  font-size: 0.9rem;
+  background: var(--ls-surface);
+  color: var(--ls-text);
+}
+
+.ls-empty {
+  color: var(--ls-muted);
+}
+
+[data-item][hidden],
+[data-group][hidden] {
+  display: none !important;
+}
+
+// The title of a listing page is drawn inside the content column, so it always lines up with the content.
+.books-page,
+.publications-page,
+.writing-page {
+  #title-block-header {
+    display: none;
+  }
+
+  .quarto-listing {
+    width: 100%;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ls-title {
+    margin: 0 0 0.6rem;
+    padding: 0;
+    border: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--ls-text);
+  }
+}

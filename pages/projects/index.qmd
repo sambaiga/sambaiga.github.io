@@ -11,7 +11,7 @@ listing:
   sort: false
   page-size: 100
   max-description-length: 600
-  fields: [title, area, description, status, year, updated, pypi, docs, github, site, post, paper-url]
+  fields: [title, area, description, status, year, updated, pypi, docs, github, site, post, paper-url, book]
 
 format:
   html:

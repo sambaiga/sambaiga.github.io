@@ -1,18 +1,21 @@
 ---
 title: ""
+pagetitle: "Research | Anthony Faustine"
+description-meta: "Peer-reviewed papers by Anthony Faustine on probabilistic forecasting, non-intrusive load monitoring, energy systems and the strategic management of AI."
 listing:
   type: default
   sort: "date desc"
   template: ../../assets/ejs/publication_listing.ejs
-  categories: true
-  contents: ["articles/*/index.qmd", "conferences/*/index.qmd"] 
+  contents: ["articles/*/index.qmd", "conferences/*/index.qmd"]
+  page-size: 100
 page-layout: full
 include-back-link: false
-toc-location: right
-format: 
-  html: 
+toc: false
+title-block-banner: false
+format:
+  html:
+    body-classes: "publications-page"
     include-after-body:
-    - text: |
-            <script src="../../assets/js/abstract-toggle.js"></script>
+      - text: |
+          <script src="../../assets/js/listing-filter.js"></script>
 ---
-

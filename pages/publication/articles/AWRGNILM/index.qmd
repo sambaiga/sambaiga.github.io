@@ -1,6 +1,7 @@
 ---
 title: "Adaptive Weighted Recurrence Graphs for Appliance Recognition in Non-Intrusive Load Monitoring"
 date: 2021-12-20
+topic: "NILM"
 authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas and Klemenjak, Christoph"
 
 journal:

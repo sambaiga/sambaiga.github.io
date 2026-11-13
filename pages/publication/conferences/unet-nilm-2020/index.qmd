@@ -1,6 +1,7 @@
 ---
 title: "UNet-NILM: A deep neural network for multi-tasks appliances state detection and power estimation in NILM"
 date: 2020-11-18
+topic: "NILM"
 authors: "<strong>Anthony Faustine</strong> and Pereira, Lucas and Bousbiat, Hafsa and Kulkarni, Shridhar"
 
 categories:

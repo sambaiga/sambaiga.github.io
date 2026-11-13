@@ -1,70 +1,134 @@
+# Runs under prek (a fast drop-in for pre-commit: `uvx prek ...`) or under pre-commit; the file is the same.
+# Install the git hooks once with `make hooks`; run everything with `make check`.
+default_language_version:
+  python: python3.12
+
+# Generated or vendored files are never checked.
+exclude: ^(_site/|\.quarto/|\.venv/|_freeze/|_extensions/|docs/)
+
+ci:
+  autoupdate_schedule: monthly
+
 repos:
   # ----------------------------------
-  # Core sanity checks
+  # Commit messages
+  # ----------------------------------
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.5.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert]
+
+  - repo: local
+    hooks:
+      - id: no-ai-trailer
+        name: no AI co-author or "generated with" trailer
+        description: The commit author is the user alone.
+        entry: '(?i)^(co-authored-by:.*(claude|anthropic|copilot|openai|chatgpt|gpt|gemini|cursor|codeium|aider)|.*generated (with|by) \[?(claude|copilot|chatgpt|gemini))'
+        language: pygrep
+        stages: [commit-msg]
+
+  # ----------------------------------
+  # Repository hygiene and secrets
   # ----------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
-      - id: check-yaml
-      - id: check-json
-      - id: check-toml
-      - id: check-xml
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+        exclude: ^(files/|pages/blog/posts/.*\.ipynb$)
+      - id: no-commit-to-branch
+        args: [--branch, main]
       - id: check-merge-conflict
       - id: check-case-conflict
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-json
+        exclude: \.ipynb$
+      - id: check-toml
       - id: detect-private-key
-      - id: check-added-large-files
-        args: ["--maxkb=5200"]
-      - id: end-of-file-fixer
-        exclude: ^(LICENSE$|.*\.(html|svg)$)
-      - id: trailing-whitespace
       - id: mixed-line-ending
+        exclude: \.(pdf|png|jpe?g|ico|svg)$
+      - id: end-of-file-fixer
+        exclude: ^(LICENSE$|.*\.(html|svg|ipynb|ico|pdf|png|jpe?g)$)
+      - id: trailing-whitespace
+        exclude: \.(ipynb|svg|html|bib|pdf|png|jpe?g)$
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.1.0"
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
     hooks:
-      - id: prettier
+      - id: detect-secrets
+        args: [--baseline, .secrets.baseline]
+        exclude: ^(pages/blog/posts/.*\.ipynb|.*\.svg|.*\.bib)$
 
-  # ----------------------------------
-  # Markdown / Quarto (.md, .qmd)
-  # ----------------------------------
-  - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.14.0
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
     hooks:
-      - id: markdownlint-cli2
-        files: "\\.(md|qmd)$"
+      - id: codespell
+        args: [--ignore-words=codespell.ignore]
+        exclude: \.(ipynb|svg|bib|html|json|css|js)$
 
   # ----------------------------------
-  # Quarto validation (custom bash)
+  # Workflows and Python scripts
+  # ----------------------------------
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.32.0
+    hooks:
+      - id: zizmor
+        args: [--offline]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.5
+    hooks:
+      - id: ruff-check
+        args: [--fix, --exit-non-zero-on-fix]
+        exclude: \.ipynb$
+      - id: ruff-format
+        exclude: \.ipynb$
+
+  # ----------------------------------
+  # The Quarto website
   # ----------------------------------
   - repo: local
     hooks:
+      - id: no-build-output
+        name: no build output or local environment files
+        description: _site, .quarto, .venv and .DS_Store are generated and stay out of git.
+        entry: Build output and local environment files must not be committed
+        language: fail
+        files: ^(_site/|\.quarto/|\.venv/|node_modules/)|\.DS_Store$
+
+      - id: image-size
+        name: images are web sized (photos 400 KB, figures 800 KB)
+        description: A photograph or figure of several megabytes slows every page that shows it. Resize it with scripts/optimize_images.py.
+        entry: python scripts/check_image_size.py
+        language: python
+        files: ^(images|pages)/.*\.(jpe?g|png|webp|gif)$
+
       - id: quarto-yaml-validate
-        name: Validate Quarto YAML frontmatter
+        name: validate Quarto front matter
         entry: bash scripts/validate_quarto.sh
-        language: bash
-        types: [markdown]
-        files: "\.qmd$"
-        stages: [commit]
+        language: system
+        files: \.qmd$
 
       - id: bib-validate
-        name: Validate bibliography files
+        name: validate bibliography files
         entry: bash scripts/validate_bib.sh
-        language: bash
-        files: "\.bib$"
-        stages: [commit]
+        language: system
+        files: \.bib$
 
       - id: image-asset-check
-        name: Validate image assets exist
+        name: referenced images exist
         entry: bash scripts/validate_images.sh
-        language: bash
-        types: [markdown]
-        files: "\.qmd$"
-        stages: [commit]
+        language: system
+        files: \.qmd$
 
-  # ----------------------------------
-  # Spelling (code + prose)
-  # ----------------------------------
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
-    hooks:
-      - id: codespell
+      - id: quarto-render
+        name: the whole site renders
+        description: A full render catches broken templates, styles and links before they reach main.
+        entry: quarto render
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

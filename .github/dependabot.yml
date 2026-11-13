@@ -1,0 +1,12 @@
+# Keeps the SHA-pinned actions current. Commit messages start with "build" so that the conventional-commit check
+# accepts them.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: build

@@ -1,6 +1,7 @@
 ---
 title: "On metrics to assess the transferability of machine learning models in non-intrusive load monitoring"
 date: 2019-12-13
+topic: "NILM"
 authors: "Klemenjak, Christoph and <strong>Anthony Faustine</strong> and Makonin, Stephen and Elmenreich, Wilfried"
 
 journal:

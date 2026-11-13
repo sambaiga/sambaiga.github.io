@@ -1,6 +1,7 @@
 ---
 title: "Ubiquitous Mobile Sensing for Water Quality Monitoring and Reporting within Lake Victoria Basin"
 date: 2014-12-20
+topic: "Sensing and networks"
 authors: "<strong>Anthony Faustine</strong> and Aloys N. Mvuma"
 
 journal:

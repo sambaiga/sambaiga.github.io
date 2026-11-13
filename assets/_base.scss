@@ -1,9 +1,7 @@
 /*-- scss:base --*/
 
-// Import Google Fonts if configured
-@if $web-font-path {
-  @import url("#{$web-font-path}");
-}
+// Fonts are served from this site (assets/fonts), not from a third party
+@import 'scss/fonts';
 
 // =====================================================
 // BASE RESET & GLOBAL STYLES
@@ -18,7 +16,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  
+
   // Reduced motion support
   @media (prefers-reduced-motion: reduce) {
     scroll-behavior: auto;
@@ -41,13 +39,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  
+
   // RTL support
   &.rtl {
     direction: rtl;
     text-align: right;
   }
-  
+
   // Focus styles for accessibility
   &:has(:focus-visible) {
     scroll-padding-top: calc($navbar-height + $spacer-3);
@@ -87,51 +85,51 @@ h1, h2, h3, h4, h5, h6, .headings-font-family {
   color: $gray-900;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  
+
   // Add spacing after headings
   + * {
     margin-top: 0;
   }
 }
 
-h1 { 
+h1 {
   font-size: $font-size-xxxl;
   letter-spacing: $letter-spacing-tight;
-  
+
   @include media-breakpoint-down(md) {
     font-size: $font-size-xxl;
     @include responsive-font-size($font-size-xl, $font-size-xxl);
   }
 }
 
-h2 { 
+h2 {
   font-size: $font-size-xxl;
   letter-spacing: $letter-spacing-tight;
-  
+
   @include media-breakpoint-down(md) {
     font-size: $font-size-xl;
     @include responsive-font-size($font-size-lg, $font-size-xl);
   }
 }
 
-h3 { 
+h3 {
   font-size: $font-size-xl;
-  
+
   @include media-breakpoint-down(md) {
     font-size: $font-size-lg;
     @include responsive-font-size($font-size-base, $font-size-lg);
   }
 }
 
-h4 { 
+h4 {
   font-size: $font-size-lg;
 }
 
-h5 { 
+h5 {
   font-size: $font-size-base;
 }
 
-h6 { 
+h6 {
   font-size: $font-size-sm;
   text-transform: uppercase;
   letter-spacing: $letter-spacing-wider;
@@ -142,7 +140,7 @@ h6 {
 p, ul, ol, dl, blockquote, pre, figure, table {
   margin-top: 0;
   margin-bottom: $spacer-3;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -168,21 +166,21 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
   transition: color $transition-duration-base $transition-timing-ease-in-out;
-  
+
   &:hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
-  
+
   &:focus-visible {
     outline: $link-focus-outline;
     outline-offset: $link-focus-outline-offset;
   }
-  
+
   &:visited {
     color: $link-visited-color;
   }
-  
+
   &:active {
     transform: translateY(1px);
   }
@@ -195,7 +193,7 @@ a {
 ul, ol {
   padding-left: $spacer-4;
   margin-bottom: $spacer-3;
-  
+
   ul, ol {
     margin-bottom: 0;
   }
@@ -208,7 +206,7 @@ dl {
 dt {
   font-weight: $font-weight-semibold;
   margin-top: $spacer-3;
-  
+
   &:first-child {
     margin-top: 0;
   }
@@ -246,15 +244,15 @@ main {
 // Section spacing
 .section {
   @include section-padding;
-  
+
   &-sm {
     @include section-padding(sm);
   }
-  
+
   &-lg {
     @include section-padding(lg);
   }
-  
+
   &-full {
     padding: 0;
   }
@@ -313,7 +311,7 @@ pre, pre[class*="language-"] {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin-bottom: $spacer-3;
-  
+
   code {
     background-color: transparent;
     padding: 0;
@@ -335,11 +333,11 @@ img, svg, video, canvas, audio, iframe, embed, object {
 img {
   border-style: none;
   border-radius: $image-border-radius;
-  
+
   &.rounded {
     border-radius: $border-radius;
   }
-  
+
   &.circle {
     border-radius: $border-radius-full;
   }
@@ -347,11 +345,11 @@ img {
 
 figure {
   margin: 0 0 $spacer-4;
-  
+
   img {
     margin-bottom: $spacer-2;
   }
-  
+
   figcaption {
     font-size: $font-size-sm;
     color: $gray-600;
@@ -398,11 +396,11 @@ hr {
   margin: $spacer-5 0;
   border: 0;
   border-top: $border-width-1 solid $border-color-light;
-  
+
   &.hr-sm {
     margin: $spacer-3 0;
   }
-  
+
   &.hr-lg {
     margin: $spacer-6 0;
   }

@@ -2,75 +2,76 @@ name: Build and Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - 'pages/**'
       - 'assets/**'
       - 'images/**'
-      - 'index.qmd'
       - 'files/**'
       - 'data/**'
+      - 'index.qmd'
+      - '404.qmd'
       - '_variables.yml'
       - '_quarto.yml'
+      - '_extensions/**'
+      - 'scripts/**'
       - '.github/workflows/build-and-deploy.yml'
   workflow_dispatch:
+
+# Nothing by default; the job asks only for what it needs.
+permissions: {}
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   build:
     name: Build Quarto Site
     runs-on: ubuntu-latest
-
+    timeout-minutes: 30
     permissions:
-      contents: write
-      pages: write
-      id-token: write
+      contents: write  # pushes the built site to the gh-pages branch
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
         with:
-          fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+        uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b  # v2
         with:
           version: 1.8.26
 
       - name: Validate before build
         run: |
-          echo "🔍 Running validation checks..."
-          chmod +x scripts/*.sh
-          bash scripts/validate_quarto.sh $(find pages -name "*.qmd") || exit 1
-          bash scripts/validate_bib.sh $(find pages -name "*.bib") || true
-          bash scripts/validate_images.sh $(find pages -name "*.qmd") || exit 1
-          echo "✓ All validations passed"
+          bash scripts/validate_quarto.sh $(find pages -name "*.qmd")
+          bash scripts/validate_images.sh $(find pages -name "*.qmd")
 
       - name: Build site
-        run: |
-          echo "🔨 Building site with Quarto..."
-          quarto render
-          echo "✓ Site built successfully"
+        run: quarto render
+
+      - name: Audit the built site
+        run: python3 scripts/audit_site.py _site
 
       - name: Upload site
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
         with:
           name: site
           path: _site/
           retention-days: 1
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453  # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           force_orphan: true
 
       - name: Summary
+        env:
+          REF: ${{ github.ref }}
+          SHA: ${{ github.sha }}
         run: |
-          echo "✅ Site built and deployed successfully!"
-          echo ""
-          echo "## Deployment Summary"
-          echo "- Branch: ${{ github.ref }}"
-          echo "- Commit: ${{ github.sha }}"
-          echo "- Site: https://sambaiga.github.io"
+          echo "Site built and deployed from $REF at $SHA: https://sambaiga.github.io"
