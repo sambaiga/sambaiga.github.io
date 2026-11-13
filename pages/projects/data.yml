@@ -1,93 +1,139 @@
-# Open-source projects and libraries
-# Card-based project showcase with key information
+# Projects, grouped by area. The page template (assets/ejs/projects_listing.ejs) defines the areas and their order.
+# Fields: title, area, description, status, year, updated; optional pypi, docs, github, site, post, paper-url.
 
-projects:
-  - name: Twiga
-    slug: twiga
-    description: "A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision."
-    status: Active
-    year: 2024
-    updated: "2024-06"
-    highlight: "Point & probabilistic forecasting"
-    links:
-      - type: "pypi"
-        label: "PyPI"
-        icon: "box-seam"
-        url: "https://pypi.org/project/twiga/"
-      - type: "docs"
-        label: "Documentation"
-        icon: "book"
-        url: "https://sambaiga.github.io/twiga-docs/"
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/twiga"
-    paper: null
-
-  - name: MLPForecast
-    slug: mlpforecast
-    description: "A simple and efficient architecture for point and probabilistic forecasting, designed to minimize model complexity while improving forecasting performance."
-    status: Active
-    year: 2023
-    updated: "2024-03"
-    highlight: "Simple & efficient architecture"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/mlpforecast"
-    paper:
-      title: "Efficiency through Simplicity: MLP-based Approach"
-      url: "https://doi.org/10.1109/TPWRS.2024.3400123"
-
-  - name: MLCFCD
-    slug: mlcfcd
-    description: "Multi-label Learning for Appliances Recognition in NILM using Fryze-Current Decomposition and Convolutional Neural Network."
-    status: Maintained
-    year: 2023
-    updated: "2023-12"
-    highlight: "NILM & multi-label learning"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/MLCFCD"
-    paper: null
-
-  - name: AWRGNILM
-    slug: awrgnilm
-    description: "Adaptive weighted recurrence graphs for appliance recognition in non-intrusive load monitoring."
-    status: Maintained
-    year: 2021
-    updated: "2021-12"
-    highlight: "35% accuracy improvement"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/AWRGNILM"
-    paper:
-      title: "Adaptive Weighted Recurrence Graphs"
-      url: "https://doi.org/10.1109/TSG.2020.3010621"
-
-  - name: Deep-NILMtk
-    slug: deep-nilmtk
-    description: "Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines."
-    status: Community
-    year: 2020
-    updated: "2023-06"
-    highlight: "Foundational research"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/BHafsa/Deep-NILMtk"
-    paper:
-      title: "Unlocking the Full Potential of Neural NILM"
-      url: "https://doi.org/10.1109/TII.2022.3206322"
-
-# Status colors
-status_colors:
-  Active: "#4CAF50"
-  Maintained: "#2196F3"
-  Community: "#9E9E9E"
+- title: Twiga
+  area: forecasting
+  description: A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision.
+  status: Active
+  year: 2024
+  updated: 2026-11
+  pypi: https://pypi.org/project/twiga/
+  docs: https://sambaiga.github.io/twiga-docs/
+- title: MLPForecast
+  area: forecasting
+  description: A simple and efficient architecture for point and probabilistic forecasting, designed to minimize model complexity while improving forecasting performance.
+  status: Active
+  year: 2023
+  updated: 2024-03
+  github: https://github.com/sambaiga/mlpforecast
+  paper-url: https://doi.org/10.1109/TPWRS.2024.3400123
+- title: FPSeq2Q
+  area: forecasting
+  description: Full distributional net-load forecasting with parameterized quantile regression. The official implementation of the IEEE paper.
+  status: Maintained
+  year: 2022
+  updated: 2022-04
+  github: https://github.com/sambaiga/FPSeq2Q
+  paper-url: https://ieeexplore.ieee.org/document/9701598
+- title: Net-load best practice
+  area: forecasting
+  description: Benchmark of MLP-based net-load forecasting for low-voltage distribution substations, with a set of recommended practices.
+  status: Maintained
+  year: 2024
+  updated: 2024-04
+  github: https://github.com/sambaiga/net-load-best-practise
+- title: Thesis code
+  area: forecasting
+  description: Per-chapter reproducibility code for the PhD thesis on efficient and robust machine learning for net-load forecasting in low-voltage distribution systems.
+  status: Active
+  year: 2026
+  updated: 2026-10
+  github: https://github.com/sambaiga/twiga-thesis
+- title: Popo
+  area: energy
+  description: Low-voltage network simulation and state estimation for distributed energy resource studies, with time-series power flow, penetration sweeps, grid-code checks and weighted least-squares state estimation.
+  status: Active
+  year: 2026
+  updated: 2026-11
+  pypi: https://pypi.org/project/popo-flow/
+  docs: https://sambaiga.github.io/popo-docs/
+- title: Milia
+  area: energy
+  description: 'Cluster, rank and detect in time series: scikit-learn estimators that group similar load profiles, retrieve the most similar cases and flag abnormal days at a chosen false-alarm rate.'
+  status: Active
+  year: 2026
+  updated: 2026-11
+  pypi: https://pypi.org/project/pundamilia/
+  docs: https://sambaiga.github.io/pundamilia-docs/
+- title: MLCFCD
+  area: nilm
+  description: Multi-label Learning for Appliances Recognition in NILM using Fryze-Current Decomposition and Convolutional Neural Network.
+  status: Maintained
+  year: 2023
+  updated: 2023-12
+  github: https://github.com/sambaiga/MLCFCD
+- title: AWRGNILM
+  area: nilm
+  description: Adaptive weighted recurrence graphs for appliance recognition in non-intrusive load monitoring.
+  status: Maintained
+  year: 2021
+  updated: 2021-12
+  github: https://github.com/sambaiga/AWRGNILM
+  paper-url: https://doi.org/10.1109/TSG.2020.3010621
+- title: WRG-NILM
+  area: nilm
+  description: Appliance classification in non-intrusive load monitoring with weighted recurrence graphs and convolutional neural networks, with a pre-processing step that extracts steady-state activation cycles.
+  status: Maintained
+  year: 2020
+  updated: 2020-08
+  github: https://github.com/sambaiga/WRG-NILM
+  paper-url: https://www.mdpi.com/1996-1073/13/13/3374/htm
+- title: UNet-NILM
+  area: nilm
+  description: A deep neural network for multi-task appliance state detection and power estimation in non-intrusive load monitoring.
+  status: Maintained
+  year: 2020
+  updated: 2020-11
+  github: https://github.com/sambaiga/UNETNiLM
+  paper-url: https://dl.acm.org/doi/10.1145/3427771.3427859
+- title: Deep-NILMtk
+  area: nilm
+  description: Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines.
+  status: Community
+  year: 2020
+  updated: 2023-06
+  github: https://github.com/BHafsa/Deep-NILMtk
+  paper-url: https://doi.org/10.1109/TII.2022.3206322
+- title: Bayesian modelling
+  area: bayes
+  description: Notebooks and a reproducible environment for the Bayesian modelling posts on this site, from Bayesian thinking for industrial applications to Bayesian regression of battery degradation.
+  status: Active
+  year: 2025
+  updated: 2026-02
+  github: https://github.com/sambaiga/bayesian-modelling
+- title: Model-based machine learning
+  area: bayes
+  description: Resources and notebooks on probabilistic programming, causal inference and model-based machine learning with Pyro.
+  status: Maintained
+  year: 2020
+  updated: 2020-03
+  github: https://github.com/sambaiga/model_based_ml
+- title: Data science and MLOps path
+  area: mle
+  description: A structured, project-based path to production-ready data science that applies software engineering standards and the CRISP-DM process across regression, classification, segmentation, ranking and forecasting.
+  status: Active
+  year: 2024
+  updated: 2026-07
+  github: https://github.com/sambaiga/ds-mlops-path
+  site: https://sambaiga.github.io/ds-mlops-path/
+- title: AI4D learning
+  area: mle
+  description: Learning material on the Python ecosystem and its application to data analysis and machine learning for development.
+  status: Maintained
+  year: 2025
+  updated: 2025-04
+  github: https://github.com/sambaiga/AI4DLearning
+- title: PytzMLS 2018
+  area: mle
+  description: 'Resources for the machine learning summer school: Python for research, introductory and unsupervised learning, and the foundations of deep learning.'
+  status: Community
+  year: 2018
+  updated: 2018-08
+  github: https://github.com/sambaiga/PytzMLS2018
+- title: AI strategy series
+  area: strategy
+  description: 'Three articles that apply Rumelt''s strategic kernel and technology roadmapping to AI: why strategy fails on AI, a five-step roadmapping process, and how AI business models capture value.'
+  status: Series
+  year: 2026
+  updated: 2026-05
+  post: ../blog/posts/2026/03/index.html

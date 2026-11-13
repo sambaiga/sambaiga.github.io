@@ -31,6 +31,39 @@ Alongside my industry role, I am active in research and development. I collabora
 
 > My mission: architect and deliver ML systems that solve real business problems with measurable impact.
 
+### How I work
+
+**Architecture and system design.** I architect production ML platforms from data ingestion and feature engineering to training, quantile forecasting, governed publication and monitoring. Recent work includes a supply chain demand forecasting platform with CI/CD, immutable releases, experiment tracking, data contracts and production gates. I design for scale, using partition-aware processing to handle large historical datasets within memory limits.
+
+**Machine learning for time series.** My methods work centres on probabilistic and hierarchical forecasting, Bayesian state space models and gradient boosting. It also covers deep architectures such as N-HiTS and Transformers, always with calibrated uncertainty. I publish this work in IEEE journals and release it as the open-source [Twiga](https://sambaiga.github.io/twiga-docs/) library for point and probabilistic forecasting.
+
+**Strategy and leadership.** I align machine learning investments with business strategy and technology roadmaps. My MSc in Leadership, Technology and Innovation, completed with first-class honours, produced a Strategic AI Roadmapping Framework. As principal investigator I secured 1.6 million in competitive research funding, and I mentor engineers and advise executives on adoption and value.
+
+### Experience
+
+**Principal Engineer, Machine Learning**, Analog Devices, Limerick, Ireland (2026 to present)
+: I architected a supply chain demand forecasting platform that covers data ingestion, feature engineering, model training, quantile forecasting, reporting and governed publication. I introduced Level 3 MLOps practice with CI/CD, experiment lineage, data contracts, monitoring and auditable production gates, and I led delivery across data engineering, platform, governance and business teams.
+
+**Lead Data Scientist and Principal Investigator**, Eaton, Dublin, Ireland (2022 to 2026)
+: I led funded research on AI-driven power and cooling management for data centres and designed a multimodal forecasting system that integrates solar PV, load and EV charging. The work also included transformer anomaly detection with equipment risk ranking, battery state of health and remaining useful life prediction, and commercial building energy management. I received the 2024 Eaton STAR Leadership Award.
+
+**Senior Industrial Analytics Researcher**, Irish Manufacturing Research, Dublin, Ireland (2021 to 2022)
+: I directed an IoT-driven predictive maintenance project that reduced unplanned downtime by 30 percent and increased overall equipment effectiveness by 25 percent. I also deployed deep learning computer vision inspection that cut defect detection time by 40 percent.
+
+**Data Scientist and Machine Learning Researcher**, CeADAR, Dublin, Ireland (2020 to 2021)
+: I built Bayesian state space demand forecasting engines that improved accuracy by 22 percent and reduced peak-load planning errors by 18 percent. I also segmented more than 10,000 demand profiles with variational autoencoders and clustering.
+
+**Machine Learning Researcher**, IDLab, imec, Ghent University, Belgium (2017 to 2019)
+: I co-authored the grant proposals that secured more than 500 thousand in funding and developed machine learning frameworks for energy monitoring and event detection.
+
+### Education
+
+- **PhD in Computer Science and Engineering**, Técnico Lisboa, Portugal (2021 to 2025): probabilistic forecasting and Bayesian energy analytics, with supervision of three MSc students.
+- **MSc in Leadership, Technology and Innovation**, TU Dublin, Ireland (2022 to 2023): first-class honours.
+- **MS in Telecommunications Engineering**, The University of Dodoma, Tanzania (2010 to 2012).
+
+Peer-reviewed publications are listed on the [Research](../publication/index.html) page.
+
 ### Ready to collaborate?
 I'm always open to discussing new opportunities, research collaborations, technical speaking engagements, or mentoring emerging AI engineers.
 
