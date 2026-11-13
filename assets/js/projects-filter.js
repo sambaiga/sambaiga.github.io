@@ -1,23 +1,23 @@
 (function () {
   "use strict";
-  var areas = document.querySelectorAll(".work-area");
-  var chips = document.querySelectorAll(".work-areas a");
-  var search = document.querySelector(".work-search");
-  var empty = document.querySelector(".work-empty");
+  var years = document.querySelectorAll(".tl-year");
+  var chips = document.querySelectorAll(".tl-areas a");
+  var search = document.querySelector(".tl-search");
+  var empty = document.querySelector(".tl-empty");
   var current = "all";
 
   function apply() {
     var query = search ? search.value.trim().toLowerCase() : "";
     var shown = 0;
-    areas.forEach(function (area) {
-      var inArea = current === "all" || area.id === "area-" + current;
+    years.forEach(function (year) {
       var visible = 0;
-      area.querySelectorAll(".work-card").forEach(function (card) {
-        var match = inArea && (query === "" || card.textContent.toLowerCase().indexOf(query) !== -1);
-        card.hidden = !match;
+      year.querySelectorAll(".tl-item").forEach(function (item) {
+        var inArea = current === "all" || item.getAttribute("data-area") === current;
+        var match = inArea && (query === "" || item.textContent.toLowerCase().indexOf(query) !== -1);
+        item.hidden = !match;
         if (match) visible += 1;
       });
-      area.hidden = visible === 0;
+      year.hidden = visible === 0;
       shown += visible;
     });
     if (empty) empty.hidden = shown !== 0;

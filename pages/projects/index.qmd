@@ -1,7 +1,7 @@
 ---
 title: "Projects"
 pagetitle: "Projects | Anthony Faustine"
-description-meta: "Open-source software, research code, teaching material and technology strategy writing across time series machine learning, energy systems and machine learning engineering."
+description-meta: "Open-source libraries by Anthony Faustine: Twiga, Popo, Milia, Kobe and Deep-NILMtk."
 
 listing:
   id: work-listing
@@ -26,7 +26,7 @@ toc: false
 
 <div class="projects-header">
 
-<p>Open-source software, research code, teaching material and writing on machine learning systems, time series, energy systems and technology strategy.</p>
+<p>Open-source libraries and tooling for time series forecasting, distribution network analytics, load monitoring and project foundations.</p>
 
 </div>
 
