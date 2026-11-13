@@ -35,7 +35,7 @@
 
 <article class="wr-hero" data-item data-topic="<%= topicOf(hero) %>">
   <a class="wr-hero-cover<%= isFigure(hero) ? ' wr-figure' : '' %>" href="<%- hero.path %>" tabindex="-1" aria-hidden="true">
-    <img src="<%= hero.image || FALLBACK %>" alt="" loading="lazy" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
+    <img src="<%= hero.image || FALLBACK %>" alt="" fetchpriority="high" decoding="async" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
   </a>
   <div class="wr-hero-body">
     <p class="wr-kicker">Start here<% if (partOf(hero)) { %> <span><%= seriesTopic %> series, part <%= partOf(hero) %> of <%= seriesPosts.length %></span><% } %></p>
@@ -61,7 +61,7 @@
 <% grid.forEach((p) => { %>
   <article class="wr-card" data-item data-topic="<%= topicOf(p) %>">
     <a class="wr-cover<%= isFigure(p) ? ' wr-figure' : '' %>" href="<%- p.path %>" tabindex="-1" aria-hidden="true">
-      <img src="<%= p.image || FALLBACK %>" alt="" loading="lazy" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
+      <img src="<%= p.image || FALLBACK %>" alt="" loading="lazy" decoding="async" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
       <span class="wr-badges">
         <span><%= topicOf(p) %></span>
 <% if (partOf(p)) { %>
