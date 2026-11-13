@@ -10,7 +10,7 @@ journal:
   number: 16
   pages: "1996-1073"
   year: 2020
-categories: ["nilm", "load recognition", "machine learning", "dissagregation"]
+categories: ["nilm", "load recognition", "machine learning", "disaggregation"]
 status: Published
 
 description: |

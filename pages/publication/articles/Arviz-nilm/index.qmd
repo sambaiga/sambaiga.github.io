@@ -22,7 +22,7 @@ pub-info:
     - name: "Link"
       url: "https://arxiv.org/abs/1703.00785"
       icon: "journal-text"
-  
+
 
 
 

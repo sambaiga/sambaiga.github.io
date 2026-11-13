@@ -24,7 +24,7 @@ pub-info:
     - name: "Link"
       url: "https://doi.org/10.4236/wsn.2014.612027"
       icon: "journal-text"
-    
+
 
 
 

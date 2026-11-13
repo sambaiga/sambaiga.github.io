@@ -14,7 +14,7 @@ dev = [
 [tool.ruff]
 line-length = 120
 target-version = "py312"
-extend-exclude = ["_site", "_freeze", ".venv", "_extensions"]
+extend-exclude = ["_site", "_freeze", ".venv", "_extensions", "*.ipynb"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "D", "S"]
