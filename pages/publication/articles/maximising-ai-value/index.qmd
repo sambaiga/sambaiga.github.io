@@ -1,6 +1,7 @@
 ---
 title: "Maximising AI Value: Strategic Approaches and Practical Frameworks for Organisational Success"
 date: 2024-03-01
+topic: "Strategy"
 authors: "<strong>Anthony Faustine</strong>"
 
 journal:

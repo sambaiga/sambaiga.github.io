@@ -1,6 +1,7 @@
 ---
 title: "Open source cellular technologies for cost effective cellular connectivity in rural areas"
 date: 2016-07-01
+topic: "Sensing and networks"
 authors: "<strong>Anthony Faustine</strong> and Gabriel, M. and Shao, B."
 
 journal:

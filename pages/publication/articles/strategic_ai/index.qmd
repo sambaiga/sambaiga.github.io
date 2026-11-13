@@ -1,6 +1,7 @@
 ---
 title: "Strategic Management of AI Investments: A Dynamic Capabilities and Business Model Innovation Perspective"
 date: 2025-12-19
+topic: "Strategy"
 authors: "Anthony Faustine, Ethna O Connor,  Dr Tupokigwe Isagah, and  Dr Kevin Byrne"
 author:
   - name: Anthony Faustine
@@ -36,4 +37,5 @@ pub-info:
   
 thumbnail: "/images/publications/strategicai.svg"
 image: "/images/publications/strategicai.svg"
+featured: true
 ---

@@ -16,7 +16,7 @@ listing:
 format:
   html:
     page-layout: full
-    body-classes: "books-page"
+    body-classes: "books-page light-mode"
     include-after-body:
       - text: |
           <script src="../../assets/js/books-filter.js"></script>
@@ -24,11 +24,12 @@ format:
 toc: false
 ---
 
+<div class="books-grid">
+
 <div class="books-header">
+<h1 class="ls-title">Books</h1>
 <p>Books on machine learning for energy systems, data science practice and relationships.</p>
 </div>
-
-<div class="books-grid">
 
 ::: {#books-listing}
 :::

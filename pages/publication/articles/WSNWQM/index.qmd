@@ -1,6 +1,7 @@
 ---
 title: "Wireless Sensor Networks for Water Quality Monitoring and Control within Lake Victoria Basin: Prototype Development"
 date: 2014-08-20
+topic: "Sensing and networks"
 authors: "<strong>Anthony Faustine</strong>, Aloys N. Mvuma,  Hector J. Mongi,  Maria C. Gabriel, Albino J. Tenge and Samuel B. Kucel"
 
 journal:

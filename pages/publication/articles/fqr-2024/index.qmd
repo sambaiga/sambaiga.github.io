@@ -1,6 +1,7 @@
 ---
 title: "FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates"
 date: 2022-10-22
+topic: "Forecasting"
 authors: "Anthony Faustine and Pereira, Lucas"
 author:
   - name: Anthony Faustine
