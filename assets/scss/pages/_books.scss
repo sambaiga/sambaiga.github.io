@@ -261,9 +261,10 @@
     margin-bottom: 2.5rem;
     overflow: hidden;
     border-radius: 14px;
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    color: #e2e8f0;
-    box-shadow: 0 18px 40px -22px rgba(15, 23, 42, 0.7);
+    background: linear-gradient(135deg, var(--pn-from) 0%, var(--pn-to) 100%);
+    color: var(--pn-text);
+    border: 1px solid var(--pn-border);
+    box-shadow: var(--pn-shadow);
 
     // A soft blue glow behind the text.
     &::before {
@@ -273,7 +274,7 @@
       width: 28rem;
       height: 28rem;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(3, 105, 161, 0.5), transparent 65%);
+      background: radial-gradient(circle, var(--pn-glow), transparent 65%);
       pointer-events: none;
     }
 
@@ -292,12 +293,12 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #38bdf8 !important;
+      color: var(--pn-kicker) !important;
       text-align: left;
 
       span {
         margin-left: 0.5rem;
-        color: #94a3b8 !important;
+        color: var(--pn-muted) !important;
         letter-spacing: 0.04em;
       }
     }
@@ -308,28 +309,28 @@
       border: 0 !important;
       font-size: clamp(1.5rem, 2.4vw + 0.6rem, 2.1rem);
       line-height: 1.15;
-      color: #fff !important;
+      color: var(--pn-title) !important;
     }
 
     .bk-subtitle {
       margin: 0 0 1rem !important;
       font-size: 1.02rem;
-      color: #cbd5e1 !important;
+      color: var(--pn-text) !important;
     }
 
     .bk-description {
       margin: 0 0 1.1rem !important;
       font-size: 0.95rem;
       line-height: 1.65;
-      color: #cbd5e1 !important;
+      color: var(--pn-text) !important;
     }
 
     .bk-tags {
       margin-bottom: 1.5rem;
 
       span {
-        background: rgba(148, 163, 184, 0.16);
-        color: #e2e8f0;
+        background: var(--pn-chip-bg);
+        color: var(--pn-chip-fg);
       }
     }
 
@@ -350,18 +351,9 @@
 
     .bk-meta,
     .bk-meta span {
-      color: #94a3b8 !important;
+      color: var(--pn-muted) !important;
     }
 
-    .bk-status {
-      background: rgba(56, 189, 248, 0.16);
-      color: #7dd3fc !important;
-
-      &--available {
-        background: rgba(74, 222, 128, 0.16);
-        color: #86efac !important;
-      }
-    }
   }
 
   // ---------- The shelf ----------
