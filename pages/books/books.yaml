@@ -1,3 +1,18 @@
+- title: "Machine Learning for Distribution Networks"
+  subtitle: "From Smart Meter Signal to Network Decisions"
+  description: "A structured path from smart meter signals to network decisions: clustering and network risk, recommendation and mitigation, anomaly detection and forecasting. The chapters are built on the open-source libraries milia, popo and twiga, and each pairs a narrative page with a companion notebook."
+  author: "Anthony Faustine"
+  year: 2026
+  genre: "Energy Systems & Machine Learning"
+  icon: "diagram-3"
+  variant: "energy"
+  status: "in-progress"
+  status_label: "In Progress"
+  status_icon: "lightning-fill"
+  tags: ["Smart Meters", "Distribution Networks", "Clustering", "Anomaly Detection", "Forecasting"]
+  chapters: "4 Parts · Chapters Live"
+  url: "https://sambaiga.github.io/umeme/"
+
 - title: "From Data to Impact"
   subtitle: "A Structured Path from Python Fundamentals to Production-Ready Data Science"
   description: "A structured, project-based learning journey progressing from foundational Python through engineering practices to production-grade ML systems. Covers 10 parts across 20+ chapters from Python core and NumPy through classical ML, deep learning, LLMs, and MLOps deployment."

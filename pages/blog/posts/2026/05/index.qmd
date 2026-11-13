@@ -4,11 +4,11 @@ subtitle: "Part 3: Why the Gap Between Strategic Direction and Revenue Is Where 
 date: 2026-05-06
 description: "Having a coherent AI strategy is not the same as having a business model that captures the value AI creates. This post introduces the AI Business Model Innovation Framework, showing how organisations can translate strategic direction into revenue, outcomes, and durable competitive position."
 
-image: "cover.png"
+image: "ai_bmi_framework.png"
 twitter-card:
-    image: "cover.png"
+    image: "ai_bmi_framework.png"
 open-graph:
-    image: "cover.png"
+    image: "ai_bmi_framework.png"
 
 title-block-banner: banner.jpg
 

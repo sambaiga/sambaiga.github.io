@@ -1,93 +1,46 @@
-# Open-source projects and libraries
-# Card-based project showcase with key information
+# Open-source libraries. The page template (assets/ejs/projects_listing.ejs) defines the areas.
+# Fields: title, area, description, status, year, updated; optional logo, pypi, docs, github, site, post, paper-url.
+# The filter and search appear automatically once the list has more than six entries.
 
-projects:
-  - name: Twiga
-    slug: twiga
-    description: "A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision."
-    status: Active
-    year: 2024
-    updated: "2024-06"
-    highlight: "Point & probabilistic forecasting"
-    links:
-      - type: "pypi"
-        label: "PyPI"
-        icon: "box-seam"
-        url: "https://pypi.org/project/twiga/"
-      - type: "docs"
-        label: "Documentation"
-        icon: "book"
-        url: "https://sambaiga.github.io/twiga-docs/"
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/twiga"
-    paper: null
-
-  - name: MLPForecast
-    slug: mlpforecast
-    description: "A simple and efficient architecture for point and probabilistic forecasting, designed to minimize model complexity while improving forecasting performance."
-    status: Active
-    year: 2023
-    updated: "2024-03"
-    highlight: "Simple & efficient architecture"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/mlpforecast"
-    paper:
-      title: "Efficiency through Simplicity: MLP-based Approach"
-      url: "https://doi.org/10.1109/TPWRS.2024.3400123"
-
-  - name: MLCFCD
-    slug: mlcfcd
-    description: "Multi-label Learning for Appliances Recognition in NILM using Fryze-Current Decomposition and Convolutional Neural Network."
-    status: Maintained
-    year: 2023
-    updated: "2023-12"
-    highlight: "NILM & multi-label learning"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/MLCFCD"
-    paper: null
-
-  - name: AWRGNILM
-    slug: awrgnilm
-    description: "Adaptive weighted recurrence graphs for appliance recognition in non-intrusive load monitoring."
-    status: Maintained
-    year: 2021
-    updated: "2021-12"
-    highlight: "35% accuracy improvement"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/sambaiga/AWRGNILM"
-    paper:
-      title: "Adaptive Weighted Recurrence Graphs"
-      url: "https://doi.org/10.1109/TSG.2020.3010621"
-
-  - name: Deep-NILMtk
-    slug: deep-nilmtk
-    description: "Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines."
-    status: Community
-    year: 2020
-    updated: "2023-06"
-    highlight: "Foundational research"
-    links:
-      - type: "github"
-        label: "GitHub"
-        icon: "github"
-        url: "https://github.com/BHafsa/Deep-NILMtk"
-    paper:
-      title: "Unlocking the Full Potential of Neural NILM"
-      url: "https://doi.org/10.1109/TII.2022.3206322"
-
-# Status colors
-status_colors:
-  Active: "#4CAF50"
-  Maintained: "#2196F3"
-  Community: "#9E9E9E"
+- title: Kobe
+  area: tooling
+  logo: ../../images/projects/kobe.svg
+  description: Foundation for new Python projects, with a library profile and an experiment profile, a project generator and the coding standards shared by every repository.
+  status: Active
+  year: 2026
+  updated: 2026-11
+- title: Popo
+  area: energy
+  logo: ../../images/projects/popo.svg
+  description: Low-voltage network simulation and state estimation for distributed energy resource studies, with time-series power flow, penetration sweeps, grid-code checks and weighted least-squares state estimation.
+  status: Active
+  year: 2026
+  updated: 2026-11
+  pypi: https://pypi.org/project/popo-flow/
+  docs: https://sambaiga.github.io/popo-docs/
+- title: Milia
+  area: analysis
+  logo: ../../images/projects/milia.svg
+  description: "Cluster, rank and detect in time series: scikit-learn estimators that group similar load profiles, retrieve the most similar cases and flag abnormal days at a chosen false-alarm rate."
+  status: Active
+  year: 2026
+  updated: 2026-11
+  pypi: https://pypi.org/project/pundamilia/
+  docs: https://sambaiga.github.io/pundamilia-docs/
+- title: Twiga
+  area: forecasting
+  logo: ../../images/projects/twiga.svg
+  description: A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision.
+  status: Active
+  year: 2025
+  updated: 2026-11
+  pypi: https://pypi.org/project/twiga/
+  docs: https://sambaiga.github.io/twiga-docs/
+- title: Deep-NILMtk
+  area: nilm
+  description: Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines.
+  status: Community
+  year: 2020
+  updated: 2023-06
+  github: https://github.com/BHafsa/Deep-NILMtk
+  paper-url: https://doi.org/10.1109/TII.2022.3206322

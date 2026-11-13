@@ -3,6 +3,11 @@ project:
   output-dir: _site
   pre-render: 
     - bash assets/bash/generate_thumbs.sh
+  render:
+    - "*.qmd"
+    - "pages/**/*.qmd"
+    - "pages/**/*.ipynb"
+    - "!pages/project/"
  
   preview: 
     port: 5556
@@ -16,7 +21,6 @@ project:
     - "images/**"
     - "data/**"
     - "files/**"
-    - "posts/**"
 
     # Things that need to be at the site root
     - "pgp_ath.asc.txt"
@@ -25,7 +29,7 @@ project:
 
 website:
   title: "Anthony Faustine"
-  description: "Principal ML Engineer at Analog Devices, Ireland. Building production ML systems for supply chain optimization."
+  description: "Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology."
   favicon: "/images/icons/favicon.ico"
   site-url: "https://sambaiga.github.io"
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
@@ -35,13 +39,13 @@ website:
 
   open-graph:
     title: "Anthony Faustine"
-    description: "Principal ML Engineer: ML system design and implementation at scale with strategic technology leadership"
-    image: ""
+    description: "Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology."
+    image: "images/og/default.png"
     locale: en_IE
 
   twitter-card: 
     card-style: summary_large_image
-    creator: "@asambaiga"
+    creator: "@sambaiga"
     site: "@sambaiga"
 
   navbar:

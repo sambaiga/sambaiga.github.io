@@ -1,0 +1,68 @@
+```{=html}
+<%
+  const areas = [
+    { id: "forecasting", title: "Time series forecasting", icon: "graph-up" },
+    { id: "analysis", title: "Time series analysis", icon: "activity" },
+    { id: "energy", title: "Energy systems", icon: "lightning-charge" },
+    { id: "nilm", title: "Load monitoring", icon: "plug" },
+    { id: "bayes", title: "Bayesian modelling", icon: "bar-chart-steps" },
+    { id: "mle", title: "ML engineering and teaching", icon: "diagram-3" },
+    { id: "strategy", title: "Technology strategy", icon: "compass" },
+    { id: "tooling", title: "Developer tooling", icon: "tools" }
+  ];
+  const areaTitle = {};
+  areas.forEach((a) => { areaTitle[a.id] = a.title; });
+  const statusIcon = { Active: "lightning-fill", Maintained: "shield-check", Community: "globe", Series: "journal-text" };
+  const links = [
+    ["pypi", "PyPI", "box-seam"], ["docs", "Documentation", "book"], ["site", "Website", "link-45deg"],
+    ["github", "GitHub", "github"], ["post", "Read", "journal-text"], ["paper-url", "Paper", "file-earmark-text"]
+  ];
+  const counts = {};
+  items.forEach((item) => { counts[item.area] = (counts[item.area] || 0) + 1; });
+  const years = [...new Set(items.map((item) => item.year))].sort((a, b) => b - a);
+%>
+<% const showControls = items.length > 6; %>
+<% if (showControls) { %>
+<div class="tl-controls">
+<nav class="tl-areas" aria-label="Project areas">
+  <a href="#" data-area="all" class="active">All <span><%= items.length %></span></a>
+<% areas.forEach((a) => { if (counts[a.id]) { %>
+  <a href="#" data-area="<%= a.id %>"><i class="bi bi-<%= a.icon %>"></i><%= a.title %> <span><%= counts[a.id] %></span></a>
+<% } }) %>
+</nav>
+<input type="search" class="tl-search" placeholder="Search projects" aria-label="Search projects">
+</div>
+<p class="tl-empty" hidden>No project matches the current filter.</p>
+<% } %>
+<div class="tl">
+<% years.forEach((year) => { %>
+  <section class="tl-year">
+    <div class="tl-year-label"><%= year %></div>
+    <div class="tl-items">
+<% items.filter((item) => item.year === year).forEach((p) => { %>
+      <article class="tl-item" data-area="<%= p.area %>">
+        <div class="tl-head">
+<% if (p.logo) { %>
+          <img class="tl-logo" src="<%= p.logo %>" alt="" width="40" height="40">
+<% } else { %>
+          <span class="tl-logo tl-logo--icon"><i class="bi bi-<%= (areas.find((a) => a.id === p.area) || {}).icon || 'box' %>"></i></span>
+<% } %>
+          <h3><%= p.title %></h3>
+          <span class="tl-area"><%= areaTitle[p.area] %></span>
+        </div>
+        <p class="tl-description"><%= p.description %></p>
+        <div class="tl-foot">
+        <p class="tl-meta"><i class="bi bi-<%= statusIcon[p.status] || 'star-fill' %>"></i><%= p.status %><span>Updated <%= p.updated %></span></p>
+        <div class="tl-links">
+<% links.forEach(([key, label, icon]) => { if (p[key]) { %>
+          <a href="<%= p[key] %>" target="_blank" rel="noopener"><i class="bi bi-<%= icon %>"></i><%= label %></a>
+<% } }) %>
+        </div>
+        </div>
+      </article>
+<% }) %>
+    </div>
+  </section>
+<% }) %>
+</div>
+```

@@ -20,11 +20,11 @@ grid:
 author-meta: Anthony Faustine
 ---
 ::: {#hero-heading .text-justify .text-md-start}
-I'm a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland. I design and ship machine learning systems that support supply chain decisions and intelligent edge products. Over the past decade, I’ve worked across manufacturing, industrial, energy and semiconductor domains, taking ideas from early prototypes to reliable production systems.
+I'm a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland. I design and ship machine learning systems that support supply chain decisions and intelligent edge products. Over the past decade, I have worked across manufacturing, industrial, energy and semiconductor domains, taking ideas from early prototypes to reliable production systems.
 
-My focus is end to end ML systems at scale and strategic technology management. I care about clean architecture, robust model deployment, and strong monitoring and governance once systems are in production. I work closely with business and product leaders to make sure investments in AI and analytics translate into clear, measurable value for the organisation.
+My technical work centres on probabilistic time series forecasting, Bayesian modelling and production MLOps, shared as open-source tools such as [Twiga](https://sambaiga.github.io/twiga-docs/). I care about clean architecture, robust deployment, and monitoring and governance once systems are live. I work with business and product leaders to align technology roadmaps and AI investments with the value they are meant to create.
 
-I also spend much of my time mentoring engineers and collaborating with product and operations teams so that ML work stays aligned with real world problems and long term strategy.
+I also mentor engineers and work with product and operations teams so that the work stays close to the needs of its users.
 
 Alongside my industry role, I am active in research and development. I collaborate with [Lucas Pereira](https://www.alspereira.info/) at ITI, LARSyS, Técnico Lisboa on machine learning and data analytics solutions for clean energy systems and the broader energy transition.
 
