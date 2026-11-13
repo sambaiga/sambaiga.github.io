@@ -4,6 +4,7 @@
 
 - title: Kobe
   area: tooling
+  logo: ../../images/projects/kobe.svg
   description: Foundation for new Python projects, with a library profile and an experiment profile, a project generator and the coding standards shared by every repository.
   status: Active
   year: 2026
@@ -18,7 +19,7 @@
   pypi: https://pypi.org/project/popo-flow/
   docs: https://sambaiga.github.io/popo-docs/
 - title: Milia
-  area: energy
+  area: analysis
   logo: ../../images/projects/milia.svg
   description: "Cluster, rank and detect in time series: scikit-learn estimators that group similar load profiles, retrieve the most similar cases and flag abnormal days at a chosen false-alarm rate."
   status: Active
@@ -31,7 +32,7 @@
   logo: ../../images/projects/twiga.svg
   description: A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision.
   status: Active
-  year: 2024
+  year: 2025
   updated: 2026-11
   pypi: https://pypi.org/project/twiga/
   docs: https://sambaiga.github.io/twiga-docs/
