@@ -1,0 +1,30 @@
+```{=html}
+<% items.forEach((book, i) => { %>
+<article class="book-card book-card--<%= book.variant %> animated fadeInUp" style="animation-delay: <%= ((i + 1) * 0.15).toFixed(2) %>s;">
+  <div class="book-card-header">
+    <div class="book-icon"><i class="bi bi-<%= book.icon %>"></i></div>
+    <div class="book-card-header-meta">
+      <span class="book-genre"><%= book.genre %></span>
+      <span class="book-year"><%= book.year %></span>
+    </div>
+  </div>
+  <div class="book-card-body">
+    <div class="book-card-title"><%= book.title %></div>
+    <div class="book-card-subtitle"><%= book.subtitle %></div>
+    <div class="book-card-description"><p><%= book.description %></p></div>
+    <div class="book-card-meta">
+      <span class="book-card-status"><i class="bi bi-<%= book.status_icon %>"></i> <%= book.status_label %></span>
+      <span><i class="bi bi-journal-text"></i> <%= book.chapters %></span>
+    </div>
+    <div class="book-tags">
+<% (Array.isArray(book.tags) ? book.tags : []).forEach((tag) => { %>
+      <span class="book-tag"><%= tag %></span>
+<% }) %>
+    </div>
+    <div class="book-card-links">
+      <a href="<%= book.url %>" class="book-link" title="Read <%= book.title %> online" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read Online</a>
+    </div>
+  </div>
+</article>
+<% }) %>
+```

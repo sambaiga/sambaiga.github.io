@@ -9,6 +9,9 @@ on:
       - 'assets/**'
       - 'images/**'
       - 'index.qmd'
+      - 'files/**'
+      - 'data/**'
+      - '_variables.yml'
       - '_quarto.yml'
       - '.github/workflows/build-and-deploy.yml'
   workflow_dispatch:
@@ -31,14 +34,16 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.8.26
 
       - name: Validate before build
         run: |
           echo "🔍 Running validation checks..."
           chmod +x scripts/*.sh
-          bash scripts/validate_quarto.sh pages/**/*.qmd || exit 1
-          bash scripts/validate_bib.sh $(find . -name "*.bib") || true
-          bash scripts/validate_images.sh pages/**/*.qmd || exit 1
+          bash scripts/validate_quarto.sh $(find pages -name "*.qmd") || exit 1
+          bash scripts/validate_bib.sh $(find pages -name "*.bib") || true
+          bash scripts/validate_images.sh $(find pages -name "*.qmd") || exit 1
           echo "✓ All validations passed"
 
       - name: Build site
@@ -55,7 +60,7 @@ jobs:
           retention-days: 1
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site

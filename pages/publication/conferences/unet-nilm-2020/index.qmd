@@ -24,10 +24,10 @@ description: |
 pub-info:
   links:
     - name: PDF
-      url: "../../files/papers/UNetNILM.pdf"
+      url: "../../files/papers/inilm-multitask.pdf"
       icon: file-earmark-pdf
     - name: Link
-      url: "https://dl.acm.org/doi/10.1145/3427773.3427866"
+      url: "https://dl.acm.org/doi/10.1145/3427771.3427859"
       icon: journal-text
     - name: Code
       url: "https://github.com/sambaiga/UNETNiLM"
@@ -37,11 +37,11 @@ pub-info:
     "UNet-NILM: A deep neural network for multi-tasks appliances state detection and power
     estimation in NILM," <em>Proceedings of the 5th International Workshop on Non-Intrusive
     Appliance Load Monitoring, BuildSys 2020, Virtual Event,</em> 2020, doi:
-    <a href="https://dl.acm.org/doi/10.1145/3427773.3427866"><code>10.1145/3427773.3427866</code></a>
+    <a href="https://dl.acm.org/doi/10.1145/3427771.3427859"><code>10.1145/3427771.3427859</code></a>
 
 status: Published
 featured: false
-doi: "10.1145/3427773.3427866"
+doi: "10.1145/3427771.3427859"
 
 author:
   - name: Anthony Faustine
