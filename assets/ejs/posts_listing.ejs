@@ -34,7 +34,7 @@
 <p class="pubs-stats"><%= items.length %> posts <span>·</span> <%= topics.length %> topics <span>·</span> <a class="wr-rss" href="index.xml"><i class="bi bi-rss"></i>RSS</a></p>
 
 <article class="wr-hero" data-item data-topic="<%= topicOf(hero) %>">
-  <a class="wr-hero-cover<%= isFigure(hero) ? ' wr-figure' : '' %>" href="<%- hero.path %>" tabindex="-1">
+  <a class="wr-hero-cover<%= isFigure(hero) ? ' wr-figure' : '' %>" href="<%- hero.path %>" tabindex="-1" aria-hidden="true">
     <img src="<%= hero.image || FALLBACK %>" alt="" loading="lazy" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
   </a>
   <div class="wr-hero-body">
@@ -60,7 +60,7 @@
 <div class="wr-grid" data-group>
 <% grid.forEach((p) => { %>
   <article class="wr-card" data-item data-topic="<%= topicOf(p) %>">
-    <a class="wr-cover<%= isFigure(p) ? ' wr-figure' : '' %>" href="<%- p.path %>" tabindex="-1">
+    <a class="wr-cover<%= isFigure(p) ? ' wr-figure' : '' %>" href="<%- p.path %>" tabindex="-1" aria-hidden="true">
       <img src="<%= p.image || FALLBACK %>" alt="" loading="lazy" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
       <span class="wr-badges">
         <span><%= topicOf(p) %></span>
@@ -75,7 +75,7 @@
 <% if (p.description) { %>
       <p class="wr-excerpt"><%= p.description %></p>
 <% } %>
-      <a class="wr-more" href="<%- p.path %>">Read more <i class="bi bi-arrow-right"></i></a>
+      <a class="wr-more" href="<%- p.path %>">Read more<span class="visually-hidden"> about <%= p.title %></span> <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
     </div>
   </article>
 <% }) %>

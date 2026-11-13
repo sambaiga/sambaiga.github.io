@@ -18,7 +18,8 @@
 
   .wr-rss {
     color: var(--ls-accent) !important;
-    text-decoration: none !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.18em;
 
     .bi {
       margin-right: 0.3rem;

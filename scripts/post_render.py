@@ -1,10 +1,12 @@
 """Clean up the rendered site after Quarto has written it.
 
-Two things, both about what a page asks of the reader's browser:
+Three things, all about what a page asks of the reader's browser:
 
 * Quarto writes a few small icons (such as the licence icon of the footer) as inline ``data:`` images without an
   ``alt`` attribute. A screen reader then announces the file name, so each one gets an empty ``alt``. Images that
   point to a file are never touched: they need real text, and the audit fails when it is missing.
+* Quarto puts ``role="menu"`` on the button that opens the navbar on a phone. A button already has a role, and the
+  extra one is announced wrongly, so it is removed.
 * The Bootswatch themes (cosmo and darkly) start their CSS with an ``@import`` of a Google font. The site serves its
   own fonts (``assets/fonts``), so the import is removed and no page contacts a font service.
 
@@ -18,6 +20,7 @@ import re
 from pathlib import Path
 
 IMAGE = re.compile(r"<img\b(?![^>]*\balt=)([^>]*\bsrc=\"data:[^>]*)>")
+TOGGLER = re.compile(r'(<button class="navbar-toggler[^>]*?) role="menu"')
 FONT_IMPORT = re.compile(r"@import\s*(?:url\()?\s*[\"']https://fonts\.googleapis\.com[^\"')]*[\"']?\)?\s*;?")
 
 
@@ -27,7 +30,7 @@ def main() -> None:
     pages = styles = 0
     for page in root.rglob("*.html"):
         text = page.read_text(encoding="utf-8")
-        patched = IMAGE.sub(r'<img alt=""\1>', text)
+        patched = TOGGLER.sub(r"\1", IMAGE.sub(r'<img alt=""\1>', text))
         if patched != text:
             page.write_text(patched, encoding="utf-8")
             pages += 1
