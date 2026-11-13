@@ -3,6 +3,7 @@ title: "The Hype vs. The Kernel: Why Your AI Strategy is Failing"
 subtitle: "Part 1: Why Standard Strategy Breaks on AI, and What to Build Instead"
 date: 2026-03-28
 draft: false
+featured: true
 description: "AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt's strategic kernel and technology roadmapping to diagnose why and shows you the framework for building an AI strategy that is genuinely coherent rather than merely busy."
 
 image: "crux_kernel.png"

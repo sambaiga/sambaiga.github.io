@@ -76,4 +76,41 @@ body.quarto-dark {
     background: linear-gradient(180deg, #1e293b 0%, #162033 100%);
     box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(56, 189, 248, 0.08);
   }
+
+  // Tables: transparent rows, a slate header, light text
+  .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: #e2e8f0;
+    --bs-table-striped-bg: rgba(148, 163, 184, 0.08);
+    --bs-table-border-color: #334155;
+    background: transparent !important;
+    color: #e2e8f0;
+
+    tbody tr,
+    tr.odd,
+    tr.even {
+      background: transparent !important;
+    }
+
+    tbody tr.odd {
+      background: rgba(148, 163, 184, 0.08) !important;
+    }
+
+    td,
+    td strong {
+      color: #e2e8f0 !important;
+    }
+
+    thead,
+    thead th {
+      background: #1e3a5f !important;
+      color: #f1f5f9 !important;
+    }
+  }
+
+  // Figure captions styled inline for a white page
+  p[style*="color: #555"],
+  p[style*="color:#555"] {
+    color: #94a3b8 !important;
+  }
 }
