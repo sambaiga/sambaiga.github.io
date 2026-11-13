@@ -1,345 +1,498 @@
 /*-- scss:pages/books --*/
 
 // =====================================================
-// BOOKS PAGE — mirrors project timeline branding
+// BOOKS PAGE: a featured book on a dark panel, then a shelf of cards.
+// Colours are the site palette: slate #1e293b, deep #0f172a, blue #0369a1,
+// sky #38bdf8 and orange #e26029. Markup: assets/ejs/books_listing.ejs
 // =====================================================
-
-$book-card-border-radius: 6px;
-$book-icon-size: 52px;
-$book-icon-inner: 28px;
 
 .books-page {
   background: $gray-100;
-}
 
-.books-header {
-  text-align: center;
-  margin-bottom: $spacer-6;
+  .books-header {
+    max-width: 64rem;
+    margin: 0 auto $spacer-5;
 
-  p {
-    text-align: center;
-    font-size: $font-size-lg;
-    color: $gray-700;
-    margin-bottom: $spacer-6;
-  }
-}
-
-// =====================================================
-// GRID LAYOUT
-// =====================================================
-
-.books-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $spacer-5;
-  margin: $spacer-5 auto;
-  padding: 0 $section-padding-x;
-  width: 100%;
-
-  @media (min-width: $breakpoint-lg) {
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-    max-width: 1100px;
-  }
-}
-
-// =====================================================
-// BOOK CARD — adapts timeline-event content box style
-// =====================================================
-
-.book-card {
-  background: $white;
-  border-radius: $book-card-border-radius;
-  box-shadow: $shadow-base;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-
-  opacity: 0;
-  animation: fadeInUp $animation-duration-slow $animation-timing-ease-out forwards;
-
-  &:hover {
-    box-shadow: $shadow-hover;
-    transform: $transform-hover-lift;
+    p {
+      margin: 0;
+      font-size: $font-size-lg;
+      color: #475569;
+      text-align: left;
+    }
   }
 
-  @media (min-width: $breakpoint-lg) {
-    flex: 1;
-    max-width: 520px;
-  }
-}
-
-// =====================================================
-// CARD HEADER — mirrors timeline-date + timeline-icon
-// =====================================================
-
-.book-card-header {
-  display: flex;
-  align-items: center;
-  gap: $spacer-3;
-  padding: $spacer-3 $spacer-4;
-  color: $white;
-}
-
-.book-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: $book-icon-size;
-  height: $book-icon-size;
-  border-radius: 50%;
-  background: rgba($white, 0.2);
-  flex-shrink: 0;
-  box-shadow: $shadow-sm;
-
-  i {
-    font-size: $book-icon-inner;
-  }
-}
-
-.book-card-header-meta {
-  display: flex;
-  flex-direction: column;
-  gap: $spacer-1;
-}
-
-.book-genre {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-semibold;
-  text-transform: uppercase;
-  letter-spacing: $letter-spacing-wider;
-  color: rgba($white, 0.85);
-}
-
-.book-year {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  color: $white;
-  line-height: $line-height-tight;
-}
-
-// Primary variant — matches timeline-event Active ($primary)
-.book-card--primary .book-card-header {
-  background: $primary;
-}
-
-// Accent variant — matches timeline-event Maintained ($ai-accent)
-.book-card--accent .book-card-header {
-  background: $ai-accent;
-}
-
-// Energy variant — for energy/grid-focused work ($energy-accent)
-.book-card--energy .book-card-header {
-  background: $energy-accent;
-}
-
-// =====================================================
-// CARD BODY — mirrors timeline-content interior
-// =====================================================
-
-.book-card-body {
-  padding: $spacer-3 $spacer-4;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: $spacer-3;
-}
-
-// Mirrors .timeline-title
-.book-card-title {
-  font-size: $font-size-lg;
-  line-height: $headings-line-height;
-  text-transform: uppercase;
-  font-weight: $font-weight-semibold;
-  letter-spacing: $letter-spacing-wider;
-  margin-bottom: 0;
-}
-
-.book-card-subtitle {
-  font-size: $font-size-sm;
-  color: $gray-600;
-  line-height: $line-height-snug;
-  margin-top: calc(#{$spacer-1} * -1);
-}
-
-// Mirrors .timeline-description
-.book-card-description {
-  font-size: $font-size-base;
-  color: $gray-700;
-  line-height: $body-line-height;
-
-  p { margin: 0; }
-}
-
-// Mirrors .timeline-meta
-.book-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacer-3;
-  font-size: $font-size-sm;
-  color: $gray-600;
-}
-
-// Mirrors .timeline-status
-.book-card-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-
-  i { font-size: 0.9rem; }
-}
-
-// Tags
-.book-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacer-2;
-}
-
-.book-tag {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  padding: $spacer-1 $spacer-3;
-  border-radius: $border-radius-full;
-  background: rgba($primary, $opacity-05);
-  color: $primary;
-  border: $border-width-1 solid rgba($primary, $opacity-10);
-}
-
-.book-card--accent .book-tag {
-  background: rgba($ai-accent, $opacity-05);
-  color: $ai-accent;
-  border-color: rgba($ai-accent, $opacity-10);
-}
-
-.book-card--energy .book-tag {
-  background: rgba($energy-accent, $opacity-05);
-  color: $energy-accent;
-  border-color: rgba($energy-accent, $opacity-10);
-}
-
-// Mirrors .timeline-links / .timeline-link
-.book-card-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacer-2;
-  margin-top: $spacer-1;
-  padding-top: $spacer-3;
-  border-top: $border-width-1 solid $border-color-light;
-}
-
-.book-link {
-  display: inline-flex;
-  align-items: center;
-  gap: $spacer-1;
-  padding: $spacer-2 $spacer-3;
-  background: rgba($primary, $opacity-05);
-  border-radius: $border-radius;
-  text-decoration: none;
-  color: $primary;
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  transition: $shadow-transition,
-              color 0.15s ease-in-out,
-              transform 0.15s ease-in-out;
-  border: $border-width-1 solid transparent;
-
-  i { font-size: $font-size-sm; }
-
-  &:hover {
-    background: $primary;
-    color: $white;
-    transform: $transform-hover-lift;
-    text-decoration: none;
-  }
-}
-
-.book-card--accent .book-link {
-  background: rgba($ai-accent, $opacity-05);
-  color: $ai-accent;
-
-  &:hover {
-    background: $ai-accent;
-    color: $white;
-  }
-}
-
-.book-card--energy .book-link {
-  background: rgba($energy-accent, $opacity-05);
-  color: $energy-accent;
-
-  &:hover {
-    background: $energy-accent;
-    color: $white;
-  }
-}
-
-// Status color variants — mirrors timeline-event type variants
-.book-card--primary {
-  .book-card-title  { color: $primary; }
-  .book-card-status { color: $energy-accent; }
-}
-
-.book-card--accent {
-  .book-card-title  { color: $ai-accent; }
-  .book-card-status { color: $success; }
-}
-
-.book-card--energy {
-  .book-card-title  { color: $energy-accent; }
-  .book-card-status { color: $primary; }
-}
-
-// =====================================================
-// RESPONSIVE
-// =====================================================
-
-@media (max-width: $breakpoint-md) {
   .books-grid {
-    padding: 0 $spacer-3;
-  }
-}
-
-// =====================================================
-// DARK MODE
-// =====================================================
-
-[data-bs-theme="dark"] {
-  .books-page   { background: $dark-body-bg; }
-
-  .book-card {
-    background: lighten($dark-body-bg, 5%);
-    box-shadow: $shadow-md;
+    max-width: 64rem;
+    margin: 0 auto $spacer-6;
+    padding: 0;
   }
 
-  .book-card-description { color: $gray-400; }
-  .book-card-subtitle    { color: $gray-500; }
-  .book-card-meta        { color: $gray-500; }
-
-  .book-tag {
-    background: rgba($primary, $opacity-15);
-    color: lighten($primary, 30%);
-    border-color: rgba($primary, $opacity-25);
+  .bk[hidden] {
+    display: none !important;
   }
 
-  .book-card--accent .book-tag {
-    background: rgba($ai-accent, $opacity-15);
-    color: lighten($ai-accent, 20%);
-    border-color: rgba($ai-accent, $opacity-25);
+  // ---------- Filter and search (shown above six books) ----------
+
+  .bk-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .book-card--energy .book-tag {
-    background: rgba($energy-accent, $opacity-15);
-    color: lighten($energy-accent, 20%);
-    border-color: rgba($energy-accent, $opacity-25);
+  .bk-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    a {
+      padding: 0.3rem 0.75rem;
+      border: 1px solid #d5e2ec;
+      border-radius: 999px;
+      background: #fff;
+      font-size: 0.82rem;
+      color: #1e293b;
+      text-decoration: none;
+
+      span {
+        margin-left: 0.2rem;
+        color: #475569;
+      }
+
+      &:hover,
+      &.active {
+        border-color: #1e293b;
+      }
+
+      &.active {
+        background: #1e293b;
+        color: #fff;
+
+        span {
+          color: #cbd5e1;
+        }
+      }
+    }
   }
 
-  .book-card-links {
-    border-top-color: $gray-700;
+  .bk-search {
+    min-width: 13rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #d5e2ec;
+    border-radius: 0.35rem;
+    font-size: 0.9rem;
+    background: #fff;
+  }
+
+  .bk-empty {
+    color: #475569;
+  }
+
+  // ---------- The book cover, drawn in CSS ----------
+
+  .bk-art {
+    --art-from: #334155;
+    --art-to: #0f172a;
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 3px 9px 9px 3px;
+    background: linear-gradient(155deg, var(--art-from), var(--art-to));
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.25), 0 14px 26px -10px rgba(15, 23, 42, 0.55);
+    transform: perspective(1000px) rotateY(-14deg);
+    transform-origin: left center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+    // The spine: a lit edge, a crease and a soft shadow.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 7%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.04) 55%, rgba(0, 0, 0, 0.18));
+      border-right: 1px solid rgba(0, 0, 0, 0.18);
+    }
+
+    &--energy {
+      --art-from: #0369a1;
+      --art-to: #0c4a6e;
+    }
+
+    &--accent {
+      --art-from: #e26029;
+      --art-to: #983d21;
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // A large icon as a watermark on covers without artwork.
+    .bk-art-icon {
+      position: absolute;
+      right: -10%;
+      bottom: -3%;
+      font-size: 8.5rem;
+      line-height: 1;
+      color: #fff;
+      opacity: 0.13;
+    }
+
+    .bk-art-title {
+      position: absolute;
+      top: 9%;
+      left: 15%;
+      right: 9%;
+      font-family: $headings-font-family;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 1.5vw + 0.35rem, 1.15rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(15, 23, 42, 0.55);
+    }
+
+    .bk-art-author {
+      position: absolute;
+      left: 15%;
+      bottom: 5%;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  a:hover .bk-art,
+  a:focus-visible .bk-art {
+    transform: perspective(1000px) rotateY(-3deg) translateY(-5px);
+    box-shadow: 0 2px 3px rgba(15, 23, 42, 0.25), 0 22px 34px -10px rgba(15, 23, 42, 0.6);
+  }
+
+  // ---------- Status pill, tags, buttons (shared) ----------
+
+  .bk-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #e0f2fe;
+    color: #075985;
+
+    &--available {
+      background: #dcfce7;
+      color: #166534;
+    }
+  }
+
+  .bk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    span {
+      padding: 0.1rem 0.6rem;
+      border-radius: 999px;
+      background: #eef2f6;
+      color: #1e293b;
+      font-size: 0.75rem;
+    }
+  }
+
+  .bk-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    border-radius: 0.4rem;
+    background: #1e293b;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background: #e26029;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .bi {
+      color: inherit !important;
+    }
+  }
+
+  .bk-meta {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.82rem;
+    color: #475569;
+  }
+
+  .bk-subtitle,
+  .bk-description {
+    text-align: left;
+  }
+
+  // ---------- Featured book ----------
+
+  .bk--hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: 2.75rem;
+    align-items: center;
+    padding: 2.25rem 2.5rem;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #e2e8f0;
+    box-shadow: 0 18px 40px -22px rgba(15, 23, 42, 0.7);
+
+    // A soft blue glow behind the text.
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -30% -10% auto auto;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3, 105, 161, 0.5), transparent 65%);
+      pointer-events: none;
+    }
+
+    > * {
+      position: relative;
+    }
+
+    .bk-hero-cover {
+      display: block;
+      padding-left: 0.4rem;
+    }
+
+    .bk-kicker {
+      margin: 0 0 0.6rem !important;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #38bdf8 !important;
+      text-align: left;
+
+      span {
+        margin-left: 0.5rem;
+        color: #94a3b8 !important;
+        letter-spacing: 0.04em;
+      }
+    }
+
+    h2 {
+      margin: 0 0 0.3rem !important;
+      padding: 0 !important;
+      border: 0 !important;
+      font-size: clamp(1.5rem, 2.4vw + 0.6rem, 2.1rem);
+      line-height: 1.15;
+      color: #fff !important;
+    }
+
+    .bk-subtitle {
+      margin: 0 0 1rem !important;
+      font-size: 1.02rem;
+      color: #cbd5e1 !important;
+    }
+
+    .bk-description {
+      margin: 0 0 1.1rem !important;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #cbd5e1 !important;
+    }
+
+    .bk-tags {
+      margin-bottom: 1.5rem;
+
+      span {
+        background: rgba(148, 163, 184, 0.16);
+        color: #e2e8f0;
+      }
+    }
+
+    .bk-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem 1.4rem;
+    }
+
+    .bk-link {
+      background: #e26029;
+
+      &:hover {
+        background: #f07a45;
+      }
+    }
+
+    .bk-meta,
+    .bk-meta span {
+      color: #94a3b8 !important;
+    }
+
+    .bk-status {
+      background: rgba(56, 189, 248, 0.16);
+      color: #7dd3fc !important;
+
+      &--available {
+        background: rgba(74, 222, 128, 0.16);
+        color: #86efac !important;
+      }
+    }
+  }
+
+  // ---------- The shelf ----------
+
+  .bk-shelf-title {
+    margin: 0 0 1.1rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #475569;
+  }
+
+  .bk-shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 27rem), 1fr));
+    gap: 1.5rem;
+
+    .bk {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 1.5rem;
+      border: 1px solid #d5e2ec;
+      border-radius: 12px;
+      background: #fff;
+      transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+
+      &:hover {
+        border-color: #94a3b8;
+        box-shadow: 0 14px 28px -16px rgba(15, 23, 42, 0.35);
+        transform: translateY(-3px);
+      }
+    }
+
+    .bk-card-cover {
+      display: block;
+      padding-left: 0.25rem;
+    }
+
+    .bk-card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .bk-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.7rem;
+    }
+
+    .bk-year {
+      font-size: 0.85rem;
+      color: #475569;
+      font-variant-numeric: tabular-nums;
+    }
+
+    h3 {
+      margin: 0 0 0.3rem !important;
+      padding: 0;
+      font-size: 1.15rem;
+      line-height: 1.3;
+
+      a {
+        color: #1e293b !important;
+        text-decoration: none !important;
+        border-bottom: 0 !important;
+
+        &:hover {
+          color: #0369a1 !important;
+        }
+      }
+    }
+
+    .bk-subtitle {
+      margin: 0 0 0.9rem !important;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .bk-tags {
+      margin-bottom: 1.1rem;
+    }
+
+    .bk-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem 1rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #eef2f6;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .bk--hero {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding: 1.75rem 1.4rem;
+    }
+
+    .bk--hero .bk-hero-cover {
+      width: 12rem;
+      margin: 0 auto;
+    }
+
+    .bk-shelf .bk {
+      grid-template-columns: 5.5rem 1fr;
+      gap: 1rem;
+      padding: 1.1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bk-art,
+    .bk-link,
+    .bk-shelf .bk {
+      transition: none;
+    }
+
+    a:hover .bk-art,
+    a:focus-visible .bk-art,
+    .bk-shelf .bk:hover {
+      transform: none;
+    }
   }
 }

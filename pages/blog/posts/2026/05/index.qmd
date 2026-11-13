@@ -10,7 +10,6 @@ twitter-card:
 open-graph:
     image: "ai_bmi_framework.png"
 
-title-block-banner: banner.jpg
 
 categories:
   - AI Strategy

@@ -8,6 +8,9 @@ on:
       - 'assets/**'
       - 'files/**'
       - 'images/**'
+      - 'index.qmd'
+      - '_quarto.yml'
+      - '_variables.yml'
       - '.github/workflows/pr-validation.yml'
 
 jobs:
@@ -28,7 +31,7 @@ jobs:
       - name: Validate Quarto YAML frontmatter
         run: |
           echo "🔍 Validating Quarto YAML frontmatter..."
-          bash scripts/validate_quarto.sh pages/**/*.qmd
+          bash scripts/validate_quarto.sh $(find pages -name "*.qmd")
         continue-on-error: false
 
       - name: Validate Bibliography files
@@ -44,8 +47,22 @@ jobs:
       - name: Validate Image assets
         run: |
           echo "🔍 Validating image assets..."
-          bash scripts/validate_images.sh pages/**/*.qmd
+          bash scripts/validate_images.sh $(find pages -name "*.qmd")
         continue-on-error: false
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.8.26
+
+      - name: Test render
+        run: quarto render
+
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --include-fragments --exclude-path _site/search.json '_site/**/*.html'
+          fail: false
 
       - name: Check blog post structure
         run: |
