@@ -3,6 +3,11 @@ project:
   output-dir: _site
   pre-render: 
     - bash assets/bash/generate_thumbs.sh
+  render:
+    - "*.qmd"
+    - "pages/**/*.qmd"
+    - "pages/**/*.ipynb"
+    - "!pages/project/"
  
   preview: 
     port: 5556
@@ -16,7 +21,6 @@ project:
     - "images/**"
     - "data/**"
     - "files/**"
-    - "posts/**"
 
     # Things that need to be at the site root
     - "pgp_ath.asc.txt"

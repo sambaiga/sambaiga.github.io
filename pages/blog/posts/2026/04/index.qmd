@@ -4,11 +4,11 @@ subtitle: "Part 2: A Five-Step Roadmapping Process and How to Spot a Bad AI Stra
 date: 2026-03-29
 description: "Knowing what the strategic kernel requires is not enough. This post walks through a five-step AI roadmapping process built around Rumelt's kernel and gives you the diagnostic tools to recognise a bad AI strategy before it costs you."
 
-image: "cover.png"
+image: "cover.jpg"
 twitter-card:
-    image: "cover.png"
+    image: "cover.jpg"
 open-graph:
-    image: "cover.png"
+    image: "cover.jpg"
 
 title-block-banner: mirella-callage-Kile7-U74s0-unsplash.jpg
 
