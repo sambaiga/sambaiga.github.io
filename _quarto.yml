@@ -32,7 +32,7 @@ project:
 website:
   title: "Anthony Faustine"
   description: "Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology."
-  favicon: "/images/icons/favicon.ico"
+  favicon: "/images/brand/favicon.ico"
   site-url: "https://sambaiga.github.io"
   draft-mode: gone
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
@@ -52,6 +52,8 @@ website:
     site: "@sambaiga"
 
   navbar:
+    logo: "images/brand/badge.svg"
+    logo-alt: "sambaiga logo"
     pinned: true
     collapse: true
     left:
