@@ -22,7 +22,7 @@ toc: false
 ---
 
 <div class="books-header">
-<p>Writing that bridges technical depth and human flourishing</p>
+<p>Books on machine learning for energy systems, data science practice and relationships.</p>
 </div>
 
 <div class="books-grid">

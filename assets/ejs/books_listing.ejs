@@ -1,28 +1,22 @@
 ```{=html}
-<% items.forEach((book, i) => { %>
-<article class="book-card book-card--<%= book.variant %> animated fadeInUp" style="animation-delay: <%= ((i + 1) * 0.15).toFixed(2) %>s;">
-  <div class="book-card-header">
-    <div class="book-icon"><i class="bi bi-<%= book.icon %>"></i></div>
-    <div class="book-card-header-meta">
-      <span class="book-genre"><%= book.genre %></span>
-      <span class="book-year"><%= book.year %></span>
+<% items.forEach((book) => { %>
+<article class="bk bk--<%= book.variant %>">
+  <div class="bk-cover"><i class="bi bi-<%= book.icon %>"></i></div>
+  <div class="bk-body">
+    <div class="bk-top">
+      <h3><%= book.title %></h3>
+      <span class="bk-year"><%= book.year %></span>
     </div>
-  </div>
-  <div class="book-card-body">
-    <div class="book-card-title"><%= book.title %></div>
-    <div class="book-card-subtitle"><%= book.subtitle %></div>
-    <div class="book-card-description"><p><%= book.description %></p></div>
-    <div class="book-card-meta">
-      <span class="book-card-status"><i class="bi bi-<%= book.status_icon %>"></i> <%= book.status_label %></span>
-      <span><i class="bi bi-journal-text"></i> <%= book.chapters %></span>
-    </div>
-    <div class="book-tags">
+    <p class="bk-subtitle"><%= book.subtitle %></p>
+    <p class="bk-description"><%= book.description %></p>
+    <div class="bk-tags">
 <% (Array.isArray(book.tags) ? book.tags : []).forEach((tag) => { %>
-      <span class="book-tag"><%= tag %></span>
+      <span><%= tag %></span>
 <% }) %>
     </div>
-    <div class="book-card-links">
-      <a href="<%= book.url %>" class="book-link" title="Read <%= book.title %> online" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read Online</a>
+    <div class="bk-foot">
+      <p class="bk-meta"><i class="bi bi-<%= book.status_icon %>"></i><%= book.status_label %><span><%= book.chapters %></span></p>
+      <a href="<%= book.url %>" class="bk-link" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read online</a>
     </div>
   </div>
 </article>
