@@ -13,10 +13,10 @@ what matters, and decides it with a real browser instead of guessing from text:
 * a selector the browser cannot parse is kept;
 * the icon font is cut down to the icons of the rules that are kept.
 
-Then the check: the computed style of every element is recorded on every page, in both schemes, before and after
-the purge (elements that already differ between two loads of the same page are left out). If a single value
-differs, the original files are put back and the script fails, so a purge can never change how the site looks, only
-how much of it is downloaded.
+Before anything is removed, every page must show a heading of level one. Then the check: the computed style of
+every element is recorded on every page, in both schemes, before and after the purge (elements that already differ
+between two loads of the same page are left out). If a single value differs, the original files are put back and
+the script fails, so a purge can never change how the site looks, only how much of it is downloaded.
 
 It needs Playwright, Chrome, tinycss2 and fonttools with brotli, so it runs in CI and when asked, not on every local
 preview.
@@ -136,6 +136,29 @@ def visit(root: Path, action) -> None:  # noqa: ANN001
                 page.wait_for_timeout(700)
                 action(scheme, str(path.relative_to(root)), page)
         browser.close()
+
+
+def pages_without_heading(root: Path) -> list[str]:
+    """Find pages whose heading of level one cannot be seen, which no check of the HTML alone can tell.
+
+    A page can have exactly one h1 in its source and still show none: Quarto 1.8 moves the first h1 of a page without a
+    title into the title block, and a rule that hides that block hides the heading with it.
+
+    Args:
+        root: The folder of the built site.
+
+    Returns:
+        One message for each page and colour scheme in which no h1 has a height.
+    """
+    problems: list[str] = []
+    script = "() => Array.from(document.querySelectorAll('h1')).some((h) => h.getBoundingClientRect().height > 0)"
+
+    def look(scheme: str, path: str, page) -> None:  # noqa: ANN001
+        if not page.evaluate(script):
+            problems.append(f"{path} ({scheme}): no heading of level one is visible")
+
+    visit(root, look)
+    return problems
 
 
 def script_words(root: Path) -> set[str]:
@@ -307,8 +330,14 @@ def purge(root: Path) -> int:
         root: The folder of the built site.
 
     Returns:
-        0 when the purge is kept, 1 when it was undone because the site would look different.
+        0 when the purge is kept, 1 when a page shows no heading or when it was undone because the site would look
+        different.
     """
+    hidden = pages_without_heading(root)
+    for message in hidden:
+        print(f"purge_css: {message}")
+    if hidden:
+        return 1
     sheets = sorted(root.glob("site_libs/bootstrap/*.css"))
     original = {sheet: sheet.read_text(encoding="utf-8") for sheet in sheets}
     parsed = {

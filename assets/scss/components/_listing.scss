@@ -239,15 +239,28 @@ body.quarto-dark {
 .books-page,
 .publications-page,
 .writing-page {
-  #title-block-header {
+  // Quarto 1.8 moves the first h1 of a page without a title into the title block, and Quarto 1.11 leaves it in the
+  // page, so the title block is neither hidden (the heading would go with it) nor left to its own width: it takes the
+  // column of the content, and disappears only when it holds no heading.
+  .quarto-title-block {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .quarto-title-block:not(:has(h1)) {
     display: none;
   }
 
   .quarto-listing {
     width: 100%;
-    max-width: 64rem;
+    max-width: 64rem !important;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .ls-title {
