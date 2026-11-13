@@ -8,7 +8,8 @@ The personal site of Anthony Faustine, built with [Quarto](https://quarto.org) a
 quarto preview            # live preview of the whole site
 make hooks                # install the git hooks once (pre-commit, commit-msg, pre-push)
 make check                # every hook on every file, then a full render
-make audit                # render, then audit the built site
+make purge                # remove unused CSS and icons from the built site (needs Chrome)
+make audit                # render, purge, then audit the built site
 make images               # resize images above their size limit
 ```
 
@@ -20,7 +21,8 @@ width, before a pull request is merged.
 - **On every commit** (hooks): conventional commit messages with no AI co-author trailer, secrets, large files, build
   output, web-sized images, front matter, spelling, Python scripts (ruff) and the workflows (zizmor).
 - **Before a push**: the whole site renders.
-- **On every pull request**: the hooks on the changed files, a full render, `scripts/audit_site.py` (language, title,
+- **On every pull request**: the hooks on the changed files, a full render, `scripts/purge_css.py` (removes the
+  unused CSS and icons and undoes itself if any element of any page would look different), `scripts/audit_site.py` (language, title,
   description, canonical link, share image, one h1, alt text, safe links, no outside imports) and a link check.
 - **Weekly**: the workflows and the repository are scanned for security problems.
 

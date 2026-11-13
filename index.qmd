@@ -10,6 +10,8 @@ format:
     include-in-header:
       - text: |
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="preload" href="/data/achievements.json" as="fetch" crossorigin>
+          <link rel="preload" href="/images/achievements/arts.jpg" as="image" fetchpriority="high">
     include-after-body:
       - text: |
           <script src="assets/js/home-carousel.js"></script>
