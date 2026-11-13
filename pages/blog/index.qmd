@@ -22,6 +22,6 @@ format:
           <script src="../../assets/js/listing-filter.js"></script>
 
 page-layout: full
-toc-location: right
+toc: false
 citation: false
 ---
