@@ -4,10 +4,10 @@ blog-listing-title: "Latest Articles"
 filter-active: true
 page-columns: true
 image-column: page
-format: 
+format:
   html:
     code-overflow: wrap
-    html-math-method: mathjax
+    html-math-method: mathml
     highlight-style: github
     body-classes: "blog"
     code-copy: true
@@ -21,8 +21,8 @@ format:
     reference-location: margin
     fig-cap-location: bottom
     smooth-scroll: true
-    
-    
+
+
 
 # Default for table of contents
 title-block-banner: true
@@ -37,13 +37,13 @@ author:
     url: https://sambaiga.github.io/
     orcid: 0000-0002-7838-533X
     affiliation: Analog Devices, Ireland.
-    
+
 citation: true
 appendix-cite-as: bibtex
 
 reading-time: true
-word-count: true  
-progress: true  
+word-count: true
+progress: true
 smooth-scroll: true
 sr-attributes: true
 engine: knitr
