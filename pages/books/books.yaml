@@ -5,6 +5,7 @@
   year: 2026
   genre: "Energy Systems & Machine Learning"
   icon: "diagram-3"
+  cover: "../../images/books/umeme-cover.svg"
   variant: "energy"
   status: "in-progress"
   status_label: "In Progress"

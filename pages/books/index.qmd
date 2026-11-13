@@ -11,7 +11,7 @@ listing:
   sort: false
   page-size: 100
   max-description-length: 600
-  fields: [title, subtitle, description, year, genre, icon, variant, status_label, status_icon, tags, chapters, url]
+  fields: [title, subtitle, description, author, year, genre, icon, cover, variant, status, status_label, status_icon, tags, chapters, url]
 
 format:
   html:
