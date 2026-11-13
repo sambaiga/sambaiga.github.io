@@ -22,7 +22,7 @@
 <% } %>
 
 <article class="bk bk--hero" data-genre="<%= hero.genre %>">
-  <a class="bk-hero-cover" href="<%= hero.url %>" target="_blank" rel="noopener" tabindex="-1">
+  <a class="bk-hero-cover" href="<%= hero.url %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
     <div class="bk-art bk-art--<%= hero.variant %>" aria-hidden="true">
 <% if (hero.cover) { %>
       <img src="<%= hero.cover %>" alt="" loading="lazy">
@@ -58,7 +58,7 @@
 <div class="bk-shelf">
 <% shelf.forEach((book) => { %>
 <article class="bk" data-genre="<%= book.genre %>">
-  <a class="bk-card-cover" href="<%= book.url %>" target="_blank" rel="noopener" tabindex="-1">
+  <a class="bk-card-cover" href="<%= book.url %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
     <div class="bk-art bk-art--<%= book.variant %>" aria-hidden="true">
 <% if (book.cover) { %>
       <img src="<%= book.cover %>" alt="" loading="lazy">

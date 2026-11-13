@@ -104,6 +104,7 @@ format:
       light: [cosmo, assets/twiga.scss]
       dark: [darkly, assets/twiga-dark.scss]
     respect-user-color-scheme: true
+    html-math-method: mathml
     canonical-url: true
     self-contained: false
     embed-resources: false

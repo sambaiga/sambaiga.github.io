@@ -47,7 +47,7 @@
 <% } else { %>
           <span class="tl-logo tl-logo--icon"><i class="bi bi-<%= (areas.find((a) => a.id === p.area) || {}).icon || 'box' %>"></i></span>
 <% } %>
-          <h3><%= p.title %></h3>
+          <h2><%= p.title %></h2>
           <span class="tl-area"><%= areaTitle[p.area] %></span>
         </div>
         <p class="tl-description"><%= p.description %></p>

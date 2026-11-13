@@ -2,8 +2,9 @@
 
 Every page is read once. A page fails the audit when it lacks something a browser, a search engine or a screen
 reader depends on: the language, a title, a description, a canonical address, a share image, the viewport, a single
-heading of level one, a text alternative for each image, or a safe ``rel`` on links that open a new tab. Softer
-findings (skipped heading levels, links without a name, third-party hosts) are reported as warnings.
+heading of level one, a text alternative for each image, a safe ``rel`` on links that open a new tab, or when it loads a
+script or style from a third party. Softer
+findings (skipped heading levels, links without a name) are reported as warnings.
 
 Usage:
     python3 scripts/audit_site.py _site
@@ -19,8 +20,8 @@ from pathlib import Path
 
 # Folders of the output that hold copied resources, not pages of the site.
 SKIP = ("assets", "docs", "files", "images", "_extensions", "site_libs")
-# Hosts that pages may load scripts from. Anything else is reported.
-ALLOWED_HOSTS = {"cdn.jsdelivr.net", "cdnjs.cloudflare.com"}
+# Hosts that pages may load scripts and styles from: the site itself only, so a page never depends on a third party.
+ALLOWED_HOSTS: set[str] = set()
 # Quarto writes a file of about 90 bytes for a draft page.
 STUB_BYTES = 500
 
@@ -151,7 +152,7 @@ def audit(path: Path) -> tuple[list[str], list[str]]:
         warnings.append(f"duplicate ids: {duplicates[:3]}")
     foreign = sorted(page.hosts - ALLOWED_HOSTS - {"sambaiga.github.io"})
     if foreign:
-        warnings.append(f"third-party hosts: {foreign}")
+        errors.append(f"third-party hosts: {foreign}")
     return errors, warnings
 
 
