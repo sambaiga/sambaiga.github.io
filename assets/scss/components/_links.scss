@@ -6,13 +6,13 @@
 
 // Base link styling
 a {
-  color: $primary;
+  color: $link-color;
   text-decoration: none;
   transition: color $animation-duration-fast $animation-timing-ease-in-out;
   position: relative;
 
   &:hover:not(.btn) {
-    color: $color-hover-dark;
+    color: $link-hover-color;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;

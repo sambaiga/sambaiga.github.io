@@ -9,6 +9,6 @@ page-size: 8
 
 format:
   html:
-    body-class: "publications-listing"  
+    body-classes: "paper-page"
     template-partials:
       - ../../assets/html/project_title_block.html

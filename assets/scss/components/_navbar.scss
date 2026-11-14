@@ -31,3 +31,70 @@
   border-radius: 8px;
   box-shadow: 0 0 0 1px var(--ls-border);
 }
+
+// The brand (badge and name) is never cut to "Antho..." on a phone
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  max-width: none;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.navbar-brand .navbar-logo {
+  flex: none;
+  width: auto;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-container {
+    flex-wrap: nowrap !important;
+  }
+
+  .navbar-container > .navbar-collapse:not(.show) {
+    flex: 0 0 0 !important;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .navbar-brand-container {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    margin-right: 0.25rem;
+  }
+
+  .quarto-navbar-tools {
+    flex: none;
+  }
+
+  .navbar-title {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .navbar-brand .navbar-logo {
+    height: 1.75rem;
+    width: 1.75rem !important;
+    min-width: 1.75rem;
+    max-width: none;
+    margin-right: 0.4rem;
+  }
+
+  .navbar-brand-container {
+    margin-right: 0.75rem;
+  }
+}
+
+
+// On a narrow phone the badge is the brand: the name would collide with the theme toggle and the search button
+@media (max-width: 440px) {
+  .navbar-brand .navbar-title {
+    display: none;
+  }
+
+  .navbar-brand-container {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}

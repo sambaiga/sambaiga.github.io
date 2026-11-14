@@ -23,6 +23,8 @@ $navbar-hl: #38BDF8;
 $navbar-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 $footer-fg: #CBD5E1;
 $footer-bg: #0B1220;
+$energy-accent: #38BDF8;
+$ai-accent: #38BDF8;
 @import 'scss/defaults';
 
 /*-- scss:animations --*/
@@ -58,6 +60,7 @@ $footer-bg: #0B1220;
 @import 'scss/pages/home';
 @import 'scss/pages/books';
 @import 'scss/pages/writing';
+@import 'scss/components/banner';
 
 // Dark-only overrides
 @import 'scss/dark';
