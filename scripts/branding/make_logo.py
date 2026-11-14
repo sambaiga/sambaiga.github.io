@@ -1,10 +1,8 @@
-"""Draw the sambaiga logo: one letter S and the five tools built around it.
+"""Draw the sambaiga logo: the name in Jost SemiBold followed by one orange full stop.
 
-The mark is the lowercase s of the wordmark font in a slate tile. Five dots rise from it, one for each tool of
-the family (kobe, milia, twiga, popo and umeme), so the badge reads as one author and one stack. Every colour
-is from the site and book palette: slate, blue and orange, with their tints. The wordmark
-is Jost SemiBold converted to outlines, with the dot of the i in orange, so no font is needed to view the files.
-The favicon keeps only the s and a single orange dot, because five dots do not survive at 16 pixels.
+The wordmark is converted to outlines, so no font is needed to view the files. The badge is the lowercase s and
+the same full stop in a round slate tile, used as avatar and favicon. Colours are the site and book palette:
+slate, blue and orange.
 
 The script writes the badge, the favicon, the wordmark and the lockup (badge plus wordmark) on light and dark
 backgrounds and in one colour, as SVG with PNG copies when ``rsvg-convert`` is installed, and ``favicon.ico``
@@ -18,7 +16,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import math
 import shutil
 import subprocess
 from functools import lru_cache
@@ -34,16 +31,6 @@ SLATE, ORANGE = "#1E293B", "#E26029"
 PAPER, NIGHT = "#F8FAFC", "#0F172A"
 WORD = "sambaiga"
 SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="{box}" fill="none">'
-
-# One dot per tool, from the slate, blue and orange families of the site and book palette, so the badge adds no
-# colour the site does not use. The order runs from the foundation (slate) to the book (orange).
-FAMILY = (
-    ("kobe", "#94A3B8"),
-    ("milia", "#81B4D0"),
-    ("twiga", "#38BDF8"),
-    ("popo", "#F0B094"),
-    ("umeme", ORANGE),
-)
 
 THEMES = {
     "light": {"ink": SLATE, "dot": ORANGE, "bg": PAPER},
@@ -105,7 +92,7 @@ def contours(
 
 
 def wordmark(font_file: Path, x: float, baseline: float, size: float, ink: str, dot: str) -> tuple[str, float]:
-    """Set the wordmark with the dot of the i in its own colour.
+    """Set the wordmark followed by a full stop in its own colour.
 
     Args:
         font_file: The wordmark font.
@@ -113,64 +100,58 @@ def wordmark(font_file: Path, x: float, baseline: float, size: float, ink: str, 
         baseline: Vertical position of the baseline.
         size: Font size in canvas units.
         ink: Colour of the letters.
-        dot: Colour of the dot of the i.
+        dot: Colour of the full stop.
 
     Returns:
-        SVG elements and the width of the wordmark.
+        SVG elements and the width of the wordmark including the full stop.
     """
-    parts, cursor = [], x
+    pieces, cursor = [], x
     for char in WORD:
         shapes, advance = contours(font_file, char, cursor, baseline, size)
-        if char == "i":
-            top = min(shapes, key=lambda shape: shape[1][1])
-            parts.extend(f'<path d="{shape[0]}" fill="{dot if shape is top else ink}"/>' for shape in shapes)
-        else:
-            # One path per glyph keeps the counters of b, a and g open.
-            parts.append(f'<path d="{" ".join(d for d, _ in shapes)}" fill="{ink}"/>')
+        # One path per glyph keeps the counters of b, a and g open.
+        pieces.append(" ".join(d for d, _ in shapes))
         cursor += advance
-    return "".join(parts), cursor - x
+    radius = size * 0.085
+    cx = cursor + radius * 0.6
+    stop = f'<circle cx="{cx:.1f}" cy="{baseline - radius:.1f}" r="{radius:.1f}" fill="{dot}"/>'
+    return f'<path d="{" ".join(pieces)}" fill="{ink}"/>{stop}', cx + radius - x
 
 
-def tile(font_file: Path, family: bool) -> str:
-    """Draw the slate tile with the s, on a 100 x 100 canvas.
+def tile(font_file: Path) -> str:
+    """Draw the round slate tile with the s and the full stop, on a 100 x 100 canvas.
 
     Args:
         font_file: The wordmark font.
-        family: Draw the five tool dots when true, a single orange dot when false.
 
     Returns:
         SVG elements.
     """
-    shapes, _ = contours(font_file, "s", 0, 0, 78)
-    left, top = min(s[1][0] for s in shapes), min(s[1][1] for s in shapes)
-    right, bottom = max(s[1][2] for s in shapes), max(s[1][3] for s in shapes)
-    dx, dy = 47 - (left + right) / 2, 56 - (top + bottom) / 2
+    shapes, advance = contours(font_file, "s", 0, 0, 84)
+    top = min(s[1][1] for s in shapes)
+    bottom = max(s[1][3] for s in shapes)
+    left = min(s[1][0] for s in shapes)
+    right = max(s[1][2] for s in shapes)
+    radius = 6.5
+    span = (right - left) + 4 + 2 * radius
+    dx, dy = 50 - span / 2 - left, 50 - (top + bottom) / 2
     glyph = f'<path d="{" ".join(d for d, _ in shapes)}" fill="#F1F5F9"/>'
-    out = [
-        f'<rect width="100" height="100" rx="22" fill="{SLATE}"/>',
-        f'<g transform="translate({dx:.1f} {dy:.1f})">{glyph}</g>',
-    ]
-    if family:
-        for i, (_, colour) in enumerate(FAMILY):
-            angle = math.radians(-84 + 15 * i)
-            cx, cy = 50 + 40 * math.cos(angle), 50 + 40 * math.sin(angle)
-            out.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{3.6 + 0.5 * i:.1f}" fill="{colour}"/>')
-    else:
-        out.append(f'<circle cx="76" cy="26" r="9" fill="{ORANGE}"/>')
-    return "".join(out)
+    stop = f'<circle cx="{right + 4 + radius:.1f}" cy="{bottom - radius:.1f}" r="{radius}" fill="{ORANGE}"/>'
+    return (
+        f'<circle cx="50" cy="50" r="50" fill="{SLATE}"/>'
+        f'<g transform="translate({dx:.1f} {dy:.1f})">{glyph}{stop}</g>'
+    )
 
 
-def badge(font_file: Path, family: bool = True) -> str:
-    """Build the square badge, used as avatar and, without the family dots, as favicon.
+def badge(font_file: Path) -> str:
+    """Build the round badge, used as avatar and favicon.
 
     Args:
         font_file: The wordmark font.
-        family: Draw the five tool dots.
 
     Returns:
         A complete SVG document.
     """
-    return f"{SVG.format(box='0 0 100 100')}{tile(font_file, family)}</svg>"
+    return f"{SVG.format(box='0 0 100 100')}{tile(font_file)}</svg>"
 
 
 def lockup(font_file: Path, theme: str, with_badge: bool, transparent: bool = True) -> str:
@@ -190,7 +171,7 @@ def lockup(font_file: Path, theme: str, with_badge: bool, transparent: bool = Tr
     text, width = wordmark(font_file, left, 80, 68, c["ink"], c["dot"])
     total = left + width + 14
     back = "" if transparent else f'<rect width="{total:.0f}" height="120" rx="12" fill="{c["bg"]}"/>'
-    mark = f'<g transform="translate(10 10)">{tile(font_file, family=theme != "mono")}</g>' if with_badge else ""
+    mark = f'<g transform="translate(10 10)">{tile(font_file)}</g>' if with_badge else ""
     return f"{SVG.format(box=f'0 0 {total:.0f} 120')}{back}{mark}{text}</svg>"
 
 
@@ -230,7 +211,7 @@ def main() -> None:
     font_file = args.fonts / "Jost-SemiBold.ttf"
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "badge.svg").write_text(badge(font_file))
-    (args.out / "favicon.svg").write_text(badge(font_file, family=False))
+    (args.out / "favicon.svg").write_text(badge(font_file))
     for size in (32, 180, 512):
         png(args.out / "badge.svg", size)
     for size in (32, 512):
