@@ -137,8 +137,7 @@ def tile(font_file: Path) -> str:
     glyph = f'<path d="{" ".join(d for d, _ in shapes)}" fill="#F1F5F9"/>'
     stop = f'<circle cx="{right + 4 + radius:.1f}" cy="{bottom - radius:.1f}" r="{radius}" fill="{ORANGE}"/>'
     return (
-        f'<circle cx="50" cy="50" r="50" fill="{SLATE}"/>'
-        f'<g transform="translate({dx:.1f} {dy:.1f})">{glyph}{stop}</g>'
+        f'<circle cx="50" cy="50" r="50" fill="{SLATE}"/><g transform="translate({dx:.1f} {dy:.1f})">{glyph}{stop}</g>'
     )
 
 
