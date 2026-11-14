@@ -1,0 +1,85 @@
+```{=html}
+<%
+  const FALLBACK = "../../images/blogs/arts.jpg";
+  const cats = (p) => (Array.isArray(p.categories) ? p.categories.map((c) => String(c).toLowerCase()) : []);
+  // Three topics, derived from the free-form categories of each post.
+  const topicOf = (p) => {
+    const c = cats(p).join(" ");
+    if (c.includes("ai strategy")) return "AI strategy";
+    if (c.includes("bayesian")) return "Bayesian modelling";
+    return "Leadership and teams";
+  };
+  const minutes = (p) => {
+    const v = p["reading-time"];
+    if (!v) return "";
+    return /^\d+$/.test(String(v)) ? v + " min read" : String(v).replace(/min$/, "min read");
+  };
+  // The posts of one topic that form a series are numbered by date (the AI strategy posts).
+  const seriesTopic = "AI strategy";
+  const seriesPosts = items.filter((p) => topicOf(p) === seriesTopic).slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+  const partOf = (p) => (topicOf(p) === seriesTopic ? seriesPosts.indexOf(p) + 1 : 0);
+
+  // Figures and diagrams (png, svg) are shown whole on a white mat, photographs fill the frame.
+  const isFigure = (p) => /\.(png|svg)$/i.test(String(p.image || ""));
+
+  const hero = items.find((p) => p.featured) || items[0];
+  const grid = items.filter((p) => p !== hero);
+  const counts = {};
+  items.forEach((p) => { counts[topicOf(p)] = (counts[topicOf(p)] || 0) + 1; });
+  const topics = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+%>
+<div class="wr">
+
+<h1 class="ls-title">Writing</h1>
+<p class="pubs-stats"><%= items.length %> posts <span>·</span> <%= topics.length %> topics <span>·</span> <a class="wr-rss" href="index.xml"><i class="bi bi-rss"></i>RSS</a></p>
+
+<article class="wr-hero" data-item data-topic="<%= topicOf(hero) %>">
+  <a class="wr-hero-cover<%= isFigure(hero) ? ' wr-figure' : '' %>" href="<%- hero.path %>" tabindex="-1" aria-hidden="true">
+    <img src="<%= hero.image || FALLBACK %>" alt="" fetchpriority="high" decoding="async" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
+  </a>
+  <div class="wr-hero-body">
+    <p class="wr-kicker">Start here<% if (partOf(hero)) { %> <span><%= seriesTopic %> series, part <%= partOf(hero) %> of <%= seriesPosts.length %></span><% } %></p>
+    <h2><a href="<%- hero.path %>"><%= hero.title %></a></h2>
+    <p class="wr-hero-text"><%= hero.description %></p>
+    <p class="wr-meta"><%= hero.date %><% if (minutes(hero)) { %> <span>·</span> <%= minutes(hero) %><% } %></p>
+    <a class="ls-button ls-button--accent" href="<%- hero.path %>"><i class="bi bi-book-half"></i>Read the post</a>
+  </div>
+</article>
+
+<div class="ls-controls">
+  <nav class="ls-chips" aria-label="Topics">
+    <a href="#" data-chip="all" class="active">All <span><%= items.length %></span></a>
+<% topics.forEach((t) => { %>
+    <a href="#" data-chip="<%= t %>"><%= t %> <span><%= counts[t] %></span></a>
+<% }) %>
+  </nav>
+  <input type="search" class="ls-search" data-search placeholder="Search posts" aria-label="Search posts">
+</div>
+<p class="ls-empty" data-empty hidden>No post matches the current filter.</p>
+
+<div class="wr-grid" data-group>
+<% grid.forEach((p) => { %>
+  <article class="wr-card" data-item data-topic="<%= topicOf(p) %>">
+    <a class="wr-cover<%= isFigure(p) ? ' wr-figure' : '' %>" href="<%- p.path %>" tabindex="-1" aria-hidden="true">
+      <img src="<%= p.image || FALLBACK %>" alt="" loading="lazy" decoding="async" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
+      <span class="wr-badges">
+        <span><%= topicOf(p) %></span>
+<% if (partOf(p)) { %>
+        <span>Part <%= partOf(p) %> of <%= seriesPosts.length %></span>
+<% } %>
+      </span>
+    </a>
+    <div class="wr-body">
+      <p class="wr-meta"><%= p.date %><% if (minutes(p)) { %> <span>·</span> <%= minutes(p) %><% } %></p>
+      <h3><a href="<%- p.path %>"><%= p.title %></a></h3>
+<% if (p.description) { %>
+      <p class="wr-excerpt"><%= p.description %></p>
+<% } %>
+      <a class="wr-more" href="<%- p.path %>">Read more<span class="visually-hidden"> about <%= p.title %></span> <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </article>
+<% }) %>
+</div>
+
+</div>
+```

@@ -1,0 +1,297 @@
+/*-- scss:animations --*/
+
+// =====================================================
+// ANIMATION & TRANSITION SYSTEM
+// =====================================================
+
+// Duration Variables
+$animation-duration-fast: 0.15s !default;
+$animation-duration-base: 0.3s !default;
+$animation-duration-slow: 0.6s !default;
+$animation-duration-very-slow: 1s !default;
+
+// Timing Functions
+$animation-timing-linear: linear !default;
+$animation-timing-ease: ease !default;
+$animation-timing-ease-in: ease-in !default;
+$animation-timing-ease-out: ease-out !default;
+$animation-timing-ease-in-out: ease-in-out !default;
+
+// =====================================================
+// ENTRANCE ANIMATIONS
+// =====================================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// =====================================================
+// SCALE ANIMATIONS
+// =====================================================
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+// =====================================================
+// ROTATE ANIMATIONS
+// =====================================================
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+// =====================================================
+// PULSE & SHIMMER ANIMATIONS
+// =====================================================
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+// =====================================================
+// BOUNCE ANIMATIONS
+// =====================================================
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// =====================================================
+// TIMELINE-SPECIFIC ANIMATIONS
+// =====================================================
+
+@keyframes fillLeft {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes fillTop {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes fillLeftOdd {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+// =====================================================
+// JELLO (SHAKE) ANIMATION
+// =====================================================
+
+@keyframes jello {
+  0%, 11.1%, 100% {
+    transform: translateZ(0);
+  }
+  22.2% {
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+  33.3% {
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+  44.4% {
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+  55.5% {
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  66.6% {
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+  77.7% {
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+  88.8% {
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+
+// =====================================================
+// TRANSITION MIXINS
+// =====================================================
+
+@mixin transition-smooth($property: all) {
+  transition: $property $animation-duration-base $animation-timing-ease-in-out;
+}
+
+@mixin transition-fast($property: all) {
+  transition: $property $animation-duration-fast $animation-timing-ease-in-out;
+}
+
+@mixin transition-slow($property: all) {
+  transition: $property $animation-duration-slow $animation-timing-ease-in-out;
+}
+
+@mixin transition-very-slow($property: all) {
+  transition: $property $animation-duration-very-slow $animation-timing-ease-in-out;
+}
+
+// =====================================================
+// ANIMATION HELPER CLASSES
+// =====================================================
+
+.animate-fade-in {
+  animation: fadeIn $animation-duration-base $animation-timing-ease-in-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp $animation-duration-slow $animation-timing-ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown $animation-duration-slow $animation-timing-ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft $animation-duration-slow $animation-timing-ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight $animation-duration-slow $animation-timing-ease-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp $animation-duration-base $animation-timing-ease-out;
+}
+
+.animate-bounce {
+  animation: bounce $animation-duration-slow infinite;
+}
+
+.animate-spin {
+  animation: spin 1s $animation-timing-linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse $animation-duration-very-slow infinite;
+}

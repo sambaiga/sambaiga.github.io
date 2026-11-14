@@ -1,0 +1,109 @@
+```{=html}
+<%
+  const OWN = "Anthony Faustine";
+  const yearOf = (p) => new Date(p.date).getUTCFullYear();
+  const kindOf = (p) => (p.journal ? "Journal" : p.conference ? "Conference" : "Publication");
+  const iconOf = (p) => (p.journal ? "journal-text" : p.conference ? "mic" : "file-earmark-text");
+  const venueOf = (p) => {
+    if (p.journal) {
+      const j = p.journal;
+      let text = j.title || j.name || (typeof j === "string" ? j : "");
+      if (j.volume && j.number) text += ", Vol. " + j.volume + ", No. " + j.number;
+      if (j.pages) text += ", pp. " + j.pages;
+      return text;
+    }
+    return p.conference || "";
+  };
+  const authorsOf = (p) => {
+    const text = typeof p.authors === "string" ? p.authors : "";
+    return text.includes("<strong>") ? text : text.replace(OWN, "<strong>" + OWN + "</strong>");
+  };
+  const linksOf = (p) => (p["pub-info"] && Array.isArray(p["pub-info"].links) ? p["pub-info"].links.filter((l) => l && l.url && l.name) : []);
+  const topicOf = (p) => p.topic || "Other";
+
+  const featured = items.filter((p) => p.featured).slice(0, 3);
+  const years = [...new Set(items.map(yearOf))].sort((a, b) => b - a);
+  const counts = {};
+  items.forEach((p) => { counts[topicOf(p)] = (counts[topicOf(p)] || 0) + 1; });
+  const topics = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+  const journals = items.filter((p) => p.journal).length;
+  const conferences = items.filter((p) => p.conference).length;
+%>
+<div class="pubs">
+
+<h1 class="ls-title">Research</h1>
+<p class="pubs-stats"><%= items.length %> papers <span>·</span> <%= journals %> journal articles <span>·</span> <%= conferences %> conference papers</p>
+
+<% if (featured.length) { %>
+<section class="pubs-featured" aria-label="Selected papers">
+  <p class="pubs-kicker">Selected papers</p>
+  <div class="pubs-featured-grid">
+<% featured.forEach((p) => { %>
+    <article class="pubs-feature">
+      <p class="pubs-feature-meta"><i class="bi bi-<%= iconOf(p) %>"></i><%= kindOf(p) %> <span><%= yearOf(p) %></span></p>
+      <h3><a href="<%= p.path %>"><%= p.title %></a></h3>
+      <p class="pubs-feature-authors"><%= authorsOf(p) %></p>
+      <p class="pubs-feature-venue"><%= venueOf(p) %></p>
+      <div class="pubs-feature-foot">
+        <a class="ls-button ls-button--accent" href="<%= p.path %>"><i class="bi bi-journal-text"></i>Details</a>
+<% linksOf(p).slice(0, 2).forEach((l) => { %>
+        <a class="ls-button ls-button--ghost" href="<%= l.url %>" target="_blank" rel="noopener"><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
+<% }) %>
+      </div>
+    </article>
+<% }) %>
+  </div>
+</section>
+<% } %>
+
+<div class="ls-controls">
+  <nav class="ls-chips" aria-label="Research topics">
+    <a href="#" data-chip="all" class="active">All <span><%= items.length %></span></a>
+<% topics.forEach((t) => { %>
+    <a href="#" data-chip="<%= t %>"><%= t %> <span><%= counts[t] %></span></a>
+<% }) %>
+  </nav>
+  <input type="search" class="ls-search" data-search placeholder="Search papers" aria-label="Search papers">
+</div>
+<p class="ls-empty" data-empty hidden>No paper matches the current filter.</p>
+
+<% years.forEach((year) => { %>
+<section class="pubs-year" data-group>
+  <h2><%= year %> <span data-count><%= items.filter((p) => yearOf(p) === year).length %></span></h2>
+<% items.filter((p) => yearOf(p) === year).forEach((p) => { %>
+  <article class="pub" data-item data-topic="<%= topicOf(p) %>">
+    <span class="pub-tile pub-tile--<%= kindOf(p).toLowerCase() %>" aria-hidden="true">
+      <i class="bi bi-<%= iconOf(p) %>"></i>
+      <b><%= yearOf(p) %></b>
+    </span>
+    <div class="pub-body">
+      <h3><a href="<%= p.path %>"><%= p.title %></a></h3>
+      <p class="pub-authors"><%= authorsOf(p) %></p>
+      <p class="pub-venue"><%= venueOf(p) %></p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--<%= String(p.status || 'Published').toLowerCase() %>"><%= p.status || "Published" %></span>
+        <span class="ls-chip"><%= topicOf(p) %></span>
+        <span class="pub-kind"><%= kindOf(p) %></span>
+      </p>
+      <div class="pub-links">
+<% linksOf(p).forEach((l) => { %>
+        <a href="<%= l.url %>" target="_blank" rel="noopener"><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
+<% }) %>
+<% if (p.doi) { %>
+        <a href="https://doi.org/<%= p.doi %>" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+<% } %>
+      </div>
+<% if (p.abstract || p.description) { %>
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p><%= p.abstract || p.description %></p>
+      </details>
+<% } %>
+    </div>
+  </article>
+<% }) %>
+</section>
+<% }) %>
+
+</div>
+```

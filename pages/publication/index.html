@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Peer-reviewed papers by Anthony Faustine on probabilistic forecasting, non-intrusive load monitoring, energy systems and the strategic management of AI.">
+
+<title>Research | Anthony Faustine – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//images/brand/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa690d5bdddf4ea72d2d69b7f0b014ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-561cf07d2e955dbdc83eea218cc902cf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa690d5bdddf4ea72d2d69b7f0b014ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-df97fdd70995af043045489a9da4625e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6ac00f1644e3be0d1d1cff2453af22ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-df97fdd70995af043045489a9da4625e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-website','listing-icons','listing-format','listing-freeze','listing-citation','listing-csl','listing-execute','listing-engines','listing-_quarto-vars','listing-language','listing-draft-mode','listing-title-block-banner','listing-toc','listing-toc-title','listing-toc-location','listing-include-back-link','listing-page-size','listing-title','listing-date','listing-topic','listing-authors','listing-journal','listing-categories','listing-status','listing-description','listing-abstract','listing-pub-info','listing-thumbnail','listing-image','listing-featured','listing-doi','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-conference',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-icons","listing-format","listing-freeze","listing-citation","listing-csl","listing-execute","listing-engines","listing-_quarto-vars","listing-language","listing-draft-mode","listing-title-block-banner","listing-toc","listing-toc-title","listing-toc-location","listing-include-back-link","listing-page-size","listing-title","listing-date","listing-topic","listing-authors","listing-journal","listing-categories","listing-status","listing-description","listing-abstract","listing-pub-info","listing-thumbnail","listing-image","listing-featured","listing-doi","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-conference"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  </script>
+<link rel="preload" href="../../assets/fonts/libre-franklin-normal-latin.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="../../assets/fonts/jost-normal-latin.woff2" as="font" type="font/woff2" crossorigin="">
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology.">
+<meta property="og:image" content="https://sambaiga.github.io/images/og/default.png">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="Research | Anthony Faustine">
+<meta name="twitter:creator" content="@sambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sambaiga.github.io/pages/publication/">
+</head>
+
+<body class="floating nav-fixed publications-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      refreshSafariScrollbar();
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/brand/badge.svg" alt="sambaiga logo" class="navbar-logo light-content">
+    <img src="../../images/brand/badge.svg" alt="sambaiga logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../pages/publication/index.html" aria-current="page"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi bi-envelope-at" style="font-size:1.1em" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi bi-github" style="font-size:1.1em" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi bi-linkedin" style="font-size:1.1em" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"><h1 class="ls-title title display-7">Research</h1></header>
+
+
+
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
+
+<div class="pubs">
+
+
+<p class="pubs-stats">20 papers <span>·</span> 14 journal articles <span>·</span> 6 conference papers</p>
+
+<section class="pubs-featured" aria-label="Selected papers">
+  <p class="pubs-kicker">Selected papers</p>
+  <div class="pubs-featured-grid">
+
+    <article class="pubs-feature">
+      <p class="pubs-feature-meta"><i class="bi bi-journal-text"></i>Journal <span>2025</span></p>
+      <h3 class="anchored"><a href="../../pages/publication/articles/strategic_ai/index.html">Strategic Management of AI Investments: A Dynamic Capabilities and Business Model Innovation Perspective</a></h3>
+      <p class="pubs-feature-authors"><strong>Anthony Faustine</strong>, Ethna O Connor,  Dr Tupokigwe Isagah, and  Dr Kevin Byrne</p>
+      <p class="pubs-feature-venue">Journal of Strategic Information Systems</p>
+      <div class="pubs-feature-foot">
+        <a class="ls-button ls-button--accent" href="../../pages/publication/articles/strategic_ai/index.html"><i class="bi bi-journal-text"></i>Details</a>
+
+      </div>
+    </article>
+
+    <article class="pubs-feature">
+      <p class="pubs-feature-meta"><i class="bi bi-mic"></i>Conference <span>2025</span></p>
+      <h3 class="anchored"><a href="../../pages/publication/conferences/cired-chicago-2024/index.html">Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power</a></h3>
+      <p class="pubs-feature-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pubs-feature-venue">CIRED Chicago Workshop 2024: Resilience of Electric Distribution Systems</p>
+      <div class="pubs-feature-foot">
+        <a class="ls-button ls-button--accent" href="../../pages/publication/conferences/cired-chicago-2024/index.html"><i class="bi bi-journal-text"></i>Details</a>
+
+        <a class="ls-button ls-button--ghost" href="../../files/papers/enhancinglv.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a class="ls-button ls-button--ghost" href="https://digital-library.theiet.org/doi/10.1049/icp.2024.2555" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+      </div>
+    </article>
+
+    <article class="pubs-feature">
+      <p class="pubs-feature-meta"><i class="bi bi-journal-text"></i>Journal <span>2025</span></p>
+      <h3 class="anchored"><a href="../../pages/publication/articles/mlpf-2025/index.html">Efficiency through Simplicity: MLP-based Approach for Net-Load Forecasting with Uncertainty Estimates in Low-Voltage Distribution Networks</a></h3>
+      <p class="pubs-feature-authors"><strong>Anthony Faustine</strong> and Nuno Jardim Nunes and Lucas Pereira</p>
+      <p class="pubs-feature-venue">IEEE Transactions on Power Systems, Vol. 40, No. 1, pp. 46-5</p>
+      <div class="pubs-feature-foot">
+        <a class="ls-button ls-button--accent" href="../../pages/publication/articles/mlpf-2025/index.html"><i class="bi bi-journal-text"></i>Details</a>
+
+        <a class="ls-button ls-button--ghost" href="../../files/papers/MLPQF.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a class="ls-button ls-button--ghost" href="../../files/slides/PosterEURONILM2019.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-ppt"></i>Slide</a>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="ls-controls">
+  <nav class="ls-chips" aria-label="Research topics">
+    <a href="#" data-chip="all" class="active">All <span>20</span></a>
+
+    <a href="#" data-chip="NILM">NILM <span>10</span></a>
+
+    <a href="#" data-chip="Forecasting">Forecasting <span>4</span></a>
+
+    <a href="#" data-chip="Sensing and networks">Sensing and networks <span>3</span></a>
+
+    <a href="#" data-chip="Strategy">Strategy <span>2</span></a>
+
+    <a href="#" data-chip="Energy systems">Energy systems <span>1</span></a>
+
+  </nav>
+  <input type="search" class="ls-search" data-search="" placeholder="Search papers" aria-label="Search papers">
+</div>
+<p class="ls-empty" data-empty="" hidden="">No paper matches the current filter.</p>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2025 <span data-count="">3</span></h2>
+
+  <article class="pub" data-item="" data-topic="Strategy">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2025</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/strategic_ai/index.html">Strategic Management of AI Investments: A Dynamic Capabilities and Business Model Innovation Perspective</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong>, Ethna O Connor,  Dr Tupokigwe Isagah, and  Dr Kevin Byrne</p>
+      <p class="pub-venue">Journal of Strategic Information Systems</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--submitted">Submitted</span>
+        <span class="ls-chip">Strategy</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Artificial Intelligence (AI) promises substantial returns in organisations, motivating firms to consider AI investments to improve their businesses. The investments offer new opportunities for transforming business processes, which can increase the company’s value. Despite the promise of AI to drive competitive advantage, organisations struggle to realise its value, often because of fragmented initiatives and strategic misalignment rather than technological failures. Current research often overlooks the strategic initiatives required to convert dynamic technological potential into sustained performance. This study addresses this gap by integrating Dynamic Capabilities (DC) and Business Model Innovation (BMI) theories to deconstruct the realisation of AI value. Employing a mixed-methods design, we triangulated a systematic literature review with exploratory practitioner interviews to contrast theoretical ideals with operational realities, aiming to benefit from AI investments. The findings reveal that the primary barriers to AI value realisation, strategic misalignment, organisational inertia, and technical/data limitations, are interconnected and mutually reinforcing, creating a negative feedback loop that prevents scaled impact. This systemic failure is driven by critical operational frictions, including data governance silos, leadership literacy gaps, and the inability to quantify AI value, which collectively disrupt the link between strategic intent and execution. Also, findings showed the potential of strategically interlinking Dynamic Capabilities (DC) and Business Model Innovation (BMI) for business value, where DC senses and mobilizes AI opportunities and BMI turns over adaptive capacities into value creation and capture, thus contributing to AI value realization in organisations.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="Forecasting">
+    <span class="pub-tile pub-tile--conference" aria-hidden="true">
+      <i class="bi bi-mic"></i>
+      <b>2025</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/conferences/cired-chicago-2024/index.html">Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">CIRED Chicago Workshop 2024: Resilience of Electric Distribution Systems</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Forecasting</span>
+        <span class="pub-kind">Conference</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/enhancinglv.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://digital-library.theiet.org/doi/10.1049/icp.2024.2555" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.1049/icp.2024.2555" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>This paper presents a probabilistic forecasting approach tailored for low voltage (LV)
+substations, offering short-term predictions for three crucial variables: voltage,
+reactive power, and active power. These parameters play a vital role in the resilience
+of distribution systems, especially in the presence of Distributed Energy Resources (DERs).
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="Forecasting">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2025</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/mlpf-2025/index.html">Efficiency through Simplicity: MLP-based Approach for Net-Load Forecasting with Uncertainty Estimates in Low-Voltage Distribution Networks</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Nuno Jardim Nunes and Lucas Pereira</p>
+      <p class="pub-venue">IEEE Transactions on Power Systems, Vol. 40, No. 1, pp. 46-5</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Forecasting</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/MLPQF.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="../../files/slides/PosterEURONILM2019.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-ppt"></i>Slide</a>
+
+        <a href="https://ieeexplore.ieee.org/document/10529636" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.1109/TPWRS.2024.3400123" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Power demand forecasting is becoming a crucial tool for the planning and operation of Low Voltage (LV) distribution systems. Most importantly, the high penetration of Photovoltaics (PV) power generation as part of Distributed Energy Resource (DER)s has transformed the power demand forecasting problem at the distribution level into net-load forecasting. This paper introduces a novel and scalable approach to probabilistic forecasting at LV substations with PV generation. It presents a multi-variates probabilistic forecasting approach, leveraging Quantile Regression (QR). The proposed architecture uses a computationally efficient feed-forward neural net to capture the complex interaction between the historical load demands and covariate variables such as solar irradiance. It is empirically demonstrated that the proposed method can efficiently produce well-calibrated forecasts, both auto-regressively or in a single forward pass. Furthermore, a benchmark against four state-of-the-art forecasting approaches show that the proposed approach offers a desirable trade-off between forecasting accuracies, calibrated uncertainty, and computation complexity.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2024 <span data-count="">2</span></h2>
+
+  <article class="pub" data-item="" data-topic="Forecasting">
+    <span class="pub-tile pub-tile--conference" aria-hidden="true">
+      <i class="bi bi-mic"></i>
+      <b>2024</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/conferences/smartgrid-2024/index.html">Conformal Multilayer Perceptron-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with Photovoltaic Generation</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">2024 IEEE International Conference on Communications, Control, and Computing Technologies for Smart Grids (SmartGridComm), Oslo, Norway</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Forecasting</span>
+        <span class="pub-kind">Conference</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/ConformalMLPF.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="../../files/slides/Oslo_cinference_2024.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-ppt"></i>Slide</a>
+
+        <a href="https://ieeexplore.ieee.org/document/10738106" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.1049/icp.2024.2555" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>This paper presents a probabilistic forecasting approach tailored for low voltage (LV)
+substations, offering short-term predictions for three crucial variables: voltage,
+reactive power, and active power. These parameters play a vital role in the resilience
+of distribution systems, especially in the presence of Distributed Energy Resources (DERs).
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="Strategy">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2024</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/maximising-ai-value/index.html">Maximising AI Value: Strategic Approaches and Practical Frameworks for Organisational Success</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong></p>
+      <p class="pub-venue">Arrow@TU Dublin</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Strategy</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://arrow.tudublin.ie/" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Artificial intelligence adoption has accelerated across industries, yet many organisations struggle to translate AI investments into sustained business value. This paper identifies the strategic and organisational factors that differentiate high-value AI implementations from those that underdeliver. Drawing on practitioner frameworks and case analysis, we propose a multi-layer model for AI value creation encompassing data readiness, model governance, human-AI collaboration design, and executive alignment. We examine common failure modes — including misaligned incentives, poor problem scoping, and inadequate change management — and provide practical prescriptions for each. The resulting framework is designed to guide AI practitioners, product owners, and senior leaders in structuring AI programmes that deliver measurable organisational impact.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2023 <span data-count="">2</span></h2>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--conference" aria-hidden="true">
+      <i class="bi bi-mic"></i>
+      <b>2023</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/conferences/icassp-2023/index.html">Applying symmetrical component transform for industrial appliance classification in non-intrusive load monitoring</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2023), Rhodes Island, Greece</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Conference</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/IndustrialNILM.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://doi.org/10.1109/ICASSP49357.2023.10094613" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.1109/ICASSP49357.2023.10094613" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Industrial non-intrusive load monitoring (NILM) presents unique challenges compared to residential settings, including complex three-phase power systems, diverse load types, and high measurement noise. This paper proposes applying the symmetrical component transform (SCT) — a classical power systems technique — as a feature extraction step for industrial appliance classification in NILM. The SCT decomposes three-phase current and voltage signals into positive, negative, and zero sequence components, which encode distinct physical properties of each load type. We integrate SCT-derived features with a convolutional neural network classifier and evaluate the approach on the LILACD industrial dataset. Experimental results demonstrate that SCT features significantly improve classification accuracy over raw signal approaches, particularly for distinguishing motor-driven loads and non-linear power electronics. Our work bridges classical power engineering knowledge with modern deep learning for more effective industrial NILM.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2023</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/deep-nilmtk-2023/index.html">Unlocking the Full Potential of Neural NILM: On Automation, Hyperparameters and  Modular Pipelines</a></h3>
+      <p class="pub-authors">Hafsa Bousbiat, <strong>Anthony Faustine</strong>, Christoph Klemenjak, Lucas Pereira and Wilfried Elmenreich</p>
+      <p class="pub-venue">IEEE Transactions on Industrial Informatics, Vol. 19, No. 5, pp. 7002-7010</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/DeepNLMTK.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://ieeexplore.ieee.org/document/9889174" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://github.com/BHafsa/deep-nilmtk-v1" target="_blank" rel="noopener"><i class="bi bi-github"></i>Code</a>
+
+        <a href="https://doi.org/10.1109/TII.2022.3206322" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Nonintrusive load monitoring (NILM) techniques are increasingly becoming a key instrument for identifying the power consumption of individual appliances based on a single metering point. Particularly, deep learning (DL) models are gaining interest in this regard. However, the challenges brought by the NILM datasets and the nonavailability of common experimental guidelines tend to compromise comparison, research transparency, and replicability. The limited adoption of efficient research instruments and lack of best practices guidelines contribute in huge part to this problem, where no features, encouraging standardized formats for benchmarking, and results sharing are offered. To address these issues, we first present a brief overview of recent best practices for DL and highlight how deep NILM research can benefit from these practices. Furthermore, we suggest a novel open-source toolkit leveraging these practices, i.e., Deep-NILMTK. The proposed toolkit offers a common testing bed for NILM algorithms independently of the underlying deep learning framework with a modular NILM pipeline that can easily be customized. Furthermore, Deep-NILMTK introduces the concept of experiment templating to offer predesigned experiments allowing to enhancing research efficiency. Leveraging this concept and DL best practices, we present a case study of creating an online NILM benchmark repository1 considering eight of the most popular deep NILM algorithms. All sources relative to the tool are made publicly available on Github2 along with the corresponding documentation.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2022 <span data-count="">2</span></h2>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--conference" aria-hidden="true">
+      <i class="bi bi-mic"></i>
+      <b>2022</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/conferences/buildsys-2022/index.html">Appliance recognition with combined single- and multi-label approaches</a></h3>
+      <p class="pub-authors">Manca, Matteo and <strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">7th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM@BuildSys 2022), Boston, MA, USA</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Conference</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://dl.acm.org/doi/10.1145/3563357.3566169" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.1145/3563357.3566169" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Appliance recognition in non-intrusive load monitoring (NILM) is typically framed as either a single-label or multi-label classification problem. Single-label approaches predict one appliance per activation event, while multi-label approaches predict the set of simultaneously active appliances. Both paradigms have complementary strengths: single-label methods excel at isolating dominant loads with clear event signatures, whereas multi-label methods handle concurrent appliance operation. This paper proposes a combined approach that leverages both paradigms within a unified recognition pipeline. We train a single-label classifier for isolated events and a multi-label classifier for overlapping load periods, then fuse their outputs via a learned gating mechanism. Evaluation on the UK-DALE dataset shows that the combined approach outperforms either method in isolation, achieving higher F1 scores across all evaluated appliances.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="Forecasting">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2022</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/fqr-2024/index.html">FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">IEEE Transactions on Smart Grid, Vol. 13, No. 3, pp. 2440-2451</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Forecasting</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/FPSeq2Q.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://ieeexplore.ieee.org/document/9701598" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://github.com/sambaiga/FPSeq2Q" target="_blank" rel="noopener"><i class="bi bi-github" "=""></i>Code</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>The increased penetration of Renewable Energy Sources (RES) as part of a decentralized and distributed power system makes net-load forecasting a critical component in the planning and operation of power systems. However, compared to the transmission level, producing accurate short-term net-load forecasts at the distribution level is complex due to the small number of consumers. Moreover, owing to the stochastic nature of RES, it is necessary to quantify the uncertainty of the forecasted net-load at any given time, which is critical for the real-world decision process. This work presents parameterized deep quantile regression for short-term probabilistic net-load forecasting at the distribution level. To be precise, we use a Deep Neural Network (DNN) to learn both the quantile fractions and quantile values of the quantile function. Furthermore, we propose a scoring metric that reflects the trade-off between predictive uncertainty performance and forecast accuracy. We evaluate the proposed techniques on historical real-world data from a low-voltage distribution substation and further assess its robustness when applied in real-time. The experiment’s outcomes show that the resulting forecasts from our approach are well-calibrated and provide a desirable trade-off between forecasting accuracies and predictive uncertainty performance that are very robust even when applied in real-time.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2021 <span data-count="">2</span></h2>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2021</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/AWRGNILM/index.html">Adaptive Weighted Recurrence Graphs for Appliance Recognition in Non-Intrusive Load Monitoring</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas and Klemenjak, Christoph</p>
+      <p class="pub-venue">IEEE Transactions on Smart Grid, Vol. 12, No. 1, pp. 398-406</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/AWRG.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://ieeexplore.ieee.org/document/9144492" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://github.com/sambaiga/AWRGNILM" target="_blank" rel="noopener"><i class="bi bi-github"></i>Code</a>
+
+        <a href="https://doi.org/10.1109/TSG.2020.3010621" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>To this day, hyperparameter tuning remains a cumbersome task in Non-Intrusive Load Monitoring (NILM) research, as researchers and practitioners are forced to invest a considerable amount of time in this task. This paper proposes adaptive weighted recurrence graph blocks (AWRG) for appliance feature representation in event-based NILM. An AWRG block can be combined with traditional deep neural network architectures such as Convolutional Neural Networks for appliance recognition. Our approach transforms one cycle per activation current into an weighted recurrence graph and treats the associated hyper-parameters as learn-able parameters. We evaluate our technique on two energy datasets, the industrial dataset LILACD and the residential PLAID dataset. The outcome of our experiments shows that transforming current waveforms into weighted recurrence graphs provides a better feature representation and thus, improved classification results. It is concluded that our approach can guarantee uniqueness of appliance features, leading to enhanced generalisation abilities when compared to the widely researched V-I image features. Furthermore, we show that the initialisation parameters of the AWRG's have a significant impact on the performance and training convergence.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2021</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/WattsupHome/index.html">Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective</a></h3>
+      <p class="pub-authors">Völker, Benjamin,  Reinhardt, Andreas,  <strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">Energies, Vol. 14, No. 3</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/wattshome.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://doi.org/10.3390/en14030719" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.3390/en14030719" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>The key advantage of smart meters over traditional metering devices is their ability to transfer consumption information to remote data processing systems. Besides enabling the automated collection of a customer’s electricity consumption for billing purposes, the data collected by these devices makes the realization of many novel use cases possible. However, the large majority of such services are tailored to improve the power grid’s operation as a whole. For example, forecasts of household energy consumption or photovoltaic production allow for improved power plant generation scheduling. Similarly, the detection of anomalous consumption patterns can indicate electricity theft and serve as a trigger for corresponding investigations. Even though customers can directly influence their electrical energy consumption, the range of use cases to the users’ benefit remains much smaller than those that benefit the grid in general. In this work, we thus review the range of services tailored to the needs of end-customers. By briefly discussing their technological foundations and their potential impact on future developments, we highlight the great potentials of utilizing smart meter data from a user-centric perspective. Several open research challenges in this domain, arising from the shortcomings of state-of-the-art data communication and processing methods, are furthermore given. We expect their investigation to lead to significant advancements in data processing services and ultimately raise the customer experience of operating smart meters.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2020 <span data-count="">4</span></h2>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2020</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/WRGNILM/index.html">Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">Energies, Vol. 13, No. 13</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/wrg.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="../../files/slides/PosterEURONILM2019.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-ppt"></i>Poster</a>
+
+        <a href="https://www.mdpi.com/1996-1073/13/13/3374" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://github.com/sambaiga/WRG-NILM" target="_blank" rel="noopener"><i class="bi bi-github"></i>Code</a>
+
+        <a href="https://doi.org/10.3390/en13133374" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Appliance recognition is one of the vital sub-tasks of NILM in which a machine learning classier is used to detect and recognize active appliances from power measurements. The performance of the appliance classifier highly depends on the signal features used to characterize the loads. Recently, different appliance features derived from the voltage–current (V–I) waveforms have been extensively used to describe appliances. However, the performance of V–I-based approaches is still unsatisfactory as it is still not distinctive enough to recognize devices that fall into the same category. Instead, we propose an appliance recognition method utilizing the recurrence graph (RG) technique and convolutional neural networks (CNNs). We introduce the weighted recurrent graph (WRG) generation that, given one-cycle current and voltage, produces an image-like representation with more values than the binary output created by RG. Experimental results on three different sub-metered datasets show that the proposed WRG-based image representation provides superior feature representation and, therefore, improves classification performance compared to V–I-based features.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2020</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/MLABELILM/index.html">Multi-Label Learning for Appliance Recognition in NILM Using Fryze-Current Decomposition and Convolutional Neural Network</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas</p>
+      <p class="pub-venue">Energies, Vol. 13, No. 16, pp. 1996-1073</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/mlabelvi.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://www.mdpi.com/1996-1073/13/16/4154" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://github.com/sambaiga/MLCFCD" target="_blank" rel="noopener"><i class="bi bi-github"></i>Code</a>
+
+        <a href="https://doi.org/10.3390/en13164154" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>The advance in energy-sensing and smart-meter technologies have motivated the use of a Non-Intrusive Load Monitoring (NILM), a data-driven technique that recognizes active end-use appliances by analyzing the data streams coming from these devices. NILM offers an electricity consumption pattern of individual loads at consumer premises, which is crucial in the design of energy efficiency and energy demand management strategies in buildings. Appliance classification, also known as load identification is an essential sub-task for identifying the type and status of an unknown load from appliance features extracted from the aggregate power signal. Most of the existing work for appliance recognition in NILM uses a single-label learning strategy which, assumes only one appliance is active at a time. This assumption ignores the fact that multiple devices can be active simultaneously and requires a perfect event detector to recognize the appliance. In this paper proposes the Convolutional Neural Network (CNN)-based multi-label learning approach, which links multiple loads to an observed aggregate current signal. Our approach applies the Fryze power theory to decompose the current features into active and non-active components and use the Euclidean distance similarity function to transform the decomposed current into an image-like representation which, is used as input to the CNN. Experimental results suggest that the proposed approach is sufficient for recognizing multiple appliances from aggregated measurements.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--conference" aria-hidden="true">
+      <i class="bi bi-mic"></i>
+      <b>2020</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/conferences/unet-nilm-2020/index.html">UNet-NILM: A deep neural network for multi-tasks appliances state detection and power estimation in NILM</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas and Bousbiat, Hafsa and Kulkarni, Shridhar</p>
+      <p class="pub-venue">5th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM), BuildSys 2020, Virtual</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Conference</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/papers/inilm-multitask.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+
+        <a href="https://dl.acm.org/doi/10.1145/3427771.3427859" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://github.com/sambaiga/UNETNiLM" target="_blank" rel="noopener"><i class="bi bi-github"></i>Code</a>
+
+        <a href="https://doi.org/10.1145/3427771.3427859" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Non-Intrusive Load Monitoring (NILM) is the task of decomposing aggregate power consumption into individual appliance-level signals. Existing deep learning approaches for NILM typically address either appliance state detection or power estimation as separate tasks, limiting their practical utility. This paper proposes UNet-NILM, a multi-task deep neural network architecture inspired by the U-Net encoder-decoder design for semantic segmentation. UNet-NILM simultaneously detects appliance ON/OFF states and estimates per-appliance active power consumption from aggregate mains readings. We evaluate the approach on the UK-DALE and REFIT datasets across five target appliances. Results show that UNet-NILM achieves state-of-the-art performance on both tasks simultaneously, demonstrating that joint optimisation of detection and estimation objectives is mutually beneficial. The proposed architecture offers a practical step toward deployable NILM systems that provide both appliance status and fine-grained energy consumption data.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="Energy systems">
+    <span class="pub-tile pub-tile--conference" aria-hidden="true">
+      <i class="bi bi-mic"></i>
+      <b>2020</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/conferences/sustainable-energy-2020/index.html">Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Pereira, Lucas and Ngondya, Isakwisa and Benabbou, Loubna</p>
+      <p class="pub-venue">Workshop on AI for Earth Sciences, ICML 2020, Virtual</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Energy systems</span>
+        <span class="pub-kind">Conference</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://scholar.google.com/citations?user=nhzHBTQAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Energy communities — groups of households and businesses that share local renewable energy resources — are emerging as a key mechanism for the energy transition. Realising self-sufficiency within such communities requires intelligent coordination of generation, storage, and consumption. This paper investigates how machine learning can support this coordination by addressing three interrelated problems: short-term solar and demand forecasting, appliance-level load disaggregation via NILM, and community-scale demand response optimisation. We propose an integrated ML pipeline connecting these modules and evaluate it on a simulated energy community with real solar irradiance and consumption data. Results demonstrate that the combined ML approach improves self-sufficiency rates by 18% compared to rule-based scheduling, with forecasting accuracy being the dominant factor in overall community performance.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2019 <span data-count="">1</span></h2>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2019</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/nilm-transferability/index.html">On metrics to assess the transferability of machine learning models in non-intrusive load monitoring</a></h3>
+      <p class="pub-authors">Klemenjak, Christoph and <strong>Anthony Faustine</strong> and Makonin, Stephen and Elmenreich, Wilfried</p>
+      <p class="pub-venue">Energy Informatics, Vol. 2, No. 1, pp. 1-15</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://doi.org/10.1186/s42162-019-0088-3" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://arxiv.org/abs/1912.06200" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>arXiv</a>
+
+        <a href="https://doi.org/10.1186/s42162-019-0088-3" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Non-intrusive load monitoring (NILM) research has produced a rich body of machine learning approaches for appliance state detection and energy disaggregation. However, the community lacks standardised metrics for evaluating how well models trained on one dataset transfer to another. This paper addresses this gap by analysing existing evaluation metrics, identifying their limitations for cross-dataset transfer, and proposing a framework of transferability metrics grounded in information-theoretic and statistical measures. We demonstrate the framework on multiple residential energy datasets and show how commonly used metrics such as F1 score can be misleading when assessing model transferability. Our findings provide guidance for researchers on selecting appropriate metrics when reporting NILM model performance in multi-dataset settings.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2017 <span data-count="">1</span></h2>
+
+  <article class="pub" data-item="" data-topic="NILM">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2017</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/Arviz-nilm/index.html">A Survey on Non-Intrusive Load Monitoring Methodies and Techniques for Energy Disaggregation Problem</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong>, Nerey Henry Mvungi,  Shubi Kaijage and Kisangiri Michael</p>
+      <p class="pub-venue">CoRR</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">NILM</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://arxiv.org/abs/1703.00785" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>The rapid urbanization of developing countries coupled with explosion in construction of high rising buildings and the high power usage in them calls for conservation and efficient energy program. Such a program require monitoring of end-use appliances energy consumption in real-time. The worldwide recent adoption of smart-meter in smart-grid, has led to the rise of Non-Intrusive Load Monitoring (NILM); which enables estimation of appliance-specific power consumption from building's aggregate power consumption reading. NILM provides households with cost-effective real-time monitoring of end-use appliances to help them understand their consumption pattern and become part and parcel of energy conservation strategy. This paper presents an up to date overview of NILM system and its associated methods and techniques for energy disaggregation problem. This is followed by the review of the state-of-the art NILM algorithms. Furthermore, we review several performance metrics used by NILM researcher to evaluate NILM algorithms and discuss existing benchmarking framework for direct comparison of the state of the art NILM algorithms. Finally, the paper discuss potential NILM use-cases, presents an overview of the public available dataset and highlight challenges and future research directions.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2016 <span data-count="">1</span></h2>
+
+  <article class="pub" data-item="" data-topic="Sensing and networks">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2016</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/open-source-cellular/index.html">Open source cellular technologies for cost effective cellular connectivity in rural areas</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Gabriel, M. and Shao, B.</p>
+      <p class="pub-venue">International Journal of Computer Applications (IJCA), Vol. 145, No. 11, pp. 1-6</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Sensing and networks</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://www.ijcaonline.org/archives/volume145/number11/" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>Rural communities in developing regions continue to face significant barriers to cellular connectivity due to the high capital costs of proprietary telecommunications infrastructure. This paper investigates the feasibility of open source cellular technologies — including OpenBTS, OpenBSC, and Osmocom — as low-cost alternatives for rural area coverage. We evaluate deployment architectures, spectrum requirements, hardware costs, and community network governance models. A comparative analysis of open source and proprietary solutions is conducted with respect to total cost of ownership, maintenance complexity, and quality of service. Our findings suggest that open source cellular platforms can reduce infrastructure costs by up to 70% compared to conventional approaches while delivering acceptable service quality for voice and basic data services in rural deployments.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+<section class="pubs-year" data-group="">
+  <h2 class="anchored">2014 <span data-count="">2</span></h2>
+
+  <article class="pub" data-item="" data-topic="Sensing and networks">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2014</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/MobSensing/index.html">Ubiquitous Mobile Sensing for Water Quality Monitoring and Reporting within Lake Victoria Basin</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong> and Aloys N. Mvuma</p>
+      <p class="pub-venue">Wireless Sensor Network, Vol. 6, No. 12, pp. 257-264</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Sensing and networks</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="https://doi.org/10.4236/wsn.2014.612025" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.4236/wsn.2014.612025" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>As the human population growth and industry pressure in most developing countries continue to increase, effective water quality monitoring and evaluation has become critical for water resources management programs. This paper presents the ubiquitous mobile sensing system for water quality data collection and monitoring applications in developing countries. The system was designed based on the analysis of the existing solution. Open source hardware and software was used to develop the prototype of the system. Field testing of the system conducted in Nkokonjero, Uganda and Mwanza, Tanzania verified the functionalities of the system and its practical application in actual environment. Results show that proposed solution is able to collect and present data in a mobile environment.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+  <article class="pub" data-item="" data-topic="Sensing and networks">
+    <span class="pub-tile pub-tile--journal" aria-hidden="true">
+      <i class="bi bi-journal-text"></i>
+      <b>2014</b>
+    </span>
+    <div class="pub-body">
+      <h3 class="anchored"><a href="../../pages/publication/articles/WSNWQM/index.html">Wireless Sensor Networks for Water Quality Monitoring and Control within Lake Victoria Basin: Prototype Development</a></h3>
+      <p class="pub-authors"><strong>Anthony Faustine</strong>, Aloys N. Mvuma,  Hector J. Mongi,  Maria C. Gabriel, Albino J. Tenge and Samuel B. Kucel</p>
+      <p class="pub-venue">Wireless Sensor Network, Vol. 6, No. 12, pp. 281-90</p>
+      <p class="pub-meta">
+        <span class="ls-pill ls-pill--published">Published</span>
+        <span class="ls-chip">Sensing and networks</span>
+        <span class="pub-kind">Journal</span>
+      </p>
+      <div class="pub-links">
+
+        <a href="../../files/slides/vicres_presentation.pdf" target="_blank" rel="noopener"><i class="bi bi-link-45deg"></i>Slide</a>
+
+        <a href="https://doi.org/10.4236/wsn.2014.612027" target="_blank" rel="noopener"><i class="bi bi-journal-text"></i>Link</a>
+
+        <a href="https://doi.org/10.4236/wsn.2014.612027" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
+
+      </div>
+
+      <details class="pub-abstract">
+        <summary>Abstract</summary>
+        <p>The need for effective and efficient monitoring, evaluation and control of water quality in Lake Victoria Basin (LVB) has become more demanding in this era of urbanization, population growth and climate change and variability. Traditional methods that rely on collecting water samples, testing and analyses in water laboratories are not only costly but also lack capability for real-time data capture, analyses and fast dissemination of information to relevant stakeholders for making timely and informed decisions. In this paper, a Water Sensor Network (WSN) system prototype developed for water quality monitoring in LVB is presented. The development was preceded by evaluation of prevailing environment including availability of cellular network coverage at the site of operation. The system consists of an Arduino microcontroller, water quality sensors, and a wireless network connection module. It detects water temperature, dissolved oxygen, pH, and electrical conductivity in real-time and disseminates the information in graphical and tabular formats to relevant stakeholders through a web-based portal and mobile phone platforms. The experimental results show that the system has great prospect and can be used to operate in real world environment for optimum control and protection of water resources by providing key actors with relevant and timely information to facilitate quick action taking.
+</p>
+      </details>
+
+    </div>
+  </article>
+
+</section>
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><span class="foot-copy">© Anthony Faustine · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Built with <a href="https://quarto.org/">Quarto</a></span> <span class="foot-links"><a href="https://orcid.org/0000-0002-7838-533X"><i class="bi bi-orcid" aria-hidden="true"></i> ORCID</a> <a href="../../pgp_ath.asc.txt"><i class="bi bi-key" aria-hidden="true"></i> PGP key</a> <a href="https://github.com/sambaiga/sambaiga.github.io"><i class="bi bi-github" aria-hidden="true"></i> Source</a></span> <span class="foot-print">PGP fingerprint <code>49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</code></span></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/listing-filter.js"></script>
+
+
+
+
+</body></html>

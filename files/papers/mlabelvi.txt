@@ -1,0 +1,11 @@
+@article{Faustine_2020,
+	doi = {10.3390/en13164154},
+	year = 2020,
+	month = {aug},
+	volume = {13},
+	number = {16},
+	pages = {4154},
+	author = {Anthony Faustine and Lucas Pereira},
+	title = {Multi-Label Learning for Appliance Recognition in {NILM} Using Fryze-Current Decomposition and Convolutional Neural Network},
+	journal = {Energies}
+}

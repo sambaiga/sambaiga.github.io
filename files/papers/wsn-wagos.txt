@@ -1,0 +1,10 @@
+@article{Faustine_2014,
+	doi = {10.4236/wsn.2014.612027},
+	year = 2014,
+	volume = {06},
+	number = {12},
+	pages = {281--290},
+	author = {Anthony Faustine and Aloys N. Mvuma and Hector J. Mongi and Maria C. Gabriel and Albino J. Tenge and Samuel B. Kucel},
+	title = {Wireless Sensor Networks for Water Quality Monitoring and Control within Lake Victoria Basin: Prototype Development},
+	journal = {WSN}
+}

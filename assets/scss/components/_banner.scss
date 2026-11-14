@@ -1,0 +1,62 @@
+// =====================================================
+// TITLE BANNERS OF POSTS AND PAPERS
+// A post has a cover photo: a dark veil over it and white text keep the title readable in both themes. A paper has no
+// photo: its banner is a panel of the site (the featured panel tokens of components/_listing.scss), pale with slate
+// text in the light theme and dark slate with white text in the dark theme.
+// =====================================================
+
+body.blog:not(.writing-page) .quarto-title-banner {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.74));
+  }
+
+  .quarto-title h1,
+  .quarto-title .subtitle,
+  .quarto-title .description,
+  .quarto-title .quarto-categories .quarto-category,
+  .quarto-title-meta,
+  .quarto-title-banner a {
+    color: #ffffff !important;
+  }
+
+  .quarto-title .quarto-categories .quarto-category {
+    border-color: rgba(255, 255, 255, 0.65) !important;
+  }
+}
+
+body.paper-page .quarto-title-banner {
+  background: linear-gradient(135deg, var(--pn-from) 0%, var(--pn-to) 100%) !important;
+  border-bottom: 1px solid var(--ls-border) !important;
+
+  .quarto-title h1 {
+    color: var(--pn-title) !important;
+  }
+
+  .quarto-title .subtitle,
+  .quarto-title .description,
+  .quarto-title-meta {
+    color: var(--pn-text) !important;
+  }
+
+  .quarto-title .quarto-categories .quarto-category {
+    color: var(--pn-muted) !important;
+    border-color: var(--pn-card-border) !important;
+  }
+}
+
+// Figure captions and the separators of the stats line are muted slate, readable on the page of either theme
+.quarto-float-caption,
+figcaption {
+  color: var(--ls-muted) !important;
+}
+
+.pubs-stats span {
+  color: var(--ls-muted) !important;
+}

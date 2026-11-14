@@ -1,0 +1,445 @@
+
+/*-- scss:pages/talks --*/
+
+// =====================================================
+// TALKS PAGE SPECIFIC STYLES
+// =====================================================
+
+.talks {
+  &-header {
+    padding: $section-padding-y 0;
+    background: linear-gradient(135deg, rgba($pink-dark, $opacity-10) 0%, rgba($cyan, $opacity-10) 100%);
+    margin-bottom: $spacer-5;
+    border-radius: $border-radius-3xl;
+    text-align: center;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media (max-width: $breakpoint-md) {
+      padding: $section-padding-y-sm 0;
+      margin-bottom: $spacer-4;
+    }
+    
+    h1 {
+      font-family: $headings-font-family;
+      font-size: $font-size-xxxl;
+      color: $teal;
+      margin-bottom: $spacer-3;
+      line-height: $headings-line-height;
+      letter-spacing: $letter-spacing-tight;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-xxl;
+      }
+    }
+    
+    .subtitle {
+      font-size: $font-size-xl;
+      color: $gray-700;
+      max-width: 800px;
+      margin: 0 auto $spacer-4;
+      line-height: $body-line-height;
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-lg;
+        padding: 0 $spacer-3;
+      }
+    }
+  }
+  
+  &-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-gap-sm;
+    justify-content: center;
+    margin-bottom: $spacer-4;
+    max-width: $container-max-width-lg;
+    margin-left: auto;
+    margin-right: auto;
+    
+    // Use button component classes
+    button {
+      @extend .btn-filter;
+    }
+  }
+  
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $grid-gap-lg;
+    margin-top: $spacer-4;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: $grid-gap;
+    }
+    
+    .talk-card {
+      background: $card-bg;
+      border: $border-width-1 solid $card-border-color;
+      border-radius: $border-radius-2xl;
+      padding: $spacer-4;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: $border-width-3;
+        background: linear-gradient(90deg, $pink-dark 0%, $cyan 50%, $teal 100%);
+        opacity: 0;
+        transition: opacity var(--transition-base);
+      }
+      
+      &:hover {
+        transform: $card-hover-transform;
+        box-shadow: $card-hover-box-shadow;
+        border-color: $gray-400;
+        
+        &::before {
+          opacity: 1;
+        }
+        
+        .talk-title-link {
+          color: $teal;
+        }
+      }
+      
+      .talk-date-badge {
+        display: flex;
+        align-items: center;
+        gap: $spacer-2;
+        margin-bottom: $spacer-3;
+        padding: $spacer-2;
+        background: rgba($teal, $opacity-10);
+        border-radius: $border-radius-xl;
+        width: fit-content;
+        
+        .date-month {
+          font-size: $font-size-sm;
+          font-weight: $font-weight-semibold;
+          color: $teal;
+          text-transform: uppercase;
+          letter-spacing: $letter-spacing-wide;
+        }
+        
+        .date-day {
+          font-size: $font-size-xl;
+          font-weight: $font-weight-bold;
+          color: $gray-900;
+          line-height: $line-height-tight;
+        }
+        
+        .date-year {
+          font-size: $font-size-xs;
+          color: $gray-600;
+          font-weight: $font-weight-normal;
+        }
+      }
+      
+      .talk-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        
+        .talk-title {
+          margin: 0 0 $spacer-3 0;
+          line-height: $headings-line-height;
+          
+          .talk-title-link,
+          .talk-title-text {
+            font-family: $headings-font-family;
+            font-size: $font-size-lg;
+            font-weight: $headings-font-weight;
+            color: $gray-900;
+            text-decoration: $link-decoration;
+            transition: color var(--transition-base);
+          }
+          
+          .talk-title-link:hover {
+            color: $teal;
+          }
+        }
+        
+        .talk-meta {
+          display: flex;
+          flex-direction: column;
+          gap: $spacer-2;
+          margin-bottom: $spacer-3;
+          font-size: $font-size-sm;
+          
+          .talk-location,
+          .talk-date,
+          .talk-full-date {
+            display: flex;
+            align-items: center;
+            gap: $spacer-2;
+            color: $gray-600;
+            
+            .bi {
+              color: $cyan;
+              font-size: 0.875em;
+              flex-shrink: 0;
+            }
+          }
+          
+          @media (min-width: $breakpoint-md) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: $spacer-3;
+          }
+        }
+        
+        .talk-description {
+          font-size: $font-size-base;
+          line-height: $body-line-height;
+          color: $gray-700;
+          margin-bottom: $spacer-3;
+          flex: 1;
+          font-weight: $font-weight-light;
+        }
+        
+        .talk-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: $grid-gap-sm;
+          margin-top: auto;
+          padding-top: $spacer-3;
+          border-top: $border-width-1 solid $border-color-light;
+          
+          // Use button component classes
+          a, button {
+            @extend .btn, .btn-sm;
+            
+            &[href*=".pdf"],
+            &[href*="slides"] {
+              @extend .btn-talk-slides;
+            }
+            
+            &[href*="video"] {
+              @extend .btn-talk-video;
+            }
+            
+            &[href*="code"],
+            &[href*="github"] {
+              @extend .btn-talk-code;
+            }
+            
+            &[href*="paper"] {
+              @extend .btn-talk-paper;
+            }
+            
+            &[href*="website"] {
+              @extend .btn-talk-website;
+            }
+          }
+        }
+      }
+    }
+    
+    // Empty state for grid
+    .no-talks {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: $spacer-7 $spacer-4;
+      color: $gray-600;
+      
+      .bi {
+        font-size: $font-size-xxxl * 2;
+        color: $gray-400;
+        margin-bottom: $spacer-3;
+        opacity: $opacity-50;
+      }
+      
+      h3 {
+        font-family: $headings-font-family;
+        color: $gray-700;
+        margin-bottom: $spacer-2;
+        font-size: $font-size-xl;
+        font-weight: $headings-font-weight;
+      }
+      
+      p {
+        max-width: 400px;
+        margin: 0 auto;
+        line-height: $body-line-height;
+        font-size: $font-size-base;
+      }
+    }
+  }
+}
+
+// =====================================================
+// DARK MODE SUPPORT FOR TALKS PAGE
+// =====================================================
+
+@media (prefers-color-scheme: dark) {
+  .talks {
+    &-header {
+      background: linear-gradient(135deg, rgba($pink-dark, $opacity-20) 0%, rgba($cyan, $opacity-20) 100%);
+      
+      .subtitle {
+        color: $gray-300;
+      }
+    }
+    
+    &-grid {
+      .talk-card {
+        background: $dark-body-bg;
+        border-color: $gray-700;
+        
+        &:hover {
+          border-color: $gray-600;
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        .talk-date-badge {
+          background: rgba($teal, $opacity-20);
+          
+          .date-month {
+            color: lighten($teal, 20%);
+          }
+          
+          .date-day {
+            color: $dark-body-color;
+          }
+          
+          .date-year {
+            color: $gray-400;
+          }
+        }
+        
+        .talk-content {
+          .talk-title {
+            .talk-title-link,
+            .talk-title-text {
+              color: $dark-body-color;
+            }
+            
+            .talk-title-link:hover {
+              color: lighten($teal, 20%);
+            }
+          }
+          
+          .talk-meta {
+            .talk-location,
+            .talk-date,
+            .talk-full-date {
+              color: $gray-400;
+              
+              .bi {
+                color: lighten($cyan, 20%);
+              }
+            }
+          }
+          
+          .talk-description {
+            color: $gray-300;
+          }
+          
+          .talk-links {
+            border-top: $border-width-1 solid $gray-700;
+          }
+        }
+      }
+      
+      .no-talks {
+        color: $gray-400;
+        
+        .bi {
+          color: $gray-600;
+        }
+        
+        h3 {
+          color: $gray-300;
+        }
+      }
+    }
+  }
+}
+
+// =====================================================
+// RESPONSIVE ADJUSTMENTS FOR TALKS PAGE
+// =====================================================
+
+@media (max-width: $breakpoint-md) {
+  .talks-grid {
+    grid-template-columns: 1fr;
+    gap: $grid-gap;
+    
+    .talk-card {
+      padding: $spacer-3;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .talks-header {
+    padding: $section-padding-y-sm $spacer-3;
+    
+    h1 {
+      font-size: $font-size-xxl;
+    }
+    
+    .subtitle {
+      font-size: $font-size-base;
+    }
+  }
+  
+  .talks-filter {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: $spacer-2;
+    
+    button {
+      flex-shrink: 0;
+    }
+  }
+  
+  .talks-grid {
+    .talk-card {
+      .talk-date-badge {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacer-1;
+        padding: $spacer-2;
+        
+        .date-month {
+          font-size: $font-size-xs;
+        }
+        
+        .date-day {
+          font-size: $font-size-lg;
+        }
+      }
+      
+      .talk-content {
+        .talk-links {
+          a, button {
+            span {
+              display: none; // Hide text on mobile, show only icon
+            }
+            
+            &.has-icon {
+              .bi, i {
+                margin: 0;
+                font-size: 1.2em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@article{Faustine_2020,
+	doi = {10.3390/en13133374},
+	year = 2020,
+	month = {jul},
+	volume = {13},
+	number = {13},
+	pages = {3374},
+	author = {Anthony Faustine and Lucas Pereira},
+	title = {Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks},
+	journal = {Energies}
+}

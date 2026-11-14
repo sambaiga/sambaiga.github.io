@@ -1,0 +1,490 @@
+/*-- scss:pages/books --*/
+
+// =====================================================
+// BOOKS PAGE: a featured book on a dark panel, then a shelf of cards.
+// Colours are the site palette: slate #1e293b, deep #0f172a, blue #0369a1,
+// sky #38bdf8 and orange #e26029. Markup: assets/ejs/books_listing.ejs
+// =====================================================
+
+.books-page {
+  background: var(--ls-page);
+
+  .books-header {
+    max-width: 64rem;
+    margin: 0 auto $spacer-5;
+
+    p {
+      margin: 0;
+      font-size: $font-size-lg;
+      color: var(--ls-muted);
+      text-align: left;
+    }
+  }
+
+  .books-grid {
+    max-width: 64rem;
+    margin: 0 auto $spacer-6;
+    padding: 0;
+  }
+
+  .bk[hidden] {
+    display: none !important;
+  }
+
+  // ---------- Filter and search (shown above six books) ----------
+
+  .bk-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bk-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    a {
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--ls-border);
+      border-radius: 999px;
+      background: var(--ls-surface);
+      font-size: 0.82rem;
+      color: var(--ls-text);
+      text-decoration: none;
+
+      span {
+        margin-left: 0.2rem;
+        color: var(--ls-muted);
+      }
+
+      &:hover,
+      &.active {
+        border-color: var(--ls-text);
+      }
+
+      &.active {
+        background: var(--ls-button);
+        color: #fff;
+
+        span {
+          color: #cbd5e1;
+        }
+      }
+    }
+  }
+
+  .bk-search {
+    min-width: 13rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 0.35rem;
+    font-size: 0.9rem;
+    background: var(--ls-surface);
+  }
+
+  .bk-empty {
+    color: var(--ls-muted);
+  }
+
+  // ---------- The book cover, drawn in CSS ----------
+
+  .bk-art {
+    --art-from: #334155;
+    --art-to: #0f172a;
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 3px 9px 9px 3px;
+    background: linear-gradient(155deg, var(--art-from), var(--art-to));
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.25), 0 14px 26px -10px rgba(15, 23, 42, 0.55);
+    transform: perspective(1000px) rotateY(-14deg);
+    transform-origin: left center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+    // The spine: a lit edge, a crease and a soft shadow.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 7%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.04) 55%, rgba(0, 0, 0, 0.18));
+      border-right: 1px solid rgba(0, 0, 0, 0.18);
+    }
+
+    &--energy {
+      --art-from: #0369a1;
+      --art-to: #0c4a6e;
+    }
+
+    &--accent {
+      --art-from: #e26029;
+      --art-to: #983d21;
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // A large icon as a watermark on covers without artwork.
+    .bk-art-icon {
+      position: absolute;
+      right: -10%;
+      bottom: -3%;
+      font-size: 8.5rem;
+      line-height: 1;
+      color: #fff;
+      opacity: 0.13;
+    }
+
+    .bk-art-title {
+      position: absolute;
+      top: 9%;
+      left: 15%;
+      right: 9%;
+      font-family: $headings-font-family;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 1.5vw + 0.35rem, 1.15rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(15, 23, 42, 0.55);
+    }
+
+    .bk-art-author {
+      position: absolute;
+      left: 15%;
+      bottom: 5%;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  a:hover .bk-art,
+  a:focus-visible .bk-art {
+    transform: perspective(1000px) rotateY(-3deg) translateY(-5px);
+    box-shadow: 0 2px 3px rgba(15, 23, 42, 0.25), 0 22px 34px -10px rgba(15, 23, 42, 0.6);
+  }
+
+  // ---------- Status pill, tags, buttons (shared) ----------
+
+  .bk-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--ls-pill-bg);
+    color: var(--ls-pill-fg);
+
+    &--available {
+      background: var(--ls-ok-bg);
+      color: var(--ls-ok-fg);
+    }
+  }
+
+  .bk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    span {
+      padding: 0.1rem 0.6rem;
+      border-radius: 999px;
+      background: var(--ls-chip);
+      color: var(--ls-text);
+      font-size: 0.75rem;
+    }
+  }
+
+  .bk-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    border-radius: 0.4rem;
+    background: var(--ls-button);
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background: #e26029;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .bi {
+      color: inherit !important;
+    }
+  }
+
+  .bk-meta {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.82rem;
+    color: var(--ls-muted);
+  }
+
+  .bk-subtitle,
+  .bk-description {
+    text-align: left;
+  }
+
+  // ---------- Featured book ----------
+
+  .bk--hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: 2.75rem;
+    align-items: center;
+    padding: 2.25rem 2.5rem;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--pn-from) 0%, var(--pn-to) 100%);
+    color: var(--pn-text);
+    border: 1px solid var(--pn-border);
+    box-shadow: var(--pn-shadow);
+
+    // A soft blue glow behind the text.
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -30% -10% auto auto;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--pn-glow), transparent 65%);
+      pointer-events: none;
+    }
+
+    > * {
+      position: relative;
+    }
+
+    .bk-hero-cover {
+      display: block;
+      padding-left: 0.4rem;
+    }
+
+    .bk-kicker {
+      margin: 0 0 0.6rem !important;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pn-kicker) !important;
+      text-align: left;
+
+      span {
+        margin-left: 0.5rem;
+        color: var(--pn-muted) !important;
+        letter-spacing: 0.04em;
+      }
+    }
+
+    h2 {
+      margin: 0 0 0.3rem !important;
+      padding: 0 !important;
+      border: 0 !important;
+      font-size: clamp(1.5rem, 2.4vw + 0.6rem, 2.1rem);
+      line-height: 1.15;
+      color: var(--pn-title) !important;
+    }
+
+    .bk-subtitle {
+      margin: 0 0 1rem !important;
+      font-size: 1.02rem;
+      color: var(--pn-text) !important;
+    }
+
+    .bk-description {
+      margin: 0 0 1.1rem !important;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--pn-text) !important;
+    }
+
+    .bk-tags {
+      margin-bottom: 1.5rem;
+
+      span {
+        background: var(--pn-chip-bg);
+        color: var(--pn-chip-fg);
+      }
+    }
+
+    .bk-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem 1.4rem;
+    }
+
+    .bk-link {
+      background: #e26029;
+
+      &:hover {
+        background: #f07a45;
+      }
+    }
+
+    .bk-meta,
+    .bk-meta span {
+      color: var(--pn-muted) !important;
+    }
+
+  }
+
+  // ---------- The shelf ----------
+
+  .bk-shelf-title {
+    margin: 0 0 1.1rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ls-muted);
+  }
+
+  .bk-shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 27rem), 1fr));
+    gap: 1.5rem;
+
+    .bk {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 1.5rem;
+      border: 1px solid var(--ls-border);
+      border-radius: 12px;
+      background: var(--ls-surface);
+      transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+
+      &:hover {
+        border-color: var(--ls-border-strong);
+        box-shadow: 0 14px 28px -16px rgba(15, 23, 42, 0.35);
+        transform: translateY(-3px);
+      }
+    }
+
+    .bk-card-cover {
+      display: block;
+      padding-left: 0.25rem;
+    }
+
+    .bk-card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .bk-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.7rem;
+    }
+
+    .bk-year {
+      font-size: 0.85rem;
+      color: var(--ls-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    h3 {
+      margin: 0 0 0.3rem !important;
+      padding: 0;
+      font-size: 1.15rem;
+      line-height: 1.3;
+
+      a {
+        color: var(--ls-text) !important;
+        text-decoration: none !important;
+        border-bottom: 0 !important;
+
+        &:hover {
+          color: var(--ls-accent) !important;
+        }
+      }
+    }
+
+    .bk-subtitle {
+      margin: 0 0 0.9rem !important;
+      font-size: 0.9rem;
+      color: var(--ls-muted);
+    }
+
+    .bk-tags {
+      margin-bottom: 1.1rem;
+    }
+
+    .bk-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem 1rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--ls-chip);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .bk--hero {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding: 1.75rem 1.4rem;
+    }
+
+    .bk--hero .bk-hero-cover {
+      width: 12rem;
+      margin: 0 auto;
+    }
+
+    .bk-shelf .bk {
+      grid-template-columns: 5.5rem 1fr;
+      gap: 1rem;
+      padding: 1.1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bk-art,
+    .bk-link,
+    .bk-shelf .bk {
+      transition: none;
+    }
+
+    a:hover .bk-art,
+    a:focus-visible .bk-art,
+    .bk-shelf .bk:hover {
+      transform: none;
+    }
+  }
+}

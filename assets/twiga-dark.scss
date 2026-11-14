@@ -1,0 +1,66 @@
+/*-- scss:defaults --*/
+// Dark theme: the same rules as twiga.scss on a slate page. The variables below are set before the
+// defaults are imported, so they win over the light values (which are all !default).
+$body-bg: #0F172A;
+$body-color: #E2E8F0;
+$teal: #38BDF8;
+$link-color: #38BDF8;
+$link-hover-color: #7DD3FC;
+$headings-color: #F1F5F9;
+$secondary: #94A3B8;
+$gray-100: #0F172A;
+$gray-200: #1E293B;
+$gray-300: #334155;
+$gray-600: #94A3B8;
+$gray-700: #CBD5E1;
+$gray-800: #E2E8F0;
+$code-bg: #1E293B;
+$code-color: #E2E8F0;
+$code-block-bg: #111C31;
+$navbar-bg: #0B1220;
+$navbar-fg: #E2E8F0;
+$navbar-hl: #38BDF8;
+$navbar-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+$footer-fg: #CBD5E1;
+$footer-bg: #0B1220;
+$energy-accent: #38BDF8;
+$ai-accent: #38BDF8;
+@import 'scss/defaults';
+
+/*-- scss:animations --*/
+@import 'scss/animations';
+
+/*-- scss:rules --*/
+// Import mixins first
+@import 'scss/mixins';
+@import 'scss/component-mixins';
+
+// Import base styles
+@import 'base';
+
+// Import components
+@import 'scss/components/buttons';
+@import 'scss/components/cards';
+@import 'scss/components/navbar';
+@import 'scss/components/footer';
+@import 'scss/components/hero';
+@import 'scss/components/toc';
+@import 'scss/components/forms';
+@import 'scss/components/links';
+@import 'scss/components/pagination';
+@import 'scss/components/codes';
+@import 'scss/components/listing';
+@import 'scss/components/figures';
+
+// Import pages
+@import 'scss/pages/about';
+@import 'scss/pages/blog';
+@import 'scss/pages/publications';
+@import 'scss/pages/projects';
+@import 'scss/pages/home';
+@import 'scss/pages/books';
+@import 'scss/pages/writing';
+@import 'scss/components/banner';
+
+// Dark-only overrides
+@import 'scss/dark';
