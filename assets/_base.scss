@@ -484,17 +484,3 @@ select {
     scroll-behavior: auto !important;
   }
 }
-
-// =====================================================
-// DARK THEME BASE
-// =====================================================
-
-@media (prefers-color-scheme: dark) {
-  body:not(.light-mode) {
-    @include dark-theme;
-  }
-}
-
-body.dark-mode {
-  @include dark-theme;
-}

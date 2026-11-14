@@ -81,15 +81,10 @@ website:
         rel: me
 
   page-footer:
-    left: |
-      <span class="faux-block"><i class="bi bi-cc-circle"></i> {{< var years >}} Anthony Faustine</span>
-      <span class="faux-block">All content licensed under<br>[<i class="bi bi-cc-circle"></i> <i class="bi bi-cc-by"></i> Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</span>
     center: |
-      <span class="faux-block"><i class="bi bi-orcid"></i> <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
-      <span class="faux-block"><i class="bi bi-key"></i> [PGP public key]({{< var pgp.key >}}) &emsp; <i class="bi bi-fingerprint"></i> Fingerprint:</strong><br><span class="fingerprint">{{< var pgp.fingerprint >}}</span></span>
-    right: |
-      <span class="faux-block">Made with [Quarto](https://quarto.org/)</span>
-      <span class="faux-block">[View the source at <i class="bi bi-github"></i> GitHub]({{< var github-url >}})</span>
+      <span class="foot-copy">© Anthony Faustine · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) · Built with [Quarto](https://quarto.org/)</span>
+      <span class="foot-links">[<i class="bi bi-orcid" aria-hidden="true"></i> ORCID](https://orcid.org/{{< var orcid >}}) [<i class="bi bi-key" aria-hidden="true"></i> PGP key]({{< var pgp.key >}}) [<i class="bi bi-github" aria-hidden="true"></i> Source]({{< var github-url >}})</span>
+      <span class="foot-print">PGP fingerprint <code>{{< var pgp.fingerprint >}}</code></span>
 
 icons:
   bootstrap: true
