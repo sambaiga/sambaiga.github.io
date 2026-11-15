@@ -5,63 +5,63 @@
     background-color: rgba($sky, $opacity-20);
     color: lighten($sky, 20%) !important;
     border-color: rgba($sky, $opacity-30);
-    
+
     &:hover {
       background-color: rgba($sky, $opacity-30);
       border-color: rgba($sky, $opacity-40);
     }
-    
+
     &.btn-outline {
       background-color: transparent;
       color: $sky !important;
       border-color: $sky;
-      
+
       &:hover {
         background-color: rgba($sky, $opacity-20);
       }
     }
   }
-  
+
   // Outline light button adjustments for dark theme
   .btn-outline-light {
     background-color: transparent;
     color: $gray-300 !important;
     border-color: $gray-600;
-    
+
     &:hover {
       background-color: $gray-700;
       color: $gray-100 !important;
     }
   }
-  
+
   // Dark button adjustments for dark theme
   .btn-dark {
     background-color: $gray-800;
     color: $white !important;
     border-color: $gray-800;
-    
+
     &:hover {
       background-color: darken($gray-800, 10%);
       border-color: darken($gray-800, 10%);
     }
   }
-  
+
   // Primary button adjustments for dark theme
   .btn-primary {
     background-color: darken($primary, 10%);
     color: $white !important;
     border-color: darken($primary, 10%);
-    
+
     &:hover {
       background-color: $primary;
       border-color: $primary;
     }
-    
+
     &.btn-outline {
       background-color: transparent;
       color: lighten($primary, 20%) !important;
       border-color: lighten($primary, 20%);
-      
+
       &:hover {
         background-color: $primary;
         color: $white !important;
@@ -77,10 +77,10 @@
   background-color: $code-bg;
   border-radius: $border-radius;
   border: $border-width-1 solid $border-color-light;
-  
+
   .publication-content {
     margin-bottom: $spacer-3;
-    
+
     p {
       margin: 0;
       font-style: italic;
@@ -96,7 +96,7 @@
   gap: $spacer-1 * 0.3;
   margin: $spacer-2 0;
   font-family: $headings-font-family;
-  
+
   .quarto-category,
   .project-category {
     padding: $spacer-1 * 0.2 $spacer-1 * 0.5;
@@ -107,11 +107,11 @@
     background-color: rgba($energy-accent, $opacity-10);
     color: $energy-accent;
     border: $border-width-1 solid rgba($energy-accent, $opacity-20);
-    
+
     a {
       color: inherit;
       text-decoration: none;
-      
+
       &:hover {
         color: $link-hover-color;
         text-decoration: $link-hover-decoration;
@@ -124,13 +124,13 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  
+
   .project-link {
     display: inline-block;
     white-space: nowrap;
     margin-right: $spacer-2;
     margin-bottom: $spacer-1;
-    
+
     a {
       display: inline-flex;
       align-items: center;
@@ -138,26 +138,26 @@
       color: $teal;
       text-decoration: $link-decoration;
       font-weight: $font-weight-medium;
-      
+
       &:hover {
         color: $link-hover-color;
         text-decoration: $link-hover-decoration;
       }
-      
+
       i {
         font-size: $font-size-sm;
       }
     }
-    
+
     &.details {
       background-color: $pink-dark;
       padding: $spacer-1 * 0.5 $spacer-2;
       border-radius: $border-radius-sm;
       border: $border-width-1 solid $black;
-      
+
       a {
         color: $gray-900;
-        
+
         &:hover {
           color: $link-hover-color;
         }
@@ -172,7 +172,7 @@
     outline: $focus-ring;
     outline-offset: $link-focus-outline-offset;
   }
-  
+
   &:focus-visible {
     outline: $focus-ring;
     outline-offset: $link-focus-outline-offset;
@@ -183,7 +183,7 @@
   background-color: $background;
   color: $color !important;
   border-color: $background;
-  
+
   &:hover {
     background-color: darken($background, 10%);
     border-color: darken($background, 10%);
@@ -237,11 +237,11 @@
 @mixin dark-theme {
   background-color: $dark-body-bg;
   color: $dark-body-color;
-  
+
   // Adjust link colors
   a {
     color: lighten($link-color, 20%);
-    
+
     &:hover {
       color: lighten($link-hover-color, 20%);
     }
@@ -277,7 +277,7 @@
     transform: translateY(-2px);
     box-shadow: $btn-hover-box-shadow;
   }
-  
+
   &:active:not(:disabled) {
     transform: translateY(0);
   }
