@@ -44,6 +44,9 @@
 <% }) %>
     </div>
     <div class="bk-foot">
+<% if (hero.page) { %>
+      <a href="<%= hero.page %>" class="bk-link"><i class="bi bi-info-circle"></i>About the book</a>
+<% } %>
       <a href="<%= hero.url %>" class="bk-link" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read online</a>
       <p class="bk-meta">
         <span class="bk-status bk-status--<%= hero.status %>"><i class="bi bi-<%= hero.status_icon %>"></i><%= hero.status_label %></span>

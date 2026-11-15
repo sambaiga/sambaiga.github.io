@@ -206,20 +206,20 @@
 
 // Light button (Light orange)
 .btn-light {
-  background-color: $light-orange;
+  background-color: $sky;
   color: $teal !important;
-  border-color: $light-orange;
+  border-color: $sky;
   
   @include button-hover;
   
   &:hover:not(:disabled) {
-    background-color: darken($light-orange, 10%);
-    border-color: darken($light-orange, 10%);
+    background-color: darken($sky, 10%);
+    border-color: darken($sky, 10%);
     color: $teal !important;
   }
   
   &.btn-outline {
-    @include button-outline-variant($light-orange);
+    @include button-outline-variant($sky);
     
     &:hover:not(:disabled) {
       color: $teal !important;
@@ -480,7 +480,7 @@
 }
 
 .btn-talk-website {
-  @include button-outline-variant($light-orange);
+  @include button-outline-variant($sky);
   
   &:hover:not(:disabled) {
     color: $teal !important;

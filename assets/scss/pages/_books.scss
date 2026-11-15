@@ -488,3 +488,27 @@
     }
   }
 }
+
+// The page of one book
+.book-page {
+  hyphens: manual;
+
+  .book-cover {
+    float: right;
+    margin: 0 0 $spacer-4 $spacer-5;
+    border-radius: $border-radius;
+    box-shadow: $shadow-md;
+  }
+
+  .lead {
+    margin-top: $spacer-3;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    .book-cover {
+      float: none;
+      display: block;
+      margin: $spacer-4 auto;
+    }
+  }
+}

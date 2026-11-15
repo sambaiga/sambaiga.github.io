@@ -1,6 +1,6 @@
 # sambaiga.github.io
 
-The personal site of Anthony Faustine, built with [Quarto](https://quarto.org) and published with GitHub Pages.
+The personal site of Anthony Faustine, built with [Quarto](https://quarto.org) and published with GitHub Pages. It needs Quarto 1.11 or later (CI pins 1.11.9) and no R.
 
 ## Work on the site
 
@@ -30,7 +30,7 @@ width, before a pull request is merged.
 
 | Folder | Content |
 |---|---|
-| `pages/` | Pages and posts (`blog`, `publication`, `projects`, `books`, `about`) |
+| `pages/` | Pages and posts (`blog`, `publication`, `software`, `books`, `about`) |
 | `assets/` | Styles (`scss`), templates (`ejs`), scripts (`js`) and self-hosted fonts |
 | `images/figures/` | Concept diagrams of the book for use in posts, with a catalogue |
 | `images/brand/` | The logo set, drawn by `scripts/branding/make_logo.py` |

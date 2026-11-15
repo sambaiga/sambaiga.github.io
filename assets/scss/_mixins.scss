@@ -2,22 +2,22 @@
 @mixin dark-theme-buttons {
   // Light button adjustments for dark theme
   .btn-light {
-    background-color: rgba($light-orange, $opacity-20);
-    color: lighten($light-orange, 20%) !important;
-    border-color: rgba($light-orange, $opacity-30);
+    background-color: rgba($sky, $opacity-20);
+    color: lighten($sky, 20%) !important;
+    border-color: rgba($sky, $opacity-30);
     
     &:hover {
-      background-color: rgba($light-orange, $opacity-30);
-      border-color: rgba($light-orange, $opacity-40);
+      background-color: rgba($sky, $opacity-30);
+      border-color: rgba($sky, $opacity-40);
     }
     
     &.btn-outline {
       background-color: transparent;
-      color: $light-orange !important;
-      border-color: $light-orange;
+      color: $sky !important;
+      border-color: $sky;
       
       &:hover {
-        background-color: rgba($light-orange, $opacity-20);
+        background-color: rgba($sky, $opacity-20);
       }
     }
   }
