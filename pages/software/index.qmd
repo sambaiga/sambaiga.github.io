@@ -1,0 +1,44 @@
+---
+title: ""
+pagetitle: "Software | Anthony Faustine"
+description-meta: "Open-source software by Anthony Faustine: Twiga, Milia, Popo, Kobe and Deep-NILMtk."
+aliases:
+  - ../projects/index.html
+
+listing:
+  id: work-listing
+  contents: data.yml
+  type: custom
+  template: ../../assets/ejs/projects_listing.ejs
+  sort: false
+  page-size: 100
+  max-description-length: 600
+  fields: [title, group, area, description, status, year, updated, pypi, docs, github, site, post, paper-url, book]
+
+format:
+  html:
+    page-layout: full
+    body-classes: "projects-page"
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/projects-filter.js"></script>
+
+toc: false
+---
+
+<div class="projects-header">
+
+<h1>Software</h1>
+
+<p>Open-source libraries and tooling for time series forecasting, distribution network analytics, load monitoring and project foundations.</p>
+
+<p class="software-stack"><span class="label">How they fit</span> <a href="https://pypi.org/project/pundamilia/">Milia</a> groups load profiles and detects abnormal days, <a href="https://pypi.org/project/twiga/">Twiga</a> forecasts them, and <a href="https://pypi.org/project/popo-flow/">Popo</a> simulates the low-voltage network that the forecasts and groups feed. The <a href="../books/distribution-networks.html">book</a> teaches all three on distribution-network problems.</p>
+
+</div>
+
+::: {#work-listing}
+:::
+
+## More
+
+The public repositories are listed on [GitHub](https://github.com/sambaiga). Peer-reviewed work is on the [Research](../publication/index.html) page and the books are on the [Books](../books/index.html) page.

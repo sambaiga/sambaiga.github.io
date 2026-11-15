@@ -1,3 +1,5 @@
+quarto-required: ">=1.11.0"
+
 project:
   type: website
   output-dir: _site
@@ -63,8 +65,8 @@ website:
         file: "pages/about/index.qmd"
       - text: "Blog"
         file: "pages/blog/index.qmd"
-      - text: "Projects"
-        file: "pages/projects/index.qmd"
+      - text: "Software"
+        file: "pages/software/index.qmd"
       - text: "Books"
         file: "pages/books/index.qmd"
       - text: "Research"

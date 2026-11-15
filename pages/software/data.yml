@@ -1,8 +1,9 @@
 # Open-source libraries. The page template (assets/ejs/projects_listing.ejs) defines the areas.
-# Fields: title, area, description, status, year, updated; optional logo, pypi, docs, github, site, post, paper-url.
+# Fields: title, group, area, description, status, year, updated; optional logo, pypi, docs, github, site, post, paper-url.
 # The filter and search appear automatically once the list has more than six entries.
 
 - title: Kobe
+  group: tooling
   area: tooling
   logo: ../../images/projects/kobe.svg
   description: Foundation for new Python projects, with a library profile and an experiment profile, a project generator and the coding standards shared by every repository.
@@ -10,6 +11,7 @@
   year: 2026
   updated: 2026-11
 - title: Popo
+  group: library
   area: energy
   logo: ../../images/projects/popo.svg
   description: Low-voltage network simulation and state estimation for distributed energy resource studies, with time-series power flow, penetration sweeps, grid-code checks and weighted least-squares state estimation.
@@ -20,6 +22,7 @@
   docs: https://sambaiga.github.io/popo-docs/
   book: true
 - title: Milia
+  group: library
   area: analysis
   logo: ../../images/projects/milia.svg
   description: "Cluster, rank and detect in time series: scikit-learn estimators that group similar load profiles, retrieve the most similar cases and flag abnormal days at a chosen false-alarm rate."
@@ -30,6 +33,7 @@
   docs: https://sambaiga.github.io/pundamilia-docs/
   book: true
 - title: Twiga
+  group: library
   area: forecasting
   logo: ../../images/projects/twiga.svg
   description: A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision.
@@ -40,6 +44,7 @@
   docs: https://sambaiga.github.io/twiga-docs/
   book: true
 - title: Deep-NILMtk
+  group: community
   area: nilm
   description: Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines.
   status: Community

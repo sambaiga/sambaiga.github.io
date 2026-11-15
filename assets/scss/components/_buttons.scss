@@ -25,15 +25,15 @@
   transition: all $transition-duration-base $transition-timing-ease-in-out;
   white-space: normal; // Changed from nowrap for responsiveness
   word-wrap: break-word;
-  
+
   // Responsive font sizing
   @include responsive-font-size($font-size-sm, $font-size-base);
-  
+
   @media (max-width: $breakpoint-sm) {
     white-space: normal;
     word-break: break-word;
   }
-  
+
   // Icon styles (Bootstrap Icons)
   .bi {
     font-size: 1.1em;
@@ -47,13 +47,13 @@
       font-size: 1em;
     }
   }
-  
+
   // Focus state
   @include focus-ring;
-  
+
   // Hover state
   @include button-hover;
-  
+
   &:disabled,
   &.disabled {
     opacity: $opacity-50;
@@ -62,7 +62,7 @@
     transform: none !important;
     box-shadow: none !important;
   }
-  
+
   // Remove default focus styles on mouse users
   &:focus:not(:focus-visible) {
     outline: none;
@@ -96,11 +96,11 @@
   font-size: $font-size-lg;
   border-radius: $border-radius-xl;
   line-height: $line-height-normal;
-  
+
   .bi {
     font-size: 1.2em;
   }
-  
+
   @media (max-width: $breakpoint-sm) {
     padding: $spacer-2 $spacer-4;
     font-size: $font-size-base;
@@ -113,16 +113,16 @@
   border-radius: $border-radius-xl;
   line-height: $line-height-normal;
   font-weight: $font-weight-semibold;
-  
+
   .bi {
     font-size: 1.3em;
   }
-  
+
   @include media-breakpoint-down(md) {
     padding: $spacer-3 $spacer-5;
     font-size: $font-size-lg;
   }
-  
+
   @include media-breakpoint-down(sm) {
     padding: $spacer-2 $spacer-4;
     font-size: $font-size-base;
@@ -138,12 +138,12 @@
   background-color: transparent;
   color: $color !important;
   border-color: $color;
-  
+
   &:hover:not(:disabled) {
     background-color: $color;
     color: $white !important;
   }
-  
+
   &:active:not(:disabled) {
     background-color: darken($color, 10%);
     border-color: darken($color, 10%);
@@ -206,21 +206,21 @@
 
 // Light button (Light orange)
 .btn-light {
-  background-color: $light-orange;
+  background-color: $sky;
   color: $teal !important;
-  border-color: $light-orange;
-  
+  border-color: $sky;
+
   @include button-hover;
-  
+
   &:hover:not(:disabled) {
-    background-color: darken($light-orange, 10%);
-    border-color: darken($light-orange, 10%);
+    background-color: darken($sky, 10%);
+    border-color: darken($sky, 10%);
     color: $teal !important;
   }
-  
+
   &.btn-outline {
-    @include button-outline-variant($light-orange);
-    
+    @include button-outline-variant($sky);
+
     &:hover:not(:disabled) {
       color: $teal !important;
     }
@@ -245,56 +245,56 @@
   display: flex;
   flex-wrap: wrap;
   gap: $spacer-1;
-  
+
   .btn {
     flex: 1;
     min-width: 0;
-    
+
     @include media-breakpoint-down(sm) {
       flex: 1 0 auto;
       min-width: 120px;
     }
-    
+
     &:first-child {
       border-radius: $btn-border-radius 0 0 $btn-border-radius;
-      
+
       @include media-breakpoint-down(sm) {
         border-radius: $btn-border-radius;
       }
     }
-    
+
     &:last-child {
       border-radius: 0 $btn-border-radius $btn-border-radius 0;
-      
+
       @include media-breakpoint-down(sm) {
         border-radius: $btn-border-radius;
       }
     }
-    
+
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
-      
+
       @include media-breakpoint-down(sm) {
         border-radius: $btn-border-radius;
       }
     }
-    
+
     + .btn {
       margin-left: -$border-width-2;
       border-left-color: transparent;
-      
+
       @include media-breakpoint-down(sm) {
         margin-left: 0;
         border-left-color: inherit;
       }
     }
-    
+
     &:hover,
     &:focus {
       z-index: 1;
     }
   }
-  
+
   @include media-breakpoint-down(sm) {
     flex-direction: column;
     gap: $spacer-2;
@@ -308,15 +308,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  
+
   &.btn-sm {
     padding: $spacer-1;
   }
-  
+
   &.btn-lg {
     padding: $spacer-3;
   }
-  
+
   .bi {
     margin: 0;
   }
@@ -337,11 +337,11 @@
 .hero-actions {
   .btn {
     min-width: 140px;
-    
+
     @include media-breakpoint-down(md) {
       min-width: 120px;
     }
-    
+
     @include media-breakpoint-down(sm) {
       width: 100%;
       min-width: 0;
@@ -354,7 +354,7 @@
   @extend .btn-sm;
   text-align: center;
   min-height: auto;
-  
+
   @include media-breakpoint-down(sm) {
     flex: 1 0 100%;
     width: 100%;
@@ -366,11 +366,11 @@
   display: flex;
   gap: $grid-gap-sm;
   margin-top: auto;
-  
+
   @include media-breakpoint-down(sm) {
     flex-direction: column;
     width: 100%;
-    
+
     .btn {
       width: 100%;
     }
@@ -387,10 +387,10 @@
   max-width: $container-max-width-lg;
   margin-left: auto;
   margin-right: auto;
-  
+
   @include media-breakpoint-down(sm) {
     gap: $grid-gap-sm;
-    
+
     .btn-filter {
       flex: 1;
       min-width: calc(50% - #{$grid-gap-sm});
@@ -421,24 +421,24 @@
   font-size: $font-size-sm;
   transition: all $transition-duration-base $transition-timing-ease-in-out;
   white-space: nowrap;
-  
+
   @include media-breakpoint-down(sm) {
     padding: $spacer-1 $spacer-2;
     font-size: $font-size-xs;
     white-space: normal;
   }
-  
+
   // Variant styles
   color: $gray-700 !important;
-  
+
   @include button-hover;
   @include focus-ring;
-  
+
   &:hover:not(.active) {
     background-color: $gray-400;
     color: $gray-900 !important;
   }
-  
+
   &.active {
     @include button-variant($primary, $white);
   }
@@ -451,7 +451,7 @@
 // GitHub button
 .btn-github {
   @include button-variant($gray-900, $white);
-  
+
   &.btn-outline {
     @include button-outline-variant($gray-900);
   }
@@ -480,8 +480,8 @@
 }
 
 .btn-talk-website {
-  @include button-outline-variant($light-orange);
-  
+  @include button-outline-variant($sky);
+
   &:hover:not(:disabled) {
     color: $teal !important;
   }
@@ -507,56 +507,56 @@
 // Apply dark theme via data attribute
 [data-theme="dark"] {
   @include dark-theme-buttons;
-  
+
   // Additional dark theme adjustments
   .btn-filter {
     color: $gray-300 !important;
     border-color: $gray-600;
-    
+
     &:hover:not(.active) {
       background-color: $gray-700;
       color: $gray-100 !important;
     }
   }
-  
+
   .btn-github {
     @include button-variant($gray-800, $white);
-    
+
     &.btn-outline {
       color: $gray-300 !important;
       border-color: $gray-600;
-      
+
       &:hover {
         background-color: $gray-800;
         color: $white !important;
       }
     }
   }
-  
+
   // Adjust outline buttons for dark theme
   .btn-outline {
     border-color: var(--border-color);
-    
+
     &:hover {
       border-color: var(--color-primary);
     }
   }
-  
+
   // Dark theme for talk buttons
   .btn-talk-slides {
     color: lighten($cyan, 20%) !important;
     border-color: rgba($cyan, 0.3);
-    
+
     &:hover {
       background-color: rgba($cyan, 0.2);
       color: lighten($cyan, 30%) !important;
     }
   }
-  
+
   .btn-talk-video {
     color: lighten($pink-dark, 20%) !important;
     border-color: rgba($pink-dark, 0.3);
-    
+
     &:hover {
       background-color: rgba($pink-dark, 0.2);
       color: lighten($pink-dark, 30%) !important;
@@ -575,7 +575,7 @@
     padding-top: max($spacer-2, 12px);
     padding-bottom: max($spacer-2, 12px);
   }
-  
+
   .btn-icon {
     min-width: 44px;
     min-height: 44px;
@@ -591,11 +591,11 @@
   @include media-breakpoint-down(sm) {
     flex-direction: column;
     width: 100%;
-    
+
     .btn {
       width: 100%;
       margin-bottom: $spacer-2;
-      
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -606,7 +606,7 @@
 // Auto-width buttons that shrink on mobile
 .btn-auto {
   flex: 0 0 auto;
-  
+
   @include media-breakpoint-down(sm) {
     flex: 1;
   }

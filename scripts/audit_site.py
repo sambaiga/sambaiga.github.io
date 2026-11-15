@@ -183,11 +183,13 @@ def main(root: str) -> int:
         1 when any page has an error, otherwise 0.
     """
     base = Path(root)
-    # A draft page is an empty stub (draft-mode: gone), not a page of the site.
+    # A draft page is an empty stub (draft-mode: gone) and an alias is a redirect stub; neither is a page of the site.
     pages = [
         p
         for p in sorted(base.rglob("*.html"))
-        if p.relative_to(base).parts[0] not in SKIP and p.stat().st_size > STUB_BYTES
+        if p.relative_to(base).parts[0] not in SKIP
+        and p.stat().st_size > STUB_BYTES
+        and "var redirects = " not in p.read_text(encoding="utf-8", errors="ignore")
     ]
     failed = 0
     for path in pages:

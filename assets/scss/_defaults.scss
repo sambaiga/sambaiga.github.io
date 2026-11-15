@@ -70,14 +70,13 @@ $gray-900: #212529 !default;
 $black:    #000000 !default;
 
 // Brand Colors
-$blue:    #2563EB !default;
+$blue:    #0369A1 !default;
 $indigo:  #3C4F76 !default;
-$purple:  #6B7280 !default;
 $pink:    #FF777C !default;
 $pink-dark: #FCA5A5 !default;
 $red:     #DC2626 !default;
-$orange:  #EA580C !default;
-$light-orange: #A0D6E8 !default;
+$orange:  #E26029 !default;
+$sky:     #A0D6E8 !default;
 $yellow:  #CA8A04 !default;
 $green:   #059669 !default;
 $teal:    #1E293B !default;
@@ -132,7 +131,7 @@ $opacity-95: 0.95 !default;
 
 // Font Families
 $font-family-sans-serif: "Libre Franklin" !default;
-$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, monospace !default;
+$font-family-monospace: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace !default;
 $headings-font-family: "Jost" !default;
 $navbar-font-family: "Jost" !default;
 $toc-font-family: "Jost" !default;
@@ -179,7 +178,7 @@ $body-line-height: $line-height-relaxed !default;
 $headings-line-height: $line-height-snug !default;
 
 // Letter Spacing
-$letter-spacing-tight: -0.025em !default;
+$letter-spacing-tight: -0.015em !default;
 $letter-spacing-normal: 0 !default;
 $letter-spacing-wide: 0.025em !default;
 $letter-spacing-wider: 0.05em !default;

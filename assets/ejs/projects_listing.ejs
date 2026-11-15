@@ -19,7 +19,11 @@
   ];
   const counts = {};
   items.forEach((item) => { counts[item.area] = (counts[item.area] || 0) + 1; });
-  const years = [...new Set(items.map((item) => item.year))].sort((a, b) => b - a);
+  const groups = [
+    { id: "library", title: "Libraries" },
+    { id: "tooling", title: "Tooling" },
+    { id: "community", title: "Community" }
+  ].filter((g) => items.some((item) => item.group === g.id));
 %>
 <% const showControls = items.length > 6; %>
 <% if (showControls) { %>
@@ -35,11 +39,11 @@
 <p class="tl-empty" hidden>No project matches the current filter.</p>
 <% } %>
 <div class="tl">
-<% years.forEach((year) => { %>
+<% groups.forEach((group) => { %>
   <section class="tl-year">
-    <div class="tl-year-label"><%= year %></div>
+    <div class="tl-year-label"><%= group.title %></div>
     <div class="tl-items">
-<% items.filter((item) => item.year === year).forEach((p) => { %>
+<% items.filter((item) => item.group === group.id).forEach((p) => { %>
       <article class="tl-item" data-area="<%= p.area %>">
         <div class="tl-head">
 <% if (p.logo) { %>

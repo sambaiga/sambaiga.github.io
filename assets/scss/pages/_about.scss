@@ -87,7 +87,7 @@
       align-items: center;
       gap: $spacer-1;
       padding: $spacer-1 $spacer-2;
-      background: $light-orange;
+      background: $sky;
       color: $primary;
       border-radius: $border-radius;
       text-decoration: $link-decoration;
@@ -96,7 +96,7 @@
       transition: all $transition-duration-base $transition-timing-ease-in-out;
 
       &:hover {
-        background: darken($light-orange, 10%);
+        background: darken($sky, 10%);
         transform: $btn-hover-transform;
         text-decoration: $link-hover-decoration;
       }
@@ -309,11 +309,11 @@ body.quarto-dark {
 
     &-contact {
       .contact-link {
-        background: rgba($light-orange, $opacity-20);
-        color: $light-orange;
+        background: rgba($sky, $opacity-20);
+        color: $sky;
 
         &:hover {
-          background: rgba($light-orange, $opacity-30);
+          background: rgba($sky, $opacity-30);
         }
       }
     }

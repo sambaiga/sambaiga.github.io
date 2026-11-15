@@ -1,0 +1,40 @@
+# Brand of this site, declared once for Quarto. The values are those of the book (umeme/_brand.yml), the logo
+# (scripts/branding/make_logo.py) and the SCSS tokens (assets/scss/_defaults.scss, assets/twiga-dark.scss);
+# scripts/check_brand.py fails when they disagree. Fonts are served from assets/fonts by assets/scss/_fonts.scss.
+meta:
+  name: Anthony Faustine
+  link: https://sambaiga.github.io/
+
+logo:
+  medium: images/brand/badge.svg
+
+color:
+  palette:
+    slate: "#1E293B"
+    blue: "#0369A1"
+    orange: "#E26029"
+    green: "#059669"
+    red: "#DC2626"
+    gray: "#6B7280"
+    sky: "#38BDF8"
+    night: "#0F172A"
+  foreground: "#171717"
+  background: "#FFFFFF"
+  primary: slate
+  secondary: "#495057"
+  success: green
+  info: blue
+  warning: orange
+  danger: red
+
+typography:
+  fonts:
+    - family: Libre Franklin
+      source: system
+    - family: Jost
+      source: system
+    - family: JetBrains Mono
+      source: system
+  base: Libre Franklin
+  headings: Jost
+  monospace: JetBrains Mono

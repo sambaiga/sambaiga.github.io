@@ -19,16 +19,18 @@ $timeline-border-radius: 6px;
 }
 
 .projects-header {
+  hyphens: manual;
+
   h1 {
     font-size: $h1-font-size;
     font-weight: $headings-font-weight;
-    text-align: center;
-    margin: $spacer-5;
+    text-align: left;
+    margin: $spacer-5 0 $spacer-3;
     color: $primary;
   }
 
   p {
-    text-align: center;
+    text-align: left;
     font-size: $font-size-lg;
     color: $gray-700;
     margin-bottom: $spacer-6;
@@ -510,7 +512,7 @@ $timeline-border-radius: 6px;
 
   .tl-year {
     display: grid;
-    grid-template-columns: 6rem 1fr;
+    grid-template-columns: 7.5rem 1fr;
     gap: 0 1.5rem;
     margin-bottom: 1.75rem;
   }
@@ -523,7 +525,7 @@ $timeline-border-radius: 6px;
     border-radius: 6px;
     background: var(--ls-chip);
     color: var(--ls-text);
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     text-align: center;
     font-variant-numeric: tabular-nums;
@@ -763,4 +765,17 @@ $timeline-border-radius: 6px;
 
 .projects-page .tl-item .tl-description {
   margin: 0.4rem 0 0 !important;
+}
+
+.projects-page .software-stack {
+  max-width: 46rem;
+  margin: 0 0 $spacer-6;
+  font-size: $font-size-md;
+  text-align: left;
+
+  .label {
+    display: block;
+    margin-bottom: $spacer-1;
+    color: $gray-600;
+  }
 }
