@@ -12,7 +12,9 @@
   const when = (t) => (t.month ? MONTHS[t.month - 1] + " " : "") + t.year;
   const iso = (t) => t.year + (t.month ? "-" + String(t.month).padStart(2, "0") : "");
   const meta = (t) => TYPES[t.type] || TYPES.conference;
-  const href = (t) => t.slides || t.link || "";
+  // A talk with slides has a page of its own, which opens in the same tab. A talk without slides opens its event page.
+  const href = (t) => (t.slug ? t.slug + "/index.html" : t.link || "");
+  const away = (t) => (t.slug ? "" : ' target="_blank" rel="noopener"');
 
   const sorted = items.slice().sort((a, b) => b.year * 100 + (b.month || 0) - (a.year * 100 + (a.month || 0)));
   const years = [...new Set(sorted.map((t) => t.year))];
@@ -35,19 +37,19 @@
 <section class="tk-panel" aria-labelledby="tk-latest">
   <p class="tk-kicker" id="tk-latest">Latest talk</p>
   <article class="tk-feature">
-    <a class="tk-thumb tk-deck" href="<%= latest.slides %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+    <a class="tk-thumb tk-deck" href="<%= href(latest) %>" tabindex="-1" aria-hidden="true">
       <img src="<%= latest.thumb || FALLBACK %>" alt="" width="560" height="420" fetchpriority="high" decoding="async">
     </a>
     <div class="tk-feature-body">
       <p class="tk-type"><span class="tk-kind"><i class="bi bi-<%= meta(latest).icon %>"></i><b><%= meta(latest).label %></b><span><%= latest.topic %></span></span><time datetime="<%= iso(latest) %>"><%= when(latest) %></time></p>
-      <h2 class="no-anchor"><a href="<%= latest.slides %>" target="_blank" rel="noopener"><%= latest.title %></a></h2>
+      <h2 class="no-anchor"><a href="<%= href(latest) %>"><%= latest.title %></a></h2>
       <p class="tk-meta">
         <span><i class="bi bi-building"></i><%= latest.venue %></span>
 <% if (latest.place) { %>        <span><i class="bi bi-geo-alt"></i><%= latest.place %></span>
 <% } %><% if (latest.coauthors) { %>        <span><i class="bi bi-people"></i><%= latest.coauthors %></span>
 <% } %>      </p>
       <div class="tk-actions">
-        <a class="ls-button" href="<%= latest.slides %>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>View the slides</a>
+        <a class="ls-button" href="<%= href(latest) %>"><i class="bi bi-easel2"></i>View the talk</a>
 <% if (latest.video) { %>        <a class="tk-button" href="<%= latest.video %>" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
 <% } %><% if (latest.link) { %>        <a class="tk-button" href="<%= latest.link %>" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
 <% } %>      </div>
@@ -81,7 +83,7 @@
   <div class="tk-cards">
 <% sorted.filter((t) => t.year === year).forEach((t) => { %>
     <article class="tk-card" data-item data-type="<%= t.type %>" data-topic="<%= t.topic %>">
-      <a class="tk-thumb<%= t.thumb ? '' : ' tk-thumb--default' %>"<% if (href(t)) { %> href="<%= href(t) %>" target="_blank" rel="noopener"<% } %> tabindex="-1" aria-hidden="true">
+      <a class="tk-thumb<%= t.thumb ? '' : ' tk-thumb--default' %>"<% if (href(t)) { %> href="<%= href(t) %>"<%- away(t) %><% } %> tabindex="-1" aria-hidden="true">
         <img src="<%= t.thumb || FALLBACK %>" alt="" width="280" height="210" loading="lazy" decoding="async">
       </a>
       <div class="tk-body">
@@ -89,7 +91,7 @@
           <span class="tk-kind"><i class="bi bi-<%= meta(t).icon %>"></i><b><%= meta(t).label %></b><span><%= t.topic %></span></span>
           <time datetime="<%= iso(t) %>"><%= when(t) %></time>
         </div>
-        <h3 class="no-anchor"><% if (href(t)) { %><a href="<%= href(t) %>" target="_blank" rel="noopener"><span class="tk-clamp"><%= t.title %></span></a><% } else { %><span class="tk-clamp"><%= t.title %></span><% } %></h3>
+        <h3 class="no-anchor"><% if (href(t)) { %><a href="<%= href(t) %>"<%- away(t) %>><span class="tk-clamp"><%= t.title %></span></a><% } else { %><span class="tk-clamp"><%= t.title %></span><% } %></h3>
         <p class="tk-meta">
           <span><i class="bi bi-building"></i><%= t.venue %></span>
 <% if (t.place) { %>          <span class="tk-opt"><i class="bi bi-geo-alt"></i><%= t.place %></span>

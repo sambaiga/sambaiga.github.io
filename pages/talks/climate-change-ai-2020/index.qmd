@@ -1,0 +1,60 @@
+---
+title: ""
+pagetitle: "Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities | Talks | Anthony Faustine"
+description-meta: "Slides of the talk Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities at NeurIPS 2020 Workshop on Tackling Climate Change with Machine Learning, 2020."
+
+format:
+  html:
+    page-layout: full
+    body-classes: "talks-page talk-page"
+    include-after-body:
+      - text: |
+          <script src="../../../assets/js/talk-viewer.js" defer></script>
+
+toc: false
+---
+
+```{=html}
+<div class="tp">
+
+<nav class="tp-crumb" aria-label="Breadcrumb"><a href="../index.html"><i class="bi bi-arrow-left"></i>Talks</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>2020</span></nav>
+<p class="tk-kind"><i class="bi bi-people"></i><b>Conference</b><span>Energy systems</span></p>
+<h1 class="tp-title no-anchor">Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities</h1>
+<p class="tk-meta"><span><i class="bi bi-building"></i>NeurIPS 2020 Workshop on Tackling Climate Change with Machine Learning</span><span><i class="bi bi-calendar3"></i>2020</span><span><i class="bi bi-people"></i>with Lucas Pereira, Daniel Ngondya and L. Benabbou</span></p>
+
+<section class="tp-viewer" data-viewer data-pdf="../../../files/slides/climateai2020.pdf" data-lib="../../../assets/vendor/pdfjs/"
+  aria-label="Slides">
+  <div class="tp-stage" data-stage>
+    <button class="tp-nav tp-nav--prev" type="button" data-prev aria-label="Previous slide">
+      <i class="bi bi-chevron-left"></i></button>
+    <canvas data-canvas role="img" aria-label="Slide"></canvas>
+    <button class="tp-nav tp-nav--next" type="button" data-next aria-label="Next slide">
+      <i class="bi bi-chevron-right"></i></button>
+    <p class="tp-fallback" data-fallback>The slides need JavaScript. <a href="../../../files/slides/climateai2020.pdf">Open the PDF file</a>.</p>
+  </div>
+  <div class="tp-progress"><i data-progress></i></div>
+  <div class="tp-bar">
+    <span data-position aria-live="polite"></span>
+    <span class="tp-keys"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move</span>
+    <button class="tp-tool" type="button" data-full><i class="bi bi-arrows-fullscreen"></i>Full screen</button>
+    <a class="tp-tool tp-tool--main" href="../../../files/slides/climateai2020.pdf" download>
+      <i class="bi bi-download"></i>Download PDF</a>
+  </div>
+  <div class="tp-strip" data-strip role="group" aria-label="Slide thumbnails"></div>
+</section>
+
+<div class="tp-boxes">
+  <section class="tp-box">
+    <h2 class="no-anchor"><i class="bi bi-link-45deg"></i>Links</h2><p>11 slides</p><ul><li><a href="../../../files/slides/climateai2020.pdf" download><i class="bi bi-file-earmark-pdf"></i>Slides as a PDF file</a></li><li><a href="https://www.youtube.com/watch?v=qvgIjTKmhfc" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video of the talk</a></li><li><a href="https://www.climatechange.ai/papers/neurips2020/79" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event or paper page</a></li></ul>
+  </section>
+  <section class="tp-box">
+    <h2 class="no-anchor"><i class="bi bi-quote"></i>Cite these slides</h2>
+    <p class="tp-cite" data-cite>Anthony Faustine, Lucas Pereira, Daniel Ngondya and L. Benabbou (2020). Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities. NeurIPS 2020 Workshop on Tackling Climate Change with Machine Learning. Slides.</p>
+    <button class="tp-tool" type="button" data-copy><i class="bi bi-clipboard"></i><span>Copy citation</span></button>
+  </section>
+</div>
+
+<nav class="tp-steps" aria-label="Other talks"><a class="tp-step tp-step--prev" href="../unet-nilm-2020/index.html"><i class="bi bi-arrow-left"></i><span><small>Earlier</small>UNet-NILM: A Deep Neural Network for Multi-Task Appliance State Detection and Power Estimation in NILM</span></a><a class="tp-step tp-step--next" href="../deep-learning-foundation-2020/index.html"><span><small>Later</small>Foundation of Deep Learning</span><i class="bi bi-arrow-right"></i></a></nav>
+
+</div>
+```
