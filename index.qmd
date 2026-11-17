@@ -49,19 +49,45 @@ format:
 
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-value">10+</span>
-          <span class="stat-desc">years<br>experience</span>
+          <span class="stat-value">3</span>
+          <span class="stat-desc">open-source<br>libraries</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">10+</span>
-          <span class="stat-desc">projects<br>delivered</span>
+          <span class="stat-value">1</span>
+          <span class="stat-desc">book on<br>distribution networks</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">100%</span>
-          <span class="stat-desc">satisfied<br>impact</span>
+          <span class="stat-value">2</span>
+          <span class="stat-desc">domains: energy and<br>semiconductor supply chain</span>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<section class="home-work" aria-labelledby="home-work-title">
+  <h2 id="home-work-title" class="home-work-title">Where to start</h2>
+  <div class="home-work-grid">
+    <a class="home-work-card" href="/pages/software/">
+      <span class="home-work-kicker">Software</span>
+      <span class="home-work-name">Twiga, Milia and Popo</span>
+      <span class="home-work-text">Open-source libraries for forecasting, data handling and power-flow analysis.</span>
+    </a>
+    <a class="home-work-card" href="/pages/books/distribution-networks.html">
+      <span class="home-work-kicker">Book</span>
+      <span class="home-work-name">Machine Learning for Distribution Networks</span>
+      <span class="home-work-text">Machine learning methods for low-voltage grids, with the code that produces every figure.</span>
+    </a>
+    <a class="home-work-card" href="/pages/publication/">
+      <span class="home-work-kicker">Research</span>
+      <span class="home-work-name">Papers and talks</span>
+      <span class="home-work-text">Probabilistic forecasting, non-intrusive load monitoring and energy analytics.</span>
+    </a>
+    <a class="home-work-card" href="/pages/blog/">
+      <span class="home-work-kicker">Writing</span>
+      <span class="home-work-name">Notes on ML systems</span>
+      <span class="home-work-text">Architecture, time series methods and the management of technology.</span>
+    </a>
+  </div>
+</section>
 ```
