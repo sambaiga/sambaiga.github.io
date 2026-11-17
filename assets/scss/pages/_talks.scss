@@ -47,15 +47,16 @@
 
   .tk-feature {
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-    align-items: stretch;
-    overflow: hidden;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: center;
+    padding: 1.3rem;
     border: 1px solid var(--pn-card-border);
     border-radius: 12px;
     background: var(--pn-card-bg);
 
     h2 {
-      margin: 0.4rem 0 0.7rem;
+      margin: 0.5rem 0 0.7rem;
       padding: 0;
       border: 0;
       font-size: 1.5rem;
@@ -77,61 +78,68 @@
     align-self: center;
     min-width: 0;
     overflow-wrap: anywhere;
-    padding: 1.4rem 1.6rem;
   }
 
-  // The picture panel fills the height of its card. The slide or poster is shown whole at the top, and the rest of the
-  // panel is filled with a soft blur of the same picture, so it never shows an empty background.
+  // The picture is a 4:3 frame of modest size inside the padding of its card. A slide shows whole in it; a portrait poster
+  // shows its top, where the title is; the default picture of the blog fills it.
   .tk-thumb {
     position: relative;
     display: block;
-    flex: 0 0 168px;
-    align-self: stretch;
-    min-height: 190px;
+    flex: 0 0 176px;
+    align-self: flex-start;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
-    border-right: 1px solid var(--ls-border);
-    background: var(--ls-chip);
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -24px;
-      background: var(--tk-bg) center / cover no-repeat;
-      filter: blur(14px) saturate(1.1);
-      opacity: 0.85;
-    }
+    border: 1px solid var(--ls-border);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 22px -16px rgba(15, 23, 42, 0.55);
 
     img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: top center;
+      object-fit: cover;
+      object-position: center top;
     }
   }
 
-  // The default picture of the blog is a full picture, so it fills the panel
-  .tk-thumb--default {
-    &::before {
-      display: none;
+  .tk-kind {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ls-muted);
+
+    i {
+      align-self: center;
+      color: var(--ls-accent);
+      font-size: 0.9rem;
     }
 
-    img {
-      object-fit: cover;
-      object-position: center;
+    b {
+      font-weight: 700;
+      color: var(--ls-accent);
+    }
+
+    span::before {
+      content: "\00b7";
+      margin-right: 0.35rem;
     }
   }
 
   .tk-type {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 0.8rem;
     margin: 0;
 
     time {
-      margin-left: 0.2rem;
       font-size: 0.85rem;
       color: var(--ls-muted);
     }
@@ -270,15 +278,17 @@
   .tk-card {
     position: relative;
     display: flex;
-    overflow: hidden;
+    gap: 1.1rem;
+    padding: 1.1rem;
     border: 1px solid var(--ls-border);
     border-radius: 12px;
     background: var(--ls-surface);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
     &:hover {
       border-color: var(--ls-accent);
-      box-shadow: 0 14px 28px -22px rgba(15, 23, 42, 0.5);
+      box-shadow: 0 16px 30px -22px rgba(15, 23, 42, 0.55);
+      transform: translateY(-2px);
     }
   }
 
@@ -287,8 +297,7 @@
     flex: 1;
     flex-direction: column;
     min-width: 0;
-    gap: 0.5rem;
-    padding: 1.1rem 1.2rem;
+    gap: 0.4rem;
     overflow-wrap: anywhere;
 
     h3 {
@@ -332,29 +341,20 @@
 
   .tk-top {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    gap: 0.4rem 0.6rem;
+    gap: 0.6rem;
+
+    .tk-kind {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
 
     time {
-      font-size: 0.85rem;
+      flex: none;
+      font-size: 0.82rem;
       color: var(--ls-muted);
-    }
-  }
-
-  .tk-kinds {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem;
-    min-width: 0;
-    max-width: 100%;
-
-    .ls-chip,
-    .ls-pill {
-      max-width: 100%;
-      white-space: normal;
+      white-space: nowrap;
     }
   }
 
@@ -366,11 +366,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.6rem;
+    gap: 0.5rem 0.8rem;
     margin-top: auto;
-    padding-top: 0.7rem;
-    border-top: 1px solid var(--ls-border);
-    font-size: 0.85rem;
+    padding-top: 0.5rem;
+    font-size: 0.82rem;
     color: var(--ls-muted);
 
     .tk-actions {
@@ -492,11 +491,7 @@
     }
 
     .tk-thumb {
-      flex-basis: 130px;
-    }
-
-    .tk-body {
-      padding: 1rem;
+      flex-basis: 132px;
     }
   }
 
@@ -518,21 +513,17 @@
 
     .tk-feature {
       grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0.9rem;
 
       h2 {
         font-size: 1.25rem;
       }
     }
 
-    .tk-feature-body {
-      padding: 1rem;
-    }
-
     .tk-deck {
-      min-height: 0;
-      aspect-ratio: 16 / 9;
-      border-right: 0;
-      border-bottom: 1px solid var(--ls-border);
+      max-width: 100%;
+      flex: none;
     }
 
     .tk-controls {
@@ -571,7 +562,8 @@
       flex-basis: 96px;
     }
 
-    .tk-body {
+    .tk-card {
+      gap: 0.8rem;
       padding: 0.8rem;
     }
 
@@ -581,6 +573,14 @@
 
     .tk-opt {
       display: none !important;
+    }
+
+    .tk-kind span::before {
+      display: none;
+    }
+
+    .tk-kind span {
+      flex-basis: 100%;
     }
 
     .tk-foot {
