@@ -92,6 +92,7 @@ body.quarto-dark {
 .books-page,
 .publications-page,
 .projects-page,
+.talks-page,
 .writing-page {
   background: var(--ls-page);
 }
@@ -238,6 +239,7 @@ body.quarto-dark {
 // The title of a listing page is drawn inside the content column, so it always lines up with the content.
 .books-page,
 .publications-page,
+.talks-page,
 .writing-page {
   // Quarto 1.8 moves the first h1 of a page without a title into the title block, and Quarto 1.11 leaves it in the
   // page, so the title block is neither hidden (the heading would go with it) nor left to its own width: it takes the

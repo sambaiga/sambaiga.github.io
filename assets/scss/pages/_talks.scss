@@ -1,0 +1,642 @@
+/*-- scss:pages/talks --*/
+
+// =====================================================
+// TALKS PAGE: a latest-talk panel, type and topic filters, then cards grouped by year, as the Books and Research pages.
+// Colours come from the shared listing tokens (--ls-*, --pn-*), light and dark. Markup: assets/ejs/talks_listing.ejs
+// =====================================================
+
+.talks-page {
+  background: var(--ls-page);
+
+  .tk {
+    max-width: 64rem;
+    margin: 0 auto $spacer-6;
+  }
+
+  .tk-stats {
+    margin: 0 0 1.6rem;
+    font-size: 1.12rem;
+    color: var(--ls-muted);
+
+    span {
+      margin: 0 0.35rem;
+    }
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  // ---- Latest talk panel ----
+  .tk-panel {
+    padding: 1.6rem;
+    border: 1px solid var(--pn-border);
+    border-radius: 16px;
+    background: radial-gradient(60% 90% at 100% 0, var(--pn-glow), transparent 70%), linear-gradient(135deg, var(--pn-from), var(--pn-to));
+    box-shadow: var(--pn-shadow);
+  }
+
+  .tk-kicker {
+    margin: 0 0 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pn-kicker);
+  }
+
+  .tk-feature {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: center;
+    padding: 1.3rem;
+    border: 1px solid var(--pn-card-border);
+    border-radius: 12px;
+    background: var(--pn-card-bg);
+
+    h2 {
+      margin: 0.5rem 0 0.7rem;
+      padding: 0;
+      border: 0;
+      font-size: 1.5rem;
+      line-height: 1.25;
+      color: var(--pn-title);
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--ls-accent);
+        }
+      }
+    }
+  }
+
+  .tk-feature-body {
+    align-self: center;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  // The picture is a 4:3 frame of modest size inside the padding of its card. A slide shows whole in it; a portrait poster
+  // shows its top, where the title is; the default picture of the blog fills it.
+  .tk-thumb {
+    position: relative;
+    display: block;
+    flex: 0 0 176px;
+    align-self: flex-start;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--ls-border);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 22px -16px rgba(15, 23, 42, 0.55);
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+
+  .tk-kind {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ls-muted);
+
+    i {
+      align-self: center;
+      color: var(--ls-accent);
+      font-size: 0.9rem;
+    }
+
+    b {
+      font-weight: 700;
+      color: var(--ls-accent);
+    }
+
+    span::before {
+      content: "\00b7";
+      margin-right: 0.35rem;
+    }
+  }
+
+  .tk-type {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 0.8rem;
+    margin: 0;
+
+    time {
+      font-size: 0.85rem;
+      color: var(--ls-muted);
+    }
+  }
+
+  .tk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.9rem;
+    margin: 0 0 1rem;
+    font-size: 0.88rem;
+    color: var(--ls-muted);
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    i {
+      flex: none;
+      color: var(--ls-accent);
+    }
+  }
+
+  .tk-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tk-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.95rem;
+    border-radius: 0.4rem;
+    background: var(--ls-chip);
+    box-shadow: 0 1px 0 var(--ls-border-strong);
+    color: var(--ls-text) !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none !important;
+
+    &:hover {
+      background: var(--ls-hover);
+    }
+  }
+
+  // ---- Controls ----
+  .tk-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem 1rem;
+    margin: 2rem 0 0.4rem;
+
+    .ls-chips {
+      flex: 1;
+
+      a i {
+        margin-right: 0.35rem;
+      }
+    }
+
+    .ls-search {
+      flex: 0 1 15rem;
+    }
+  }
+
+  .tk-select {
+    max-width: 11rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 0.35rem;
+    background: var(--ls-surface);
+    color: var(--ls-text);
+    font-size: 0.88rem;
+  }
+
+  .tk-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 1.5rem;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ls-muted);
+  }
+
+  .tk-clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ls-accent);
+    cursor: pointer;
+  }
+
+  // ---- Years and cards ----
+  .tk-year > h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin: 2rem 0 1rem;
+    padding: 0;
+    border: 0;
+    font-size: 1.5rem;
+    color: var(--ls-text);
+
+    span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ls-muted);
+    }
+
+    &::after {
+      content: "";
+      flex: 1;
+      align-self: center;
+      height: 1px;
+      background: var(--ls-border);
+    }
+  }
+
+  .tk-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .tk-card {
+    position: relative;
+    display: flex;
+    gap: 1.1rem;
+    padding: 1.1rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 12px;
+    background: var(--ls-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: var(--ls-accent);
+      box-shadow: 0 16px 30px -22px rgba(15, 23, 42, 0.55);
+      transform: translateY(-2px);
+    }
+  }
+
+  .tk-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    gap: 0.4rem;
+    overflow-wrap: anywhere;
+
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--ls-text);
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        // The whole card is one click target through the title
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+        }
+
+        &:hover {
+          color: var(--ls-accent);
+        }
+      }
+    }
+
+    .tk-meta {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+  }
+
+  // The title is cut at four lines on the span, not on the heading, so that the stretched link is not clipped
+  .tk-clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  .tk-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.6rem;
+
+    .tk-kind {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    time {
+      flex: none;
+      font-size: 0.82rem;
+      color: var(--ls-muted);
+      white-space: nowrap;
+    }
+  }
+
+  [data-list] {
+    scroll-margin-top: 5rem;
+  }
+
+  .tk-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 0.8rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--ls-muted);
+
+    .tk-actions {
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
+  }
+
+  .tk-link .bi,
+  .tk-button .bi {
+    color: inherit !important;
+  }
+
+  .tk-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.4rem;
+    background: var(--ls-chip);
+    box-shadow: 0 1px 0 var(--ls-border-strong);
+    color: var(--ls-text) !important;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none !important;
+
+    &:hover {
+      background: var(--ls-hover);
+    }
+
+    &--main {
+      background: var(--ls-button);
+      box-shadow: none;
+      color: #fff !important;
+
+      &:hover {
+        background: var(--ls-orange);
+      }
+    }
+  }
+
+  // ---- Pagination, as the site pagination ----
+  .tk-pager {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2.2rem 0 0.5rem;
+  }
+
+  .tk-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 0.8rem;
+    border: 2px solid var(--ls-border);
+    border-radius: 0.4rem;
+    background: var(--ls-surface);
+    color: var(--ls-text);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+
+    &:hover:not(:disabled):not([aria-current]) {
+      border-color: var(--ls-border-strong);
+      background: var(--ls-hover);
+    }
+
+    &[aria-current="page"] {
+      border-color: var(--ls-active-bg);
+      background: var(--ls-active-bg);
+      color: var(--ls-on-active);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  .tk-page-compact {
+    display: none;
+    padding: 0 0.4rem;
+    font-size: 0.88rem;
+    color: var(--ls-muted);
+  }
+
+  .tk-pager-info {
+    margin: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ls-muted);
+  }
+
+  .tk-note {
+    display: flex;
+    gap: 0.6rem;
+    margin: 2.2rem 0 0;
+    font-size: 0.88rem;
+    color: var(--ls-muted);
+
+    i {
+      color: var(--ls-accent);
+    }
+  }
+
+  // ---- Tablet: two columns stay, the labels shorten ----
+  @media (max-width: 900px) {
+    .tk-feature {
+      grid-template-columns: 200px minmax(0, 1fr);
+    }
+
+    .tk-thumb {
+      flex-basis: 132px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .tk-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // ---- Phone: one column, one scrolling chip row, 44 px targets ----
+  @media (max-width: 600px) {
+    .tk-stats {
+      font-size: 0.92rem;
+    }
+
+    .tk-panel {
+      padding: 1rem;
+    }
+
+    .tk-feature {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0.9rem;
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+
+    .tk-deck {
+      max-width: 100%;
+      flex: none;
+    }
+
+    .tk-controls {
+      gap: 0.6rem;
+
+      .ls-search {
+        order: -1;
+        flex: 1 0 100%;
+      }
+
+      .tk-select {
+        flex: 1 0 100%;
+        max-width: none;
+      }
+
+      .ls-chips {
+        flex: 1 0 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin: 0 -1rem;
+        padding: 0.1rem 1rem 0.3rem;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        a {
+          flex: 0 0 auto;
+          padding: 0.6rem 0.8rem;
+        }
+      }
+    }
+
+    .tk-thumb {
+      flex-basis: 96px;
+    }
+
+    .tk-card {
+      gap: 0.8rem;
+      padding: 0.8rem;
+    }
+
+    .tk-body h3 {
+      font-size: 1rem;
+    }
+
+    .tk-opt {
+      display: none !important;
+    }
+
+    .tk-kind span::before {
+      display: none;
+    }
+
+    .tk-kind span {
+      flex-basis: 100%;
+    }
+
+    .tk-foot {
+      flex-wrap: wrap;
+    }
+
+    .tk-link,
+    .tk-button {
+      min-height: 44px;
+    }
+
+    .tk-page--number,
+    .tk-page-text {
+      display: none;
+    }
+
+    .tk-page-compact {
+      display: inline;
+    }
+  }
+
+  // Quarto styles headings of the document through an id selector, so the headings of the cards are reset through it
+  // too, and their links lose the site underline.
+  #quarto-document-content {
+    .tk-feature h2,
+    .tk-body h3 {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .tk-feature h2 {
+      margin: 0.4rem 0 0.7rem;
+    }
+
+    .tk-year > h2 {
+      margin: 2rem 0 1rem;
+      padding: 0;
+      border: 0;
+    }
+
+    .tk-feature h2 a,
+    .tk-body h3 a {
+      border-bottom: 0;
+      text-decoration: none;
+    }
+
+    // The site makes every link its own containing block, which would shrink the stretched link of a card to its title
+    .tk-body h3 a {
+      position: static;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tk-card {
+      transition: none;
+    }
+  }
+}

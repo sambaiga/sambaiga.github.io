@@ -1,0 +1,27 @@
+---
+title: ""
+pagetitle: "Talks | Anthony Faustine"
+description-meta: "Talks, workshops and posters by Anthony Faustine on probabilistic forecasting, non-intrusive load monitoring and machine learning for energy systems, with slides and videos."
+
+listing:
+  id: talks-listing
+  contents: talks.yaml
+  type: custom
+  template: ../../assets/ejs/talks_listing.ejs
+  sort: false
+  page-size: 100
+  fields: [title, year, month, type, topic, venue, place, coauthors, pages, slides, thumb, video, link]
+
+format:
+  html:
+    page-layout: full
+    body-classes: "talks-page"
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/talks-filter.js"></script>
+
+toc: false
+---
+
+::: {#talks-listing}
+:::
