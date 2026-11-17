@@ -1,7 +1,7 @@
 ---
 title: ""
 pagetitle: "Software | Anthony Faustine"
-description-meta: "Open-source software by Anthony Faustine: Twiga, Milia, Popo, Kobe and Deep-NILMtk."
+description-meta: "Open-source software by Anthony Faustine: Twiga, Milia, Popo, Kobe, Kinyonga and Deep-NILMtk."
 aliases:
   - ../projects/index.html
 
@@ -30,7 +30,7 @@ toc: false
 
 <h1>Software</h1>
 
-<p>Open-source libraries and tooling for time series forecasting, distribution network analytics, load monitoring and project foundations.</p>
+<p>Open-source libraries and tooling for time series forecasting, distribution network analytics, load monitoring and the foundations of new code and document projects.</p>
 
 <p class="software-stack"><span class="label">How they fit</span> <a href="https://pypi.org/project/pundamilia/">Milia</a> groups load profiles and detects abnormal days, <a href="https://pypi.org/project/twiga/">Twiga</a> forecasts them, and <a href="https://pypi.org/project/popo-flow/">Popo</a> simulates the low-voltage network that the forecasts and groups feed. The <a href="../books/distribution-networks.html">book</a> teaches all three on distribution-network problems.</p>
 

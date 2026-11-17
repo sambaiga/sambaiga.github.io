@@ -10,6 +10,14 @@
   status: Active
   year: 2026
   updated: 2026-11
+- title: Kinyonga
+  group: tooling
+  area: tooling
+  logo: ../../images/projects/kinyonga.svg
+  description: Generator for Quarto documents in one brand, with a profile for a letter, a CV, a slide deck and a book. Every project starts from one brand file and one identity file, a pinned Quarto and checks for colour contrast and fonts.
+  status: Active
+  year: 2026
+  updated: 2026-11
 - title: Popo
   group: library
   area: energy
