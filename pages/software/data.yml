@@ -6,6 +6,7 @@
   group: tooling
   area: tooling
   logo: ../../images/projects/kobe.svg
+  github: https://github.com/sambaiga/kobe
   description: Foundation for new Python projects, with a library profile and an experiment profile, a project generator and the coding standards shared by every repository.
   status: Active
   year: 2026
