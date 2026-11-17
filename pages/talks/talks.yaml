@@ -1,0 +1,269 @@
+# Talks, workshops and posters, newest first. The page template is assets/ejs/talks_listing.ejs.
+# Fields: title, year, month (omit when unknown), type (conference, invited, teaching or poster), topic, venue, place,
+# coauthors, pages, slides, thumb, video, link. A talk without slides shows the default picture of the blog.
+
+- title: "Conformal MLP-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with PV"
+  year: 2024
+  month: 9
+  type: conference
+  topic: "Forecasting"
+  venue: "IEEE SmartGridComm"
+  place: "Oslo, Norway"
+  coauthors: "with Lucas Pereira"
+  pages: "14 slides"
+  slides: "../../files/slides/Oslo_cinference_2024.pdf"
+  thumb: "../../images/talks/Oslo_cinference_2024.jpg"
+
+- title: "Scalable and Efficient MLP-Based Fully Parameterised Quantile for Probabilistic Power Forecasting"
+  year: 2024
+  month: 7
+  type: conference
+  topic: "Forecasting"
+  venue: "44th International Symposium on Forecasting"
+  place: "Dijon, France"
+  coauthors: "with Lucas Pereira and Nuno J. Nunes"
+  pages: "13 slides"
+  slides: "../../files/slides/Dijon_conference_2024.pdf"
+  thumb: "../../images/talks/Dijon_conference_2024.jpg"
+
+- title: "Powering the Future: Leveraging AI for Intelligent Power Systems"
+  year: 2023
+  type: invited
+  topic: "Energy systems"
+  venue: "Guest lecture, University of Galway"
+  place: "Galway, Ireland"
+  link: "https://www.linkedin.com/feed/update/urn:li:activity:7039980990345170944/"
+
+- title: "Real-Life Application of Data-Driven Maintenance Services"
+  year: 2022
+  type: invited
+  topic: "Industry"
+  venue: "Guest lecture, University of Galway"
+  place: "Galway, Ireland"
+  link: "https://www.linkedin.com/posts/activity-6908006815683203072-St0X"
+
+- title: "Real-Life Application of Data-Driven Maintenance Services"
+  year: 2022
+  type: invited
+  topic: "Industry"
+  venue: "IMR webinar series"
+  coauthors: "with Chris Judge and Dermot Murphy"
+  video: "https://www.youtube.com/watch?v=zSEhSYmhgDc"
+
+- title: "You, Your Research and Beyond"
+  year: 2021
+  type: invited
+  topic: "Skills"
+  venue: "Guest lecture, University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+  pages: "27 slides"
+  slides: "../../files/slides/BeyondPhD.pdf"
+  thumb: "../../images/talks/BeyondPhD.jpg"
+
+- title: "The W4H of AI for Public Good"
+  year: 2021
+  type: invited
+  topic: "Machine learning"
+  venue: "Guest lecture, University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+  pages: "26 slides"
+  slides: "../../files/slides/AI4Public_slide.pdf"
+  thumb: "../../images/talks/AI4Public_slide.jpg"
+
+- title: "Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities"
+  year: 2020
+  type: conference
+  topic: "Energy systems"
+  venue: "NeurIPS 2020 Workshop on Tackling Climate Change with Machine Learning"
+  coauthors: "with Lucas Pereira, Daniel Ngondya and L. Benabbou"
+  pages: "11 slides"
+  slides: "../../files/slides/climateai2020.pdf"
+  thumb: "../../images/talks/climateai2020.jpg"
+  video: "https://www.youtube.com/watch?v=qvgIjTKmhfc"
+  link: "https://www.climatechange.ai/papers/neurips2020/79"
+
+- title: "UNet-NILM: A Deep Neural Network for Multi-Task Appliance State Detection and Power Estimation in NILM"
+  year: 2020
+  type: conference
+  topic: "NILM"
+  venue: "5th International Workshop on NILM, with ACM BuildSys 2020"
+  coauthors: "with Lucas Pereira, Hafsa Bousbiat and Shridhar Kulkarni"
+  pages: "11 slides"
+  slides: "../../files/slides/UNENT-NILM2020.pdf"
+  thumb: "../../images/talks/UNENT-NILM2020.jpg"
+  video: "https://www.youtube.com/watch?v=UpZDX2hU3-A"
+  link: "https://nilmworkshop.org/2020/"
+
+- title: "Deep Neural Networks with Energy-Based Learning"
+  year: 2020
+  month: 9
+  type: invited
+  topic: "Machine learning"
+  venue: "CeADAR technical talk"
+  pages: "31 slides"
+  slides: "../../files/slides/DNN-EBM2020.pdf"
+  thumb: "../../images/talks/DNN-EBM2020.jpg"
+  video: "https://www.youtube.com/watch?v=77O16TK7kZw"
+
+- title: "Machine Learning for Energy Disaggregation"
+  year: 2020
+  type: invited
+  topic: "NILM"
+  venue: "CeADAR online seminar series"
+  pages: "10 slides"
+  slides: "../../files/slides/MLNILMCeADAR.pdf"
+  thumb: "../../images/talks/MLNILMCeADAR.jpg"
+  video: "https://www.youtube.com/watch?v=LL4clcjwSaE"
+
+- title: "Deep Learning for Computer Vision"
+  year: 2020
+  month: 7
+  type: teaching
+  topic: "Machine learning"
+  venue: "CeADAR"
+  pages: "47 slides"
+  slides: "../../files/slides/DeepVision.pdf"
+  thumb: "../../images/talks/DeepVision.jpg"
+
+- title: "Foundation of Deep Learning"
+  year: 2020
+  month: 6
+  type: teaching
+  topic: "Machine learning"
+  venue: "CeADAR"
+  pages: "67 slides"
+  slides: "../../files/slides/DeepLearningFoundation.pdf"
+  thumb: "../../images/talks/DeepLearningFoundation.jpg"
+
+- title: "Improved Appliance Classification in NILM Using Recurrence Plots and Convolutional Neural Networks"
+  year: 2019
+  type: poster
+  topic: "NILM"
+  venue: "EU NILM Workshop"
+  place: "Thessaloniki, Greece"
+  coauthors: "with Dirk Deschrijver and Tom Dhaene"
+  pages: "A0 poster"
+  slides: "../../files/slides/PosterEURONILM2019.pdf"
+  thumb: "../../images/talks/PosterEURONILM2019.jpg"
+  video: "https://www.youtube.com/watch?v=xDEHwC2QmuU&t=353"
+  link: "https://www.nilm.eu/"
+
+- title: "Strategies for Structuring Machine Learning Projects"
+  year: 2018
+  month: 9
+  type: teaching
+  topic: "Machine learning"
+  venue: "Bootcamp, University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+  pages: "51 slides"
+  slides: "../../files/slides/MLstrategy.pdf"
+  thumb: "../../images/talks/MLstrategy.jpg"
+
+- title: "Deep Learning for Sequence Models"
+  year: 2018
+  month: 8
+  type: teaching
+  topic: "Machine learning"
+  venue: "Bootcamp, University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+  pages: "34 slides"
+  slides: "../../files/slides/DeepSeq.pdf"
+  thumb: "../../images/talks/DeepSeq.jpg"
+
+- title: "Machine Learning Fundamentals"
+  year: 2018
+  month: 4
+  type: teaching
+  topic: "Machine learning"
+  venue: "IndabaX Tanzania (PytzMLS2018)"
+  place: "University of Dodoma, Tanzania"
+  pages: "47 slides"
+  slides: "../../files/slides/MLfundamentals.pdf"
+  thumb: "../../images/talks/MLfundamentals.jpg"
+  link: "https://github.com/sambaiga/PytzMLS2018"
+
+- title: "Foundations of Machine Learning and Deep Learning"
+  year: 2017
+  month: 10
+  type: teaching
+  topic: "Machine learning"
+  venue: "Pythontz event, University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+  link: "https://speakerdeck.com/sambaiga/foundation-of-machine-learning-and-deep-learning"
+
+- title: "Hybrid HMM-Deep Learning Models for Low-Sampling Energy Disaggregation"
+  year: 2017
+  month: 9
+  type: poster
+  topic: "NILM"
+  venue: "Deep Learning Indaba Summer School 2017"
+  place: "Johannesburg, South Africa"
+
+- title: "Workshop on LaTeX for Scientific Writing"
+  year: 2017
+  month: 9
+  type: teaching
+  topic: "Skills"
+  venue: "NM-AIST"
+  place: "Arusha, Tanzania"
+  link: "https://github.com/sambaiga/Latex4ScientificWriting"
+
+- title: "Practical Approaches to Using Scikit-learn for Machine Learning Projects"
+  year: 2017
+  month: 8
+  type: teaching
+  topic: "Machine learning"
+  venue: "Pythontz event, NM-AIST"
+  place: "Arusha, Tanzania"
+  coauthors: "with Neema Mduma"
+  link: "https://github.com/sambaiga/python4MachineLearning-NMAIST"
+
+- title: "Python for Data Science"
+  year: 2017
+  month: 8
+  type: teaching
+  topic: "Machine learning"
+  venue: "Arusha Technical College"
+  place: "Arusha, Tanzania"
+  coauthors: "with Neema Mduma, Dina Machuve and Eliyah Masesa"
+  link: "https://github.com/neylicious/python4MachineLearning-NMAIST"
+
+- title: "Convolutional Neural Network for Appliance Recognition in Energy Disaggregation (NILM)"
+  year: 2017
+  month: 6
+  type: conference
+  topic: "NILM"
+  venue: "Data Science Africa 2017"
+  place: "Arusha, Tanzania"
+  coauthors: "with Nerey Mvungi, Kisangiri Michael and Shubi Kaijage"
+  pages: "24 slides"
+  slides: "../../files/slides/ConvNILM.pdf"
+  thumb: "../../images/talks/ConvNILM.jpg"
+  video: "https://www.youtube.com/watch?v=8TCCpEJI2cg"
+
+- title: "Training Workshop on LaTeX for Scientific Writing"
+  year: 2017
+  month: 3
+  type: teaching
+  topic: "Skills"
+  venue: "University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+
+- title: "Building the Internet of Things with Arduino and the Atmel AVR Microcontroller"
+  year: 2015
+  month: 12
+  type: teaching
+  topic: "Sensing and IoT"
+  venue: "Four-week course, University of Dodoma (CIVE)"
+  place: "Dodoma, Tanzania"
+
+- title: "Wireless Sensor Networks and Mobile Sensing for Water Quality Monitoring and Reporting"
+  year: 2014
+  month: 5
+  type: poster
+  topic: "Sensing and IoT"
+  venue: "VICRES Scientific Joint Conference 2014"
+  place: "Entebbe, Uganda"
+  pages: "32 pages"
+  slides: "../../files/slides/vicres_presentation.pdf"
+  thumb: "../../images/talks/vicres_presentation.jpg"

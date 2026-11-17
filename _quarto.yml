@@ -69,6 +69,8 @@ website:
         file: "pages/software/index.qmd"
       - text: "Books"
         file: "pages/books/index.qmd"
+      - text: "Talks"
+        file: "pages/talks/index.qmd"
       - text: "Research"
         file: "pages/publication/index.qmd"
 
