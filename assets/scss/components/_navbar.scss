@@ -49,10 +49,34 @@
     flex-wrap: nowrap !important;
   }
 
-  .navbar-container > .navbar-collapse:not(.show) {
+  .navbar-container > .navbar-collapse:not(.show):not(.collapsing) {
     flex: 0 0 0 !important;
     width: 0;
     overflow: hidden;
+  }
+
+  // An open menu drops below the bar at full width, as its own row
+  .navbar-container:has(> .navbar-collapse.show, > .navbar-collapse.collapsing) {
+    flex-wrap: wrap !important;
+  }
+
+  .navbar-container > .navbar-collapse.show,
+  .navbar-container > .navbar-collapse.collapsing {
+    flex: 0 0 100% !important;
+    order: 10;
+    width: 100%;
+    padding: 0.4rem 0 0.8rem;
+    border-top: 1px solid var(--ls-border, rgba(148, 163, 184, 0.3));
+  }
+
+  .navbar-collapse .navbar-nav-scroll {
+    max-height: none;
+  }
+
+  .navbar-collapse .nav-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 
   .navbar-brand-container {
