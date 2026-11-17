@@ -49,16 +49,16 @@ format:
 
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-value">3</span>
-          <span class="stat-desc">open-source<br>libraries</span>
+          <span class="stat-value">10+</span>
+          <span class="stat-desc">years<br>experience</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">1</span>
-          <span class="stat-desc">book on<br>distribution networks</span>
+          <span class="stat-value">10+</span>
+          <span class="stat-desc">projects<br>delivered</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">2</span>
-          <span class="stat-desc">domains: energy and<br>semiconductor supply chain</span>
+          <span class="stat-value">100%</span>
+          <span class="stat-desc">satisfied<br>impact</span>
         </div>
       </div>
     </div>
