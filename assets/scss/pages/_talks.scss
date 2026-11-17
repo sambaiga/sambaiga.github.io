@@ -47,10 +47,9 @@
 
   .tk-feature {
     display: grid;
-    grid-template-columns: 240px minmax(0, 1fr);
-    gap: 2rem;
-    align-items: center;
-    padding: 1.4rem;
+    grid-template-columns: 260px minmax(0, 1fr);
+    align-items: stretch;
+    overflow: hidden;
     border: 1px solid var(--pn-card-border);
     border-radius: 12px;
     background: var(--pn-card-bg);
@@ -74,40 +73,67 @@
     }
   }
 
-  .tk-deck {
+  .tk-feature-body {
+    align-self: center;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    padding: 1.4rem 1.6rem;
+  }
+
+  // The picture panel fills the height of its card. The slide or poster is shown whole at the top, and the rest of the
+  // panel is filled with a soft blur of the same picture, so it never shows an empty background.
+  .tk-thumb {
+    position: relative;
     display: block;
+    flex: 0 0 168px;
+    align-self: stretch;
+    min-height: 190px;
     overflow: hidden;
-    border: 1px solid var(--ls-border);
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 14px 28px -16px rgba(15, 23, 42, 0.45);
+    border-right: 1px solid var(--ls-border);
+    background: var(--ls-chip);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -24px;
+      background: var(--tk-bg) center / cover no-repeat;
+      filter: blur(14px) saturate(1.1);
+      opacity: 0.85;
+    }
 
     img {
-      display: block;
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+    }
+  }
+
+  // The default picture of the blog is a full picture, so it fills the panel
+  .tk-thumb--default {
+    &::before {
+      display: none;
+    }
+
+    img {
       object-fit: cover;
+      object-position: center;
     }
   }
 
   .tk-type {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     margin: 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ls-accent);
 
     time {
+      margin-left: 0.2rem;
+      font-size: 0.85rem;
       color: var(--ls-muted);
-    }
-
-    i {
-      margin-right: 0.35rem;
     }
   }
 
@@ -123,9 +149,12 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+      min-width: 0;
+      max-width: 100%;
     }
 
     i {
+      flex: none;
       color: var(--ls-accent);
     }
   }
@@ -241,8 +270,7 @@
   .tk-card {
     position: relative;
     display: flex;
-    gap: 1.1rem;
-    padding: 1.1rem;
+    overflow: hidden;
     border: 1px solid var(--ls-border);
     border-radius: 12px;
     background: var(--ls-surface);
@@ -254,48 +282,22 @@
     }
   }
 
-  .tk-thumb {
-    flex: 0 0 128px;
-    align-self: flex-start;
-    display: block;
-    overflow: hidden;
-    border: 1px solid var(--ls-border);
-    border-radius: 6px;
-    background: #fff;
-    box-shadow: 0 8px 18px -12px rgba(15, 23, 42, 0.5);
-
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: contain;
-    }
-  }
-
-  // The default picture of the blog fills the frame
-  .tk-thumb--default img {
-    object-fit: cover;
-  }
-
   .tk-body {
     display: flex;
     flex: 1;
     flex-direction: column;
     min-width: 0;
-    gap: 0.45rem;
+    gap: 0.5rem;
+    padding: 1.1rem 1.2rem;
+    overflow-wrap: anywhere;
 
     h3 {
-      display: -webkit-box;
       margin: 0;
       padding: 0;
-      overflow: hidden;
       font-size: 1.1rem;
       font-weight: 500;
       line-height: 1.3;
       color: var(--ls-text);
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
 
       a {
         color: inherit;
@@ -320,11 +322,20 @@
     }
   }
 
+  // The title is cut at four lines on the span, not on the heading, so that the stretched link is not clipped
+  .tk-clamp {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
   .tk-top {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 0.4rem 0.6rem;
 
     time {
       font-size: 0.85rem;
@@ -332,8 +343,23 @@
     }
   }
 
-  .tk-tags {
-    margin: 0;
+  .tk-kinds {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+    max-width: 100%;
+
+    .ls-chip,
+    .ls-pill {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+
+  [data-list] {
+    scroll-margin-top: 5rem;
   }
 
   .tk-foot {
@@ -347,14 +373,12 @@
     font-size: 0.85rem;
     color: var(--ls-muted);
 
-    > span {
-      white-space: nowrap;
-    }
-
     .tk-actions {
       position: relative;
       z-index: 1;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-left: auto;
     }
   }
 
@@ -467,13 +491,12 @@
       grid-template-columns: 200px minmax(0, 1fr);
     }
 
-    .tk-card {
-      gap: 0.9rem;
-      padding: 1rem;
+    .tk-thumb {
+      flex-basis: 130px;
     }
 
-    .tk-thumb {
-      flex-basis: 96px;
+    .tk-body {
+      padding: 1rem;
     }
   }
 
@@ -495,16 +518,21 @@
 
     .tk-feature {
       grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 0.9rem;
 
       h2 {
         font-size: 1.25rem;
       }
     }
 
+    .tk-feature-body {
+      padding: 1rem;
+    }
+
     .tk-deck {
-      max-width: 260px;
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      border-right: 0;
+      border-bottom: 1px solid var(--ls-border);
     }
 
     .tk-controls {
@@ -539,13 +567,12 @@
       }
     }
 
-    .tk-card {
-      gap: 0.8rem;
-      padding: 0.8rem;
+    .tk-thumb {
+      flex-basis: 96px;
     }
 
-    .tk-thumb {
-      flex-basis: 84px;
+    .tk-body {
+      padding: 0.8rem;
     }
 
     .tk-body h3 {
@@ -599,6 +626,11 @@
     .tk-body h3 a {
       border-bottom: 0;
       text-decoration: none;
+    }
+
+    // The site makes every link its own containing block, which would shrink the stretched link of a card to its title
+    .tk-body h3 a {
+      position: static;
     }
   }
 

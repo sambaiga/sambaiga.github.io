@@ -35,11 +35,11 @@
 <section class="tk-panel" aria-labelledby="tk-latest">
   <p class="tk-kicker" id="tk-latest">Latest talk</p>
   <article class="tk-feature">
-    <a class="tk-deck" href="<%= latest.slides %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+    <a class="tk-thumb tk-deck" style="--tk-bg: url('<%= latest.thumb || FALLBACK %>')" href="<%= latest.slides %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
       <img src="<%= latest.thumb || FALLBACK %>" alt="" width="560" height="420" fetchpriority="high" decoding="async">
     </a>
-    <div>
-      <p class="tk-type"><span><i class="bi bi-<%= meta(latest).icon %>"></i><%= meta(latest).label %></span> <time datetime="<%= iso(latest) %>"><%= when(latest) %></time></p>
+    <div class="tk-feature-body">
+      <p class="tk-type"><span class="ls-pill"><i class="bi bi-<%= meta(latest).icon %>"></i><%= meta(latest).label %></span><span class="ls-chip"><%= latest.topic %></span><time datetime="<%= iso(latest) %>"><%= when(latest) %></time></p>
       <h2 class="no-anchor"><a href="<%= latest.slides %>" target="_blank" rel="noopener"><%= latest.title %></a></h2>
       <p class="tk-meta">
         <span><i class="bi bi-building"></i><%= latest.venue %></span>
@@ -47,7 +47,7 @@
 <% } %><% if (latest.coauthors) { %>        <span><i class="bi bi-people"></i><%= latest.coauthors %></span>
 <% } %>      </p>
       <div class="tk-actions">
-        <a class="ls-button ls-button--accent" href="<%= latest.slides %>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>View the slides</a>
+        <a class="ls-button" href="<%= latest.slides %>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>View the slides</a>
 <% if (latest.video) { %>        <a class="tk-button" href="<%= latest.video %>" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
 <% } %><% if (latest.link) { %>        <a class="tk-button" href="<%= latest.link %>" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
 <% } %>      </div>
@@ -63,7 +63,7 @@
     <a href="#" data-chip="<%= k %>"><i class="bi bi-<%= TYPES[k].icon %>"></i><%= TYPES[k].label %> <span><%= typeCounts[k] %></span></a>
 <% }) %>
   </nav>
-  <select class="tk-select" data-topic aria-label="Topic">
+  <select class="tk-select" data-topic-select aria-label="Topic">
     <option value="all">All topics</option>
 <% topics.forEach((topic) => { %>
     <option value="<%= topic %>"><%= topic %> (<%= topicCounts[topic] %>)</option>
@@ -81,21 +81,20 @@
   <div class="tk-cards">
 <% sorted.filter((t) => t.year === year).forEach((t) => { %>
     <article class="tk-card" data-item data-type="<%= t.type %>" data-topic="<%= t.topic %>">
-      <a class="tk-thumb<%= t.thumb ? '' : ' tk-thumb--default' %>"<% if (href(t)) { %> href="<%= href(t) %>" target="_blank" rel="noopener"<% } %> tabindex="-1" aria-hidden="true">
+      <a class="tk-thumb<%= t.thumb ? '' : ' tk-thumb--default' %>" style="--tk-bg: url('<%= t.thumb || FALLBACK %>')"<% if (href(t)) { %> href="<%= href(t) %>" target="_blank" rel="noopener"<% } %> tabindex="-1" aria-hidden="true">
         <img src="<%= t.thumb || FALLBACK %>" alt="" width="280" height="210" loading="lazy" decoding="async">
       </a>
       <div class="tk-body">
         <div class="tk-top">
-          <span class="ls-pill"><i class="bi bi-<%= meta(t).icon %>"></i><%= meta(t).label %></span>
+          <span class="tk-kinds"><span class="ls-pill"><i class="bi bi-<%= meta(t).icon %>"></i><%= meta(t).label %></span><span class="ls-chip"><%= t.topic %></span></span>
           <time datetime="<%= iso(t) %>"><%= when(t) %></time>
         </div>
-        <h3 class="no-anchor"><% if (href(t)) { %><a href="<%= href(t) %>" target="_blank" rel="noopener"><%= t.title %></a><% } else { %><%= t.title %><% } %></h3>
+        <h3 class="no-anchor"><% if (href(t)) { %><a href="<%= href(t) %>" target="_blank" rel="noopener"><span class="tk-clamp"><%= t.title %></span></a><% } else { %><span class="tk-clamp"><%= t.title %></span><% } %></h3>
         <p class="tk-meta">
           <span><i class="bi bi-building"></i><%= t.venue %></span>
 <% if (t.place) { %>          <span class="tk-opt"><i class="bi bi-geo-alt"></i><%= t.place %></span>
 <% } %><% if (t.coauthors) { %>          <span class="tk-opt"><i class="bi bi-people"></i><%= t.coauthors %></span>
 <% } %>        </p>
-        <p class="tk-tags"><span class="ls-chip"><%= t.topic %></span></p>
 <% if (t.slides || t.video || t.link || t.pages) { %>
         <div class="tk-foot">
           <span><%= t.pages || "" %></span>

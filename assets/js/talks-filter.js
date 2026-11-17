@@ -1,6 +1,6 @@
 // Type chips, topic select, search and pagination for the Talks page. The template renders every talk, so the page
 // works without this script. The page marks its parts with data attributes: data-chip (a type chip, "all" for no
-// filter), data-topic (the topic select), data-search, data-item (a talk card), data-group (a year with a data-count),
+// filter), data-topic-select (the topic select), data-search, data-item (a talk card with data-type and data-topic), data-group (a year with a data-count),
 // data-status, data-clear, data-empty, data-pager and data-pager-info.
 (function () {
   "use strict";
@@ -8,7 +8,7 @@
   var chips = document.querySelectorAll("[data-chip]");
   var items = Array.prototype.slice.call(document.querySelectorAll("[data-item]"));
   var groups = document.querySelectorAll("[data-group]");
-  var select = document.querySelector("[data-topic]");
+  var select = document.querySelector("[data-topic-select]");
   var search = document.querySelector("[data-search]");
   var empty = document.querySelector("[data-empty]");
   var status = document.querySelector("[data-status]");
@@ -133,6 +133,9 @@
       if (!target) return;
       state.page = Number(target.getAttribute("data-page"));
       apply();
+      // The pager is drawn again, so the focus goes back to the button of the page now shown.
+      var current = pager.querySelector('[aria-current="page"]') || pager.querySelector("[data-page]");
+      if (current) current.focus({ preventScroll: true });
       if (list) list.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   apply();
