@@ -1,6 +1,7 @@
 # Talks, workshops and posters, newest first. The page template is assets/ejs/talks_listing.ejs.
 # Fields: title, year, month (omit when unknown), type (conference, invited, teaching or poster), topic, venue, place,
-# coauthors, pages, slides, thumb, video, link. A talk without slides shows the default picture of the blog.
+# coauthors, pages, slug, slides, thumb, video, link. A talk with slides has a page of its own, made by
+# scripts/make_talk_pages.py from the slug. A talk without slides shows the default picture of the blog.
 
 - title: "Conformal MLP-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with PV"
   year: 2024
@@ -11,6 +12,7 @@
   place: "Oslo, Norway"
   coauthors: "with Lucas Pereira"
   pages: "14 slides"
+  slug: smartgridcomm-2024
   slides: "../../files/slides/Oslo_cinference_2024.pdf"
   thumb: "../../images/talks/Oslo_cinference_2024.jpg"
 
@@ -23,6 +25,7 @@
   place: "Dijon, France"
   coauthors: "with Lucas Pereira and Nuno J. Nunes"
   pages: "13 slides"
+  slug: isf-2024
   slides: "../../files/slides/Dijon_conference_2024.pdf"
   thumb: "../../images/talks/Dijon_conference_2024.jpg"
 
@@ -57,6 +60,7 @@
   venue: "Guest lecture, University of Dodoma (CIVE)"
   place: "Dodoma, Tanzania"
   pages: "27 slides"
+  slug: you-your-research-and-beyond-2021
   slides: "../../files/slides/BeyondPhD.pdf"
   thumb: "../../images/talks/BeyondPhD.jpg"
 
@@ -67,6 +71,7 @@
   venue: "Guest lecture, University of Dodoma (CIVE)"
   place: "Dodoma, Tanzania"
   pages: "26 slides"
+  slug: ai-for-public-good-2021
   slides: "../../files/slides/AI4Public_slide.pdf"
   thumb: "../../images/talks/AI4Public_slide.jpg"
 
@@ -77,6 +82,7 @@
   venue: "NeurIPS 2020 Workshop on Tackling Climate Change with Machine Learning"
   coauthors: "with Lucas Pereira, Daniel Ngondya and L. Benabbou"
   pages: "11 slides"
+  slug: climate-change-ai-2020
   slides: "../../files/slides/climateai2020.pdf"
   thumb: "../../images/talks/climateai2020.jpg"
   video: "https://www.youtube.com/watch?v=qvgIjTKmhfc"
@@ -89,6 +95,7 @@
   venue: "5th International Workshop on NILM, with ACM BuildSys 2020"
   coauthors: "with Lucas Pereira, Hafsa Bousbiat and Shridhar Kulkarni"
   pages: "11 slides"
+  slug: unet-nilm-2020
   slides: "../../files/slides/UNENT-NILM2020.pdf"
   thumb: "../../images/talks/UNENT-NILM2020.jpg"
   video: "https://www.youtube.com/watch?v=UpZDX2hU3-A"
@@ -101,6 +108,7 @@
   topic: "Machine learning"
   venue: "CeADAR technical talk"
   pages: "31 slides"
+  slug: energy-based-learning-2020
   slides: "../../files/slides/DNN-EBM2020.pdf"
   thumb: "../../images/talks/DNN-EBM2020.jpg"
   video: "https://www.youtube.com/watch?v=77O16TK7kZw"
@@ -111,6 +119,7 @@
   topic: "NILM"
   venue: "CeADAR online seminar series"
   pages: "10 slides"
+  slug: energy-disaggregation-2020
   slides: "../../files/slides/MLNILMCeADAR.pdf"
   thumb: "../../images/talks/MLNILMCeADAR.jpg"
   video: "https://www.youtube.com/watch?v=LL4clcjwSaE"
@@ -122,6 +131,7 @@
   topic: "Machine learning"
   venue: "CeADAR"
   pages: "47 slides"
+  slug: deep-learning-for-vision-2020
   slides: "../../files/slides/DeepVision.pdf"
   thumb: "../../images/talks/DeepVision.jpg"
 
@@ -132,6 +142,7 @@
   topic: "Machine learning"
   venue: "CeADAR"
   pages: "67 slides"
+  slug: deep-learning-foundation-2020
   slides: "../../files/slides/DeepLearningFoundation.pdf"
   thumb: "../../images/talks/DeepLearningFoundation.jpg"
 
@@ -143,6 +154,7 @@
   place: "Thessaloniki, Greece"
   coauthors: "with Dirk Deschrijver and Tom Dhaene"
   pages: "A0 poster"
+  slug: euro-nilm-2019
   slides: "../../files/slides/PosterEURONILM2019.pdf"
   thumb: "../../images/talks/PosterEURONILM2019.jpg"
   video: "https://www.youtube.com/watch?v=xDEHwC2QmuU&t=353"
@@ -156,6 +168,7 @@
   venue: "Bootcamp, University of Dodoma (CIVE)"
   place: "Dodoma, Tanzania"
   pages: "51 slides"
+  slug: ml-project-strategy-2018
   slides: "../../files/slides/MLstrategy.pdf"
   thumb: "../../images/talks/MLstrategy.jpg"
 
@@ -167,6 +180,7 @@
   venue: "Bootcamp, University of Dodoma (CIVE)"
   place: "Dodoma, Tanzania"
   pages: "34 slides"
+  slug: deep-sequence-models-2018
   slides: "../../files/slides/DeepSeq.pdf"
   thumb: "../../images/talks/DeepSeq.jpg"
 
@@ -178,6 +192,7 @@
   venue: "IndabaX Tanzania (PytzMLS2018)"
   place: "University of Dodoma, Tanzania"
   pages: "47 slides"
+  slug: ml-fundamentals-2018
   slides: "../../files/slides/MLfundamentals.pdf"
   thumb: "../../images/talks/MLfundamentals.jpg"
   link: "https://github.com/sambaiga/PytzMLS2018"
@@ -237,6 +252,7 @@
   place: "Arusha, Tanzania"
   coauthors: "with Nerey Mvungi, Kisangiri Michael and Shubi Kaijage"
   pages: "24 slides"
+  slug: dsa-2017
   slides: "../../files/slides/ConvNILM.pdf"
   thumb: "../../images/talks/ConvNILM.jpg"
   video: "https://www.youtube.com/watch?v=8TCCpEJI2cg"
@@ -265,5 +281,6 @@
   venue: "VICRES Scientific Joint Conference 2014"
   place: "Entebbe, Uganda"
   pages: "32 pages"
+  slug: vicres-2014
   slides: "../../files/slides/vicres_presentation.pdf"
   thumb: "../../images/talks/vicres_presentation.jpg"

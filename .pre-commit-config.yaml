@@ -4,7 +4,7 @@ default_language_version:
   python: python3.12
 
 # Generated or vendored files are never checked.
-exclude: ^(_site/|\.quarto/|\.venv/|_freeze/|_extensions/|docs/)
+exclude: ^(_site/|\.quarto/|\.venv/|_freeze/|_extensions/|docs/|assets/vendor/)
 
 ci:
   autoupdate_schedule: monthly

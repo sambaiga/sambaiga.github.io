@@ -1,0 +1,60 @@
+---
+title: ""
+pagetitle: "Foundation of Deep Learning | Talks | Anthony Faustine"
+description-meta: "Slides of the talk Foundation of Deep Learning at CeADAR, June 2020."
+
+format:
+  html:
+    page-layout: full
+    body-classes: "talks-page talk-page"
+    include-after-body:
+      - text: |
+          <script src="../../../assets/js/talk-viewer.js" defer></script>
+
+toc: false
+---
+
+```{=html}
+<div class="tp">
+
+<nav class="tp-crumb" aria-label="Breadcrumb"><a href="../index.html"><i class="bi bi-arrow-left"></i>Talks</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>2020</span></nav>
+<p class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></p>
+<h1 class="tp-title no-anchor">Foundation of Deep Learning</h1>
+<p class="tk-meta"><span><i class="bi bi-building"></i>CeADAR</span><span><i class="bi bi-calendar3"></i>June 2020</span></p>
+
+<section class="tp-viewer" data-viewer data-pdf="../../../files/slides/DeepLearningFoundation.pdf" data-lib="../../../assets/vendor/pdfjs/"
+  aria-label="Slides">
+  <div class="tp-stage" data-stage>
+    <button class="tp-nav tp-nav--prev" type="button" data-prev aria-label="Previous slide">
+      <i class="bi bi-chevron-left"></i></button>
+    <canvas data-canvas role="img" aria-label="Slide"></canvas>
+    <button class="tp-nav tp-nav--next" type="button" data-next aria-label="Next slide">
+      <i class="bi bi-chevron-right"></i></button>
+    <p class="tp-fallback" data-fallback>The slides need JavaScript. <a href="../../../files/slides/DeepLearningFoundation.pdf">Open the PDF file</a>.</p>
+  </div>
+  <div class="tp-progress"><i data-progress></i></div>
+  <div class="tp-bar">
+    <span data-position aria-live="polite"></span>
+    <span class="tp-keys"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move</span>
+    <button class="tp-tool" type="button" data-full><i class="bi bi-arrows-fullscreen"></i>Full screen</button>
+    <a class="tp-tool tp-tool--main" href="../../../files/slides/DeepLearningFoundation.pdf" download>
+      <i class="bi bi-download"></i>Download PDF</a>
+  </div>
+  <div class="tp-strip" data-strip role="group" aria-label="Slide thumbnails"></div>
+</section>
+
+<div class="tp-boxes">
+  <section class="tp-box">
+    <h2 class="no-anchor"><i class="bi bi-link-45deg"></i>Links</h2><p>67 slides</p><ul><li><a href="../../../files/slides/DeepLearningFoundation.pdf" download><i class="bi bi-file-earmark-pdf"></i>Slides as a PDF file</a></li></ul>
+  </section>
+  <section class="tp-box">
+    <h2 class="no-anchor"><i class="bi bi-quote"></i>Cite these slides</h2>
+    <p class="tp-cite" data-cite>Anthony Faustine (2020). Foundation of Deep Learning. CeADAR. Slides.</p>
+    <button class="tp-tool" type="button" data-copy><i class="bi bi-clipboard"></i><span>Copy citation</span></button>
+  </section>
+</div>
+
+<nav class="tp-steps" aria-label="Other talks"><a class="tp-step tp-step--prev" href="../climate-change-ai-2020/index.html"><i class="bi bi-arrow-left"></i><span><small>Earlier</small>Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities</span></a><a class="tp-step tp-step--next" href="../deep-learning-for-vision-2020/index.html"><span><small>Later</small>Deep Learning for Computer Vision</span><i class="bi bi-arrow-right"></i></a></nav>
+
+</div>
+```

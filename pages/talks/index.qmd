@@ -10,7 +10,7 @@ listing:
   template: ../../assets/ejs/talks_listing.ejs
   sort: false
   page-size: 100
-  fields: [title, year, month, type, topic, venue, place, coauthors, pages, slides, thumb, video, link]
+  fields: [title, year, month, type, topic, venue, place, coauthors, pages, slug, slides, thumb, video, link]
 
 format:
   html:

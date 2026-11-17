@@ -1,0 +1,60 @@
+---
+title: ""
+pagetitle: "Improved Appliance Classification in NILM Using Recurrence Plots and Convolutional Neural Networks | Talks | Anthony Faustine"
+description-meta: "Slides of the talk Improved Appliance Classification in NILM Using Recurrence Plots and Convolutional Neural Networks at EU NILM Workshop, 2019."
+
+format:
+  html:
+    page-layout: full
+    body-classes: "talks-page talk-page"
+    include-after-body:
+      - text: |
+          <script src="../../../assets/js/talk-viewer.js" defer></script>
+
+toc: false
+---
+
+```{=html}
+<div class="tp">
+
+<nav class="tp-crumb" aria-label="Breadcrumb"><a href="../index.html"><i class="bi bi-arrow-left"></i>Talks</a><i class="bi bi-chevron-right" aria-hidden="true"></i><span>2019</span></nav>
+<p class="tk-kind"><i class="bi bi-file-earmark-richtext"></i><b>Poster</b><span>NILM</span></p>
+<h1 class="tp-title no-anchor">Improved Appliance Classification in NILM Using Recurrence Plots and Convolutional Neural Networks</h1>
+<p class="tk-meta"><span><i class="bi bi-building"></i>EU NILM Workshop</span><span><i class="bi bi-geo-alt"></i>Thessaloniki, Greece</span><span><i class="bi bi-calendar3"></i>2019</span><span><i class="bi bi-people"></i>with Dirk Deschrijver and Tom Dhaene</span></p>
+
+<section class="tp-viewer" data-viewer data-pdf="../../../files/slides/PosterEURONILM2019.pdf" data-lib="../../../assets/vendor/pdfjs/"
+  aria-label="Slides">
+  <div class="tp-stage" data-stage>
+    <button class="tp-nav tp-nav--prev" type="button" data-prev aria-label="Previous slide">
+      <i class="bi bi-chevron-left"></i></button>
+    <canvas data-canvas role="img" aria-label="Slide"></canvas>
+    <button class="tp-nav tp-nav--next" type="button" data-next aria-label="Next slide">
+      <i class="bi bi-chevron-right"></i></button>
+    <p class="tp-fallback" data-fallback>The slides need JavaScript. <a href="../../../files/slides/PosterEURONILM2019.pdf">Open the PDF file</a>.</p>
+  </div>
+  <div class="tp-progress"><i data-progress></i></div>
+  <div class="tp-bar">
+    <span data-position aria-live="polite"></span>
+    <span class="tp-keys"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move</span>
+    <button class="tp-tool" type="button" data-full><i class="bi bi-arrows-fullscreen"></i>Full screen</button>
+    <a class="tp-tool tp-tool--main" href="../../../files/slides/PosterEURONILM2019.pdf" download>
+      <i class="bi bi-download"></i>Download PDF</a>
+  </div>
+  <div class="tp-strip" data-strip role="group" aria-label="Slide thumbnails"></div>
+</section>
+
+<div class="tp-boxes">
+  <section class="tp-box">
+    <h2 class="no-anchor"><i class="bi bi-link-45deg"></i>Links</h2><p>A0 poster</p><ul><li><a href="../../../files/slides/PosterEURONILM2019.pdf" download><i class="bi bi-file-earmark-pdf"></i>Slides as a PDF file</a></li><li><a href="https://www.youtube.com/watch?v=xDEHwC2QmuU&t=353" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video of the talk</a></li><li><a href="https://www.nilm.eu/" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event or paper page</a></li></ul>
+  </section>
+  <section class="tp-box">
+    <h2 class="no-anchor"><i class="bi bi-quote"></i>Cite these slides</h2>
+    <p class="tp-cite" data-cite>Anthony Faustine, Dirk Deschrijver and Tom Dhaene (2019). Improved Appliance Classification in NILM Using Recurrence Plots and Convolutional Neural Networks. EU NILM Workshop, Thessaloniki, Greece. Slides.</p>
+    <button class="tp-tool" type="button" data-copy><i class="bi bi-clipboard"></i><span>Copy citation</span></button>
+  </section>
+</div>
+
+<nav class="tp-steps" aria-label="Other talks"><a class="tp-step tp-step--prev" href="../ml-project-strategy-2018/index.html"><i class="bi bi-arrow-left"></i><span><small>Earlier</small>Strategies for Structuring Machine Learning Projects</span></a><a class="tp-step tp-step--next" href="../energy-disaggregation-2020/index.html"><span><small>Later</small>Machine Learning for Energy Disaggregation</span><i class="bi bi-arrow-right"></i></a></nav>
+
+</div>
+```

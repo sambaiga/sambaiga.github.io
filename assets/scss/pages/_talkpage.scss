@@ -1,0 +1,426 @@
+/*-- scss:pages/talkpage --*/
+
+// =====================================================
+// TALK PAGE: the title and details of a talk, a slide viewer, a box of links and a box with the citation.
+// Colours come from the shared listing tokens (--ls-*, --pn-*), light and dark. Pages: scripts/make_talk_pages.py
+// Viewer: assets/js/talk-viewer.js
+// =====================================================
+
+.talk-page {
+  .tp {
+    max-width: 64rem;
+    margin: 0 auto $spacer-6;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  .tp-crumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1.2rem;
+    font-size: 0.85rem;
+    color: var(--ls-muted);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+
+    i {
+      font-size: 0.7rem;
+    }
+  }
+
+  .tk-kind {
+    margin: 0 0 0.5rem;
+  }
+
+  .tp-title {
+    max-width: 32ch;
+    margin: 0 0 0.9rem;
+    padding: 0;
+    border: 0;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    color: var(--ls-text);
+  }
+
+  .tk-meta {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  // ---- Viewer ----
+  .tp-viewer {
+    margin: 1.8rem 0 1.4rem;
+    overflow: hidden;
+    border: 1px solid var(--ls-border);
+    border-radius: 14px;
+    background: var(--ls-surface);
+    box-shadow: var(--pn-shadow);
+
+    &:fullscreen {
+      display: flex;
+      flex-direction: column;
+      border: 0;
+      border-radius: 0;
+
+      .tp-stage {
+        flex: 1;
+      }
+    }
+  }
+
+  .tp-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 240px;
+    padding: 1rem;
+    background: var(--ls-chip);
+
+    canvas {
+      display: block;
+      max-width: 100%;
+      border: 1px solid var(--ls-border);
+      background: #fff;
+      box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.5);
+    }
+  }
+
+  .tp-fallback {
+    margin: 0;
+    color: var(--ls-muted);
+  }
+
+  .is-ready .tp-fallback {
+    display: none;
+  }
+
+  .tp-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--ls-border);
+    border-radius: 50%;
+    background: var(--ls-surface);
+    color: var(--ls-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px -8px rgba(15, 23, 42, 0.5);
+    transform: translateY(-50%);
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &--prev {
+      left: 0.8rem;
+    }
+
+    &--next {
+      right: 0.8rem;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--ls-orange);
+      background: var(--ls-orange);
+      color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .tp-viewer:not(.is-ready) .tp-nav {
+    display: none;
+  }
+
+  .tp-progress {
+    height: 3px;
+    background: var(--ls-border);
+
+    i {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--ls-orange);
+      transition: width 0.25s ease;
+    }
+  }
+
+  .tp-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    color: var(--ls-muted);
+
+    .tp-keys {
+      margin-left: auto;
+    }
+  }
+
+  .tp-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.9rem;
+    border: 0;
+    border-radius: 0.4rem;
+    background: var(--ls-chip);
+    box-shadow: 0 1px 0 var(--ls-border-strong);
+    color: var(--ls-text) !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none !important;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--ls-hover);
+    }
+
+    &--main {
+      background: var(--ls-button);
+      box-shadow: none;
+      color: #fff !important;
+
+      &:hover {
+        background: var(--ls-orange);
+      }
+    }
+
+    .bi {
+      color: inherit !important;
+    }
+  }
+
+  kbd {
+    padding: 0 0.35rem;
+    border: 1px solid var(--ls-border);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: var(--ls-code);
+    color: var(--ls-text);
+    font-size: 0.72rem;
+  }
+
+  .tp-strip {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    overflow-x: auto;
+    border-top: 1px solid var(--ls-border);
+
+    button {
+      flex: 0 0 96px;
+      min-height: 56px;
+      padding: 0;
+      overflow: hidden;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      background: var(--ls-chip);
+      cursor: pointer;
+      opacity: 0.75;
+
+      &[aria-current="true"] {
+        border-color: var(--ls-orange);
+        opacity: 1;
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  // ---- Boxes ----
+  .tp-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .tp-box {
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 12px;
+    background: var(--ls-surface);
+
+    p {
+      margin: 0 0 0.6rem;
+      font-size: 0.9rem;
+      color: var(--ls-muted);
+    }
+
+    ul {
+      display: grid;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.92rem;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--ls-orange);
+      }
+    }
+  }
+
+  .tp-cite {
+    padding: 0.7rem 0.8rem;
+    border-radius: 8px;
+    background: var(--ls-code);
+    color: var(--ls-text) !important;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  // ---- Earlier and later ----
+  .tp-steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+    margin-top: 1.6rem;
+  }
+
+  .tp-step {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 12px;
+    background: var(--ls-surface);
+    color: var(--ls-text) !important;
+    text-decoration: none !important;
+    overflow-wrap: anywhere;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--ls-accent);
+    }
+
+    &--next {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    &--none {
+      border: 0;
+      background: none;
+    }
+
+    small {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ls-muted);
+    }
+
+    i {
+      flex: none;
+      font-size: 1.2rem;
+      color: var(--ls-accent);
+    }
+  }
+
+  // Quarto styles the headings of the document through an id selector
+  #quarto-document-content {
+    .tp-title,
+    .tp-box h2 {
+      margin-top: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .tp-box ul,
+    .tp-box li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .tp-box li::before {
+      content: none;
+    }
+
+    .tp-box h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 0 0 0.7rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ls-muted);
+
+      i {
+        color: var(--ls-accent);
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    .tp-boxes,
+    .tp-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .tp-title {
+      font-size: 1.6rem;
+    }
+
+    .tp-stage {
+      padding: 0.5rem;
+    }
+
+    .tp-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .tp-keys {
+      display: none;
+    }
+
+    .tp-tool {
+      min-height: 44px;
+    }
+
+    .tp-strip button {
+      flex-basis: 72px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tp-nav,
+    .tp-progress i,
+    .tp-step {
+      transition: none;
+    }
+  }
+}
