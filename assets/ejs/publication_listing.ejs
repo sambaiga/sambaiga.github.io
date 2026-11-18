@@ -108,26 +108,21 @@
   <article class="pub" data-item<% if (p === hero) { %> data-featured<% } %> data-topic="<%= topicOf(p) %>" data-kind="<%= kindOf(p) %>" data-date="<%= p.date %>" data-title="<%= esc(p.title) %>">
     <%= sheet(p, false) %>
     <div class="pub-body">
-      <div class="pub-top"><span class="pub-tags"><%= pills(p) %></span><time datetime="<%= p.date %>"><%= yearOf(p) %></time></div>
+      <div class="pub-top"><span class="pub-tags"><%= pills(p) %><span class="ls-chip"><%= topicOf(p) %></span></span><time datetime="<%= p.date %>"><%= yearOf(p) %></time></div>
       <h3 class="no-anchor"><a href="<%= p.path %>"><%= p.title %></a></h3>
       <p class="pub-authors"><%= authorsOf(p) %></p>
       <p class="pub-venue"><%= venueOf(p) %></p>
-      <p class="pub-tags"><span class="ls-chip"><%= topicOf(p) %></span></p>
-<% if (p.abstract || p.description) { %>
-      <details class="pub-abstract">
-        <summary><i class="bi bi-caret-right-fill"></i>Abstract</summary>
-        <p><%= p.abstract || p.description %></p>
-      </details>
-<% } %>
-      <div class="pub-foot">
-        <div class="pub-links">
-<% a.rest.forEach((l) => { %>          <a href="<%= l.url %>"<% if (!l.same) { %> target="_blank" rel="noopener"<% } %>><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
+    </div>
+  <div class="pub-foot">
+    <div class="pub-links">
+<% if (p.abstract || p.description) { %>          <button type="button" data-abstract><i class="bi bi-text-paragraph"></i>Abstract</button>
+<% } %><% a.rest.forEach((l) => { %>          <a href="<%= l.url %>"<% if (!l.same) { %> target="_blank" rel="noopener"<% } %>><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
 <% }) %>          <button type="button" data-cite><i class="bi bi-quote"></i>Cite</button>
-        </div>
+    </div>
 <% if (a.pdf) { %>        <a class="ls-button ls-button--small" href="<%= a.pdf.url %>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
 <% } %>      </div>
-      <%= cite(p) %>
-    </div>
+  <%= cite(p) %>
+    <template data-abstract-text><%= esc(plain(p.abstract || p.description)) %></template>
   </article>
 <% }) %>
 </div>

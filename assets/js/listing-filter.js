@@ -3,7 +3,8 @@
 // data-chip (a topic chip, "all" for none), data-type-chip (journal, conference or "all"), data-search, data-sort,
 // data-item (a paper, with data-topic, data-kind, data-date, data-title, and data-featured for the selected paper),
 // data-count (the number of a year, when present), data-status, data-clear, data-empty, data-pager with data-size,
-// data-pager-info, data-cite (a button, beside a template data-bibtex and a template data-reference), data-preview
+// data-pager-info, data-cite (a button, beside a template data-bibtex and a template data-reference), data-abstract (a
+// button, beside a template data-abstract-text), data-preview
 // (a button with the first page), and data-dialog with its data-dialog-title, -pdf, -image and -close.
 (function () {
   "use strict";
@@ -174,7 +175,7 @@
 
   function openCite(trigger) {
     var root = trigger.closest("[data-item], [data-hero]");
-    var existing = root.querySelector(".pubs-cite");
+    var existing = root.querySelector(".pubs-cite:not(.pubs-cite--abstract)");
     closeCites();
     if (existing) return;
     var panel = document.createElement("div");
@@ -232,7 +233,24 @@
     root.appendChild(panel);
   }
 
+  function openAbstract(trigger) {
+    var root = trigger.closest("[data-item]");
+    var existing = root.querySelector(".pubs-cite--abstract");
+    closeCites();
+    if (existing) return;
+    var panel = document.createElement("div");
+    panel.className = "pubs-cite pubs-cite--abstract";
+    panel.setAttribute("role", "group");
+    panel.setAttribute("aria-label", "Abstract");
+    var text = document.createElement("p");
+    text.textContent = templateText(root, "data-abstract-text").trim();
+    panel.appendChild(text);
+    root.appendChild(panel);
+  }
+
   document.addEventListener("click", function (event) {
+    var abstract = event.target.closest("[data-abstract]");
+    if (abstract) return openAbstract(abstract);
     var trigger = event.target.closest("[data-cite]");
     if (trigger) return openCite(trigger);
     if (!event.target.closest(".pubs-cite")) closeCites();
