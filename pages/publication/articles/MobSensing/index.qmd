@@ -27,6 +27,19 @@ pub-info:
 
 thumbnail: "/images/publications/mobsensing.svg"
 image: "/images/publications/mobsensing.svg"
+doi: "10.4236/wsn.2014.612025"
+cover: "/images/publications/cover/mobsensing.jpg"
+preview: "/images/publications/preview/mobsensing.jpg"
 featured: false
-doi: 10.4236/wsn.2014.612025
+bibtex: |
+  @article{faustine2014ubiquitous,
+    title = {{Ubiquitous Mobile Sensing for Water Quality Monitoring and Reporting within Lake Victoria Basin}},
+    author = {Faustine, Anthony and Mvuma, Aloys N.},
+    journal = {Wireless Sensor Network},
+    year = {2014},
+    volume = {06},
+    number = {12},
+    pages = {257--264},
+    doi = {10.4236/wsn.2014.612025}
+  }
 ---

@@ -32,6 +32,19 @@ pub-info:
 thumbnail: "/images/publications/DeepNLMTK.svg"
 image: "/images/publications/DeepNLMTK.svg"
 status: "Published"
+doi: "10.1109/tii.2022.3206322"
+cover: "/images/publications/cover/DeepNLMTK.jpg"
+preview: "/images/publications/preview/DeepNLMTK.jpg"
 featured: false
-doi: 10.1109/TII.2022.3206322
+bibtex: |
+  @article{bousbiat2023unlocking,
+    title = {{Unlocking the Full Potential of Neural NILM: On Automation, Hyperparameters, and Modular Pipelines}},
+    author = {Bousbiat, Hafsa and Faustine, Anthony and Klemenjak, Christoph and Pereira, Lucas and Elmenreich, Wilfried},
+    journal = {IEEE Transactions on Industrial Informatics},
+    year = {2023},
+    volume = {19},
+    number = {5},
+    pages = {7002--7010},
+    doi = {10.1109/tii.2022.3206322}
+  }
 ---

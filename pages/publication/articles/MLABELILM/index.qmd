@@ -33,6 +33,19 @@ pub-info:
 
 thumbnail: "/images/publications/mlabelvi.svg"
 image: "/images/publications/mlabelvi.svg"
+doi: "10.3390/en13164154"
+cover: "/images/publications/cover/mlabelvi.jpg"
+preview: "/images/publications/preview/mlabelvi.jpg"
 featured: false
-doi: 10.3390/en13164154
+bibtex: |
+  @article{faustine2020multi,
+    title = {{Multi-Label Learning for Appliance Recognition in NILM Using Fryze-Current Decomposition and Convolutional Neural Network}},
+    author = {Faustine, Anthony and Pereira, Lucas},
+    journal = {Energies},
+    year = {2020},
+    volume = {13},
+    number = {16},
+    pages = {4154},
+    doi = {10.3390/en13164154}
+  }
 ---

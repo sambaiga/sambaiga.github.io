@@ -25,6 +25,16 @@ pub-info:
       url: "https://www.ijcaonline.org/archives/volume145/number11/"
       icon: journal-text
 
-featured: false
 doi: ""
+featured: false
+bibtex: |
+  @article{faustine2016open,
+    title = {{Open source cellular technologies for cost effective cellular connectivity in rural areas}},
+    author = {Anthony Faustine and Gabriel, M. and Shao, B.},
+    journal = {International Journal of Computer Applications (IJCA)},
+    year = {2016},
+    volume = {145},
+    number = {11},
+    pages = {1--6}
+  }
 ---

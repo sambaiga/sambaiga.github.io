@@ -33,6 +33,19 @@ pub-info:
 
 thumbnail: "/images/publications/AWRG.svg"
 image: "/images/publications/AWRG.svg"
+doi: "10.1109/tsg.2020.3010621"
+cover: "/images/publications/cover/AWRG.jpg"
+preview: "/images/publications/preview/AWRG.jpg"
 featured: false
-doi: 10.1109/TSG.2020.3010621
+bibtex: |
+  @article{faustine2021adaptive,
+    title = {{Adaptive Weighted Recurrence Graphs for Appliance Recognition in Non-Intrusive Load Monitoring}},
+    author = {Faustine, Anthony and Pereira, Lucas and Klemenjak, Christoph},
+    journal = {IEEE Transactions on Smart Grid},
+    year = {2021},
+    volume = {12},
+    number = {1},
+    pages = {398--406},
+    doi = {10.1109/tsg.2020.3010621}
+  }
 ---

@@ -36,6 +36,19 @@ pub-info:
 
 thumbnail: "/images/publications/wrg.svg"
 image: "/images/publications/wrg.svg"
+doi: "10.3390/en13133374"
+cover: "/images/publications/cover/wrg.jpg"
+preview: "/images/publications/preview/wrg.jpg"
 featured: false
-doi: 10.3390/en13133374
+bibtex: |
+  @article{faustine2020improved,
+    title = {{Improved Appliance Classification in Non-Intrusive Load Monitoring Using Weighted Recurrence Graph and Convolutional Neural Networks}},
+    author = {Faustine, Anthony and Pereira, Lucas},
+    journal = {Energies},
+    year = {2020},
+    volume = {13},
+    number = {13},
+    pages = {3374},
+    doi = {10.3390/en13133374}
+  }
 ---

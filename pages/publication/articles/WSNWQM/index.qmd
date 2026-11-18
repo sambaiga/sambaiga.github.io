@@ -31,6 +31,19 @@ pub-info:
 
 thumbnail: /images/publications/wsn-wagos.svg
 image: /images/publications/wsn-wagos.svg
+doi: "10.4236/wsn.2014.612027"
+cover: "/images/publications/cover/wsn-wagos.jpg"
+preview: "/images/publications/preview/wsn-wagos.jpg"
 featured: false
-doi: 10.4236/wsn.2014.612027
+bibtex: |
+  @article{faustine2014wireless,
+    title = {{Wireless Sensor Networks for Water Quality Monitoring and Control within Lake Victoria Basin: Prototype Development}},
+    author = {Faustine, Anthony and Mvuma, Aloys N. and Mongi, Hector J. and Gabriel, Maria C. and Tenge, Albino J. and Kucel, Samuel B.},
+    journal = {Wireless Sensor Network},
+    year = {2014},
+    volume = {06},
+    number = {12},
+    pages = {281--290},
+    doi = {10.4236/wsn.2014.612027}
+  }
 ---

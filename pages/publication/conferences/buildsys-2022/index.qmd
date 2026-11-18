@@ -32,8 +32,7 @@ pub-info:
     2022, doi: <a href="https://dl.acm.org/doi/10.1145/3563357.3566169"><code>10.1145/3563357.3566169</code></a>
 
 status: Published
-featured: false
-doi: "10.1145/3563357.3566169"
+doi: "10.1145/3563357.3566153"
 
 author:
   - name: Manca, Matteo
@@ -44,4 +43,16 @@ author:
   - name: Pereira, Lucas
     orcid: 0000-0002-9110-8775
     affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+cover: "/images/publications/cover/MLABEL.jpg"
+preview: "/images/publications/preview/MLABEL.jpg"
+featured: false
+bibtex: |
+  @inproceedings{manca2022appliance,
+    title = {{Appliance recognition with combined single- and multi-label approaches}},
+    author = {Manca, Marco Manolo and Faustine, Anthony and Pereira, Lucas},
+    booktitle = {Proceedings of the 9th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation},
+    year = {2022},
+    pages = {388--392},
+    doi = {10.1145/3563357.3566153}
+  }
 ---

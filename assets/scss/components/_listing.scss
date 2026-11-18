@@ -27,6 +27,8 @@
   --ls-code: #f1f5f9;
   --ls-hover: #e2e8f0;
   --ls-orange: #e26029;
+  --ls-warn-bg: #fef3c7;
+  --ls-warn-fg: #92400e;
   // Featured panels (Books, Research, Writing): a pale tinted panel in the light theme
   --pn-from: #eef5fb;
   --pn-to: #f8fafc;
@@ -68,6 +70,8 @@ body.quarto-dark {
   --ls-ok-fg: #86efac;
   --ls-code: #0f172a;
   --ls-hover: #334155;
+  --ls-warn-bg: rgba(251, 191, 36, 0.16);
+  --ls-warn-fg: #fcd34d;
   // Featured panels: the dark slate panel of the dark theme
   --pn-from: #1e293b;
   --pn-to: #0f172a;
@@ -113,6 +117,11 @@ body.quarto-dark {
   &--available {
     background: var(--ls-ok-bg);
     color: var(--ls-ok-fg);
+  }
+
+  &--submitted {
+    background: var(--ls-warn-bg);
+    color: var(--ls-warn-fg);
   }
 
   &--community,
@@ -169,6 +178,22 @@ body.quarto-dark {
       background: var(--pn-ghost-hover);
     }
   }
+}
+
+.ls-select {
+  min-height: 40px;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--ls-border);
+  border-radius: 0.35rem;
+  background: var(--ls-surface);
+  color: var(--ls-text);
+  font-size: 0.88rem;
+}
+
+.ls-button--small {
+  min-height: 34px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.82rem;
 }
 
 .ls-controls {

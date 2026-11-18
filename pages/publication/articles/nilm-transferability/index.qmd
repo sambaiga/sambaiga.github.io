@@ -28,6 +28,17 @@ pub-info:
       url: "https://arxiv.org/abs/1912.06200"
       icon: journal-text
 
-featured: false
 doi: "10.1186/s42162-019-0088-3"
+featured: false
+bibtex: |
+  @article{klemenjak2019metrics,
+    title = {{On metrics to assess the transferability of machine learning models in non-intrusive load monitoring}},
+    author = {Klemenjak, Christoph and Anthony Faustine and Makonin, Stephen and Elmenreich, Wilfried},
+    journal = {Energy Informatics},
+    year = {2019},
+    volume = {2},
+    number = {1},
+    pages = {1--15},
+    doi = {10.1186/s42162-019-0088-3}
+  }
 ---

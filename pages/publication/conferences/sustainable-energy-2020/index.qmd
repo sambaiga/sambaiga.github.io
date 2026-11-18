@@ -33,7 +33,6 @@ pub-info:
     <em>Workshop on AI for Earth Sciences, ICML 2020, Virtual,</em> 2020.
 
 status: Published
-featured: false
 doi: ""
 
 author:
@@ -47,4 +46,15 @@ author:
     affiliation: Nelson Mandela African Institution of Science and Technology (NM-AIST), Tanzania
   - name: Benabbou, Loubna
     affiliation: Université du Québec à Rimouski, Canada
+cover: "/images/publications/cover/climateai2020.jpg"
+preview: "/images/publications/preview/climateai2020.jpg"
+talk: "climate-change-ai-2020"
+featured: false
+bibtex: |
+  @inproceedings{faustine2020leveraging,
+    title = {{Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities}},
+    author = {Anthony Faustine and Pereira, Lucas and Ngondya, Isakwisa and Benabbou, Loubna},
+    booktitle = {Workshop on AI for Earth Sciences, ICML 2020, Virtual},
+    year = {2020}
+  }
 ---

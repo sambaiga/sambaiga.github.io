@@ -49,7 +49,6 @@ pub-info:
 
 
 status: Published
-featured: true
 doi: "10.1049/icp.2024.2555"
 
 
@@ -61,4 +60,18 @@ author:
     url: ""
     orcid: 0000-0002-9110-8775
     affiliation: ITI, LARSyS, Técnico Lisboa, 1049-001 Lisboa, Portugal
+cover: "/images/publications/cover/enhancinglv.jpg"
+preview: "/images/publications/preview/enhancinglv.jpg"
+featured: false
+bibtex: |
+  @article{faustine2025enhancing,
+    title = {{Enhancing LV system resilience through probabilistic forecasting of interdependent variables: voltage, reactive and active power}},
+    author = {Faustine, Anthony and Pereira, Lucas},
+    journal = {IET Conference Proceedings},
+    year = {2025},
+    volume = {2024},
+    number = {27},
+    pages = {27--31},
+    doi = {10.1049/icp.2024.2555}
+  }
 ---

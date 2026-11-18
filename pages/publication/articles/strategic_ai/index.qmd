@@ -38,5 +38,14 @@ pub-info:
 
 thumbnail: "/images/publications/strategicai.svg"
 image: "/images/publications/strategicai.svg"
-featured: true
+cover: "/images/publications/cover/strategicai.jpg"
+preview: "/images/publications/preview/strategicai.jpg"
+featured: false
+bibtex: |
+  @article{faustine2025strategic,
+    title = {{Strategic Management of AI Investments: A Dynamic Capabilities and Business Model Innovation Perspective}},
+    author = {Anthony Faustine and Ethna O Connor and Tupokigwe Isagah and Kevin Byrne},
+    journal = {Journal of Strategic Information Systems},
+    year = {2025}
+  }
 ---

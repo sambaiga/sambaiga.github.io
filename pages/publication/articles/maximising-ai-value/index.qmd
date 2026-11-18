@@ -22,6 +22,13 @@ pub-info:
       url: "https://arrow.tudublin.ie/"
       icon: journal-text
 
-featured: false
 doi: ""
+featured: false
+bibtex: |
+  @article{faustine2024maximising,
+    title = {{Maximising AI Value: Strategic Approaches and Practical Frameworks for Organisational Success}},
+    author = {Anthony Faustine},
+    journal = {Arrow@TU Dublin},
+    year = {2024}
+  }
 ---
