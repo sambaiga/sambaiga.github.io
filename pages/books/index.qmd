@@ -11,7 +11,7 @@ listing:
   sort: false
   page-size: 100
   max-description-length: 600
-  fields: [title, subtitle, description, author, year, genre, icon, cover, variant, status, status_label, status_icon, tags, chapters, url, page]
+  fields: [title, subtitle, description, author, year, genre, icon, cover, cover_titled, variant, status, status_label, status_icon, tags, chapters, url, page]
 
 format:
   html:
@@ -28,7 +28,7 @@ toc: false
 
 <div class="books-header">
 <h1 class="ls-title">Books</h1>
-<p>Books on machine learning for energy systems, data science practice and relationships.</p>
+<p>Books on machine learning for time series, data science practice and relationships.</p>
 </div>
 
 ::: {#books-listing}

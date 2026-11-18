@@ -29,8 +29,10 @@
 <% } else { %>
       <i class="bi bi-<%= hero.icon %> bk-art-icon"></i>
 <% } %>
+<% if (!hero.cover_titled) { %>
       <span class="bk-art-title"><%= hero.title %></span>
       <span class="bk-art-author"><%= hero.author %></span>
+<% } %>
     </div>
   </a>
   <div class="bk-hero-body">
@@ -68,8 +70,10 @@
 <% } else { %>
       <i class="bi bi-<%= book.icon %> bk-art-icon"></i>
 <% } %>
+<% if (!book.cover_titled) { %>
       <span class="bk-art-title"><%= book.title %></span>
       <span class="bk-art-author"><%= book.author %></span>
+<% } %>
     </div>
   </a>
   <div class="bk-card-body">

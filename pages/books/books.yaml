@@ -1,20 +1,38 @@
-- title: "Machine Learning for Distribution Networks"
-  subtitle: "From Smart Meter Signal to Network Decisions"
-  description: "A structured path from smart meter signals to network decisions: clustering and network risk, recommendation and mitigation, anomaly detection and forecasting. The chapters are built on the open-source libraries milia, popo and twiga, and each pairs a narrative page with a companion notebook."
+- title: "Finding Structure in Time Series"
+  subtitle: "Clustering, Ranking, Recommendation and Anomaly Detection"
+  description: "Machine learning methods for time series, worked on energy and supply chain data, built to be run, not just read. Each chapter pairs a narrative page with a companion notebook, so that every figure and table is computed by code. Volume 1 of two."
   author: "Anthony Faustine"
   year: 2026
-  genre: "Energy Systems & Machine Learning"
+  genre: "Time Series & Machine Learning"
   icon: "diagram-3"
-  cover: "../../images/books/umeme-cover.svg"
+  cover: "../../images/books/structure-cover.jpg"
+  cover_titled: true
   variant: "energy"
   status: "in-progress"
   status_label: "In Progress"
   status_icon: "lightning-fill"
-  tags: ["Smart Meters", "Distribution Networks", "Clustering", "Anomaly Detection", "Forecasting"]
-  chapters: "4 Parts · Chapters Live"
+  tags: ["Time Series", "Clustering", "Ranking", "Recommendation", "Anomaly Detection"]
+  chapters: "Volume 1 · 3 Parts · 12 Chapters"
   url: "https://sambaiga.github.io/mbuga/"
-  page: "distribution-networks.html"
+  page: "mbuga.html#structure"
 
+- title: "Forecasting for Operations"
+  subtitle: "From Signals to Decisions"
+  description: "Machine learning methods for time series, worked on energy and supply chain data: what the signals allow before a model is chosen, the families of forecasters, and how a forecast is evaluated without fooling oneself. Volume 2 of two."
+  author: "Anthony Faustine"
+  year: 2026
+  genre: "Time Series & Machine Learning"
+  icon: "graph-up-arrow"
+  cover: "../../images/books/operations-cover.jpg"
+  cover_titled: true
+  variant: "primary"
+  status: "in-progress"
+  status_label: "In Progress"
+  status_icon: "lightning-fill"
+  tags: ["Forecasting", "Evaluation", "Decisions", "Energy", "Supply Chain"]
+  chapters: "Volume 2 · 1 Part · 2 Chapters"
+  url: "https://sambaiga.github.io/mbuga/"
+  page: "mbuga.html#operations"
 - title: "From Data to Impact"
   subtitle: "A Structured Path from Python Fundamentals to Production-Ready Data Science"
   description: "A structured, project-based learning journey progressing from foundational Python through engineering practices to production-grade ML systems. Covers 10 parts across 20+ chapters from Python core and NumPy through classical ML, deep learning, LLMs, and MLOps deployment."
