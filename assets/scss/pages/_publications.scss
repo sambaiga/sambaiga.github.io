@@ -185,6 +185,13 @@
 
   // ---------- Years and rows ----------
 
+  // Two cards to a row
+  .pubs-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
   .pubs-year {
     margin-bottom: 1.6rem;
 
@@ -217,10 +224,10 @@
 
   .pub {
     display: grid;
-    grid-template-columns: 5.5rem 1fr;
-    gap: 1.25rem;
-    margin-bottom: 0.8rem;
-    padding: 1.1rem 1.3rem;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 1.1rem;
+    margin: 0;
+    padding: 1.1rem;
     border: 1px solid var(--ls-border);
     border-radius: 10px;
     background: var(--ls-surface);
@@ -262,7 +269,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    width: 100%;
+    width: 7rem;
     aspect-ratio: 3 / 4;
     border-radius: 3px 7px 7px 3px;
     background: linear-gradient(155deg, var(--tile-from), var(--tile-to));
@@ -298,6 +305,7 @@
 
   .pub-body {
     min-width: 0;
+    hyphens: manual;
 
     > :last-child {
       margin-bottom: 0 !important;
@@ -400,11 +408,21 @@
     }
   }
 
+  @media (max-width: 860px) {
+    .pubs-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 640px) {
     .pub {
-      grid-template-columns: 4.2rem 1fr;
+      grid-template-columns: 5.5rem minmax(0, 1fr);
       gap: 0.9rem;
       padding: 0.95rem;
+    }
+
+    .pub-tile {
+      width: 4.2rem;
     }
 
     .pub-tile .bi {
