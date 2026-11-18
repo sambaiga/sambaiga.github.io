@@ -37,6 +37,7 @@ TYPES = {
     "invited": ("mic", "Invited"),
     "teaching": ("mortarboard", "Teaching"),
     "poster": ("file-earmark-richtext", "Poster"),
+    "defence": ("award", "Defence"),
 }
 AUTHOR = "Anthony Faustine"
 

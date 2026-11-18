@@ -54,7 +54,7 @@ toc: false
   </section>
 </div>
 
-<nav class="tp-steps" aria-label="Other talks"><a class="tp-step tp-step--prev" href="../isf-2024/index.html"><i class="bi bi-arrow-left"></i><span><small>Earlier</small>Scalable and Efficient MLP-Based Fully Parameterised Quantile for Probabilistic Power Forecasting</span></a><span class="tp-step tp-step--none"></span></nav>
+<nav class="tp-steps" aria-label="Other talks"><a class="tp-step tp-step--prev" href="../isf-2024/index.html"><i class="bi bi-arrow-left"></i><span><small>Earlier</small>Scalable and Efficient MLP-Based Fully Parameterised Quantile for Probabilistic Power Forecasting</span></a><a class="tp-step tp-step--next" href="../phd-defence-2026/index.html"><span><small>Later</small>Efficient and Robust Machine Learning for Net-Load Forecasting in Low-Voltage Distribution Systems</span><i class="bi bi-arrow-right"></i></a></nav>
 
 </div>
 ```

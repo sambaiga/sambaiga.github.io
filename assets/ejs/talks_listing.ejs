@@ -6,7 +6,8 @@
     conference: { label: "Conference", icon: "people" },
     invited: { label: "Invited", icon: "mic" },
     teaching: { label: "Teaching", icon: "mortarboard" },
-    poster: { label: "Poster", icon: "file-earmark-richtext" }
+    poster: { label: "Poster", icon: "file-earmark-richtext" },
+    defence: { label: "Defence", icon: "award" }
   };
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const when = (t) => (t.month ? MONTHS[t.month - 1] + " " : "") + t.year;
@@ -37,7 +38,7 @@
 <section class="tk-panel" aria-labelledby="tk-latest">
   <p class="tk-kicker" id="tk-latest">Latest talk</p>
   <article class="tk-feature">
-    <a class="tk-thumb tk-deck" href="<%= href(latest) %>" tabindex="-1" aria-hidden="true">
+    <a class="tk-thumb tk-deck<%= latest.wide ? ' tk-thumb--wide' : '' %>" href="<%= href(latest) %>" tabindex="-1" aria-hidden="true">
       <img src="<%= latest.thumb || FALLBACK %>" alt="" width="560" height="420" fetchpriority="high" decoding="async">
     </a>
     <div class="tk-feature-body">
@@ -83,7 +84,7 @@
   <div class="tk-cards">
 <% sorted.filter((t) => t.year === year).forEach((t) => { %>
     <article class="tk-card" data-item data-type="<%= t.type %>" data-topic="<%= t.topic %>">
-      <a class="tk-thumb<%= t.thumb ? '' : ' tk-thumb--default' %>"<% if (href(t)) { %> href="<%= href(t) %>"<%- away(t) %><% } %> tabindex="-1" aria-hidden="true">
+      <a class="tk-thumb<%= t.thumb ? '' : ' tk-thumb--default' %><%= t.wide ? ' tk-thumb--wide' : '' %>"<% if (href(t)) { %> href="<%= href(t) %>"<%- away(t) %><% } %> tabindex="-1" aria-hidden="true">
         <img src="<%= t.thumb || FALLBACK %>" alt="" width="280" height="210" loading="lazy" decoding="async">
       </a>
       <div class="tk-body">

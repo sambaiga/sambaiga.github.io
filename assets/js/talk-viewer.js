@@ -56,7 +56,8 @@
   // The slide is drawn as large as the stage allows, but never taller than 80 % of the window.
   function fit(page) {
     var base = page.getViewport({ scale: 1 });
-    var width = stage.clientWidth - (full && document.fullscreenElement ? 0 : 32);
+    var style = getComputedStyle(stage);
+    var width = stage.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
     var height = Math.max(window.innerHeight * (document.fullscreenElement ? 0.9 : 0.8), 240);
     return Math.min(width / base.width, height / base.height);
   }

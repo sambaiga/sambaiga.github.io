@@ -1,7 +1,20 @@
 # Talks, workshops and posters, newest first. The page template is assets/ejs/talks_listing.ejs.
-# Fields: title, year, month (omit when unknown), type (conference, invited, teaching or poster), topic, venue, place,
-# coauthors, pages, slug, slides, thumb, video, link. A talk with slides has a page of its own, made by
+# Fields: title, year, month (omit when unknown), type (conference, invited, teaching, poster or defence), topic, venue, place,
+# coauthors, pages, slug, slides, thumb, wide, video, link. A deck that is 16:9 (not 4:3) has wide: true. A talk with slides has a page of its own, made by
 # scripts/make_talk_pages.py from the slug. A talk without slides shows the default picture of the blog.
+
+- title: "Efficient and Robust Machine Learning for Net-Load Forecasting in Low-Voltage Distribution Systems"
+  year: 2026
+  month: 11
+  type: defence
+  topic: "Forecasting"
+  venue: "PhD thesis defence, Instituto Superior Técnico"
+  place: "Lisbon"
+  pages: "32 pages, click by click"
+  slug: phd-defence-2026
+  slides: "../../files/slides/PhD_defence_2026.pdf"
+  thumb: "../../images/talks/PhD_defence_2026.jpg"
+  wide: true
 
 - title: "Conformal MLP-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with PV"
   year: 2024
@@ -85,6 +98,7 @@
   slug: climate-change-ai-2020
   slides: "../../files/slides/climateai2020.pdf"
   thumb: "../../images/talks/climateai2020.jpg"
+  wide: true
   video: "https://www.youtube.com/watch?v=qvgIjTKmhfc"
   link: "https://www.climatechange.ai/papers/neurips2020/79"
 
@@ -98,6 +112,7 @@
   slug: unet-nilm-2020
   slides: "../../files/slides/UNENT-NILM2020.pdf"
   thumb: "../../images/talks/UNENT-NILM2020.jpg"
+  wide: true
   video: "https://www.youtube.com/watch?v=UpZDX2hU3-A"
   link: "https://nilmworkshop.org/2020/"
 
@@ -122,6 +137,7 @@
   slug: energy-disaggregation-2020
   slides: "../../files/slides/MLNILMCeADAR.pdf"
   thumb: "../../images/talks/MLNILMCeADAR.jpg"
+  wide: true
   video: "https://www.youtube.com/watch?v=LL4clcjwSaE"
 
 - title: "Deep Learning for Computer Vision"
