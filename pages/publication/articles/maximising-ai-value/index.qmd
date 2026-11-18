@@ -22,8 +22,6 @@ pub-info:
       url: "https://arrow.tudublin.ie/"
       icon: journal-text
 
-thumbnail: "/images/publications/strategicai.svg"
-image: "/images/publications/strategicai.svg"
 featured: false
 doi: ""
 ---

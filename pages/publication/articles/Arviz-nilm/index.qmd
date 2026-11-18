@@ -26,8 +26,6 @@ pub-info:
 
 
 
-thumbnail: "/images/publications/nilmsurvey2017.svg"
-image: "/images/publications/nilmsurvey2017.svg"
 featured: false
 doi: ""
 ---

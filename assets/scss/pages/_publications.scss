@@ -217,7 +217,7 @@
 
   .pub {
     display: grid;
-    grid-template-columns: 3.9rem 1fr;
+    grid-template-columns: 5.5rem 1fr;
     gap: 1.25rem;
     margin-bottom: 0.8rem;
     padding: 1.1rem 1.3rem;
@@ -229,6 +229,26 @@
     &:hover {
       border-color: var(--ls-border-strong);
       box-shadow: 0 12px 24px -16px rgba(15, 23, 42, 0.35);
+    }
+  }
+
+  // The first page of the paper, as a square of the top of the page where the title and authors are
+  .pub-cover {
+    display: block;
+    align-self: start;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1px solid var(--ls-border);
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 8px 14px -10px rgba(15, 23, 42, 0.55);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
     }
   }
 
@@ -382,7 +402,7 @@
 
   @media (max-width: 640px) {
     .pub {
-      grid-template-columns: 2.9rem 1fr;
+      grid-template-columns: 4.2rem 1fr;
       gap: 0.9rem;
       padding: 0.95rem;
     }

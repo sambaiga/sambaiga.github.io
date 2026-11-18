@@ -28,8 +28,6 @@ pub-info:
       url: "https://arxiv.org/abs/1912.06200"
       icon: journal-text
 
-thumbnail: "/images/publications/nilmsurvey2017.svg"
-image: "/images/publications/nilmsurvey2017.svg"
 featured: false
 doi: "10.1186/s42162-019-0088-3"
 ---

@@ -77,10 +77,16 @@
   <h2><%= year %> <span data-count><%= items.filter((p) => yearOf(p) === year).length %></span></h2>
 <% items.filter((p) => yearOf(p) === year).forEach((p) => { %>
   <article class="pub" data-item data-topic="<%= topicOf(p) %>">
+<% if (p.image) { %>
+    <a class="pub-cover" href="<%= p.path %>" tabindex="-1" aria-hidden="true">
+      <img src="<%= p.image %>" alt="" width="88" height="88" loading="lazy" decoding="async">
+    </a>
+<% } else { %>
     <span class="pub-tile pub-tile--<%= kindOf(p).toLowerCase() %>" aria-hidden="true">
       <i class="bi bi-<%= iconOf(p) %>"></i>
       <b><%= yearOf(p) %></b>
     </span>
+<% } %>
     <div class="pub-body">
       <h3><a href="<%= p.path %>"><%= p.title %></a></h3>
       <p class="pub-authors"><%= authorsOf(p) %></p>

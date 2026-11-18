@@ -11,9 +11,8 @@ categories:
   - energy disaggregation
   - multi-task learning
 
-thumbnail: "/images/publications/MLABEL.svg"
-image: "/images/publications/MLABEL.svg"
-
+thumbnail: "/images/publications/inilm-multitask.svg"
+image: "/images/publications/inilm-multitask.svg"
 conference: "5th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM), BuildSys 2020, Virtual"
 
 abstract: |

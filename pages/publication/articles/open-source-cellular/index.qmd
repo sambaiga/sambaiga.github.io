@@ -25,8 +25,6 @@ pub-info:
       url: "https://www.ijcaonline.org/archives/volume145/number11/"
       icon: journal-text
 
-thumbnail: "/images/publications/mobsensing.svg"
-image: "/images/publications/mobsensing.svg"
 featured: false
 doi: ""
 ---

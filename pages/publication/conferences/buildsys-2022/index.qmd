@@ -10,9 +10,8 @@ categories:
   - appliance recognition
   - energy disaggregation
 
-thumbnail: "/images/publications/mlabelvi.svg"
-image: "/images/publications/mlabelvi.svg"
-
+thumbnail: "/images/publications/MLABEL.svg"
+image: "/images/publications/MLABEL.svg"
 conference: "7th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM@BuildSys 2022), Boston, MA, USA"
 
 abstract: |
