@@ -26,6 +26,34 @@
     }
   }
 
+  // ---------- Research focus ----------
+  .pubs-focus {
+    max-width: 52rem;
+    margin: 0 0 2rem;
+
+    p {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: var(--ls-text);
+      text-align: left;
+      hyphens: manual;
+    }
+  }
+
+  // The heading is reset through the id selector Quarto uses for headings of the document
+  #quarto-document-content .pubs-focus-title {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    border: 0;
+    font-family: $font-family-sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pn-kicker);
+  }
+
   // ---------- Selected papers ----------
 
   .pubs-featured {
