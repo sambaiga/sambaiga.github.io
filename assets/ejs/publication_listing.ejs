@@ -32,7 +32,6 @@
     return { pdf: pdf, rest: links.filter((l) => l !== pdf) };
   };
 
-  const hero = items.find((p) => p.featured);
   const counts = {};
   items.forEach((p) => { counts[topicOf(p)] = (counts[topicOf(p)] || 0) + 1; });
   const topics = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
@@ -41,8 +40,8 @@
   const ordered = items.slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
   // The picture of a paper: the top of its first page, which opens the whole first page; a light sheet when there is no PDF
-  const sheet = (p, full) => p.cover
-    ? '<button class="pub-sheet" type="button" data-preview="' + esc(p.preview) + '" data-preview-title="' + esc(p.title) + '" data-preview-pdf="' + esc((actionsOf(p).pdf || {}).url || "") + '" aria-label="Preview the first page of ' + esc(p.title) + '"><img src="' + esc(full ? p.preview : p.cover) + '" alt="" width="152" height="' + (full ? 203 : 114) + '" loading="lazy" decoding="async"><span class="pub-zoom"><i class="bi bi-arrows-angle-expand"></i></span></button>'
+  const sheet = (p) => p.cover
+    ? '<button class="pub-sheet" type="button" data-preview="' + esc(p.preview) + '" data-preview-title="' + esc(p.title) + '" data-preview-pdf="' + esc((actionsOf(p).pdf || {}).url || "") + '" aria-label="Preview the first page of ' + esc(p.title) + '"><img src="' + esc(p.cover) + '" alt="" width="152" height="114" loading="lazy" decoding="async"><span class="pub-zoom"><i class="bi bi-arrows-angle-expand"></i></span></button>'
     : '<span class="pub-sheet pub-sheet--blank" aria-hidden="true"><i class="bi bi-' + KINDS[kindOf(p)].icon + '"></i></span>';
   const pills = (p) => '<span class="ls-pill"><i class="bi bi-' + KINDS[kindOf(p)].icon + '"></i>' + KINDS[kindOf(p)].label + '</span>' + ((p.status && p.status !== "Published") ? '<span class="ls-pill ls-pill--submitted"><i class="bi bi-hourglass-split"></i>' + esc(p.status) + '</span>' : "");
   const cite = (p) => '<template data-bibtex>' + esc(p.bibtex) + '</template><template data-reference>' + esc(referenceOf(p)) + '</template>';
@@ -56,26 +55,6 @@
   <h2 id="pubs-focus-title" class="pubs-focus-title no-anchor">Research focus</h2>
   <p>My research develops methods and approaches for time series analysis and forecasting, mostly for power systems, from non-intrusive load monitoring to probabilistic net-load forecasting for low-voltage networks. In my current work at Analog Devices I develop demand forecasting methods for the semiconductor supply chain, and I am interested in innovation and technology management.</p>
 </section>
-
-<% if (hero) { const a = actionsOf(hero); %>
-<article class="pubs-hero" data-hero>
-  <%= sheet(hero, true) %>
-  <div class="pubs-hero-body">
-    <p class="pubs-hero-kicker">Selected paper <span><%= yearOf(hero) %></span></p>
-    <h2 class="no-anchor"><a href="<%= hero.path %>"><%= hero.title %></a></h2>
-    <p class="pub-venue"><%= venueOf(hero) %></p>
-    <p class="pub-authors"><%= authorsOf(hero) %></p>
-<% if (hero.abstract) { %>    <p class="pubs-hero-excerpt"><%= plain(hero.abstract).replace(/\s+/g, " ").slice(0, 300).replace(/\s\S*$/, "") %>…</p>
-<% } %>    <p class="pub-tags"><%= pills(hero) %><span class="ls-chip"><%= topicOf(hero) %></span></p>
-    <div class="pubs-hero-actions">
-<% if (a.pdf) { %>      <a class="ls-button ls-button--accent" href="<%= a.pdf.url %>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Read the paper</a>
-<% } %><% a.rest.forEach((l) => { %>      <a class="ls-button ls-button--ghost" href="<%= l.url %>"<% if (!l.same) { %> target="_blank" rel="noopener"<% } %>><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
-<% }) %>      <button class="ls-button ls-button--ghost" type="button" data-cite><i class="bi bi-quote"></i>Cite</button>
-    </div>
-    <%= cite(hero) %>
-  </div>
-</article>
-<% } %>
 
 <div class="ls-controls">
   <nav class="ls-chips" aria-label="Research topics">
@@ -105,8 +84,8 @@
 
 <div class="pubs-cards" data-list>
 <% ordered.forEach((p) => { const a = actionsOf(p); %>
-  <article class="pub" data-item<% if (p === hero) { %> data-featured<% } %> data-topic="<%= topicOf(p) %>" data-kind="<%= kindOf(p) %>" data-date="<%= p.date %>" data-title="<%= esc(p.title) %>">
-    <%= sheet(p, false) %>
+  <article class="pub" data-item data-topic="<%= topicOf(p) %>" data-kind="<%= kindOf(p) %>" data-date="<%= p.date %>" data-title="<%= esc(p.title) %>">
+    <%= sheet(p) %>
     <div class="pub-body">
       <div class="pub-top"><span class="pub-tags"><%= pills(p) %><span class="ls-chip"><%= topicOf(p) %></span></span><time datetime="<%= p.date %>"><%= yearOf(p) %></time></div>
       <h3 class="no-anchor"><a href="<%= p.path %>"><%= p.title %></a></h3>

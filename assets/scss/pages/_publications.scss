@@ -67,7 +67,6 @@
   // The site styles the headings and paragraphs of the document through an id selector (an underline under h2, a margin and
   // a width of 72 characters on every paragraph), so the parts of this page are reset through it too.
   #quarto-document-content .pubs {
-    .pubs-hero h2,
     .pub h3 {
       margin: 0;
       padding: 0;
@@ -77,37 +76,17 @@
     .pub-authors,
     .pub-venue,
     .pub-tags,
-    .pubs-hero-excerpt,
-    .pubs-hero-kicker,
     .pubs-status,
     .ls-pager-info {
       max-width: none;
       margin: 0;
     }
 
-    .pubs-hero h2 {
-      margin-bottom: 0.4rem;
-    }
 
-    .pubs-hero-kicker {
-      margin-bottom: 0.5rem;
-    }
 
-    .pubs-hero .pub-venue {
-      margin-bottom: 0.5rem;
-    }
 
-    .pubs-hero .pub-authors {
-      margin-bottom: 0.6rem;
-    }
 
-    .pubs-hero-excerpt {
-      margin-bottom: 0.8rem;
-    }
 
-    .pubs-hero .pub-tags {
-      margin-bottom: 1rem;
-    }
 
     .pubs-status {
       margin-top: 0.2rem;
@@ -117,100 +96,9 @@
       max-width: none;
     }
 
-    .pubs-hero-actions button.ls-button,
     .pubs-dialog button.ls-button {
       border: 0;
     }
-  }
-
-  // ---------- Selected paper: the featured panel of the Books page ----------
-  .pubs-hero {
-    display: grid;
-    grid-template-columns: 15rem minmax(0, 1fr);
-    gap: 2rem;
-    align-items: center;
-    margin: 0 0 1.6rem;
-    padding: 1.8rem;
-    border: 1px solid var(--pn-border);
-    border-radius: 18px;
-    background: radial-gradient(60% 90% at 100% 0, var(--pn-glow), transparent 70%), linear-gradient(135deg, var(--pn-from), var(--pn-to));
-    box-shadow: var(--pn-shadow);
-  }
-
-  .pubs-hero-body {
-    position: relative;
-    min-width: 0;
-  }
-
-  .pubs-hero-kicker {
-    display: flex;
-    gap: 0.6rem;
-    align-items: baseline;
-    margin: 0 0 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--pn-kicker);
-
-    span {
-      letter-spacing: 0.06em;
-      color: var(--ls-muted);
-    }
-  }
-
-  .pubs-hero h2 {
-    margin: 0 0 0.4rem;
-    padding: 0;
-    border: 0;
-    font-size: 1.75rem;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--pn-title);
-
-    a {
-      color: inherit;
-      text-decoration: none;
-
-      &:hover {
-        color: var(--ls-accent);
-      }
-    }
-  }
-
-  .pubs-hero .pub-venue,
-  .pubs-hero .pub-authors,
-  .pubs-hero h2 a {
-    display: block;
-    overflow: visible;
-  }
-
-  .pubs-hero .pub-venue {
-    margin: 0 0 0.5rem;
-    font-size: 1rem;
-  }
-
-  .pubs-hero .pub-authors {
-    margin: 0 0 0.6rem;
-    font-size: 0.95rem;
-  }
-
-  .pubs-hero-excerpt {
-    margin: 0 0 0.8rem;
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--pn-text);
-  }
-
-  .pubs-hero .pub-tags {
-    margin: 0 0 1rem;
-  }
-
-  .pubs-hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    align-items: center;
   }
 
   // ---------- Controls ----------
@@ -491,9 +379,6 @@
     }
   }
 
-  .pubs-hero .pub-sheet {
-    aspect-ratio: 3 / 4;
-  }
 
   // ---------- Cite: a floating panel over the card ----------
   .pubs-cite {
@@ -537,12 +422,6 @@
     }
   }
 
-  .pubs-hero .pubs-cite {
-    position: static;
-    margin-top: 1rem;
-    box-shadow: none;
-    background: var(--ls-code);
-  }
 
   .pubs-cite-tabs {
     display: flex;
@@ -629,26 +508,9 @@
       grid-template-columns: 1fr;
     }
 
-    .pubs-hero {
-      grid-template-columns: 11rem minmax(0, 1fr);
-      gap: 1.4rem;
-    }
   }
 
   @media (max-width: 600px) {
-    .pubs-hero {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 1.1rem;
-
-      h2 {
-        font-size: 1.35rem;
-      }
-
-      .pub-sheet {
-        max-width: 11rem;
-      }
-    }
 
     .pub {
       grid-template-columns: 5.5rem minmax(0, 1fr);

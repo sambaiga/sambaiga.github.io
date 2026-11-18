@@ -1,7 +1,7 @@
 // The Research page: topic and type chips, search, sort, pagination, the Cite panel and the first-page preview.
 // The page renders every paper without this script, which only shows the papers of the current page. It reads:
 // data-chip (a topic chip, "all" for none), data-type-chip (journal, conference or "all"), data-search, data-sort,
-// data-item (a paper, with data-topic, data-kind, data-date, data-title, and data-featured for the selected paper),
+// data-item (a paper, with data-topic, data-kind, data-date, data-title),
 // data-count (the number of a year, when present), data-status, data-clear, data-empty, data-pager with data-size,
 // data-pager-info, data-cite (a button, beside a template data-bibtex and a template data-reference), data-abstract (a
 // button, beside a template data-abstract-text), data-preview
@@ -18,7 +18,6 @@
   var clear = document.querySelector("[data-clear]");
   var pager = document.querySelector("[data-pager]");
   var info = document.querySelector("[data-pager-info]");
-  var hero = document.querySelector("[data-hero]");
   var list = document.querySelector("[data-list]");
   var size = pager ? Number(pager.getAttribute("data-size")) || 8 : Infinity;
   var state = { topic: "all", type: "all", query: "", sort: "new", page: 1 };
@@ -29,7 +28,6 @@
   }
 
   function matches(item) {
-    if (item.hasAttribute("data-featured") && !filtering()) return false; // shown above, so not repeated in the list
     return (
       (state.topic === "all" || item.getAttribute("data-topic") === state.topic) &&
       (state.type === "all" || item.getAttribute("data-kind") === state.type) &&
@@ -101,7 +99,6 @@
     shown.forEach(function (item) {
       list.appendChild(item); // the sort order is the order in the page
     });
-    if (hero) hero.hidden = filtering() || state.page > 1;
     if (empty) empty.hidden = hits.length !== 0;
     if (clear) clear.hidden = !filtering();
     if (status) status.textContent = filtering() ? hits.length + " of " + items.length + " papers" : "";
@@ -174,7 +171,7 @@
   }
 
   function openCite(trigger) {
-    var root = trigger.closest("[data-item], [data-hero]");
+    var root = trigger.closest("[data-item]");
     var existing = root.querySelector(".pubs-cite:not(.pubs-cite--abstract)");
     closeCites();
     if (existing) return;
