@@ -1,12 +1,11 @@
 # Talks, workshops and posters, newest first. The page template is assets/ejs/talks_listing.ejs.
-# Fields: title, year, month (omit when unknown), type (conference, invited, teaching, poster or defence), topic, venue, place,
+# Fields: title, year, month (omit when unknown), type (conference, invited, teaching or poster; omit it for none), topic, venue, place,
 # coauthors, pages, slug, slides, thumb, wide, video, link. A deck that is 16:9 (not 4:3) has wide: true. A talk with slides has a page of its own, made by
 # scripts/make_talk_pages.py from the slug. A talk without slides shows the default picture of the blog.
 
 - title: "Efficient and Robust Machine Learning for Net-Load Forecasting in Low-Voltage Distribution Systems"
   year: 2026
   month: 11
-  type: defence
   topic: "Forecasting"
   venue: "Instituto Superior Técnico"
   place: "Lisbon"

@@ -37,7 +37,6 @@ TYPES = {
     "invited": ("mic", "Invited"),
     "teaching": ("mortarboard", "Teaching"),
     "poster": ("file-earmark-richtext", "Poster"),
-    "defence": ("award", "Defence"),
 }
 AUTHOR = "Anthony Faustine"
 
@@ -103,7 +102,7 @@ def header(talk: dict) -> str:
     Returns:
         The breadcrumb, the label, the title and the details.
     """
-    icon, label = TYPES[talk["type"]]
+    icon, label = TYPES.get(talk.get("type"), ("easel2", ""))
     details = [meta_line("building", talk["venue"])]
     if talk.get("place"):
         details.append(meta_line("geo-alt", talk["place"]))
@@ -115,7 +114,8 @@ def header(talk: dict) -> str:
         '<a href="../index.html"><i class="bi bi-arrow-left"></i>Talks</a>'
         f'<i class="bi bi-chevron-right" aria-hidden="true"></i><span>{talk["year"]}</span></nav>'
     )
-    kind = f'<p class="tk-kind"><i class="bi bi-{icon}"></i><b>{label}</b><span>{escape(talk["topic"])}</span></p>'
+    name = f"<b>{label}</b>" if label else ""
+    kind = f'<p class="tk-kind"><i class="bi bi-{icon}"></i>{name}<span>{escape(talk["topic"])}</span></p>'
     title = f'<h1 class="tp-title no-anchor">{escape(talk["title"])}</h1>'
     return "\n".join([crumb, kind, title, f'<p class="tk-meta">{"".join(details)}</p>'])
 
