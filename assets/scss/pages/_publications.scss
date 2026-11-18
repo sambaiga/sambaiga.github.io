@@ -27,8 +27,8 @@
   }
 
   // ---------- Research focus ----------
+  // The paragraph is as wide as the page and justified. Hyphenation stays off, because it cuts words such as low-voltage
   .pubs-focus {
-    max-width: 52rem;
     margin: 0 0 2rem;
 
     p {
@@ -36,9 +36,15 @@
       font-size: 1.02rem;
       line-height: 1.7;
       color: var(--ls-text);
-      text-align: left;
+      text-align: justify;
+      text-justify: inter-word;
       hyphens: manual;
     }
+  }
+
+  // The site limits a paragraph of the document to 72 characters, through an id selector, so this one is widened through it too
+  #quarto-document-content .pubs-focus p {
+    max-width: none;
   }
 
   // The heading is reset through the id selector Quarto uses for headings of the document
