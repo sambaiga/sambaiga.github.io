@@ -11,7 +11,8 @@ mkdir -p "$COVER_DIR" "$PREVIEW_DIR"
 
 for pdf in "$PDF_DIR"/*.pdf; do
     name=$(basename "$pdf" .pdf)
-    [ "$name" = "example_pdf" ] && continue
+    # PDFs that no paper of the list uses: the example, a second copy of the ICASSP 2023 paper, and a copy of the multi-label paper
+    case "$name" in example_pdf | FTNILM | nilmsurvey2017) continue ;; esac
     if [ ! -f "$COVER_DIR/$name.jpg" ] || [ -n "$FORCE" ]; then
         pdftoppm -f 1 -l 1 -jpeg -jpegopt quality=76 -scale-to-x 640 -scale-to-y -1 -x 0 -y 0 -W 640 -H 480 -singlefile "$pdf" "$COVER_DIR/$name"
     fi
