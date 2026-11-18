@@ -15,13 +15,15 @@ body-classes: "book-page"
 Machine learning methods for time series, worked on energy and supply chain data, in two books. Each chapter pairs a narrative page with a companion notebook, so that every figure and table in the text is computed by code that the reader can run.
 :::
 
-[Read online](https://sambaiga.github.io/mbuga/){.btn .btn-primary .btn-sm} [Companion repository](https://github.com/sambaiga/mbuga){.btn .btn-outline-secondary .btn-sm}
+[Read Volume 1 online](https://sambaiga.github.io/mbuga/structure/){.btn .btn-primary .btn-sm} [Read Volume 2 online](https://sambaiga.github.io/mbuga/operations/){.btn .btn-primary .btn-sm} [Both books](https://sambaiga.github.io/mbuga/){.btn .btn-outline-secondary .btn-sm}
 
 ## Volume 1. Finding Structure in Time Series {#structure}
 
 <img class="book-cover" src="../../images/books/structure-cover.jpg" alt="Cover of Finding Structure in Time Series: Clustering, Ranking, Recommendation and Anomaly Detection" width="260">
 
 **Clustering, Ranking, Recommendation and Anomaly Detection.** The first volume shows how to find structure in many time series at once: which series behave alike, which ones deserve attention first, which cases are similar to a new one, and which observations do not belong. The worked examples follow the smart-meter signal to decisions on the low-voltage distribution network.
+
+[Read Volume 1 online](https://sambaiga.github.io/mbuga/structure/){.btn .btn-outline-primary .btn-sm}
 
 **Part 5. Clustering**
 
@@ -49,6 +51,8 @@ Machine learning methods for time series, worked on energy and supply chain data
 <img class="book-cover" src="../../images/books/operations-cover.jpg" alt="Cover of Forecasting for Operations: From Signals to Decisions" width="260">
 
 **From Signals to Decisions.** The second volume covers what the signals allow before a model is chosen, the families of forecasters, and how a forecast is evaluated without fooling oneself.
+
+[Read Volume 2 online](https://sambaiga.github.io/mbuga/operations/){.btn .btn-outline-primary .btn-sm}
 
 **Part 8. Forecasting**
 
