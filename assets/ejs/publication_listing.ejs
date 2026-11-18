@@ -84,7 +84,7 @@
 
 <div class="pubs-cards" data-list>
 <% ordered.forEach((p) => { const a = actionsOf(p); %>
-  <article class="pub" data-item data-topic="<%= topicOf(p) %>" data-kind="<%= kindOf(p) %>" data-date="<%= p.date %>" data-title="<%= esc(p.title) %>">
+  <article class="pub" data-item data-topic="<%= topicOf(p) %>" data-kind="<%= kindOf(p) %>" data-date="<%= p.date %>" data-title="<%= esc(p.title) %>" data-text="<%= esc((p.title + ' ' + plain(authorsOf(p)) + ' ' + venueOf(p) + ' ' + topicOf(p) + ' ' + yearOf(p)).toLowerCase()) %>">
     <%= sheet(p) %>
     <div class="pub-body">
       <div class="pub-top"><span class="pub-tags"><%= pills(p) %><span class="ls-chip"><%= topicOf(p) %></span></span><time datetime="<%= p.date %>"><%= yearOf(p) %></time></div>

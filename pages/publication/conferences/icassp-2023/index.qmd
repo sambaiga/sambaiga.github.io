@@ -28,14 +28,14 @@ pub-info:
       url: "../../files/papers/IndustrialNILM.pdf"
       icon: file-earmark-pdf
     - name: Link
-      url: "https://doi.org/10.1109/ICASSP49357.2023.10094613"
+      url: "https://doi.org/10.1109/ICASSP49357.2023.10096324"
       icon: journal-text
   reference: |
     <strong>Anthony Faustine</strong> and Pereira, Lucas, "Applying symmetrical component
     transform for industrial appliance classification in non-intrusive load monitoring,"
     <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP),
     Rhodes Island, Greece,</em> 2023, doi:
-    <a href="https://doi.org/10.1109/ICASSP49357.2023.10094613"><code>10.1109/ICASSP49357.2023.10094613</code></a>
+    <a href="https://doi.org/10.1109/ICASSP49357.2023.10096324"><code>10.1109/ICASSP49357.2023.10096324</code></a>
 
 status: Published
 doi: "10.1109/icassp49357.2023.10096324"

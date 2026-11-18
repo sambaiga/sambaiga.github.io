@@ -1,13 +1,15 @@
 // The Research page: topic and type chips, search, sort, pagination, the Cite panel and the first-page preview.
 // The page renders every paper without this script, which only shows the papers of the current page. It reads:
 // data-chip (a topic chip, "all" for none), data-type-chip (journal, conference or "all"), data-search, data-sort,
-// data-item (a paper, with data-topic, data-kind, data-date, data-title),
+// data-item (a paper, with data-topic, data-kind, data-date, data-title and data-text, the text that a search reads),
 // data-count (the number of a year, when present), data-status, data-clear, data-empty, data-pager with data-size,
 // data-pager-info, data-cite (a button, beside a template data-bibtex and a template data-reference), data-abstract (a
 // button, beside a template data-abstract-text), data-preview
 // (a button with the first page), and data-dialog with its data-dialog-title, -pdf, -image and -close.
 (function () {
   "use strict";
+  // The buttons that need this script are shown only once it runs (the stylesheet hides them until then)
+  document.body.classList.add("pubs-js");
   var topicChips = document.querySelectorAll("[data-chip]");
   var typeChips = document.querySelectorAll("[data-type-chip]");
   var items = Array.prototype.slice.call(document.querySelectorAll("[data-item]"));
@@ -31,7 +33,7 @@
     return (
       (state.topic === "all" || item.getAttribute("data-topic") === state.topic) &&
       (state.type === "all" || item.getAttribute("data-kind") === state.type) &&
-      (state.query === "" || item.textContent.toLowerCase().indexOf(state.query) !== -1)
+      (state.query === "" || item.getAttribute("data-text").indexOf(state.query) !== -1)
     );
   }
 

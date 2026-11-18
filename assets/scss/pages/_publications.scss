@@ -101,6 +101,20 @@
     }
   }
 
+  // Without the script, Cite, Abstract and the preview do nothing, so they are not shown
+  &:not(.pubs-js) {
+    [data-cite],
+    [data-abstract],
+    .pub-zoom {
+      display: none !important;
+    }
+
+    .pub-sheet {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
   // ---------- Controls ----------
   .pubs-filters {
     display: flex;
