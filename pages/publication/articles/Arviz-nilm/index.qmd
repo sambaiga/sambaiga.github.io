@@ -26,8 +26,14 @@ pub-info:
 
 
 
-thumbnail: "/images/publications/nilmsurvey2017.svg"
-image: "/images/publications/nilmsurvey2017.svg"
-featured: false
 doi: ""
+featured: false
+bibtex: |
+  @article{faustine2017survey,
+    title = {{A Survey on Non-Intrusive Load Monitoring Methodies and Techniques for Energy Disaggregation Problem}},
+    author = {Faustine, Anthony and Mvungi, Nerey Henry and Kaijage, Shubi and Michael, Kisangiri},
+    journal = {CoRR},
+    year = {2017},
+    volume = {abs/1703.00785}
+  }
 ---

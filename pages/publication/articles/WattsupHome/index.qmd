@@ -30,6 +30,19 @@ pub-info:
 thumbnail: "/images/publications/wattshome.svg"
 image: "/images/publications/wattshome.svg"
 status: "Published"
+doi: "10.3390/en14030719"
+cover: "/images/publications/cover/wattshome.jpg"
+preview: "/images/publications/preview/wattshome.jpg"
 featured: false
-doi: 10.3390/en14030719
+bibtex: |
+  @article{vlker2021watt,
+    title = {{Watt’s up at Home? Smart Meter Data Analytics from a Consumer-Centric Perspective}},
+    author = {Völker, Benjamin and Reinhardt, Andreas and Faustine, Anthony and Pereira, Lucas},
+    journal = {Energies},
+    year = {2021},
+    volume = {14},
+    number = {3},
+    pages = {719},
+    doi = {10.3390/en14030719}
+  }
 ---

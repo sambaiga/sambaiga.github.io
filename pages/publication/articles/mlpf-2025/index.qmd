@@ -35,11 +35,24 @@ pub-info:
 
 
 status: "Published"
-featured: true
-doi: 10.1109/TPWRS.2024.3400123
+doi: "10.1109/tpwrs.2024.3400123"
 
 thumbnail: "/images/publications/MLPQF.svg"
 image: "/images/publications/MLPQF.svg"
+cover: "/images/publications/cover/MLPQF.jpg"
+preview: "/images/publications/preview/MLPQF.jpg"
+featured: true
+bibtex: |
+  @article{faustine2025efficiency,
+    title = {{Efficiency Through Simplicity: MLP-Based Approach for Net-Load Forecasting With Uncertainty Estimates in Low-Voltage Distribution Networks}},
+    author = {Faustine, Anthony and Nunes, Nuno Jardim and Pereira, Lucas},
+    journal = {IEEE Transactions on Power Systems},
+    year = {2025},
+    volume = {40},
+    number = {1},
+    pages = {46--56},
+    doi = {10.1109/tpwrs.2024.3400123}
+  }
 ---
 
 **Presented at the 44th International Symposium on Forecasting in Dijon, France June 2024**

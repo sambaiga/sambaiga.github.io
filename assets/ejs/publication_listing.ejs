@@ -1,9 +1,11 @@
 ```{=html}
 <%
   const OWN = "Anthony Faustine";
+  const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const plain = (s) => String(s == null ? "" : s).replace(/<[^>]+>/g, "");
   const yearOf = (p) => new Date(p.date).getUTCFullYear();
-  const kindOf = (p) => (p.journal ? "Journal" : p.conference ? "Conference" : "Publication");
-  const iconOf = (p) => (p.journal ? "journal-text" : p.conference ? "mic" : "file-earmark-text");
+  const kindOf = (p) => (p.journal ? "journal" : "conference");
+  const KINDS = { journal: { label: "Journal", icon: "journal-text" }, conference: { label: "Conference", icon: "mic" } };
   const venueOf = (p) => {
     if (p.journal) {
       const j = p.journal;
@@ -20,41 +22,39 @@
   };
   const linksOf = (p) => (p["pub-info"] && Array.isArray(p["pub-info"].links) ? p["pub-info"].links.filter((l) => l && l.url && l.name) : []);
   const topicOf = (p) => p.topic || "Other";
+  const referenceOf = (p) => plain(authorsOf(p)).replace(/\s+/g, " ") + " (" + yearOf(p) + "). " + p.title + ". " + venueOf(p) + ".";
+  // The PDF is the main action; the other links, the DOI and the talk are quiet links
+  const actionsOf = (p) => {
+    const links = linksOf(p).slice();
+    if (p.doi) links.push({ name: "DOI", url: "https://doi.org/" + p.doi, icon: "fingerprint" });
+    if (p.talk) links.push({ name: "Talk", url: "../talks/" + p.talk + "/index.html", icon: "easel2", same: true });
+    const pdf = links.find((l) => l.name === "PDF");
+    return { pdf: pdf, rest: links.filter((l) => l !== pdf) };
+  };
 
-  const featured = items.filter((p) => p.featured).slice(0, 3);
-  const years = [...new Set(items.map(yearOf))].sort((a, b) => b - a);
   const counts = {};
   items.forEach((p) => { counts[topicOf(p)] = (counts[topicOf(p)] || 0) + 1; });
   const topics = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
   const journals = items.filter((p) => p.journal).length;
-  const conferences = items.filter((p) => p.conference).length;
+  const conferences = items.length - journals;
+  const ordered = items.slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+
+  // The picture of a paper: the top of its first page, which opens the whole first page; a light sheet when there is no PDF
+  const sheet = (p) => p.cover
+    ? '<button class="pub-sheet" type="button" data-preview="' + esc(p.preview) + '" data-preview-title="' + esc(p.title) + '" data-preview-pdf="' + esc((actionsOf(p).pdf || {}).url || "") + '" aria-label="Preview the first page of ' + esc(p.title) + '"><img src="' + esc(p.cover) + '" alt="" width="152" height="200" loading="lazy" decoding="async"><span class="pub-zoom"><i class="bi bi-arrows-angle-expand"></i></span></button>'
+    : '<span class="pub-sheet pub-sheet--blank" aria-hidden="true"><i class="bi bi-' + KINDS[kindOf(p)].icon + '"></i></span>';
+  const pills = (p) => '<span class="ls-pill"><i class="bi bi-' + KINDS[kindOf(p)].icon + '"></i>' + KINDS[kindOf(p)].label + '</span>' + ((p.status && p.status !== "Published") ? '<span class="ls-pill ls-pill--submitted"><i class="bi bi-hourglass-split"></i>' + esc(p.status) + '</span>' : "");
+  const cite = (p) => '<template data-bibtex>' + esc(p.bibtex) + '</template><template data-reference>' + esc(referenceOf(p)) + '</template>';
 %>
 <div class="pubs">
 
 <h1 class="ls-title">Research</h1>
 <p class="pubs-stats"><%= items.length %> papers <span>·</span> <%= journals %> journal articles <span>·</span> <%= conferences %> conference papers</p>
 
-<% if (featured.length) { %>
-<section class="pubs-featured" aria-label="Selected papers">
-  <p class="pubs-kicker">Selected papers</p>
-  <div class="pubs-featured-grid">
-<% featured.forEach((p) => { %>
-    <article class="pubs-feature">
-      <p class="pubs-feature-meta"><i class="bi bi-<%= iconOf(p) %>"></i><%= kindOf(p) %> <span><%= yearOf(p) %></span></p>
-      <h3><a href="<%= p.path %>"><%= p.title %></a></h3>
-      <p class="pubs-feature-authors"><%= authorsOf(p) %></p>
-      <p class="pubs-feature-venue"><%= venueOf(p) %></p>
-      <div class="pubs-feature-foot">
-        <a class="ls-button ls-button--accent" href="<%= p.path %>"><i class="bi bi-journal-text"></i>Details</a>
-<% linksOf(p).slice(0, 2).forEach((l) => { %>
-        <a class="ls-button ls-button--ghost" href="<%= l.url %>" target="_blank" rel="noopener"><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
-<% }) %>
-      </div>
-    </article>
-<% }) %>
-  </div>
+<section class="pubs-focus" aria-labelledby="pubs-focus-title">
+  <h2 id="pubs-focus-title" class="pubs-focus-title no-anchor">Research focus</h2>
+  <p>My research develops methods and approaches for time series analysis and forecasting, mostly for power systems, from non-intrusive load monitoring to probabilistic net-load forecasting for low-voltage networks. In my current work at Analog Devices I develop demand forecasting methods for the semiconductor supply chain, and I am interested in innovation and technology management.</p>
 </section>
-<% } %>
 
 <div class="ls-controls">
   <nav class="ls-chips" aria-label="Research topics">
@@ -63,47 +63,62 @@
     <a href="#" data-chip="<%= t %>"><%= t %> <span><%= counts[t] %></span></a>
 <% }) %>
   </nav>
+</div>
+<div class="pubs-filters">
+  <nav class="ls-chips" aria-label="Type of paper">
+    <a href="#" data-type-chip="all" class="active">All types</a>
+    <a href="#" data-type-chip="journal">Journal articles <span><%= journals %></span></a>
+    <a href="#" data-type-chip="conference">Conference papers <span><%= conferences %></span></a>
+  </nav>
+  <label class="pubs-sort"><span class="visually-hidden">Sort</span>
+    <select class="ls-select" data-sort aria-label="Sort the papers">
+      <option value="new">Newest first</option>
+      <option value="old">Oldest first</option>
+      <option value="title">Title A to Z</option>
+    </select>
+  </label>
   <input type="search" class="ls-search" data-search placeholder="Search papers" aria-label="Search papers">
 </div>
-<p class="ls-empty" data-empty hidden>No paper matches the current filter.</p>
+<p class="pubs-status" aria-live="polite"><span data-status></span> <button type="button" class="pubs-clear" data-clear hidden><i class="bi bi-x-circle"></i>Show all papers</button></p>
+<p class="ls-empty" data-empty hidden>No paper matches the current filters.</p>
 
-<% years.forEach((year) => { %>
-<section class="pubs-year" data-group>
-  <h2><%= year %> <span data-count><%= items.filter((p) => yearOf(p) === year).length %></span></h2>
-<% items.filter((p) => yearOf(p) === year).forEach((p) => { %>
-  <article class="pub" data-item data-topic="<%= topicOf(p) %>">
-    <span class="pub-tile pub-tile--<%= kindOf(p).toLowerCase() %>" aria-hidden="true">
-      <i class="bi bi-<%= iconOf(p) %>"></i>
-      <b><%= yearOf(p) %></b>
-    </span>
+<div class="pubs-cards" data-list>
+<% ordered.forEach((p) => { const a = actionsOf(p); %>
+  <article class="pub" data-item data-topic="<%= topicOf(p) %>" data-kind="<%= kindOf(p) %>" data-date="<%= p.date %>" data-title="<%= esc(p.title) %>" data-text="<%= esc((p.title + ' ' + plain(authorsOf(p)) + ' ' + venueOf(p) + ' ' + topicOf(p) + ' ' + yearOf(p)).toLowerCase()) %>">
+    <%= sheet(p) %>
     <div class="pub-body">
-      <h3><a href="<%= p.path %>"><%= p.title %></a></h3>
+      <div class="pub-top"><span class="pub-tags"><%= pills(p) %><span class="ls-chip"><%= topicOf(p) %></span></span><time datetime="<%= p.date %>"><%= yearOf(p) %></time></div>
+      <h3 class="no-anchor"><a href="<%= p.path %>"><%= p.title %></a></h3>
       <p class="pub-authors"><%= authorsOf(p) %></p>
       <p class="pub-venue"><%= venueOf(p) %></p>
-      <p class="pub-meta">
-        <span class="ls-pill ls-pill--<%= String(p.status || 'Published').toLowerCase() %>"><%= p.status || "Published" %></span>
-        <span class="ls-chip"><%= topicOf(p) %></span>
-        <span class="pub-kind"><%= kindOf(p) %></span>
-      </p>
-      <div class="pub-links">
-<% linksOf(p).forEach((l) => { %>
-        <a href="<%= l.url %>" target="_blank" rel="noopener"><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
-<% }) %>
-<% if (p.doi) { %>
-        <a href="https://doi.org/<%= p.doi %>" target="_blank" rel="noopener"><i class="bi bi-fingerprint"></i>DOI</a>
-<% } %>
-      </div>
-<% if (p.abstract || p.description) { %>
-      <details class="pub-abstract">
-        <summary>Abstract</summary>
-        <p><%= p.abstract || p.description %></p>
-      </details>
-<% } %>
     </div>
+  <div class="pub-foot">
+    <div class="pub-links">
+<% if (p.abstract || p.description) { %>          <button type="button" data-abstract><i class="bi bi-text-paragraph"></i>Abstract</button>
+<% } %><% a.rest.forEach((l) => { %>          <a href="<%= l.url %>"<% if (!l.same) { %> target="_blank" rel="noopener"<% } %>><i class="bi bi-<%= l.icon || 'link-45deg' %>"></i><%= l.name %></a>
+<% }) %>          <button type="button" data-cite><i class="bi bi-quote"></i>Cite</button>
+    </div>
+<% if (a.pdf) { %>        <a class="ls-button ls-button--small" href="<%= a.pdf.url %>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+<% } %>      </div>
+  <%= cite(p) %>
+    <template data-abstract-text><%= esc(plain(p.abstract || p.description)) %></template>
   </article>
 <% }) %>
-</section>
-<% }) %>
+</div>
+
+<nav class="ls-pager" data-pager data-size="8" aria-label="Pagination" hidden></nav>
+<p class="ls-pager-info" data-pager-info></p>
+
+<dialog class="pubs-dialog" data-dialog aria-labelledby="pubs-dialog-title">
+  <div class="pubs-dialog-bar">
+    <b id="pubs-dialog-title" data-dialog-title></b>
+    <span>
+      <a class="ls-button ls-button--small" href="#" data-dialog-pdf target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Open the PDF</a>
+      <button class="ls-button ls-button--small ls-button--ghost" type="button" data-dialog-close><i class="bi bi-x-lg"></i>Close</button>
+    </span>
+  </div>
+  <div class="pubs-dialog-view"><img alt="First page of the paper" data-dialog-image width="760"></div>
+</dialog>
 
 </div>
 ```

@@ -11,9 +11,8 @@ categories:
   - energy disaggregation
   - multi-task learning
 
-thumbnail: "/images/publications/MLABEL.svg"
-image: "/images/publications/MLABEL.svg"
-
+thumbnail: "/images/publications/inilm-multitask.svg"
+image: "/images/publications/inilm-multitask.svg"
 conference: "5th International Workshop on Non-Intrusive Appliance Load Monitoring (NILM), BuildSys 2020, Virtual"
 
 abstract: |
@@ -41,7 +40,6 @@ pub-info:
     <a href="https://dl.acm.org/doi/10.1145/3427771.3427859"><code>10.1145/3427771.3427859</code></a>
 
 status: Published
-featured: false
 doi: "10.1145/3427771.3427859"
 
 author:
@@ -55,4 +53,17 @@ author:
     affiliation: Graz University of Technology, Graz, Austria
   - name: Kulkarni, Shridhar
     affiliation: Graz University of Technology, Graz, Austria
+cover: "/images/publications/cover/inilm-multitask.jpg"
+preview: "/images/publications/preview/inilm-multitask.jpg"
+talk: "unet-nilm-2020"
+featured: false
+bibtex: |
+  @inproceedings{faustine2020unetnilm,
+    title = {{UNet-NILM: A Deep Neural Network for Multi-tasks Appliances State Detection and Power Estimation in NILM}},
+    author = {Faustine, Anthony and Pereira, Lucas and Bousbiat, Hafsa and Kulkarni, Shridhar},
+    booktitle = {Proceedings of the 5th International Workshop on Non-Intrusive Load Monitoring},
+    year = {2020},
+    pages = {84--88},
+    doi = {10.1145/3427771.3427859}
+  }
 ---

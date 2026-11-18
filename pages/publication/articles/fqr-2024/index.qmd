@@ -34,10 +34,24 @@ pub-info:
       icon: "journal-text"
     - name: "Code"
       url: "https://github.com/sambaiga/FPSeq2Q"
-      icon: github"
+      icon: github
 
 
 thumbnail: "/images/publications/FPSeq2Q.svg"
 image: "/images/publications/FPSeq2Q.svg"
+doi: "10.1109/tsg.2022.3148699"
+cover: "/images/publications/cover/FPSeq2Q.jpg"
+preview: "/images/publications/preview/FPSeq2Q.jpg"
 featured: false
+bibtex: |
+  @article{faustine2022fpseq2q,
+    title = {{FPSeq2Q: Fully Parameterized Sequence to Quantile Regression for Net-Load Forecasting With Uncertainty Estimates}},
+    author = {Faustine, Anthony and Pereira, Lucas},
+    journal = {IEEE Transactions on Smart Grid},
+    year = {2022},
+    volume = {13},
+    number = {3},
+    pages = {2440--2451},
+    doi = {10.1109/tsg.2022.3148699}
+  }
 ---
