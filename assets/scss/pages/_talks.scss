@@ -178,24 +178,6 @@
     gap: 0.5rem;
   }
 
-  .tk-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.4rem 0.95rem;
-    border-radius: 0.4rem;
-    background: var(--ls-chip);
-    box-shadow: 0 1px 0 var(--ls-border-strong);
-    color: var(--ls-text) !important;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-decoration: none !important;
-
-    &:hover {
-      background: var(--ls-hover);
-    }
-  }
-
   // ---- Controls ----
   .tk-controls {
     display: flex;
@@ -389,34 +371,6 @@
   .tk-link .bi,
   .tk-button .bi {
     color: inherit !important;
-  }
-
-  .tk-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 0.4rem;
-    background: var(--ls-chip);
-    box-shadow: 0 1px 0 var(--ls-border-strong);
-    color: var(--ls-text) !important;
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-decoration: none !important;
-
-    &:hover {
-      background: var(--ls-hover);
-    }
-
-    &--main {
-      background: var(--ls-button);
-      box-shadow: none;
-      color: #fff !important;
-
-      &:hover {
-        background: var(--ls-orange);
-      }
-    }
   }
 
   // ---- Pagination, as the site pagination ----

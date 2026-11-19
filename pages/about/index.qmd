@@ -7,9 +7,31 @@ description-meta: "Principal ML Engineer at Analog Devices, Ireland, designing a
 about:
   id: hero-heading
   template: trestles
-  image: ../../images/profiles/sambaiga_profile.jpg
-  image-alt: "Professional headshot of Anthony Faustine"
-  image-width: 18em
+  image: ../../images/profiles/sambaiga_github.png
+  image-alt: "Photo of Anthony Faustine"
+  image-width: 14em
+  image-shape: round
+  links:
+    - text: GitHub
+      icon: github
+      href: https://github.com/sambaiga
+      aria-label: Anthony Faustine on GitHub
+    - text: LinkedIn
+      icon: linkedin
+      href: https://www.linkedin.com/in/sambaiga
+      aria-label: Anthony Faustine on LinkedIn
+    - text: Google Scholar
+      icon: mortarboard
+      href: https://scholar.google.com/citations?user=nhzHBTQAAAAJ&hl=en
+      aria-label: Anthony Faustine on Google Scholar
+    - text: ORCID
+      icon: person-badge
+      href: https://orcid.org/0000-0002-7838-533X
+      aria-label: Anthony Faustine on ORCID
+    - text: Email
+      icon: envelope-at
+      href: mailto:sambaiga@gmail.com
+      aria-label: Email Anthony Faustine
 
 
 format:
@@ -18,16 +40,14 @@ format:
 grid:
   body-width: 1200px
 author-meta: Anthony Faustine
+toc: false
 ---
-::: {#hero-heading .text-justify .text-md-start}
+::: {#hero-heading}
 I'm a **Principal ML Engineer** at [Analog Devices](https://www.analog.com) in Ireland. I design and ship machine learning systems that support supply chain decisions and intelligent edge products. Over the past decade, I have worked across manufacturing, industrial, energy and semiconductor domains, taking ideas from early prototypes to reliable production systems.
 
-My technical work centres on probabilistic time series forecasting, Bayesian modelling and production MLOps, shared as open-source tools such as [Twiga](https://sambaiga.github.io/twiga-docs/). I care about clean architecture, robust deployment, and monitoring and governance once systems are live. I work with business and product leaders to align technology roadmaps and AI investments with the value they are meant to create, and I have a strong interest in innovation and technology management.
+My technical work centres on probabilistic time series forecasting, Bayesian modelling and production MLOps, shared as open-source tools such as [Twiga](https://sambaiga.github.io/twiga-docs/). I care about clean architecture, robust deployment, and monitoring and governance once systems are live. I work with business and product leaders to align technology roadmaps and AI investments with the value they are meant to create.
 
-I also mentor engineers and work with product and operations teams so that the work stays close to the needs of its users.
-
-Alongside my industry role, I am active in research and development. My research develops methods and approaches for time series analysis and forecasting, with a focus on power systems and supply chain. I collaborate with [Lucas Pereira](https://www.alspereira.info/) at ITI, LARSyS, Técnico Lisboa on machine learning and data analytics solutions for clean energy systems and the broader energy transition.
-
+Alongside my industry role, I am active in research. My research develops methods and approaches for time series analysis and forecasting, mostly for power systems, from non-intrusive load monitoring to probabilistic net-load forecasting for low-voltage networks. In my current work at Analog Devices I develop demand forecasting methods for the semiconductor supply chain, and I am interested in innovation and technology management. I collaborate with [Lucas Pereira](https://www.alspereira.info/) at ITI, LARSyS, Técnico Lisboa on machine learning and data analytics solutions for clean energy systems and the broader energy transition. I also mentor engineers and work with product and operations teams so that the work stays close to the needs of its users.
 
 > My mission: architect and deliver ML systems that solve real business problems with measurable impact.
 
@@ -39,13 +59,12 @@ Alongside my industry role, I am active in research and development. My research
 - **MSc in Telecommunications Engineering**<br>University of Dodoma, Tanzania
 :::
 
-### Ready to collaborate?
-I'm always open to discussing new opportunities, research collaborations, technical speaking engagements, or mentoring emerging AI engineers.
+### Open to
 
+I am open to research collaborations, technical speaking, and mentoring emerging AI engineers.
 
-
-::: {.hero-actions .d-flex .justify-content-center .gap-3 .mt-4}
-[Schedule a Chat <i class="bi bi-calendar me-2"></i>](https://calendly.com/sambaiga){.btn .btn-primary .btn-sm}
-[Download CV <i class="bi bi-download me-2"></i>](/files/Anthony_CV_2026_ADI.pdf){.btn .btn-outline-primary .btn-sm}
+::: {.actions}
+[Download CV <i class="bi bi-download"></i>](/files/Anthony_CV_2026_ADI.pdf){.btn .btn-primary}
+[Schedule a chat <i class="bi bi-calendar-event"></i>](https://calendly.com/sambaiga){.btn .btn-outline-primary}
 :::
 :::

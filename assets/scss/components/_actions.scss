@@ -1,0 +1,179 @@
+/*-- scss:rules --*/
+
+// =====================================================
+// ONE BUTTON SYSTEM FOR THE WHOLE SITE
+// Two roles only. The main action of a page or card is solid slate (--ls-button),
+// every other action is a tonal chip. The hover colour is the accent blue, never
+// orange. Sizes: default 40 px, small 34 px, 44 px touch height on phones.
+// Bootstrap .btn, the listing .ls-button, the talk .tk-button and the About links
+// all draw from this block so that no page has its own look.
+// =====================================================
+
+.btn.btn-primary,
+.btn.btn-dark,
+.ls-button,
+.tp-tool.tp-tool--main,
+.tk-link.tk-link--main,
+.about-link.about-primary {
+  --act-bg: var(--ls-button);
+  --act-fg: #ffffff;
+  --act-hover: var(--ls-accent);
+  --act-hover-fg: #ffffff;
+}
+
+.btn.btn-outline-primary,
+.btn.btn-outline-secondary,
+.btn.btn-secondary,
+.btn.btn-light,
+.ls-button--ghost,
+.tk-button,
+.tk-link,
+.tp-tool,
+.about-link {
+  --act-bg: var(--ls-chip);
+  --act-fg: var(--ls-text);
+  --act-hover: var(--ls-tint);
+  --act-hover-fg: var(--ls-accent);
+}
+
+.btn.btn-primary,
+.btn.btn-dark,
+.btn.btn-outline-primary,
+.btn.btn-outline-secondary,
+.btn.btn-secondary,
+.btn.btn-light,
+.ls-button,
+.tk-button,
+.tk-link,
+.tp-tool,
+.tp-tool.tp-tool--main,
+.tk-link.tk-link--main,
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 40px;
+  margin: 0;
+  padding: 0.4rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  background: var(--act-bg);
+  box-shadow: none;
+  color: var(--act-fg) !important;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none !important;
+  transform: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+  .bi {
+    color: inherit !important;
+    font-size: 1.05em;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--act-hover);
+    border-color: var(--ls-tint-border);
+    color: var(--act-hover-fg) !important;
+    transform: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ls-accent);
+    outline-offset: 2px;
+  }
+}
+
+.btn.btn-sm,
+.ls-button--small {
+  min-height: 34px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.84rem;
+}
+
+@media (max-width: 767px) {
+  .btn.btn-primary,
+  .btn.btn-outline-primary,
+  .btn.btn-outline-secondary,
+  .ls-button,
+  .tk-button,
+  .tk-link,
+  .tp-tool,
+  .about-link {
+    min-height: 44px;
+  }
+}
+
+// Rows of actions share one gap and wrap on phones.
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+// Quarto's about templates draw their own link buttons (.about-link). They take the
+// same tonal look as every other secondary action and sit in a wrapping row.
+.about-links {
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem !important;
+  width: 100%;
+  padding-bottom: 1rem !important;
+
+  a.about-link {
+    min-height: 40px;
+    padding: 0.4rem 0.9rem !important;
+    border: 1px solid transparent !important;
+    border-radius: 0.4rem !important;
+    background: var(--act-bg) !important;
+    color: var(--act-fg) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500;
+    text-align: center;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--act-hover) !important;
+      border-color: var(--ls-tint-border) !important;
+      color: var(--act-hover-fg) !important;
+    }
+  }
+}
+
+#quarto-document-content:has(.about-links) p,
+#quarto-document-content:has(.about-links) li,
+#quarto-document-content:has(.about-links) blockquote {
+  hyphens: manual !important;
+  -webkit-hyphens: manual !important;
+  text-align: left !important;
+}
+
+// In the dark theme the slate primary would match the tonal chips, so the main action
+// takes the accent blue with dark text.
+body.quarto-dark {
+  .btn.btn-primary,
+  .btn.btn-dark,
+  .ls-button,
+  .tp-tool.tp-tool--main,
+  .tk-link.tk-link--main,
+  .about-link.about-primary {
+    --act-bg: var(--ls-accent);
+    --act-fg: #0f172a;
+    --act-hover: #7dd3fc;
+    --act-hover-fg: #0f172a;
+  }
+
+  .ls-button.ls-button--ghost {
+    --act-bg: var(--ls-chip);
+    --act-fg: var(--ls-text);
+    --act-hover: var(--ls-tint);
+    --act-hover-fg: var(--ls-accent);
+  }
+}

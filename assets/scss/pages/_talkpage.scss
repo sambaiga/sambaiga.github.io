@@ -171,40 +171,6 @@
     }
   }
 
-  .tp-tool {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.35rem 0.9rem;
-    border: 0;
-    border-radius: 0.4rem;
-    background: var(--ls-chip);
-    box-shadow: 0 1px 0 var(--ls-border-strong);
-    color: var(--ls-text) !important;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-decoration: none !important;
-    cursor: pointer;
-
-    &:hover {
-      background: var(--ls-hover);
-    }
-
-    &--main {
-      background: var(--ls-button);
-      box-shadow: none;
-      color: #fff !important;
-
-      &:hover {
-        background: var(--ls-orange);
-      }
-    }
-
-    .bi {
-      color: inherit !important;
-    }
-  }
-
   kbd {
     padding: 0 0.35rem;
     border: 1px solid var(--ls-border);

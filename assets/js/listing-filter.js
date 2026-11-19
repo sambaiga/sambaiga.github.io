@@ -29,17 +29,21 @@
     return state.topic !== "all" || state.type !== "all" || state.query !== "";
   }
 
+  function attr(item, name) {
+    return item.getAttribute(name) || "";
+  }
+
   function matches(item) {
     return (
       (state.topic === "all" || item.getAttribute("data-topic") === state.topic) &&
       (state.type === "all" || item.getAttribute("data-kind") === state.type) &&
-      (state.query === "" || item.getAttribute("data-text").indexOf(state.query) !== -1)
+      (state.query === "" || attr(item, "data-text").indexOf(state.query) !== -1)
     );
   }
 
   function order(a, b) {
-    if (state.sort === "title") return a.getAttribute("data-title").localeCompare(b.getAttribute("data-title"));
-    var byDate = a.getAttribute("data-date").localeCompare(b.getAttribute("data-date"));
+    if (state.sort === "title") return attr(a, "data-title").localeCompare(attr(b, "data-title"));
+    var byDate = attr(a, "data-date").localeCompare(attr(b, "data-date"));
     return state.sort === "old" ? byDate : -byDate;
   }
 
