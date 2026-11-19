@@ -535,8 +535,97 @@
     }
 
     .pubs-filters .ls-chips,
-    .pubs-filters .ls-search {
+    .pubs-filters .ls-search,
+    .pubs-filters .pubs-sort,
+    .pubs-filters select {
       flex: 1 0 100%;
+      width: 100%;
+    }
+
+    // The chip rows scroll sideways in one line instead of stacking in three or four rows.
+    .ls-controls .ls-chips,
+    .pubs-filters .ls-chips {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      a {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        white-space: nowrap;
+      }
+    }
+
+    #quarto-document-content .pubs-focus p {
+      text-align: left;
+    }
+
+    // The first page keeps its proportions, so the whole page width shows.
+    .pub-sheet {
+      align-self: start;
+      min-height: 0;
+      aspect-ratio: 3 / 4;
+    }
+
+    .pub-sheet img {
+      object-position: top left;
+    }
+
+    .pub-top {
+      min-width: 0;
+    }
+
+    .pub-tags {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .pub-tags .ls-chip {
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Touch targets of 44 px for the text links under each card.
+    .pub-links {
+      gap: 0 0.5rem;
+
+      a,
+      button {
+        min-height: 44px;
+        padding: 0 0.3rem;
+      }
+    }
+
+    .pub:hover {
+      transform: none;
+    }
+
+    // The citation and abstract panels become a sheet at the foot of the screen.
+    .pubs-cite {
+      position: fixed;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      left: 0.5rem;
+      z-index: 20;
+    }
+
+    .pubs-dialog-bar {
+      flex-wrap: wrap;
+
+      b {
+        flex: 1 0 100%;
+      }
     }
   }
 
