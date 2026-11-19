@@ -97,14 +97,16 @@
     var hits = items.filter(matches).sort(order);
     var pages = Math.max(1, Math.ceil(hits.length / size));
     state.page = Math.min(state.page, pages);
-    var first = (state.page - 1) * size;
-    var shown = hits.slice(first, first + size);
+    var first = size === Infinity ? 0 : (state.page - 1) * size;
+    var shown = size === Infinity ? hits : hits.slice(first, first + size);
     items.forEach(function (item) {
       item.hidden = shown.indexOf(item) === -1;
     });
-    shown.forEach(function (item) {
-      list.appendChild(item); // the sort order is the order in the page
-    });
+    if (sort && list) {
+      shown.forEach(function (item) {
+        list.appendChild(item); // the sort order is the order in the page
+      });
+    }
     if (empty) empty.hidden = hits.length !== 0;
     if (clear) clear.hidden = !filtering();
     if (status) status.textContent = filtering() ? hits.length + " of " + items.length + " papers" : "";
