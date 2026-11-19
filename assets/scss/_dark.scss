@@ -51,11 +51,6 @@ body.quarto-dark {
     color: #0f172a !important;
   }
 
-  // Buttons on the slides of the home page keep white text over the slide image
-  [class*="slide"] .btn-primary {
-    color: #ffffff !important;
-  }
-
   // Transparent figures in blog thumbnails are drawn for a white page, so they get a white mat
   .blog-thumbnail {
     background: #ffffff;
