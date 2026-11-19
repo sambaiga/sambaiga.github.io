@@ -40,6 +40,7 @@ website:
   draft-mode: gone
   repo-url: "https://github.com/sambaiga/sambaiga.github.io"
   page-navigation: true
+  llms-txt: true
 
 
 
