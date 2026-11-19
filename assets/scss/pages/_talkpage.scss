@@ -81,7 +81,7 @@
     display: grid;
     place-items: center;
     min-height: 240px;
-    padding: 1rem;
+    padding: 1rem 3.6rem;
     background: var(--ls-chip);
 
     canvas {
@@ -395,7 +395,14 @@
     }
 
     .tp-stage {
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem 3.4rem;
+    }
+
+    // On a phone the arrows sit below the slide, so they never cover it
+    .tp-nav {
+      top: auto;
+      bottom: 0.5rem;
+      transform: none;
     }
 
     .tp-nav {

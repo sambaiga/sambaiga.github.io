@@ -104,6 +104,11 @@
     }
   }
 
+  // A 16:9 deck gets a 16:9 frame, so its cover is not cut at the sides
+  .tk-thumb--wide {
+    aspect-ratio: 16 / 9;
+  }
+
   .tk-kind {
     display: inline-flex;
     flex-wrap: wrap;
@@ -125,7 +130,7 @@
       color: var(--ls-accent);
     }
 
-    span::before {
+    b + span::before {
       content: "\00b7";
       margin-right: 0.35rem;
     }
@@ -575,7 +580,7 @@
       display: none !important;
     }
 
-    .tk-kind span::before {
+    .tk-kind b + span::before {
       display: none;
     }
 
