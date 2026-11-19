@@ -96,16 +96,65 @@
   font-size: 0.84rem;
 }
 
+// Touch targets: every button, chip, pager button and field is at least 44 px high on a
+// phone, whatever page rule it also has, so the height is a guarantee and not a default.
 @media (max-width: 767px) {
-  .btn.btn-primary,
-  .btn.btn-outline-primary,
-  .btn.btn-outline-secondary,
+  .btn,
   .ls-button,
+  .ls-button--small,
   .tk-button,
   .tk-link,
   .tp-tool,
-  .about-link {
-    min-height: 44px;
+  .about-link,
+  .ls-chips a,
+  .ls-page,
+  .tk-page,
+  .tp-nav,
+  .carousel-nav,
+  .tl-copy,
+  .tl-used,
+  .tl-links a,
+  .tp-crumb a,
+  .bk-link,
+  .pubs-clear,
+  .ls-select,
+  .tk-select,
+  .ls-search {
+    min-height: 44px !important;
+  }
+
+  .ls-chips a,
+  .tl-used,
+  .tl-links a,
+  .tp-crumb a,
+  .bk-link,
+  .pubs-clear {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .tl-copy,
+  .tp-nav,
+  .carousel-nav,
+  .tk-page,
+  .ls-page {
+    min-width: 44px;
+  }
+
+  // The dots under the carousel are small to look at and large to hit.
+  .indicator {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -18px -10px;
+    }
+  }
+
+  // Rows of actions share the width: a lone button fills the row, two sit side by side.
+  .actions .btn {
+    flex: 1 1 10rem;
   }
 }
 
