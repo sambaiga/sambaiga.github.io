@@ -2,7 +2,7 @@
 title: "The Strategic Kernel and the AI Strategy Gap"
 subtitle: "A Practical Framework for Finding the Crux, Building the Roadmap, and Closing the AI Value Gap"
 date: 2026-02-10
-description: "AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt's strategic kernel and technology roadmapping to diagnose why - and gives you a five-step process to build an AI strategy that is genuinely coherent rather than merely busy."
+description: "AI investment is surging, yet 80% of organisations running pilots have extracted almost no measurable value. This post applies Rumelt's strategic kernel and technology roadmapping to diagnose why, and presents a five-step process for building an AI strategy that is coherent rather than merely busy."
 
 image: "crux_kernel.png"
 twitter-card:
