@@ -1,0 +1,11 @@
+# Profile "now": publishes the Now page and adds it to the navbar.
+# Enable it with `profile: default: now` in _quarto.yml or `quarto render --profile now`.
+project:
+  render:
+    - "pages/now/index.qmd"
+
+website:
+  navbar:
+    left:
+      - text: "Now"
+        file: "pages/now/index.qmd"
