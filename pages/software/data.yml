@@ -46,7 +46,7 @@
   group: library
   area: forecasting
   logo: ../../images/projects/twiga.svg
-  description: A Python library for point and probabilistic forecasting, inspired by the majestic giraffes of Tanzania. Twiga helps you see the future with clarity and precision.
+  description: Python library for point and probabilistic forecasting, with one configuration-driven interface for gradient-boosted trees, neural networks, quantile regression, parametric distributions and conformal prediction.
   status: Active
   year: 2025
   updated: 2026-11
@@ -56,7 +56,7 @@
 - title: Deep-NILMtk
   group: community
   area: nilm
-  description: Community-driven deep learning toolkit for NILM with automation, hyperparameters, and modular pipelines.
+  description: Community deep learning toolkit for non-intrusive load monitoring, with automated hyperparameter search and modular pipelines.
   status: Community
   year: 2020
   updated: 2023-06

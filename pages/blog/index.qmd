@@ -1,9 +1,9 @@
 ---
 title: ""
-pagetitle: "Writing | Anthony Faustine"
+pagetitle: "Blog | Anthony Faustine"
 title-block-banner: false
 author: ""
-description: "Anthony Faustine's blog on AI and Energy"
+description: "Essays by Anthony Faustine on machine learning strategy, technology management and high-performing teams."
 listing:
   contents: posts
   sort: "date desc"
