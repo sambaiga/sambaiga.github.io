@@ -1,0 +1,75 @@
+/*-- scss:pages/now --*/
+
+// =====================================================
+// NOW PAGE: four cards in a Quarto grid, each with an icon tile, a heading, one sentence and its links.
+// Colours come from the shared listing variables (components/_listing.scss); the buttons from components/_actions.scss.
+// =====================================================
+
+.now-page {
+  .now-grid {
+    margin-top: 1.5rem;
+    gap: 1.1rem;
+  }
+
+  .now-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 1.25rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 12px;
+    background: var(--ls-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      border-color: var(--ls-accent);
+      box-shadow: 0 14px 28px -20px rgba(15, 23, 42, 0.45);
+    }
+
+    p {
+      margin: 0;
+      text-align: left;
+      hyphens: manual;
+    }
+
+    // The links sit at the foot of the card, in a wrapping row.
+    p:has(.btn) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 0.8rem;
+    }
+  }
+
+  .now-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-bottom: 0.3rem;
+    border: 1px solid var(--ls-tint-border);
+    border-radius: 10px;
+    background: var(--ls-tint);
+    color: var(--ls-accent);
+    font-size: 1.25rem;
+
+    .bi {
+      color: inherit !important;
+    }
+  }
+
+  // The site underlines every h2 of the document and sets a wide margin; inside a card the heading is plain.
+  #quarto-document-content .now-card h2 {
+    margin: 0 0 0.35rem;
+    padding: 0;
+    border: 0;
+    font-size: 1.2rem;
+  }
+
+  #quarto-document-content .now-card p {
+    max-width: none;
+  }
+}

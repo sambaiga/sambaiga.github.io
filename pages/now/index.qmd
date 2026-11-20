@@ -1,0 +1,63 @@
+---
+title: "Now"
+pagetitle: "Now | Anthony Faustine"
+description-meta: "What Anthony Faustine is working on at the moment: demand forecasting at Analog Devices, research, open-source software and two books."
+date-modified: 2026-11-19
+date-format: "D MMMM YYYY"
+toc: false
+title-block-banner: false
+page-layout: article
+aliases:
+  - ../../now/index.html
+format:
+  html:
+    body-classes: "now-page"
+---
+
+A snapshot of what I am working on, updated when it changes.
+
+::: {.grid .now-grid .column-page}
+
+::: {.g-col-12 .g-col-md-6 .now-card}
+<div class="now-icon"><i class="bi bi-cpu" aria-hidden="true"></i></div>
+
+## At work {.no-anchor}
+
+At Analog Devices I develop demand forecasting methods for the semiconductor supply chain and the machine learning systems that run them in production.
+
+[Analog Devices <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>](https://www.analog.com){.btn .btn-outline-primary .btn-sm}
+:::
+
+::: {.g-col-12 .g-col-md-6 .now-card}
+<div class="now-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></div>
+
+## Research {.no-anchor}
+
+I presented my PhD defence at Instituto Superior Técnico in November 2026, on efficient and robust machine learning for net-load forecasting in low-voltage distribution systems.
+
+[Slides <i class="bi bi-easel" aria-hidden="true"></i>](../talks/phd-defence-2026/index.html){.btn .btn-outline-primary .btn-sm}
+[Papers <i class="bi bi-journal-text" aria-hidden="true"></i>](../publication/index.html){.btn .btn-outline-primary .btn-sm}
+:::
+
+::: {.g-col-12 .g-col-md-6 .now-card}
+<div class="now-icon"><i class="bi bi-box-seam" aria-hidden="true"></i></div>
+
+## Software {.no-anchor}
+
+I maintain Twiga, Milia, Popo, Kinyonga and Kobe, open-source tools for forecasting, load profiles, network simulation and project setup.
+
+[Software <i class="bi bi-code-square" aria-hidden="true"></i>](../software/index.html){.btn .btn-outline-primary .btn-sm}
+[Twiga docs <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>](https://sambaiga.github.io/twiga-docs/){.btn .btn-outline-primary .btn-sm}
+:::
+
+::: {.g-col-12 .g-col-md-6 .now-card}
+<div class="now-icon"><i class="bi bi-book" aria-hidden="true"></i></div>
+
+## Books {.no-anchor}
+
+I am writing the two volumes of Machine Learning for Time Series, which are read online and updated as chapters are finished.
+
+[Read online <i class="bi bi-book-half" aria-hidden="true"></i>](../books/mbuga.html){.btn .btn-outline-primary .btn-sm}
+:::
+
+:::

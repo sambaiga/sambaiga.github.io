@@ -40,6 +40,8 @@
   year: 2024
   genre: "Data Science & MLOps"
   icon: "graph-up-arrow"
+  cover: "../../images/books/impact-cover.jpg"
+  cover_titled: true
   variant: "primary"
   status: "in-progress"
   status_label: "In Progress"

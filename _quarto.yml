@@ -1,5 +1,10 @@
 quarto-required: ">=1.11.0"
 
+# Optional pages are switched on with a profile. The Now page is off by default.
+# To publish it, uncomment the next two lines (or render with `--profile now`).
+# profile:
+#   default: now
+
 project:
   type: website
   output-dir: _site
@@ -9,10 +14,18 @@ project:
   post-render:
     - python3 scripts/post_render.py
   render:
-    - "*.qmd"
-    - "pages/**/*.qmd"
-    - "pages/**/*.ipynb"
-    - "!pages/project/"
+    - "index.qmd"
+    - "404.qmd"
+    # Pages are listed by folder so that optional ones (pages/now) stay off
+    # until a profile adds them. See _quarto-now.yml.
+    - "pages/about/**/*.qmd"
+    - "pages/blog/**/*.qmd"
+    - "pages/books/**/*.qmd"
+    - "pages/projects/**/*.qmd"
+    - "pages/publication/**/*.qmd"
+    - "pages/software/**/*.qmd"
+    - "pages/talks/**/*.qmd"
+    - "pages/blog/**/*.ipynb"
 
   preview:
     port: 5556
