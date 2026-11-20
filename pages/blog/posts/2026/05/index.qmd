@@ -1,5 +1,5 @@
 ---
-title: "The Missing Layer: How AI Business Models Actually Capture Value"
+title: "The Missing Layer: How AI Business Models Capture Value"
 subtitle: "Part 3: Why the Gap Between Strategic Direction and Revenue Is Where Most AI Value Disappears"
 date: 2026-05-06
 description: "Having a coherent AI strategy is not the same as having a business model that captures the value AI creates. This post introduces the AI Business Model Innovation Framework, which shows how organisations can translate strategic direction into revenue, outcomes, and durable competitive position."

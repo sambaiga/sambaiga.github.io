@@ -10,7 +10,7 @@ page-layout: article
 The address may have changed or the page may have moved. These pages are a good place to continue.
 
 - [Home](/index.html)
-- [Writing](/pages/blog/index.html)
+- [Blog](/pages/blog/index.html)
 - [Research](/pages/publication/index.html)
 - [Projects](/pages/projects/index.html)
 - [Books](/pages/books/index.html)

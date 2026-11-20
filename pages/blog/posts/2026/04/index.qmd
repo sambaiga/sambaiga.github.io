@@ -1,5 +1,5 @@
 ---
-title: "From Framework to Practice: Building an AI Strategy That Sticks"
+title: "From Framework to Practice: A Five-Step AI Roadmapping Process"
 subtitle: "Part 2: A Five-Step Roadmapping Process and How to Spot a Bad AI Strategy"
 date: 2026-03-29
 description: "Knowing what the strategic kernel requires is not enough. This post walks through a five-step AI roadmapping process built around Rumelt's kernel and gives the diagnostic tools to recognise a weak AI strategy before it incurs cost."

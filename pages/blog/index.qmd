@@ -1,6 +1,6 @@
 ---
 title: ""
-pagetitle: "Writing | Anthony Faustine"
+pagetitle: "Blog | Anthony Faustine"
 title-block-banner: false
 author: ""
 description: "Essays by Anthony Faustine on machine learning strategy, technology management and high-performing teams."
