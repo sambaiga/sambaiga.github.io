@@ -12,7 +12,7 @@
   status_label: "In Progress"
   status_icon: "lightning-fill"
   tags: ["Time Series", "Clustering", "Ranking", "Recommendation", "Anomaly Detection"]
-  chapters: "Volume 1 · 3 Parts · 12 Chapters"
+  chapters: "Volume 1 · 1 Part · 5 Chapters"
   url: "https://sambaiga.github.io/mbuga/structure/"
   page: "mbuga.html#structure"
 
@@ -30,14 +30,14 @@
   status_label: "In Progress"
   status_icon: "lightning-fill"
   tags: ["Forecasting", "Evaluation", "Decisions", "Energy", "Supply Chain"]
-  chapters: "Volume 2 · 1 Part · 2 Chapters"
+  chapters: "Volume 2 · 1 Part · 3 Chapters"
   url: "https://sambaiga.github.io/mbuga/operations/"
   page: "mbuga.html#operations"
 - title: "From Data to Impact"
   subtitle: "A Structured Path from Python Fundamentals to Production-Ready Data Science"
-  description: "A structured, project-based learning journey progressing from foundational Python through engineering practices to production-grade ML systems. Covers 10 parts across 20+ chapters from Python core and NumPy through classical ML, deep learning, LLMs, and MLOps deployment."
+  description: "A structured, project-based path from Python fundamentals to production-ready data science and MLOps, built to be run and not just read. Ten parts across more than 20 chapters, from Python core and NumPy through classical ML, deep learning, LLMs and MLOps deployment."
   author: "Anthony Faustine"
-  year: 2024
+  year: 2026
   genre: "Data Science & MLOps"
   icon: "graph-up-arrow"
   cover: "../../images/books/impact-cover.jpg"
