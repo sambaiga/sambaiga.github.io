@@ -33,18 +33,7 @@ Machine learning methods for time series, worked on energy and supply chain data
 4. Network Risk
 5. Customers and Connections
 
-**Part 6. Retrieval, Ranking and Recommendation**
-
-1. Foundations of Retrieval, Ranking and Recommendation
-2. Retrieval for Connection Requests
-3. Ranking Transformers and Violations
-4. Recommending Mitigation Measures
-
-**Part 7. Anomaly Detection**
-
-1. Foundations of Anomaly Detection
-2. Meter Data Quality and Customer Behaviour
-3. Non-Technical Loss and Changes over Time
+Further parts, on retrieval, ranking and recommendation and on anomaly detection, are added to the web edition as they are reviewed.
 
 ## Volume 2. Forecasting for Operations {#operations}
 
@@ -56,8 +45,9 @@ Machine learning methods for time series, worked on energy and supply chain data
 
 **Part 8. Forecasting**
 
-1. Signals
-2. Forecasters and Their Evaluation
+1. Forecasting for Decisions
+2. Characterising Series and Selecting Inputs
+3. Forecasters and Their Evaluation
 
 The web editions grow chapter by chapter, as each is written, run and reviewed.
 
