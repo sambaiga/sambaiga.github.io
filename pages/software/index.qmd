@@ -39,6 +39,6 @@ toc: false
 ::: {#work-listing}
 :::
 
-## More
+## Other repositories
 
-The public repositories are listed on [GitHub](https://github.com/sambaiga). Peer-reviewed work is on the [Research](../publication/index.html) page and the books are on the [Books](../books/index.html) page.
+All public repositories are listed on [GitHub](https://github.com/sambaiga). The peer-reviewed work is on the [Research](../publication/index.html) page and the books are on the [Books](../books/index.html) page.

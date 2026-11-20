@@ -34,15 +34,15 @@ format:
       <div class="hero-text-area">
         <h1 class="hero-title">  <!-- This will use hero component styles -->
           Principal ML Engineer<br>
-          <span class="highlight">Building Production ML Systems</span>
+          <span class="highlight">Machine Learning Systems for Supply Chain and Energy</span>
         </h1>
         <p class="hero-subtitle">
-          I architect machine learning systems for semiconductor supply chain, focusing on demand planning, resilient production deployments and clear measurable business value.
+          I design and run machine learning systems for supply chain planning and intelligent edge products, and I research time series forecasting for power systems.
         </p>
         <div class="hero-actions">
           <a href="https://www.linkedin.com/in/sambaiga/" class="btn btn-primary btn-sm">
             <i class="bi bi-linkedin me-2" aria-hidden="true"></i>
-            Let's Connect
+            Connect on LinkedIn
           </a>
         </div>
       </div>
@@ -53,12 +53,12 @@ format:
           <span class="stat-desc">years<br>experience</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">10+</span>
-          <span class="stat-desc">projects<br>delivered</span>
+          <span class="stat-value">20</span>
+          <span class="stat-desc">research<br>publications</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">100%</span>
-          <span class="stat-desc">satisfied<br>impact</span>
+          <span class="stat-value">5</span>
+          <span class="stat-desc">open-source<br>libraries</span>
         </div>
       </div>
     </div>
