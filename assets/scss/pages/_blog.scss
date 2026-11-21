@@ -1567,8 +1567,57 @@ body.blog {
 
 // Figure captions: justified, with the last line on the left, as the text of the page. Quarto centres a caption, which
 // leaves the last line of a long one ending in the middle of the page.
-body.blog figure figcaption.quarto-float-caption {
+body.blog figure figcaption,
+body.blog .quarto-float-caption,
+body.blog .figure-caption {
   text-align: justify;
   text-align-last: left;
   hyphens: auto;
+}
+
+// References in IEEE style for every post: a footnote is cited as [n] in the text and listed as [n] at the end of the
+// post in order of citation, so a post only needs ordinary footnotes written as IEEE entries.
+body.blog {
+  a.footnote-ref {
+    text-decoration: none;
+
+    sup {
+      font-size: inherit;
+      vertical-align: baseline;
+      position: static;
+      line-height: inherit;
+
+      &::before { content: "["; }
+      &::after { content: "]"; }
+    }
+  }
+
+  section.footnotes {
+    ol {
+      list-style: none;
+      counter-reset: reference;
+      padding-left: 0;
+    }
+
+    li {
+      counter-increment: reference;
+      position: relative;
+      padding-left: 2.8em;
+      margin-bottom: $spacer-2;
+
+      &::before {
+        content: "[" counter(reference) "]";
+        position: absolute;
+        left: 0;
+      }
+
+      p {
+        text-align: left;
+        hyphens: none;
+        overflow-wrap: anywhere;
+      }
+
+      .footnote-back { display: none; }
+    }
+  }
 }

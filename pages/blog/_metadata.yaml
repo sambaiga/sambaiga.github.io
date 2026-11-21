@@ -18,7 +18,8 @@ format:
     #code-tools: true
     #code-link: true
     shift-heading-level-by: 1
-    reference-location: margin
+    reference-location: document
+    reference-section-title: References
     fig-cap-location: bottom
     smooth-scroll: true
 
@@ -54,3 +55,7 @@ execute:
   echo: true
   warning: false
   message: false
+
+# Footnotes are the references of a post: numbered in order of citation, listed at the end as in IEEE style
+language:
+  section-title-footnotes: References

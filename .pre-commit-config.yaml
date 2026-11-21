@@ -112,6 +112,12 @@ repos:
         language: python
         files: ^(index\.qmd|404\.qmd|pages/.*\.(qmd|ipynb|ya?ml))$
 
+      - id: notebook-post-structure
+        name: notebook posts have front matter that renders and no bibliography key
+        entry: python scripts/check_notebook_posts.py
+        language: python
+        files: ^pages/blog/posts/.*\.ipynb$
+
       - id: brand-tokens
         name: brand colours agree across _brand.yml, the SCSS tokens and the logo
         entry: python scripts/check_brand.py
