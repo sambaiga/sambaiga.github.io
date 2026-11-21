@@ -115,6 +115,27 @@ def serving(root: Path) -> Iterator[int]:
         server.shutdown()
 
 
+SETTLE_MATHS = """async () => {
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+        await window.MathJax.startup.promise;
+    }
+}"""
+
+
+def settle_maths(page) -> None:  # noqa: ANN001
+    """Wait until MathJax has typeset the equations of a page, which it does after the page has loaded.
+
+    A snapshot taken while the equations are being set would differ between two loads of the same page.
+
+    Args:
+        page: The Playwright page that has just loaded.
+    """
+    try:
+        page.evaluate(SETTLE_MATHS)
+    except Exception as error:  # a page without maths, or a script that failed, is checked as it is
+        print(f"purge_css: maths did not settle: {error}")
+
+
 def visit(root: Path, action) -> None:  # noqa: ANN001
     """Open every page in both colour schemes and call ``action`` with the scheme, the path and the page.
 
@@ -133,6 +154,7 @@ def visit(root: Path, action) -> None:  # noqa: ANN001
                     print(f"purge_css: could not load {path.relative_to(root)}: {error}")
                     continue
                 page.add_style_tag(content="*{animation:none!important;transition:none!important}")
+                settle_maths(page)
                 page.wait_for_timeout(700)
                 action(scheme, str(path.relative_to(root)), page)
         browser.close()
