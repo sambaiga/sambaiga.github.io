@@ -26,10 +26,12 @@ TOGGLER = re.compile(r'(<button class="navbar-toggler[^>]*?) role="menu"')
 FONT_IMPORT = re.compile(r"@import\s*(?:url\()?\s*[\"']https://fonts\.googleapis\.com[^\"')]*[\"']?\)?\s*;?")
 
 
-# Quarto adds jQuery and require.js, from a content delivery network, to a page that has an HTML output of a notebook.
-# The figures of the posts are inline SVG and need neither, and the site requests nothing from a third party.
+# Quarto adds jQuery and require.js, from a content delivery network, to a page that has an HTML output of a notebook,
+# and a one-line script that registers jQuery with require.js. The figures of the posts are inline SVG and need none of
+# them, and the site requests nothing from a third party, so all three are removed together.
 NOTEBOOK_SCRIPT = re.compile(
     r'<script[^>]+src="https://cdn\.jsdelivr\.net/npm/(?:requirejs|jquery)@[^"]+"[^>]*></script>\s*'
+    r"|<script[^>]*>\s*define\('jquery',\s*\[\],\s*function\(\)\s*\{return window\.jQuery;\}\)\s*;?\s*</script>\s*"
 )
 
 
