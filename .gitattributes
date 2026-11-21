@@ -1,0 +1,3 @@
+# The blog notebooks are published with the outputs that they were executed with, because the site does not run
+# them (execute: eval: false). The global nbstripout filter must therefore not strip the outputs of these files.
+pages/blog/posts/**/*.ipynb -filter

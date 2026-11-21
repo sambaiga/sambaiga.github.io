@@ -1,6 +1,6 @@
 """Clean up the rendered site after Quarto has written it.
 
-Three things, all about what a page asks of the reader's browser:
+Four things, all about what a page asks of the reader's browser:
 
 * Quarto writes a few small icons (such as the licence icon of the footer) as inline ``data:`` images without an
   ``alt`` attribute. A screen reader then announces the file name, so each one gets an empty ``alt``. Images that
@@ -9,6 +9,8 @@ Three things, all about what a page asks of the reader's browser:
   extra one is announced wrongly, so it is removed.
 * The Bootswatch themes (cosmo and darkly) start their CSS with an ``@import`` of a Google font. The site serves its
   own fonts (``assets/fonts``), so the import is removed and no page contacts a font service.
+* A notebook page with an HTML output gets jQuery and require.js from a content delivery network. The figures of the
+  posts are inline SVG and need neither, so the two script tags are removed and no page contacts that host.
 
 Quarto runs this after every render (``post-render`` in ``_quarto.yml``).
 """
@@ -24,13 +26,20 @@ TOGGLER = re.compile(r'(<button class="navbar-toggler[^>]*?) role="menu"')
 FONT_IMPORT = re.compile(r"@import\s*(?:url\()?\s*[\"']https://fonts\.googleapis\.com[^\"')]*[\"']?\)?\s*;?")
 
 
+# Quarto adds jQuery and require.js, from a content delivery network, to a page that has an HTML output of a notebook.
+# The figures of the posts are inline SVG and need neither, and the site requests nothing from a third party.
+NOTEBOOK_SCRIPT = re.compile(
+    r'<script[^>]+src="https://cdn\.jsdelivr\.net/npm/(?:requirejs|jquery)@[^"]+"[^>]*></script>\s*'
+)
+
+
 def main() -> None:
-    """Mark decorative inline images and remove third-party font imports."""
+    """Mark decorative images, remove third-party font imports and the scripts that Quarto adds for notebook output."""
     root = Path(os.environ.get("QUARTO_PROJECT_OUTPUT_DIR", "_site"))
     pages = styles = 0
     for page in root.rglob("*.html"):
         text = page.read_text(encoding="utf-8")
-        patched = TOGGLER.sub(r"\1", IMAGE.sub(r'<img alt=""\1>', text))
+        patched = NOTEBOOK_SCRIPT.sub("", TOGGLER.sub(r"\1", IMAGE.sub(r'<img alt=""\1>', text)))
         if patched != text:
             page.write_text(patched, encoding="utf-8")
             pages += 1

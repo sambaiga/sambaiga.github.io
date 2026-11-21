@@ -53,3 +53,19 @@
   font-display: swap;
   src: url("/assets/fonts/jetbrains-mono-700-latin.woff2") format("woff2");
 }
+
+// Mathematics: the equations are native MathML, drawn with New Computer Modern Math, the face of the books. The font has
+// an OpenType MATH table, so the browser sets fractions, roots and scripts as TeX does. It loads only on a page that has
+// an equation. Subset of NewCMMath-Regular (GUST Font License) to Latin, Greek, mathematical symbols and alphanumerics.
+@font-face {
+  font-family: "NewCM Math";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/newcm-math.woff2") format("woff2");
+}
+
+math {
+  font-family: "NewCM Math", "Latin Modern Math", "STIX Two Math", math;
+  font-size: 1.08em;
+}
