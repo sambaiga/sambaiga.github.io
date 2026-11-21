@@ -1,0 +1,90 @@
+/*-- scss:components/toc --*/
+
+// =====================================================
+// TABLE OF CONTENTS - OPTIMIZED FOR VARIABLE USAGE
+// =====================================================
+
+#TOC {
+  font-family: $toc-font-family;
+  padding-bottom: $spacer-1; // Changed from 0.1em to use spacing system
+  font-weight: $toc-font-weight;
+
+  .active {
+    font-weight: $toc-active-font-weight; // Uses the dedicated variable
+  }
+
+  #toc-title {
+    font-weight: $font-weight-semibold; // More semantic than hardcoded 600
+  }
+}
+
+// Sidebar TOC navigation links
+.sidebar nav[role="doc-toc"] > ul li a {
+  padding-top: $spacer-1;    // Consistent spacing
+  padding-bottom: $spacer-1; // Consistent spacing
+}
+
+// Blog categories in margin sidebar
+#quarto-margin-sidebar {
+  .quarto-listing-category-title {
+    margin-left: $spacer-2; // Consistent spacing
+  }
+
+  .quarto-listing-category {
+    font-family: $toc-font-family;
+    font-weight: $toc-font-weight;
+    font-size: $toc-font-size; // Uses the TOC-specific variable
+    line-height: $line-height-snug; // Added for better typography
+    padding-left: $toc-padding-left; // Uses the dedicated variable
+    margin-left: $spacer-2; // Consistent spacing (was 0.5em)
+    border-left: $border-width-1 solid $border-color-light; // Uses border variables
+
+    .category {
+      padding-bottom: $spacer-2; // Consistent spacing
+    }
+
+    .active {
+      font-weight: $toc-active-font-weight;
+      color: $toc-color; // Uses the semantic TOC color variable
+    }
+
+    .quarto-category-count {
+      font-weight: $font-weight-light; // More semantic (was 200)
+      font-size: $font-size-sm;
+      color: $secondary; // Uses semantic variable instead of hardcoded gray-700
+    }
+  }
+}
+
+// =====================================================
+// OPTIONAL ENHANCEMENTS (consider adding)
+// =====================================================
+
+// 1. Smooth transitions for interactive states
+#TOC a,
+.quarto-listing-category .category {
+  transition: color $transition-duration-base $transition-timing-ease,
+              font-weight $transition-duration-base $transition-timing-ease;
+}
+
+// 2. Improved focus states for accessibility
+#TOC a:focus,
+.quarto-listing-category .category:focus {
+  outline: $focus-ring;
+  outline-offset: $focus-ring-width;
+}
+
+// 3. Dark mode support (if your theme supports it)
+[data-theme="dark"] {
+  #TOC {
+    color: $dark-body-color;
+  }
+  
+  .quarto-listing-category {
+    border-left-color: rgba($white, $opacity-20);
+    
+    .quarto-category-count {
+      color: rgba($dark-body-color, $opacity-70);
+    }
+  }
+}

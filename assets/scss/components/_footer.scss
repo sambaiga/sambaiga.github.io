@@ -1,0 +1,87 @@
+/*-- scss:components/footer --*/
+
+// =====================================================
+// FOOTER: one centred block, the same in both themes (the colours come from $footer-bg and $footer-fg)
+// A line with the licence, a row of three links, and the PGP fingerprint on a wide screen only.
+// =====================================================
+
+.nav-footer {
+  display: flex;
+  justify-content: center;
+  border: 0 !important;
+  background-color: $footer-bg;
+  color: $footer-fg;
+  padding: 1.25rem 1rem;
+  font-family: $footer-font-family;
+  font-size: 0.85rem;
+
+  .nav-footer-left,
+  .nav-footer-right {
+    display: none;
+  }
+
+  .nav-footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center;
+
+    p,
+    span {
+      margin: 0;
+    }
+  }
+
+  a {
+    color: $navbar-hl;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+
+  .foot-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.4rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+  }
+
+  .foot-print {
+    font-size: 0.72rem;
+    opacity: 0.85;
+
+    code {
+      display: inline;
+      padding: 0 !important;
+      border: 0 !important;
+      background: none !important;
+      color: inherit !important;
+      font-size: inherit;
+      word-break: break-all;
+    }
+
+    code {
+      display: block;
+      margin-top: 0.15rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .foot-print {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,642 @@
+/*-- scss:pages/publications --*/
+
+// =====================================================
+// RESEARCH PAGE: the research focus, a selected paper on the featured panel of the Books page, then every paper as a card
+// with the first page of the paper, two to a row, with filters, sort, Cite, a preview and pagination.
+// Shared parts (chips, pills, buttons, pager) are in components/_listing.scss. Markup: assets/ejs/publication_listing.ejs.
+// Behaviour: assets/js/listing-filter.js
+// =====================================================
+
+.publications-page {
+  background: var(--ls-page);
+
+  .pubs {
+    max-width: 64rem;
+    margin: 0 auto $spacer-6;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  .pubs-stats {
+    margin: 0 0 1.6rem;
+    font-size: $font-size-lg;
+    color: var(--ls-muted);
+    text-align: left;
+
+    span {
+      margin: 0 0.35rem;
+      color: #94a3b8;
+    }
+  }
+
+  // ---------- Research focus ----------
+  // The paragraph is as wide as the page and justified. Hyphenation stays off, because it cuts words such as low-voltage
+  .pubs-focus {
+    margin: 0 0 1.8rem;
+
+    p {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--ls-text);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: manual;
+    }
+  }
+
+  // The site limits a paragraph of the document to 72 characters, through an id selector, so this one is widened through it
+  #quarto-document-content .pubs-focus p {
+    max-width: none;
+  }
+
+  #quarto-document-content .pubs-focus-title {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    border: 0;
+    font-family: $font-family-sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pn-kicker);
+  }
+
+  // The site styles the headings and paragraphs of the document through an id selector (an underline under h2, a margin and
+  // a width of 72 characters on every paragraph), so the parts of this page are reset through it too.
+  #quarto-document-content .pubs {
+    .pub h3 {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .pub-authors,
+    .pub-venue,
+    .pub-tags,
+    .pubs-status,
+    .ls-pager-info {
+      max-width: none;
+      margin: 0;
+    }
+
+
+
+
+
+
+
+    .pubs-status {
+      margin-top: 0.2rem;
+    }
+
+    .pubs-cite p {
+      max-width: none;
+    }
+
+    .pubs-dialog button.ls-button {
+      border: 0;
+    }
+  }
+
+  // Without the script, Cite, Abstract and the preview do nothing, so they are not shown
+  &:not(.pubs-js) {
+    [data-cite],
+    [data-abstract],
+    .pub-zoom {
+      display: none !important;
+    }
+
+    .pub-sheet {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  // ---------- Controls ----------
+  .pubs-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    align-items: center;
+    margin: 0.7rem 0 0.2rem;
+
+    .ls-chips {
+      flex: 1;
+    }
+
+    .ls-search {
+      flex: 0 1 14rem;
+    }
+  }
+
+  .pubs-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 1.6rem;
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
+    color: var(--ls-muted);
+  }
+
+  .pubs-clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ls-accent);
+    cursor: pointer;
+  }
+
+  // ---------- Cards, two to a row ----------
+  .pubs-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .pub {
+    position: relative;
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 0.7rem 1rem;
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--ls-border);
+    border-radius: 12px;
+    background: var(--ls-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: var(--ls-accent);
+      box-shadow: 0 14px 28px -20px rgba(15, 23, 42, 0.45);
+      transform: translateY(-2px);
+    }
+  }
+
+  .pub-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    hyphens: manual;
+  }
+
+  .pub-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    time {
+      font-size: 0.85rem;
+      color: var(--ls-muted);
+    }
+  }
+
+  .pub-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+  }
+
+  .pub h3 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.3;
+
+    a {
+      color: var(--ls-text);
+      text-decoration: none;
+
+      // The whole card opens the paper, through the title
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      &:hover {
+        color: var(--ls-accent);
+      }
+    }
+  }
+
+  // The long texts of a card are cut at a few lines, so that the cards stay short; the page of the paper has them whole
+  .pub h3 a,
+  .pub-authors,
+  .pub-venue {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+
+  .pub h3 a {
+    -webkit-line-clamp: 3;
+  }
+
+  .pub-authors {
+    -webkit-line-clamp: 2;
+  }
+
+  .pub-venue {
+    -webkit-line-clamp: 1;
+  }
+
+  .pub-authors {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ls-muted);
+
+    strong {
+      font-weight: 600;
+      color: var(--ls-text);
+    }
+  }
+
+  .pub-venue {
+    margin: 0;
+    font-size: 0.86rem;
+    font-style: italic;
+    color: var(--ls-muted);
+  }
+
+  .pub-foot {
+    position: relative;
+    z-index: 1;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem 0.8rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--ls-border);
+  }
+
+  .pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.9rem;
+    min-width: 0;
+
+    a,
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 30px;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--ls-accent) !important;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--ls-orange) !important;
+      }
+    }
+
+    .bi {
+      color: inherit !important;
+    }
+  }
+
+  // ---------- The first page of the paper, in a frame; a click opens it larger ----------
+  .pub-sheet {
+    position: relative;
+    z-index: 1;
+    display: block;
+    align-self: stretch;
+    min-height: 9rem;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--ls-border);
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 10px 18px -12px rgba(15, 23, 42, 0.55);
+    cursor: zoom-in;
+
+    img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
+
+  .pub-zoom {
+    position: absolute;
+    right: 0.35rem;
+    bottom: 0.35rem;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.8);
+    color: #fff;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .pub-sheet:hover .pub-zoom,
+  .pub-sheet:focus-visible .pub-zoom {
+    opacity: 1;
+  }
+
+  // A paper without a PDF: the same sheet, with the lines of text and the icon of its kind
+  .pub-sheet--blank {
+    display: grid;
+    place-items: center;
+    background: repeating-linear-gradient(#fff 0 9px, #e2e8f0 9px 10px), #fff;
+    cursor: default;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 9%;
+      left: 10%;
+      width: 56%;
+      height: 9px;
+      border-radius: 3px;
+      background: #94a3b8;
+      opacity: 0.6;
+    }
+
+    i {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--ls-border);
+      border-radius: 50%;
+      background: var(--ls-surface);
+      color: var(--ls-accent);
+      font-size: 1.25rem;
+      box-shadow: 0 6px 14px -8px rgba(15, 23, 42, 0.5);
+    }
+  }
+
+
+  // ---------- Cite: a floating panel over the card ----------
+  .pubs-cite {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 3.3rem;
+    left: 1rem;
+    z-index: 4;
+    padding: 0.8rem;
+    border: 1px solid var(--ls-border-strong);
+    border-radius: 10px;
+    background: var(--ls-surface);
+    box-shadow: 0 20px 40px -16px rgba(15, 23, 42, 0.55);
+
+    pre {
+      max-height: 11rem;
+      margin: 0 0 0.5rem;
+      padding: 0.5rem;
+      overflow: auto;
+      border: 0;
+      border-radius: 6px;
+      background: var(--ls-code);
+      color: var(--ls-text);
+      font-size: 0.74rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    p {
+      max-height: 13rem;
+      margin: 0 0 0.5rem;
+      overflow: auto;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    &--abstract p {
+      margin: 0;
+    }
+  }
+
+
+  .pubs-cite-tabs {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+
+    button {
+      padding: 0.15rem 0.6rem;
+      border: 1px solid var(--ls-border);
+      border-radius: 999px;
+      background: var(--ls-surface);
+      color: var(--ls-text);
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      &[aria-pressed="true"] {
+        border-color: var(--ls-active-bg);
+        background: var(--ls-active-bg);
+        color: var(--ls-on-active);
+      }
+    }
+  }
+
+  // ---------- The first-page preview ----------
+  .pubs-dialog {
+    width: min(760px, 94vw);
+    max-height: 92vh;
+    padding: 0;
+    border: 1px solid var(--ls-border);
+    border-radius: 14px;
+    background: var(--ls-surface);
+    color: var(--ls-text);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+
+    &::backdrop {
+      background: rgba(15, 23, 42, 0.65);
+    }
+  }
+
+  .pubs-dialog-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--ls-border);
+
+    b {
+      display: -webkit-box;
+      overflow: hidden;
+      font-size: 0.95rem;
+      font-weight: 500;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
+    span {
+      display: flex;
+      flex: none;
+      gap: 0.5rem;
+    }
+  }
+
+  .pubs-dialog-view {
+    max-height: calc(92vh - 4rem);
+    padding: 1rem;
+    overflow: auto;
+    background: #e2e8f0;
+    text-align: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fff;
+      box-shadow: 0 12px 28px -14px rgba(15, 23, 42, 0.6);
+    }
+  }
+
+  // ---------- Tablet and phone ----------
+  @media (max-width: 860px) {
+    .pubs-cards {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+  @media (max-width: 600px) {
+
+    .pub {
+      grid-template-columns: 6.25rem minmax(0, 1fr);
+      gap: 0.9rem;
+      padding: 0.95rem;
+    }
+
+    .pubs-filters .ls-chips,
+    .pubs-filters .ls-search,
+    .pubs-filters .pubs-sort,
+    .pubs-filters select {
+      flex: 1 0 100%;
+      width: 100%;
+    }
+
+    // The chip rows scroll sideways in one line instead of stacking in three or four rows.
+    .ls-controls .ls-chips,
+    .pubs-filters .ls-chips {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      a {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        white-space: nowrap;
+      }
+    }
+
+    #quarto-document-content .pubs-focus p {
+      text-align: left;
+    }
+
+    // The first page keeps its proportions, so the whole page width shows.
+    .pub-sheet {
+      align-self: start;
+      min-height: 0;
+      aspect-ratio: 3 / 4;
+    }
+
+    .pub-sheet img {
+      object-position: top left;
+    }
+
+    .pub-top {
+      min-width: 0;
+    }
+
+    .pub-tags {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .pub-tags .ls-chip {
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Touch targets of 44 px for the text links under each card.
+    .pub-links {
+      gap: 0 0.5rem;
+
+      a,
+      button {
+        min-height: 44px;
+        padding: 0 0.3rem;
+      }
+    }
+
+    .pub:hover {
+      transform: none;
+    }
+
+    // The citation and abstract panels become a sheet at the foot of the screen.
+    .pubs-cite {
+      position: fixed;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      left: 0.5rem;
+      z-index: 20;
+    }
+
+    .pubs-dialog-bar {
+      flex-wrap: wrap;
+
+      b {
+        flex: 1 0 100%;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pub,
+    .pub-zoom {
+      transition: none;
+    }
+
+    .pub:hover {
+      transform: none;
+    }
+  }
+}
