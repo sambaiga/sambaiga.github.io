@@ -106,6 +106,12 @@ repos:
         language: python
         files: ^(images|pages)/.*\.(jpe?g|png|webp|gif)$
 
+      - id: site-copy-style
+        name: site copy follows the writing standard
+        entry: python scripts/stylecheck.py
+        language: python
+        files: ^(index\.qmd|404\.qmd|pages/.*\.(qmd|ipynb|ya?ml))$
+
       - id: brand-tokens
         name: brand colours agree across _brand.yml, the SCSS tokens and the logo
         entry: python scripts/check_brand.py
