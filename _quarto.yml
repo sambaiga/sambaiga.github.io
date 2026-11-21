@@ -118,7 +118,9 @@ format:
       light: [cosmo, assets/twiga.scss]
       dark: [darkly, assets/twiga-dark.scss]
     respect-user-color-scheme: true
-    html-math-method: mathml
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
     canonical-url: true
     self-contained: false
     embed-resources: false
