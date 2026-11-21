@@ -2,11 +2,12 @@
 <%
   const FALLBACK = "../../images/blogs/arts.jpg";
   const cats = (p) => (Array.isArray(p.categories) ? p.categories.map((c) => String(c).toLowerCase()) : []);
-  // Three topics, derived from the free-form categories of each post.
+  // Four topics, derived from the free-form categories of each post.
   const topicOf = (p) => {
     const c = cats(p).join(" ");
     if (c.includes("ai strategy")) return "AI strategy";
     if (c.includes("bayesian")) return "Bayesian modelling";
+    if (c.includes("forecasting")) return "Forecasting";
     return "Leadership and teams";
   };
   const minutes = (p) => {
