@@ -212,3 +212,9 @@ li a:not([class]),
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
+
+// A long address in the text or in a reference list breaks at any character instead of widening the page on a phone.
+a.uri,
+#quarto-document-content a {
+  overflow-wrap: anywhere;
+}

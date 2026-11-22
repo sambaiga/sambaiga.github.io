@@ -40,3 +40,6 @@
 @import 'scss/components/banner';
 @import 'scss/typography';
 @import 'scss/components/actions';
+
+// Last, so that the caption rules win over the rules of the components and pages above
+@import 'scss/components/captions';

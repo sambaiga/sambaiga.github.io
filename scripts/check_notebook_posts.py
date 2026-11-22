@@ -9,7 +9,9 @@ that broke posts before:
 - the front matter names a ``bibliography``, which stops Quarto from resolving the ``@fig-`` and ``@tbl-`` references
   of a notebook. References are footnotes, written as IEEE entries, and are listed at the end of the post;
 - a heading breaks the heading standard of the site: two to five words, not a question, and not opening with How,
-  Why or What. The heading standard is in ``.claude/skills/site-writing`` and comes from the umeme book.
+  Why or What. The heading standard is in ``.claude/skills/site-writing`` and comes from the umeme book;
+- a display equation holds more than one equation (a qquad or quad spacing command joins them) or is longer than 100
+  characters, which does not fit a phone. Each equation gets its own display, and long ones are split by naming a part.
 
 Usage: ``python scripts/check_notebook_posts.py [notebooks...]``. Exits non-zero and prints one line per finding.
 """
@@ -17,12 +19,31 @@ Usage: ``python scripts/check_notebook_posts.py [notebooks...]``. Exits non-zero
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
 POSTS = Path("pages/blog/posts")
 EXEMPT = {"References", "Citation"}
+MAX_EQUATION = 100
 QUESTION_WORDS = {"how", "why", "what", "when", "which"}
+
+
+def equation_findings(path: Path, cells: list[dict]) -> list[str]:
+    """Findings for the display equations of the markdown cells of a notebook post."""
+    findings = []
+    for cell in cells:
+        if cell.get("cell_type") != "markdown":
+            continue
+        for match in re.finditer(r"\$\$(.+?)\$\$", "".join(cell["source"]), flags=re.S):
+            equation = match.group(1).strip()
+            if "\\qquad" in equation or "\\quad" in equation:
+                findings.append(f"{path}: an equation display joins two equations: '{equation[:40]}...'")
+            elif len(equation) > MAX_EQUATION:
+                findings.append(
+                    f"{path}: an equation display is longer than {MAX_EQUATION} characters: '{equation[:40]}...'"
+                )
+    return findings
 
 
 def heading_findings(path: Path, cells: list[dict]) -> list[str]:
@@ -60,7 +81,7 @@ def check(path: Path) -> list[str]:
         findings.append(f"{path}: cell sources must be lists of lines (nbformat), not single strings")
     if "\nbibliography:" in front_text:
         findings.append(f"{path}: remove 'bibliography:'; it breaks @fig- references. Use footnotes as IEEE entries")
-    return findings + heading_findings(path, cells)
+    return findings + heading_findings(path, cells) + equation_findings(path, cells)
 
 
 def main(argv: list[str]) -> int:
