@@ -26,6 +26,8 @@ project:
     - "pages/software/**/*.qmd"
     - "pages/talks/**/*.qmd"
     - "pages/blog/**/*.ipynb"
+    # Superseded draft of the first AI strategy post, published as pages/blog/posts/2026/03
+    - "!pages/blog/posts/2026/02/"
 
   preview:
     port: 5556

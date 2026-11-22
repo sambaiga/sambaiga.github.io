@@ -9,6 +9,7 @@ twitter-card:
     image: "cover.png"
 open-graph:
     image: "cover.png"
+title-block-banner: "martin-martz-layered-waves-unsplash.jpg"
 
 
 categories:
