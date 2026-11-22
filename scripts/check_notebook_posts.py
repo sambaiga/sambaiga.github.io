@@ -8,7 +8,7 @@ that broke posts before:
 - the source of a cell is one string and not a list of lines, which makes Quarto print the front matter as text;
 - the front matter names a ``bibliography``, which stops Quarto from resolving the ``@fig-`` and ``@tbl-`` references
   of a notebook. References are footnotes, written as IEEE entries, and are listed at the end of the post;
-- a heading breaks the heading standard of the site: two to eight words, not a question, and not opening with How,
+- a heading breaks the heading standard of the site: two to five words, not a question, and not opening with How,
   Why or What. The heading standard is in ``.claude/skills/site-writing`` and comes from the umeme book.
 
 Usage: ``python scripts/check_notebook_posts.py [notebooks...]``. Exits non-zero and prints one line per finding.
@@ -38,8 +38,8 @@ def heading_findings(path: Path, cells: list[dict]) -> list[str]:
             words = title.split()
             if title in EXEMPT or not words:
                 continue
-            if len(words) < 2 or len(words) > 8:
-                findings.append(f"{path}: heading '{title}' must have two to eight words")
+            if len(words) < 2 or len(words) > 5:
+                findings.append(f"{path}: heading '{title}' must have two to five words")
             elif title.endswith("?") or words[0].lower() in QUESTION_WORDS:
                 findings.append(f"{path}: heading '{title}' must be a noun phrase, not a question")
     return findings
