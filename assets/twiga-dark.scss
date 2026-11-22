@@ -67,3 +67,6 @@ $ai-accent: #38BDF8;
 
 // Dark-only overrides
 @import 'scss/dark';
+
+// Last, so that the caption rules win over the rules of the components and pages above
+@import 'scss/components/captions';
