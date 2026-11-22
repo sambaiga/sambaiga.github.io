@@ -186,3 +186,6 @@ coverage/
 # Profiling data
 .prof
 /.quarto/
+
+# Claude Code settings and skills stay local
+.claude/
