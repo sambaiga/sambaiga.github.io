@@ -14,8 +14,11 @@ format:
     code-line-numbers: false
     reading-time: true
     code-fold: true
-    #code-summary: "Show the code"
-    #code-tools: true
+    code-summary: "Show the code"
+    code-tools:
+      source: false
+      toggle: true
+      caption: "Code"
     #code-link: true
     shift-heading-level-by: 1
     reference-location: document
