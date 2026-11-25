@@ -14,7 +14,7 @@ code:not(pre code) {
   font-size: $code-font-size;
   font-family: $font-family-monospace;
   border: 1px solid rgba($gray-400, 0.5);
-  
+
   // Ensure it doesn't break layout
   display: inline-block;
   vertical-align: baseline;
@@ -23,24 +23,24 @@ code:not(pre code) {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  
+
   // Smooth scrolling for mobile
   scrollbar-width: thin;
   scrollbar-color: $gray-400 transparent;
-  
+
   &::-webkit-scrollbar {
     height: 4px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: transparent;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: $gray-400;
     border-radius: 2px;
   }
-  
+
   // Fix for long inline code on mobile
   @media (max-width: $breakpoint-md) {
     white-space: pre-wrap;
@@ -62,7 +62,7 @@ pre {
   font-family: $font-family-monospace;
   font-size: $code-block-font-size;
   line-height: $body-line-height;
-  
+
   // Remove default code styling inside pre
   code {
     background-color: transparent !important;
@@ -75,22 +75,22 @@ pre {
     white-space: pre !important;
     word-wrap: normal !important;
     overflow-wrap: normal !important;
-    
+
     // Ensure no conflicting styles
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   // Line numbers if enabled
   &[class*="line-numbers"] {
     counter-reset: line;
-    
+
     code {
       counter-increment: line;
       position: relative;
       padding-left: 3.5em;
-      
+
       &:before {
         content: counter(line);
         position: absolute;
@@ -111,7 +111,7 @@ pre {
 .cell-output pre {
   @extend pre;
   margin: $spacer-3 0;
-  
+
   code {
     // Reset any inline code styles
     all: unset;
@@ -123,7 +123,7 @@ pre {
 // Code copy button styling
 div.sourceCode {
   position: relative;
-  
+
   button.code-copy {
     position: absolute;
     top: $spacer-2;
@@ -137,14 +137,14 @@ div.sourceCode {
     padding: $spacer-1 $spacer-2;
     font-size: $font-size-xs;
     color: $btn-code-copy-color;
-    
+
     &:hover, &:focus {
       opacity: 1 !important;
       color: $btn-code-copy-color-hover;
       border-color: $btn-code-copy-color-hover;
     }
   }
-  
+
   &:hover button.code-copy {
     opacity: 0.7;
   }
@@ -163,22 +163,57 @@ details.code-fold {
     font-weight: $font-weight-medium;
     color: $gray-700;
     margin-bottom: 0;
-    
+
     &:hover {
       background-color: $gray-200;
     }
   }
-  
+
   &[open] summary {
     border-radius: $border-radius-lg $border-radius-lg 0 0;
     border-bottom: none;
   }
-  
+
   pre {
     margin-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+}
+
+// Folded code sits on the page background: no fill, no border, no line
+details.code-fold {
+  summary,
+  pre,
+  div.sourceCode {
+    background: transparent;
+    border: none;
+  }
+
+  summary {
+    padding-left: 0;
+
+    &:hover {
+      background: transparent;
+      text-decoration: underline;
+    }
+  }
+
+  pre {
+    padding-left: 0;
+  }
+}
+
+// The number of a footnote is written into its entry (scripts/post_render.py): the list shows its own marker and
+// hides the label, the preview that opens on hover shows the label.
+#footnotes .fn-label {
+  display: none;
+}
+
+.tippy-content .fn-label {
+  font-weight: $font-weight-medium;
+  color: $blue;
+  margin-right: 0.25em;
 }
 
 // Output blocks
@@ -187,16 +222,16 @@ details.code-fold {
     background-color: lighten($gray-100, 2%);
     border-color: $gray-400;
   }
-  
+
   &.stdout, &.stderr {
     border-left: 3px solid $gray-400;
     padding-left: $spacer-3;
   }
-  
+
   &.stdout {
     border-left-color: $success;
   }
-  
+
   &.stderr {
     border-left-color: $danger;
   }
@@ -207,35 +242,35 @@ details.code-fold {
   code:not(pre code) {
     font-size: $font-size-xs;
     padding: $spacer-1 $spacer-2;
-    
+
     // Better mobile scrolling
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
-    
+
     &::-webkit-scrollbar {
       display: none; /* Safari and Chrome */
     }
   }
-  
+
   pre {
     font-size: $font-size-xs;
     padding: $spacer-2;
     margin: $spacer-2 0;
     border-radius: $border-radius;
-    
+
     // Mobile optimization
     -webkit-overflow-scrolling: touch;
-    
+
     code {
       font-size: inherit;
     }
   }
-  
+
   div.sourceCode {
     margin-left: -$spacer-2;
     margin-right: -$spacer-2;
     border-radius: 0;
-    
+
     pre {
       border-radius: 0;
       border-left: none;
@@ -248,11 +283,11 @@ details.code-fold {
 h1, h2, h3, h4, h5, h6 {
   code:not(pre code) {
     font-size: 0.85em;
-    
+
     @media (max-width: $breakpoint-md) {
       font-size: 0.8em;
     }
-    
+
     @media (max-width: $breakpoint-sm) {
       font-size: 0.75em;
       padding: 0.1em 0.25em;
@@ -290,53 +325,53 @@ blockquote {
     color: var(--code-color, $gray-200);
     border-color: $gray-700;
   }
-  
+
   pre {
     background-color: var(--code-block-bg, $gray-900);
     border-color: $gray-700;
     color: $gray-200;
-    
+
     code {
       background-color: transparent;
       color: inherit;
     }
   }
-  
+
   div.sourceCode {
     button.code-copy {
       background-color: $gray-800;
       color: $gray-300;
       border-color: $gray-700;
-      
+
       &:hover {
         background-color: $gray-700;
         color: $gray-100;
       }
     }
   }
-  
+
   details.code-fold {
     summary {
       background-color: $gray-800;
       border-color: $gray-700;
       color: $gray-300;
-      
+
       &:hover {
         background-color: $gray-700;
       }
     }
   }
-  
+
   .cell-output {
     pre {
       background-color: lighten($gray-900, 2%);
       border-color: $gray-600;
     }
-    
+
     &.stdout {
       border-left-color: lighten($success, 20%);
     }
-    
+
     &.stderr {
       border-left-color: lighten($danger, 20%);
     }
@@ -351,18 +386,18 @@ blockquote {
     color: $gray-900;
     padding: 0;
   }
-  
+
   pre {
     background-color: transparent;
     border: 1px solid $gray-400;
     page-break-inside: avoid;
-    
+
     code {
       white-space: pre-wrap;
       word-break: break-word;
     }
   }
-  
+
   .code-copy {
     display: none !important;
   }
@@ -375,7 +410,7 @@ blockquote {
     // Ensure they inherit the correct styles
     font-family: $font-family-monospace;
   }
-  
+
   // Fix for potential conflicts
   code:not(pre code) {
     background-color: $code-bg;
