@@ -150,17 +150,14 @@ div.sourceCode {
   }
 }
 
-// Code folding: a quiet bar that names what the code does, opens to a block that wraps its lines and scrolls when long
+// Code folding
 details.code-fold {
-  margin: $spacer-3 0;
-
   summary {
     cursor: pointer;
     padding: $spacer-2 $spacer-3;
     background-color: $gray-100;
     border: 1px solid $gray-300;
-    border-left: 3px solid $blue;
-    border-radius: $border-radius-lg;
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
     font-family: $font-family-sans-serif;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
@@ -170,34 +167,40 @@ details.code-fold {
     &:hover {
       background-color: $gray-200;
     }
-
-    &:focus-visible {
-      outline: 2px solid $blue;
-      outline-offset: 2px;
-    }
   }
 
   &[open] summary {
     border-radius: $border-radius-lg $border-radius-lg 0 0;
-    border-bottom-color: transparent;
-  }
-
-  div.sourceCode {
-    margin: 0;
+    border-bottom: none;
   }
 
   pre {
-    margin: 0;
-    max-height: 28rem;
-    overflow: auto;
+    margin-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-left: 3px solid $blue;
+  }
+}
 
-    code {
-      white-space: pre-wrap !important;
-      overflow-wrap: anywhere !important;
+// Folded code sits on the page background: no fill, no border, no line
+details.code-fold {
+  summary,
+  pre,
+  div.sourceCode {
+    background: transparent;
+    border: none;
+  }
+
+  summary {
+    padding-left: 0;
+
+    &:hover {
+      background: transparent;
+      text-decoration: underline;
     }
+  }
+
+  pre {
+    padding-left: 0;
   }
 }
 
