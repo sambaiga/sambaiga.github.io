@@ -3,7 +3,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-25T12:06:26.755792</dc:date>
+    <dc:date>2026-11-25T12:26:53.165301</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -32,7 +32,7 @@ L 339.84 186.48
 L 339.84 0 
 L 0 0 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #ffffff"/>
+" clip-path="url(#p7078db819e)" style="fill: #ffffff"/>
    </g>
    <g id="patch_3">
     <path d="M 9.6288 178.003636 
@@ -45,7 +45,7 @@ Q 5.664 8.476364 5.664 12.432
 L 5.664 174.048 
 Q 5.664 178.003636 9.6288 178.003636 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #ffffff; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
+" clip-path="url(#p7078db819e)" style="fill: #ffffff; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 18.1248 131.101091 
@@ -58,7 +58,7 @@ Q 14.16 111.888 14.16 115.843636
 L 14.16 127.145455 
 Q 14.16 131.101091 18.1248 131.101091 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #ffffff; stroke-dasharray: 1.02,1.02; stroke-dashoffset: 0; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
+" clip-path="url(#p7078db819e)" style="fill: #ffffff; stroke-dasharray: 1.02,1.02; stroke-dashoffset: 0; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 70.8 131.101091 
@@ -71,7 +71,7 @@ Q 66.8352 111.888 66.8352 115.843636
 L 66.8352 127.145455 
 Q 66.8352 131.101091 70.8 131.101091 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #eaf3fa; stroke: #8ebcd5; stroke-width: 0.51; stroke-linejoin: miter"/>
+" clip-path="url(#p7078db819e)" style="fill: #eaf3fa; stroke: #8ebcd5; stroke-width: 0.51; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 122.9088 178.003636 
@@ -84,7 +84,7 @@ Q 118.944 8.476364 118.944 12.432
 L 118.944 174.048 
 Q 118.944 178.003636 122.9088 178.003636 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #ffffff; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
+" clip-path="url(#p7078db819e)" style="fill: #ffffff; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 177.8496 131.101091 
@@ -97,7 +97,7 @@ Q 173.8848 111.888 173.8848 115.843636
 L 173.8848 127.145455 
 Q 173.8848 131.101091 177.8496 131.101091 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #ffffff; stroke-dasharray: 1.02,1.02; stroke-dashoffset: 0; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
+" clip-path="url(#p7078db819e)" style="fill: #ffffff; stroke-dasharray: 1.02,1.02; stroke-dashoffset: 0; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
     <path d="M 236.1888 178.003636 
@@ -110,21 +110,21 @@ Q 232.224 8.476364 232.224 12.432
 L 232.224 174.048 
 Q 232.224 178.003636 236.1888 178.003636 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #ffffff; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
+" clip-path="url(#p7078db819e)" style="fill: #ffffff; stroke: #cbd5e1; stroke-width: 0.51; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 54.3744 121.494545 
 Q 59.1888 121.494545 63.242937 121.494545 
-" clip-path="url(#pe7f55dfb90)" style="fill: none; stroke: #64748b; stroke-width: 0.68; stroke-linecap: round"/>
+" clip-path="url(#p7078db819e)" style="fill: none; stroke: #64748b; stroke-width: 0.68; stroke-linecap: round"/>
     <path d="M 60.842937 120.294545 
 L 63.242937 121.494545 
 L 60.842937 122.694545 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #64748b; stroke: #64748b; stroke-width: 0.68; stroke-linecap: round"/>
+" clip-path="url(#p7078db819e)" style="fill: #64748b; stroke: #64748b; stroke-width: 0.68; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <!-- Write the brief -->
-    <g style="fill: #334155" transform="translate(27.223969 82.074379) scale(0.086 -0.086)">
+    <g style="fill: #334155" transform="translate(23.119406 81.699133) scale(0.098 -0.098)">
      <defs>
       <path id="LibreFranklin-Medium-d8" d="M 6387 4749 
 Q 6458 4749 6483 4710 
@@ -422,7 +422,7 @@ z
      <use xlink:href="#LibreFranklin-Medium-130" transform="translate(645.5 0)"/>
     </g>
     <!-- as a problem -->
-    <g style="fill: #334155" transform="translate(30.973031 93.081863) scale(0.086 -0.086)">
+    <g style="fill: #334155" transform="translate(27.391594 94.242545) scale(0.098 -0.098)">
      <defs>
       <path id="LibreFranklin-Medium-ed" d="M 2362 384 
 Q 2138 166 1869 51 
@@ -675,7 +675,7 @@ z
    </g>
    <g id="text_2">
     <!-- State the aim, the -->
-    <g style="fill: #64748b" transform="translate(26.513906 152.631003) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(21.628594 152.181977) scale(0.086 -0.086)">
      <defs>
       <path id="LibreFranklin-Regular-ad" d="M 3187 3866 
 Q 3021 4064 2758 4205 
@@ -1002,7 +1002,7 @@ z
      <use xlink:href="#LibreFranklin-Regular-118" transform="translate(756.125 0)"/>
     </g>
     <!-- limits and the measure -->
-    <g style="fill: #64748b" transform="translate(17.699812 163.131044) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(11.385188 164.384726) scale(0.086 -0.086)">
      <defs>
       <path id="LibreFranklin-Regular-155" d="M 1037 109 
 Q 1037 45 1011 22 
@@ -1220,7 +1220,7 @@ z
    </g>
    <g id="text_3">
     <!-- Spec -->
-    <g style="fill: #64748b" transform="translate(24.398931 124.158545) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(22.982369 124.590545) scale(0.086 -0.086)">
      <defs>
       <path id="LibreFranklin-Regular-18e" d="M 934 3392 
 Q 1024 3392 1024 3296 
@@ -1310,7 +1310,7 @@ z
    </g>
    <g id="text_4">
     <!-- Problem -->
-    <g style="fill: #0369a1" transform="translate(69.470719 124.014545) scale(0.07 -0.07)">
+    <g style="fill: #0369a1" transform="translate(67.058156 124.446545) scale(0.082 -0.082)">
      <defs>
       <path id="LibreFranklin-Medium-a2" d="M 4154 3334 
 Q 4154 2861 3936 2550 
@@ -1357,7 +1357,7 @@ z
    </g>
    <g id="text_5">
     <!-- Test each method -->
-    <g style="fill: #334155" transform="translate(133.8215 87.911371) scale(0.086 -0.086)">
+    <g style="fill: #334155" transform="translate(128.7845 88.350589) scale(0.098 -0.098)">
      <defs>
       <path id="LibreFranklin-Medium-b9" d="M 250 4659 
 Q 250 4704 272 4726 
@@ -1481,7 +1481,7 @@ z
    </g>
    <g id="text_6">
     <!-- Constraints stay, -->
-    <g style="fill: #64748b" transform="translate(141.338656 152.549488) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(136.703844 152.087242) scale(0.086 -0.086)">
      <defs>
       <path id="LibreFranklin-Regular-1d" d="M 2419 4813 
 Q 2739 4813 3036 4707 
@@ -1604,7 +1604,7 @@ z
      <use xlink:href="#LibreFranklin-Regular-317" transform="translate(751.265625 0)"/>
     </g>
     <!-- preferences go -->
-    <g style="fill: #64748b" transform="translate(143.841937 162.520544) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(139.613062 163.675226) scale(0.086 -0.086)">
      <defs>
       <path id="LibreFranklin-Regular-130" d="M 2208 3392 
 Q 2240 3392 2256 3373 
@@ -1745,11 +1745,11 @@ Q 125.7408 111.888 125.7408 114.430909
 L 125.7408 128.558182 
 Q 125.7408 131.101091 128.2896 131.101091 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #64748b"/>
+" clip-path="url(#p7078db819e)" style="fill: #64748b"/>
    </g>
    <g id="text_7">
     <!-- Preference -->
-    <g style="fill: #64748b" transform="translate(176.203625 123.942545) scale(0.068 -0.068)">
+    <g style="fill: #64748b" transform="translate(173.0645 124.374545) scale(0.08 -0.08)">
      <defs>
       <path id="LibreFranklin-Regular-a2" d="M 4070 3366 
 Q 4070 2893 3852 2585 
@@ -1799,7 +1799,7 @@ z
    </g>
    <g id="text_8">
     <!-- Hold a forum -->
-    <g style="fill: #334155" transform="translate(257.318031 87.911371) scale(0.086 -0.086)">
+    <g style="fill: #334155" transform="translate(253.706594 88.350589) scale(0.098 -0.098)">
      <defs>
       <path id="LibreFranklin-Medium-4f" d="M 1402 2163 
 Q 1338 2163 1338 2099 
@@ -1876,7 +1876,7 @@ z
    </g>
    <g id="text_9">
     <!-- Bring problems found -->
-    <g style="fill: #64748b" transform="translate(245.982625 152.475488) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(239.947375 152.001242) scale(0.086 -0.086)">
      <defs>
       <path id="LibreFranklin-Regular-1c" d="M 698 0 
 Q 659 0 640 19 
@@ -1988,7 +1988,7 @@ z
      <use xlink:href="#LibreFranklin-Regular-110" transform="translate(945.96875 0)"/>
     </g>
     <!-- in the data -->
-    <g style="fill: #64748b" transform="translate(265.172328 163.131044) scale(0.074 -0.074)">
+    <g style="fill: #64748b" transform="translate(262.248922 164.384726) scale(0.086 -0.086)">
      <use xlink:href="#LibreFranklin-Regular-13e"/>
      <use xlink:href="#LibreFranklin-Regular-160" transform="translate(23.90625 0)"/>
      <use xlink:href="#LibreFranklin-Regular-30d" transform="translate(82.3125 0)"/>
@@ -2013,7 +2013,7 @@ C 12.908951 19.307541 11.8944 21.751223 11.8944 24.298909
 C 11.8944 26.846595 12.908951 29.290277 14.71461 31.091763 
 C 16.520269 32.893248 18.969612 33.905455 21.5232 33.905455 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #64748b"/>
+" clip-path="url(#p7078db819e)" style="fill: #64748b"/>
    </g>
    <g id="patch_12">
     <path d="M 134.8032 33.905455 
@@ -2026,7 +2026,7 @@ C 126.188951 19.307541 125.1744 21.751223 125.1744 24.298909
 C 125.1744 26.846595 126.188951 29.290277 127.99461 31.091763 
 C 129.800269 32.893248 132.249612 33.905455 134.8032 33.905455 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #64748b"/>
+" clip-path="url(#p7078db819e)" style="fill: #64748b"/>
    </g>
    <g id="patch_13">
     <path d="M 248.0832 33.905455 
@@ -2039,11 +2039,11 @@ C 239.468951 19.307541 238.4544 21.751223 238.4544 24.298909
 C 238.4544 26.846595 239.468951 29.290277 241.27461 31.091763 
 C 243.080269 32.893248 245.529612 33.905455 248.0832 33.905455 
 z
-" clip-path="url(#pe7f55dfb90)" style="fill: #64748b"/>
+" clip-path="url(#p7078db819e)" style="fill: #64748b"/>
    </g>
    <g id="text_10">
     <!-- 1 -->
-    <g style="fill: #ffffff" transform="translate(19.271606 27.682909) scale(0.094 -0.094)">
+    <g style="fill: #ffffff" transform="translate(18.984169 28.114909) scale(0.106 -0.106)">
      <defs>
       <path id="LibreFranklin-Medium-2dc" d="M 2726 589 
 Q 2816 589 2816 518 
@@ -2140,7 +2140,7 @@ z
    </g>
    <g id="text_12">
     <!-- 2 -->
-    <g style="fill: #ffffff" transform="translate(131.922247 27.682909) scale(0.094 -0.094)">
+    <g style="fill: #ffffff" transform="translate(131.554466 28.114909) scale(0.106 -0.106)">
      <defs>
       <path id="LibreFranklin-Medium-2dd" d="M 1811 2010 
 Q 2093 2272 2278 2467 
@@ -2231,7 +2231,7 @@ z
    </g>
    <g id="text_14">
     <!-- Constraint -->
-    <g style="fill: #ffffff" transform="translate(130.666731 123.942545) scale(0.068 -0.068)">
+    <g style="fill: #ffffff" transform="translate(127.687825 124.374545) scale(0.08 -0.08)">
      <defs>
       <path id="LibreFranklin-Medium-1d" d="M 2426 4813 
 Q 2765 4813 3069 4707 
@@ -2315,7 +2315,7 @@ z
    </g>
    <g id="text_15">
     <!-- 3 -->
-    <g style="fill: #ffffff" transform="translate(245.032606 27.682909) scale(0.094 -0.094)">
+    <g style="fill: #ffffff" transform="translate(244.643169 28.114909) scale(0.106 -0.106)">
      <defs>
       <path id="LibreFranklin-Medium-2de" d="M 467 4058 
 Q 422 4109 467 4173 
@@ -2568,7 +2568,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pe7f55dfb90">
+  <clipPath id="p7078db819e">
    <rect x="0" y="0" width="339.84" height="186.48"/>
   </clipPath>
  </defs>
