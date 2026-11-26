@@ -134,6 +134,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 18.5rem), 1fr));
     gap: 1.5rem;
+
+    // The featured post is the first item of the list, across the whole width.
+    > .wr-hero {
+      grid-column: 1 / -1;
+      margin-bottom: 0.5rem;
+    }
   }
 
   .wr-card {
@@ -277,5 +283,21 @@
     .wr-more:hover .bi {
       transform: none;
     }
+  }
+}
+
+
+// The topics are the category chips of the page, which call the category filter of Quarto, so the list of categories and the
+// filter box that Quarto puts in the margin are hidden and the posts take the whole width again.
+.writing-page {
+  #quarto-margin-sidebar,
+  .quarto-listing-category,
+  .quarto-listing-category-title,
+  .quarto-listing-filter {
+    display: none !important;
+  }
+
+  #quarto-document-content {
+    grid-column: page-start-inset / page-end-inset !important;
   }
 }

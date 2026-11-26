@@ -13,8 +13,7 @@ open-graph:
 title-block-banner: change.jpg
 
 categories:
-  - Change Management
-  - Leadership
+  - Leadership and teams
 
 bibliography: references.bib
 ---
