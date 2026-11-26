@@ -1,100 +1,64 @@
 ```{=html}
 <%
   const tagsOf = (book) => (Array.isArray(book.tags) ? book.tags : []);
-  const hero = items[0];
-  const shelf = items.slice(1);
-  const showControls = items.length > 6;
+  const shelves = [...new Set(items.map((b) => b.shelf))];
   const genres = [...new Set(items.map((b) => b.genre))];
   const counts = {};
   items.forEach((b) => { counts[b.genre] = (counts[b.genre] || 0) + 1; });
+  const showControls = items.length > 6;
 %>
 <% if (showControls) { %>
-<div class="bk-controls">
-<nav class="bk-genres" aria-label="Book topics">
-  <a href="#" data-genre="all" class="active">All <span><%= items.length %></span></a>
+<div class="tl-controls">
+<nav class="tl-areas" aria-label="Book topics">
+  <a href="#" data-area="all" class="active">All <span><%= items.length %></span></a>
 <% genres.forEach((g) => { %>
-  <a href="#" data-genre="<%= g %>"><%= g %> <span><%= counts[g] %></span></a>
+  <a href="#" data-area="<%= g %>"><%= g %> <span><%= counts[g] %></span></a>
 <% }) %>
 </nav>
-<input type="search" class="bk-search" placeholder="Search books" aria-label="Search books">
+<input type="search" class="tl-search" placeholder="Search books" aria-label="Search books">
 </div>
-<p class="bk-empty" hidden>No book matches the current filter.</p>
+<p class="tl-empty" hidden>No book matches the current filter.</p>
 <% } %>
-
-<article class="bk bk--hero" data-genre="<%= hero.genre %>">
-  <a class="bk-hero-cover" href="<%= hero.url %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-    <div class="bk-art bk-art--<%= hero.variant %>" aria-hidden="true">
-<% if (hero.cover) { %>
-      <img src="<%= hero.cover %>" alt="" loading="lazy">
-<% } else { %>
-      <i class="bi bi-<%= hero.icon %> bk-art-icon"></i>
-<% } %>
-<% if (!hero.cover_titled) { %>
-      <span class="bk-art-title"><%= hero.title %></span>
-      <span class="bk-art-author"><%= hero.author %></span>
-<% } %>
-    </div>
-  </a>
-  <div class="bk-hero-body">
-    <p class="bk-kicker">Featured <span><%= hero.year %></span></p>
-    <h2><%= hero.title %></h2>
-    <p class="bk-subtitle"><%= hero.subtitle %></p>
-    <p class="bk-description"><%= hero.description %></p>
-    <div class="bk-tags">
-<% tagsOf(hero).forEach((tag) => { %>
-      <span><%= tag %></span>
-<% }) %>
-    </div>
-    <div class="bk-foot">
-<% if (hero.page) { %>
-      <a href="<%= hero.page %>" class="bk-link"><i class="bi bi-info-circle"></i>About the book</a>
-<% } %>
-      <a href="<%= hero.url %>" class="bk-link" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read online</a>
-      <p class="bk-meta">
-        <span class="bk-status bk-status--<%= hero.status %>"><i class="bi bi-<%= hero.status_icon %>"></i><%= hero.status_label %></span>
-        <span><%= hero.chapters %></span>
-      </p>
-    </div>
-  </div>
-</article>
-
-<% if (shelf.length) { %>
-<h2 class="bk-shelf-title">More books</h2>
-<div class="bk-shelf">
-<% shelf.forEach((book) => { %>
-<article class="bk" data-genre="<%= book.genre %>">
-  <a class="bk-card-cover" href="<%= book.url %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-    <div class="bk-art bk-art--<%= book.variant %>" aria-hidden="true">
+<div class="tl">
+<% shelves.forEach((shelf) => { %>
+  <section class="tl-year">
+    <div class="tl-year-label"><%= shelf %></div>
+    <div class="tl-items">
+<% items.filter((book) => book.shelf === shelf).forEach((book) => { %>
+      <article class="tl-item tl-book" data-area="<%= book.genre %>">
+        <a class="tl-cover tl-cover--<%= book.variant %>" href="<%= book.url %>" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
 <% if (book.cover) { %>
-      <img src="<%= book.cover %>" alt="" loading="lazy">
+          <img src="<%= book.cover %>" alt="" loading="lazy" width="88" height="132">
 <% } else { %>
-      <i class="bi bi-<%= book.icon %> bk-art-icon"></i>
+          <i class="bi bi-<%= book.icon %>"></i>
 <% } %>
-<% if (!book.cover_titled) { %>
-      <span class="bk-art-title"><%= book.title %></span>
-      <span class="bk-art-author"><%= book.author %></span>
-<% } %>
-    </div>
-  </a>
-  <div class="bk-card-body">
-    <div class="bk-card-top">
-      <span class="bk-status bk-status--<%= book.status %>"><i class="bi bi-<%= book.status_icon %>"></i><%= book.status_label %></span>
-      <span class="bk-year"><%= book.year %></span>
-    </div>
-    <h3><a href="<%= book.url %>" target="_blank" rel="noopener"><%= book.title %></a></h3>
-    <p class="bk-subtitle"><%= book.subtitle %></p>
-    <div class="bk-tags">
+        </a>
+        <div class="tl-book-body">
+          <div class="tl-head">
+            <h2><a href="<%= book.url %>" target="_blank" rel="noopener"><%= book.title %></a></h2>
+            <span class="tl-area"><%= book.year %></span>
+          </div>
+          <p class="tl-subtitle"><%= book.subtitle %></p>
+          <p class="tl-description"><%= book.description %></p>
+          <div class="tl-tags">
 <% tagsOf(book).forEach((tag) => { %>
-      <span><%= tag %></span>
+            <span><%= tag %></span>
+<% }) %>
+          </div>
+          <div class="tl-foot">
+            <p class="tl-meta"><span class="ls-pill ls-pill--<%= book.status %>"><i class="bi bi-<%= book.status_icon %>"></i><%= book.status_label %></span><% if (book.chapters) { %><span><%= book.chapters %></span><% } %></p>
+            <div class="tl-links">
+<% if (book.page) { %>
+              <a href="<%= book.page %>"><i class="bi bi-info-circle"></i>About the book</a>
+<% } %>
+              <a href="<%= book.url %>" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read online</a>
+            </div>
+          </div>
+        </div>
+      </article>
 <% }) %>
     </div>
-    <div class="bk-foot">
-      <p class="bk-meta"><%= book.chapters %></p>
-      <a href="<%= book.url %>" class="bk-link" target="_blank" rel="noopener"><i class="bi bi-book-half"></i>Read online</a>
-    </div>
-  </div>
-</article>
+  </section>
 <% }) %>
 </div>
-<% } %>
 ```

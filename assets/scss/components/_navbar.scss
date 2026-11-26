@@ -18,6 +18,35 @@
   }
 }
 
+// A pinned bar has to be opaque, or the text that scrolls beneath it shows through. It does not have to differ from the
+// page, so on the listing pages it takes the colour of the page, and a hairline fades in under it only once the page has
+// scrolled. Browsers without scroll-driven animations keep the plain bar.
+body.books-page .navbar,
+body.publications-page .navbar,
+body.projects-page .navbar,
+body.talks-page .navbar,
+body.writing-page .navbar {
+  background-color: var(--ls-page);
+}
+
+@keyframes navbar-edge {
+  from {
+    box-shadow: 0 1px 0 transparent;
+  }
+
+  to {
+    box-shadow: 0 1px 0 var(--ls-border, #d5e2ec);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .navbar {
+    animation: navbar-edge linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 4rem;
+  }
+}
+
 // Put all the icons in a single row in the hamburger menu
 .navbar-nav.navbar-nav-scroll.ms-auto {
   flex-direction: row;
