@@ -3,6 +3,7 @@
   description: "Machine learning methods for time series, worked on energy and supply chain data, built to be run, not just read. Each chapter pairs a narrative page with a companion notebook, so that every figure and table is computed by code. Volume 1 of two."
   author: "Anthony Faustine"
   year: 2026
+  shelf: "Time series"
   genre: "Time Series & Machine Learning"
   icon: "diagram-3"
   cover: "../../images/books/structure-cover.jpg"
@@ -21,6 +22,7 @@
   description: "Machine learning methods for time series, worked on energy and supply chain data: what the signals allow before a model is chosen, the families of forecasters, and how a forecast is evaluated without fooling oneself. Volume 2 of two."
   author: "Anthony Faustine"
   year: 2026
+  shelf: "Time series"
   genre: "Time Series & Machine Learning"
   icon: "graph-up-arrow"
   cover: "../../images/books/operations-cover.jpg"
@@ -38,6 +40,7 @@
   description: "A structured, project-based path from Python fundamentals to production-ready data science and MLOps, built to be run and not just read. Ten parts across more than 20 chapters, from Python core and NumPy through classical ML, deep learning, LLMs and MLOps deployment."
   author: "Anthony Faustine"
   year: 2026
+  shelf: "Data science"
   genre: "Data Science & MLOps"
   icon: "graph-up-arrow"
   cover: "../../images/books/impact-cover.jpg"
@@ -55,6 +58,7 @@
   description: "A self-guided four-day course in which couples move from experiencing love to practising it. It combines biblical foundations, the Big Five personality framework and emotional intelligence, with 20 to 30 minutes of work per day."
   author: "Anthony Faustine"
   year: 2026
+  shelf: "Relationships"
   genre: "Faith & Relationships"
   icon: "heart-fill"
   variant: "accent"

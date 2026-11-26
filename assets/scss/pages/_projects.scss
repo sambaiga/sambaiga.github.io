@@ -441,7 +441,8 @@ $timeline-border-radius: 6px;
 // Year-grouped timeline (assets/ejs/projects_listing.ejs)
 // Keeps the original look: a slate year block beside white cards.
 // ============================================================
-.projects-page {
+.projects-page,
+.books-page {
   .tl-controls {
     display: flex;
     flex-wrap: wrap;
@@ -759,11 +760,14 @@ $timeline-border-radius: 6px;
 }
 
 .projects-page .tl-item .tl-meta,
-.projects-page .tl-item .tl-links {
+.projects-page .tl-item .tl-links,
+.books-page .tl-item .tl-meta,
+.books-page .tl-item .tl-links {
   margin: 0 !important;
 }
 
-.projects-page .tl-item .tl-description {
+.projects-page .tl-item .tl-description,
+.books-page .tl-item .tl-description {
   margin: 0.4rem 0 0 !important;
 }
 

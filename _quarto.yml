@@ -76,8 +76,6 @@ website:
     pinned: true
     collapse: true
     left:
-      - href: index.qmd
-        text: Home
       - text: "About"
         file: "pages/about/index.qmd"
       - text: "Blog"
