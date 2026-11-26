@@ -31,7 +31,7 @@
   <nav class="ls-chips" aria-label="Topics">
     <a href="#" data-category="" class="active" onclick="window.quartoListingCategory(''); return false;">All <span><%= items.length %></span></a>
 <% topics.forEach((t) => { %>
-    <a href="#category=<%= encodeURIComponent(t) %>" data-category="<%= t %>" onclick="window.quartoListingCategory('<%= btoa(encodeURIComponent(t)) %>'); return false;"><%= t %> <span><%= counts[t] %></span></a>
+    <a href="#" data-category="<%= t %>" onclick="window.quartoListingCategory('<%= btoa(encodeURIComponent(t)) %>'); return false;"><%= t %> <span><%= counts[t] %></span></a>
 <% }) %>
   </nav>
 </div>
