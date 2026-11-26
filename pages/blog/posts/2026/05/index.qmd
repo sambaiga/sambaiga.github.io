@@ -13,9 +13,7 @@ title-block-banner: "martin-martz-layered-waves-unsplash.jpg"
 
 
 categories:
-  - AI Strategy
-  - Business Model Innovation
-  - Technology Roadmapping
+  - AI strategy
 
 bibliography: references.bib
 draft: false
