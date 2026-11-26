@@ -8,7 +8,8 @@ listing:
   contents: posts
   sort: "date desc"
   max-description-length: 260
-  categories: false
+  categories: true
+  filter-ui: true
   feed: true
   fields: [title, date, categories, description, reading-time, image, featured]
   image-placeholder: ../../images/blogs/arts.jpg
@@ -19,7 +20,7 @@ format:
     body-classes: "blog writing-page"
     include-after-body:
       - text: |
-          <script src="../../assets/js/listing-filter.js"></script>
+          <script src="../../assets/js/category-chips.js"></script>
 
 page-layout: full
 toc: false

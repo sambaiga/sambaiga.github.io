@@ -13,9 +13,7 @@ open-graph:
 title-block-banner: mirella-callage-Kile7-U74s0-unsplash.jpg
 
 categories:
-  - AI Strategy
-  - Innovation Management
-  - Technology Roadmapping
+  - AI strategy
 
 bibliography: references.bib
 draft: false

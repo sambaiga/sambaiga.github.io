@@ -13,8 +13,7 @@ open-graph:
 title-block-banner: team-banner.webp
 
 categories:
-  - Team leadership
-  - Leadership
+  - Leadership and teams
 
 bibliography: references.bib
 ---

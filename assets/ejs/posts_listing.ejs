@@ -1,15 +1,8 @@
 ```{=html}
 <%
   const FALLBACK = "../../images/blogs/arts.jpg";
-  const cats = (p) => (Array.isArray(p.categories) ? p.categories.map((c) => String(c).toLowerCase()) : []);
-  // Four topics, derived from the free-form categories of each post.
-  const topicOf = (p) => {
-    const c = cats(p).join(" ");
-    if (c.includes("ai strategy")) return "AI strategy";
-    if (c.includes("bayesian")) return "Bayesian modelling";
-    if (c.includes("forecasting")) return "Forecasting";
-    return "Leadership and teams";
-  };
+  // The topic of a post is its first category: the categories of the posts are the four topics of the page.
+  const topicOf = (p) => (Array.isArray(p.categories) && p.categories.length ? String(p.categories[0]) : "Other");
   const minutes = (p) => {
     const v = p["reading-time"];
     if (!v) return "";
@@ -34,7 +27,17 @@
 <h1 class="ls-title">Blog</h1>
 <p class="pubs-stats"><%= items.length %> posts <span>·</span> <%= topics.length %> topics <span>·</span> <a class="wr-rss" href="index.xml"><i class="bi bi-rss"></i>RSS</a></p>
 
-<article class="wr-hero" data-item data-topic="<%= topicOf(hero) %>">
+<div class="ls-controls">
+  <nav class="ls-chips" aria-label="Topics">
+    <a href="#" data-category="" class="active" onclick="window.quartoListingCategory(''); return false;">All <span><%= items.length %></span></a>
+<% topics.forEach((t) => { %>
+    <a href="#" data-category="<%= t %>" onclick="window.quartoListingCategory('<%= btoa(encodeURIComponent(t)) %>'); return false;"><%= t %> <span><%= counts[t] %></span></a>
+<% }) %>
+  </nav>
+</div>
+
+<div class="list wr-grid">
+<article class="wr-hero" data-index="<%= items.indexOf(hero) %>" data-categories="<%= btoa(encodeURIComponent((Array.isArray(hero.categories) ? hero.categories : []).join(','))) %>">
   <a class="wr-hero-cover<%= isFigure(hero) ? ' wr-figure' : '' %>" href="<%- hero.path %>" tabindex="-1" aria-hidden="true">
     <img src="<%= hero.image || FALLBACK %>" alt="" fetchpriority="high" decoding="async" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
   </a>
@@ -47,20 +50,10 @@
   </div>
 </article>
 
-<div class="ls-controls">
-  <nav class="ls-chips" aria-label="Topics">
-    <a href="#" data-chip="all" class="active">All <span><%= items.length %></span></a>
-<% topics.forEach((t) => { %>
-    <a href="#" data-chip="<%= t %>"><%= t %> <span><%= counts[t] %></span></a>
-<% }) %>
-  </nav>
-  <input type="search" class="ls-search" data-search placeholder="Search posts" aria-label="Search posts">
-</div>
-<p class="ls-empty" data-empty hidden>No post matches the current filter.</p>
 
-<div class="wr-grid" data-group>
+
 <% grid.forEach((p) => { %>
-  <article class="wr-card" data-item data-topic="<%= topicOf(p) %>">
+  <article class="wr-card" data-index="<%= items.indexOf(p) %>" data-categories="<%= btoa(encodeURIComponent((Array.isArray(p.categories) ? p.categories : []).join(','))) %>">
     <a class="wr-cover<%= isFigure(p) ? ' wr-figure' : '' %>" href="<%- p.path %>" tabindex="-1" aria-hidden="true">
       <img src="<%= p.image || FALLBACK %>" alt="" loading="lazy" decoding="async" onerror="this.src='<%= FALLBACK %>'; this.onerror=null;">
       <span class="wr-badges">
