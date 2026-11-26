@@ -11,7 +11,7 @@ listing:
   sort: false
   page-size: 100
   max-description-length: 600
-  fields: [title, subtitle, description, author, year, genre, icon, cover, cover_titled, variant, status, status_label, status_icon, tags, chapters, url, page]
+  fields: [title, subtitle, description, author, year, shelf, genre, icon, cover, variant, status, status_label, status_icon, tags, chapters, url, page]
 
 format:
   html:
@@ -19,19 +19,18 @@ format:
     body-classes: "books-page"
     include-after-body:
       - text: |
-          <script src="../../assets/js/books-filter.js"></script>
+          <script src="../../assets/js/projects-filter.js"></script>
 
 toc: false
 ---
 
-<div class="books-grid">
+<div class="projects-header">
 
-<div class="books-header">
-<h1 class="ls-title">Books</h1>
-<p>Books on machine learning for time series, data science practice and relationships.</p>
+<h1>Books</h1>
+
+<p>Books on machine learning for time series, data science practice and relationships. The two volumes on time series are worked on energy and supply chain data, with the code of every figure in a companion notebook.</p>
+
 </div>
 
 ::: {#books-listing}
 :::
-
-</div>
