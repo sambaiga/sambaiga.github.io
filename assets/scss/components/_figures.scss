@@ -49,12 +49,23 @@ figure:has(> .figure-illustration) > figcaption,
 }
 
 // =====================================================
-// DISPLAY EQUATIONS: an equation wider than the screen scrolls inside its own box and never widens the page.
+// DISPLAY EQUATIONS: centred in the column, as in the book. A display equation is a block-level math box that is only
+// as wide as the equation (`display: block math` is the centred layout of MathML Core, which a plain `display: block`
+// replaces with a left-aligned one), and it sits in the middle through its automatic margins. An equation wider than the
+// screen fills the column and scrolls inside its own box, so it never widens the page. Inline math is not touched.
 // =====================================================
 
 math[display="block"] {
   display: block;
+  width: fit-content;
   max-width: 100%;
+  margin-inline: auto;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+@supports (display: block math) {
+  math[display="block"] {
+    display: block math;
+  }
 }
