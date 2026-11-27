@@ -109,3 +109,38 @@ body.quarto-dark {
     color: #94a3b8 !important;
   }
 }
+
+// Great Tables output (Python posts) sets a white surface and dark ink with !important through an id selector, while
+// the dark theme makes the cell text light, so the body text vanishes. The `main#quarto-document-content` prefix
+// outranks the id selector of the table; the blue header row keeps its colours.
+body.quarto-dark main#quarto-document-content {
+  .gt_table,
+  .gt_heading,
+  .gt_sourcenotes,
+  .gt_stub,
+  .gt_stub_row_group {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+  }
+
+  .gt_title,
+  .gt_subtitle {
+    color: #f1f5f9 !important;
+  }
+
+  .gt_table .gt_row {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-top-color: #334155 !important;
+  }
+
+  .gt_table .gt_row.gt_striped,
+  .gt_table tr.even .gt_row {
+    background-color: #243247 !important;
+  }
+
+  .gt_table .gt_col_headings {
+    border-top-color: #334155 !important;
+    border-bottom-color: #334155 !important;
+  }
+}
