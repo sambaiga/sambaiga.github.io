@@ -20,6 +20,7 @@ format:
     include-after-body:
       - text: |
           <script src="../../assets/js/projects-filter.js"></script>
+          <script src="../../assets/js/books-more.js"></script>
 
 toc: false
 ---

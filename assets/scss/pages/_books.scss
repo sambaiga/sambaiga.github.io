@@ -73,6 +73,30 @@
     color: var(--ls-muted);
   }
 
+  // "Read more" opens the description that a phone cuts to three lines (assets/js/books-more.js shows it only when cut).
+  .tl-more {
+    display: none;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 2.25rem;
+    padding: 0 0.25rem;
+    border: 0;
+    background: none;
+    color: var(--ls-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    .bi {
+      transition: transform 0.2s ease;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ls-accent);
+      outline-offset: 2px;
+    }
+  }
+
   .tl-tags {
     display: flex;
     flex-wrap: wrap;
@@ -135,9 +159,40 @@
     }
 
     .tl-description,
+    .tl-more,
     .tl-tags,
     .tl-foot {
       grid-column: 1 / -1;
+    }
+
+    .tl-more:not([hidden]) {
+      display: inline-flex;
+      justify-self: start;
+      margin-top: -0.35rem;
+    }
+
+    .tl-description {
+      cursor: pointer;
+    }
+
+    .tl-book.is-open {
+      .tl-description {
+        display: block;
+        overflow: visible;
+        -webkit-line-clamp: unset;
+      }
+
+      .tl-more .bi {
+        transform: rotate(180deg);
+      }
+
+      .tl-tags {
+        flex-wrap: wrap;
+
+        span:nth-child(n + 4) {
+          display: inline;
+        }
+      }
     }
 
     .tl-description {

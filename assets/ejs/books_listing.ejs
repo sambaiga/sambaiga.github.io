@@ -40,6 +40,7 @@
           </div>
           <p class="tl-subtitle"><%= book.subtitle %></p>
           <p class="tl-description"><%= book.description %></p>
+          <button type="button" class="tl-more" aria-expanded="false" hidden><span>Read more</span><i class="bi bi-chevron-down" aria-hidden="true"></i></button>
           <div class="tl-tags">
 <% tagsOf(book).forEach((tag) => { %>
             <span><%= tag %></span>
