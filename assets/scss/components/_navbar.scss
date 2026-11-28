@@ -1,0 +1,151 @@
+/*-- scss:components/navbar --*/
+
+// =====================================================
+// NAVIGATION
+// =====================================================
+
+.navbar {
+  font-family: $navbar-font-family;
+  background-color: $navbar-bg;
+  color: $navbar-fg;
+
+  a {
+    color: $navbar-fg;
+
+    &:hover {
+      color: $navbar-hl;
+    }
+  }
+}
+
+// A pinned bar has to be opaque, or the text that scrolls beneath it shows through. It does not have to differ from the
+// page, so on the listing pages it takes the colour of the page, and a hairline fades in under it only once the page has
+// scrolled. Browsers without scroll-driven animations keep the plain bar.
+body.books-page .navbar,
+body.publications-page .navbar,
+body.projects-page .navbar,
+body.talks-page .navbar,
+body.writing-page .navbar {
+  background-color: var(--ls-page);
+}
+
+@keyframes navbar-edge {
+  from {
+    box-shadow: 0 1px 0 transparent;
+  }
+
+  to {
+    box-shadow: 0 1px 0 var(--ls-border, #d5e2ec);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .navbar {
+    animation: navbar-edge linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 4rem;
+  }
+}
+
+// Put all the icons in a single row in the hamburger menu
+.navbar-nav.navbar-nav-scroll.ms-auto {
+  flex-direction: row;
+}
+
+// The sambaiga badge beside the site title
+.navbar-brand .navbar-logo {
+  height: 2rem;
+  max-height: none;
+  margin-right: 0.5rem;
+}
+
+// The brand (badge and name) is never cut to "Antho..." on a phone
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  max-width: none;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.navbar-brand .navbar-logo {
+  flex: none;
+  width: auto;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-container {
+    flex-wrap: nowrap !important;
+  }
+
+  .navbar-container > .navbar-collapse:not(.show):not(.collapsing) {
+    flex: 0 0 0 !important;
+    width: 0;
+    overflow: hidden;
+  }
+
+  // An open menu drops below the bar at full width, as its own row
+  .navbar-container:has(> .navbar-collapse.show, > .navbar-collapse.collapsing) {
+    flex-wrap: wrap !important;
+  }
+
+  .navbar-container > .navbar-collapse.show,
+  .navbar-container > .navbar-collapse.collapsing {
+    flex: 0 0 100% !important;
+    order: 10;
+    width: 100%;
+    padding: 0.4rem 0 0.8rem;
+    border-top: 1px solid var(--ls-border, rgba(148, 163, 184, 0.3));
+  }
+
+  .navbar-collapse .navbar-nav-scroll {
+    max-height: none;
+  }
+
+  .navbar-collapse .nav-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-brand-container {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    margin-right: 0.25rem;
+  }
+
+  .quarto-navbar-tools {
+    flex: none;
+  }
+
+  .navbar-title {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .navbar-brand .navbar-logo {
+    height: 1.75rem;
+    width: 1.75rem !important;
+    min-width: 1.75rem;
+    max-width: none;
+    margin-right: 0.4rem;
+  }
+
+  .navbar-brand-container {
+    margin-right: 0.75rem;
+  }
+}
+
+
+// On a narrow phone the badge is the brand: the name would collide with the theme toggle and the search button
+@media (max-width: 440px) {
+  .navbar-brand .navbar-title {
+    display: none;
+  }
+
+  .navbar-brand-container {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}

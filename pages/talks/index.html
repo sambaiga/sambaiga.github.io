@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Talks, workshops and posters by Anthony Faustine on probabilistic forecasting, non-intrusive load monitoring and machine learning for energy systems, with slides and videos.">
+
+<title>Talks | Anthony Faustine – Anthony Faustine</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//images/brand/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8f57ec90fb6fe6c4118d1a9539864dce.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-463e01fbba1698601cddb273283c4657.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8f57ec90fb6fe6c4118d1a9539864dce.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ca6bbe85fb38c7382b3f2fb45ff6cd39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8c9418ba45d9135fb5b585d16d9bddae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ca6bbe85fb38c7382b3f2fb45ff6cd39.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-talks-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-year','listing-month','listing-type','listing-topic','listing-venue','listing-place','listing-coauthors','listing-pages','listing-slug','listing-slides','listing-thumb','listing-wide','listing-video','listing-link',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-year","listing-month","listing-topic","listing-venue","listing-place","listing-pages","listing-slug","listing-slides","listing-thumb","listing-wide","listing-type","listing-coauthors","listing-link","listing-video"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-talks-listing'] = new List('listing-talks-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+  </script>
+<link rel="preload" href="../../assets/fonts/libre-franklin-normal-latin.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="../../assets/fonts/jost-normal-latin.woff2" as="font" type="font/woff2" crossorigin="">
+
+
+<meta property="og:title" content="Anthony Faustine">
+<meta property="og:description" content="Principal Machine Learning Engineer at Analog Devices, Ireland. Machine learning system architecture and design, time series algorithm development and strategic management of technology.">
+<meta property="og:image" content="https://sambaiga.github.io/images/og/default.png">
+<meta property="og:site_name" content="Anthony Faustine">
+<meta property="og:locale" content="en_IE">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="Talks | Anthony Faustine">
+<meta name="twitter:image" content="https://sambaiga.github.io/images/talks/PhD_defence_2026.jpg">
+<meta name="twitter:creator" content="@sambaiga">
+<meta name="twitter:site" content="@sambaiga">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="">
+<link rel="canonical" href="https://sambaiga.github.io/pages/talks/">
+</head>
+
+<body class="nav-fixed talks-page quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      refreshSafariScrollbar();
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/brand/badge.svg" alt="sambaiga logo" class="navbar-logo light-content">
+    <img src="../../images/brand/badge.svg" alt="sambaiga logo" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Anthony Faustine</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/software/index.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/books/index.html"> 
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../pages/talks/index.html" aria-current="page"> 
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/publication/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:sambaiga@gmail.com"> 
+<span class="menu-text"><i class="bi bi-envelope-at" style="font-size:1.1em" aria-hidden="true"></i><span class="visually-hidden">Email</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi bi-github" style="font-size:1.1em" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/sambaiga" rel="me"> 
+<span class="menu-text"><i class="bi bi-linkedin" style="font-size:1.1em" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block"><h1 class="ls-title title display-7">Talks</h1></header>
+
+
+
+
+
+<div id="listing-talks-listing" class="quarto-listing quarto-listing-container-custom">
+
+<div class="tk">
+
+
+<p class="tk-stats">27 talks
+<span>·</span> 5 conference <span>·</span> 7 invited <span>·</span> 11 teaching <span>·</span> 3 poster </p>
+
+<section class="tk-panel" aria-labelledby="tk-latest">
+  <p class="tk-kicker" id="tk-latest">Latest talk</p>
+  <article class="tk-feature">
+    <a class="tk-thumb tk-deck tk-thumb--wide" href="phd-defence-2026/index.html" tabindex="-1" aria-hidden="true">
+      <img src="../../images/talks/PhD_defence_2026.jpg" alt="" width="560" height="420" fetchpriority="high" decoding="async">
+    </a>
+    <div class="tk-feature-body">
+      <p class="tk-type"><span class="tk-kind"><i class="bi bi-easel2"></i><span>Forecasting</span></span><time datetime="2026-11">Nov 2026</time></p>
+      <h2 class="no-anchor"><a href="phd-defence-2026/index.html">Efficient and Robust Machine Learning for Net-Load Forecasting in Low-Voltage Distribution Systems</a></h2>
+      <p class="tk-meta">
+        <span><i class="bi bi-building"></i>Instituto Superior Técnico</span>
+        <span><i class="bi bi-geo-alt"></i>Lisbon</span>
+      </p>
+      <div class="tk-actions">
+        <a class="ls-button" href="phd-defence-2026/index.html"><i class="bi bi-easel2"></i>View the talk</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<div class="tk-controls">
+  <nav class="ls-chips" aria-label="Talk types">
+    <a href="#" data-chip="all" class="active">All <span>27</span></a>
+
+    <a href="#" data-chip="conference"><i class="bi bi-people"></i>Conference <span>5</span></a>
+
+    <a href="#" data-chip="invited"><i class="bi bi-mic"></i>Invited <span>7</span></a>
+
+    <a href="#" data-chip="teaching"><i class="bi bi-mortarboard"></i>Teaching <span>11</span></a>
+
+    <a href="#" data-chip="poster"><i class="bi bi-file-earmark-richtext"></i>Poster <span>3</span></a>
+
+  </nav>
+  <select class="tk-select" data-topic-select="" aria-label="Topic">
+    <option value="all">All topics</option>
+
+    <option value="Energy systems">Energy systems (2)</option>
+
+    <option value="Forecasting">Forecasting (3)</option>
+
+    <option value="Industry">Industry (2)</option>
+
+    <option value="Machine learning">Machine learning (10)</option>
+
+    <option value="NILM">NILM (5)</option>
+
+    <option value="Sensing and IoT">Sensing and IoT (2)</option>
+
+    <option value="Skills">Skills (3)</option>
+
+  </select>
+  <input type="search" class="ls-search" data-search="" placeholder="Search talks" aria-label="Search talks">
+</div>
+<p class="tk-status" aria-live="polite"><span data-status=""></span> <button type="button" class="tk-clear" data-clear="" hidden=""><i class="bi bi-x-circle"></i>Clear filters</button></p>
+<p class="ls-empty" data-empty="" hidden="">No talk matches the current filters.</p>
+
+<div data-list="">
+
+<section class="tk-year" data-group="" aria-label="2026">
+  <h2 class="no-anchor">2026 <span data-count="">1</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="" data-topic="Forecasting">
+      <a class="tk-thumb tk-thumb--wide" href="phd-defence-2026/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/PhD_defence_2026.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-easel2"></i><span>Forecasting</span></span>
+          <time datetime="2026-11">Nov 2026</time>
+        </div>
+        <h3 class="no-anchor"><a href="phd-defence-2026/index.html"><span class="tk-clamp">Efficient and Robust Machine Learning for Net-Load Forecasting in Low-Voltage Distribution Systems</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Instituto Superior Técnico</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Lisbon</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>32 pages, click by click</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/PhD_defence_2026.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2024">
+  <h2 class="no-anchor">2024 <span data-count="">2</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="conference" data-topic="Forecasting">
+      <a class="tk-thumb" href="smartgridcomm-2024/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/Oslo_cinference_2024.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-people"></i><b>Conference</b><span>Forecasting</span></span>
+          <time datetime="2024-09">Sep 2024</time>
+        </div>
+        <h3 class="no-anchor"><a href="smartgridcomm-2024/index.html"><span class="tk-clamp">Conformal MLP-Based Probabilistic Net-Load Forecasting for Low-Voltage Distribution Systems with PV</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>IEEE SmartGridComm</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Oslo, Norway</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Lucas Pereira</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>14 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/Oslo_cinference_2024.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="conference" data-topic="Forecasting">
+      <a class="tk-thumb" href="isf-2024/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/Dijon_conference_2024.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-people"></i><b>Conference</b><span>Forecasting</span></span>
+          <time datetime="2024-07">Jul 2024</time>
+        </div>
+        <h3 class="no-anchor"><a href="isf-2024/index.html"><span class="tk-clamp">Scalable and Efficient MLP-Based Fully Parameterised Quantile for Probabilistic Power Forecasting</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>44th International Symposium on Forecasting</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dijon, France</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Lucas Pereira and Nuno J. Nunes</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>13 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/Dijon_conference_2024.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2023">
+  <h2 class="no-anchor">2023 <span data-count="">1</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="Energy systems">
+      <a class="tk-thumb tk-thumb--default" href="https://www.linkedin.com/feed/update/urn:li:activity:7039980990345170944/" target="&quot;_blank&quot;" rel="&quot;noopener&quot;" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>Energy systems</span></span>
+          <time datetime="2023">2023</time>
+        </div>
+        <h3 class="no-anchor"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7039980990345170944/" target="&quot;_blank&quot;" rel="&quot;noopener&quot;"><span class="tk-clamp">Powering the Future: Leveraging AI for Intelligent Power Systems</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Guest lecture, University of Galway</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Galway, Ireland</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://www.linkedin.com/feed/update/urn:li:activity:7039980990345170944/" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2022">
+  <h2 class="no-anchor">2022 <span data-count="">2</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="Industry">
+      <a class="tk-thumb tk-thumb--default" href="https://www.linkedin.com/posts/activity-6908006815683203072-St0X" target="&quot;_blank&quot;" rel="&quot;noopener&quot;" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>Industry</span></span>
+          <time datetime="2022">2022</time>
+        </div>
+        <h3 class="no-anchor"><a href="https://www.linkedin.com/posts/activity-6908006815683203072-St0X" target="&quot;_blank&quot;" rel="&quot;noopener&quot;"><span class="tk-clamp">Real-Life Application of Data-Driven Maintenance Services</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Guest lecture, University of Galway</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Galway, Ireland</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://www.linkedin.com/posts/activity-6908006815683203072-St0X" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="Industry">
+      <a class="tk-thumb tk-thumb--default" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>Industry</span></span>
+          <time datetime="2022">2022</time>
+        </div>
+        <h3 class="no-anchor"><span class="tk-clamp">Real-Life Application of Data-Driven Maintenance Services</span></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>IMR webinar series</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Chris Judge and Dermot Murphy</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://www.youtube.com/watch?v=zSEhSYmhgDc" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2021">
+  <h2 class="no-anchor">2021 <span data-count="">2</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="Skills">
+      <a class="tk-thumb" href="you-your-research-and-beyond-2021/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/BeyondPhD.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>Skills</span></span>
+          <time datetime="2021">2021</time>
+        </div>
+        <h3 class="no-anchor"><a href="you-your-research-and-beyond-2021/index.html"><span class="tk-clamp">You, Your Research and Beyond</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Guest lecture, University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>27 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/BeyondPhD.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="Machine learning">
+      <a class="tk-thumb" href="ai-for-public-good-2021/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/AI4Public_slide.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>Machine learning</span></span>
+          <time datetime="2021">2021</time>
+        </div>
+        <h3 class="no-anchor"><a href="ai-for-public-good-2021/index.html"><span class="tk-clamp">The W4H of AI for Public Good</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Guest lecture, University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>26 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/AI4Public_slide.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2020">
+  <h2 class="no-anchor">2020 <span data-count="">6</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="Machine learning">
+      <a class="tk-thumb" href="energy-based-learning-2020/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/DNN-EBM2020.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>Machine learning</span></span>
+          <time datetime="2020-09">Sep 2020</time>
+        </div>
+        <h3 class="no-anchor"><a href="energy-based-learning-2020/index.html"><span class="tk-clamp">Deep Neural Networks with Energy-Based Learning</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>CeADAR technical talk</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>31 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/DNN-EBM2020.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+            <a class="tk-link" href="https://www.youtube.com/watch?v=77O16TK7kZw" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb" href="deep-learning-for-vision-2020/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/DeepVision.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2020-07">Jul 2020</time>
+        </div>
+        <h3 class="no-anchor"><a href="deep-learning-for-vision-2020/index.html"><span class="tk-clamp">Deep Learning for Computer Vision</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>CeADAR</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>47 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/DeepVision.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb" href="deep-learning-foundation-2020/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/DeepLearningFoundation.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2020-06">Jun 2020</time>
+        </div>
+        <h3 class="no-anchor"><a href="deep-learning-foundation-2020/index.html"><span class="tk-clamp">Foundation of Deep Learning</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>CeADAR</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>67 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/DeepLearningFoundation.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="conference" data-topic="Energy systems">
+      <a class="tk-thumb tk-thumb--wide" href="climate-change-ai-2020/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/climateai2020.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-people"></i><b>Conference</b><span>Energy systems</span></span>
+          <time datetime="2020">2020</time>
+        </div>
+        <h3 class="no-anchor"><a href="climate-change-ai-2020/index.html"><span class="tk-clamp">Leveraging Machine Learning for Sustainable and Self-sufficient Energy Communities</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>NeurIPS 2020 Workshop on Tackling Climate Change with Machine Learning</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Lucas Pereira, Daniel Ngondya and L. Benabbou</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>11 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/climateai2020.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+            <a class="tk-link" href="https://www.youtube.com/watch?v=qvgIjTKmhfc" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="conference" data-topic="NILM">
+      <a class="tk-thumb tk-thumb--wide" href="unet-nilm-2020/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/UNENT-NILM2020.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-people"></i><b>Conference</b><span>NILM</span></span>
+          <time datetime="2020">2020</time>
+        </div>
+        <h3 class="no-anchor"><a href="unet-nilm-2020/index.html"><span class="tk-clamp">UNet-NILM: A Deep Neural Network for Multi-Task Appliance State Detection and Power Estimation in NILM</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>5th International Workshop on NILM, with ACM BuildSys 2020</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Lucas Pereira, Hafsa Bousbiat and Shridhar Kulkarni</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>11 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/UNENT-NILM2020.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+            <a class="tk-link" href="https://www.youtube.com/watch?v=UpZDX2hU3-A" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="invited" data-topic="NILM">
+      <a class="tk-thumb tk-thumb--wide" href="energy-disaggregation-2020/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/MLNILMCeADAR.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mic"></i><b>Invited</b><span>NILM</span></span>
+          <time datetime="2020">2020</time>
+        </div>
+        <h3 class="no-anchor"><a href="energy-disaggregation-2020/index.html"><span class="tk-clamp">Machine Learning for Energy Disaggregation</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>CeADAR online seminar series</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>10 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/MLNILMCeADAR.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+            <a class="tk-link" href="https://www.youtube.com/watch?v=LL4clcjwSaE" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2019">
+  <h2 class="no-anchor">2019 <span data-count="">1</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="poster" data-topic="NILM">
+      <a class="tk-thumb" href="euro-nilm-2019/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/PosterEURONILM2019.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-file-earmark-richtext"></i><b>Poster</b><span>NILM</span></span>
+          <time datetime="2019">2019</time>
+        </div>
+        <h3 class="no-anchor"><a href="euro-nilm-2019/index.html"><span class="tk-clamp">Improved Appliance Classification in NILM Using Recurrence Plots and Convolutional Neural Networks</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>EU NILM Workshop</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Thessaloniki, Greece</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Dirk Deschrijver and Tom Dhaene</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>A0 poster</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/PosterEURONILM2019.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+            <a class="tk-link" href="https://www.youtube.com/watch?v=xDEHwC2QmuU&amp;t=353" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2018">
+  <h2 class="no-anchor">2018 <span data-count="">3</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb" href="ml-project-strategy-2018/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/MLstrategy.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2018-09">Sep 2018</time>
+        </div>
+        <h3 class="no-anchor"><a href="ml-project-strategy-2018/index.html"><span class="tk-clamp">Strategies for Structuring Machine Learning Projects</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Bootcamp, University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>51 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/MLstrategy.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb" href="deep-sequence-models-2018/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/DeepSeq.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2018-08">Aug 2018</time>
+        </div>
+        <h3 class="no-anchor"><a href="deep-sequence-models-2018/index.html"><span class="tk-clamp">Deep Learning for Sequence Models</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Bootcamp, University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>34 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/DeepSeq.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb" href="ml-fundamentals-2018/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/MLfundamentals.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2018-04">Apr 2018</time>
+        </div>
+        <h3 class="no-anchor"><a href="ml-fundamentals-2018/index.html"><span class="tk-clamp">Machine Learning Fundamentals</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>IndabaX Tanzania (PytzMLS2018)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>University of Dodoma, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>47 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/MLfundamentals.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2017">
+  <h2 class="no-anchor">2017 <span data-count="">7</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb tk-thumb--default" href="https://speakerdeck.com/sambaiga/foundation-of-machine-learning-and-deep-learning" target="&quot;_blank&quot;" rel="&quot;noopener&quot;" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2017-10">Oct 2017</time>
+        </div>
+        <h3 class="no-anchor"><a href="https://speakerdeck.com/sambaiga/foundation-of-machine-learning-and-deep-learning" target="&quot;_blank&quot;" rel="&quot;noopener&quot;"><span class="tk-clamp">Foundations of Machine Learning and Deep Learning</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Pythontz event, University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://speakerdeck.com/sambaiga/foundation-of-machine-learning-and-deep-learning" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="poster" data-topic="NILM">
+      <a class="tk-thumb tk-thumb--default" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-file-earmark-richtext"></i><b>Poster</b><span>NILM</span></span>
+          <time datetime="2017-09">Sep 2017</time>
+        </div>
+        <h3 class="no-anchor"><span class="tk-clamp">Hybrid HMM-Deep Learning Models for Low-Sampling Energy Disaggregation</span></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Deep Learning Indaba Summer School 2017</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Johannesburg, South Africa</span>
+        </p>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Skills">
+      <a class="tk-thumb tk-thumb--default" href="https://github.com/sambaiga/Latex4ScientificWriting" target="&quot;_blank&quot;" rel="&quot;noopener&quot;" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Skills</span></span>
+          <time datetime="2017-09">Sep 2017</time>
+        </div>
+        <h3 class="no-anchor"><a href="https://github.com/sambaiga/Latex4ScientificWriting" target="&quot;_blank&quot;" rel="&quot;noopener&quot;"><span class="tk-clamp">Workshop on LaTeX for Scientific Writing</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>NM-AIST</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Arusha, Tanzania</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://github.com/sambaiga/Latex4ScientificWriting" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb tk-thumb--default" href="https://github.com/sambaiga/python4MachineLearning-NMAIST" target="&quot;_blank&quot;" rel="&quot;noopener&quot;" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2017-08">Aug 2017</time>
+        </div>
+        <h3 class="no-anchor"><a href="https://github.com/sambaiga/python4MachineLearning-NMAIST" target="&quot;_blank&quot;" rel="&quot;noopener&quot;"><span class="tk-clamp">Practical Approaches to Using Scikit-learn for Machine Learning Projects</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Pythontz event, NM-AIST</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Arusha, Tanzania</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Neema Mduma</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://github.com/sambaiga/python4MachineLearning-NMAIST" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Machine learning">
+      <a class="tk-thumb tk-thumb--default" href="https://github.com/neylicious/python4MachineLearning-NMAIST" target="&quot;_blank&quot;" rel="&quot;noopener&quot;" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Machine learning</span></span>
+          <time datetime="2017-08">Aug 2017</time>
+        </div>
+        <h3 class="no-anchor"><a href="https://github.com/neylicious/python4MachineLearning-NMAIST" target="&quot;_blank&quot;" rel="&quot;noopener&quot;"><span class="tk-clamp">Python for Data Science</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Arusha Technical College</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Arusha, Tanzania</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Neema Mduma, Dina Machuve and Eliyah Masesa</span>
+        </p>
+
+        <div class="tk-foot">
+          <span></span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="https://github.com/neylicious/python4MachineLearning-NMAIST" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Event</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="conference" data-topic="NILM">
+      <a class="tk-thumb" href="dsa-2017/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/ConvNILM.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-people"></i><b>Conference</b><span>NILM</span></span>
+          <time datetime="2017-06">Jun 2017</time>
+        </div>
+        <h3 class="no-anchor"><a href="dsa-2017/index.html"><span class="tk-clamp">Convolutional Neural Network for Appliance Recognition in Energy Disaggregation (NILM)</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Data Science Africa 2017</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Arusha, Tanzania</span>
+          <span class="tk-opt"><i class="bi bi-people"></i>with Nerey Mvungi, Kisangiri Michael and Shubi Kaijage</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>24 slides</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/ConvNILM.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+            <a class="tk-link" href="https://www.youtube.com/watch?v=8TCCpEJI2cg" target="_blank" rel="noopener"><i class="bi bi-play-circle"></i>Video</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Skills">
+      <a class="tk-thumb tk-thumb--default" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Skills</span></span>
+          <time datetime="2017-03">Mar 2017</time>
+        </div>
+        <h3 class="no-anchor"><span class="tk-clamp">Training Workshop on LaTeX for Scientific Writing</span></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2015">
+  <h2 class="no-anchor">2015 <span data-count="">1</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="teaching" data-topic="Sensing and IoT">
+      <a class="tk-thumb tk-thumb--default" tabindex="-1" aria-hidden="true">
+        <img src="../../images/blogs/arts.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-mortarboard"></i><b>Teaching</b><span>Sensing and IoT</span></span>
+          <time datetime="2015-12">Dec 2015</time>
+        </div>
+        <h3 class="no-anchor"><span class="tk-clamp">Building the Internet of Things with Arduino and the Atmel AVR Microcontroller</span></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>Four-week course, University of Dodoma (CIVE)</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Dodoma, Tanzania</span>
+        </p>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="tk-year" data-group="" aria-label="2014">
+  <h2 class="no-anchor">2014 <span data-count="">1</span></h2>
+  <div class="tk-cards">
+
+    <article class="tk-card" data-item="" data-type="poster" data-topic="Sensing and IoT">
+      <a class="tk-thumb" href="vicres-2014/index.html" tabindex="-1" aria-hidden="true">
+        <img src="../../images/talks/vicres_presentation.jpg" alt="" width="280" height="210" loading="lazy" decoding="async">
+      </a>
+      <div class="tk-body">
+        <div class="tk-top">
+          <span class="tk-kind"><i class="bi bi-file-earmark-richtext"></i><b>Poster</b><span>Sensing and IoT</span></span>
+          <time datetime="2014-05">May 2014</time>
+        </div>
+        <h3 class="no-anchor"><a href="vicres-2014/index.html"><span class="tk-clamp">Wireless Sensor Networks and Mobile Sensing for Water Quality Monitoring and Reporting</span></a></h3>
+        <p class="tk-meta">
+          <span><i class="bi bi-building"></i>VICRES Scientific Joint Conference 2014</span>
+          <span class="tk-opt"><i class="bi bi-geo-alt"></i>Entebbe, Uganda</span>
+        </p>
+
+        <div class="tk-foot">
+          <span>32 pages</span>
+          <div class="tk-actions">
+            <a class="tk-link tk-link--main" href="../../files/slides/vicres_presentation.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i>Slides</a>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</div>
+
+<nav class="tk-pager" data-pager="" aria-label="Pagination" hidden=""></nav>
+<p class="tk-pager-info" data-pager-info=""></p>
+
+<p class="tk-note"><i class="bi bi-info-circle" aria-hidden="true"></i>Slides are shared under CC BY 4.0, like the rest of the site.</p>
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sambaiga\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><span class="foot-copy">© Anthony Faustine · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Built with <a href="https://quarto.org/">Quarto</a></span> <span class="foot-links"><a href="https://orcid.org/0000-0002-7838-533X"><i class="bi bi-orcid" aria-hidden="true"></i> ORCID</a> <a href="../../pgp_ath.asc.txt"><i class="bi bi-key" aria-hidden="true"></i> PGP key</a> <a href="https://github.com/sambaiga/sambaiga.github.io"><i class="bi bi-github" aria-hidden="true"></i> Source</a></span> <span class="foot-print">PGP fingerprint <code>49ACD41443AEBE4C4877B<br> 573E6EBC869F77E2675</code></span></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/talks-filter.js"></script>
+
+
+
+
+</body></html>

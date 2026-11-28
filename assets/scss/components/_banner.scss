@@ -1,0 +1,113 @@
+// =====================================================
+// TITLE BANNERS OF POSTS AND PAPERS
+// A post has a cover photo: a dark veil over it and white text keep the title readable in both themes. A paper has no
+// photo: its banner is a panel of the site (the featured panel tokens of components/_listing.scss), pale with slate
+// text in the light theme and dark slate with white text in the dark theme.
+// =====================================================
+
+body.blog:not(.writing-page) .quarto-title-banner {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.74));
+  }
+
+  .quarto-title h1,
+  .quarto-title .subtitle,
+  .quarto-title .description,
+  .quarto-title .quarto-categories .quarto-category,
+  .quarto-title-meta,
+  .quarto-title-banner a {
+    color: #ffffff !important;
+  }
+
+  .quarto-title .quarto-categories .quarto-category {
+    border-color: rgba(255, 255, 255, 0.65) !important;
+  }
+
+  // The title block is centred on the cover photo, with no hyphenated words in a title or its description
+  .quarto-title {
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  .quarto-title h1 {
+    text-wrap: balance;
+    hyphens: manual;
+  }
+
+  .quarto-title .description {
+    max-width: 46rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: pretty;
+    hyphens: manual;
+  }
+
+  .quarto-title .quarto-categories {
+    justify-content: center;
+  }
+}
+
+// The author, affiliation and date under the banner are centred with it
+body.blog:not(.writing-page) {
+  .quarto-title-meta-author,
+  .quarto-title-meta {
+    justify-content: center;
+    text-align: center;
+    column-gap: 3rem;
+  }
+
+  .quarto-title-meta-author {
+    grid-template-columns: repeat(2, max-content) !important;
+  }
+
+  .quarto-title-meta {
+    grid-template-columns: max-content !important;
+  }
+
+  .quarto-title-meta-author p.author {
+    margin: 0;
+  }
+
+  .quarto-title-author-orcid {
+    display: inline-block;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+  }
+}
+
+body.paper-page .quarto-title-banner {
+  background: linear-gradient(135deg, var(--pn-from) 0%, var(--pn-to) 100%) !important;
+  border-bottom: 1px solid var(--ls-border) !important;
+
+  .quarto-title h1 {
+    color: var(--pn-title) !important;
+  }
+
+  .quarto-title .subtitle,
+  .quarto-title .description,
+  .quarto-title-meta {
+    color: var(--pn-text) !important;
+  }
+
+  .quarto-title .quarto-categories .quarto-category {
+    color: var(--pn-muted) !important;
+    border-color: var(--pn-card-border) !important;
+  }
+}
+
+// Figure captions and the separators of the stats line are muted slate, readable on the page of either theme
+.quarto-float-caption,
+figcaption {
+  color: var(--ls-muted) !important;
+}
+
+.pubs-stats span {
+  color: var(--ls-muted) !important;
+}

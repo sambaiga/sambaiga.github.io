@@ -1,0 +1,82 @@
+// =====================================================
+// ILLUSTRATIONS (images/figures): concept diagrams with a transparent background and dark ink.
+// They sit on a white mat in both themes, so they stay readable on the dark page.
+// Use: ![Caption](/images/figures/name.svg){.figure-illustration fig-alt="..." width="90%"}
+// =====================================================
+
+.figure-illustration {
+  max-width: 100%;
+  height: auto;
+  padding: 1rem 1.25rem;
+  border: 1px solid #d5e2ec;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px -18px rgba(15, 23, 42, 0.4);
+}
+
+figure:has(> .figure-illustration) > figcaption,
+.quarto-figure:has(.figure-illustration) .figure-caption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+// =====================================================
+// LETS-PLOT FIGURES: inline SVG drawn twice, a wide variant and a narrow one with the panels stacked. The page shows
+// the variant that fits the screen, so that the text of a figure stays readable on a phone. A figure with one variant
+// only keeps a readable minimum width and scrolls inside its own box.
+// =====================================================
+
+.letsplot-phone {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .letsplot-desktop {
+    display: none;
+  }
+
+  .letsplot-phone {
+    display: block;
+  }
+
+  // The columns of a figure with subfigures (layout-ncol) stack on a phone, one subfigure above the other, each as wide as
+  // the text, which is the width that the narrow variant of a figure is drawn for.
+  .quarto-layout-row {
+    flex-direction: column;
+  }
+
+  .quarto-layout-cell {
+    flex-basis: auto !important;
+    width: 100%;
+  }
+
+  .cell-output-display {
+    overflow-x: auto;
+  }
+
+  .letsplot:not(.letsplot-desktop):not(.letsplot-phone) {
+    min-width: 640px;
+  }
+}
+
+// =====================================================
+// DISPLAY EQUATIONS: centred in the column, as in the book. A display equation is a block-level math box that is only
+// as wide as the equation (`display: block math` is the centred layout of MathML Core, which a plain `display: block`
+// replaces with a left-aligned one), and it sits in the middle through its automatic margins. An equation wider than the
+// screen fills the column and scrolls inside its own box, so it never widens the page. Inline math is not touched.
+// =====================================================
+
+math[display="block"] {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@supports (display: block math) {
+  math[display="block"] {
+    display: block math;
+  }
+}
