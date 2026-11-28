@@ -15,10 +15,7 @@ format:
     reading-time: true
     code-fold: true
     code-summary: "Show the code"
-    code-tools:
-      source: false
-      toggle: true
-      caption: "Code"
+    code-tools: false  # each cell folds on its own; a menu in the title panel adds nothing
     #code-link: true
     shift-heading-level-by: 1
     reference-location: document
